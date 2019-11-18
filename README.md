@@ -6,3 +6,9 @@ Orca manages people and  activity subscriptions.
 ```
 docker-compose up app
 ```
+
+## Tests
+
+```
+docker-compose run test
+```
