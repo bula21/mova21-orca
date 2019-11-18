@@ -4,6 +4,20 @@ class UnitsController < ApplicationController
   before_action :set_unit, only: %i[edit update show]
   def index; end
 
+  def new
+    @unit = Unit.new
+  end
+
+  def create
+    @unit = Unit.new(unit_params)
+
+    if @unit.save
+      redirect_to units_path, notice: I18n.t('units.messages.created.success')
+    else
+      render :new
+    end
+  end
+
   def show; end
 
   def edit; end

@@ -1,0 +1,48 @@
+de:
+  activerecord:
+    attributes:
+      leader:
+        title: Titel
+        abteilung: Abteilung
+        kv: KV
+        stufe: Stufe
+        expected_participants_f: Erwartete Anzahl TN (f)
+        expected_participants_m:  Erwartete Anzahl TN (m)
+        expected_participants_leitung_f:  Erwartete Anzahl Leitende (f)
+        expected_participants_leitung_m:  Erwartete Anzahl Leitende (m)
+        starts_at: Beginn am
+        ends_at: Ende am
+        al: AL
+        lagerleiter: Lagerleiter
+  hello: "Herzlich willkommen"
+  units:
+    messages:
+      updated:
+        success: "Erfolgreich gespeichert!"
+      created:
+        success: "Erfolgreich erstellt"
+    show:
+      questionnaire: "Fragebogen"
+      participants: "Teilnehmende"
+    edit:
+      title: "Lager editieren"
+    index:
+      title: "Deine Lager"
+    new:
+      title: "Lager erstellen"
+  buttons:
+    save: "Speichern"
+    edit: "editieren"
+    create: "Erstellen"
+  leaders:
+    messages:
+      updated:
+        success: "Erfolgreich gespeichert"
+      created:
+        success: "Erfolgreich erstellt"
+    index:
+      title: "Leitende verwalten"
+    edit:
+      title: "Leitperson editieren"
+    new:
+      title: "Neue Leitperson erfassen"

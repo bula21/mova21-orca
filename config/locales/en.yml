@@ -1,9 +1,26 @@
 en:
+  activerecord:
+    attributes:
+      leader:
+        title: Title
+        abteilung: Abteilung
+        kv: KV
+        stufe: Stufe
+        expected_participants_f: Expected amount participants (f)
+        expected_participants_m:  Expected amount participants (m)
+        expected_participants_leitung_f:  Expected amount leaders (f)
+        expected_participants_leitung_m:  Expected amount leaders (m)
+        starts_at: Starts at
+        ends_at: Ends at
+        al: AL
+        lagerleiter: Lagerleiter
   hello: "Hello world"
   units:
     messages:
       updated:
         success: "saved!"
+      created:
+        success: "Successfully created"
     show:
       questionnaire: "Questionnaire"
       participants: "Participants"
@@ -11,6 +28,21 @@ en:
       title: "Lager editieren"
     index:
       title: "Deine Lager"
+    new:
+      title: "Create new unit"
   buttons:
     save: "Save"
     edit: "Edit"
+    create: "Create"
+  leaders:
+    messages:
+      updated:
+        success: "Successfully saved"
+      created:
+        success: "Successfully created"
+    index:
+      title: "Manage leaders"
+    edit:
+      title: "Edit leader"
+    new:
+      title: "New leader"

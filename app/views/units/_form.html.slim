@@ -1,0 +1,15 @@
+= simple_form_for @unit do |f|
+  = f.input :title, autofocus: true
+  = f.input :abteilung
+  = f.input :kv, collection: Unit::KVS
+  = f.input :stufe, collection: Unit.stufen
+  = f.input :expected_participants_f
+  = f.input :expected_participants_m
+  = f.input :expected_participants_leitung_f
+  = f.input :expected_participants_leitung_m
+  = f.input :starts_at
+  = f.input :ends_at
+  = f.association :al, label_method: :scout_name
+  = f.association :lagerleiter, label_method: :scout_name
+  .actions
+    = f.submit t('buttons.save'), class: 'btn btn-primary'

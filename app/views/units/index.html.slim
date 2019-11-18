@@ -1,4 +1,7 @@
 .h1 = t('units.index.title')
+
+= link_to t('buttons.create'), new_unit_path, class: 'btn btn-primary mb-3'
+
 .row
   - Unit.all.each do |unit|
     .col-6

@@ -1,3 +1,5 @@
 h1 heeloooooo
 
-= link_to 'Units', units_path
+ul
+  li= link_to Unit.model_name.human, units_path
+  li= link_to Leader.model_name.human, leaders_path
