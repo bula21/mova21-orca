@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+al = FactoryBot.create(:leader)
+lagerleiter = FactoryBot.create(:leader)
+FactoryBot.create(:unit, al: al, lagerleiter: lagerleiter)
