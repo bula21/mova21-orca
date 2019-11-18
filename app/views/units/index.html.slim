@@ -1,0 +1,9 @@
+.h1 = t('units.index.title')
+.row
+  - Unit.all.each do |unit|
+    .col-6
+      .card.m-2
+        .card-body
+          h5.card-title = unit.title
+          p.card-text = unit.abteilung
+          = link_to t('buttons.edit'), edit_unit_path(unit), class: 'btn btn-primary'

@@ -10,6 +10,8 @@ gem 'grape-entity'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 4.1'
 gem 'rails', '~> 6.0.1'
+gem 'simple_form'
+gem 'slim-rails'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 4.0'
 

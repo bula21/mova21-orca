@@ -1,0 +1,20 @@
+h1 = @unit.title
+dl
+  dt = Unit.human_attribute_name(:starts_at)
+  dd = l(@unit.starts_at)
+
+  dt = Unit.human_attribute_name(:ends_at)
+  dd = l(@unit.ends_at)
+
+  dt = Unit.human_attribute_name(:abteilung)
+  dd = @unit.abteilung
+
+  dt = Unit.human_attribute_name(:al)
+  dd = @unit.al.scout_name
+
+  dt = Unit.human_attribute_name(:lagerleiter)
+  dd = @unit.lagerleiter.scout_name
+
+h2 = t('units.show.questionnaire')
+
+h2 = t('units.show.participants')

@@ -11,6 +11,8 @@ Rails/SkipsModelValidations:
 
 Metrics/LineLength:
   Max: 120
+  Exclude:
+    - 'config/initializers/**/*.rb'
 
 Style/Documentation:
   Enabled: false
@@ -27,6 +29,7 @@ Metrics/BlockLength:
   Exclude:
     - 'spec/**/*.rb'
     - 'config/environments/**/*.rb'
+    - 'config/initializers/**/*.rb'
 
 RSpec/MultipleExpectations:
   Enabled: false
