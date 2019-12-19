@@ -14,7 +14,8 @@ en:
         ends_at: Ends at
         al: AL
         lagerleiter: Lagerleiter
-  hello: "Hello world"
+  app:
+    title: "Orca"
   units:
     messages:
       updated:
@@ -46,4 +47,5 @@ en:
       title: "Edit leader"
     new:
       title: "New leader"
-  home: "MoVa"
+  home:
+    title: "Welcome"

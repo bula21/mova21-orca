@@ -1,7 +1,15 @@
 de:
   activerecord:
+    models:
+      leader:
+        one: Leitperson
+        other: Leitpersonen
+      unit:
+        one: Einheit
+        other: Einheiten
     attributes:
       leader:
+        full_name: Vollständiger Name
         title: Titel
         abteilung: Abteilung
         kv: KV
@@ -14,7 +22,8 @@ de:
         ends_at: Ende am
         al: AL
         lagerleiter: Lagerleiter
-  hello: "Herzlich willkommen"
+  app:
+    title: "Orca"
   units:
     messages:
       updated:
@@ -46,4 +55,5 @@ de:
       title: "Leitperson editieren"
     new:
       title: "Neue Leitperson erfassen"
-  home: "MoVa"
+  home:
+    title: "Wilkommen"
