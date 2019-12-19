@@ -3,9 +3,9 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
-import '../styles.scss';
 import jQuery from 'jquery';
 import Turbolinks from 'turbolinks';
+require.context('../images', true);
 
 Rails.start();
 Turbolinks.start();
