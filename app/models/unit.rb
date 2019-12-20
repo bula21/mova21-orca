@@ -35,4 +35,6 @@ class Unit < ApplicationRecord
     pio: 'pio',
     rover: 'rover'
   }
+
+  validates :title, presence: true
 end
