@@ -1,8 +1,8 @@
 = simple_form_for @leader do |f|
-  = f.input :last_name, autofocus: true
-  = f.input :first_name
   = f.input :scout_name
-  = f.input :birthdate
+  = f.input :first_name
+  = f.input :last_name, autofocus: true
+  = f.input :birthdate, wrapper: :inline_date
   = f.input :gender, collection: Leader.genders
   = f.input :email
   = f.input :phone_number
