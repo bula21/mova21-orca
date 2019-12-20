@@ -9,7 +9,7 @@ RSpec.describe ApplicationHelper, type: :helper do
     let(:locale) { :en }
 
     before do
-      helper.params[:controller] = 'home'
+      helper.params[:controller] = 'units'
       helper.params[:action] = 'index'
     end
 
