@@ -6,6 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-al = FactoryBot.create(:leader)
-lagerleiter = FactoryBot.create(:leader)
-FactoryBot.create(:unit, al: al, lagerleiter: lagerleiter)
+
+al = FactoryBot.create(:leader, scout_name: 'Lego')
+lagerleiter = FactoryBot.create(:leader, scout_name: 'Duplo')
+FactoryBot.create(:unit, title: 'Sommerlager Pfadistufe', stufe: 'wolf', abteilung: 'Pfadi H2O',
+                  al: al, lagerleiter: lagerleiter)
+FactoryBot.create(:unit, title: 'Sommerlager Wolfsstufe', stufe: 'pfadi', abteilung: 'Pfadi H2O',
+                  al: al, lagerleiter: lagerleiter)

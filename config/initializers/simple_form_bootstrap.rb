@@ -403,6 +403,16 @@ SimpleForm.setup do |config|
     b.use :hint, wrap_with: { tag: 'small', class: 'form-text text-muted' }
   end
 
+  config.wrappers :inline_date, tag: 'div', error_class: 'has-danger' do |b|
+    b.use :html5
+    b.use :label, class: 'control-label'
+    b.wrapper tag: 'div', class: 'form-inline row' do |ba|
+      ba.use :input, class: 'form-control form-inline', wrap_with: { class: 'col-md-6' }
+      ba.use :error, wrap_with: { tag: 'span', class: 'invalid-feedback' }
+      ba.use :hint, wrap_with:  { tag: 'p', class: 'help-block' }
+    end
+  end
+
   # The default wrapper to be used by the FormBuilder.
   config.default_wrapper = :vertical_form
 

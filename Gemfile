@@ -10,6 +10,7 @@ gem 'grape-entity'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 4.1'
 gem 'rails', '~> 6.0.1'
+gem 'rails-i18n'
 gem 'simple_form'
 gem 'slim-rails'
 gem 'turbolinks', '~> 5'
@@ -23,6 +24,7 @@ group :development, :test do
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rspec', require: false
+  gem 'i18n-tasks'
 end
 
 group :development do

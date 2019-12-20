@@ -1,48 +1,86 @@
+---
 de:
   activerecord:
     attributes:
       leader:
-        title: Titel
         abteilung: Abteilung
-        kv: KV
-        stufe: Stufe
-        expected_participants_f: Erwartete Anzahl TN (f)
-        expected_participants_m:  Erwartete Anzahl TN (m)
-        expected_participants_leitung_f:  Erwartete Anzahl Leitende (f)
-        expected_participants_leitung_m:  Erwartete Anzahl Leitende (m)
-        starts_at: Beginn am
-        ends_at: Ende am
         al: AL
+        ends_at: Ende am
+        expected_participants_f: Erwartete Anzahl TN (f)
+        expected_participants_leitung_f: Erwartete Anzahl Leitende (f)
+        expected_participants_leitung_m: Erwartete Anzahl Leitende (m)
+        expected_participants_m: Erwartete Anzahl TN (m)
+        full_name: Vollständiger Name
+        kv: KV
         lagerleiter: Lagerleiter
-  hello: "Herzlich willkommen"
-  units:
-    messages:
-      updated:
-        success: "Erfolgreich gespeichert!"
-      created:
-        success: "Erfolgreich erstellt"
-    show:
-      questionnaire: "Fragebogen"
-      participants: "Teilnehmende"
-    edit:
-      title: "Lager editieren"
-    index:
-      title: "Deine Lager"
-    new:
-      title: "Lager erstellen"
+        starts_at: Beginn am
+        stufe: Stufe
+        title: Titel
+    models:
+      leader:
+        one: Leitperson
+        other: Leitpersonen
+      unit:
+        one: Einheit
+        other: Einheiten
+  app:
+    title: Orca
   buttons:
-    save: "Speichern"
-    edit: "editieren"
-    create: "Erstellen"
+    create: Erstellen
+    edit: editieren
+    save: Speichern
+  home:
+    title: Wilkommen
   leaders:
-    messages:
-      updated:
-        success: "Erfolgreich gespeichert"
-      created:
-        success: "Erfolgreich erstellt"
-    index:
-      title: "Leitende verwalten"
     edit:
-      title: "Leitperson editieren"
+      title: Leitperson editieren
+    index:
+      title: Leitende verwalten
+    messages:
+      created:
+        success: Erfolgreich erstellt
+      updated:
+        success: Erfolgreich gespeichert
     new:
-      title: "Neue Leitperson erfassen"
+      title: Neue Leitperson erfassen
+  nav:
+    leader: Leader
+    unit: Unit
+  units:
+    edit:
+      title: Lager editieren
+    index:
+      title: Deine Lager
+    kvs:
+      '1018': AS Genevois
+      '1145': Pfadi Zueri
+      '142': Pfadi Kanton Schwyz
+      '161': Pfadi Glarus
+      '166': Pfadi St. Gallen - Appenzell
+      '167': Battasendas Grischun
+      '179': Pfadi Luzern
+      '187': Pfadi Unterwalden
+      '237': Pfadi Kanton Zug
+      '238': Scoutismo Ticino
+      '299': Pfadi Region Basel
+      '3': Pfadi Kanton Solothurn
+      '4': Pfadi Kanton Bern
+      '4691': Pfadi Aargau
+      '513': Scouts Vaudois
+      '631': Pfadi Kanton Schaffhausen
+      '638': AS Fribourgeois
+      '85': Pfadi Uri
+      '880': Scouts Neuchatelois
+      '911': AS Jurassienne
+      '993': Pfadi Thurgau
+      '994': AS Valaisan
+    messages:
+      created:
+        success: Erfolgreich erstellt
+      updated:
+        success: Erfolgreich gespeichert!
+    new:
+      title: Lager erstellen
+    show:
+      participants: Teilnehmende
+      questionnaire: Fragebogen

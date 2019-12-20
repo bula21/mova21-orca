@@ -5,8 +5,18 @@ html
     = csrf_meta_tags
     = csp_meta_tag
 
-    = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_pack_tag 'styles', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light
+      = link_to t('app.title'), root_path, class: 'navbar-brand'
+      button.navbar-toggler[type= 'button' data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"]
+        span class="navbar-toggler-icon"
+      .collapse.navbar-collapse#navbarNav
+        ul.navbar-nav
+          li.nav-item
+            = link_to t('nav.leader'), leaders_path, class: 'nav-link'
+          li.nav-item
+            = link_to t('nav.unit'), units_path, class: 'nav-link'
     .container
       = yield
