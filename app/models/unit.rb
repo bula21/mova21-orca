@@ -33,7 +33,8 @@ class Unit < ApplicationRecord
     wolf: 'wolf',
     pfadi: 'pfadi',
     pio: 'pio',
-    rover: 'rover'
+    rover: 'rover',
+    pta: 'pta'
   }
 
   validates :title, presence: true

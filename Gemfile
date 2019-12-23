@@ -20,11 +20,11 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails', '~> 4.11'
   gem 'faker'
+  gem 'i18n-tasks'
   gem 'rspec-rails'
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rspec', require: false
-  gem 'i18n-tasks'
 end
 
 group :development do

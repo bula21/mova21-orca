@@ -1,0 +1,104 @@
+{
+  "events":[
+    {
+      "id":"223",
+      "type":"events",
+      "name":"Sommerlager PTA",
+      "description":"",
+      "motto":"",
+      "cost":"",
+      "maximum_participants":null,
+      "participant_count":0,
+      "location":"",
+      "application_opening_at":null,
+      "application_closing_at":null,
+      "application_conditions":"",
+      "state":"created",
+      "teamer_count":0,
+      "expected_participants_wolf_f": 3,
+      "expected_participants_wolf_m": 2,
+      "expected_participants_pfadi_f": 3,
+      "expected_participants_pfadi_m": 5,
+      "expected_participants_pio_f": 4,
+      "expected_participants_pio_m": 6,
+      "expected_participants_rover_f": 1,
+      "expected_participants_rover_m": 1,
+      "expected_participants_leitung_f": 6,
+      "expected_participants_leitung_m": 4,
+      "canton":"",
+      "coordinates":"",
+      "altitude":"",
+      "emergency_phone":"",
+      "j_s_kind":"j_s_child",
+      "j_s_security_snow":false,
+      "j_s_security_mountain":false,
+      "j_s_security_water":false,
+      "required_contact_attrs":[
+        "address",
+        "zip_code",
+        "town",
+        "country",
+        "gender",
+        "birthday",
+        "nationality_j_s",
+        "ahv_number",
+        "correspondence_language"
+      ],
+      "hidden_contact_attrs":[
+
+      ],
+      "links":{
+        "sub_camps":[
+          224
+        ],
+        "dates":[
+          "456"
+        ],
+        "groups":[
+          "1"
+        ]
+      },
+      "external_application_link":"http://localhost:3000/de/groups/1/public_events/223"
+    }
+  ],
+  "linked":{
+    "events":[
+      {
+        "id":224,
+        "href":"http://localhost:3000/de/events/224.json"
+      }
+    ],
+    "event_dates":[
+      {
+        "id":"456",
+        "label":"",
+        "start_at":"2021-07-01T00:00:00.000+02:00",
+        "finish_at":"2021-07-18T00:00:00.000+02:00",
+        "location":""
+      }
+    ],
+    "groups":[
+    {
+        "id":"1",
+        "name":"Pfadibewegung Schweiz",
+        "group_type":"Bund"
+      },
+      {
+        "id":"2",
+        "name":"H2O",
+        "group_type":"Abteilung"
+      },
+      {
+        "id":"1145",
+        "name":"Zürich",
+        "group_type":"Kantonalverband"
+      }
+    ]
+  },
+  "links":{
+    "groups.creator":{
+      "href":"http://localhost:3000/de/people/{groups.creator}.json",
+      "type":"people"
+    }
+  }
+}
