@@ -5,7 +5,7 @@ require:
 Rails:
   Enabled: true
 
-Layout/LineLength:
+Metrics/LineLength:
   Max: 120
   Exclude:
     - 'config/initializers/**/*.rb'
