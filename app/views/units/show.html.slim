@@ -1,20 +1,37 @@
 h1 = @unit.title
-dl
-  dt = Unit.human_attribute_name(:starts_at)
-  dd = l(@unit.starts_at)
 
-  dt = Unit.human_attribute_name(:ends_at)
-  dd = l(@unit.ends_at)
+.card
+  .card-body
+    dl
+      .row
+        .col-6
+          dt = t('activerecord.attributes.leader.starts_at')
+          dd = l(@unit.starts_at)
 
-  dt = Unit.human_attribute_name(:abteilung)
-  dd = @unit.abteilung
+        .col-6
+          dt = t('activerecord.attributes.leader.ends_at')
+          dd = l(@unit.ends_at)
 
-  dt = Unit.human_attribute_name(:al)
-  dd = @unit.al.scout_name
+      dt = t('activerecord.attributes.leader.abteilung')
+      dd = @unit.abteilung
 
-  dt = Unit.human_attribute_name(:lagerleiter)
-  dd = @unit.lagerleiter.scout_name
+      .row
+        .col-6
+          dt = t('activerecord.attributes.leader.al')
+          dd = @unit.al.full_name
 
-h2 = t('units.show.questionnaire')
+        .col-6
+          dt = t('activerecord.attributes.leader.lagerleiter')
+          dd = @unit.lagerleiter.full_name
 
-h2 = t('units.show.participants')
+    = link_to t('buttons.edit'), edit_unit_path(@unit), class: 'btn btn-primary'
+
+.card.mt-4
+  .card-body
+    h2 = t('units.show.questionnaire')
+
+.card.mt-4
+  .card-body
+    h2 = t('units.show.participants')
+
+= link_to t('buttons.back'), units_path, class: 'btn btn-secondary mt-4'

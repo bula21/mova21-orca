@@ -11,5 +11,5 @@
         .card-body
           h5.card-title = unit.title
           p.card-text = unit.abteilung
-          = link_to t('buttons.edit'), edit_unit_path(unit), class: 'btn btn-primary'
+          = link_to t('buttons.show'), unit_path(unit), class: 'btn btn-primary'
 

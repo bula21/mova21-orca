@@ -29,6 +29,8 @@ en:
     create: Create
     edit: Edit
     save: Save
+    back: Back
+    show: Show
   home:
     title: Welcome
   leaders:
