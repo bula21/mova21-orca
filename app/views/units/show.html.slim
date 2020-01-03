@@ -3,25 +3,35 @@ h1 = @unit.title
 .card
   .card-body
     dl
-      .row
-        .col-6
-          dt = t('activerecord.attributes.leader.starts_at')
-          dd = l(@unit.starts_at)
-
-        .col-6
-          dt = t('activerecord.attributes.leader.ends_at')
-          dd = l(@unit.ends_at)
-
-      dt = t('activerecord.attributes.leader.abteilung')
+      dt = t('activerecord.attributes.unit.abteilung')
       dd = @unit.abteilung
 
       .row
         .col-6
-          dt = t('activerecord.attributes.leader.al')
+          dt = t('activerecord.attributes.unit.starts_at')
+          dd = l(@unit.starts_at)
+
+        .col-6
+          dt = t('activerecord.attributes.unit.ends_at')
+          dd = l(@unit.ends_at)
+
+
+      .row
+        .col-6
+          dt = t('activerecord.attributes.unit.expected_participants_leitung_f')
+          dd = @unit.expected_participants_leitung_f
+
+        .col-6
+          dt = t('activerecord.attributes.unit.expected_participants_leitung_m')
+          dd = @unit.expected_participants_leitung_m
+
+      .row
+        .col-6
+          dt = t('activerecord.attributes.unit.al')
           dd = @unit.al.full_name
 
         .col-6
-          dt = t('activerecord.attributes.leader.lagerleiter')
+          dt = t('activerecord.attributes.unit.lagerleiter')
           dd = @unit.lagerleiter.full_name
 
     = link_to t('buttons.edit'), edit_unit_path(@unit), class: 'btn btn-primary'
@@ -34,10 +44,13 @@ h1 = @unit.title
   .card-body
     h2 = t('units.show.participants')
     dl
-      dt = t('activerecord.attributes.leader.expected_participants_f')
-      dd = @unit.expected_participants_f
+      .row
+        .col-6
+          dt = t('activerecord.attributes.unit.expected_participants_f')
+          dd = @unit.expected_participants_f
 
-      dt = t('activerecord.attributes.leader.expected_participants_m')
-      dd = @unit.expected_participants_m
+        .col-6
+          dt = t('activerecord.attributes.unit.expected_participants_m')
+          dd = @unit.expected_participants_m
 
 = link_to t('buttons.back'), units_path, class: 'btn btn-secondary mt-4'

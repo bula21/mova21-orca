@@ -2,7 +2,7 @@
 de:
   activerecord:
     attributes:
-      leader:
+      unit:
         abteilung: Abteilung
         al: AL
         ends_at: Ende am
