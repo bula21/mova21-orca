@@ -33,5 +33,11 @@ h1 = @unit.title
 .card.mt-4
   .card-body
     h2 = t('units.show.participants')
+    dl
+      dt = t('activerecord.attributes.leader.expected_participants_f')
+      dd = @unit.expected_participants_f
+
+      dt = t('activerecord.attributes.leader.expected_participants_m')
+      dd = @unit.expected_participants_m
 
 = link_to t('buttons.back'), units_path, class: 'btn btn-secondary mt-4'
