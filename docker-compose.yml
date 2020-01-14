@@ -32,7 +32,6 @@ services:
       - webpack
       - mail
       - memcached
-      - auth
     tty: true
     stdin_open: true
 
@@ -99,9 +98,6 @@ services:
 
   selenium:
     image: selenium/standalone-chrome-debug
-    # ports:
-      # - '4444:4444'
-      # - '5900:5900'
     logging:
       driver: none
     networks:
@@ -109,32 +105,10 @@ services:
         aliases:
           - app
 
-  auth:
-    image: jboss/keycloak
-    environment:
-      DB_VENDOR: H2
-      # DB_VENDOR: POSTGRES
-      # DB_ADDR: "db:5432"
-      # DB_DATABASE: keycloak
-      # DB_USER: postgres
-      # DB_SCHEMA: public
-      # DB_PASSWORD:
-      KEYCLOAK_USER: admin
-      KEYCLOAK_PASSWORD: Pa55w0rd
-      KEYCLOAK_IMPORT: "/tmp/bulacafe21-realm.json"
-    volumes:
-      - auth_data:/tmp
-      - ./auth/bulacafe21-realm.json:/tmp/bulacafe21-realm.json
-    ports:
-      - 8080:8080
-    depends_on:
-      - db
-
 networks:
   selenium:
 
 volumes:
-  auth_data:
   app_bundle:
   app_node_modules:
   webpack_bundle:
