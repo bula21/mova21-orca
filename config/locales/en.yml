@@ -2,7 +2,7 @@
 en:
   activerecord:
     attributes:
-      leader:
+      unit:
         abteilung: Abteilung
         al: AL
         ends_at: Ends at
@@ -29,6 +29,8 @@ en:
     create: Create
     edit: Edit
     save: Save
+    back: Back
+    show: Show
   home:
     title: Welcome
   leaders:

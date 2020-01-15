@@ -1,20 +1,56 @@
 h1 = @unit.title
-dl
-  dt = Unit.human_attribute_name(:starts_at)
-  dd = l(@unit.starts_at)
 
-  dt = Unit.human_attribute_name(:ends_at)
-  dd = l(@unit.ends_at)
+.card
+  .card-body
+    dl
+      dt = t('activerecord.attributes.unit.abteilung')
+      dd = @unit.abteilung
 
-  dt = Unit.human_attribute_name(:abteilung)
-  dd = @unit.abteilung
+      .row
+        .col-6
+          dt = t('activerecord.attributes.unit.starts_at')
+          dd = l(@unit.starts_at)
 
-  dt = Unit.human_attribute_name(:al)
-  dd = @unit.al.scout_name
+        .col-6
+          dt = t('activerecord.attributes.unit.ends_at')
+          dd = l(@unit.ends_at)
 
-  dt = Unit.human_attribute_name(:lagerleiter)
-  dd = @unit.lagerleiter.scout_name
 
-h2 = t('units.show.questionnaire')
+      .row
+        .col-6
+          dt = t('activerecord.attributes.unit.expected_participants_leitung_f')
+          dd = @unit.expected_participants_leitung_f
 
-h2 = t('units.show.participants')
+        .col-6
+          dt = t('activerecord.attributes.unit.expected_participants_leitung_m')
+          dd = @unit.expected_participants_leitung_m
+
+      .row
+        .col-6
+          dt = t('activerecord.attributes.unit.al')
+          dd = @unit.al.full_name
+
+        .col-6
+          dt = t('activerecord.attributes.unit.lagerleiter')
+          dd = @unit.lagerleiter.full_name
+
+    = link_to t('buttons.edit'), edit_unit_path(@unit), class: 'btn btn-primary'
+
+.card.mt-4
+  .card-body
+    h2 = t('units.show.questionnaire')
+
+.card.mt-4
+  .card-body
+    h2 = t('units.show.participants')
+    dl
+      .row
+        .col-6
+          dt = t('activerecord.attributes.unit.expected_participants_f')
+          dd = @unit.expected_participants_f
+
+        .col-6
+          dt = t('activerecord.attributes.unit.expected_participants_m')
+          dd = @unit.expected_participants_m
+
+= link_to t('buttons.back'), units_path, class: 'btn btn-secondary mt-4'
