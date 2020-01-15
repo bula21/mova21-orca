@@ -29,8 +29,6 @@ de:
     create: Erstellen
     edit: editieren
     save: Speichern
-  home:
-    title: Wilkommen
   leaders:
     edit:
       title: Leitperson editieren
@@ -45,6 +43,8 @@ de:
       title: Neue Leitperson erfassen
   nav:
     leader: Leader
+    login: Login
+    logout: Logout
     unit: Unit
   units:
     edit:

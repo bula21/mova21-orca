@@ -29,8 +29,6 @@ en:
     create: Create
     edit: Edit
     save: Save
-  home:
-    title: Welcome
   leaders:
     edit:
       title: Edit leader
@@ -45,6 +43,8 @@ en:
       title: New leader
   nav:
     leader: Leader
+    login: Login
+    logout: Logout
     unit: Unit
   units:
     edit:

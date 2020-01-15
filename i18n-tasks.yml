@@ -1,0 +1,7 @@
+ignore_unused:
+- '{activerecord,activemodel}.*'
+- '{authlogic,kaminari}.*'
+- '{time,datetime,date,support,number,helpers}.*'
+- 'flash.*'
+- 'titles.*'
+- 'faker.*'
