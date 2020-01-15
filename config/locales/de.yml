@@ -2,7 +2,7 @@
 de:
   activerecord:
     attributes:
-      leader:
+      unit:
         abteilung: Abteilung
         al: AL
         ends_at: Ende am
@@ -26,9 +26,11 @@ de:
   app:
     title: Orca
   buttons:
+    back: zurück
     create: Erstellen
     edit: editieren
     save: Speichern
+    show: anzeigen
   leaders:
     edit:
       title: Leitperson editieren
