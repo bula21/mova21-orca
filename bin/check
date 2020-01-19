@@ -6,6 +6,12 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
+if ! bundle exec i18n-tasks health
+then
+  echo 'i18n detected issues!'
+  exit 1
+fi
+
 if ! bundle exec rubocop -D -c .rubocop.yml --fail-fast
 then
   echo 'rubocop detected issues!'
@@ -13,3 +19,4 @@ then
   echo 'Tried to auto correct the issues, but must be reviewed manually, commit aborted'
   exit 1
 fi
+
