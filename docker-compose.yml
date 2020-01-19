@@ -27,6 +27,10 @@ services:
       OIDC_CLIENT_ID: "orca"
       OIDC_CLIENT_SECRET_KEY: "45175344-f4ef-4473-9cac-db2a520208b6"
       OIDC_ISSUER: 'http://auth:8080/'
+      VIRTUAL_HOST: ${DOMAIN}
+      LETSENCRYPT_HOST: ${DOMAIN}
+      VIRTUAL_PORT: 3000
+      LETSENCRYPT_EMAIL: "it-support@bula21.ch"
     depends_on:
       - db
       - webpack
