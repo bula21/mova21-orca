@@ -18,6 +18,7 @@ RSpec.describe UnitParser do
       expect(result.ends_at).to eq '2021-07-18T00:00:00.000+02:00'
     end
 
+    # TODO: Fix spec
     xit 'parses pta' do
       result = described_class.new(File.read(Rails.root.join('spec', 'fixtures', 'unit_pta.json'))).call
       pp result
