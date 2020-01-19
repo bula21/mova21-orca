@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 class UnitParser
-  def initialize(data)
+  # TODO: Stufe wird mitgegeben aus iteration von übergeordnetem Lager
+  def initialize(data, stufe = 'pfadi')
     @data = data
+    @stufe = stufe
   end
 
   def call
@@ -10,7 +12,7 @@ class UnitParser
     event = unit_data['events'].first
     linked = unit_data['linked']
     unit = Unit.new
-    unit.stufe = stufe(unit_data)
+    unit.stufe = @stufe
     parse_linked(linked, unit)
     parse_event(event, unit)
     # TODO: add AL und Coach
