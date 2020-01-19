@@ -20,7 +20,11 @@ class UnitsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    survey_id = 187799
+    lang = 'de-informal'
+    @limesurvey_url = "#{LimesurveyService::BASEURL}/#{survey_id}?lang=#{lang}&token=#{@unit.limesurvey_token}"
+  end
 
   def edit; end
 

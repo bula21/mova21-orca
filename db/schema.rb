@@ -48,9 +48,13 @@ ActiveRecord::Schema.define(version: 2020_02_16_174947) do
     t.bigint "lagerleiter_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+<<<<<<< HEAD
     t.bigint "al_id"
     t.bigint "coach_id"
     t.jsonb "midata_data"
+=======
+    t.string "limesurvey_token"
+>>>>>>> add limesurvey service
     t.index ["al_id"], name: "index_units_on_al_id"
     t.index ["coach_id"], name: "index_units_on_coach_id"
     t.index ["lagerleiter_id"], name: "index_units_on_lagerleiter_id"
