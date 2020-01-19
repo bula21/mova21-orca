@@ -20,8 +20,15 @@ html
           li.nav-item
             = link_to t('nav.unit'), units_path, class: 'nav-link'
         ul.navbar-nav.ml-auto
+          li.nav-item.dropdown
+            .nav-link.dropdown-toggle[href='#' role="button" data-toggle="dropdown"]= locale.upcase
+            .dropdown-menu
+              = link_to t('nav.language.de'), { locale: 'de' }, class: 'dropdown-item'
+              = link_to t('nav.language.fr'), { locale: 'fr' }, class: 'dropdown-item'
+              = link_to t('nav.language.it'), { locale: 'it' }, class: 'dropdown-item'
+              = link_to t('nav.language.en'), { locale: 'en' }, class: 'dropdown-item'
+
           - if current_user.present?
-            li.
             li.nav-item.dropdown
               a.nav-link.dropdown-toggle[href='#' role="button" data-toggle="dropdown"]= current_user.email
               .dropdown-menu
