@@ -10,6 +10,17 @@ class LimesurveyService
     @session_key = get_session_key(username, password)
   end
 
+  # adds leader to the survey, saves the token and sends an invite
+  # TODO: use correct camp_id, and language
+  def add_leader(leader, unit, survey_id)
+    response = add_participant(survey_id, leader.email, leader.last_name, leader.first_name,
+                               123, unit.stufe.to_i + 1, 'de')
+    if response.is_a?(Array) && response[0]['token']
+      unit.update(limesurvey_token: response[0]['token'])
+      invite_participants(survey_id)
+    end
+  end
+
   # receive session key
   def get_session_key(username, password, _plugin = 'Authdb')
     response = request(ADMIN_REMOTECONTROL_URL, 'get_session_key', [username, password])
@@ -41,9 +52,20 @@ class LimesurveyService
   # adds user to a survey
   # [ {"email":"james@example.com","lastname":"Bond","firstname":"James", "attribute_1": camp_id, "attribute_2": stufe},
   #   {"email":"me2@example.com","attribute_1":"example"} ]
-  def add_participants(survey_id, user)
-    response = request(ADMIN_REMOTECONTROL_URL, 'add_participants', [session_key, survey_id, user])
+  def add_participants(survey_id, users)
+    response = request(ADMIN_REMOTECONTROL_URL, 'add_participants', [session_key, survey_id, users])
     response['result']
+  end
+
+  # 1: wolf, 5: pta
+  def add_participant(survey_id, email, lastname, firstname, camp_id, stufe, language)
+    user = { email: email, lastname: lastname, firstname: firstname, language: language,
+             attribute_1: camp_id, attribute_2: stufe }
+    add_participants(survey_id, [user])
+  end
+
+  def invite_participants(survey_id)
+    request(ADMIN_REMOTECONTROL_URL, 'invite_participants', [session_key, survey_id])
   end
 
   private

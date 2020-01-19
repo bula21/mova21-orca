@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_20_154420) do
+ActiveRecord::Schema.define(version: 2020_01_19_100826) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2019_12_20_154420) do
     t.bigint "lagerleiter_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "limesurvey_token"
     t.index ["al_id"], name: "index_units_on_al_id"
     t.index ["lagerleiter_id"], name: "index_units_on_lagerleiter_id"
   end
