@@ -26,13 +26,11 @@ en:
   app:
     title: Orca
   buttons:
+    back: Back
     create: Create
     edit: Edit
     save: Save
-    back: Back
     show: Show
-  home:
-    title: Welcome
   leaders:
     edit:
       title: Edit leader
@@ -47,6 +45,8 @@ en:
       title: New leader
   nav:
     leader: Leader
+    login: Login
+    logout: Logout
     unit: Unit
   units:
     edit:

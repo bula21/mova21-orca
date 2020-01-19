@@ -5,6 +5,11 @@
 
 import jQuery from 'jquery';
 import Turbolinks from 'turbolinks';
+import Rails from '@rails/ujs'
+import 'jquery'
+import 'popper.js'
+import 'bootstrap'
+
 require.context('../images', true);
 
 Rails.start();

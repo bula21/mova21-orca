@@ -17,18 +17,21 @@ services:
     ports:
       - '3000:3000'
     environment:
+      APP_BASE_URL: http://orca.localhost:3000
       DATABASE_URL: postgresql://postgres@db/orca_development
       RAILS_ENV: development
       WEBPACKER_DEV_SERVER_HOST: webpack
       WEBPACKER_PRECOMPILE: 'false'
       MIGRATE_DATABASE: 'true'
       MEMCACHE_SERVERS: memcached
+      OIDC_CLIENT_ID: "orca"
+      OIDC_CLIENT_SECRET_KEY: "45175344-f4ef-4473-9cac-db2a520208b6"
+      OIDC_ISSUER: 'http://auth:8080/'
     depends_on:
       - db
       - webpack
       - mail
       - memcached
-      - keycloak
     tty: true
     stdin_open: true
 
@@ -53,8 +56,8 @@ services:
       NODE_ENV: development
       RAILS_ENV: development
       WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
-    ports:
-      - '3035:3035'
+    # ports:
+    #   - '3035:3035'
 
   mail:
     image: tophfr/mailcatcher
@@ -95,33 +98,12 @@ services:
 
   selenium:
     image: selenium/standalone-chrome-debug
-    ports:
-      - '4444:4444'
-      # - '5900:5900'
     logging:
       driver: none
     networks:
       selenium:
         aliases:
           - app
-
-  keycloak:
-    image: jboss/keycloak
-    environment:
-      DB_VENDOR: POSTGRES
-      DB_ADDR: db
-      DB_DATABASE: keycloak
-      DB_USER: root
-      DB_SCHEMA: public
-      DB_PASSWORD:
-      KEYCLOAK_USER: admin
-      KEYCLOAK_PASSWORD: Pa55w0rd
-      # Uncomment the line below if you want to specify JDBC parameters. The parameter below is just an example, and it shouldn't be used in production without knowledge. It is highly recommended that you read the PostgreSQL JDBC driver documentation in order to use it.
-      #JDBC_PARAMS: "ssl=true"
-    ports:
-      - 8080:8080
-    depends_on:
-      - db
 
 networks:
   selenium:

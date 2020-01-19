@@ -26,13 +26,11 @@ de:
   app:
     title: Orca
   buttons:
+    back: zurück
     create: Erstellen
     edit: editieren
     save: Speichern
-    back: zurück
     show: anzeigen
-  home:
-    title: Wilkommen
   leaders:
     edit:
       title: Leitperson editieren
@@ -47,6 +45,8 @@ de:
       title: Neue Leitperson erfassen
   nav:
     leader: Leader
+    login: Login
+    logout: Logout
     unit: Unit
   units:
     edit:

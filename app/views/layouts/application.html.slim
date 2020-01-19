@@ -2,6 +2,7 @@ doctype html
 html
   head
     title Orca
+    meta[name="viewport" content="width=device-width, initial-scale=1"]
     = csrf_meta_tags
     = csp_meta_tag
 
@@ -18,5 +19,15 @@ html
             = link_to t('nav.leader'), leaders_path, class: 'nav-link'
           li.nav-item
             = link_to t('nav.unit'), units_path, class: 'nav-link'
+        ul.navbar-nav.ml-auto
+          - if current_user.present?
+            li.
+            li.nav-item.dropdown
+              a.nav-link.dropdown-toggle[href='#' role="button" data-toggle="dropdown"]= current_user.email
+              .dropdown-menu
+                = link_to t('nav.logout'), destroy_user_session_path, class: 'dropdown-item'
+          - else
+            li.nav-item
+              = link_to t('nav.login'), new_user_session_path, class: 'nav-link'
     .container
       = yield

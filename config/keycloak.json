@@ -1,0 +1,10 @@
+{
+  "realm": "BuLaCaFe",
+  "auth-server-url": "http://orca.localhost:8080/auth",
+  "ssl-required": "external",
+  "resource": "orca",
+  "credentials": {
+    "secret": "45175344-f4ef-4473-9cac-db2a520208b6"
+  },
+  "confidential-port": 0
+}
