@@ -15,10 +15,10 @@ class LimesurveyService
   def add_leader(leader, unit, survey_id)
     response = add_participant(survey_id, leader.email, leader.last_name, leader.first_name,
                                123, unit.stufe.to_i + 1, 'de')
-    if response.is_a?(Array) && response[0]['token']
-      unit.update(limesurvey_token: response[0]['token'])
-      invite_participants(survey_id)
-    end
+    return unless response.is_a?(Array) && response[0]['token']
+
+    unit.update(limesurvey_token: response[0]['token'])
+    invite_participants(survey_id)
   end
 
   # receive session key
@@ -58,7 +58,7 @@ class LimesurveyService
   end
 
   # 1: wolf, 5: pta
-  def add_participant(survey_id, email, lastname, firstname, camp_id, stufe, language)
+  def add_participant(survey_id, email, lastname, firstname, camp_id, stufe, language) # rubocop:disable Metrics/ParameterLists
     user = { email: email, lastname: lastname, firstname: firstname, language: language,
              attribute_1: camp_id, attribute_2: stufe }
     add_participants(survey_id, [user])
@@ -70,7 +70,7 @@ class LimesurveyService
 
   private
 
-  def request(url, method, params)
+  def request(url, method, params) # rubocop:disable Metrics/MethodLength
     body = { method: method, params: params, id: 1 }
     response = Net::HTTP.start(url.host, url.port, use_ssl: true) do |http|
       request = Net::HTTP::Post.new(url).tap do |r|
