@@ -12,8 +12,10 @@ class UnitParser
   def call
     parse_linked
     parse_event
+    parse_al
+    parse_leader
     # TODO: add AL und Coach
-    @unit.save
+    @unit.save!
     @unit
   end
 
@@ -32,6 +34,28 @@ class UnitParser
     @unit.expected_participants_m = expected_participants(@unit.stufe, 'm')
     @unit.expected_participants_leitung_f = expected_participants('leitung', 'f')
     @unit.expected_participants_leitung_m = expected_participants('leitung', 'm')
+  end
+
+  def parse_al
+    person = find_person_by_id(@event['links']['abteilungsleitung'])
+    @unit.al = create_leader(person)
+  end
+
+  def create_leader(person)
+    # TODO: Import further attributes on TN-Import
+    Leader.new(pbs_id: person['id'], last_name: person['last_name'],
+               first_name: person['first_name'], scout_name: person['nickname'],
+               email: person['email'])
+  end
+
+  def parse_leader
+    person = find_person_by_id(@event['links']['leader'])
+    @unit.lagerleiter = create_leader(person)
+    # TODO: Import further attributes on TN-Import
+  end
+
+  def find_person_by_id(person_id)
+    @linked['people'].find { |person| person['id'] == person_id }
   end
 
   def abteilung
