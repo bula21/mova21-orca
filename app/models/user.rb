@@ -12,4 +12,8 @@ class User < ApplicationRecord
       user.provider = auth.provider
     end
   end
+
+  def midata_user?
+    self.provider == 'midata'
+  end
 end
