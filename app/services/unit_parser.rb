@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class UnitParser
-  # TODO: Stufe wird mitgegeben aus iteration von übergeordnetem Lager
+  # TODO: Stufe wird mitgegeben aus iteration von uebergeordnetem Lager
   def initialize(data, stufe = 'pfadi')
     @unit_data = JSON.parse(data)
     @unit = Unit.new(stufe: stufe)
@@ -38,19 +38,23 @@ class UnitParser
 
   def parse_al
     person = find_person_by_id(@event['links']['abteilungsleitung'])
-    @unit.al = create_leader(person)
+    @unit.al = find_or_create_leader(person)
   end
 
-  def create_leader(person)
+  def find_or_create_leader(person)
     # TODO: Import further attributes on TN-Import
-    Leader.new(pbs_id: person['id'], last_name: person['last_name'],
-               first_name: person['first_name'], scout_name: person['nickname'],
-               email: person['email'])
+    # TODO: What happens if a user is not used anymore? Are they cleaned up?
+    leader = Leader.find_by(pbs_id: person['id'])
+    return leader if leader
+
+    Leader.create(pbs_id: person['id'], last_name: person['last_name'],
+                  first_name: person['first_name'], scout_name: person['nickname'],
+                  email: person['email'])
   end
 
   def parse_leader
     person = find_person_by_id(@event['links']['leader'])
-    @unit.lagerleiter = create_leader(person)
+    @unit.lagerleiter = find_or_create_leader(person)
     # TODO: Import further attributes on TN-Import
   end
 
