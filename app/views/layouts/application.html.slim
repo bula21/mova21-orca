@@ -23,11 +23,8 @@ html
           li.nav-item.dropdown
             .nav-link.dropdown-toggle[href='#' role="button" data-toggle="dropdown"]= locale.upcase
             .dropdown-menu
-              = link_to t('nav.language.de'), { locale: 'de' }, class: 'dropdown-item'
-              = link_to t('nav.language.fr'), { locale: 'fr' }, class: 'dropdown-item'
-              = link_to t('nav.language.it'), { locale: 'it' }, class: 'dropdown-item'
-              = link_to t('nav.language.en'), { locale: 'en' }, class: 'dropdown-item'
-
+              - I18n.available_locales.each do |locale|
+                = link_to t(locale, scope: 'nav.language'), { locale: locale }, class: 'dropdown-item'
           - if current_user.present?
             li.nav-item.dropdown
               a.nav-link.dropdown-toggle[href='#' role="button" data-toggle="dropdown"]= current_user.email
