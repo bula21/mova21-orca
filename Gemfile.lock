@@ -236,6 +236,7 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
+    rollbar (2.23.2)
     rspec-core (3.9.1)
       rspec-support (~> 3.9.1)
     rspec-expectations (3.9.0)
@@ -363,6 +364,7 @@ DEPENDENCIES
   puma (~> 4.3)
   rails (~> 6.0.1)
   rails-i18n
+  rollbar
   rspec-rails
   rubocop
   rubocop-performance

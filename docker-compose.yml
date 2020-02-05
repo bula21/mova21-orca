@@ -26,6 +26,7 @@ services:
       MEMCACHE_SERVERS: memcached
       OIDC_CLIENT_ID: "orca"
       OIDC_CLIENT_SECRET_KEY: "45175344-f4ef-4473-9cac-db2a520208b6"
+      ROLLBAR_ACCESS_TOKEN: ""
       OIDC_ISSUER: 'http://auth:8080/'
       VIRTUAL_HOST: ${DOMAIN}
       LETSENCRYPT_HOST: ${DOMAIN}
