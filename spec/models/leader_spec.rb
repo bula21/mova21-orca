@@ -8,4 +8,5 @@ RSpec.describe Leader, type: :model do
   let(:params) { attributes_for :leader }
 
   it { is_expected.to validate_presence_of(:email) }
+  it { is_expected.to validate_uniqueness_of(:pbs_id) }
 end

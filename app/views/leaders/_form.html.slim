@@ -5,6 +5,10 @@
   = f.input :birthdate, wrapper: :inline_date
   = f.input :gender, collection: Leader.genders
   = f.input :email
+  = f.input :address
+  = f.input :zip_code
+  = f.input :town
+  / = f.input :country # TODO: Which countries are possible?
   = f.input :phone_number
   = f.input :language, collection: Leader.languages
   .actions
