@@ -37,8 +37,9 @@ RSpec.describe User, type: :model do
   end
 
   describe 'midata_user?' do
-    let(:user) { build(:user, :midata) }
     subject { user.midata_user? }
+
+    let(:user) { build(:user, :midata) }
 
     it { is_expected.to be true }
 
@@ -46,8 +47,6 @@ RSpec.describe User, type: :model do
       let(:user) { build(:user) }
 
       it { is_expected.to be false }
-
     end
-
   end
 end

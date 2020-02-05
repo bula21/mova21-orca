@@ -14,6 +14,6 @@ class User < ApplicationRecord
   end
 
   def midata_user?
-    self.provider == 'midata'
+    provider == 'midata'
   end
 end

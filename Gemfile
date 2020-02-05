@@ -6,6 +6,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.5'
 
 gem 'bootsnap', '>= 1.4.2', require: false
+gem 'cancancan'
 gem 'devise'
 gem 'grape-entity'
 gem 'keycloak'
@@ -16,7 +17,6 @@ gem 'rails', '~> 6.0.1'
 gem 'rails-i18n'
 gem 'simple_form'
 gem 'slim-rails'
-gem 'cancancan'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 4.0'
 gem 'rollbar'
