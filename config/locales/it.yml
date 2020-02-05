@@ -1,53 +1,53 @@
 ---
-en:
+it:
   activerecord:
     attributes:
       unit:
-        abteilung: Group
-        al: Group leader
-        ends_at: Ends at
-        expected_participants_f: Expected amount participants (f)
-        expected_participants_leitung_f: Expected amount leaders (f)
-        expected_participants_leitung_m: Expected amount leaders (m)
-        expected_participants_m: Expected amount participants (m)
-        full_name: Full Name
+        abteilung: Sezione
+        al: CSZ
+        ends_at: Ende am
+        expected_participants_f: Erwartete Anzahl TN (f)
+        expected_participants_leitung_f: Erwartete Anzahl Leitende (f)
+        expected_participants_leitung_m: Erwartete Anzahl Leitende (m)
+        expected_participants_m: Erwartete Anzahl TN (m)
+        full_name: Vollständiger Name
         kv: KV
-        lagerleiter: Lagerleiter
-        starts_at: Starts at
-        stufe: Stufe
-        title: Title
+        lagerleiter: Direzione del campo
+        starts_at: Beginn am
+        stufe: Branca
+        title: Titolo
     models:
       leader:
         one: Leitperson
         other: Leitpersonen
       unit:
-        one: Einheit
-        other: Einheiten
+        one: Unità
+        other: Unitàs
   app:
     title: Orca
   buttons:
-    back: Back
-    create: Create
-    edit: Edit
-    save: Save
-    show: Show
+    back: indietro
+    create: costruire
+    edit: editare
+    save: salvare
+    show: indicare
   leaders:
     edit:
-      title: Edit leader
+      title: Leitperson editieren
     index:
-      title: Manage leaders
+      title: Leitende verwalten
     messages:
       created:
-        success: Successfully created
+        success: Erfolgreich erstellt
       updated:
-        success: Successfully saved
+        success: Erfolgreich gespeichert
     new:
-      title: New leader
+      title: Neue Leitperson erfassen
   nav:
-    leader: Leader
+    leader: Leitpersonen
     login: Login
     logout: Logout
-    unit: Unit
+    unit: Lager
     language:
       de: DE
       fr: FR
@@ -55,9 +55,9 @@ en:
       en: EN
   units:
     edit:
-      title: Edit Unit
+      title: Lager editieren
     index:
-      title: Your Units
+      title: Deine Lager
     kvs:
       '1018': AS Genevois
       '1145': Pfadi Zueri
@@ -83,11 +83,11 @@ en:
       '994': AS Valaisan
     messages:
       created:
-        success: Successfully created
+        success: Erfolgreich erstellt
       updated:
-        success: saved!
+        success: Erfolgreich gespeichert!
     new:
-      title: Create new unit
+      title: Lager erstellen
     show:
-      participants: Participants
-      questionnaire: Questionnaire
+      participants: Teilnehmende
+      questionnaire: Fragebogen
