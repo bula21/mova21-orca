@@ -25,12 +25,16 @@ services:
       MIGRATE_DATABASE: 'true'
       MEMCACHE_SERVERS: memcached
       OIDC_CLIENT_ID: "orca"
+      SECRET_KEY_BASE: 'secret'
       OIDC_CLIENT_SECRET_KEY: "45175344-f4ef-4473-9cac-db2a520208b6"
+      ROLLBAR_ACCESS_TOKEN: ""
       OIDC_ISSUER: 'http://auth:8080/'
       VIRTUAL_HOST: ${DOMAIN}
       LETSENCRYPT_HOST: ${DOMAIN}
       VIRTUAL_PORT: 3000
       LETSENCRYPT_EMAIL: "it-support@bula21.ch"
+      DEVISE_PEPPER: 'rake secret'
+      DEVISE_SECRET_KEY: 'rake secret'
     depends_on:
       - db
       - webpack
