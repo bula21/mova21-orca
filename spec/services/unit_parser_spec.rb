@@ -52,7 +52,11 @@ RSpec.describe UnitParser do
         last_name: 'Newton',
         first_name: 'Azra',
         scout_name: 'Voluptate',
-        email: 'newton_azra@hitobito.example.com'
+        email: 'newton_azra@hitobito.example.com',
+        address: 'Sauerbruchstr. 42c',
+        zip_code: '1125',
+        town: 'Jaridorf',
+        country: nil
       )
     end
   end
@@ -66,7 +70,11 @@ RSpec.describe UnitParser do
         last_name: 'Daudrich',
         first_name: 'Mio',
         scout_name: 'Ut',
-        email: 'daudrich_mio@hitobito.example.com'
+        email: 'daudrich_mio@hitobito.example.com',
+        address: 'Alt Steinbücheler Weg 4',
+        zip_code: '2233',
+        town: 'Oppongburg',
+        country: nil
       )
     end
   end

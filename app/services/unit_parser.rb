@@ -49,7 +49,8 @@ class UnitParser
 
     Leader.create(pbs_id: person['id'], last_name: person['last_name'],
                   first_name: person['first_name'], scout_name: person['nickname'],
-                  email: person['email'])
+                  email: person['email'], address: person['address'], zip_code: person['zip_code'],
+                  town: person['town'], country: person['country'])
   end
 
   def parse_leader
