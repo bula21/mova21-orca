@@ -49,10 +49,10 @@ de:
       en: EN
       fr: FR
       it: IT
-    leader: Leader
+    leader: Leitpersonen
     login: Login
     logout: Logout
-    unit: Unit
+    unit: Einheiten
   units:
     edit:
       title: Lager editieren
