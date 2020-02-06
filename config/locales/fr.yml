@@ -5,21 +5,21 @@ fr:
       unit:
         abteilung: Groupe
         al: RG
-        ends_at: Ende am
-        expected_participants_f: Erwartete Anzahl TN (f)
-        expected_participants_leitung_f: Erwartete Anzahl Leitende (f)
-        expected_participants_leitung_m: Erwartete Anzahl Leitende (m)
-        expected_participants_m: Erwartete Anzahl TN (m)
-        full_name: Vollständiger Name
-        kv: KV
+        ends_at: Fin le
+        expected_participants_f: Nombre de participantes attendues (f)
+        expected_participants_leitung_f: Nombre de responsables attendues (f)
+        expected_participants_leitung_m: Nombre de responsables attendues (m)
+        expected_participants_m: Nombre de participants attendus (m)
+        full_name: Nom complet
+        kv: Association cantonale
         lagerleiter: Maîtrise de camp
-        starts_at: Beginn am
+        starts_at: Début le
         stufe: Branche
         title: Titre
     models:
       leader:
-        one: Leitperson
-        other: Leitpersonen
+        one: Responsable
+        other: Responsables
       unit:
         one: Unité
         other: Unitées
@@ -33,31 +33,31 @@ fr:
     show: afficher
   leaders:
     edit:
-      title: Leitperson editieren
+      title: Modifier les responsables
     index:
-      title: Leitende verwalten
+      title: Les responsables
     messages:
       created:
-        success: Erfolgreich erstellt
+        success: Crée avec succès
       updated:
-        success: Erfolgreich gespeichert
+        success: Enregistré avec succès
     new:
-      title: Neue Leitperson erfassen
+      title: Entrer un nouveau ou une nouvelle responsable
   nav:
-    leader: Leitpersonen
-    login: Login
-    logout: Logout
-    unit: Lager
     language:
       de: DE
+      en: EN
       fr: FR
       it: IT
-      en: EN
+    leader: Responsables
+    login: Login
+    logout: Logout
+    unit: Camp
   units:
     edit:
-      title: Lager editieren
+      title: Modifier un camp
     index:
-      title: Deine Lager
+      title: Ton camp
     kvs:
       '1018': AS Genevois
       '1145': Pfadi Zueri
@@ -83,11 +83,11 @@ fr:
       '994': AS Valaisan
     messages:
       created:
-        success: Erfolgreich erstellt
+        success: Crée avec succès
       updated:
-        success: Erfolgreich gespeichert!
+        success: Enregistré avec succès
     new:
-      title: Lager erstellen
+      title: Créer un camp
     show:
-      participants: Teilnehmende
-      questionnaire: Fragebogen
+      participants: Participants
+      questionnaire: Questionaire
