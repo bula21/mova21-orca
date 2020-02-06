@@ -2,7 +2,7 @@
   = f.input :scout_name
   = f.input :first_name
   = f.input :last_name, autofocus: true
-  = f.input :birthdate, wrapper: :inline_date
+  = f.input :birthdate, wrapper: :inline_date, start_year: 1930, end_year: Date.today.year
   = f.input :gender, collection: Leader.genders
   = f.input :email
   = f.input :address
