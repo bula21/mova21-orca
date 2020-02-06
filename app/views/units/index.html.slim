@@ -5,7 +5,7 @@
 = link_to t('buttons.create'), new_unit_path, class: 'btn btn-primary mb-3'
 
 .row
-  - Unit.all.each do |unit|
+  - @units.each do |unit|
     .col-6
       .card.m-2
         .card-body

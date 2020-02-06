@@ -2,6 +2,8 @@
 
 class UnitsController < ApplicationController
   before_action :set_unit, only: %i[edit update show]
+  load_and_authorize_resource
+
   def index; end
 
   def new
