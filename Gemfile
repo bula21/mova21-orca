@@ -18,6 +18,7 @@ gem 'simple_form'
 gem 'slim-rails'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 4.0'
+gem 'rollbar'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
@@ -41,8 +42,4 @@ group :test do
   gem 'shoulda-matchers'
   gem 'simplecov', require: false
   gem 'webdrivers'
-end
-
-group :production do
-  gem 'rollbar'
 end
