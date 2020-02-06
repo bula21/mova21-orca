@@ -10,6 +10,7 @@ class User < ApplicationRecord
     find_or_create_by(uid: auth.uid) do |user|
       user.email = auth.info.email
       user.provider = auth.provider
+      user.pbs_id = auth.dig('info', 'pbs_id')
     end
   end
 end
