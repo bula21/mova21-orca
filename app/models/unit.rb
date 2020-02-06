@@ -3,9 +3,9 @@
 class Unit < ApplicationRecord
   belongs_to :al, class_name: 'Leader', inverse_of: :al_units
   belongs_to :lagerleiter, class_name: 'Leader', inverse_of: :lagerleiter_units
-  YEAR = 2021
   validates :title, presence: true
 
+  YEAR = 2021
   KVS = [
     166, # 'Pfadi St. Gallen - Appenzell',
     638, # 'AS Fribourgeois',
@@ -38,5 +38,4 @@ class Unit < ApplicationRecord
     rover: 'rover',
     pta: 'pta'
   }
-
 end
