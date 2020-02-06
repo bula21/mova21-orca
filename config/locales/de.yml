@@ -44,15 +44,15 @@ de:
     new:
       title: Neue Leitperson erfassen
   nav:
+    language:
+      de: DE
+      en: EN
+      fr: FR
+      it: IT
     leader: Leader
     login: Login
     logout: Logout
     unit: Unit
-    language:
-      de: DE
-      fr: FR
-      it: IT
-      en: EN
   units:
     edit:
       title: Lager editieren

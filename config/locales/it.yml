@@ -5,21 +5,21 @@ it:
       unit:
         abteilung: Sezione
         al: CSZ
-        ends_at: Ende am
-        expected_participants_f: Erwartete Anzahl TN (f)
-        expected_participants_leitung_f: Erwartete Anzahl Leitende (f)
-        expected_participants_leitung_m: Erwartete Anzahl Leitende (m)
-        expected_participants_m: Erwartete Anzahl TN (m)
-        full_name: Vollständiger Name
-        kv: KV
+        ends_at: Fine il
+        expected_participants_f: Numero di partecipanti (f) previste
+        expected_participants_leitung_f: Numero di animatori previsti
+        expected_participants_leitung_m: Numero di animatrici previste
+        expected_participants_m: Numero di partecipanti (m) previsti
+        full_name: Nome completo
+        kv: Associazione cantonale
         lagerleiter: Direzione del campo
-        starts_at: Beginn am
+        starts_at: Inizio il
         stufe: Branca
         title: Titolo
     models:
       leader:
-        one: Leitperson
-        other: Leitpersonen
+        one: Animatore/trice responsabile
+        other: Animatori/trici responsabili
       unit:
         one: Unità
         other: Unitàs
@@ -33,31 +33,31 @@ it:
     show: indicare
   leaders:
     edit:
-      title: Leitperson editieren
+      title: Modificare responsabili
     index:
-      title: Leitende verwalten
+      title: Animatori/trici responsabili
     messages:
       created:
-        success: Erfolgreich erstellt
+        success: Creato con successo
       updated:
-        success: Erfolgreich gespeichert
+        success: Salvato con successo
     new:
-      title: Neue Leitperson erfassen
+      title: Registrare un nuovo animatore/trice
   nav:
-    leader: Leitpersonen
-    login: Login
-    logout: Logout
-    unit: Lager
     language:
       de: DE
+      en: EN
       fr: FR
       it: IT
-      en: EN
+    leader: Animatori/trici responsabili
+    login: Login
+    logout: Logout
+    unit: Unità
   units:
     edit:
-      title: Lager editieren
+      title: Modificare il campo
     index:
-      title: Deine Lager
+      title: Il tuo campo
     kvs:
       '1018': AS Genevois
       '1145': Pfadi Zueri
@@ -83,11 +83,11 @@ it:
       '994': AS Valaisan
     messages:
       created:
-        success: Erfolgreich erstellt
+        success: Creato con successo
       updated:
-        success: Erfolgreich gespeichert!
+        success: Salvato con successo!
     new:
-      title: Lager erstellen
+      title: Creare un campo
     show:
-      participants: Teilnehmende
-      questionnaire: Fragebogen
+      participants: Partecipanti
+      questionnaire: Questionario
