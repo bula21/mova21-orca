@@ -21,8 +21,8 @@ de:
         one: Leitperson
         other: Leitpersonen
       unit:
-        one: Einheit
-        other: Einheiten
+        one: Lager
+        other: Lager
   app:
     title: Orca
   buttons:
@@ -52,7 +52,7 @@ de:
     leader: Leitpersonen
     login: Login
     logout: Logout
-    unit: Einheiten
+    unit: Lager
   units:
     edit:
       title: Lager editieren
