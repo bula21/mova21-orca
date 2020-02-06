@@ -35,18 +35,4 @@ RSpec.describe User, type: :model do
       end
     end
   end
-
-  describe 'midata_user?' do
-    subject { user.midata_user? }
-
-    let(:user) { build(:user, :midata) }
-
-    it { is_expected.to be true }
-
-    context 'when is not a midata user' do
-      let(:user) { build(:user) }
-
-      it { is_expected.to be false }
-    end
-  end
 end
