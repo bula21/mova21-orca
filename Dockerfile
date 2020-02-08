@@ -31,4 +31,4 @@ ENV RAILS_ENV=production
 ENV NODE_ENV=production
 ENV WEBPACKER_PRECOMPILE=true
 
-# RUN RAILS_ENV=production bundle exec rake assets:precompile
+CMD ["bin/rails", "s", "-p", "3000", "-b", "0.0.0.0"]

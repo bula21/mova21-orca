@@ -1,11 +1,6 @@
 version: '3.5'
 services:
 
-  db:
-    image: postgres:alpine
-    volumes:
-      - db_data:/var/lib/postgresql/data
-
   app:
     build:
       context: .
