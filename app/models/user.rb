@@ -7,10 +7,13 @@ class User < ApplicationRecord
   validates :uid, presence: true
 
   def self.from_omniauth(auth)
-    find_or_create_by(uid: auth.uid) do |user|
-      user.email = auth.info.email
-      user.provider = auth.provider
-      user.pbs_id = auth.dig('info', 'pbs_id')
+    email = auth.info.email
+    pbs_id = auth.to_hash.dig('extra', 'raw_info', 'pbs_id')
+
+    find_or_create_by(uid: auth.uid, provider: auth.provider).tap do |user|
+      user.email = email if email.present?
+      user.pbs_id = pbs_id if pbs_id.present?
+      user.save!
     end
   end
 end

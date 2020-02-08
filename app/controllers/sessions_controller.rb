@@ -14,6 +14,8 @@ class SessionsController < Devise::SessionsController
     when 'openid_connect'
       redirect_uri = URI::escape(ENV['APP_BASE_URL'])
       "#{ENV['OIDC_ISSUER']}/protocol/openid-connect/logout?redirect_uri=#{redirect_uri}"
+    else
+      new_user_session_path
     end
   end
 
