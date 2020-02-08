@@ -27,12 +27,12 @@ Devise.setup do |config|
                   scope: [:openid],
                   response_type: :code,
                   discovery: true,
-                  issuer: ENV["OIDC_ISSUER"],
-                  uid_field: "preferred_username",
+                  issuer: ENV['OIDC_ISSUER'],
+                  uid_field: 'preferred_username',
                   client_options: {
-                    identifier: ENV["OIDC_CLIENT_ID"],
-                    secret: ENV["OIDC_CLIENT_SECRET_KEY"],
-                    redirect_uri: "#{ENV['APP_BASE_URL']}/users/auth/openid_connect/callback",
+                    identifier: ENV['OIDC_CLIENT_ID'],
+                    secret: ENV['OIDC_CLIENT_SECRET_KEY'],
+                    redirect_uri: "#{ENV['APP_BASE_URL']}/users/auth/openid_connect/callback"
                   }
 
   config.omniauth :developer, fields: %w[email pbs_id]

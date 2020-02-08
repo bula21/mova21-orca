@@ -21,7 +21,6 @@ services:
       DATABASE_URL: postgresql://postgres@db/orca_development
       RAILS_ENV: development
       WEBPACKER_DEV_SERVER_HOST: webpack
-      WEBPACKER_PRECOMPILE: 'false'
       MIGRATE_DATABASE: 'true'
       MEMCACHE_SERVERS: memcached
       SECRET_KEY_BASE: 'secret'

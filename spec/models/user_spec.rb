@@ -6,32 +6,33 @@ RSpec.describe User, type: :model do
   describe '::from_omniauth' do
     subject(:authenticated_user) { described_class.from_omniauth(auth) }
 
-    let(:auth) { double }
-    let(:auth_info) { double }
-
     context 'with existing user' do
-      let(:user) { create(:user) }
-
-      before do
-        allow(auth).to receive(:uid).and_return(user.uid)
+      let(:user) { create(:user, :with_pbs_id) }
+      let(:auth) do
+        OpenStruct.new(
+          uid: user.uid,
+          provider: user.provider,
+          info: OpenStruct.new(email: user.email, locale: 'en', pbs_id: user.pbs_id)
+        )
       end
 
       it { is_expected.to eq(user) }
     end
 
     context 'with new user' do
-      let(:user) { build(:user) }
-
-      before do
-        allow(auth).to receive(:uid).and_return(user.uid)
-        allow(auth).to receive(:info).and_return(auth_info)
-        allow(auth).to receive(:provider).at_least(:once).and_return('test')
-        allow(auth_info).to receive(:email).and_return(user.email)
+      let(:keycloak_user) { build(:user, :with_pbs_id) }
+      let(:auth) do
+        OpenStruct.new(
+          uid: keycloak_user.uid,
+          provider: keycloak_user.provider,
+          info: OpenStruct.new(email: keycloak_user.email, locale: 'en', pbs_id: keycloak_user.pbs_id)
+        )
       end
 
       it do
         expect(authenticated_user).to be_persisted
-        expect(authenticated_user.email).to eq(user.email)
+        expect(authenticated_user.email).to eq(keycloak_user.email)
+        expect(authenticated_user.pbs_id).to eq(keycloak_user.pbs_id)
       end
     end
   end

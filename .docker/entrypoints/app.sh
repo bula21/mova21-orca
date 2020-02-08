@@ -6,12 +6,9 @@ set -e
 if [ "$RAILS_ENV" == "development" ]; then
   echo 'Bundle'
   bundle check || bundle install
-  echo 'Yarn'
-  yarn check --silent || yarn install
 fi
 
 if [ "$RAILS_ENV" == "test" ]; then
-  bundle check || bundle install
   rails db:setup RAILS_ENV=$RAILS_ENV
 fi
 
