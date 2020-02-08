@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_20_154420) do
+ActiveRecord::Schema.define(version: 2020_02_05_214553) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,10 @@ ActiveRecord::Schema.define(version: 2019_12_20_154420) do
     t.string "language"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "address"
+    t.string "zip_code"
+    t.string "town"
+    t.string "country"
   end
 
   create_table "units", force: :cascade do |t|
@@ -45,6 +49,7 @@ ActiveRecord::Schema.define(version: 2019_12_20_154420) do
     t.bigint "lagerleiter_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "limesurvey_token"
     t.index ["al_id"], name: "index_units_on_al_id"
     t.index ["lagerleiter_id"], name: "index_units_on_lagerleiter_id"
   end
@@ -55,6 +60,7 @@ ActiveRecord::Schema.define(version: 2019_12_20_154420) do
     t.string "uid"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "pbs_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["uid"], name: "index_users_on_uid", unique: true
   end

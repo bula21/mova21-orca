@@ -1,0 +1,196 @@
+{
+  "events": [
+    {
+      "id": "223",
+      "type": "events",
+      "name": "Sommerlager PTA",
+      "description": "",
+      "motto": "",
+      "cost": "",
+      "maximum_participants": null,
+      "participant_count": 0,
+      "location": "",
+      "application_opening_at": null,
+      "application_closing_at": null,
+      "application_conditions": "",
+      "state": "created",
+      "teamer_count": 0,
+      "expected_participants_wolf_f": 3,
+      "expected_participants_wolf_m": 2,
+      "expected_participants_pfadi_f": 3,
+      "expected_participants_pfadi_m": 5,
+      "expected_participants_pio_f": 4,
+      "expected_participants_pio_m": 6,
+      "expected_participants_rover_f": 1,
+      "expected_participants_rover_m": 1,
+      "expected_participants_leitung_f": 6,
+      "expected_participants_leitung_m": 4,
+      "canton": "",
+      "coordinates": "",
+      "altitude": "",
+      "emergency_phone": "",
+      "j_s_kind": "j_s_child",
+      "j_s_security_snow": false,
+      "j_s_security_mountain": false,
+      "j_s_security_water": false,
+      "required_contact_attrs": [
+        "address",
+        "zip_code",
+        "town",
+        "country",
+        "gender",
+        "birthday",
+        "nationality_j_s",
+        "ahv_number",
+        "correspondence_language"
+      ],
+      "hidden_contact_attrs": [],
+      "links": {
+        "abteilungsleitung": "526",
+        "leader": "10",
+        "coach": "33",
+        "dates": [
+          "456"
+        ],
+        "groups": [
+          "1"
+        ]
+      },
+      "external_application_link": "http://localhost:3000/de/groups/1/public_events/223"
+    }
+  ],
+  "linked": {
+    "event_dates": [
+      {
+        "id": "456",
+        "label": "",
+        "start_at": "2021-07-01T00:00:00.000+02:00",
+        "finish_at": "2021-07-18T00:00:00.000+02:00",
+        "location": ""
+      }
+    ],
+    "groups": [
+      {
+        "id": "1",
+        "href": "http://db.scout.localhost:3000/de/groups/1.json",
+        "group_type": "Bund",
+        "layer": true,
+        "name": "Pfadibewegung Schweiz",
+        "short_name": "PBS",
+        "email": "alta.haley@example.org",
+        "address": "Schellingstr. 8",
+        "zip_code": 5692,
+        "town": "Damianburg",
+        "country": null,
+        "pbs_shortname": null,
+        "website": null,
+        "bank_account": null,
+        "description": null,
+        "created_at": "2019-11-09T16:15:07.000+01:00",
+        "updated_at": "2019-11-09T16:15:07.000+01:00",
+        "deleted_at": null,
+        "links": {
+          "layer_group": "1",
+          "hierarchies": [
+            "1"
+          ],
+          "children": [
+            "2",
+            "4",
+            "3"
+          ]
+        }
+      },
+      {
+        "id": "1",
+        "name": "Pfadibewegung Schweiz",
+        "group_type": "Bund"
+      },
+      {
+        "id": "2",
+        "name": "H2O",
+        "group_type": "Abteilung"
+      },
+      {
+        "id": "1145",
+        "name": "Zürich",
+        "group_type": "Kantonalverband"
+      }
+    ],
+    "people": [
+      {
+        "id": "526",
+        "first_name": "Mio",
+        "last_name": "Daudrich",
+        "nickname": "Ut",
+        "company_name": null,
+        "company": false,
+        "email": "daudrich_mio@hitobito.example.com",
+        "address": "Alt Steinbücheler Weg 4",
+        "zip_code": "2233",
+        "town": "Oppongburg",
+        "country": null
+      },
+      {
+        "id": "10",
+        "first_name": "Azra",
+        "last_name": "Newton",
+        "nickname": "Voluptate",
+        "company_name": null,
+        "company": false,
+        "email": "newton_azra@hitobito.example.com",
+        "address": "Sauerbruchstr. 42c",
+        "zip_code": "1125",
+        "town": "Jaridorf",
+        "country": null
+      },
+      {
+        "id": "33",
+        "first_name": "Maike",
+        "last_name": "Pusch",
+        "nickname": "Quae",
+        "company_name": null,
+        "company": false,
+        "email": "maike_pusch@hitobito.example.com",
+        "address": "Moosweg 15b",
+        "zip_code": "6742",
+        "town": "Rosslerscheid",
+        "country": null
+      }
+    ]
+  },
+  "links": {
+    "groups.creator": {
+      "href": "http://db.scout.localhost:3000/de/people/{groups.creator}.json",
+      "type": "people"
+    },
+    "groups.updater": {
+      "href": "http://db.scout.localhost:3000/de/people/{groups.updater}.json",
+      "type": "people"
+    },
+    "groups.deleter": {
+      "href": "http://db.scout.localhost:3000/de/people/{groups.deleter}.json",
+      "type": "people"
+    },
+    "groups.parent": {
+      "href": "http://db.scout.localhost:3000/de/groups/{groups.parent}.json",
+      "type": "groups"
+    },
+    "groups.layer_group": {
+      "href": "http://db.scout.localhost:3000/de/groups/{groups.layer_group}.json",
+      "type": "groups"
+    },
+    "groups.hierarchy": {
+      "href": "http://db.scout.localhost:3000/de/groups/{groups.hierarchy}.json",
+      "type": "groups"
+    },
+    "groups.children": {
+      "href": "http://db.scout.localhost:3000/de/groups/{groups.children}.json",
+      "type": "groups"
+    },
+    "groups.people": {
+      "href": "http://db.scout.localhost:3000/de/groups/{groups.id}/people.json",
+      "type": "people"
+    }
+  }
+}

@@ -13,8 +13,8 @@
     .col-6
       = f.input :expected_participants_leitung_f
       = f.input :expected_participants_leitung_m
-  = f.input :starts_at, wrapper: :inline_date
-  = f.input :ends_at, wrapper: :inline_date
+  = f.input :starts_at, wrapper: :inline_date, start_year: 2021, end_year: 2021
+  = f.input :ends_at, wrapper: :inline_date, start_year: 2021, end_year: 2021
   .row
     .col-6
       = f.association :al, label_method: :scout_name

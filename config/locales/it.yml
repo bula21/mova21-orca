@@ -1,0 +1,93 @@
+---
+it:
+  activerecord:
+    attributes:
+      unit:
+        abteilung: Sezione
+        al: CSZ
+        ends_at: Fine il
+        expected_participants_f: Numero di partecipanti (f) previste
+        expected_participants_leitung_f: Numero di animatori previsti
+        expected_participants_leitung_m: Numero di animatrici previste
+        expected_participants_m: Numero di partecipanti (m) previsti
+        full_name: Nome completo
+        kv: Associazione cantonale
+        lagerleiter: Direzione del campo
+        starts_at: Inizio il
+        stufe: Branca
+        title: Titolo
+    models:
+      leader:
+        one: Animatore/trice responsabile
+        other: Animatori/trici responsabili
+      unit:
+        one: Unità
+        other: Unitàs
+  app:
+    title: Orca
+  buttons:
+    back: indietro
+    create: costruire
+    edit: editare
+    save: salvare
+    show: indicare
+  leaders:
+    edit:
+      title: Modificare responsabili
+    index:
+      title: Animatori/trici responsabili
+    messages:
+      created:
+        success: Creato con successo
+      updated:
+        success: Salvato con successo
+    new:
+      title: Registrare un nuovo animatore/trice
+  nav:
+    language:
+      de: DE
+      en: EN
+      fr: FR
+      it: IT
+    leader: Animatori/trici responsabili
+    login: Login
+    logout: Logout
+    unit: Unità
+  units:
+    edit:
+      title: Modificare il campo
+    index:
+      title: Il tuo campo
+    kvs:
+      '1018': AS Genevois
+      '1145': Pfadi Zueri
+      '142': Pfadi Kanton Schwyz
+      '161': Pfadi Glarus
+      '166': Pfadi St. Gallen - Appenzell
+      '167': Battasendas Grischun
+      '179': Pfadi Luzern
+      '187': Pfadi Unterwalden
+      '237': Pfadi Kanton Zug
+      '238': Scoutismo Ticino
+      '299': Pfadi Region Basel
+      '3': Pfadi Kanton Solothurn
+      '4': Pfadi Kanton Bern
+      '4691': Pfadi Aargau
+      '513': Scouts Vaudois
+      '631': Pfadi Kanton Schaffhausen
+      '638': AS Fribourgeois
+      '85': Pfadi Uri
+      '880': Scouts Neuchatelois
+      '911': AS Jurassienne
+      '993': Pfadi Thurgau
+      '994': AS Valaisan
+    messages:
+      created:
+        success: Creato con successo
+      updated:
+        success: Salvato con successo!
+    new:
+      title: Creare un campo
+    show:
+      participants: Partecipanti
+      questionnaire: Questionario

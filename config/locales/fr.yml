@@ -1,0 +1,93 @@
+---
+fr:
+  activerecord:
+    attributes:
+      unit:
+        abteilung: Groupe
+        al: RG
+        ends_at: Fin le
+        expected_participants_f: Nombre de participantes attendues (f)
+        expected_participants_leitung_f: Nombre de responsables attendues (f)
+        expected_participants_leitung_m: Nombre de responsables attendues (m)
+        expected_participants_m: Nombre de participants attendus (m)
+        full_name: Nom complet
+        kv: Association cantonale
+        lagerleiter: Maîtrise de camp
+        starts_at: Début le
+        stufe: Branche
+        title: Titre
+    models:
+      leader:
+        one: Responsable
+        other: Responsables
+      unit:
+        one: Unité
+        other: Unitées
+  app:
+    title: Orca
+  buttons:
+    back: retour
+    create: créer
+    edit: éditer
+    save: sauvegarder
+    show: afficher
+  leaders:
+    edit:
+      title: Modifier les responsables
+    index:
+      title: Les responsables
+    messages:
+      created:
+        success: Crée avec succès
+      updated:
+        success: Enregistré avec succès
+    new:
+      title: Entrer un nouveau ou une nouvelle responsable
+  nav:
+    language:
+      de: DE
+      en: EN
+      fr: FR
+      it: IT
+    leader: Responsables
+    login: Login
+    logout: Logout
+    unit: Camp
+  units:
+    edit:
+      title: Modifier un camp
+    index:
+      title: Ton camp
+    kvs:
+      '1018': AS Genevois
+      '1145': Pfadi Zueri
+      '142': Pfadi Kanton Schwyz
+      '161': Pfadi Glarus
+      '166': Pfadi St. Gallen - Appenzell
+      '167': Battasendas Grischun
+      '179': Pfadi Luzern
+      '187': Pfadi Unterwalden
+      '237': Pfadi Kanton Zug
+      '238': Scoutismo Ticino
+      '299': Pfadi Region Basel
+      '3': Pfadi Kanton Solothurn
+      '4': Pfadi Kanton Bern
+      '4691': Pfadi Aargau
+      '513': Scouts Vaudois
+      '631': Pfadi Kanton Schaffhausen
+      '638': AS Fribourgeois
+      '85': Pfadi Uri
+      '880': Scouts Neuchatelois
+      '911': AS Jurassienne
+      '993': Pfadi Thurgau
+      '994': AS Valaisan
+    messages:
+      created:
+        success: Crée avec succès
+      updated:
+        success: Enregistré avec succès
+    new:
+      title: Créer un camp
+    show:
+      participants: Participants
+      questionnaire: Questionaire
