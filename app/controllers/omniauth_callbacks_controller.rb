@@ -19,7 +19,6 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   private
 
   def set_user
-    dasdasda
     @user = User.from_omniauth(request.env['omniauth.auth'])
   end
 end
