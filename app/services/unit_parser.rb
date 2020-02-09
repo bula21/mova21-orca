@@ -2,11 +2,13 @@
 
 class UnitParser
   # TODO: Stufe wird mitgegeben aus iteration von uebergeordnetem Lager
-  def initialize(data, stufe = 'pfadi')
-    @unit_data = JSON.parse(data)
+  def initialize(unit_data, stufe = 'pfadi')
+    @unit_data = unit_data
     @unit = Unit.new(stufe: stufe)
     @event = @unit_data['events'].first
     @linked = @unit_data['linked']
+
+    # pp unit_data
   end
 
   def call
@@ -42,15 +44,15 @@ class UnitParser
   end
 
   def find_or_create_leader(person)
+    return unless person
     # TODO: Import further attributes on TN-Import
     # TODO: What happens if a user is not used anymore? Are they cleaned up?
-    leader = Leader.find_by(pbs_id: person['id'])
-    return leader if leader
-
-    Leader.create(pbs_id: person['id'], last_name: person['last_name'],
-                  first_name: person['first_name'], scout_name: person['nickname'],
-                  email: person['email'], address: person['address'], zip_code: person['zip_code'],
-                  town: person['town'], country: person['country'])
+    Leader.find_or_create_by(pbs_id: person['id']) do |leader|
+      leader.update(pbs_id: person['id'], last_name: person['last_name'],
+                    first_name: person['first_name'], scout_name: person['nickname'],
+                    email: person['email'], address: person['address'], zip_code: person['zip_code'],
+                    town: person['town'], country: person['country'])
+    end
   end
 
   def parse_leader
@@ -64,11 +66,11 @@ class UnitParser
   end
 
   def abteilung
-    @linked['groups'].find { |group| group['group_type'] == 'Abteilung' }['name']
+    @linked['groups'].find { |group| group['group_type'] == 'Abteilung' }&.[]('name')
   end
 
   def kv
-    @linked['groups'].find { |group| group['group_type'] == 'Kantonalverband' }['id']
+    @linked['groups'].find { |group| group['group_type'] == 'Kantonalverband' }&.[]('id')
   end
 
   def expected_participants(stufe, gender)

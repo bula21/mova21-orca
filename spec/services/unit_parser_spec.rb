@@ -4,9 +4,10 @@ require 'rails_helper'
 
 # rubocop:disable RSpec/ExampleLength
 RSpec.describe UnitParser do
-  subject(:unit) { described_class.new(File.read(Rails.root.join(unit_json_path))).call }
-
   let(:unit_json_path) { 'spec/fixtures/unit.json' }
+  let(:unit_data) { File.read(Rails.root.join(unit_json_path)) }
+  subject(:unit) { described_class.new(JSON.parse(unit_data)).call }
+
 
   it 'imports the right attributes for the unit' do
     expect(unit).to have_attributes(
