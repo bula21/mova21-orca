@@ -3,19 +3,21 @@
 require 'rails_helper'
 require 'cancan/matchers'
 
-RSpec.describe Ability, skip: true do
+RSpec.describe Ability do
   subject(:ability) { described_class.new(user) }
 
-  let!(:units) { create_list(:unit, 3) }
-
   context 'when the user is not logged in' do
+    before do
+      create(:unit)
+    end
     let(:user) { nil }
 
-    it { is_expected.not_to be_able_to(:read, units.first) }
+    it { is_expected.not_to be_able_to(:read, Unit.first) }
   end
 
   context 'when user is logged in' do
-    let(:user) { create(:user, :with_pbs_id) }
+    let(:user) { create(:user, pbs_id: 12345) }
+
     let(:leader) { create(:leader, pbs_id: user.pbs_id) }
     let!(:unit_as_al) { create(:unit, al: leader) }
     let!(:unit_as_lagerleiter) { create(:unit, lagerleiter: leader) }

@@ -10,7 +10,7 @@ fi
 
 if [ "$RAILS_ENV" == "test" ]; then
   bundle check || bundle install
-  rails db:setup RAILS_ENV=$RAILS_ENV
+  rails db:create db:schema:load RAILS_ENV=$RAILS_ENV
 fi
 
 if [ "$WEBPACKER_PRECOMPILE" == "true" ]; then
