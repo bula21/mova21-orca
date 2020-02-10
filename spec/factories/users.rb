@@ -4,9 +4,10 @@ FactoryBot.define do
   factory :user do
     sequence(:email) { |n| "user#{n}@bula.example" }
     uid { email }
+    provider { :test }
 
-    trait :midata do
-      provider { 'midata' }
+    trait :with_pbs_id do
+      sequence(:pbs_id) { |n| n }
     end
   end
 end

@@ -4,8 +4,8 @@ set -e
 [ ! -e /app/tmp/pids/server.pid ] || rm /app/tmp/pids/server.pid
 
 if [ "$RAILS_ENV" == "development" ]; then
+  echo 'Bundle'
   bundle check || bundle install
-  yarn check --silent || yarn install
 fi
 
 if [ "$RAILS_ENV" == "test" ]; then
@@ -16,7 +16,7 @@ fi
 if [ "$WEBPACKER_PRECOMPILE" == "true" ]; then
   yarn check --silent || yarn install
   bundle exec rails webpacker:compile
-fi 
+fi
 
 [ "$MIGRATE_DATABASE" == "true" ] && bundle exec rails db:create db:migrate
 

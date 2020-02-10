@@ -1,0 +1,40 @@
+version: '3.5'
+services:
+
+  db:
+    image: postgres:alpine
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    image: mova21-orca:latest
+    ports:
+      - '3000:3000'
+    environment:
+      APP_BASE_URL: ${APP_BASE_URL}
+      DATABASE_URL: ${DATABASE_URL}
+      RAILS_ENV: production
+      MIGRATE_DATABASE: 'true'
+      MEMCACHE_SERVERS: memcached
+      SECRET_KEY_BASE: ${SECRET_KEY_BASE}
+      ROLLBAR_ACCESS_TOKEN: ${ROLLBAR_ACCESS_TOKEN}
+      OIDC_CLIENT_ID: ${OIDC_CLIENT_ID}
+      OIDC_ISSUER: ${OIDC_ISSUER}
+      OIDC_CLIENT_SECRET_KEY: ${OIDC_CLIENT_SECRET_KEY}
+      VIRTUAL_HOST: ${DOMAIN}
+      LETSENCRYPT_HOST: ${DOMAIN}
+      VIRTUAL_PORT: 3000
+      LETSENCRYPT_EMAIL: ${LETSENCRYPT_EMAIL}
+      DEVISE_PEPPER: ${DEVISE_PEPPER}
+      DEVISE_SECRET_KEY: ${DEVISE_SECRET_KEY}
+    depends_on:
+      - db
+      - memcached
+
+  memcached:
+    image: memcached:1.5-alpine
+    command: [ memcached, -l, '0.0.0.0', -p, '11211' ]
+
+volumes:
+  db_data:

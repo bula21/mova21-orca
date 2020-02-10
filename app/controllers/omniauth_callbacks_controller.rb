@@ -2,17 +2,23 @@
 
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   skip_forgery_protection
+  before_action :set_user, only: %i[developer openid_connect]
 
   def developer
-    @user = User.from_omniauth(request.env['omniauth.auth'])
+    sign_in_and_redirect @user, event: :authentication unless @user.persisted?
+  end
 
-    return unless @user.persisted?
-
-    sign_in_and_redirect @user, event: :authentication
-    # set_flash_message(:notice, :success, kind: "Facebook") if is_navigational_format?
+  def openid_connect
+    sign_in_and_redirect @user, event: :authentication unless @user.persisted?
   end
 
   def failure
     redirect_to root_path
+  end
+
+  private
+
+  def set_user
+    @user = User.from_omniauth(request.env['omniauth.auth'])
   end
 end

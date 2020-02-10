@@ -49,7 +49,6 @@ ActiveRecord::Schema.define(version: 2020_02_05_214553) do
     t.bigint "lagerleiter_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "limesurvey_token"
     t.index ["al_id"], name: "index_units_on_al_id"
     t.index ["lagerleiter_id"], name: "index_units_on_lagerleiter_id"
   end

@@ -9,8 +9,14 @@ class SessionsController < Devise::SessionsController
     new_user_session_path
   end
 
-  def omniauth_provider_key
-    Rails.env.production? ? 'openid_connect' : 'developer'
+  def after_sign_out_path_for(_resource_or_scope)
+    case omniauth_provider_key
+    when 'openid_connect'
+      redirect_uri = URI.escape(ENV['APP_BASE_URL'])
+      "#{ENV['OIDC_ISSUER']}/protocol/openid-connect/logout?redirect_uri=#{redirect_uri}"
+    else
+      new_user_session_path
+    end
   end
 
   def new
@@ -20,5 +26,11 @@ class SessionsController < Devise::SessionsController
     else
       redirect_to user_developer_omniauth_authorize_path
     end
+  end
+
+  private
+
+  def omniauth_provider_key
+    ENV['OIDC_ISSUER'].present? ? 'openid_connect' : 'developer'
   end
 end
