@@ -38,6 +38,6 @@ class LeadersController < ApplicationController
 
   def leader_params
     params.require(:leader).permit(:last_name, :first_name, :scout_name, :birthdate, :gender, :email, :phone_number,
-                                   :language, :address, :zip_code, :town, :country)
+                                   :language, :address, :zip_code, :town, :country, :pbs_id)
   end
 end

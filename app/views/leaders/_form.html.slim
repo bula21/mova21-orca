@@ -11,5 +11,6 @@
   / = f.input :country # TODO: Which countries are possible?
   = f.input :phone_number
   = f.input :language, collection: Leader.languages
+  = f.input :pbs_id
   .actions
     = f.submit t('buttons.save'), class: 'btn btn-primary'

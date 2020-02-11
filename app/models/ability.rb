@@ -14,7 +14,10 @@ class Ability
   def unit_permissions(user)
     return if user.blank?
 
-    can :read, Unit, al: { pbs_id: user.pbs_id }
-    can :read, Unit, lagerleiter:  { pbs_id: user.pbs_id }
+    can :crud, Unit, al: { pbs_id: user.pbs_id }
+    can :crud, Unit, lagerleiter: { pbs_id: user.pbs_id }
+    # TODO: A user should only be able to see the Lagerleiter/ALs that he created. so we have to store a user_id
+    # TODO: Introduce flag to avoid creation when logged in via midata
+    can :create, Unit
   end
 end
