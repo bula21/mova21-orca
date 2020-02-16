@@ -13,6 +13,7 @@ class CampUnitBuilder
       ends_at: camp_unit_data.dig('linked', 'event_dates', 0, 'finish_at'),
       title: camp_unit_data.dig('events', 0, 'name'),
       stufe: @root_camp_unit.to_sym,
+      midata_data: camp_unit_data,
       **extract_groups(camp_unit_data),
       **extract_people(camp_unit_data),
       **extract_expected_participants(camp_unit_data)
@@ -28,7 +29,7 @@ class CampUnitBuilder
     return unless camp_unit_data.present?
 
     camp_unit = Unit.find_or_initialize_by(pbs_id: camp_unit_data['id'])
-    camp_unit.update(assignable_attributes(camp_unit_data))
+    camp_unit.update!(assignable_attributes(camp_unit_data))
     camp_unit
   end
 
@@ -54,7 +55,7 @@ class CampUnitBuilder
 
   def extract_expected_participant_count(stufen, gender, from:)
     stufen = Array.wrap(stufen)
-    stufen.inject(0) { |sum, stufe| sum + from.dig('events', 0, "expected_participants_#{stufe}_#{gender}") || 0 }
+    stufen.inject(0) { |sum, stufe| sum + (from.dig('events', 0, "expected_participants_#{stufe}_#{gender}") || 0) }
   end
 
   def extract_people(camp_unit_data)

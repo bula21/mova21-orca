@@ -17,8 +17,9 @@ class MidataService
 
   def fetch_camp_unit_data_hierarchy(root_id)
     root_data = fetch_camp_unit_data(root_id)
-    children_ids = camp_unit_data.dig
-    pp camp_unit_data
+    children_ids = root_data.dig('events', 0, 'links', 'sub_camps')
+
+    return root_data if children_ids.nil?
 
     [root_data, children_ids.map { |child_id| fetch_camp_unit_data_hierarchy(child_id) }].flatten
   end

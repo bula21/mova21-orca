@@ -1,6 +1,15 @@
 # frozen_string_literal: true
 
 class Unit < ApplicationRecord
+  RootCampUnit = Struct.new(:to_sym, :root_id) { delegate :to_s, to: :to_sym }
+  ROOT_CAMP_UNITS = {
+    wolf: RootCampUnit.new(:wolf, 1328),
+    pfadi: RootCampUnit.new(:pfadi, 1328),
+    pio: RootCampUnit.new(:pio, 1328),
+    rover: RootCampUnit.new(:rover, 1328),
+    pta: RootCampUnit.new(:pta, 1328)
+  }.freeze
+
   belongs_to :al, class_name: 'Leader', inverse_of: :al_units, optional: true
   belongs_to :lagerleiter, class_name: 'Leader', inverse_of: :lagerleiter_units, optional: true
   # belongs_to :coach, class_name: 'Leader', inverse_of: :coach_units, optional: true
@@ -32,11 +41,9 @@ class Unit < ApplicationRecord
     1145 # ' Pfadi Zueri'
   ].freeze
 
-  enum stufe: {
-    wolf: 'wolf',
-    pfadi: 'pfadi',
-    pio: 'pio',
-    rover: 'rover',
-    pta: 'pta'
-  }
+  enum stufe: ROOT_CAMP_UNITS.dup.transform_values(&:to_s)
+
+  def root_camp_unit
+    ROOT_CAMP_UNITS[stufe&.to_sym]
+  end
 end
