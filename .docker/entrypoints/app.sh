@@ -3,21 +3,21 @@ set -e
 
 [ ! -e /app/tmp/pids/server.pid ] || rm /app/tmp/pids/server.pid
 
-if [ "$RAILS_ENV" == "development" ]; then
-  echo 'Bundle'
-  bundle check || bundle install
-fi
+bundle check || bundle install
 
-if [ "$RAILS_ENV" == "test" ]; then
-  bundle check || bundle install
-  rails db:create db:schema:load RAILS_ENV=$RAILS_ENV
-fi
+echo "Preparing Database"
+bin/rails db:prepare RAILS_ENV=$RAILS_ENV
+bin/rails db:migrate
 
-if [ "$WEBPACKER_PRECOMPILE" == "true" ]; then
-  yarn check --silent || yarn install
-  bundle exec rails webpacker:compile
-fi
+case "$RAILS_ENV" in
+  test)
+      yarn install
+      bin/webpack
+      ;;
 
-[ "$MIGRATE_DATABASE" == "true" ] && bundle exec rails db:create db:migrate
+  development)
+      ;;
+esac
 
+echo "$@"
 exec "$@"

@@ -3,15 +3,13 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.5'
-
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'cancancan'
 gem 'devise'
 gem 'grape-entity'
+gem 'httparty'
 gem 'keycloak'
 gem 'omniauth_openid_connect'
-gem 'httparty'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 4.3'
 gem 'rails', '~> 6.0.1'
@@ -48,4 +46,4 @@ group :test do
   gem 'webdrivers'
 end
 
-gem "webmock", "~> 3.8"
+gem 'webmock', '~> 3.8'

@@ -1,0 +1,121 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://pbs.puzzle.ch/events/1328.json?user_email=hussein_kohlmann@hitobito.example.com&user_token=Tu7aVJWyLYYMyCnZv2bz
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 302
+      message: Found
+    headers:
+      Server:
+      - nginx/1.12.1
+      Date:
+      - Sun, 16 Feb 2020 17:09:27 GMT
+      Content-Type:
+      - text/html; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cache-Control:
+      - no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Location:
+      - https://pbs.puzzle.ch/de/groups/749/events/1328.json?user_email=hussein_kohlmann%40hitobito.example.com&user_token=Tu7aVJWyLYYMyCnZv2bz
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - afcc3ba8de9b9b04950e14e130f0b228=0b2f640a24454da734606baaa005c2ec; path=/;
+        HttpOnly; Secure
+      - locale=de; path=/; expires=Tue, 16 Feb 2021 17:09:26 GMT
+      X-Request-Id:
+      - f7141779-98f4-4fe0-bfc5-b5c5dc98c39d
+      X-Runtime:
+      - '0.355318'
+    body:
+      encoding: ASCII-8BIT
+      string: <html><body>You are being <a href="https://pbs.puzzle.ch/de/groups/749/events/1328.json?user_email=hussein_kohlmann%40hitobito.example.com&amp;user_token=Tu7aVJWyLYYMyCnZv2bz">redirected</a>.</body></html>
+    http_version: null
+  recorded_at: Sun, 16 Feb 2020 17:09:27 GMT
+- request:
+    method: get
+    uri: https://pbs.puzzle.ch/de/groups/749/events/1328.json?user_email=hussein_kohlmann@hitobito.example.com&user_token=Tu7aVJWyLYYMyCnZv2bz
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Cookie:
+      - locale=de; afcc3ba8de9b9b04950e14e130f0b228=0b2f640a24454da734606baaa005c2ec
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.12.1
+      Date:
+      - Sun, 16 Feb 2020 17:09:27 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cache-Control:
+      - no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Etag:
+      - W/"83c210b1e38049208e263142b2ce8866"
+      Set-Cookie:
+      - locale=de; path=/; expires=Tue, 16 Feb 2021 17:09:27 GMT
+      X-Request-Id:
+      - 3fb86a16-d413-4f65-bd08-66078767c8c9
+      X-Runtime:
+      - '0.522324'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJldmVudHMiOlt7ImlkIjoiMTMyOCIsInR5cGUiOiJldmVudHMiLCJuYW1lIjoiQnVMYS1DYUZlIDIxIC0gSGF1cHRsYWdlciBQZmFkaXN0dWZlIiwiZGVzY3JpcHRpb24iOiJCaXR0ZSBmw7xsbHQgZGFzIHNvIHVuZCBzbyBhdXMiLCJtb3R0byI6Ik1PVkEiLCJjb3N0IjoiMTAnMDAwJzAwMC4tIiwibWF4aW11bV9wYXJ0aWNpcGFudHMiOm51bGwsInBhcnRpY2lwYW50X2NvdW50IjowLCJsb2NhdGlvbiI6Ik9iZXJnb2JzIiwiYXBwbGljYXRpb25fb3BlbmluZ19hdCI6bnVsbCwiYXBwbGljYXRpb25fY2xvc2luZ19hdCI6bnVsbCwiYXBwbGljYXRpb25fY29uZGl0aW9ucyI6IiIsInN0YXRlIjoiY3JlYXRlZCIsInRlYW1lcl9jb3VudCI6MCwiZXhwZWN0ZWRfcGFydGljaXBhbnRzX3dvbGZfZiI6bnVsbCwiZXhwZWN0ZWRfcGFydGljaXBhbnRzX3dvbGZfbSI6bnVsbCwiZXhwZWN0ZWRfcGFydGljaXBhbnRzX3BmYWRpX2YiOm51bGwsImV4cGVjdGVkX3BhcnRpY2lwYW50c19wZmFkaV9tIjpudWxsLCJleHBlY3RlZF9wYXJ0aWNpcGFudHNfcGlvX2YiOm51bGwsImV4cGVjdGVkX3BhcnRpY2lwYW50c19waW9fbSI6bnVsbCwiZXhwZWN0ZWRfcGFydGljaXBhbnRzX3JvdmVyX2YiOm51bGwsImV4cGVjdGVkX3BhcnRpY2lwYW50c19yb3Zlcl9tIjpudWxsLCJleHBlY3RlZF9wYXJ0aWNpcGFudHNfbGVpdHVuZ19mIjpudWxsLCJleHBlY3RlZF9wYXJ0aWNpcGFudHNfbGVpdHVuZ19tIjpudWxsLCJjYW50b24iOiJ2cyIsImNvb3JkaW5hdGVzIjoiIDI2NjYnMDQ4LCAxMTUwJzQ2OSIsImFsdGl0dWRlIjoiMSIsImVtZXJnZW5jeV9waG9uZSI6IlN1bHRhbiAwNzkgOTk5IDk5IDk5Iiwial9zX2tpbmQiOiJqX3NfY2hpbGQiLCJqX3Nfc2VjdXJpdHlfc25vdyI6ZmFsc2UsImpfc19zZWN1cml0eV9tb3VudGFpbiI6ZmFsc2UsImpfc19zZWN1cml0eV93YXRlciI6ZmFsc2UsInJlcXVpcmVkX2NvbnRhY3RfYXR0cnMiOlsibmlja25hbWUiLCJnZW5kZXIiLCJiaXJ0aGRheSIsIm5hdGlvbmFsaXR5X2pfcyIsImNvcnJlc3BvbmRlbmNlX2xhbmd1YWdlIl0sImhpZGRlbl9jb250YWN0X2F0dHJzIjpbImNvbXBhbnlfbmFtZSIsImFkZHJlc3MiLCJ6aXBfY29kZSIsInRvd24iLCJjb3VudHJ5IiwicGhvbmVfbnVtYmVycyIsInRpdGxlIiwic2FsdXRhdGlvbiIsImdyYWRlX29mX3NjaG9vbCIsImVudHJ5X2RhdGUiLCJsZWF2aW5nX2RhdGUiXSwibGlua3MiOnsibGVhZGVyIjoiMzQ4NSIsInN1Yl9jYW1wcyI6WzEzMjldLCJkYXRlcyI6WyIyNDA0Il0sImdyb3VwcyI6WyI3NDkiXX0sImV4dGVybmFsX2FwcGxpY2F0aW9uX2xpbmsiOiJodHRwczovL3Bicy5wdXp6bGUuY2gvZGUvZ3JvdXBzLzc0OS9wdWJsaWNfZXZlbnRzLzEzMjgifV0sImxpbmtlZCI6eyJwZW9wbGUiOlt7ImlkIjoiMzQ4NSIsImZpcnN0X25hbWUiOiJBZGRyZXNzdmVyd2FsdGVyIiwibGFzdF9uYW1lIjoiQnVMYSIsIm5pY2tuYW1lIjoiS1YiLCJjb21wYW55X25hbWUiOiIiLCJjb21wYW55IjpmYWxzZSwiZW1haWwiOm51bGwsImFkZHJlc3MiOm51bGwsInppcF9jb2RlIjpudWxsLCJ0b3duIjpudWxsLCJjb3VudHJ5IjpudWxsfV0sImV2ZW50cyI6W3siaWQiOjEzMjksIm5hbWUiOiJCdUxhLUNhRmUgMjEgLSBIYXVwdGxhZ2VyIFBmYWRpc3R1ZmU6IFBmYWRpc3R1ZmUiLCJocmVmIjoiaHR0cHM6Ly9wYnMucHV6emxlLmNoL2RlL2dyb3Vwcy81MDcvZXZlbnRzLzEzMjkuanNvbiJ9XSwiZXZlbnRfZGF0ZXMiOlt7ImlkIjoiMjQwNCIsImxhYmVsIjoiIiwic3RhcnRfYXQiOiIyMDIxLTA3LTAxVDAwOjAwOjAwLjAwMCswMjowMCIsImZpbmlzaF9hdCI6IjIwMjEtMDctMThUMDA6MDA6MDAuMDAwKzAyOjAwIiwibG9jYXRpb24iOiIifV0sImdyb3VwcyI6W3siaWQiOiI3NDkiLCJocmVmIjoiaHR0cHM6Ly9wYnMucHV6emxlLmNoL2RlL2dyb3Vwcy83NDkuanNvbiIsImdyb3VwX3R5cGUiOiJLYW50b25hbHZlcmJhbmQiLCJsYXllciI6dHJ1ZSwibmFtZSI6IkJ1TGEyMSIsInNob3J0X25hbWUiOiIiLCJlbWFpbCI6IiIsImFkZHJlc3MiOiIiLCJ6aXBfY29kZSI6bnVsbCwidG93biI6IiIsImNvdW50cnkiOiIiLCJwYnNfc2hvcnRuYW1lIjoiIiwid2Vic2l0ZSI6IiIsImJhbmtfYWNjb3VudCI6IiIsImRlc2NyaXB0aW9uIjoiIiwiY3JlYXRlZF9hdCI6IjIwMTktMDktMjZUMTM6NTI6NDQuMDAwKzAyOjAwIiwidXBkYXRlZF9hdCI6IjIwMTktMDktMjZUMTM6NTI6NDQuMDAwKzAyOjAwIiwibGlua3MiOnsiY3JlYXRvciI6IjIiLCJ1cGRhdGVyIjoiMiIsInBhcmVudCI6IjEiLCJsYXllcl9ncm91cCI6Ijc0OSIsImhpZXJhcmNoaWVzIjpbIjEiLCI3NDkiXSwiY2hpbGRyZW4iOlsiNzUwIl19LCJkZWxldGVkX2F0IjpudWxsfSx7ImlkIjoiMSIsIm5hbWUiOiJQZmFkaWJld2VndW5nIFNjaHdlaXoiLCJncm91cF90eXBlIjoiR3J1cHBlIn0seyJpZCI6Ijc0OSIsIm5hbWUiOiJCdUxhMjEiLCJncm91cF90eXBlIjoiS2FudG9uYWx2ZXJiYW5kIn0seyJpZCI6IjEiLCJuYW1lIjoiUGZhZGliZXdlZ3VuZyBTY2h3ZWl6IiwiZ3JvdXBfdHlwZSI6IkJ1bmQifSx7ImlkIjoiNzUwIiwibmFtZSI6IkJ1TGEgLSBIYXVwdGViZW5lIiwiZ3JvdXBfdHlwZSI6IktvbW1pc3Npb24ifV19LCJsaW5rcyI6eyJncm91cHMuY3JlYXRvciI6eyJocmVmIjoiaHR0cHM6Ly9wYnMucHV6emxlLmNoL2RlL3Blb3BsZS97Z3JvdXBzLmNyZWF0b3J9Lmpzb24iLCJ0eXBlIjoicGVvcGxlIn0sImdyb3Vwcy51cGRhdGVyIjp7ImhyZWYiOiJodHRwczovL3Bicy5wdXp6bGUuY2gvZGUvcGVvcGxlL3tncm91cHMudXBkYXRlcn0uanNvbiIsInR5cGUiOiJwZW9wbGUifSwiZ3JvdXBzLmRlbGV0ZXIiOnsiaHJlZiI6Imh0dHBzOi8vcGJzLnB1enpsZS5jaC9kZS9wZW9wbGUve2dyb3Vwcy5kZWxldGVyfS5qc29uIiwidHlwZSI6InBlb3BsZSJ9LCJncm91cHMucGFyZW50Ijp7ImhyZWYiOiJodHRwczovL3Bicy5wdXp6bGUuY2gvZGUvZ3JvdXBzL3tncm91cHMucGFyZW50fS5qc29uIiwidHlwZSI6Imdyb3VwcyJ9LCJncm91cHMubGF5ZXJfZ3JvdXAiOnsiaHJlZiI6Imh0dHBzOi8vcGJzLnB1enpsZS5jaC9kZS9ncm91cHMve2dyb3Vwcy5sYXllcl9ncm91cH0uanNvbiIsInR5cGUiOiJncm91cHMifSwiZ3JvdXBzLmhpZXJhcmNoeSI6eyJocmVmIjoiaHR0cHM6Ly9wYnMucHV6emxlLmNoL2RlL2dyb3Vwcy97Z3JvdXBzLmhpZXJhcmNoeX0uanNvbiIsInR5cGUiOiJncm91cHMifSwiZ3JvdXBzLmNoaWxkcmVuIjp7ImhyZWYiOiJodHRwczovL3Bicy5wdXp6bGUuY2gvZGUvZ3JvdXBzL3tncm91cHMuY2hpbGRyZW59Lmpzb24iLCJ0eXBlIjoiZ3JvdXBzIn0sImdyb3Vwcy5wZW9wbGUiOnsiaHJlZiI6Imh0dHBzOi8vcGJzLnB1enpsZS5jaC9kZS9ncm91cHMve2dyb3Vwcy5pZH0vcGVvcGxlLmpzb24iLCJ0eXBlIjoicGVvcGxlIn19fQ==
+    http_version: null
+  recorded_at: Sun, 16 Feb 2020 17:09:28 GMT
+recorded_with: VCR 5.1.0
