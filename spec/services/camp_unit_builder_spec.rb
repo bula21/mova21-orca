@@ -74,9 +74,7 @@ RSpec.describe CampUnitBuilder do
 
     it do
       expect(camp_units.count).to be 2
-      camp_units.each do |camp_unit|
-        expect(camp_unit).to be_valid
-      end
+      expect(camp_units).to all(be_valid)
     end
   end
 end

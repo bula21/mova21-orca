@@ -34,7 +34,8 @@ h1 = @unit.title
           dt = t('activerecord.attributes.unit.lagerleiter')
           dd = @unit.lagerleiter.full_name
 
-    = link_to t('buttons.edit'), edit_unit_path(@unit), class: 'btn btn-primary'
+    = link_to t('buttons.edit'), edit_unit_path(@unit), class: 'btn btn-primary' if can?(:edit, @unit)
+    /= button_to t('buttons.sync'), unit_path(@unit), method: :patch, params: { action: :sync }, class: 'btn btn-primary'
 
 .card.mt-4
   .card-body

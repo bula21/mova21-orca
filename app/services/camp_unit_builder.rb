@@ -22,7 +22,7 @@ class CampUnitBuilder
 
   def pull_into(camp_unit)
     camp_unit_data = @midata_service.fetch_camp_unit_data(camp_unit.pbs_id)
-    camp_unit.update(assignable_attributes(camp_unit_data))
+    camp_unit.update!(assignable_attributes(camp_unit_data))
   end
 
   def from_data(camp_unit_data)

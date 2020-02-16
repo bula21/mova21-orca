@@ -1,7 +1,13 @@
 # frozen_string_literal: true
 
 class Unit < ApplicationRecord
-  RootCampUnit = Struct.new(:to_sym, :root_id) { delegate :to_s, to: :to_sym }
+  RootCampUnit = Struct.new(:to_sym, :root_id) do
+    delegate :to_s, to: :to_sym
+
+    def camp_unit_builder
+      CampUnitBuilder.new(self)
+    end
+  end
   ROOT_CAMP_UNITS = {
     wolf: RootCampUnit.new(:wolf, 1328),
     pfadi: RootCampUnit.new(:pfadi, 1328),
@@ -45,5 +51,11 @@ class Unit < ApplicationRecord
 
   def root_camp_unit
     ROOT_CAMP_UNITS[stufe&.to_sym]
+  end
+
+  def pull
+    return unless pbs_id
+
+    root_camp_unit.camp_unit_builder.pull_into(self)
   end
 end
