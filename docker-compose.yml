@@ -17,10 +17,8 @@ services:
       DATABASE_URL: postgresql://postgres@db/orca_development
       RAILS_ENV: development
       WEBPACKER_DEV_SERVER_HOST: webpack
-      MIGRATE_DATABASE: 'true'
       MEMCACHE_SERVERS: memcached
       SECRET_KEY_BASE: 'secret'
-      ROLLBAR_ACCESS_TOKEN: ""
       OIDC_CLIENT_ID: ${OIDC_CLIENT_ID}
       OIDC_ISSUER: ${OIDC_ISSUER}
       OIDC_CLIENT_SECRET_KEY: ${OIDC_CLIENT_SECRET_KEY}
@@ -28,11 +26,12 @@ services:
       MIDATA_USER_EMAIL: ${MIDATA_USER_EMAIL}
       MIDATA_USER_TOKEN: ${MIDATA_USER_TOKEN}
       VIRTUAL_HOST: ${DOMAIN}
-      LETSENCRYPT_HOST: ${DOMAIN}
-      VIRTUAL_PORT: 3000
-      LETSENCRYPT_EMAIL: "it-support@bula21.ch"
       DEVISE_PEPPER: 'rake secret'
       DEVISE_SECRET_KEY: 'rake secret'
+      ROOT_CAMP_UNIT_ID_WOLF: 1328
+      ROOT_CAMP_UNIT_ID_PFADI: 1328
+      ROOT_CAMP_UNIT_ID_PIO: 1328
+      ROOT_CAMP_UNIT_ID_PTA: 1328
     depends_on:
       - db
       - webpack
@@ -97,6 +96,10 @@ services:
       MIDATA_BASE_URL: ${MIDATA_BASE_URL}
       MIDATA_USER_EMAIL: ${MIDATA_USER_EMAIL}
       MIDATA_USER_TOKEN: ${MIDATA_USER_TOKEN}
+      ROOT_CAMP_UNIT_ID_WOLF: 1328
+      ROOT_CAMP_UNIT_ID_PFADI: 1328
+      ROOT_CAMP_UNIT_ID_PIO: 1328
+      ROOT_CAMP_UNIT_ID_PTA: 1328
     depends_on:
       - db
       - selenium

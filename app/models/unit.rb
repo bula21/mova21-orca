@@ -9,11 +9,10 @@ class Unit < ApplicationRecord
     end
   end
   ROOT_CAMP_UNITS = {
-    wolf: RootCampUnit.new(:wolf, 1328),
-    pfadi: RootCampUnit.new(:pfadi, 1328),
-    pio: RootCampUnit.new(:pio, 1328),
-    rover: RootCampUnit.new(:rover, 1328),
-    pta: RootCampUnit.new(:pta, 1328)
+    wolf: RootCampUnit.new(:wolf, ENV['ROOT_CAMP_UNIT_ID_WOLF']),
+    pfadi: RootCampUnit.new(:pfadi, ENV['ROOT_CAMP_UNIT_ID_PFADI']),
+    pio: RootCampUnit.new(:pio, ENV['ROOT_CAMP_UNIT_ID_PIO']),
+    pta: RootCampUnit.new(:pta, ENV['ROOT_CAMP_UNIT_ID_PTA'])
   }.freeze
 
   belongs_to :al, class_name: 'Leader', inverse_of: :al_units, optional: true
