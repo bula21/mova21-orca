@@ -78,7 +78,10 @@ GEM
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
     childprocess (3.0.0)
-    concurrent-ruby (1.1.5)
+    coderay (1.1.2)
+    concurrent-ruby (1.1.6)
+    crack (0.4.3)
+      safe_yaml (~> 1.0.0)
     crass (1.0.6)
     devise (4.7.1)
       bcrypt (~> 3.0)
@@ -104,11 +107,15 @@ GEM
     grape-entity (0.7.1)
       activesupport (>= 4.0)
       multi_json (>= 1.3.2)
+    hashdiff (1.0.0)
     hashie (3.6.0)
     highline (2.0.3)
     http-accept (1.7.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
+    httparty (0.17.3)
+      mime-types (~> 3.0)
+      multi_xml (>= 0.5.2)
     httpclient (2.8.3)
     i18n (1.8.2)
       concurrent-ruby (~> 1.0)
@@ -154,9 +161,10 @@ GEM
     minitest (5.14.0)
     msgpack (1.3.3)
     multi_json (1.14.1)
+    multi_xml (0.6.0)
     netrc (0.11.0)
     nio4r (2.5.2)
-    nokogiri (1.10.7)
+    nokogiri (1.10.8)
       mini_portile2 (~> 2.4.0)
     omniauth (1.9.0)
       hashie (>= 3.4.6, < 3.7.0)
@@ -180,10 +188,15 @@ GEM
     parser (2.7.0.2)
       ast (~> 2.4.0)
     pg (1.2.2)
+    pry (0.12.2)
+      coderay (~> 1.1.0)
+      method_source (~> 0.9.0)
+    pry-rails (0.3.9)
+      pry (>= 0.10.4)
     public_suffix (4.0.3)
     puma (4.3.1)
       nio4r (~> 2.0)
-    rack (2.1.2)
+    rack (2.2.2)
     rack-oauth2 (1.10.1)
       activesupport
       attr_required
@@ -264,23 +277,24 @@ GEM
       unicode-display_width (>= 1.4.0, < 1.7)
     rubocop-performance (1.5.2)
       rubocop (>= 0.71.0)
-    rubocop-rspec (1.37.1)
+    rubocop-rspec (1.38.0)
       rubocop (>= 0.68.1)
     ruby-progressbar (1.10.1)
     ruby_dep (1.5.0)
     rubyzip (2.2.0)
+    safe_yaml (1.0.5)
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
     shoulda-matchers (4.2.0)
       activesupport (>= 4.2.0)
-    simple_form (5.0.1)
+    simple_form (5.0.2)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
-    simplecov (0.18.1)
+    simplecov (0.18.2)
       docile (~> 1.1)
-      simplecov-html (~> 0.11.0)
-    simplecov-html (0.11.0)
+      simplecov-html (~> 0.11)
+    simplecov-html (0.12.0)
     slim (4.0.1)
       temple (>= 0.7.6, < 0.9)
       tilt (>= 2.0.6, < 2.1)
@@ -320,6 +334,7 @@ GEM
     validate_url (1.0.8)
       activemodel (>= 3.0.0)
       public_suffix
+    vcr (5.1.0)
     warden (1.2.8)
       rack (>= 2.0.6)
     web-console (4.0.1)
@@ -334,6 +349,10 @@ GEM
     webfinger (1.1.0)
       activesupport
       httpclient (>= 2.4)
+    webmock (3.8.2)
+      addressable (>= 2.3.6)
+      crack (>= 0.3.2)
+      hashdiff (>= 0.4.0, < 2.0.0)
     webpacker (4.2.2)
       activesupport (>= 4.2)
       rack-proxy (>= 0.6.1)
@@ -357,11 +376,13 @@ DEPENDENCIES
   factory_bot_rails (~> 4.11)
   faker
   grape-entity
+  httparty
   i18n-tasks
   keycloak
   listen (>= 3.0.5, < 3.2)
   omniauth_openid_connect
   pg (>= 0.18, < 2.0)
+  pry-rails
   puma (~> 4.3)
   rails (~> 6.0.1)
   rails-i18n
@@ -376,12 +397,11 @@ DEPENDENCIES
   simplecov
   slim-rails
   turbolinks (~> 5)
+  vcr
   web-console (>= 3.3.0)
   webdrivers
+  webmock (~> 3.8)
   webpacker (~> 4.0)
 
-RUBY VERSION
-   ruby 2.6.5p114
-
 BUNDLED WITH
-   1.17.2
+   2.1.2

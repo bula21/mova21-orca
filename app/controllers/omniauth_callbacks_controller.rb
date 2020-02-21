@@ -5,11 +5,11 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   before_action :set_user, only: %i[developer openid_connect]
 
   def developer
-    sign_in_and_redirect @user, event: :authentication unless @user.persisted?
+    sign_in_and_redirect @user, event: :authentication if @user.persisted?
   end
 
   def openid_connect
-    sign_in_and_redirect @user, event: :authentication unless @user.persisted?
+    sign_in_and_redirect @user, event: :authentication if @user.persisted?
   end
 
   def failure

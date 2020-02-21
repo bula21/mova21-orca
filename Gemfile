@@ -3,12 +3,11 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.5'
-
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'cancancan'
 gem 'devise'
 gem 'grape-entity'
+gem 'httparty'
 gem 'keycloak'
 gem 'omniauth_openid_connect'
 gem 'pg', '>= 0.18', '< 2.0'
@@ -19,6 +18,7 @@ gem 'rollbar'
 gem 'simple_form'
 gem 'slim-rails'
 gem 'turbolinks', '~> 5'
+gem 'vcr'
 gem 'webpacker', '~> 4.0'
 
 group :development, :test do
@@ -26,6 +26,7 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 4.11'
   gem 'faker'
   gem 'i18n-tasks'
+  gem 'pry-rails'
   gem 'rspec-rails'
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false
@@ -44,3 +45,5 @@ group :test do
   gem 'simplecov', require: false
   gem 'webdrivers'
 end
+
+gem 'webmock', '~> 3.8'

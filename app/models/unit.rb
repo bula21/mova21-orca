@@ -1,8 +1,23 @@
 # frozen_string_literal: true
 
 class Unit < ApplicationRecord
-  belongs_to :al, class_name: 'Leader', inverse_of: :al_units
-  belongs_to :lagerleiter, class_name: 'Leader', inverse_of: :lagerleiter_units
+  RootCampUnit = Struct.new(:to_sym, :root_id) do
+    delegate :to_s, to: :to_sym
+
+    def camp_unit_builder
+      CampUnitBuilder.new(self)
+    end
+  end
+  ROOT_CAMP_UNITS = {
+    wolf: RootCampUnit.new(:wolf, ENV['ROOT_CAMP_UNIT_ID_WOLF']),
+    pfadi: RootCampUnit.new(:pfadi, ENV['ROOT_CAMP_UNIT_ID_PFADI']),
+    pio: RootCampUnit.new(:pio, ENV['ROOT_CAMP_UNIT_ID_PIO']),
+    pta: RootCampUnit.new(:pta, ENV['ROOT_CAMP_UNIT_ID_PTA'])
+  }.freeze
+
+  belongs_to :al, class_name: 'Leader', inverse_of: :al_units, optional: true
+  belongs_to :lagerleiter, class_name: 'Leader', inverse_of: :lagerleiter_units, optional: true
+  # belongs_to :coach, class_name: 'Leader', inverse_of: :coach_units, optional: true
   validates :title, presence: true
 
   YEAR = 2021
@@ -31,11 +46,15 @@ class Unit < ApplicationRecord
     1145 # ' Pfadi Zueri'
   ].freeze
 
-  enum stufe: {
-    wolf: 'wolf',
-    pfadi: 'pfadi',
-    pio: 'pio',
-    rover: 'rover',
-    pta: 'pta'
-  }
+  enum stufe: ROOT_CAMP_UNITS.dup.transform_values(&:to_s)
+
+  def root_camp_unit
+    ROOT_CAMP_UNITS[stufe&.to_sym]
+  end
+
+  def pull
+    return unless pbs_id
+
+    root_camp_unit.camp_unit_builder.pull_into(self)
+  end
 end

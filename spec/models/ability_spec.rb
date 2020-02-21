@@ -10,13 +10,14 @@ RSpec.describe Ability do
     before do
       create(:unit)
     end
+
     let(:user) { nil }
 
     it { is_expected.not_to be_able_to(:read, Unit.first) }
   end
 
   context 'when user is logged in' do
-    let(:user) { create(:user, pbs_id: 12345) }
+    let(:user) { create(:user, pbs_id: 12_345) }
 
     let(:leader) { create(:leader, pbs_id: user.pbs_id) }
     let!(:unit_as_al) { create(:unit, al: leader) }

@@ -41,6 +41,7 @@ RSpec/DescribeClass:
     - 'spec/models/seeds_spec.rb'
 
 RSpec/ExampleLength:
+  Max: 10
   Exclude:
     - 'spec/system/**/*'
     - 'spec/requests/**/*'

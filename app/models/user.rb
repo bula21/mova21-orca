@@ -10,7 +10,7 @@ class User < ApplicationRecord
   def self.from_omniauth(auth)
     email = auth.info.email
     pbs_id = auth.info.pbs_id || auth.to_hash.dig('extra', 'raw_info', 'pbs_id')
-    locale = auth.info.locale || auth.to_hash.dig('extra', 'raw_info', 'locale')
+    # locale = auth.info.locale || auth.to_hash.dig('extra', 'raw_info', 'locale')
 
     find_or_create_by(uid: auth.uid, provider: auth.provider).tap do |user|
       user.email = email if email.present?

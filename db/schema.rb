@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_05_214553) do
+ActiveRecord::Schema.define(version: 2020_02_16_174947) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,11 +45,14 @@ ActiveRecord::Schema.define(version: 2020_02_05_214553) do
     t.integer "expected_participants_leitung_m"
     t.datetime "starts_at"
     t.datetime "ends_at"
-    t.bigint "al_id", null: false
     t.bigint "lagerleiter_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "al_id"
+    t.bigint "coach_id"
+    t.jsonb "midata_data"
     t.index ["al_id"], name: "index_units_on_al_id"
+    t.index ["coach_id"], name: "index_units_on_coach_id"
     t.index ["lagerleiter_id"], name: "index_units_on_lagerleiter_id"
   end
 
@@ -65,5 +68,6 @@ ActiveRecord::Schema.define(version: 2020_02_05_214553) do
   end
 
   add_foreign_key "units", "leaders", column: "al_id"
+  add_foreign_key "units", "leaders", column: "coach_id"
   add_foreign_key "units", "leaders", column: "lagerleiter_id"
 end
