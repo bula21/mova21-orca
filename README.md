@@ -11,6 +11,10 @@ If you want to run speci
 
 ## Setup Auth
 
+### Developer Stategy
+
+
+
 ENVs that have to be set:
 
 -
@@ -45,3 +49,10 @@ docker-compose run --use-aliases test sh
 bin/check
 ```
 
+## Production
+
+Build
+
+```
+docker-compose -f docker-compose.production.yml build production
+```
