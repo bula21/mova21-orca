@@ -21,8 +21,9 @@ class UnitsController < ApplicationController
   end
 
   def show
-    survey_id = 187799
-    lang = 'de-informal'
+    @unit.get_limesurvey_token unless @unit.limesurvey_token
+    survey_id = ENV['LIMESURVEY_SURVEY_ID']
+    lang = params[:locale] || 'de-informal'
     @limesurvey_url = "#{LimesurveyService::BASEURL}/#{survey_id}?lang=#{lang}&token=#{@unit.limesurvey_token}"
   end
 

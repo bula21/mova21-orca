@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class Unit < ApplicationRecord
+
+  after_create :get_limesurvey_token
+
   RootCampUnit = Struct.new(:to_sym, :root_id) do
     delegate :to_s, to: :to_sym
 
@@ -56,5 +59,11 @@ class Unit < ApplicationRecord
     return unless pbs_id
 
     root_camp_unit.camp_unit_builder.pull_into(self)
+  end
+
+  def get_limesurvey_token
+    return if self.limesurvey_token
+    service = LimesurveyService.new
+    service.add_leader(self.lagerleiter, self, ENV['LIMESURVEY_SURVEY_ID'])
   end
 end

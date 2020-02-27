@@ -5,16 +5,15 @@ class LimesurveyService
   ADMIN_REMOTECONTROL_URL = URI.parse(BASEURL + '/admin/remotecontrol')
 
   attr_reader :session_key
-
-  def initialize(username, password)
+  def initialize(username = ENV['LIMESURVEY_USERNAME'], password = ENV['LIMESURVEY_PASSWORD'])
     @session_key = get_session_key(username, password)
   end
 
   # adds leader to the survey, saves the token and sends an invite
   # TODO: use correct camp_id, and language
-  def add_leader(leader, unit, survey_id)
+  def add_leader(leader, unit, survey_id, language = 'de')
     response = add_participant(survey_id, leader.email, leader.last_name, leader.first_name,
-                               123, unit.stufe.to_i + 1, 'de')
+                               unit.pbs_id, unit.stufe, language)
     return unless response.is_a?(Array) && response[0]['token']
 
     unit.update(limesurvey_token: response[0]['token'])
@@ -59,8 +58,9 @@ class LimesurveyService
 
   # 1: wolf, 5: pta
   def add_participant(survey_id, email, lastname, firstname, camp_id, stufe, language) # rubocop:disable Metrics/ParameterLists
+    stufen = { 'wolf': 1, 'pfadi': 2, 'pio': 3, 'pta': 4 }
     user = { email: email, lastname: lastname, firstname: firstname, language: language,
-             attribute_1: camp_id, attribute_2: stufe }
+             attribute_1: camp_id, attribute_2: stufen[stufe.to_sym] }
     add_participants(survey_id, [user])
   end
 
