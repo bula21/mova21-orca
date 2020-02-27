@@ -5,10 +5,10 @@ require 'rails_helper'
 RSpec.describe CampUnitPuller do
   subject(:puller) { described_class.new(root_camp_unit) }
 
-  let(:root_camp_unit) { Unit::ROOT_CAMP_UNITS[:pfadi] }
+  let(:root_camp_unit) { RootCampUnit[:pfadi] }
 
-  describe '#pull_camp_unit_hierarchy', vcr: true do
-    subject(:camp_units) { puller.pull_camp_unit_hierarchy }
+  describe '#pull_all', vcr: true do
+    subject(:camp_units) { puller.pull_all }
 
     it do
       expect(camp_units.count).to be 2
@@ -16,8 +16,8 @@ RSpec.describe CampUnitPuller do
     end
   end
 
-  describe '#pull_new_camp_units_from_camp_unit_hierarchy', vcr: true do
-    subject(:new_camp_units) { puller.pull_new_camp_units_from_camp_unit_hierarchy }
+  describe '#pull_new', vcr: true do
+    subject(:new_camp_units) { puller.pull_new }
 
     it do
       expect(new_camp_units.count).to be 1
@@ -26,7 +26,7 @@ RSpec.describe CampUnitPuller do
 
     it 'does not pull again' do
       expect(new_camp_units.count).to be_positive
-      expect(puller.pull_new_camp_units_from_camp_unit_hierarchy).to eq([])
+      expect(puller.pull_new).to eq([])
     end
   end
 end
