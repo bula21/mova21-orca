@@ -44,7 +44,6 @@ group :test do
   gem 'shoulda-matchers'
   gem 'simplecov', require: false
   gem 'webdrivers'
-  gem 'webmock', '~> 3.5', '>= 3.5.1'
 end
 
 gem 'webmock', '~> 3.8'
