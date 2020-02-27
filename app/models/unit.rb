@@ -7,6 +7,10 @@ class Unit < ApplicationRecord
     def camp_unit_builder
       CampUnitBuilder.new(self)
     end
+
+    def camp_unit_puller
+      CampUnitPuller.new(self)
+    end
   end
   ROOT_CAMP_UNITS = {
     wolf: RootCampUnit.new(:wolf, ENV['ROOT_CAMP_UNIT_ID_WOLF']),

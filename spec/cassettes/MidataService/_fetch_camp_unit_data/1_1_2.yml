@@ -21,7 +21,7 @@ http_interactions:
       Server:
       - nginx/1.12.1
       Date:
-      - Sun, 16 Feb 2020 20:08:55 GMT
+      - Thu, 27 Feb 2020 14:12:22 GMT
       Content-Type:
       - text/html; charset=utf-8
       Transfer-Encoding:
@@ -49,18 +49,18 @@ http_interactions:
       Vary:
       - Accept-Encoding
       Set-Cookie:
-      - afcc3ba8de9b9b04950e14e130f0b228=0b2f640a24454da734606baaa005c2ec; path=/;
+      - afcc3ba8de9b9b04950e14e130f0b228=2e3db10cdff20e16f8f8e205af74f7fc; path=/;
         HttpOnly; Secure
-      - locale=de; path=/; expires=Tue, 16 Feb 2021 20:08:54 GMT
+      - locale=de; path=/; expires=Sat, 27 Feb 2021 14:12:22 GMT
       X-Request-Id:
-      - 10c2eb1a-3666-4097-a7a3-fe445ed9e1e9
+      - 1f27b04e-b21a-4a3b-934d-831e536a688b
       X-Runtime:
-      - '0.325937'
+      - '0.135423'
     body:
       encoding: ASCII-8BIT
       string: <html><body>You are being <a href="https://pbs.puzzle.ch/de/groups/749/events/1328.json?user_email=hussein_kohlmann%40hitobito.example.com&amp;user_token=Tu7aVJWyLYYMyCnZv2bz">redirected</a>.</body></html>
     http_version: null
-  recorded_at: Sun, 16 Feb 2020 20:08:55 GMT
+  recorded_at: Thu, 27 Feb 2020 14:12:22 GMT
 - request:
     method: get
     uri: https://pbs.puzzle.ch/de/groups/749/events/1328.json?user_email=hussein_kohlmann@hitobito.example.com&user_token=Tu7aVJWyLYYMyCnZv2bz
@@ -69,7 +69,7 @@ http_interactions:
       string: ''
     headers:
       Cookie:
-      - locale=de; afcc3ba8de9b9b04950e14e130f0b228=0b2f640a24454da734606baaa005c2ec
+      - locale=de; afcc3ba8de9b9b04950e14e130f0b228=2e3db10cdff20e16f8f8e205af74f7fc
   response:
     status:
       code: 200
@@ -78,7 +78,7 @@ http_interactions:
       Server:
       - nginx/1.12.1
       Date:
-      - Sun, 16 Feb 2020 20:08:55 GMT
+      - Thu, 27 Feb 2020 14:12:22 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -107,15 +107,15 @@ http_interactions:
       Etag:
       - W/"4e49c717cbdf758c02200ea94580ac7e"
       Set-Cookie:
-      - locale=de; path=/; expires=Tue, 16 Feb 2021 20:08:55 GMT
+      - locale=de; path=/; expires=Sat, 27 Feb 2021 14:12:22 GMT
       X-Request-Id:
-      - 923704df-e6de-4ec5-b5c2-f7b2266c9aed
+      - 56809822-d2fc-4523-a1bc-08981ef1ece2
       X-Runtime:
-      - '0.503818'
+      - '0.218006'
     body:
       encoding: ASCII-8BIT
       string: !binary |-
         eyJldmVudHMiOlt7ImlkIjoiMTMyOCIsInR5cGUiOiJldmVudHMiLCJuYW1lIjoiQnVMYS1DYUZlIDIxIC0gSGF1cHRsYWdlciBQZmFkaXN0dWZlIiwiZGVzY3JpcHRpb24iOiJCaXR0ZSBmw7xsbHQgZGFzIHNvIHVuZCBzbyBhdXMiLCJtb3R0byI6Ik1PVkEiLCJjb3N0IjoiMTAnMDAwJzAwMC4tIiwibWF4aW11bV9wYXJ0aWNpcGFudHMiOm51bGwsInBhcnRpY2lwYW50X2NvdW50IjowLCJsb2NhdGlvbiI6Ik9iZXJnb2JzIiwiYXBwbGljYXRpb25fb3BlbmluZ19hdCI6bnVsbCwiYXBwbGljYXRpb25fY2xvc2luZ19hdCI6bnVsbCwiYXBwbGljYXRpb25fY29uZGl0aW9ucyI6IiIsInN0YXRlIjoiY3JlYXRlZCIsInRlYW1lcl9jb3VudCI6MCwiZXhwZWN0ZWRfcGFydGljaXBhbnRzX3dvbGZfZiI6bnVsbCwiZXhwZWN0ZWRfcGFydGljaXBhbnRzX3dvbGZfbSI6bnVsbCwiZXhwZWN0ZWRfcGFydGljaXBhbnRzX3BmYWRpX2YiOm51bGwsImV4cGVjdGVkX3BhcnRpY2lwYW50c19wZmFkaV9tIjpudWxsLCJleHBlY3RlZF9wYXJ0aWNpcGFudHNfcGlvX2YiOm51bGwsImV4cGVjdGVkX3BhcnRpY2lwYW50c19waW9fbSI6bnVsbCwiZXhwZWN0ZWRfcGFydGljaXBhbnRzX3JvdmVyX2YiOm51bGwsImV4cGVjdGVkX3BhcnRpY2lwYW50c19yb3Zlcl9tIjpudWxsLCJleHBlY3RlZF9wYXJ0aWNpcGFudHNfbGVpdHVuZ19mIjpudWxsLCJleHBlY3RlZF9wYXJ0aWNpcGFudHNfbGVpdHVuZ19tIjpudWxsLCJjYW50b24iOiJ2cyIsImNvb3JkaW5hdGVzIjoiIDI2NjYnMDQ4LCAxMTUwJzQ2OSIsImFsdGl0dWRlIjoiMSIsImVtZXJnZW5jeV9waG9uZSI6IlN1bHRhbiAwNzkgOTk5IDk5IDk5Iiwial9zX2tpbmQiOiJqX3NfY2hpbGQiLCJqX3Nfc2VjdXJpdHlfc25vdyI6ZmFsc2UsImpfc19zZWN1cml0eV9tb3VudGFpbiI6ZmFsc2UsImpfc19zZWN1cml0eV93YXRlciI6ZmFsc2UsInJlcXVpcmVkX2NvbnRhY3RfYXR0cnMiOlsibmlja25hbWUiLCJnZW5kZXIiLCJiaXJ0aGRheSIsIm5hdGlvbmFsaXR5X2pfcyIsImNvcnJlc3BvbmRlbmNlX2xhbmd1YWdlIl0sImhpZGRlbl9jb250YWN0X2F0dHJzIjpbImNvbXBhbnlfbmFtZSIsImFkZHJlc3MiLCJ6aXBfY29kZSIsInRvd24iLCJjb3VudHJ5IiwicGhvbmVfbnVtYmVycyIsInRpdGxlIiwic2FsdXRhdGlvbiIsImdyYWRlX29mX3NjaG9vbCIsImVudHJ5X2RhdGUiLCJsZWF2aW5nX2RhdGUiXSwibGlua3MiOnsibGVhZGVyIjoiMzQ4NSIsInN1Yl9jYW1wcyI6WzEzMjldLCJkYXRlcyI6WyIyNDA0Il0sImdyb3VwcyI6WyI3NDkiXX0sImV4dGVybmFsX2FwcGxpY2F0aW9uX2xpbmsiOiJodHRwczovL3Bicy5wdXp6bGUuY2gvZGUvZ3JvdXBzLzc0OS9wdWJsaWNfZXZlbnRzLzEzMjgifV0sImxpbmtlZCI6eyJwZW9wbGUiOlt7ImlkIjoiMzQ4NSIsImZpcnN0X25hbWUiOiJBZGRyZXNzdmVyd2FsdGVyIiwibGFzdF9uYW1lIjoiQnVMYSIsIm5pY2tuYW1lIjoiS1YiLCJjb21wYW55X25hbWUiOiIiLCJjb21wYW55IjpmYWxzZSwiZW1haWwiOiJpdC1zdXBwb3J0QGJ1bGEuY2giLCJhZGRyZXNzIjoiIiwiemlwX2NvZGUiOiIiLCJ0b3duIjoiIiwiY291bnRyeSI6IiJ9XSwiZXZlbnRzIjpbeyJpZCI6MTMyOSwibmFtZSI6IkJ1TGEtQ2FGZSAyMSAtIEhhdXB0bGFnZXIgUGZhZGlzdHVmZTogUGZhZGlzdHVmZSIsImhyZWYiOiJodHRwczovL3Bicy5wdXp6bGUuY2gvZGUvZ3JvdXBzLzUwNy9ldmVudHMvMTMyOS5qc29uIn1dLCJldmVudF9kYXRlcyI6W3siaWQiOiIyNDA0IiwibGFiZWwiOiIiLCJzdGFydF9hdCI6IjIwMjEtMDctMDFUMDA6MDA6MDAuMDAwKzAyOjAwIiwiZmluaXNoX2F0IjoiMjAyMS0wNy0xOFQwMDowMDowMC4wMDArMDI6MDAiLCJsb2NhdGlvbiI6IiJ9XSwiZ3JvdXBzIjpbeyJpZCI6Ijc0OSIsImhyZWYiOiJodHRwczovL3Bicy5wdXp6bGUuY2gvZGUvZ3JvdXBzLzc0OS5qc29uIiwiZ3JvdXBfdHlwZSI6IkthbnRvbmFsdmVyYmFuZCIsImxheWVyIjp0cnVlLCJuYW1lIjoiQnVMYTIxIiwic2hvcnRfbmFtZSI6IiIsImVtYWlsIjoiIiwiYWRkcmVzcyI6IiIsInppcF9jb2RlIjpudWxsLCJ0b3duIjoiIiwiY291bnRyeSI6IiIsInBic19zaG9ydG5hbWUiOiIiLCJ3ZWJzaXRlIjoiIiwiYmFua19hY2NvdW50IjoiIiwiZGVzY3JpcHRpb24iOiIiLCJjcmVhdGVkX2F0IjoiMjAxOS0wOS0yNlQxMzo1Mjo0NC4wMDArMDI6MDAiLCJ1cGRhdGVkX2F0IjoiMjAxOS0wOS0yNlQxMzo1Mjo0NC4wMDArMDI6MDAiLCJsaW5rcyI6eyJjcmVhdG9yIjoiMiIsInVwZGF0ZXIiOiIyIiwicGFyZW50IjoiMSIsImxheWVyX2dyb3VwIjoiNzQ5IiwiaGllcmFyY2hpZXMiOlsiMSIsIjc0OSJdLCJjaGlsZHJlbiI6WyI3NTAiXX0sImRlbGV0ZWRfYXQiOm51bGx9LHsiaWQiOiIxIiwibmFtZSI6IlBmYWRpYmV3ZWd1bmcgU2Nod2VpeiIsImdyb3VwX3R5cGUiOiJHcnVwcGUifSx7ImlkIjoiNzQ5IiwibmFtZSI6IkJ1TGEyMSIsImdyb3VwX3R5cGUiOiJLYW50b25hbHZlcmJhbmQifSx7ImlkIjoiMSIsIm5hbWUiOiJQZmFkaWJld2VndW5nIFNjaHdlaXoiLCJncm91cF90eXBlIjoiQnVuZCJ9LHsiaWQiOiI3NTAiLCJuYW1lIjoiQnVMYSAtIEhhdXB0ZWJlbmUiLCJncm91cF90eXBlIjoiS29tbWlzc2lvbiJ9XX0sImxpbmtzIjp7Imdyb3Vwcy5jcmVhdG9yIjp7ImhyZWYiOiJodHRwczovL3Bicy5wdXp6bGUuY2gvZGUvcGVvcGxlL3tncm91cHMuY3JlYXRvcn0uanNvbiIsInR5cGUiOiJwZW9wbGUifSwiZ3JvdXBzLnVwZGF0ZXIiOnsiaHJlZiI6Imh0dHBzOi8vcGJzLnB1enpsZS5jaC9kZS9wZW9wbGUve2dyb3Vwcy51cGRhdGVyfS5qc29uIiwidHlwZSI6InBlb3BsZSJ9LCJncm91cHMuZGVsZXRlciI6eyJocmVmIjoiaHR0cHM6Ly9wYnMucHV6emxlLmNoL2RlL3Blb3BsZS97Z3JvdXBzLmRlbGV0ZXJ9Lmpzb24iLCJ0eXBlIjoicGVvcGxlIn0sImdyb3Vwcy5wYXJlbnQiOnsiaHJlZiI6Imh0dHBzOi8vcGJzLnB1enpsZS5jaC9kZS9ncm91cHMve2dyb3Vwcy5wYXJlbnR9Lmpzb24iLCJ0eXBlIjoiZ3JvdXBzIn0sImdyb3Vwcy5sYXllcl9ncm91cCI6eyJocmVmIjoiaHR0cHM6Ly9wYnMucHV6emxlLmNoL2RlL2dyb3Vwcy97Z3JvdXBzLmxheWVyX2dyb3VwfS5qc29uIiwidHlwZSI6Imdyb3VwcyJ9LCJncm91cHMuaGllcmFyY2h5Ijp7ImhyZWYiOiJodHRwczovL3Bicy5wdXp6bGUuY2gvZGUvZ3JvdXBzL3tncm91cHMuaGllcmFyY2h5fS5qc29uIiwidHlwZSI6Imdyb3VwcyJ9LCJncm91cHMuY2hpbGRyZW4iOnsiaHJlZiI6Imh0dHBzOi8vcGJzLnB1enpsZS5jaC9kZS9ncm91cHMve2dyb3Vwcy5jaGlsZHJlbn0uanNvbiIsInR5cGUiOiJncm91cHMifSwiZ3JvdXBzLnBlb3BsZSI6eyJocmVmIjoiaHR0cHM6Ly9wYnMucHV6emxlLmNoL2RlL2dyb3Vwcy97Z3JvdXBzLmlkfS9wZW9wbGUuanNvbiIsInR5cGUiOiJwZW9wbGUifX19
     http_version: null
-  recorded_at: Sun, 16 Feb 2020 20:08:55 GMT
+  recorded_at: Thu, 27 Feb 2020 14:12:22 GMT
 recorded_with: VCR 5.1.0

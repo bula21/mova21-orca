@@ -68,13 +68,4 @@ RSpec.describe CampUnitBuilder do
       end
     end
   end
-
-  describe '#pull_camp_unit_hierarchy', vcr: true do
-    subject(:camp_units) { builder.pull_camp_unit_hierarchy }
-
-    it do
-      expect(camp_units.count).to be 2
-      expect(camp_units).to all(be_valid)
-    end
-  end
 end
