@@ -3,8 +3,15 @@ h1 = @unit.title
 .card
   .card-body
     dl
-      dt = t('activerecord.attributes.unit.abteilung')
-      dd = @unit.abteilung
+      .row
+        .col-6
+          dt = t('activerecord.attributes.unit.abteilung')
+          dd = @unit.abteilung
+
+        .col-6
+          dt = t('activerecord.attributes.unit.stufe')
+          dd = @unit.stufe
+
 
       .row
         .col-6
