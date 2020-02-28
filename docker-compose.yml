@@ -45,7 +45,7 @@ services:
     user: "${UID}:${GID}"
 
   db:
-    image: postgres:alpine
+    image: postgres:11-alpine
     volumes:
       - db_data:/var/lib/postgresql/data
     environment:

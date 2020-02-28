@@ -7,7 +7,7 @@ RSpec.describe CampUnitBuilder do
 
   let(:camp_unit_json_path) { 'spec/fixtures/unit.json' }
   let(:camp_unit_data) { JSON.parse(File.read(Rails.root.join(camp_unit_json_path))) }
-  let(:root_camp_unit) { Unit::ROOT_CAMP_UNITS[:pfadi] }
+  let(:root_camp_unit) { RootCampUnit[:pfadi] }
 
   describe '#from_data' do
     subject(:camp_unit) { builder.from_data(camp_unit_data) }
@@ -59,22 +59,13 @@ RSpec.describe CampUnitBuilder do
 
     context 'when is pta' do
       let(:camp_unit_json_path) { 'spec/fixtures/unit_pta.json' }
-      let(:root_camp_unit) { Unit::ROOT_CAMP_UNITS[:pta] }
+      let(:root_camp_unit) { RootCampUnit[:pta] }
 
       it 'imports the right attributes for the unit', skip: true do
         expect(camp_unit).to have_attributes(title: 'Sommerlager PTA', abteilung: 'H2O', kv: 1145, stufe: 'pta',
                                              expected_participants_f: 3, expected_participants_m: 5,
                                              expected_participants_leitung_m: 4, expected_participants_leitung_f: 6)
       end
-    end
-  end
-
-  describe '#pull_camp_unit_hierarchy', vcr: true do
-    subject(:camp_units) { builder.pull_camp_unit_hierarchy }
-
-    it do
-      expect(camp_units.count).to be 2
-      expect(camp_units).to all(be_valid)
     end
   end
 end

@@ -11,6 +11,10 @@ If you want to run speci
 
 ## Setup Auth
 
+### Developer Stategy
+
+
+
 ENVs that have to be set:
 
 -
@@ -27,9 +31,12 @@ ENVs that have to be set:
 - ROOT_CAMP_UNIT_ID_PIO: The ID of the root Piostufen-Lager
 - ROOT_CAMP_UNIT_ID_PTA: The ID of the root Pta-Lager
 
-Fetch CampUnits from MiData, e.g. for :pfadi
 ```
-bin/rails r Unit::ROOT_CAMP_UNITS[:pfadi].camp_unit_builder.pull_camp_unit_hierarchy
+# Fetch new CampUnits from MiData
+bin/rails r "PullNewCampUnitsJob.perform_now"
+
+# Fetch all CampUnits from MiData
+bin/rails r "PullAllCampUnitsJob.perform_now"
 ```
 
 ## Tests
@@ -45,3 +52,10 @@ docker-compose run --use-aliases test sh
 bin/check
 ```
 
+## Production
+
+Build
+
+```
+docker-compose -f docker-compose.production.yml build production
+```
