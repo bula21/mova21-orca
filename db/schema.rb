@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2020_02_16_174947) do
     t.bigint "lagerleiter_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "limesurvey_token"
     t.bigint "al_id"
     t.bigint "coach_id"
     t.jsonb "midata_data"

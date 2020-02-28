@@ -5,6 +5,8 @@ class Unit < ApplicationRecord
   belongs_to :lagerleiter, class_name: 'Leader', inverse_of: :lagerleiter_units, optional: true
   # belongs_to :coach, class_name: 'Leader', inverse_of: :coach_units, optional: true
   validates :title, presence: true
+  
+  after_create :get_limesurvey_token
 
   YEAR = 2021
   KVS = [
@@ -38,9 +40,9 @@ class Unit < ApplicationRecord
     RootCampUnit[stufe&.to_sym]
   end
 
-  def pull
-    return unless pbs_id
-
-    root_camp_unit.camp_unit_builder.pull_into(self)
+  def get_limesurvey_token
+    return if self.limesurvey_token
+    service = LimesurveyService.new
+    service.add_leader(self.lagerleiter, self, ENV['LIMESURVEY_SURVEY_ID'])
   end
 end
