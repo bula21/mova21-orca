@@ -10,9 +10,8 @@ class LimesurveyService
   end
 
   # adds leader to the survey, saves the token and sends an invite
-  # TODO: use correct camp_id, and language
   def add_leader(leader, unit, survey_id, language = 'de')
-    response = add_participant(survey_id, leader.email, leader.last_name, leader.first_name,
+    response = add_participant(survey_id, leader.email, "#{leader.first_name} #{leader.last_name}", leader.scout_name,
                                unit.pbs_id, unit.stufe, language)
     return unless response.is_a?(Array) && response[0]['token']
 

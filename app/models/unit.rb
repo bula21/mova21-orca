@@ -43,6 +43,20 @@ class Unit < ApplicationRecord
   def get_limesurvey_token
     return if self.limesurvey_token
     service = LimesurveyService.new
-    service.add_leader(self.lagerleiter, self, ENV['LIMESURVEY_SURVEY_ID'])
+    service.add_leader(self.lagerleiter, self, ENV['LIMESURVEY_SURVEY_ID'], extract_language)
+  end
+
+  private
+
+  def extract_language
+    fr = [638, 1018, 911, 994, 513, 880]
+    it = [238]
+    if it.include? kv
+      'it-informal'
+    elsif fr.include? kv
+      'fr'
+    else
+      'de-informal'
+    end
   end
 end

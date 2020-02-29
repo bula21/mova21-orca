@@ -6,7 +6,7 @@ h1 = @unit.title
       .row
         .col-6
           dt = t('activerecord.attributes.unit.abteilung')
-          dd = @unit.abteilung
+          dd = "#{@unit.abteilung} - #{t("units.kvs.#{@unit.kv}")}"
 
         .col-6
           dt = t('activerecord.attributes.unit.stufe')
