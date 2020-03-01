@@ -14,5 +14,5 @@
         tr
           td = leader.full_name
           td = leader.email
-          td
-            = link_to(nil, edit_leader_path(leader), class: 'streched-link') if can?(:edit, leader)
+          td.p-1
+            = link_to(t('buttons.edit'), edit_leader_path(leader), class: 'btn btn-primary') if can?(:edit, leader)

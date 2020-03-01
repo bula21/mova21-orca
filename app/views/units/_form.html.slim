@@ -4,7 +4,7 @@
     .col-6
       = f.input :abteilung
     .col-6
-      = f.input :kv, collection: KV.predefined, label_method: :name
+      = f.input :kv, collection: Kv.predefined, label_method: :name
 
   = f.input :stufe, collection: Unit.stufen
   .row
