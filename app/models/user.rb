@@ -3,9 +3,13 @@
 class User < ApplicationRecord
   devise :omniauthable, omniauth_providers: %i[openid_connect developer]
 
+  has_one :leader, foreign_key: :pbs_id, primary_key: :pbs_id
+
   validates :email, presence: true, format: { with: Devise.email_regexp }
   validates :uid, presence: true
   validates :pbs_id, presence: true, allow_blank: true
+
+  enum role: [:user, :admin], _prefix: :role
 
   def self.from_omniauth(auth)
     email = auth.info.email
@@ -18,4 +22,5 @@ class User < ApplicationRecord
       user.save!
     end
   end
+
 end

@@ -91,3 +91,5 @@ fr:
     show:
       participants: Participants
       questionnaire: Questionaire
+      registration_complete: Registration complete
+      registration_incomplete: Registration incomplete

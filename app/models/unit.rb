@@ -2,11 +2,17 @@
 
 class Unit < ApplicationRecord
   belongs_to :al, class_name: 'Leader', inverse_of: :al_units, optional: true
-  belongs_to :lagerleiter, class_name: 'Leader', inverse_of: :lagerleiter_units, optional: true
+  belongs_to :lagerleiter, class_name: 'Leader', inverse_of: :lagerleiter_units
   # belongs_to :coach, class_name: 'Leader', inverse_of: :coach_units, optional: true
-  validates :title, presence: true
-  
-  after_create :get_limesurvey_token
+
+  validates :title, :kv, :lagerleiter, presence: true, on: :complete
+  validates :expected_participants, numericality: { greater_than_or_equal_to: 12 }, on: :complete
+  validates :expected_participants_leitung, numericality: { greater_than_or_equal_to: 2 }, on: :complete
+  validate on: :complete do
+    errors.add(:lagerleiter, :incomplete) unless lagerleiter.valid?(:complete)
+  end
+
+  before_create :set_limesurvey_token
 
   YEAR = 2021
   KVS = [
@@ -40,9 +46,25 @@ class Unit < ApplicationRecord
     RootCampUnit[stufe&.to_sym]
   end
 
-  def get_limesurvey_token
-    return if self.limesurvey_token
-    service = LimesurveyService.new
-    service.add_leader(self.lagerleiter, self, ENV['LIMESURVEY_SURVEY_ID'])
+  def expected_participants
+    (expected_participants_f || 0) + (expected_participants_m || 0)
+  end
+
+  def expected_participants_leitung
+    (expected_participants_leitung_f || 0) + (expected_participants_leitung_m || 0)
+  end
+
+  def complete?
+    valid?(:complete)
+  end
+
+  def set_limesurvey_token
+    return unless LimesurveyService.enabled? && complete?
+
+    self.limesurvey_token ||= LimesurveyService.new.add_leader(lagerleiter, self)
+  end
+
+  def limesurvey_url
+    @limesurvey_url ||= LimesurveyService.new.url(token: limesurvey_token, lang: lagerleiter.language)
   end
 end

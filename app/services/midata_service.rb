@@ -10,9 +10,9 @@ class MidataService
   end
 
   def fetch_camp_unit_data(id)
+    Rails.logger.debug "Talking to Midata Event #{id}"
+
     JSON.parse(self.class.get("/events/#{id}.json", query: auth_params).body)
-    # rescue
-    #   {}
   end
 
   def fetch_camp_unit_data_hierarchy(root_id)

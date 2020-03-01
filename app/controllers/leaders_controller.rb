@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class LeadersController < ApplicationController
-  before_action :set_leader, only: %i[edit update show]
+  load_and_authorize_resource
+
   def index; end
 
   def new

@@ -1,6 +1,6 @@
 .h1 = t('leaders.index.title')
 
-= link_to t('buttons.create'), new_leader_path, class: 'btn btn-primary mb-3'
+= link_to(t('buttons.create'), new_leader_path, class: 'btn btn-primary mb-3') if can?(:create, Leader)
 
 .table-responsive
   table.table
@@ -10,9 +10,9 @@
         th = Leader.human_attribute_name(:email)
         th
     tbody
-      - Leader.all.each do |leader|
+      - @leaders.each do |leader|
         tr
           td = leader.full_name
           td = leader.email
           td
-            = link_to t('buttons.edit'), edit_leader_path(leader), class: 'btn btn-primary'
+            = link_to(nil, edit_leader_path(leader), class: 'streched-link') if can?(:edit, leader)

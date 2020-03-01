@@ -32,7 +32,7 @@ services:
       DEVISE_PEPPER: 'rake secret'
       DEVISE_SECRET_KEY: 'rake secret'
       ROOT_CAMP_UNIT_ID_WOLF: 1328
-      ROOT_CAMP_UNIT_ID_PFADI: 1328
+      ROOT_CAMP_UNIT_ID_PFADI: 1337
       ROOT_CAMP_UNIT_ID_PIO: 1328
       ROOT_CAMP_UNIT_ID_PTA: 1328
     depends_on:

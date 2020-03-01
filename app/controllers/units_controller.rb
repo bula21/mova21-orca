@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class UnitsController < ApplicationController
-  before_action :set_unit, only: %i[edit update show]
   load_and_authorize_resource
 
   def index; end
@@ -20,12 +19,7 @@ class UnitsController < ApplicationController
     end
   end
 
-  def show
-    @unit.get_limesurvey_token unless @unit.limesurvey_token
-    survey_id = ENV['LIMESURVEY_SURVEY_ID']
-    lang = params[:locale] || 'de-informal'
-    @limesurvey_url = "#{LimesurveyService::BASEURL}/#{survey_id}?lang=#{lang}&token=#{@unit.limesurvey_token}"
-  end
+  def show; end
 
   def edit; end
 

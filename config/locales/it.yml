@@ -91,3 +91,5 @@ it:
     show:
       participants: Partecipanti
       questionnaire: Questionario
+      registration_complete: Registration complete
+      registration_incomplete: Registration incomplete

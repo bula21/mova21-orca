@@ -2,7 +2,7 @@
 
 .h1 = t('units.index.title')
 
-= link_to t('buttons.create'), new_unit_path, class: 'btn btn-primary mb-3'
+= link_to(t('buttons.create'), new_unit_path, class: 'btn btn-primary mb-3') if can?(:create, Unit)
 
 .row
   - @units.each do |unit|
@@ -11,5 +11,5 @@
         .card-body
           h5.card-title = unit.title
           p.card-text = unit.abteilung
-          = link_to t('buttons.show'), unit_path(unit), class: 'btn btn-primary'
+          a.stretched-link[href=unit_path(unit)]
 

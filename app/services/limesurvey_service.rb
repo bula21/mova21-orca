@@ -5,19 +5,32 @@ class LimesurveyService
   ADMIN_REMOTECONTROL_URL = URI.parse(BASEURL + '/admin/remotecontrol')
 
   attr_reader :session_key
-  def initialize(username = ENV['LIMESURVEY_USERNAME'], password = ENV['LIMESURVEY_PASSWORD'])
+  def initialize(username = ENV['LIMESURVEY_USERNAME'],
+                 password = ENV['LIMESURVEY_PASSWORD'],
+                 survey_id = ENV['LIMESURVEY_SURVEY_ID'])
     @session_key = get_session_key(username, password)
+    @survey_id = survey_id
   end
 
-  # adds leader to the survey, saves the token and sends an invite
-  # TODO: use correct camp_id, and language
-  def add_leader(leader, unit, survey_id, language = 'de')
-    response = add_participant(survey_id, leader.email, leader.last_name, leader.first_name,
-                               unit.pbs_id, unit.stufe, language)
-    return unless response.is_a?(Array) && response[0]['token']
+  def url(token:, lang: nil)
+    return nil unless token.present?
 
-    unit.update(limesurvey_token: response[0]['token'])
-    invite_participants(survey_id)
+    "#{BASEURL}/#{@survey_id}?lang=#{lang}&token=#{token}"
+  end
+
+  def self.enabled?
+    ENV['LIMESURVEY_SURVEY_ID'].present?
+  end
+
+  def add_leader(leader, unit)
+    response = add_participant(leader.email, leader.last_name, leader.first_name,
+                               unit.pbs_id, unit.stufe, leader.language)
+
+    token = response&.dig(0, 'token').presence
+    return unless token
+
+    invite_participants
+    token
   end
 
   # receive session key
@@ -38,47 +51,48 @@ class LimesurveyService
     response['result']
   end
 
-  def list_groups(survey_id)
-    response = request(ADMIN_REMOTECONTROL_URL, 'list_groups', [session_key, survey_id])
+  def list_groups
+    response = request(ADMIN_REMOTECONTROL_URL, 'list_groups', [session_key, @survey_id])
     response['result']
   end
 
-  def get_survey_properties(survey_id)
-    response = request(ADMIN_REMOTECONTROL_URL, 'get_survey_properties', [session_key, survey_id])
+  def get_survey_properties
+    response = request(ADMIN_REMOTECONTROL_URL, 'get_survey_properties', [session_key, @survey_id])
     response['result']
   end
 
   # adds user to a survey
   # [ {"email":"james@example.com","lastname":"Bond","firstname":"James", "attribute_1": camp_id, "attribute_2": stufe},
   #   {"email":"me2@example.com","attribute_1":"example"} ]
-  def add_participants(survey_id, users)
-    response = request(ADMIN_REMOTECONTROL_URL, 'add_participants', [session_key, survey_id, users])
+  def add_participants(users)
+    response = request(ADMIN_REMOTECONTROL_URL, 'add_participants', [session_key, @survey_id, users])
     response['result']
   end
 
   # 1: wolf, 5: pta
-  def add_participant(survey_id, email, lastname, firstname, camp_id, stufe, language) # rubocop:disable Metrics/ParameterLists
+  def add_participant(email, lastname, firstname, camp_id, stufe, language) # rubocop:disable Metrics/ParameterLists
     stufen = { 'wolf': 1, 'pfadi': 2, 'pio': 3, 'pta': 4 }
     user = { email: email, lastname: lastname, firstname: firstname, language: language,
              attribute_1: camp_id, attribute_2: stufen[stufe.to_sym] }
-    add_participants(survey_id, [user])
+    add_participants([user])
   end
 
-  def invite_participants(survey_id)
-    request(ADMIN_REMOTECONTROL_URL, 'invite_participants', [session_key, survey_id])
+  def invite_participants
+    request(ADMIN_REMOTECONTROL_URL, 'invite_participants', [session_key, @survey_id])
   end
 
   private
 
   def request(url, method, params) # rubocop:disable Metrics/MethodLength
+    Rails.logger.debug "Talking to Limesurvey: #{url} #{method}, #{params.inspect}"
+
     body = { method: method, params: params, id: 1 }
     response = Net::HTTP.start(url.host, url.port, use_ssl: true) do |http|
-      request = Net::HTTP::Post.new(url).tap do |r|
+      http.request(Net::HTTP::Post.new(url).tap do |r|
         r.body = JSON.generate(body)
         r['Content-Type'] = 'application/json'
         r['connection'] = 'Keep-Alive'
-      end
-      http.request request
+      end)
     end
     JSON.parse(response.body)
   rescue Timeout::Error, Net::HTTPBadResponse, Net::HTTPHeaderSyntaxError, Net::ProtocolError => e

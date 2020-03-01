@@ -10,6 +10,8 @@ de:
         expected_participants_leitung_f: Erwartete Anzahl Leitende (f)
         expected_participants_leitung_m: Erwartete Anzahl Leitende (m)
         expected_participants_m: Erwartete Anzahl TN (m)
+        expected_participants_leitung: Erwartete Anzahl Leitende
+        expected_participants: Erwartete Anzahl TN
         full_name: Vollständiger Name
         kv: KV
         lagerleiter: Lagerleiter
@@ -23,6 +25,14 @@ de:
       unit:
         one: Lager
         other: Lager
+    errors:
+      models:
+        unit:
+          attributes:
+            lagerleiter:
+              incomplete: ist unvollständig (Name, E-Mail, Adresse)
+      messages:
+        incomplete: ist unvollständig
   app:
     title: Orca
   buttons:
@@ -91,3 +101,5 @@ de:
     show:
       participants: Teilnehmende
       questionnaire: Fragebogen
+      registration_complete: Registration complete
+      registration_incomplete: Registration incomplete

@@ -1,6 +1,6 @@
-h1 = @unit.title
+.h1 = @unit.title
 
-.card
+.card[class=(@unit.complete? ? 'border-success' : 'border-danger')]
   .card-body
     dl
       .row
@@ -25,15 +25,6 @@ h1 = @unit.title
 
       .row
         .col-6
-          dt = t('activerecord.attributes.unit.expected_participants_leitung_f')
-          dd = @unit.expected_participants_leitung_f
-
-        .col-6
-          dt = t('activerecord.attributes.unit.expected_participants_leitung_m')
-          dd = @unit.expected_participants_leitung_m
-
-      .row
-        .col-6
           dt = t('activerecord.attributes.unit.al')
           dd = @unit.al.full_name
 
@@ -41,18 +32,38 @@ h1 = @unit.title
           dt = t('activerecord.attributes.unit.lagerleiter')
           dd = @unit.lagerleiter.full_name
 
-    = link_to t('buttons.edit'), edit_unit_path(@unit), class: 'btn btn-primary' if can?(:edit, @unit)
-    /= button_to t('buttons.sync'), unit_path(@unit), method: :patch, params: { action: :sync }, class: 'btn btn-primary'
+    = link_to(t('buttons.edit'), edit_unit_path(@unit), class: 'btn btn-primary') if can?(:edit, @unit)
+
+  - if @unit.complete?
+    .card-footer.bg-success.border-success.text-white
+      = t('.registration_complete')
+  - else
+    .card-footer.bg-danger.border-danger.text-white
+      = t('.registration_incomplete')
+
+      ul.pt-3.pb-1
+        - @unit.errors.full_messages.each do |error|
+          li= error
 
 .card.mt-4
   .card-body
     h2 = t('units.show.questionnaire')
-    = link_to t('units.show.questionnaire'), @limesurvey_url, class: 'btn btn-secondary'
+    = link_to t('units.show.questionnaire'), @unit.limesurvey_url, class: 'btn btn-secondary'
 
 .card.mt-4
   .card-body
     h2 = t('units.show.participants')
     dl
+
+      .row
+        .col-6
+          dt = t('activerecord.attributes.unit.expected_participants_leitung_f')
+          dd = @unit.expected_participants_leitung_f
+
+        .col-6
+          dt = t('activerecord.attributes.unit.expected_participants_leitung_m')
+          dd = @unit.expected_participants_leitung_m
+
       .row
         .col-6
           dt = t('activerecord.attributes.unit.expected_participants_f')
