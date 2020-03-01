@@ -22,9 +22,10 @@ class LimesurveyService
     ENV['LIMESURVEY_SURVEY_ID'].present?
   end
 
+  # adds leader to the survey, saves the token and sends an invite
   def add_leader(leader, unit)
-    response = add_participant(leader.email, leader.last_name, leader.first_name,
-                               unit.pbs_id, unit.stufe, leader.language)
+    response = add_participant(leader.email, leader.first_and_last_name, leader.scout_name,
+                               unit.pbs_id, unit.stufe, lime_lang(leader.language || Kv[unit.kv]&.locale))
 
     token = response&.dig(0, 'token').presence
     return unless token
@@ -69,13 +70,15 @@ class LimesurveyService
     response['result']
   end
 
-  # 1: wolf, 5: pta
-  def add_participant(email, lastname, firstname, camp_id, stufe, language) # rubocop:disable Metrics/ParameterLists
+  # rubocop:disable Metrics/ParameterLists
+  def add_participant(email, lastname, firstname, camp_id, stufe, language)
     stufen = { 'wolf': 1, 'pfadi': 2, 'pio': 3, 'pta': 4 }
     user = { email: email, lastname: lastname, firstname: firstname, language: language,
              attribute_1: camp_id, attribute_2: stufen[stufe.to_sym] }
+
     add_participants([user])
   end
+  # rubocop:enable Metrics/ParameterLists
 
   def invite_participants
     request(ADMIN_REMOTECONTROL_URL, 'invite_participants', [session_key, @survey_id])
@@ -83,7 +86,7 @@ class LimesurveyService
 
   private
 
-  def request(url, method, params) # rubocop:disable Metrics/MethodLength
+  def request(url, method, params)
     Rails.logger.debug "Talking to Limesurvey: #{url} #{method}, #{params.inspect}"
 
     body = { method: method, params: params, id: 1 }
@@ -95,7 +98,16 @@ class LimesurveyService
       end)
     end
     JSON.parse(response.body)
-  rescue Timeout::Error, Net::HTTPBadResponse, Net::HTTPHeaderSyntaxError, Net::ProtocolError => e
-    raise e
+  end
+
+  def lime_lang(locale)
+    case locale&.to_sym
+    when :it
+      'it-informal'
+    when :fr
+      'fr'
+    else
+      'de-informal'
+    end
   end
 end

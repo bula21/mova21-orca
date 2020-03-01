@@ -14,4 +14,8 @@ class Leader < ApplicationRecord
   def full_name
     "#{first_name} #{last_name} v/o #{scout_name}"
   end
+
+  def first_and_last_name
+    "#{first_name} #{last_name}"
+  end
 end

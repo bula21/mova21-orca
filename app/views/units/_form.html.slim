@@ -4,7 +4,8 @@
     .col-6
       = f.input :abteilung
     .col-6
-      = f.input :kv, collection: Unit::KVS, label_method: ->(obj) { t("units.kvs.#{obj}") }
+      = f.input :kv, collection: KV.predefined, label_method: :name
+
   = f.input :stufe, collection: Unit.stufen
   .row
     .col-6
