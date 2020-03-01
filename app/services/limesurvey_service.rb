@@ -36,7 +36,7 @@ class LimesurveyService
 
   # receive session key
   def fetch_session_key(username, password, _plugin = 'Authdb')
-    response = request(ADMIN_REMOTECONTROL_URL, 'fetch_session_key', [username, password])
+    response = request(ADMIN_REMOTECONTROL_URL, 'get_session_key', [username, password])
     response['result']
   end
 
@@ -58,7 +58,7 @@ class LimesurveyService
   end
 
   def fetch_survey_properties
-    response = request(ADMIN_REMOTECONTROL_URL, 'fetch_survey_properties', [session_key, @survey_id])
+    response = request(ADMIN_REMOTECONTROL_URL, 'get_survey_properties', [session_key, @survey_id])
     response['result']
   end
 
