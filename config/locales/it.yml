@@ -109,3 +109,12 @@ it:
       questionnaire: Questionario
       registration_complete: Registrazione completa
       registration_incomplete: Registrazione incompleta
+
+  simple_form:
+    options:
+      unit:
+        stufe:
+          wolf: 'Lupetti'
+          pfadi: 'Esploratori'
+          pio: 'Pionieri'
+          pta: 'PTA'
