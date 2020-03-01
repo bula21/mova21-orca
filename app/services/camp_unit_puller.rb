@@ -26,8 +26,8 @@ class CampUnitPuller
 
   def pull_new
     root_data = @midata_service.fetch_camp_unit_data(@root_camp_unit.root_id)
-    children_ids = root_data.dig('events', 0, 'links', 'sub_camps')
-    existing_ids = Unit.all.pluck(:pbs_id)
+    children_ids = root_data.dig('events', 0, 'links', 'sub_camps') || []
+    existing_ids = Unit.all.pluck(:pbs_id) || []
 
     (children_ids - existing_ids).map { |new_camp_unit_id| pull(pbs_id: new_camp_unit_id) }
   end

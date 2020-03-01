@@ -50,6 +50,12 @@ class Unit < ApplicationRecord
     CampUnitMailer.with(camp_unit_id: id).incomplete_notification.deliver_now
   end
 
+  def notify_complete
+    return unless complete?
+
+    CampUnitMailer.with(camp_unit_id: id).complete_notification.deliver_now
+  end
+
   def limesurvey_url
     @limesurvey_url ||= LimesurveyService.new.url(token: limesurvey_token, lang: lagerleiter.language)
   end

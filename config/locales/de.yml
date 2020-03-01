@@ -47,6 +47,12 @@ de:
 
         Deine Lageranmeldung für das Bula ist noch nicht vollständig. Siehe %{camp_unit_url}
       subject: Lageranmeldung unvollständig
+    complete_notification:
+      body: |-
+        Hallo %{salutation_name}
+
+        Deine Lageranmeldung für das Bula ist jetzt vollständig. Siehe %{camp_unit_url}
+      subject: Lageranmeldung vollständig
   leaders:
     edit:
       title: Leitperson editieren
