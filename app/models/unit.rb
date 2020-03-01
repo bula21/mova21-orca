@@ -12,9 +12,10 @@ class Unit < ApplicationRecord
     errors.add(:lagerleiter, :incomplete) unless lagerleiter.valid?(:complete)
   end
 
+  before_save :set_limesurvey_token
   after_create do
     if complete?
-      set_limesurvey_token && save
+      # notify_complete
     else
       notify_incomplete
     end
