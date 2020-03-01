@@ -6,7 +6,9 @@ fr:
         abteilung: Groupe
         al: RG
         ends_at: Fin le
+        expected_participants: Erwartete Anzahl TN
         expected_participants_f: Nombre de participantes attendues (f)
+        expected_participants_leitung: Erwartete Anzahl Leitende
         expected_participants_leitung_f: Nombre de responsables attendues (f)
         expected_participants_leitung_m: Nombre de responsables attendues (m)
         expected_participants_m: Nombre de participants attendus (m)
@@ -16,6 +18,14 @@ fr:
         starts_at: Début le
         stufe: Branche
         title: Titre
+    errors:
+      messages:
+        incomplete: ist unvollständig
+      models:
+        unit:
+          attributes:
+            lagerleiter:
+              incomplete: ist unvollständig (Name, E-Mail, Adresse)
     models:
       leader:
         one: Responsable
@@ -30,7 +40,6 @@ fr:
     create: créer
     edit: éditer
     save: sauvegarder
-    show: afficher
   leaders:
     edit:
       title: Modifier les responsables

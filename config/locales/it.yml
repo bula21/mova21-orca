@@ -6,7 +6,9 @@ it:
         abteilung: Sezione
         al: CSZ
         ends_at: Fine il
+        expected_participants: Erwartete Anzahl TN
         expected_participants_f: Numero di partecipanti (f) previste
+        expected_participants_leitung: Erwartete Anzahl Leitende
         expected_participants_leitung_f: Numero di animatori previsti
         expected_participants_leitung_m: Numero di animatrici previste
         expected_participants_m: Numero di partecipanti (m) previsti
@@ -16,6 +18,14 @@ it:
         starts_at: Inizio il
         stufe: Branca
         title: Titolo
+    errors:
+      messages:
+        incomplete: ist unvollständig
+      models:
+        unit:
+          attributes:
+            lagerleiter:
+              incomplete: ist unvollständig (Name, E-Mail, Adresse)
     models:
       leader:
         one: Animatore/trice responsabile
@@ -30,7 +40,6 @@ it:
     create: costruire
     edit: editare
     save: salvare
-    show: indicare
   leaders:
     edit:
       title: Modificare responsabili

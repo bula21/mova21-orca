@@ -6,7 +6,9 @@ en:
         abteilung: Group
         al: Group leader
         ends_at: End on
+        expected_participants: Erwartete Anzahl TN
         expected_participants_f: Expected number of participants (w)
+        expected_participants_leitung: Erwartete Anzahl Leitende
         expected_participants_leitung_f: Expected number of leaders (m)
         expected_participants_leitung_m: Expected number of leaders (w)
         expected_participants_m: Expected number of participants (m)
@@ -16,6 +18,14 @@ en:
         starts_at: Start on
         stufe: Stufe
         title: Title
+    errors:
+      messages:
+        incomplete: ist unvollständig
+      models:
+        unit:
+          attributes:
+            lagerleiter:
+              incomplete: ist unvollständig (Name, E-Mail, Adresse)
     models:
       leader:
         one: Leader
@@ -30,7 +40,6 @@ en:
     create: Create
     edit: Edit
     save: Save
-    show: Show
   leaders:
     edit:
       title: Edit leader

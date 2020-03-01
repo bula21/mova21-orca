@@ -6,18 +6,26 @@ de:
         abteilung: Abteilung
         al: AL
         ends_at: Ende am
+        expected_participants: Erwartete Anzahl TN
         expected_participants_f: Erwartete Anzahl TN (f)
+        expected_participants_leitung: Erwartete Anzahl Leitende
         expected_participants_leitung_f: Erwartete Anzahl Leitende (f)
         expected_participants_leitung_m: Erwartete Anzahl Leitende (m)
         expected_participants_m: Erwartete Anzahl TN (m)
-        expected_participants_leitung: Erwartete Anzahl Leitende
-        expected_participants: Erwartete Anzahl TN
         full_name: Vollständiger Name
         kv: KV
         lagerleiter: Lagerleiter
         starts_at: Beginn am
         stufe: Stufe
         title: Titel
+    errors:
+      messages:
+        incomplete: ist unvollständig
+      models:
+        unit:
+          attributes:
+            lagerleiter:
+              incomplete: ist unvollständig (Name, E-Mail, Adresse)
     models:
       leader:
         one: Leitperson
@@ -25,14 +33,6 @@ de:
       unit:
         one: Lager
         other: Lager
-    errors:
-      models:
-        unit:
-          attributes:
-            lagerleiter:
-              incomplete: ist unvollständig (Name, E-Mail, Adresse)
-      messages:
-        incomplete: ist unvollständig
   app:
     title: Orca
   buttons:
@@ -40,7 +40,6 @@ de:
     create: Erstellen
     edit: editieren
     save: Speichern
-    show: anzeigen
   leaders:
     edit:
       title: Leitperson editieren

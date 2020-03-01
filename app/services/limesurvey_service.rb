@@ -8,7 +8,7 @@ class LimesurveyService
   def initialize(username = ENV['LIMESURVEY_USERNAME'],
                  password = ENV['LIMESURVEY_PASSWORD'],
                  survey_id = ENV['LIMESURVEY_SURVEY_ID'])
-    @session_key = get_session_key(username, password)
+    @session_key = fetch_session_key(username, password)
     @survey_id = survey_id
   end
 
@@ -34,8 +34,8 @@ class LimesurveyService
   end
 
   # receive session key
-  def get_session_key(username, password, _plugin = 'Authdb')
-    response = request(ADMIN_REMOTECONTROL_URL, 'get_session_key', [username, password])
+  def fetch_session_key(username, password, _plugin = 'Authdb')
+    response = request(ADMIN_REMOTECONTROL_URL, 'fetch_session_key', [username, password])
     response['result']
   end
 
@@ -56,8 +56,8 @@ class LimesurveyService
     response['result']
   end
 
-  def get_survey_properties
-    response = request(ADMIN_REMOTECONTROL_URL, 'get_survey_properties', [session_key, @survey_id])
+  def fetch_survey_properties
+    response = request(ADMIN_REMOTECONTROL_URL, 'fetch_survey_properties', [session_key, @survey_id])
     response['result']
   end
 

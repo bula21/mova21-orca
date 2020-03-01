@@ -11,9 +11,10 @@ class CampUnitPuller
     camp_unit_data ||= @midata_service.fetch_camp_unit_data(pbs_id)
     camp_unit = @camp_unit_builder.from_data(camp_unit_data)
     camp_unit.save!
-  rescue StandardError => error
-    Rails.logger.error error.message
-    false
+    camp_unit
+  rescue StandardError => e
+    Rails.logger.error e.message
+    nil
   end
 
   def pull_all

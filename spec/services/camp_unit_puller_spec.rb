@@ -26,7 +26,7 @@ RSpec.describe CampUnitPuller do
 
     it 'does not pull again' do
       expect(new_camp_units.count).to be_positive
-      expect(puller.pull_new).to eq([])
+      expect(puller.pull_new.compact).to eq([])
     end
   end
 end
