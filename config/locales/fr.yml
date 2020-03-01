@@ -20,12 +20,12 @@ fr:
         title: Titre
     errors:
       messages:
-        incomplete: ist unvollständig
+        incomplete: est incomplète
       models:
         unit:
           attributes:
             lagerleiter:
-              incomplete: ist unvollständig (Name, E-Mail, Adresse)
+              incomplete: est incomplète (nom, e-mail, adresse))
     models:
       leader:
         one: Responsable
@@ -40,6 +40,13 @@ fr:
     create: créer
     edit: éditer
     save: sauvegarder
+  camp_unit_mailer:
+    incomplete_notification:
+      body: |-
+        Bonjour %{salutation_name}
+
+        Votre inscription n'est pas encore complète. Voir %{camp_unit_url}
+      subject: Inscription n'est pas encore complète
   leaders:
     edit:
       title: Modifier les responsables
@@ -100,5 +107,5 @@ fr:
     show:
       participants: Participants
       questionnaire: Questionaire
-      registration_complete: Registration complete
-      registration_incomplete: Registration incomplete
+      registration_complete: Inscription complète
+      registration_incomplete: Inscription pas complète

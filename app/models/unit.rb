@@ -12,7 +12,13 @@ class Unit < ApplicationRecord
     errors.add(:lagerleiter, :incomplete) unless lagerleiter.valid?(:complete)
   end
 
-  before_create :set_limesurvey_token
+  after_create do
+    if complete?
+      set_limesurvey_token && save
+    else
+      notify_incomplete
+    end
+  end
 
   enum stufe: RootCampUnit.predefined.dup.transform_values(&:to_s)
 
@@ -36,6 +42,12 @@ class Unit < ApplicationRecord
     return unless LimesurveyService.enabled? && complete?
 
     self.limesurvey_token ||= LimesurveyService.new.add_leader(lagerleiter, self)
+  end
+
+  def notify_incomplete
+    return if complete?
+
+    CampUnitMailer.with(camp_unit_id: id).incomplete_notification.deliver_now
   end
 
   def limesurvey_url

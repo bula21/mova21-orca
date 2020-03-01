@@ -40,6 +40,13 @@ de:
     create: Erstellen
     edit: editieren
     save: Speichern
+  camp_unit_mailer:
+    incomplete_notification:
+      body: |-
+        Hallo %{salutation_name}
+
+        Deine Lageranmeldung für das Bula ist noch nicht vollständig. Siehe %{camp_unit_url}
+      subject: Lageranmeldung unvollständig
   leaders:
     edit:
       title: Leitperson editieren
@@ -100,5 +107,5 @@ de:
     show:
       participants: Teilnehmende
       questionnaire: Fragebogen
-      registration_complete: Registration complete
-      registration_incomplete: Registration incomplete
+      registration_complete: Registration vollständig
+      registration_incomplete: Registration nicht vollständig

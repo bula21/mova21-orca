@@ -12,7 +12,7 @@ RSpec.describe CampUnitPuller do
 
     it do
       expect(camp_units.count).to be 2
-      expect(camp_units).to all(be_valid)
+      expect(camp_units.compact).to all(be_valid)
     end
   end
 

@@ -1,12 +1,10 @@
 # frozen_string_literal: true
 
 class CampUnitMailer < ApplicationMailer
-  def welcome_notification
-    # camp_unit = Unit.find params[:camp_unit_id]
+  def incomplete_notification
+    @camp_unit = Unit.find params[:camp_unit_id]
+    @lagerleiter = @camp_unit.lagerleiter
 
-    # mail(to: message.to, subject: message.subject_with_ref, cc: message.cc) do |format|
-    #   format.text { message.markdown.to_text }
-    #   format.html { message.markdown.to_html }
-    # end
+    mail(to: @lagerleiter.email, subject: I18n.t('camp_unit_mailer.incomplete_notification.subject'))
   end
 end

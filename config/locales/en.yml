@@ -40,6 +40,10 @@ en:
     create: Create
     edit: Edit
     save: Save
+  camp_unit_mailer:
+    incomplete_notification:
+      body: Body
+      subject: Subject
   leaders:
     edit:
       title: Edit leader

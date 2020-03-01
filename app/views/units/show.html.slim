@@ -30,7 +30,16 @@
 
         .col-6
           dt = t('activerecord.attributes.unit.lagerleiter')
-          dd = @unit.lagerleiter.full_name
+          dd
+            address
+              = @unit.lagerleiter.full_name
+              br
+              = @unit.lagerleiter.address
+              br
+              = @unit.lagerleiter.zip_code
+              =< @unit.lagerleiter.town
+              =< @unit.lagerleiter.country
+
 
     = link_to(t('buttons.edit'), edit_unit_path(@unit), class: 'btn btn-primary') if can?(:edit, @unit)
 
