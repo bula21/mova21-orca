@@ -106,3 +106,12 @@ en:
       questionnaire: Form
       registration_complete: Registration complete
       registration_incomplete: Registration incomplete
+
+  simple_form:
+    options:
+      unit:
+        stufe:
+          wolf: 'Cub Scout'
+          pfadi: 'Scout'
+          pio: 'Venture Scout'
+          pta: 'PTA'
