@@ -10,6 +10,7 @@ class CampUnitPuller
   def pull(pbs_id: nil, camp_unit_data: nil)
     camp_unit_data ||= @midata_service.fetch_camp_unit_data(pbs_id)
     camp_unit = @camp_unit_builder.from_data(camp_unit_data)
+    camp_unit_data = { 'events' => camp_unit_data.last } if camp_unit_data.is_a?(Array) # TODO: Fix this prod hack
     camp_unit&.save!
     camp_unit
   rescue ActiveRecord::RecordInvalid => e

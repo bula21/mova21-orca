@@ -26,7 +26,7 @@
       .row
         .col-6
           dt = t('activerecord.attributes.unit.al')
-          dd = @unit.al.full_name
+          dd = @unit.al&.full_name
 
         .col-6
           dt = t('activerecord.attributes.unit.lagerleiter')
