@@ -14,7 +14,7 @@ ActionMailer::Base.tap do |config|
       port: ENV.fetch('SMTP_PORT', 587),
       user_name: ENV.fetch('SMTP_USER'),
       password: ENV.fetch('SMTP_PASSWORD'),
-      authentication: 'plain',
+      authentication: ENV.fetch('SMTP_AUTH', 'plain'),
       enable_starttls_auto: true
     }
   end
