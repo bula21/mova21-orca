@@ -109,3 +109,12 @@ fr:
       questionnaire: Questionaire
       registration_complete: Inscription complète
       registration_incomplete: Inscription pas complète
+
+  simple_form:
+    options:
+      unit:
+        stufe:
+          wolf: 'Louveteaux'
+          pfadi: 'Eclais'
+          pio: 'Picos'
+          pta: 'SMT'

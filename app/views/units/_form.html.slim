@@ -4,9 +4,9 @@
     .col-6
       = f.input :abteilung
     .col-6
-      = f.input :kv, collection: Kv.predefined, label_method: :name
+      = f.input :kv, collection: Kv.predefined, label_method: :name, value_method: :pbs_id
 
-  = f.input :stufe, collection: Unit.stufen
+  = f.input :stufe, collection: Unit.stufen.symbolize_keys.keys
   .row
     .col-6
       = f.input :expected_participants_f

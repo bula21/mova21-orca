@@ -115,3 +115,12 @@ de:
       questionnaire: Fragebogen
       registration_complete: Registration vollständig
       registration_incomplete: Registration nicht vollständig
+
+  simple_form:
+    options:
+      unit:
+        stufe:
+          wolf: 'Wolf'
+          pfadi: 'Pfadi'
+          pio: 'Pio'
+          pta: 'PTA'

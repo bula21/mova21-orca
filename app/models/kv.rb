@@ -3,7 +3,7 @@
 class Kv
   attr_reader :pbs_id, :name, :locale
 
-  def initialize(name, pbs_id, locale: :de)
+  def initialize(pbs_id, name, locale: :de)
     @name = name
     @pbs_id = pbs_id
     @locale = locale
