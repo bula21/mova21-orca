@@ -39,6 +39,7 @@ services:
       SMTP_USER: ''
       SMTP_PASSWORD: ''
       SMTP_PORT: 25
+      SMTOP_AUTH: {SMTOP_AUTH:-plain}
     depends_on:
       - db
       - webpack
