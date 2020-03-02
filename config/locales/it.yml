@@ -44,9 +44,13 @@ it:
     incomplete_notification:
       body: |-
         Ciao %{salutation_name}
+        
+        Il tuo annuncio di campo per il CaFe 2021 non è ancora completo. Devi ancora completare o correggere alcuni dettagli. Maggiori inofrmazioni le trovi qui: %{camp_unit_url}
+        In caso di domande, controlla prima di tutto quanto indicato sulla nostra wikimova (https://avanti.bula21.ch/display/FAQ.) Se non dovessi trovare le risposte alle tue domande puoi contattare il nostro segretariato generale via e-mail (info@cafe21.ch o per telefono (027 521 20 21) Cordiali
 
-        L'iscrizione al Bollettino non è ancora completa. Vedi %{camp_unit_url}
-      subject: L'iscrizione non è ancora completa
+        saluti
+        Il tuo team CaFe21
+      subject: L'iscrizione mova non è ancora completa
   leaders:
     edit:
       title: Modificare responsabili
