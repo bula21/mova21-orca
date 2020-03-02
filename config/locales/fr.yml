@@ -45,8 +45,25 @@ fr:
       body: |-
         Bonjour %{salutation_name}
 
-        Votre inscription n'est pas encore complète. Voir %{camp_unit_url}
-      subject: Inscription n'est pas encore complète
+        Ta déclaration de camp sur MiData pour le CaFé 2021 n’est pas encore complète. Tu dois encore ajouter ou corriger certains détails sur MiData. Tu trouveras plus d’infos ici : %{camp_unit_url}
+
+        En cas de questions, tu peux tout d’abord aller faire un tour sur notre wikimova (avanti.bula21.ch/display/FAQ). Si après cela certains points restent peu clairs ou que certaines questions persistent, n’hésite pas à contacter notre secrétariat par mail (info@cafe21.ch) ou par téléphone (027 521 20 21).
+
+        Meilleures salutations,
+        Votre Team CaFé21
+
+        *******
+        
+        Hallo %{salutation_name}
+
+        Deine MiData-Lageranmeldung für das BuLa-CaFé 2021 ist noch nicht vollständig. Du musst die Details in der MiData ergänzen oder korrigieren. Siehe %{camp_unit_url}
+
+        Bei Fragen schau in unserem wikimova vorbei unter https://avanti.bula21.ch/display/FAQ. Bei weiteren Unklarheiten steht dir unsere Geschäftsstelle via eMail (info@bula21.ch) oder per Telefon (027 521 20 21) zur Verfügung.
+
+        Viele Grüsse
+        Eure BuLa21-Crew
+
+      subject: Inscription mova n'est pas encore complète
   leaders:
     edit:
       title: Modifier les responsables
