@@ -126,6 +126,7 @@ fr:
       questionnaire: Questionaire
       registration_complete: Inscription complète
       registration_incomplete: Inscription pas complète
+      camp_link_midata: Camp sur MiData
 
   simple_form:
     options:

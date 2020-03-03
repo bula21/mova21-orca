@@ -113,6 +113,7 @@ it:
       questionnaire: Questionario
       registration_complete: Registrazione completa
       registration_incomplete: Registrazione incompleta
+      camp_link_midata: Campo su MiData
 
   simple_form:
     options:

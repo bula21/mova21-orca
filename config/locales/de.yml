@@ -131,6 +131,7 @@ de:
       questionnaire: Fragebogen
       registration_complete: Registration vollständig
       registration_incomplete: Registration nicht vollständig
+      camp_link_midata: "Lager auf MiData"
 
   simple_form:
     options:
