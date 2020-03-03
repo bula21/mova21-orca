@@ -40,7 +40,7 @@ services:
       SMTP_USER: ${SMTP_USER}
       SMTP_PASSWORD: ${SMTP_PASSWORD}
       SMTP_PORT: ${SMTP_PORT}
-      SMTP_AUTH: {SMTOP_AUTH:-plain}
+      SMTP_AUTH: ${SMTP_AUTH:-plain}
     depends_on:
       - db
       - memcached
