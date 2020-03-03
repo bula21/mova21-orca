@@ -27,5 +27,15 @@ RSpec.describe Ability do
     it { is_expected.to be_able_to(:read, unit_as_al) }
     it { is_expected.to be_able_to(:read, unit_as_lagerleiter) }
     it { is_expected.not_to be_able_to(:read, unit_from_others) }
+    it { is_expected.not_to be_able_to(:export, Unit) }
+
+    context 'when user is admin' do
+      let(:user) { create(:user, :admin) }
+
+      it { is_expected.to be_able_to(:read, unit_as_al) }
+      it { is_expected.to be_able_to(:read, unit_as_lagerleiter) }
+      it { is_expected.to be_able_to(:read, unit_from_others) }
+      it { is_expected.to be_able_to(:export, Unit) }
+    end
   end
 end

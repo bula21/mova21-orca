@@ -3,6 +3,10 @@
 .h1 = t('units.index.title')
 
 = link_to(t('buttons.create'), new_unit_path, class: 'btn btn-primary mb-3') if can?(:create, Unit)
+- if can?(:export, Unit)
+  = link_to units_path(format: :csv), class: 'btn btn-primary mb-3 ml-2' do
+    i.fas.fa-file-export
+    =< t('buttons.export_csv')
 
 .row
   - @units.each do |unit|

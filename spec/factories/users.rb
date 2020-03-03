@@ -9,5 +9,14 @@ FactoryBot.define do
     trait :with_pbs_id do
       sequence(:pbs_id) { |n| n }
     end
+
+    trait :midata_user do
+      sequence(:pbs_id) { |n| "pbs_#{n}" }
+      role { 'user' }
+    end
+
+    trait :admin do
+      role { 'admin' }
+    end
   end
 end
