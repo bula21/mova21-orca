@@ -1,6 +1,10 @@
-.h1 = @unit.title
+.h1.pb-0 = @unit.title
 
-.card[class=(@unit.complete? ? 'border-success' : 'border-danger')]
+= link_to [ENV['MIDATA_BASE_URL'], 'events', @unit.pbs_id].join('/'), class: 'mb-3' do
+  i.fas.fa-link
+  =< t('.camp_link_midata')
+
+.card.mt-3[class=(@unit.complete? ? 'border-success' : 'border-danger')]
   .card-body
     dl
       .row
@@ -39,6 +43,9 @@
               = @unit.lagerleiter.zip_code
               =< @unit.lagerleiter.town
               =< @unit.lagerleiter.country
+            = link_to @unit.lagerleiter.phone_number, "tel:#{@unit.lagerleiter.phone_number}"
+            br
+            = mail_to @unit.lagerleiter.email, @unit.lagerleiter.email
 
 
     = link_to(t('buttons.edit'), edit_unit_path(@unit), class: 'btn btn-primary') if can?(:edit, @unit)

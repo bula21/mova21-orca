@@ -106,6 +106,7 @@ en:
       questionnaire: Form
       registration_complete: Registration complete
       registration_incomplete: Registration incomplete
+      camp_link_midata: "Camp on MiData"
 
   simple_form:
     options:
