@@ -1,0 +1,29 @@
+version: v1.0
+name: develop-deploy
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+blocks:
+  - name: develop-deploy
+    execution_time_limit:
+      minutes: 15
+    task:
+      secrets:
+        - name: heroku-deploy
+        - name: orca
+      env_vars:
+        - name: HEROKU_REMOTE
+          value: https://git.heroku.com/orca-develop.git
+      prologue:
+        commands:
+          - checkout --use-cache
+      jobs:
+        - name: develop-deploy
+          commands:
+            - ssh-keyscan -H heroku.com >> ~/.ssh/known_hosts
+            - chmod 600 ~/.ssh/id_rsa_semaphore_heroku
+            - ssh-add ~/.ssh/id_rsa_semaphore_heroku
+            - git config --global url.ssh://git@heroku.com/.insteadOf https://git.heroku.com/
+            - git remote add heroku $HEROKU_REMOTE
+            - git push heroku -f $SEMAPHORE_GIT_BRANCH:master

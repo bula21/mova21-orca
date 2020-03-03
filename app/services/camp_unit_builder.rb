@@ -50,7 +50,7 @@ class CampUnitBuilder
     mapping = { al: 'abteilungsleitung', lagerleiter: 'leader' }
     mapping.transform_values do |data_key|
       person_id   = camp_unit_data.dig('events', 0, 'links', data_key)
-      person_data = camp_unit_data.dig('linked', 'people').find { |person| person['id'] == person_id }
+      person_data = camp_unit_data.dig('linked', 'people')&.find { |person| person['id'] == person_id }
 
       @leader_builder.from_data(person_data, id: person_id) if person_id && person_data
     end
