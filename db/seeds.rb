@@ -8,7 +8,7 @@
 
 
 al = FactoryBot.create(:leader, scout_name: 'Lego')
-lagerleiter = FactoryBot.create(:leader, scout_name: 'Duplo')
+lagerleiter = FactoryBot.create(:leader, scout_name: 'Duplo', phone_number: '+41 79 123 45 67', email: 'duplo@example.ch')
 FactoryBot.create(:unit, title: 'Sommerlager Pfadistufe', stufe: 'wolf', abteilung: 'Pfadi H2O',
                   al: al, lagerleiter: lagerleiter)
 FactoryBot.create(:unit, title: 'Sommerlager Wolfsstufe', stufe: 'pfadi', abteilung: 'Pfadi H2O',
