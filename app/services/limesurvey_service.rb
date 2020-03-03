@@ -72,7 +72,7 @@ class LimesurveyService
 
   # rubocop:disable Metrics/ParameterLists
   def add_participant(email, lastname, firstname, camp_id, stufe, language)
-    stufen = { 'wolf': 1, 'pfadi': 2, 'pio': 3, 'pta': 4 }
+    stufen = { 'wolf': 1, 'pfadi': 2, 'pio': 3, 'pta': 5 }
     user = { email: email, lastname: lastname, firstname: firstname, language: language,
              attribute_1: camp_id, attribute_2: stufen[stufe.to_sym] }
 
