@@ -18,6 +18,14 @@ RSpec.describe UnitExporter, type: :service do
 
       it { is_expected.to include units.first.lagerleiter.scout_name }
       it { is_expected.to include units.second.lagerleiter.scout_name }
+
+      context 'when no al is given' do
+        let(:units) { build_list(:unit, 2, al: nil) }
+
+        it 'contains all units' do
+          expect(csv.scan("\n").size).to eq(1 + units.size)
+        end
+      end
     end
   end
 
