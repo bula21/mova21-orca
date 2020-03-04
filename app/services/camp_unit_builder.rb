@@ -58,8 +58,14 @@ class CampUnitBuilder
 
   def extract_groups(camp_unit_data)
     {
-      abteilung: camp_unit_data.dig('linked', 'groups').find { |group| ['Kantonalverband', 'Region', 'Abteilung'].include?(group['group_type']) }&.[]('name'),
+      abteilung: group_of_camp(camp_unit_data),
       kv: camp_unit_data.dig('linked', 'groups').find { |group| group['group_type'] == 'Kantonalverband' }&.[]('id')
     }
+  end
+
+  def group_of_camp(camp_unit_data)
+    camp_unit_data.dig('linked', 'groups').find do |group|
+      %w[Kantonalverband Region Abteilung].include?(group['group_type'])
+    end&.[]('name')
   end
 end

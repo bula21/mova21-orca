@@ -40,6 +40,7 @@ fr:
     create: créer
     edit: éditer
     save: sauvegarder
+    export_csv: "Exporter en csv"
   camp_unit_mailer:
     incomplete_notification:
       body: |-

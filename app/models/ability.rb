@@ -35,5 +35,6 @@ class Ability
 
   def admin_user_permissions(_user)
     can :manage, :all
+    can :export, Unit
   end
 end

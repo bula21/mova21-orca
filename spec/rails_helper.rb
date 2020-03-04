@@ -29,6 +29,9 @@ RSpec.configure do |config|
   config.after do
     I18n.locale = I18n.default_locale
   end
+
+  config.include Devise::Test::IntegrationHelpers, type: :request
+  config.include Devise::Test::ControllerHelpers, type: :view
 end
 
 Shoulda::Matchers.configure do |config|
