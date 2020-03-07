@@ -21,6 +21,11 @@ de:
     errors:
       messages:
         incomplete: ist unvollständig
+        record_invalid: 'Gültigkeitsprüfung ist fehlgeschlagen: %{errors}'
+        restrict_dependent_destroy:
+          has_many: Datensatz kann nicht gelöscht werden, da abhängige %{record} existieren.
+          has_one: Datensatz kann nicht gelöscht werden, da ein abhängiger %{record}-Datensatz
+            existiert.
       models:
         unit:
           attributes:
@@ -39,9 +44,15 @@ de:
     back: zurück
     create: Erstellen
     edit: editieren
+    export_csv: Export als CSV
     save: Speichern
-    export_csv: "Export als CSV"
   camp_unit_mailer:
+    complete_notification:
+      body: |-
+        Hallo %{salutation_name}
+
+        Deine Lageranmeldung für das Bula ist jetzt vollständig. Siehe %{camp_unit_url}
+      subject: Lageranmeldung vollständig
     incomplete_notification:
       body: |-
         Hallo %{salutation_name}
@@ -64,93 +75,6 @@ de:
         Meilleures salutations,
         Votre Team CaFé21
       subject: Lageranmeldung mova unvollständig
-    complete_notification:
-      body: |-
-        Hallo %{salutation_name}
-
-        Deine Lageranmeldung für das Bula ist jetzt vollständig. Siehe %{camp_unit_url}
-      subject: Lageranmeldung vollständig
-  leaders:
-    edit:
-      title: Leitperson editieren
-    index:
-      title: Leitende verwalten
-    messages:
-      created:
-        success: Erfolgreich erstellt
-      updated:
-        success: Erfolgreich gespeichert
-    new:
-      title: Neue Leitperson erfassen
-  nav:
-    language:
-      de: DE
-      en: EN
-      fr: FR
-      it: IT
-    leader: Leitpersonen
-    login: Login
-    logout: Logout
-    unit: Lager
-  units:
-    edit:
-      title: Lager editieren
-    index:
-      title: Deine Lager
-    kv_ids:
-      '1018': AS Genevois
-      '1145': Pfadi Zueri
-      '142': Pfadi Kanton Schwyz
-      '161': Pfadi Glarus
-      '166': Pfadi St. Gallen - Appenzell
-      '167': Battasendas Grischun
-      '179': Pfadi Luzern
-      '187': Pfadi Unterwalden
-      '237': Pfadi Kanton Zug
-      '238': Scoutismo Ticino
-      '299': Pfadi Region Basel
-      '3': Pfadi Kanton Solothurn
-      '4': Pfadi Kanton Bern
-      '4691': Pfadi Aargau
-      '513': Scouts Vaudois
-      '631': Pfadi Kanton Schaffhausen
-      '638': AS Fribourgeois
-      '85': Pfadi Uri
-      '880': Scouts Neuchatelois
-      '911': AS Jurassienne
-      '993': Pfadi Thurgau
-      '994': AS Valaisan
-    messages:
-      created:
-        success: Erfolgreich erstellt
-      updated:
-        success: Erfolgreich gespeichert!
-    new:
-      title: Lager erstellen
-    show:
-      participants: Teilnehmende
-      questionnaire: Fragebogen
-      registration_complete: Registration vollständig
-      registration_incomplete: Registration nicht vollständig
-      camp_link_midata: "Lager auf MiData"
-
-  simple_form:
-    options:
-      unit:
-        stufe:
-          wolf: 'Wolf'
-          pfadi: 'Pfadi'
-          pio: 'Pio'
-          pta: 'PTA'
-
- activerecord:
-    errors:
-      messages:
-        record_invalid: 'Gültigkeitsprüfung ist fehlgeschlagen: %{errors}'
-        restrict_dependent_destroy:
-          has_one: Datensatz kann nicht gelöscht werden, da ein abhängiger %{record}-Datensatz
-            existiert.
-          has_many: Datensatz kann nicht gelöscht werden, da abhängige %{record} existieren.
   date:
     abbr_day_names:
     - So
@@ -161,7 +85,7 @@ de:
     - Fr
     - Sa
     abbr_month_names:
-    -
+    - 
     - Jan
     - Feb
     - Mär
@@ -187,7 +111,7 @@ de:
       long: "%e. %B %Y"
       short: "%e. %b"
     month_names:
-    -
+    - 
     - Januar
     - Februar
     - März
@@ -219,33 +143,36 @@ de:
         one: fast ein Jahr
         other: fast %{count} Jahre
       half_a_minute: eine halbe Minute
-      less_than_x_seconds:
-        one: weniger als eine Sekunde
-        other: weniger als %{count} Sekunden
       less_than_x_minutes:
         one: weniger als eine Minute
         other: weniger als %{count} Minuten
+      less_than_x_seconds:
+        one: weniger als eine Sekunde
+        other: weniger als %{count} Sekunden
       over_x_years:
         one: mehr als ein Jahr
         other: mehr als %{count} Jahre
-      x_seconds:
-        one: eine Sekunde
-        other: "%{count} Sekunden"
-      x_minutes:
-        one: eine Minute
-        other: "%{count} Minuten"
       x_days:
         one: ein Tag
         other: "%{count} Tage"
+      x_minutes:
+        one: eine Minute
+        other: "%{count} Minuten"
       x_months:
         one: ein Monat
         other: "%{count} Monate"
+      x_seconds:
+        one: eine Sekunde
+        other: "%{count} Sekunden"
+      x_years:
+        one: 1 year
+        other: "%{count} years"
     prompts:
-      second: Sekunde
-      minute: Minute
-      hour: Stunde
       day: Tag
+      hour: Stunde
+      minute: Minute
       month: Monat
+      second: Sekunde
       year: Jahr
   errors:
     format: "%{attribute} %{message}"
@@ -292,6 +219,28 @@ de:
       create: "%{model} erstellen"
       submit: "%{model} speichern"
       update: "%{model} aktualisieren"
+  leaders:
+    edit:
+      title: Leitperson editieren
+    index:
+      title: Leitende verwalten
+    messages:
+      created:
+        success: Erfolgreich erstellt
+      updated:
+        success: Erfolgreich gespeichert
+    new:
+      title: Neue Leitperson erfassen
+  nav:
+    language:
+      de: DE
+      en: EN
+      fr: FR
+      it: IT
+    leader: Leitpersonen
+    login: Login
+    logout: Logout
+    unit: Lager
   number:
     currency:
       format:
@@ -337,9 +286,11 @@ de:
           byte:
             one: Byte
             other: Bytes
+          eb: EB
           gb: GB
           kb: KB
           mb: MB
+          pb: PB
           tb: TB
     percentage:
       format:
@@ -348,6 +299,14 @@ de:
     precision:
       format:
         delimiter: ''
+  simple_form:
+    options:
+      unit:
+        stufe:
+          pfadi: Pfadi
+          pio: Pio
+          pta: PTA
+          wolf: Wolf
   support:
     array:
       last_word_connector: " und "
@@ -360,3 +319,44 @@ de:
       long: "%A, %d. %B %Y, %H:%M Uhr"
       short: "%d. %B, %H:%M Uhr"
     pm: nachmittags
+  units:
+    edit:
+      title: Lager editieren
+    index:
+      title: Deine Lager
+    kv_ids:
+      '1018': AS Genevois
+      '1145': Pfadi Zueri
+      '142': Pfadi Kanton Schwyz
+      '161': Pfadi Glarus
+      '166': Pfadi St. Gallen - Appenzell
+      '167': Battasendas Grischun
+      '179': Pfadi Luzern
+      '187': Pfadi Unterwalden
+      '237': Pfadi Kanton Zug
+      '238': Scoutismo Ticino
+      '299': Pfadi Region Basel
+      '3': Pfadi Kanton Solothurn
+      '4': Pfadi Kanton Bern
+      '4691': Pfadi Aargau
+      '513': Scouts Vaudois
+      '631': Pfadi Kanton Schaffhausen
+      '638': AS Fribourgeois
+      '85': Pfadi Uri
+      '880': Scouts Neuchatelois
+      '911': AS Jurassienne
+      '993': Pfadi Thurgau
+      '994': AS Valaisan
+    messages:
+      created:
+        success: Erfolgreich erstellt
+      updated:
+        success: Erfolgreich gespeichert!
+    new:
+      title: Lager erstellen
+    show:
+      camp_link_midata: Lager auf MiData
+      participants: Teilnehmende
+      questionnaire: Fragebogen
+      registration_complete: Registration vollständig
+      registration_incomplete: Registration nicht vollständig

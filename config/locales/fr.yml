@@ -21,6 +21,12 @@ fr:
     errors:
       messages:
         incomplete: est incomplète
+        record_invalid: 'La validation a échoué : %{errors}'
+        restrict_dependent_destroy:
+          has_many: Vous ne pouvez pas supprimer l'enregistrement parce que les %{record}
+            dépendants existent
+          has_one: Vous ne pouvez pas supprimer l'enregistrement car un(e) %{record}
+            dépendant(e) existe
       models:
         unit:
           attributes:
@@ -39,9 +45,15 @@ fr:
     back: retour
     create: créer
     edit: éditer
+    export_csv: Exporter en csv
     save: sauvegarder
-    export_csv: "Exporter en csv"
   camp_unit_mailer:
+    complete_notification:
+      body: |-
+        Hallo %{salutation_name}
+
+        Deine Lageranmeldung für das Bula ist jetzt vollständig. Siehe %{camp_unit_url}
+      subject: Lageranmeldung vollständig
     incomplete_notification:
       body: |-
         Bonjour %{salutation_name}
@@ -63,90 +75,7 @@ fr:
 
         Viele Grüsse
         Eure BuLa21-Crew
-
       subject: Inscription mova n'est pas encore complète
-  leaders:
-    edit:
-      title: Modifier les responsables
-    index:
-      title: Les responsables
-    messages:
-      created:
-        success: Crée avec succès
-      updated:
-        success: Enregistré avec succès
-    new:
-      title: Entrer un nouveau ou une nouvelle responsable
-  nav:
-    language:
-      de: DE
-      en: EN
-      fr: FR
-      it: IT
-    leader: Responsables
-    login: Login
-    logout: Logout
-    unit: Camp
-  units:
-    edit:
-      title: Modifier un camp
-    index:
-      title: Ton camp
-    kv_ids:
-      '1018': AS Genevois
-      '1145': Pfadi Zueri
-      '142': Pfadi Kanton Schwyz
-      '161': Pfadi Glarus
-      '166': Pfadi St. Gallen - Appenzell
-      '167': Battasendas Grischun
-      '179': Pfadi Luzern
-      '187': Pfadi Unterwalden
-      '237': Pfadi Kanton Zug
-      '238': Scoutismo Ticino
-      '299': Pfadi Region Basel
-      '3': Pfadi Kanton Solothurn
-      '4': Pfadi Kanton Bern
-      '4691': Pfadi Aargau
-      '513': Scouts Vaudois
-      '631': Pfadi Kanton Schaffhausen
-      '638': AS Fribourgeois
-      '85': Pfadi Uri
-      '880': Scouts Neuchatelois
-      '911': AS Jurassienne
-      '993': Pfadi Thurgau
-      '994': AS Valaisan
-    messages:
-      created:
-        success: Crée avec succès
-      updated:
-        success: Enregistré avec succès
-    new:
-      title: Créer un camp
-    show:
-      participants: Participants
-      questionnaire: Questionaire
-      registration_complete: Inscription complète
-      registration_incomplete: Inscription pas complète
-      camp_link_midata: Camp sur MiData
-
-  simple_form:
-    options:
-      unit:
-        stufe:
-          wolf: 'Louveteaux'
-          pfadi: 'Eclais'
-          pio: 'Picos'
-          pta: 'SMT'
-
-  activerecord:
-    errors:
-      messages:
-        record_invalid: 'La validation a échoué : %{errors}'
-        restrict_dependent_destroy:
-          has_one: Vous ne pouvez pas supprimer l'enregistrement car un(e) %{record}
-            dépendant(e) existe
-          has_many: Vous ne pouvez pas supprimer l'enregistrement parce que les %{record}
-            dépendants existent
   date:
     abbr_day_names:
     - dim
@@ -157,7 +86,7 @@ fr:
     - ven
     - sam
     abbr_month_names:
-    -
+    - 
     - jan.
     - fév.
     - mar.
@@ -183,7 +112,7 @@ fr:
       long: "%e %B %Y"
       short: "%e %b"
     month_names:
-    -
+    - 
     - janvier
     - février
     - mars
@@ -215,38 +144,38 @@ fr:
         one: presqu'un an
         other: presque %{count} ans
       half_a_minute: une demi-minute
-      less_than_x_seconds:
-        zero: moins d'une seconde
-        one: moins d'une seconde
-        other: moins de %{count} secondes
       less_than_x_minutes:
-        zero: moins d'une minute
         one: moins d'une minute
         other: moins de %{count} minutes
+        zero: moins d'une minute
+      less_than_x_seconds:
+        one: moins d'une seconde
+        other: moins de %{count} secondes
+        zero: moins d'une seconde
       over_x_years:
         one: plus d'un an
         other: plus de %{count} ans
-      x_seconds:
-        one: 1 seconde
-        other: "%{count} secondes"
-      x_minutes:
-        one: 1 minute
-        other: "%{count} minutes"
       x_days:
         one: 1 jour
         other: "%{count} jours"
+      x_minutes:
+        one: 1 minute
+        other: "%{count} minutes"
       x_months:
         one: 1 mois
         other: "%{count} mois"
+      x_seconds:
+        one: 1 seconde
+        other: "%{count} secondes"
       x_years:
         one: 1 an
         other: "%{count} ans"
     prompts:
-      second: Seconde
-      minute: Minute
-      hour: Heure
       day: Jour
+      hour: Heure
+      minute: Minute
       month: Mois
+      second: Seconde
       year: Année
   errors:
     format: "%{attribute} %{message}"
@@ -293,6 +222,28 @@ fr:
       create: Créer un(e) %{model}
       submit: Enregistrer ce(tte) %{model}
       update: Modifier ce(tte) %{model}
+  leaders:
+    edit:
+      title: Modifier les responsables
+    index:
+      title: Les responsables
+    messages:
+      created:
+        success: Crée avec succès
+      updated:
+        success: Enregistré avec succès
+    new:
+      title: Entrer un nouveau ou une nouvelle responsable
+  nav:
+    language:
+      de: DE
+      en: EN
+      fr: FR
+      it: IT
+    leader: Responsables
+    login: Login
+    logout: Logout
+    unit: Camp
   number:
     currency:
       format:
@@ -343,6 +294,14 @@ fr:
     precision:
       format:
         delimiter: ''
+  simple_form:
+    options:
+      unit:
+        stufe:
+          pfadi: Eclais
+          pio: Picos
+          pta: SMT
+          wolf: Louveteaux
   support:
     array:
       last_word_connector: " et "
@@ -355,4 +314,44 @@ fr:
       long: "%A, %d %B %Y %H h %M min %S s %Z"
       short: "%d %b %H h %M"
     pm: pm
-
+  units:
+    edit:
+      title: Modifier un camp
+    index:
+      title: Ton camp
+    kv_ids:
+      '1018': AS Genevois
+      '1145': Pfadi Zueri
+      '142': Pfadi Kanton Schwyz
+      '161': Pfadi Glarus
+      '166': Pfadi St. Gallen - Appenzell
+      '167': Battasendas Grischun
+      '179': Pfadi Luzern
+      '187': Pfadi Unterwalden
+      '237': Pfadi Kanton Zug
+      '238': Scoutismo Ticino
+      '299': Pfadi Region Basel
+      '3': Pfadi Kanton Solothurn
+      '4': Pfadi Kanton Bern
+      '4691': Pfadi Aargau
+      '513': Scouts Vaudois
+      '631': Pfadi Kanton Schaffhausen
+      '638': AS Fribourgeois
+      '85': Pfadi Uri
+      '880': Scouts Neuchatelois
+      '911': AS Jurassienne
+      '993': Pfadi Thurgau
+      '994': AS Valaisan
+    messages:
+      created:
+        success: Crée avec succès
+      updated:
+        success: Enregistré avec succès
+    new:
+      title: Créer un camp
+    show:
+      camp_link_midata: Camp sur MiData
+      participants: Participants
+      questionnaire: Questionaire
+      registration_complete: Inscription complète
+      registration_incomplete: Inscription pas complète
