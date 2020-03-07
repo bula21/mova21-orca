@@ -31,6 +31,7 @@ group :development, :test do
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rspec', require: false
+  gem 'pdf-inspector', require: "pdf/inspector"
 end
 
 group :development do
@@ -47,3 +48,5 @@ group :test do
 end
 
 gem 'webmock', '~> 3.8'
+
+gem "prawn", "~> 2.2"
