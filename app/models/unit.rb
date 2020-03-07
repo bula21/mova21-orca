@@ -6,7 +6,7 @@ class Unit < ApplicationRecord
   # belongs_to :coach, class_name: 'Leader', inverse_of: :coach_units, optional: true
   has_many :invoices, inverse_of: :unit, dependent: :destroy
 
-  validates :title, :kv, :lagerleiter, presence: true, on: :complete
+  validates :title, :kv_id, :lagerleiter, presence: true, on: :complete
   validates :expected_participants, numericality: { greater_than_or_equal_to: 12 }, on: :complete
   validates :expected_participants_leitung, numericality: { greater_than_or_equal_to: 2 }, on: :complete
   validate on: :complete do
@@ -23,6 +23,11 @@ class Unit < ApplicationRecord
   end
 
   enum stufe: RootCampUnit.predefined.dup.transform_values(&:to_s)
+
+  def kv
+    Kv[kv_id]
+  end
+  delegate :locale, to: :kv
 
   def root_camp_unit
     RootCampUnit[stufe&.to_sym]

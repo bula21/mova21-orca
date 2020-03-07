@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
 class RootCampUnit
-  attr_reader :root_id, :stufe
+  attr_reader :root_id, :stufe, :pre_registration_price
   delegate :to_s, :to_sym, to: :stufe
 
-  def initialize(stufe, root_id)
+  def initialize(stufe, root_id, pre_registration_price: 0)
     @stufe = stufe
     @root_id = root_id
+    @pre_registration_price = pre_registration_price
   end
 
   def camp_unit_builder
@@ -19,8 +20,8 @@ class RootCampUnit
 
   def self.predefined
     {
-      wolf: new(:wolf, ENV['ROOT_CAMP_UNIT_ID_WOLF']),
-      pfadi: new(:pfadi, ENV['ROOT_CAMP_UNIT_ID_PFADI']),
+      wolf: new(:wolf, ENV['ROOT_CAMP_UNIT_ID_WOLF'], pre_registration_price: 10.0),
+      pfadi: new(:pfadi, ENV['ROOT_CAMP_UNIT_ID_PFADI'], pre_registration_price: 15.0),
       pio: new(:pio, ENV['ROOT_CAMP_UNIT_ID_PIO']),
       pta: new(:pta, ENV['ROOT_CAMP_UNIT_ID_PTA'])
     }.freeze

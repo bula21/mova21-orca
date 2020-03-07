@@ -17,7 +17,7 @@ RSpec.describe CampUnitBuilder do
 
     it 'has attributes' do
       expect(camp_unit).to have_attributes(
-        title: 'Sommerlager Pfadistufe', abteilung: 'H2O', kv: 1145, stufe: 'pfadi',
+        title: 'Sommerlager Pfadistufe', abteilung: 'H2O', kv_id: 1145, stufe: 'pfadi',
         expected_participants_f: 12, expected_participants_m: 10,
         expected_participants_leitung_m: 3, expected_participants_leitung_f: 5,
         starts_at: starts_at, ends_at: ends_at
@@ -62,7 +62,7 @@ RSpec.describe CampUnitBuilder do
       let(:root_camp_unit) { RootCampUnit[:pta] }
 
       it 'imports the right attributes for the unit', skip: true do
-        expect(camp_unit).to have_attributes(title: 'Sommerlager PTA', abteilung: 'H2O', kv: 1145, stufe: 'pta',
+        expect(camp_unit).to have_attributes(title: 'Sommerlager PTA', abteilung: 'H2O', kv_id: 1145, stufe: 'pta',
                                              expected_participants_f: 3, expected_participants_m: 5,
                                              expected_participants_leitung_m: 4, expected_participants_leitung_f: 6)
       end

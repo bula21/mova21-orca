@@ -26,12 +26,12 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 4.11'
   gem 'faker'
   gem 'i18n-tasks'
+  gem 'pdf-inspector', require: 'pdf/inspector'
   gem 'pry-rails'
   gem 'rspec-rails'
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rspec', require: false
-  gem 'pdf-inspector', require: "pdf/inspector"
 end
 
 group :development do
@@ -49,4 +49,5 @@ end
 
 gem 'webmock', '~> 3.8'
 
-gem "prawn", "~> 2.2"
+gem 'prawn', '~> 2.2'
+gem 'prawn-table'

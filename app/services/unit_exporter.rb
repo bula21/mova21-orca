@@ -7,7 +7,7 @@ class UnitExporter
     pbs_id
     title
     abteilung
-    kv
+    kv_id
     stufe
     expected_participants_f
     expected_participants_m
@@ -67,7 +67,7 @@ class UnitExporter
       unit.pbs_id,
       unit.title,
       unit.abteilung,
-      unit.kv,
+      unit.kv_id,
       unit.stufe,
       unit.expected_participants_f,
       unit.expected_participants_m,

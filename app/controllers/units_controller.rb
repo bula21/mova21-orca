@@ -48,7 +48,7 @@ class UnitsController < ApplicationController
   end
 
   def unit_params
-    params.require(:unit).permit(:title, :abteilung, :kv, :stufe, :expected_participants_f, :expected_participants_m,
+    params.require(:unit).permit(:title, :abteilung, :kv_id, :stufe, :expected_participants_f, :expected_participants_m,
                                  :expected_participants_leitung_f, :expected_participants_leitung_m,
                                  :starts_at, :ends_at, :al_id, :lagerleiter_id)
   end

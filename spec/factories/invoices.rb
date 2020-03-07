@@ -8,4 +8,10 @@ FactoryBot.define do
     payable_until { 3.months.from_now }
     text { Faker::Lorem.sentences }
   end
+
+  trait :with_invoice_parts do
+    after(:build) do |invoice|
+      invoice.invoice_parts = build_list(:invoice_part, 3, invoice: invoice)
+    end
+  end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'prawn'
 
 module Pdf
@@ -12,11 +14,11 @@ module Pdf
 
     def initialize_font
       @document.font_families.update('OpenSans' => {
-                                        normal: File.join(FONTS_PATH, 'OpenSans-Regular.ttf'),
-                                        italic: File.join(FONTS_PATH, 'OpenSans-Italic.ttf'),
-                                        bold: File.join(FONTS_PATH, 'OpenSans-Bold.ttf'),
-                                        bold_italic: File.join(FONTS_PATH, 'OpenSans-BoldItalic.ttf')
-                                      })
+                                       normal: File.join(FONTS_PATH, 'OpenSans-Regular.ttf'),
+                                       italic: File.join(FONTS_PATH, 'OpenSans-Italic.ttf'),
+                                       bold: File.join(FONTS_PATH, 'OpenSans-Bold.ttf'),
+                                       bold_italic: File.join(FONTS_PATH, 'OpenSans-BoldItalic.ttf')
+                                     })
       @document.font 'OpenSans'
       @document.font_size(10)
     end

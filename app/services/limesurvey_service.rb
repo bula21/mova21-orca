@@ -25,7 +25,7 @@ class LimesurveyService
   # adds leader to the survey, saves the token and sends an invite
   def add_leader(leader, unit)
     response = add_participant(leader.email, leader.first_and_last_name, leader.scout_name,
-                               unit.pbs_id, unit.stufe, lime_lang(leader.language || Kv[unit.kv]&.locale))
+                               unit.pbs_id, unit.stufe, lime_lang(leader.language || unit.kv.locale))
 
     token = response&.dig(0, 'token').presence
     return unless token

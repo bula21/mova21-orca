@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'prawn'
 
 module Pdf
@@ -17,18 +19,43 @@ module Pdf
 
     def render
       render_recipient_address
+      render_invoice_parts
       super
+    end
+
+    def render_invoice_text
+      text
     end
 
     def render_recipient_address
       bounding_box [300, 690], width: 200, height: 140 do
         default_leading 4
-        text Unit.model_name.human(count: :one), size: 13, style: :bold
         move_down 5
-        text "Hello"
         text @invoice.unit.title, size: 9
         text @invoice.invoice_address, size: 11
       end
+    end
+
+    def render_invoice_parts
+      move_down 20
+      table invoice_parts_table_data,
+            column_widths: [180, 200, 25, 89],
+            cell_style: { borders: [], padding: [0, 4, 4, 0] } do
+        cells.style(size: 10)
+        column(2).style(align: :right)
+        column(3).style(align: :right)
+        row(-1).style(borders: [:top], font_style: :bold, padding: [4, 4, 4, 0])
+      end
+    end
+
+    private
+
+    def invoice_parts_table_data
+      helpers = ActionController::Base.helpers
+      data = @invoice.invoice_parts.map do |invoice_part|
+        [invoice_part.label, invoice_part.breakdown, 'CHF', helpers.number_to_currency(invoice_part.amount, unit: '')]
+      end
+      data << ['Total', '', 'CHF', helpers.number_to_currency(@invoice.amount, unit: '')]
     end
   end
 end

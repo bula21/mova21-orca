@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_07_132248) do
+ActiveRecord::Schema.define(version: 2020_03_07_195440) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 2020_03_07_132248) do
     t.integer "pbs_id"
     t.string "title"
     t.string "abteilung"
-    t.integer "kv"
+    t.integer "kv_id"
     t.string "stufe"
     t.integer "expected_participants_f"
     t.integer "expected_participants_m"
