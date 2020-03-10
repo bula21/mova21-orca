@@ -21,7 +21,7 @@ class Invoice < ApplicationRecord
   end
 
   def filename
-    'Test.pdf'
+    'Invoice.pdf'
   end
 
   def set_ref
