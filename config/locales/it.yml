@@ -13,7 +13,7 @@ it:
         expected_participants_leitung_m: Numero di animatrici previste
         expected_participants_m: Numero di partecipanti (m) previsti
         full_name: Nome completo
-        kv: Associazione cantonale
+        kv_id: Associazione cantonale
         lagerleiter: Direzione del campo
         starts_at: Inizio il
         stufe: Branca
@@ -21,6 +21,12 @@ it:
     errors:
       messages:
         incomplete: è incompleto
+        record_invalid: 'Validazione fallita: %{errors}'
+        restrict_dependent_destroy:
+          has_many: Vous ne pouvez pas supprimer l'enregistrement parce que les %{record}
+            dépendants existent
+          has_one: Vous ne pouvez pas supprimer l'enregistrement car un(e) %{record}
+            dépendant(e) existe
       models:
         unit:
           attributes:
@@ -39,19 +45,180 @@ it:
     back: indietro
     create: costruire
     edit: editare
+    export_csv: Esportazione come csv
     save: salvare
-    export_csv: "Esportazione come csv"
   camp_unit_mailer:
+    complete_notification:
+      body: |-
+        Hallo %{salutation_name}
+
+        Deine Lageranmeldung für das Bula ist jetzt vollständig. Siehe %{camp_unit_url}
+      subject: Lageranmeldung vollständig
     incomplete_notification:
       body: |-
         Ciao %{salutation_name}
-        
+
         Il tuo annuncio di campo per il CaFe 2021 non è ancora completo. Devi ancora completare o correggere alcuni dettagli. Maggiori inofrmazioni le trovi qui: %{camp_unit_url}
         In caso di domande, controlla prima di tutto quanto indicato sulla nostra wikimova (https://avanti.bula21.ch/display/FAQ.) Se non dovessi trovare le risposte alle tue domande puoi contattare il nostro segretariato generale via e-mail (info@cafe21.ch o per telefono (027 521 20 21) Cordiali
 
         saluti
         Il tuo team CaFe21
+
+        *******
+
+        Hallo %{salutation_name}
+
+        Deine MiData-Lageranmeldung für das BuLa-CaFé 2021 ist noch nicht vollständig. Du musst die Details in der MiData ergänzen oder korrigieren. Siehe %{camp_unit_url}
+
+        Bei Fragen schau in unserem wikimova vorbei unter https://avanti.bula21.ch/display/FAQ. Bei weiteren Unklarheiten steht dir unsere Geschäftsstelle via eMail (info@bula21.ch) oder per Telefon (027 521 20 21) zur Verfügung.
+
+        Viele Grüsse
+        Eure BuLa21-Crew
       subject: L'iscrizione mova non è ancora completa
+  date:
+    abbr_day_names:
+    - Dom
+    - Lun
+    - Mar
+    - Mer
+    - Gio
+    - Ven
+    - Sab
+    abbr_month_names:
+    - 
+    - Gen
+    - Feb
+    - Mar
+    - Apr
+    - Mag
+    - Giu
+    - Lug
+    - Ago
+    - Set
+    - Ott
+    - Nov
+    - Dic
+    day_names:
+    - Domenica
+    - Lunedì
+    - Martedì
+    - Mercoledì
+    - Giovedì
+    - Venerdì
+    - Sabato
+    formats:
+      default: "%d-%m-%Y"
+      long: "%d %B %Y"
+      short: "%d %b"
+    month_names:
+    - 
+    - Gennaio
+    - Febbraio
+    - Marzo
+    - Aprile
+    - Maggio
+    - Giugno
+    - Luglio
+    - Agosto
+    - Settembre
+    - Ottobre
+    - Novembre
+    - Dicembre
+    order:
+    - :day
+    - :month
+    - :year
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: circa un'ora
+        other: circa %{count} ore
+      about_x_months:
+        one: circa un mese
+        other: circa %{count} mesi
+      about_x_years:
+        one: circa un anno
+        other: circa %{count} anni
+      almost_x_years:
+        one: circa 1 anno
+        other: circa %{count} anni
+      half_a_minute: mezzo minuto
+      less_than_x_minutes:
+        one: meno di un minuto
+        other: meno di %{count} minuti
+      less_than_x_seconds:
+        one: meno di un secondo
+        other: meno di %{count} secondi
+      over_x_years:
+        one: oltre un anno
+        other: oltre %{count} anni
+      x_days:
+        one: 1 giorno
+        other: "%{count} giorni"
+      x_minutes:
+        one: 1 minuto
+        other: "%{count} minuti"
+      x_months:
+        one: 1 mese
+        other: "%{count} mesi"
+      x_seconds:
+        one: 1 secondo
+        other: "%{count} secondi"
+      x_years:
+        one: 1 year
+        other: "%{count} years"
+    prompts:
+      day: Giorno
+      hour: Ora
+      minute: Minuto
+      month: Mese
+      second: Secondi
+      year: Anno
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      accepted: deve essere accettata
+      blank: non può essere lasciato in bianco
+      confirmation: non coincide con %{attribute}
+      empty: non può essere vuoto
+      equal_to: deve essere uguale a %{count}
+      even: deve essere pari
+      exclusion: è riservato
+      greater_than: deve essere superiore a %{count}
+      greater_than_or_equal_to: deve essere superiore o uguale a %{count}
+      inclusion: non è incluso nella lista
+      invalid: non è valido
+      less_than: deve essere meno di %{count}
+      less_than_or_equal_to: deve essere meno o uguale a %{count}
+      model_invalid: 'Validation failed: %{errors}'
+      not_a_number: non è un numero
+      not_an_integer: non è un intero
+      odd: deve essere dispari
+      other_than: must be other than %{count}
+      present: must be blank
+      required: must exist
+      taken: è già in uso
+      too_long:
+        one: è troppo lungo (il massimo è 1 carattere)
+        other: è troppo lungo (il massimo è %{count} caratteri)
+      too_short:
+        one: è troppo corto (il minimo è 1 carattere)
+        other: è troppo corto (il minimo è %{count} caratteri)
+      wrong_length:
+        one: è della lunghezza sbagliata (deve essere di 1 carattere)
+        other: è della lunghezza sbagliata (deve essere di %{count} caratteri)
+    template:
+      body: 'Per favore ricontrolla i seguenti campi:'
+      header:
+        one: 'Non posso salvare questo %{model}: 1 errore'
+        other: 'Non posso salvare questo %{model}: %{count} errori.'
+  helpers:
+    select:
+      prompt: Per favore, seleziona
+    submit:
+      create: Crea %{model}
+      submit: Invia %{model}
+      update: Aggiorna %{model}
   leaders:
     edit:
       title: Modificare responsabili
@@ -74,12 +241,82 @@ it:
     login: Login
     logout: Logout
     unit: Unità
+  number:
+    currency:
+      format:
+        delimiter: "'"
+        format: "%u %n"
+        precision: 2
+        separator: "."
+        significant: false
+        strip_insignificant_zeros: false
+        unit: CHF
+    format:
+      delimiter: ","
+      precision: 2
+      separator: "."
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: "%n %u"
+        units:
+          billion: Miliardi
+          million: Milioni
+          quadrillion: Biliardi
+          thousand: Mila
+          trillion: Bilioni
+          unit: ''
+      format:
+        delimiter: ''
+        precision: 1
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one: Byte
+            other: Byte
+          eb: EB
+          gb: GB
+          kb: KB
+          mb: MB
+          pb: PB
+          tb: TB
+    percentage:
+      format:
+        delimiter: ''
+        format: "%n%"
+    precision:
+      format:
+        delimiter: ''
+  simple_form:
+    options:
+      unit:
+        stufe:
+          pfadi: Esploratori
+          pio: Pionieri
+          pta: PTA
+          wolf: Lupetti
+  support:
+    array:
+      last_word_connector: " e "
+      two_words_connector: " e "
+      words_connector: ", "
+  time:
+    am: am
+    formats:
+      default: "%a %d %b %Y, %H:%M:%S %z"
+      long: "%d %B %Y %H:%M"
+      short: "%d %b %H:%M"
+    pm: pm
   units:
     edit:
       title: Modificare il campo
     index:
       title: Il tuo campo
-    kvs:
+    kv_ids:
       '1018': AS Genevois
       '1145': Pfadi Zueri
       '142': Pfadi Kanton Schwyz
@@ -110,17 +347,8 @@ it:
     new:
       title: Creare un campo
     show:
+      camp_link_midata: Campo su MiData
       participants: Partecipanti
       questionnaire: Questionario
       registration_complete: Registrazione completa
       registration_incomplete: Registrazione incompleta
-      camp_link_midata: Campo su MiData
-
-  simple_form:
-    options:
-      unit:
-        stufe:
-          wolf: 'Lupetti'
-          pfadi: 'Esploratori'
-          pio: 'Pionieri'
-          pta: 'PTA'

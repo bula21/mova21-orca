@@ -5,3 +5,8 @@ ignore_unused:
 - 'flash.*'
 - 'titles.*'
 - 'faker.*'
+- 'units.*'
+- 'errors.*'
+
+ignore_inconsistent_interpolations:
+- 'camp_unit_mailer.*'

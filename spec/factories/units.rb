@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 FactoryBot.define do
-  factory :unit do
+  factory :unit, aliases: %i[camp_unit] do
     sequence(:pbs_id) { |n| n }
     title { Faker::Movies::StarWars.planet }
     abteilung { Faker::Company.name }
-    kv { Kv.predefined.sample.pbs_id }
+    kv_id { Kv.predefined.sample.pbs_id }
     stufe { Unit.stufen.keys.sample }
     expected_participants_f { (10..20).to_a.sample }
     expected_participants_m { (10..20).to_a.sample }
