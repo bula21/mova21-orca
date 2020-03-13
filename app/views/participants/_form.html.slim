@@ -15,7 +15,7 @@
       = f.input :pbs_id
   .row
     .col-12
-      = f.input :gender, collection: Participant.genders
+      = f.input :gender, collection: Participant.genders.symbolize_keys.keys
       = f.input :birthdate, wrapper: :inline_date, start_year: 1930, end_year: Date.today.year
       br
       = f.submit t('buttons.save'), class: 'btn btn-primary'
