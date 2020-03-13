@@ -2,6 +2,22 @@
 de:
   activerecord:
     attributes:
+      leader:
+        birthdate: Geburtsdatum
+        first_name: Vorname
+        full_name: Name
+        gender: Geschlecht
+        last_name: Nachname
+        pbs_id: PBS ID
+        scout_name: Pfadiname
+      participant:
+        birthdate: Geburtsdatum
+        first_name: Vorname
+        full_name: Name
+        gender: Geschlecht
+        last_name: Nachname
+        pbs_id: PBS ID
+        scout_name: Pfadiname
       unit:
         abteilung: Abteilung
         al: AL
@@ -224,13 +240,13 @@ de:
       title: Leitperson editieren
     index:
       title: Leitende verwalten
-    messages:
-      created:
-        success: Erfolgreich erstellt
-      updated:
-        success: Erfolgreich gespeichert
     new:
       title: Neue Leitperson erfassen
+  messages:
+    created:
+      success: Erfolgreich erstellt
+    updated:
+      success: Erfolgreich gespeichert!
   nav:
     language:
       de: DE
@@ -299,8 +315,17 @@ de:
     precision:
       format:
         delimiter: ''
+  participants:
+    index:
+      title: Teilnehmende
+    new:
+      title: Teilnehmende erstellen
   simple_form:
     options:
+      participant:
+        gender:
+          female: Weiblich
+          male: Männlich
       unit:
         stufe:
           pfadi: Pfadi
@@ -347,11 +372,6 @@ de:
       '911': AS Jurassienne
       '993': Pfadi Thurgau
       '994': AS Valaisan
-    messages:
-      created:
-        success: Erfolgreich erstellt
-      updated:
-        success: Erfolgreich gespeichert!
     new:
       title: Lager erstellen
     show:

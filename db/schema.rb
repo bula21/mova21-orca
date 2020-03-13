@@ -63,6 +63,19 @@ ActiveRecord::Schema.define(version: 2020_03_07_195440) do
     t.string "country"
   end
 
+  create_table "participants", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "scout_name"
+    t.bigint "unit_id", null: false
+    t.string "gender"
+    t.date "birthdate"
+    t.integer "pbs_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["unit_id"], name: "index_participants_on_unit_id"
+  end
+
   create_table "units", force: :cascade do |t|
     t.integer "pbs_id"
     t.string "title"
@@ -78,10 +91,10 @@ ActiveRecord::Schema.define(version: 2020_03_07_195440) do
     t.bigint "lagerleiter_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "limesurvey_token"
     t.bigint "al_id"
     t.bigint "coach_id"
     t.jsonb "midata_data"
-    t.string "limesurvey_token"
     t.index ["al_id"], name: "index_units_on_al_id"
     t.index ["coach_id"], name: "index_units_on_coach_id"
     t.index ["lagerleiter_id"], name: "index_units_on_lagerleiter_id"
@@ -101,6 +114,7 @@ ActiveRecord::Schema.define(version: 2020_03_07_195440) do
 
   add_foreign_key "invoice_parts", "invoices"
   add_foreign_key "invoices", "units"
+  add_foreign_key "participants", "units"
   add_foreign_key "units", "leaders", column: "al_id"
   add_foreign_key "units", "leaders", column: "coach_id"
   add_foreign_key "units", "leaders", column: "lagerleiter_id"

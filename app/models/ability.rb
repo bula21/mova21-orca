@@ -13,6 +13,7 @@ class Ability
     else
       external_user_permissions(user)
     end
+    can :create, Participant # TODO: define permissions for participants
   end
 
   private

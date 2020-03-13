@@ -69,6 +69,9 @@
 .card.mt-4
   .card-body
     h2 = t('units.show.participants')
+
+    = link_to t('.participants'), unit_participants_path(@unit), class: 'btn btn-secondary'
+
     dl
 
       .row

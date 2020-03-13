@@ -1,0 +1,22 @@
+.card.mt-3
+  .card-body
+    dl
+      .row
+        .col-6
+          dt = t('activerecord.attributes.participant.full_name')
+          dd = @participant.full_name
+
+        .col-6
+          dt = t('activerecord.attributes.participant.gender')
+          dd = t("simple_form.options.participant.gender.#{@participant.gender}")
+
+      .row
+        .col-6
+          dt = t('activerecord.attributes.participant.birthdate')
+          dd = l(@participant.birthdate)
+
+        .col-6
+          dt = t('activerecord.attributes.participant.pbs_id')
+          dd = @participant.pbs_id
+
+= link_to t('buttons.back'), unit_participant_path, class: 'btn btn-secondary mt-4'

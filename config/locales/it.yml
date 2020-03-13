@@ -2,6 +2,22 @@
 it:
   activerecord:
     attributes:
+      leader:
+        birthdate: Data di nascita
+        first_name: Nome
+        full_name: Nome
+        gender: Sesso
+        last_name: Cognome
+        pbs_id: MSS ID
+        scout_name: Totem
+      participant:
+        birthdate: Data di nascita
+        first_name: Nome
+        full_name: Nome
+        gender: Sesso
+        last_name: Cognome
+        pbs_id: MSS ID
+        scout_name: Totem
       unit:
         abteilung: Sezione
         al: CSZ
@@ -224,13 +240,13 @@ it:
       title: Modificare responsabili
     index:
       title: Animatori/trici responsabili
-    messages:
-      created:
-        success: Creato con successo
-      updated:
-        success: Salvato con successo
     new:
       title: Registrare un nuovo animatore/trice
+  messages:
+    created:
+      success: Creato con successo
+    updated:
+      success: Salvato con successo!
   nav:
     language:
       de: DE
@@ -291,8 +307,17 @@ it:
     precision:
       format:
         delimiter: ''
+  participants:
+    index:
+      title: Partecipanti
+    new:
+      title: Creare Partecipanti
   simple_form:
     options:
+      participant:
+        gender:
+          female: Femminile
+          male: Maschile
       unit:
         stufe:
           pfadi: Esploratori
@@ -339,11 +364,6 @@ it:
       '911': AS Jurassienne
       '993': Pfadi Thurgau
       '994': AS Valaisan
-    messages:
-      created:
-        success: Creato con successo
-      updated:
-        success: Salvato con successo!
     new:
       title: Creare un campo
     show:
