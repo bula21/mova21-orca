@@ -4,6 +4,7 @@ class UnitExporter
   attr_reader :units
 
   HEADERS = %w[
+    id
     pbs_id
     title
     abteilung
@@ -64,6 +65,7 @@ class UnitExporter
   # rubocop: disable Metrics/MethodLength, Metrics/AbcSize
   def unit_attributes(unit)
     [
+      unit.id
       unit.pbs_id,
       unit.title,
       unit.abteilung,
