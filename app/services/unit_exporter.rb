@@ -65,7 +65,7 @@ class UnitExporter
   # rubocop: disable Metrics/MethodLength, Metrics/AbcSize
   def unit_attributes(unit)
     [
-      unit.id
+      unit.id,
       unit.pbs_id,
       unit.title,
       unit.abteilung,
