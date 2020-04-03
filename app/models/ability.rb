@@ -13,7 +13,6 @@ class Ability
     else
       external_user_permissions(user)
     end
-    can :create, Participant # TODO: define permissions for participants
   end
 
   private
@@ -23,6 +22,9 @@ class Ability
     can %i[read], Unit, lagerleiter: { pbs_id: user.pbs_id }
     # can %i[read update], Unit, coach: { pbs_id: user.pbs_id }
     can :read, Leader, pbs_id: user.pbs_id
+
+    can :read, Participant, unit: { al: { pbs_id: user.pbs_id } }
+    can :read, Participant, unit: { lagerleiter: { pbs_id: user.pbs_id } }
   end
 
   def external_user_permissions(user)
@@ -32,6 +34,9 @@ class Ability
     can :create, Unit unless user.pbs_id.present?
     can %i[read update], Unit, al: { pbs_id: user.pbs_id }
     can %i[read update], Unit, lagerleiter: { pbs_id: user.pbs_id }
+
+    can :manage, Participant, unit: { lagerleiter: { pbs_id: user.pbs_id } }
+    can :manage, Participant, unit: { al: { pbs_id: user.pbs_id } }
   end
 
   def admin_user_permissions(_user)

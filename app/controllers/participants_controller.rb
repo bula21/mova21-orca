@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class ParticipantsController < ApplicationController
-  before_action :set_participant, only: %i[show edit update destroy]
-  before_action :set_unit, only: %i[index show create new]
+  load_and_authorize_resource only: %i[show edit update destroy]
+  load_and_authorize_resource :unit, only: %i[index show create new]
 
   def index
     @participants = @unit.participants
@@ -10,9 +10,7 @@ class ParticipantsController < ApplicationController
 
   def show; end
 
-  def new
-    @participant = Participant.new
-  end
+  def new; end
 
   def edit; end
 
@@ -35,14 +33,6 @@ class ParticipantsController < ApplicationController
   end
 
   private
-
-  def set_unit
-    @unit = Unit.find params[:unit_id]
-  end
-
-  def set_participant
-    @participant = Participant.find(params[:id])
-  end
 
   def participant_params
     params.require(:participant).permit(:first_name, :last_name, :scout_name, :gender, :birthdate, :pbs_id)
