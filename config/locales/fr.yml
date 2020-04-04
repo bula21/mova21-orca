@@ -2,6 +2,22 @@
 fr:
   activerecord:
     attributes:
+      leader:
+        birthdate: Date de naissance
+        first_name: Prénom
+        full_name: Nom
+        gender: Sexe
+        last_name: Nom de famille
+        pbs_id: MSdS ID
+        scout_name: Totem
+      participant:
+        birthdate: Date de naissance
+        first_name: Prénom
+        full_name: Nom
+        gender: Sexe
+        last_name: Nom de famille
+        pbs_id: MSdS ID
+        scout_name: Totem
       unit:
         abteilung: Groupe
         al: RG
@@ -227,13 +243,13 @@ fr:
       title: Modifier les responsables
     index:
       title: Les responsables
-    messages:
-      created:
-        success: Crée avec succès
-      updated:
-        success: Enregistré avec succès
     new:
       title: Entrer un nouveau ou une nouvelle responsable
+  messages:
+    created:
+      success: Crée avec succès
+    updated:
+      success: Enregistré avec succès
   nav:
     language:
       de: DE
@@ -294,8 +310,17 @@ fr:
     precision:
       format:
         delimiter: ''
+  participants:
+    index:
+      title: Participants
+    new:
+      title: Créer articipants
   simple_form:
     options:
+      participant:
+        gender:
+          female: Féminin
+          male: Masculin
       unit:
         stufe:
           pfadi: Eclais
@@ -342,11 +367,6 @@ fr:
       '911': AS Jurassienne
       '993': Pfadi Thurgau
       '994': AS Valaisan
-    messages:
-      created:
-        success: Crée avec succès
-      updated:
-        success: Enregistré avec succès
     new:
       title: Créer un camp
     show:

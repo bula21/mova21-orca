@@ -1,0 +1,21 @@
+= simple_form_for([@unit, @participant]) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+  .row
+    .col-6
+      = f.input :first_name
+    .col-6
+      = f.input :last_name
+
+  .row
+    .col-6
+      = f.input :scout_name
+    .col-6
+      = f.input :pbs_id
+  .row
+    .col-12
+      = f.input :gender, collection: Participant.genders.symbolize_keys.keys
+      = f.input :birthdate, wrapper: :inline_date, start_year: 1930, end_year: Date.today.year
+      br
+      = f.submit t('buttons.save'), class: 'btn btn-primary'

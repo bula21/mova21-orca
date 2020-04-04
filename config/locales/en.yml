@@ -2,6 +2,22 @@
 en:
   activerecord:
     attributes:
+      leader:
+        birthdate: Birthdate
+        first_name: Firstname
+        full_name: Name
+        gender: Gender
+        last_name: Lastname
+        pbs_id: PBS ID
+        scout_name: Scoutname
+      participant:
+        birthdate: Birthdate
+        first_name: Firstname
+        full_name: Name
+        gender: Gender
+        last_name: Lastname
+        pbs_id: PBS ID
+        scout_name: Scoutname
       unit:
         abteilung: Group
         al: Group leader
@@ -204,13 +220,13 @@ en:
       title: Edit leader
     index:
       title: Manage leaders
-    messages:
-      created:
-        success: Successfully created
-      updated:
-        success: Successfully saved
     new:
       title: Register a new leader
+  messages:
+    created:
+      success: Successfully created
+    updated:
+      success: saved!
   nav:
     language:
       de: DE
@@ -271,8 +287,17 @@ en:
     precision:
       format:
         delimiter: ''
+  participants:
+    index:
+      title: Participants
+    new:
+      title: Create participants
   simple_form:
     options:
+      participant:
+        gender:
+          female: Female
+          male: Male
       unit:
         stufe:
           pfadi: Scout
@@ -319,11 +344,6 @@ en:
       '911': AS Jurassienne
       '993': Pfadi Thurgau
       '994': AS Valaisan
-    messages:
-      created:
-        success: Successfully created
-      updated:
-        success: saved!
     new:
       title: Set up a camp
     show:

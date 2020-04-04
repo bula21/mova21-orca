@@ -13,7 +13,7 @@ class LeadersController < ApplicationController
     @leader = Leader.new(leader_params)
 
     if @leader.save
-      redirect_to leaders_path, notice: I18n.t('leaders.messages.created.success')
+      redirect_to leaders_path, notice: I18n.t('messages.created.success')
     else
       render :new
     end
@@ -25,7 +25,7 @@ class LeadersController < ApplicationController
 
   def update
     if @leader.update(leader_params)
-      redirect_to leaders_path, notice: I18n.t('leaders.messages.updated.success')
+      redirect_to leaders_path, notice: I18n.t('messages.updated.success')
     else
       render :edit
     end

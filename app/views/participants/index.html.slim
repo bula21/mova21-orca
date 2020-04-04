@@ -1,0 +1,21 @@
+.h1 = t('participants.index.title')
+
+= link_to(t('buttons.create'), new_unit_participant_path, class: 'btn btn-primary mb-3') if can?(:create, Participant)
+
+.table-responsive
+  table.table
+    thead
+      tr
+        th = Participant.human_attribute_name(:full_name)
+        th = Participant.human_attribute_name(:birthdate)
+        th
+
+    tbody
+      - @participants.each do |participant|
+        tr
+          td = participant.full_name
+          td = participant.birthdate
+          td.p-1
+            - if can?(:edit, participant)
+              = link_to(t('buttons.edit'), edit_unit_participant_path(participant.unit, participant), class: 'btn btn-primary')
+

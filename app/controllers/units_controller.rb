@@ -23,7 +23,7 @@ class UnitsController < ApplicationController
     @unit = Unit.new(unit_params)
 
     if @unit.save
-      redirect_to units_path, notice: I18n.t('units.messages.created.success')
+      redirect_to units_path, notice: I18n.t('messages.created.success')
     else
       render :new
     end
@@ -35,7 +35,7 @@ class UnitsController < ApplicationController
 
   def update
     if @unit.update(unit_params)
-      redirect_to units_path, notice: I18n.t('units.messages.updated.success')
+      redirect_to units_path, notice: I18n.t('messages.updated.success')
     else
       render :edit
     end
