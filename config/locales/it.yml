@@ -79,6 +79,8 @@ it:
     back: indietro
     create: costruire
     edit: editare
+    destroy: löschen
+    show: anzeigen
     export_csv: Esportazione come csv
     save: salvare
   camp_unit_mailer:

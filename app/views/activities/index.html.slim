@@ -19,7 +19,7 @@
           td = activity.label
           td = activity.description.truncate(20)
           td = activity.location
-          td = link_to 'Show', activity
-          td = link_to 'Edit', edit_activity_path(activity)
-          td = link_to 'Destroy', activity, data: { confirm: 'Are you sure?' }, method: :delete
+          td = link_to t('buttons.show'), activity
+          td = link_to(t('buttons.edit'), edit_activity_path(activity)) if can?(:edit, activity)
+          td = link_to(t('buttons.destroy'), activity, data: { confirm: 'Are you sure?' }, method: :delete) if can?(:destroy, activity)
 

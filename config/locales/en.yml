@@ -77,6 +77,8 @@ en:
     back: Back
     create: Create
     edit: Edit
+    destroy: Delete
+    show: Show
     export_csv: Export as CSV
     save: Save
   camp_unit_mailer:

@@ -122,6 +122,7 @@ ActiveRecord::Schema.define(version: 2020_04_04_112645) do
     t.index ["translatable_id", "translatable_type", "key"], name: "index_mobility_text_translations_on_translatable_attribute"
     t.index ["translatable_id", "translatable_type", "locale", "key"], name: "index_mobility_text_translations_on_keys", unique: true
   end
+
   create_table "participants", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
