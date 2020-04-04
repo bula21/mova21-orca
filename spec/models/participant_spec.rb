@@ -3,8 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe Participant, type: :model do
-  let(:unit) { create :unit }
   subject(:participant) { create(:participant, unit: unit) }
+
+  let(:unit) { create :unit }
 
   let(:params) { attributes_for :participant }
 
