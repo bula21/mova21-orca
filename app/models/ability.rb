@@ -7,6 +7,7 @@ class Ability
     return if user.blank?
 
     admin_user_permissions(user) if user.role_admin?
+    programm_user_permissions(user) if user.role_programm?
 
     if user.pbs_id
       midata_user_permissions(user)
@@ -25,6 +26,8 @@ class Ability
 
     can :read, Participant, unit: { al: { pbs_id: user.pbs_id } }
     can :read, Participant, unit: { lagerleiter: { pbs_id: user.pbs_id } }
+
+    can :read, Activity
   end
 
   def external_user_permissions(user)
@@ -37,10 +40,16 @@ class Ability
 
     can :manage, Participant, unit: { lagerleiter: { pbs_id: user.pbs_id } }
     can :manage, Participant, unit: { al: { pbs_id: user.pbs_id } }
+
+    can :read, Activity
   end
 
   def admin_user_permissions(_user)
     can :manage, :all
     can :export, Unit
+  end
+
+  def programm_user_permissions(_user)
+    can :manage, Activity
   end
 end
