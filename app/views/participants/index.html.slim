@@ -16,5 +16,6 @@
           td = participant.full_name
           td = participant.birthdate
           td.p-1
-            = link_to(t('buttons.edit'), edit_participant_path(leader), class: 'btn btn-primary') if can?(:edit, participant)
+            - if can?(:edit, participant)
+              = link_to(t('buttons.edit'), edit_unit_participant_path(participant.unit, participant), class: 'btn btn-primary')
 

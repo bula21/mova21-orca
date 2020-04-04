@@ -320,6 +320,8 @@ de:
       title: Teilnehmende
     new:
       title: Teilnehmende erstellen
+    edit:
+      title: Teilnehmenden bearbeiten
   simple_form:
     options:
       participant:
