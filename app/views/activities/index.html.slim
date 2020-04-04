@@ -1,0 +1,25 @@
+.h1 = t('activity.index.title')
+
+= link_to(t('buttons.create'), new_activity_path, class: 'btn btn-primary mb-3') if can?(:create, Activity)
+
+.table-responsive
+  table.table
+    thead
+      tr
+        th = Activity.human_attribute_name(:label)
+        th = t('activerecord.attributes.activity.description')
+        th = t('activerecord.attributes.activity.location')
+        th
+        th
+        th
+
+    tbody
+      - @activities.each do |activity|
+        tr
+          td = activity.label
+          td = activity.description.truncate(20)
+          td = activity.location
+          td = link_to 'Show', activity
+          td = link_to 'Edit', edit_activity_path(activity)
+          td = link_to 'Destroy', activity, data: { confirm: 'Are you sure?' }, method: :delete
+

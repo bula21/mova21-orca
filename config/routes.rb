@@ -14,4 +14,5 @@ Rails.application.routes.draw do
     resources :participants, except: %i[show destroy]
   end
   resources :leaders, except: [:destroy]
+  resources :activities
 end

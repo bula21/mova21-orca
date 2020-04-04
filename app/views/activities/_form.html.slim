@@ -1,0 +1,24 @@
+= simple_form_for(@activity) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+  .form-inputs
+    = f.input :label
+    = f.input :description
+    = f.file_field :activity_documents, multiple: true
+    = f.input :location
+    = f.input :language, collection: Activity.languages.symbolize_keys.keys
+    = f.input :js_type, collection: Activity.js_types.symbolize_keys.keys
+    .row
+      .col-6
+        = f.input :participants_count_activity
+      .col-6
+        = f.input :participants_count_transport
+    .row
+      .col-6
+        = f.input :duration_activity
+      .col-6
+        = f.input :duration_journey
+
+  .actions
+    = f.submit t('buttons.save'), class: 'btn btn-primary'

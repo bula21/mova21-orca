@@ -2,6 +2,17 @@
 en:
   activerecord:
     attributes:
+      activity:
+        activity_documents: Documents
+        description: Description
+        duration_activity: Duration of the activity (Minutes)
+        duration_journey: Duration of the journey (Minutes)
+        js_type: J+S Type
+        label: Label
+        language: Language
+        location: Location
+        participants_count_activity: Paritcipant count Activity
+        participants_count_transport: Participant count Transport (incl. leaders)
       leader:
         birthdate: Birthdate
         first_name: Firstname
@@ -53,6 +64,13 @@ en:
       unit:
         one: Camp
         other: Camps
+  activity:
+    edit:
+      title: Aktivität editieren
+    index:
+      title: Aktivitäten
+    new:
+      title: Neue Aktivität erfassen
   app:
     title: Orca
   buttons:
@@ -228,6 +246,7 @@ en:
     updated:
       success: saved!
   nav:
+    activity: Activity
     language:
       de: DE
       en: EN
@@ -294,6 +313,16 @@ en:
       title: Create participants
   simple_form:
     options:
+      activity:
+        js_type:
+          la: Lageraktivität
+          ls: Lagersport
+        language:
+          de: Deutsch
+          en: Englisch
+          fr: Französisch
+          it: Italienisch
+          mixed: gemischt
       participant:
         gender:
           female: Female
