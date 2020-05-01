@@ -13,6 +13,13 @@
           dd = @activity.description
 
       .row
+        .col-12
+          dt = t('activerecord.attributes.activity.goals')
+          dd
+            ul
+              - @activity.goals.each do |s|
+                li = s.name
+      .row
         .col-6
           dt = t('activerecord.attributes.activity.language')
           dd = t("simple_form.options.activity.language.#{@activity.language}")
@@ -35,6 +42,21 @@
         .col-6
           dt = t('activerecord.attributes.activity.duration_journey')
           dd = @activity.duration_journey
+      .row
+        .col-6
+          dt = t('activerecord.attributes.activity.stufen')
+          dd
+            ul
+              - @activity.stufen.each do |s|
+                li = s.name
+        .col-6
+          dt = t('activerecord.attributes.activity.stufe_recommended')
+          dd
+            ul
+              - @activity.stufe_recommended.each do |s|
+                li = s.name
+
+
 
       .row
         .col-12

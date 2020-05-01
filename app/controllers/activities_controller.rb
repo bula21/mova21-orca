@@ -43,8 +43,8 @@ class ActivitiesController < ApplicationController
   def activity_params
     params.require(:activity).permit(:label, :description, :language, :js_type, :participants_count_activity,
                                      :participants_count_transport, :duration_activity, :duration_journey, :location,
-                                     I18n.available_locales.map { |l| :"label_#{l.to_s}"},
-                                     I18n.available_locales.map { |l| :"description_#{l.to_s}"},
-                                     activity_documents: [])
+                                     I18n.available_locales.map { |l| :"label_#{l}" },
+                                     I18n.available_locales.map { |l| :"description_#{l}" },
+                                     stufe_ids: [], stufe_recommended_ids: [], goal_ids: [], activity_documents: [])
   end
 end

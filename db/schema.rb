@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_04_112645) do
+ActiveRecord::Schema.define(version: 2020_05_01_123511) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,31 @@ ActiveRecord::Schema.define(version: 2020_04_04_112645) do
     t.integer "duration_activity"
     t.integer "duration_journey"
     t.string "location"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "activities_goals", id: false, force: :cascade do |t|
+    t.bigint "activity_id", null: false
+    t.bigint "goal_id", null: false
+    t.index ["activity_id", "goal_id"], name: "index_activities_goals_on_activity_id_and_goal_id"
+    t.index ["goal_id", "activity_id"], name: "index_activities_goals_on_goal_id_and_activity_id"
+  end
+
+  create_table "activities_stufen", id: false, force: :cascade do |t|
+    t.bigint "activity_id", null: false
+    t.bigint "stufe_id", null: false
+    t.index ["activity_id", "stufe_id"], name: "index_activities_stufen_on_activity_id_and_stufe_id"
+    t.index ["stufe_id", "activity_id"], name: "index_activities_stufen_on_stufe_id_and_activity_id"
+  end
+
+  create_table "activities_stufen_recommended", id: false, force: :cascade do |t|
+    t.bigint "activity_id", null: false
+    t.bigint "stufe_id", null: false
+  end
+
+  create_table "goals", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -134,6 +159,12 @@ ActiveRecord::Schema.define(version: 2020_04_04_112645) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["unit_id"], name: "index_participants_on_unit_id"
+  end
+
+  create_table "stufen", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "units", force: :cascade do |t|
