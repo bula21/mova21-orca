@@ -37,8 +37,8 @@ ActiveRecord::Schema.define(version: 2020_04_04_112645) do
   end
 
   create_table "activities", force: :cascade do |t|
-    t.string "label"
-    t.text "description"
+    t.string "label", null: false
+    t.text "description", null: false
     t.string "language"
     t.string "js_type"
     t.integer "participants_count_activity"
