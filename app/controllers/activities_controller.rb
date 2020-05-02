@@ -34,8 +34,13 @@ class ActivitiesController < ApplicationController
   end
 
   def destroy
-    @activity.destroy
-    redirect_to activities_url, notice: 'Activity was successfully destroyed.'
+    if params[:attachment_id]
+      @activity.activity_documents.find_by_id(params[:attachment_id]).purge
+      redirect_to edit_activity_url(@activity)
+    else
+      @activity.destroy
+      redirect_to activities_url, notice: 'Activity was successfully destroyed.'
+    end
   end
 
   private

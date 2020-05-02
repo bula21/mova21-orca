@@ -50,8 +50,18 @@
     .card-body
       .form-group
         label{for='activity_activity_documents'} = t('activerecord.attributes.activity.activity_documents')
-        br
-        = f.file_field :activity_documents, multiple: true
+        .row
+          .col-6
+            = f.file_field :activity_documents, multiple: true
+          .col-6
+            ul.list-group
+              - @activity.activity_documents.each do |document|
+                li.list-group-item
+                  = document.filename
+                  = link_to t('buttons.destroy'), activity_path(attachment_id: document.id),
+                        method: :delete,
+                        class: 'btn btn-sm btn-secondary float-right',
+                        data: { confirm: t('simple_form.confirm_unsaved') }
 
   .actions.mt-3
     = f.submit t('buttons.save'), class: 'btn btn-primary'

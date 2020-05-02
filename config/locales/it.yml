@@ -339,6 +339,7 @@ it:
     new:
       title: Creare Partecipanti
   simple_form:
+    confirm_unsaved: 'Achtung: Alle nicht gespeicherten Änderungen gehen verloren. Sind Sie sicher?'
     options:
       activity:
         js_type:
