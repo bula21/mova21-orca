@@ -12,8 +12,8 @@ ActionMailer::Base.tap do |config|
     config.smtp_settings = {
       address: ENV.fetch('SMTP_HOST'),
       port: ENV.fetch('SMTP_PORT', 587),
-      user_name: ENV.fetch('SMTP_USER'),
-      password: ENV.fetch('SMTP_PASSWORD'),
+      user_name: ENV['SMTP_USER'],
+      password: ENV['SMTP_PASSWORD'],
       authentication: ENV.fetch('SMTP_AUTH', 'plain'),
       enable_starttls_auto: true
     }

@@ -29,7 +29,7 @@ Rollbar.configure do |config|
   # via the rollbar interface.
   # Valid levels: 'critical', 'error', 'warning', 'info', 'debug', 'ignore'
   # 'ignore' will cause the exception to not be reported at all.
-  config.exception_level_filters.merge!('CanCan::AccessDenied' => 'ignore')
+  config.exception_level_filters['CanCan::AccessDenied'] = 'ignore'
   #
   # You can also specify a callable, which will be called with the exception instance.
   # config.exception_level_filters.merge!('MyCriticalException' => lambda { |e| 'critical' })
@@ -68,4 +68,4 @@ Rollbar.configure do |config|
   # setup for Heroku. See:
   # https://devcenter.heroku.com/articles/deploying-to-a-custom-rails-environment
   config.environment = ENV['ROLLBAR_ENV'].presence || Rails.env
-end
+end if ENV['ROLLBAR_ACCESS_TOKEN'].present?
