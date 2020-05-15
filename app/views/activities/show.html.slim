@@ -1,69 +1,73 @@
 .h1.pb-0 = @activity.label
+- @activity.tags.each do |tag|
+  i class="#{tag.icon}"
 
 .card.mt-3.mb-3
   .card-body
-    dl
-      .row
-        .col-12
-          dt = t('activerecord.attributes.activity.location')
-          dd = @activity.location
-      .row
-        .col-12
-          dt = t('activerecord.attributes.activity.description')
-          dd = @activity.description
+   = @activity.description
 
-      .row
-        .col-12
-          dt = t('activerecord.attributes.activity.goals')
-          dd
-            ul
-              - @activity.goals.each do |s|
-                li = s.name
-      .row
-        .col-6
-          dt = t('activerecord.attributes.activity.language')
-          dd = t("simple_form.options.activity.language.#{@activity.language}")
-        .col-6
-          dt = t('activerecord.attributes.activity.js_type')
-          dd = t("simple_form.options.activity.js_type.#{@activity.js_type}")
+.card.mt-3.mb-3
+  .card-body
+    .row
+      .col-6
+        dt = t('activerecord.attributes.activity.language')
+        dd = t("simple_form.options.activity.language.#{@activity.language}")
 
-      .row
-        .col-6
-          dt = t('activerecord.attributes.activity.participants_count_activity')
-          dd = @activity.participants_count_activity
-        .col-6
-          dt = t('activerecord.attributes.activity.participants_count_transport')
-          dd = @activity.participants_count_transport
+        dt = t('activerecord.attributes.activity.location')
+        dd = @activity.location
 
-      .row
-        .col-6
-          dt = t('activerecord.attributes.activity.duration_activity')
-          dd = @activity.duration_activity
-        .col-6
-          dt = t('activerecord.attributes.activity.duration_journey')
-          dd = @activity.duration_journey
-      .row
-        .col-6
-          dt = t('activerecord.attributes.activity.stufen')
-          dd
-            ul
-              - @activity.stufen.each do |s|
-                li = s.name
-        .col-6
-          dt = t('activerecord.attributes.activity.stufe_recommended')
-          dd
-            ul
-              - @activity.stufe_recommended.each do |s|
-                li = s.name
-
-
-
-      .row
-        .col-12
-          dt = t('activerecord.attributes.activity.activity_documents')
+      .col-6
+        dt = t('activerecord.attributes.activity.goals')
+        dd
           ul
-            - @activity.activity_documents.each do |document|
-              li = link_to document.filename, url_for(document)
+            - @activity.goals.each do |s|
+              li = s.name
+.card.mt-3.mb-3
+  .card-body
+    .row
+      .col-6
+        dt = t('activerecord.attributes.activity.js_type')
+        dd = t("simple_form.options.activity.js_type.#{@activity.js_type}")
+
+    .row
+      .col-6
+        dt = t('activerecord.attributes.activity.participants_count_activity')
+        dd = @activity.participants_count_activity
+      .col-6
+        dt = t('activerecord.attributes.activity.participants_count_transport')
+        dd = @activity.participants_count_transport
+
+    .row
+      .col-6
+        dt = t('activerecord.attributes.activity.duration_activity')
+        dd = @activity.duration_activity
+      .col-6
+        dt = t('activerecord.attributes.activity.duration_journey')
+        dd = @activity.duration_journey
+    .row
+      .col-6
+        dt = t('activerecord.attributes.activity.stufen')
+        dd
+          ul
+            - @activity.stufen.each do |s|
+              li = s.name
+      .col-6
+        dt = t('activerecord.attributes.activity.stufe_recommended')
+        dd
+          ul
+            - @activity.stufe_recommended.each do |s|
+              li = s.name
+
+
+
+.card.mt-3.mb-3
+  .card-body
+    .row
+      .col-6
+        dt = t('activerecord.attributes.activity.activity_documents')
+        ul.list-group
+          - @activity.activity_documents.each do |document|
+            li.list-group-item = link_to document.filename, url_for(document)
 
 
 => link_to t('buttons.edit'), edit_activity_path(@activity), class: 'btn btn-primary'

@@ -1,0 +1,24 @@
+.h1 Listing tags
+
+= link_to 'New Tag', new_tag_path, class: 'btn btn-primary mb-3'
+
+.table-responsive
+  table.table
+    thead
+      tr
+        th Code
+        th Label
+        th Icon
+        th
+        th
+        th
+
+    tbody
+      - @tags.each do |tag|
+        tr
+          td = tag.code
+          td = tag.label
+          td = tag.icon
+          td = link_to 'Show', tag
+          td = link_to 'Edit', edit_tag_path(tag)
+          td = link_to 'Destroy', tag, data: { confirm: 'Are you sure?' }, method: :delete

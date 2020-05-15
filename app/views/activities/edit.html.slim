@@ -2,7 +2,6 @@
 
 == render 'form'
 
-=> link_to 'Show', @activity
+=> link_to 'Show', @activity, class: 'btn btn-secondary'
 '|
-=< link_to t('buttons.back'), activities_path
-
+= link_to t('buttons.back'), activities_path, class: 'btn btn-secondary'

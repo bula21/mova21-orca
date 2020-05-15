@@ -4,6 +4,7 @@ class Activity < ApplicationRecord
   extend Mobility
 
   has_many_attached :activity_documents
+  has_and_belongs_to_many :tags
   has_and_belongs_to_many :goals
   has_and_belongs_to_many :stufen
   has_and_belongs_to_many :stufe_recommended, class_name: 'Stufe', join_table: 'activities_stufen_recommended'

@@ -23,6 +23,7 @@
     .card-body
       .form-inputs
         = f.association :goals, as: :check_boxes
+        = f.association :tags, as: :check_boxes
       .row
         .col-6
           = f.association :stufen, as: :check_boxes

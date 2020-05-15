@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_01_123511) do
+ActiveRecord::Schema.define(version: 2020_05_02_142343) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,13 @@ ActiveRecord::Schema.define(version: 2020_05_01_123511) do
   create_table "activities_stufen_recommended", id: false, force: :cascade do |t|
     t.bigint "activity_id", null: false
     t.bigint "stufe_id", null: false
+  end
+
+  create_table "activities_tags", id: false, force: :cascade do |t|
+    t.bigint "activity_id", null: false
+    t.bigint "tag_id", null: false
+    t.index ["activity_id", "tag_id"], name: "index_activities_tags_on_activity_id_and_tag_id"
+    t.index ["tag_id", "activity_id"], name: "index_activities_tags_on_tag_id_and_activity_id"
   end
 
   create_table "goals", force: :cascade do |t|
@@ -163,6 +170,14 @@ ActiveRecord::Schema.define(version: 2020_05_01_123511) do
 
   create_table "stufen", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "code", null: false
+    t.string "label", null: false
+    t.string "icon", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -6,6 +6,8 @@ class Ability
   def initialize(user)
     return if user.blank?
 
+    can :manage, Tag # TODO: define rights for tags
+
     admin_user_permissions(user) if user.role_admin?
     programm_user_permissions(user) if user.role_programm?
 

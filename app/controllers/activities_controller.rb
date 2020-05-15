@@ -50,6 +50,7 @@ class ActivitiesController < ApplicationController
                                      :participants_count_transport, :duration_activity, :duration_journey, :location,
                                      I18n.available_locales.map { |l| :"label_#{l}" },
                                      I18n.available_locales.map { |l| :"description_#{l}" },
-                                     stufe_ids: [], stufe_recommended_ids: [], goal_ids: [], activity_documents: [])
+                                     stufe_ids: [], stufe_recommended_ids: [], goal_ids: [], tag_ids: [],
+                                     activity_documents: [])
   end
 end
