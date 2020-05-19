@@ -21,21 +21,21 @@ class EsrService
     ref.reverse.chars.in_groups_of(5).reverse.map { |group| group.reverse.join }.join(' ')
   end
 
-    def code_line(esr_participant_nr: 'XXX-XXXXX-X', ref: , amount: , esr_mode: '01')
-      code = {
-        esr_mode: esr_mode,
-        amount: amount * 100,
-        checksum_1: checksum(esr_mode.to_s + format('%<amount>010d', amount: amount * 100)),
-        ref: ref.to_s.rjust(26, '0'),
-        account_code: esr_participant_nr
-      }
-      format('%<esr_mode>s%<amount>010d%<checksum_1>d>%<ref>s+ %<account_code>s>', code)
-    end
+  def code_line(esr_participant_nr: 'XXX-XXXXX-X', ref:, amount:, esr_mode: '01')
+    code = {
+      esr_mode: esr_mode,
+      amount: amount * 100,
+      checksum_1: checksum(esr_mode.to_s + format('%<amount>010d', amount: amount * 100)),
+      ref: ref.to_s.rjust(26, '0'),
+      account_code: esr_participant_nr
+    }
+    format('%<esr_mode>s%<amount>010d%<checksum_1>d>%<ref>s+ %<account_code>s>', code)
+  end
 
   def split_amount(amount)
     [
-    amount.truncate,
-    ((amount * 100) - (amount.truncate * 100)).to_i
-    ] 
+      amount.truncate,
+      ((amount * 100) - (amount.truncate * 100)).to_i
+    ]
   end
 end

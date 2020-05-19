@@ -25,7 +25,7 @@ class InvoiceBuilder
     i18n_scope = 'invoices.pre_registration_invoice.invoice_parts'
 
     InvoicePart.new(
-      amount: price_per_participant * participants, 
+      amount: price_per_participant * participants,
       label: I18n.t(stufe, scope: i18n_scope + '.label'),
       breakdown: I18n.t('breakdown', scope: i18n_scope,
                                      price_per_participant: number_to_currency(price_per_participant, unit: 'CHF'),

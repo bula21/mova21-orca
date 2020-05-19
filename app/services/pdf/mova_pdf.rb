@@ -8,11 +8,11 @@ module Pdf
     def prepare_document(document)
       document.instance_exec do
         font_families.update('Mova' => {
-                                          normal: File.join(FONTS_PATH, 'mova/normal.ttf'),
-                                          #  italic: File.join(FONTS_PATH, 'arial/italic.ttf'),
-                                          #  bold_italic: File.join(FONTS_PATH, 'arial.ttf')
-                                          bold: File.join(FONTS_PATH, 'mova/bold.ttf')
-                                        })
+                               normal: File.join(FONTS_PATH, 'mova/normal.ttf'),
+                               #  italic: File.join(FONTS_PATH, 'arial/italic.ttf'),
+                               #  bold_italic: File.join(FONTS_PATH, 'arial.ttf')
+                               bold: File.join(FONTS_PATH, 'mova/bold.ttf')
+                             })
         font 'Mova'
         font_size(FONT_SIZE)
       end
@@ -36,7 +36,7 @@ module Pdf
       image image_source, at: [bounds.right - width, bounds.top], width: width
     end
 
-    renderable :header do 
+    renderable :header do
       bounding_box [bounds.left, bounds.top - 44], width: FULL_WIDTH, height: 55 do
         text title, size: 16, style: :bold
         move_down FONT_SIZE

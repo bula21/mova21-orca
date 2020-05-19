@@ -7,11 +7,13 @@ class LimesurveyService
   def initialize(username = ENV['LIMESURVEY_USERNAME'],
                  password = ENV['LIMESURVEY_PASSWORD'],
                  survey_id = ENV['LIMESURVEY_SURVEY_ID'])
+    @username = username
+    @password = password
     @survey_id = survey_id
   end
 
   def session_key
-    @session_key ||= fetch_session_key(username, password)
+    @session_key ||= fetch_session_key(@username, @password)
   end
 
   def url(token:, lang: nil)

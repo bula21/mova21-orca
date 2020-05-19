@@ -11,6 +11,7 @@ services:
     volumes:
       - .:/app:delegated
       - ./config/database.docker.yml:/app/config/database.yml:ro
+      - ./tmp/fonts/mova:/app/app/webpacker/fonts/mova:ro
     ports:
       - '3000:3000'
     entrypoint: [".docker/entrypoints/app.sh"]
@@ -39,7 +40,7 @@ services:
       DEVISE_PEPPER: 'rake secret'
       DEVISE_SECRET_KEY: 'rake secret'
       ROOT_CAMP_UNIT_ID_WOLF: 1328
-      ROOT_CAMP_UNIT_ID_PFADI: 1337
+      ROOT_CAMP_UNIT_ID_PFADI: 1329
       ROOT_CAMP_UNIT_ID_PIO: 1328
       ROOT_CAMP_UNIT_ID_PTA: 1328
       SMTP_HOST: mail

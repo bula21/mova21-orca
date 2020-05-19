@@ -12,9 +12,9 @@ class Invoice < ApplicationRecord
   before_update :generate_pdf
   before_save :recalculate_amount
   after_save :set_ref
-  after_create do 
+  after_create do
     set_ref
-    generate_pdf && save 
+    generate_pdf && save
   end
 
   def generate_pdf
@@ -34,6 +34,6 @@ class Invoice < ApplicationRecord
   end
 
   def recalculate_amount
-    self.amount= invoice_parts.reduce(0) { |result, invoice_part| invoice_part.amount + result }
+    self.amount = invoice_parts.reduce(0) { |result, invoice_part| invoice_part.amount + result }
   end
 end

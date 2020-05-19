@@ -12,7 +12,7 @@ module Pdf
       @invoice = invoice
     end
 
-    def i18n_scope 
+    def i18n_scope
       [:invoices, @invoice.category]
     end
 
@@ -33,18 +33,20 @@ module Pdf
     renderable :recipient_address do
       bounding_box [320, 622], width: 140, height: 90 do
         text @invoice.unit.abteilung
-        @invoice.invoice_address.lines { |line| text(line) }
+        @invoice.invoice_address&.lines { |line| text(line) }
       end
     end
 
-    renderable :issued_at do 
+    renderable :issued_at do
+      next if @invoice.issued_at.blank?
+
       text I18n.t('issued_at', scope: i18n_scope, issued_at: I18n.l(@invoice.issued_at))
       move_down font_size
     end
 
-    renderable :pre_text do 
-      interpolation_data = { 
-        salutation_name: @invoice.unit.lagerleiter&.salutation_name, 
+    renderable :pre_text do
+      interpolation_data = {
+        salutation_name: @invoice.unit.lagerleiter&.salutation_name,
         camp_unit_title: @invoice.unit.title
       }
       I18n.t('pre_text', interpolation_data.merge(scope: i18n_scope)).lines.each { |line| text(line) }
@@ -54,15 +56,15 @@ module Pdf
       move_down 20
       table invoice_parts_table_data,
             column_widths: [169, 169, 116],
-            cell_style: { borders: [:left, :right, :top, :bottom], padding: [2, 4, 4, 2] } do
+            cell_style: { borders: %i[left right top bottom], padding: [2, 4, 4, 2] } do
         column(2).style(align: :right)
         column(3).style(align: :right)
-        row(-1).style(borders: [:left, :right, :top, :bottom], font_style: :bold, padding: [4, 4, 4, 0])
+        row(-1).style(borders: %i[left right top bottom], font_style: :bold, padding: [4, 4, 4, 0])
       end
       move_down 20
     end
 
-    renderable :post_text do 
+    renderable :post_text do
       I18n.t('post_text', scope: i18n_scope).lines.each { |line| text(line) }
     end
 
@@ -97,17 +99,17 @@ module Pdf
     def payment_info_table_data
       I18n.with_options scope: %i[invoices payment_info] do |i18n|
         [
-          [{ content: i18n.t('recipient_address'), rowspan: 4 }, 
-            i18n.t('recipient_name_label'), i18n.t('recipient_name')],
+          [{ content: i18n.t('recipient_address'), rowspan: 4 },
+           i18n.t('recipient_name_label'), i18n.t('recipient_name')],
           [i18n.t('recipient_account_label'), i18n.t('recipient_account')],
           [i18n.t('ref_label'), esr_service.format_ref(@invoice.ref)],
-          [i18n.t('amount_label'), number_to_currency(@invoice.amount, unit: 'CHF')],
+          [i18n.t('amount_label'), number_to_currency(@invoice.amount, unit: 'CHF')]
         ]
       end
     end
 
-    def esr_service 
-      @esr_service ||= EsrService.new 
+    def esr_service
+      @esr_service ||= EsrService.new
     end
   end
 end

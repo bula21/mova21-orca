@@ -7,6 +7,7 @@ FactoryBot.define do
     issued_at { 1.week.ago }
     payable_until { 3.months.from_now }
     text { Faker::Lorem.sentences }
+    category { :pre_registration_invoice }
   end
 
   trait :with_invoice_parts do
