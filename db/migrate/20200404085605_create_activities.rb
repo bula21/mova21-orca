@@ -3,7 +3,7 @@ class CreateActivities < ActiveRecord::Migration[6.0]
     create_table :activities do |t|
       t.string :label, null: false
       t.text :description
-      t.string :language
+           t.string :language, null: false
       t.string :js_type
       t.integer :participants_count_activity
       t.integer :participants_count_transport
