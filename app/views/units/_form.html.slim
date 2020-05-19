@@ -1,5 +1,9 @@
 = simple_form_for @unit do |f|
-  = f.input :title, autofocus: true
+  .row
+    .col-10
+      = f.input :title, autofocus: true
+    .col-2
+      = f.input :language, collection: I18n.available_locales
   .row
     .col-6
       = f.input :abteilung

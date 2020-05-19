@@ -31,6 +31,7 @@ it:
         full_name: Nome completo
         kv_id: Associazione cantonale
         lagerleiter: Direzione del campo
+        language: Linguaggio
         starts_at: Inizio il
         stufe: Branca
         title: Titolo

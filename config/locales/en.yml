@@ -30,7 +30,8 @@ en:
         expected_participants_m: Expected number of participants (m)
         full_name: Full Name
         kv_id: Cantonal association
-        lagerleiter: Main leader
+        lagerleiter: Main unit leader
+        language: Language
         starts_at: Start on
         stufe: Stufe
         title: Title

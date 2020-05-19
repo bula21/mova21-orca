@@ -4,12 +4,14 @@ class LimesurveyService
   BASEURL = 'https://limesurvey.bula21.ch/index.php'
   ADMIN_REMOTECONTROL_URL = URI.parse(BASEURL + '/admin/remotecontrol')
 
-  attr_reader :session_key
   def initialize(username = ENV['LIMESURVEY_USERNAME'],
                  password = ENV['LIMESURVEY_PASSWORD'],
                  survey_id = ENV['LIMESURVEY_SURVEY_ID'])
-    @session_key = fetch_session_key(username, password)
     @survey_id = survey_id
+  end
+
+  def session_key
+    @session_key ||= fetch_session_key(username, password)
   end
 
   def url(token:, lang: nil)

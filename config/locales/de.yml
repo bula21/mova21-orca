@@ -31,6 +31,7 @@ de:
         full_name: Vollständiger Name
         kv_id: KV
         lagerleiter: Lagerleiter
+        language: Sprache
         starts_at: Beginn am
         stufe: Stufe
         title: Titel
@@ -235,6 +236,43 @@ de:
       create: "%{model} erstellen"
       submit: "%{model} speichern"
       update: "%{model} aktualisieren"
+  invoices:
+    payment_info:
+      amount_label: Betrag
+      recipient_name_label: Zugunsten von
+      recipient_name: Verein BuLa 2021, 3011 Bern
+      recipient_account_label: Konto-Nummer
+      recipient_account: XX-XXXXX-X
+      ref_label: ESR-Referenznummer
+      recipient_address: |-
+        Verein BuLa 2021
+        Da Woauchdiepbsist 12
+        3011 Bern 
+        email@bula21.ch 
+        MwSt. 123-4567
+    pre_registration_invoice:
+      title: "Rechnung: %{ref}"
+      subtitle: "Lagerbeitrag Abteilungen Bundeslager 2021"
+      invoice_parts:
+        label: 
+          wolf: TN Wolfsstufe
+          pfadi: TN Pfadistufe
+          pta: TN PTA
+          pio: TN Piostufe
+          leitung: Leitung
+        breakdown: "%{participants} × %{price_per_participant}"
+      pre_text: |-
+        Hallo %{salutation_name}
+
+        Du hast deine Einheit %{camp_unit_title} erfolgreich für das mova im Goms vorangemeldet. Wir bitten dich, die Rechnung bis 31. Juli 2020 zu begleichen. 
+        Mova - on y va!
+      post_text: |-
+        Die Voranmeldegebühr ist eine sogenannte Anzahlung und wird bei der Bezahlung des definitiven Lagerbeitrags in Abzug gebracht. 
+
+        Meldet sich eine Einheit nach der provisorischen Anmeldung wieder ab (nimmt also nicht teil), dann wird die Voranmeldegebühr zurückerstattet.
+
+        Du kannst die unten stehenden Informationen nutzen, um mit Online-Banking zu bezahlen:
+      issued_at: "Bern, %{issued_at}"
   leaders:
     edit:
       title: Leitperson editieren

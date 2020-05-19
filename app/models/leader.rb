@@ -18,4 +18,17 @@ class Leader < ApplicationRecord
   def first_and_last_name
     [first_name, last_name].join(' ')
   end
+
+  def salutation_name
+    [scout_name, first_name].first(&:present?)
+  end
+
+  def address_lines
+    [
+      full_name,
+      address,
+      [zip_code, town].join(' '),
+      country
+    ].flatten.compact.join("\n")
+  end
 end

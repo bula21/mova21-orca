@@ -92,4 +92,13 @@
           dt = t('activerecord.attributes.unit.expected_participants_m')
           dd = @unit.expected_participants_m
 
+- if @unit.invoices.any?
+  .card.mt-4
+    .card-body
+      h2 = t('units.show.invoices')
+
+      ul
+        - @unit.invoices.each do |invoice|
+          li= link_to invoice.filename, url_for(invoice.pdf)
+
 = link_to t('buttons.back'), units_path, class: 'btn btn-secondary mt-4'
