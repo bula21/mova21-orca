@@ -11,7 +11,7 @@ services:
     volumes:
       - .:/app:delegated
       - ./config/database.docker.yml:/app/config/database.yml:ro
-      - ./tmp/fonts/mova:/app/app/webpacker/fonts/mova:ro
+      # - ./tmp/fonts/mova:/app/app/webpacker/fonts/mova:ro
     ports:
       - '3000:3000'
     entrypoint: [".docker/entrypoints/app.sh"]

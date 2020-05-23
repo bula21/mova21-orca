@@ -25,7 +25,7 @@ module Pdf
         page_size: 'A4',
         optimize_objects: true,
         compress: true,
-        margin: [50, 70, 50, 70],
+        margin: [40, 70, 50, 70],
         align: :left, kerning: true
       }
     end
@@ -33,17 +33,7 @@ module Pdf
     renderable :logo do
       image_source = Rails.root.join('app/webpacker/images/mova-logo.png')
       width = 135
-      image image_source, at: [bounds.right - width, bounds.top], width: width
-    end
-
-    renderable :header do
-      bounding_box [bounds.left, bounds.top - 44], width: FULL_WIDTH, height: 55 do
-        text title, size: 16, style: :bold
-        move_down FONT_SIZE
-        text subtitle, size: 14
-        move_down FONT_SIZE
-        stroke { horizontal_rule }
-      end
+      image image_source, at: [bounds.right - width + 43, bounds.top + 16], width: width
     end
   end
 end

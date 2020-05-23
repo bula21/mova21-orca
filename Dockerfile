@@ -1,8 +1,6 @@
 ### === base === ###                 
 FROM ruby:2.7.0-alpine AS base
 RUN apk add --no-cache --update postgresql-dev tzdata nodejs
-
-ENV GEM_HOME=/app/vendor/gems
 RUN gem install bundler 
 
 RUN mkdir -p /app
@@ -35,7 +33,7 @@ ENV NODE_ENV=production
                                        
 COPY --chown=app . /app     
 
-RUN bundle config deployment true && bundle config without test:development && \
+RUN bundle config without test:development && \
  bundle install && bundle clean && bundle package
 RUN yarn install              
 
