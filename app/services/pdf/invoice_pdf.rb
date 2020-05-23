@@ -51,7 +51,7 @@ module Pdf
       move_down FONT_SIZE
       text I18n.t(:title, scope: i18n_scope, ref: @invoice.ref), style: :bold
 
-      move_down (FONT_SIZE * 2)
+      move_down(FONT_SIZE * 2)
     end
 
     renderable :pre_text do
