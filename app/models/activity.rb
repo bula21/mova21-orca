@@ -13,7 +13,8 @@ class Activity < ApplicationRecord
   enum block_type: { la: 'la', ls: 'ls', voila: 'voila' }
   enum simo: { berg: 'berg', wasser: 'wasser' }
 
-  validates :label, :description, :language, presence: true
+  validates :label, :description, :language, :block_type, :participants_count_activity,
+            :participants_count_transport, :stufen, :stufe_recommended, presence: true
 
   translates :label, type: :string, locale_accessors: true, fallbacks: true
   translates :description, type: :text, locale_accessors: true, fallbacks: true

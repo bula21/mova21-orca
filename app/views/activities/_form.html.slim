@@ -22,12 +22,12 @@
   .card.mt-3
     .card-body
       .form-inputs
-        = f.association :goals, as: :check_boxes
-        = f.association :tags, as: :check_boxes
       .row
         .col-6
-          = f.association :stufen, as: :check_boxes
+          = f.association :goals, as: :check_boxes
+          = f.association :tags, as: :check_boxes
         .col-6
+          = f.association :stufen, as: :check_boxes
           = f.association :stufe_recommended, as: :check_boxes
   .card.mt-3
     .card-body
