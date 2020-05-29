@@ -9,6 +9,7 @@ it:
         duration_journey: Dauer der Anreise (Minuten)
         goals: Leitziele
         block_type: J+S Art
+        simo: Sicherheitsmodul
         label: Bezeichnung
         language: Sprache
         location: Ort (grob)
@@ -342,6 +343,9 @@ it:
     confirm_unsaved: 'Achtung: Alle nicht gespeicherten Änderungen gehen verloren. Sind Sie sicher?'
     options:
       activity:
+        simo:
+          berg: Berg
+          wasser: Wasser
         block_type:
           la: Lageraktivität
           ls: Lagersport

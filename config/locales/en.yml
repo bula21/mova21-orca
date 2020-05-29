@@ -9,6 +9,7 @@ en:
         duration_journey: Duration of the journey (Minutes)
         goals: Leitziele
         block_type: J+S Type
+        simo: Sicherheitsmodul
         label: Label
         language: Language
         location: Location
@@ -322,6 +323,9 @@ en:
     confirm_unsaved: 'Achtung: Alle nicht gespeicherten Änderungen gehen verloren. Sind Sie sicher?'
     options:
       activity:
+        simo:
+          berg: Berg
+          wasser: Wasser
         block_type:
           la: Lageraktivität
           ls: Lagersport

@@ -29,6 +29,10 @@
         dt = t('activerecord.attributes.activity.block_type')
         dd = t(@activity.block_type || 'none', scope: 'simple_form.options.activity.block_type')
 
+      .col-6
+        dt = t('activerecord.attributes.activity.simo')
+        dd = t(@activity.simo || 'none', scope: 'simple_form.options.activity.simo')
+
     .row
       .col-6
         dt = t('activerecord.attributes.activity.participants_count_activity')

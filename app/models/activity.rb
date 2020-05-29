@@ -11,6 +11,7 @@ class Activity < ApplicationRecord
 
   enum language: { de: 'de', fr: 'fr', it: 'it', en: 'en', mixed: 'mixed' }
   enum block_type: { la: 'la', ls: 'ls', voila: 'voila' }
+  enum simo: { berg: 'berg', wasser: 'wasser' }
 
   validates :label, :description, :language, presence: true
 

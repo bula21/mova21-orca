@@ -32,9 +32,14 @@
   .card.mt-3
     .card-body
       .form-inputs
-        = f.input :location
-        = f.input :language, collection: Activity.languages.symbolize_keys.keys
-        = f.input :block_type, collection: Activity.block_types.symbolize_keys.keys
+        .row
+          .col-6
+            = f.input :location
+            = f.input :block_type, collection: Activity.block_types.symbolize_keys.keys
+          .col-6
+            = f.input :language, collection: Activity.languages.symbolize_keys.keys
+            = f.input :simo, collection: Activity.simos.symbolize_keys.keys
+
         .row
           .col-6
             = f.input :participants_count_activity
