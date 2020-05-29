@@ -34,17 +34,23 @@ class ActivitiesController < ApplicationController
   end
 
   def destroy
-    @activity.destroy
-    redirect_to activities_url, notice: 'Activity was successfully destroyed.'
+    if params[:attachment_id]
+      @activity.activity_documents.find_by_id(params[:attachment_id]).purge
+      redirect_to edit_activity_url(@activity)
+    else
+      @activity.destroy
+      redirect_to activities_url, notice: 'Activity was successfully destroyed.'
+    end
   end
 
   private
 
   def activity_params
-    params.require(:activity).permit(:label, :description, :language, :js_type, :participants_count_activity,
+    params.require(:activity).permit(:label, :description, :language, :block_type, :simo, :participants_count_activity,
                                      :participants_count_transport, :duration_activity, :duration_journey, :location,
-                                     I18n.available_locales.map { |l| :"label_#{l.to_s}"},
-                                     I18n.available_locales.map { |l| :"description_#{l.to_s}"},
+                                     I18n.available_locales.map { |l| :"label_#{l}" },
+                                     I18n.available_locales.map { |l| :"description_#{l}" },
+                                     stufe_ids: [], stufe_recommended_ids: [], goal_ids: [], tag_ids: [],
                                      activity_documents: [])
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_04_112645) do
+ActiveRecord::Schema.define(version: 2020_05_29_104329) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,15 +37,48 @@ ActiveRecord::Schema.define(version: 2020_04_04_112645) do
   end
 
   create_table "activities", force: :cascade do |t|
-    t.string "label", null: false
-    t.text "description", null: false
-    t.string "language"
-    t.string "js_type"
+    t.jsonb "label", default: {}
+    t.jsonb "description", default: {}
+    t.string "language", null: false
+    t.string "block_type"
     t.integer "participants_count_activity"
     t.integer "participants_count_transport"
     t.integer "duration_activity"
     t.integer "duration_journey"
     t.string "location"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "simo"
+  end
+
+  create_table "activities_goals", id: false, force: :cascade do |t|
+    t.bigint "activity_id", null: false
+    t.bigint "goal_id", null: false
+    t.index ["activity_id", "goal_id"], name: "index_activities_goals_on_activity_id_and_goal_id"
+    t.index ["goal_id", "activity_id"], name: "index_activities_goals_on_goal_id_and_activity_id"
+  end
+
+  create_table "activities_stufen", id: false, force: :cascade do |t|
+    t.bigint "activity_id", null: false
+    t.bigint "stufe_id", null: false
+    t.index ["activity_id", "stufe_id"], name: "index_activities_stufen_on_activity_id_and_stufe_id"
+    t.index ["stufe_id", "activity_id"], name: "index_activities_stufen_on_stufe_id_and_activity_id"
+  end
+
+  create_table "activities_stufen_recommended", id: false, force: :cascade do |t|
+    t.bigint "activity_id", null: false
+    t.bigint "stufe_id", null: false
+  end
+
+  create_table "activities_tags", id: false, force: :cascade do |t|
+    t.bigint "activity_id", null: false
+    t.bigint "tag_id", null: false
+    t.index ["activity_id", "tag_id"], name: "index_activities_tags_on_activity_id_and_tag_id"
+    t.index ["tag_id", "activity_id"], name: "index_activities_tags_on_tag_id_and_activity_id"
+  end
+
+  create_table "goals", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -134,6 +167,20 @@ ActiveRecord::Schema.define(version: 2020_04_04_112645) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["unit_id"], name: "index_participants_on_unit_id"
+  end
+
+  create_table "stufen", force: :cascade do |t|
+    t.jsonb "name", default: {}
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "code", null: false
+    t.string "label", null: false
+    t.string "icon", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "units", force: :cascade do |t|

@@ -5,7 +5,7 @@ class Ability
 
   def initialize(user)
     return if user.blank?
-
+    
     admin_user_permissions(user) if user.role_admin?
     programm_user_permissions(user) if user.role_programm?
 
@@ -51,5 +51,6 @@ class Ability
 
   def programm_user_permissions(_user)
     can :manage, Activity
+    can :manage, Tag
   end
 end

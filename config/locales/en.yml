@@ -7,12 +7,16 @@ en:
         description: Description
         duration_activity: Duration of the activity (Minutes)
         duration_journey: Duration of the journey (Minutes)
-        js_type: J+S Type
+        goals: Leitziele
+        block_type: J+S Type
+        simo: Sicherheitsmodul
         label: Label
         language: Language
         location: Location
         participants_count_activity: Paritcipant count Activity
         participants_count_transport: Participant count Transport (incl. leaders)
+        stufe_recommended: Age recommended
+        stufen: Age
       leader:
         birthdate: Birthdate
         first_name: Firstname
@@ -76,11 +80,11 @@ en:
   buttons:
     back: Back
     create: Create
-    edit: Edit
     destroy: Delete
-    show: Show
+    edit: Edit
     export_csv: Export as CSV
     save: Save
+    show: Show
   camp_unit_mailer:
     complete_notification:
       body: |-
@@ -309,16 +313,23 @@ en:
       format:
         delimiter: ''
   participants:
+    edit:
+      title: Edit participants
     index:
       title: Participants
     new:
       title: Create participants
   simple_form:
+    confirm_unsaved: 'Achtung: Alle nicht gespeicherten Änderungen gehen verloren. Sind Sie sicher?'
     options:
       activity:
-        js_type:
+        simo:
+          berg: Berg
+          wasser: Wasser
+        block_type:
           la: Lageraktivität
           ls: Lagersport
+          voila: Voila Bula
         language:
           de: Deutsch
           en: Englisch

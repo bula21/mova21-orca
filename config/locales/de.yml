@@ -7,12 +7,16 @@ de:
         description: Beschreibung
         duration_activity: Dauer der Aktivität (Minuten)
         duration_journey: Dauer der Anreise (Minuten)
-        js_type: J+S Art
+        goals: Leitziele
+        block_type: J+S Art
+        simo: Sicherheitsmodul
         label: Bezeichnung
         language: Sprache
         location: Ort (grob)
         participants_count_activity: Anz. TN Aktivität
         participants_count_transport: Anz. TN Transport (inkl. Leitung)
+        stufe_recommended: Stufen Empfohlen
+        stufen: Stufen möglich
       leader:
         birthdate: Geburtsdatum
         first_name: Vorname
@@ -77,11 +81,11 @@ de:
   buttons:
     back: zurück
     create: Erstellen
-    edit: editieren
     destroy: löschen
-    show: anzeigen
+    edit: editieren
     export_csv: Export als CSV
     save: Speichern
+    show: anzeigen
   camp_unit_mailer:
     complete_notification:
       body: |-
@@ -337,28 +341,33 @@ de:
       format:
         delimiter: ''
   participants:
+    edit:
+      title: Teilnehmenden bearbeiten
     index:
       title: Teilnehmende
     new:
       title: Teilnehmende erstellen
-    edit:
-      title: Teilnehmenden bearbeiten
   simple_form:
+    confirm_unsaved: 'Achtung: Alle nicht gespeicherten Änderungen gehen verloren. Sind Sie sicher?'
     options:
-      participant:
-        gender:
-          female: Weiblich
-          male: Männlich
       activity:
-        js_type:
+        simo:
+          berg: Berg
+          wasser: Wasser
+        block_type:
           la: Lageraktivität
           ls: Lagersport
+          voila: Voila Bula
         language:
           de: Deutsch
           en: Englisch
           fr: Französisch
           it: Italienisch
           mixed: gemischt
+      participant:
+        gender:
+          female: Weiblich
+          male: Männlich
       unit:
         stufe:
           pfadi: Pfadi
