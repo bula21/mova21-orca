@@ -4,7 +4,7 @@
 
 .card.mt-3.mb-3
   .card-body
-   = @activity.description
+    = markdown(@activity.description).html_safe
 
 .card.mt-3.mb-3
   .card-body
