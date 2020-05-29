@@ -8,7 +8,7 @@ it:
         duration_activity: Dauer der Aktivität (Minuten)
         duration_journey: Dauer der Anreise (Minuten)
         goals: Leitziele
-        js_type: J+S Art
+        block_type: J+S Art
         label: Bezeichnung
         language: Sprache
         location: Ort (grob)
@@ -342,7 +342,7 @@ it:
     confirm_unsaved: 'Achtung: Alle nicht gespeicherten Änderungen gehen verloren. Sind Sie sicher?'
     options:
       activity:
-        js_type:
+        block_type:
           la: Lageraktivität
           ls: Lagersport
           voila: Voila Bula

@@ -34,7 +34,7 @@
       .form-inputs
         = f.input :location
         = f.input :language, collection: Activity.languages.symbolize_keys.keys
-        = f.input :js_type, collection: Activity.js_types.symbolize_keys.keys
+        = f.input :block_type, collection: Activity.block_types.symbolize_keys.keys
         .row
           .col-6
             = f.input :participants_count_activity

@@ -1,8 +1,8 @@
 class CreateActivities < ActiveRecord::Migration[6.0]
   def change
     create_table :activities do |t|
-      t.string :label, null: false
-      t.text :description, null: false
+      t.jsonb :label, default: {}
+      t.jsonb :description, default: {}
       t.string :language, null: false
       t.string :js_type
       t.integer :participants_count_activity

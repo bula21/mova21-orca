@@ -26,8 +26,8 @@
   .card-body
     .row
       .col-6
-        dt = t('activerecord.attributes.activity.js_type')
-        dd = t("simple_form.options.activity.js_type.#{@activity.js_type}")
+        dt = t('activerecord.attributes.activity.block_type')
+        dd = t(@activity.block_type || 'none', scope: 'simple_form.options.activity.block_type')
 
     .row
       .col-6

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_02_142343) do
+ActiveRecord::Schema.define(version: 2020_05_29_094923) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,10 +37,10 @@ ActiveRecord::Schema.define(version: 2020_05_02_142343) do
   end
 
   create_table "activities", force: :cascade do |t|
-    t.string "label", null: false
-    t.text "description", null: false
-    t.string "language"
-    t.string "js_type"
+    t.jsonb "label", default: {}
+    t.jsonb "description", default: {}
+    t.string "language", null: false
+    t.string "block_type"
     t.integer "participants_count_activity"
     t.integer "participants_count_transport"
     t.integer "duration_activity"
@@ -169,7 +169,7 @@ ActiveRecord::Schema.define(version: 2020_05_02_142343) do
   end
 
   create_table "stufen", force: :cascade do |t|
-    t.string "name"
+    t.jsonb "name", default: {}
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

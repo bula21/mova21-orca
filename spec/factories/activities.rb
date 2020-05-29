@@ -5,7 +5,7 @@ FactoryBot.define do
     label { Faker::Lorem.words(3) }
     description { Faker::Lorem.paragraph(sentence_count: 5) }
     language { Activity.languages.keys.sample }
-    js_type { Activity.js_types.keys.sample }
+    js_type { Activity.block_type.keys.sample }
     participants_count_activity { (10..20).to_a.sample }
     participants_count_transport { (10..20).to_a.sample }
     duration_activity { (0..60).to_a.sample }
