@@ -7,6 +7,8 @@ ignore_unused:
 - 'faker.*'
 - 'units.*'
 - 'errors.*'
+- 'invoices.*'
+- 'simple_form.*'
 
 ignore_inconsistent_interpolations:
 - 'camp_unit_mailer.*'

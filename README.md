@@ -59,3 +59,12 @@ Build
 ```
 docker-compose -f docker-compose.production.yml build production
 ```
+
+### STORAGE
+
+We use ActiveStorage to store files. To set it up in production use these ENV-Variables:
+
+- STORAGE_SERVICE=azure
+- STORAGE_ACCOUNT_NAME=
+- STORAGE_ACCESS_KEY= 
+- STORAGE_CONTAINER=

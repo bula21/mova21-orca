@@ -7,9 +7,9 @@ RSpec.describe CampUnitBuilder do
 
   let(:camp_unit_json_path) { 'spec/fixtures/unit.json' }
   let(:camp_unit_data) { JSON.parse(File.read(Rails.root.join(camp_unit_json_path))) }
-  let(:root_camp_unit) { RootCampUnit[:pfadi] }
+  let(:root_camp_unit) { RootCampUnit.new(:pfadi, 1329) }
 
-  describe '#from_data' do
+  describe '#from_data', vcr: true do
     subject(:camp_unit) { builder.from_data(camp_unit_data) }
 
     let(:starts_at) { Time.zone.parse('2021-07-01 00:00:00.000000000 +0200') }

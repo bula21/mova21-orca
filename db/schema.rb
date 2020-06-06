@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 2020_05_29_104329) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
-
+  
   create_table "invoice_parts", force: :cascade do |t|
     t.bigint "invoice_id", null: false
     t.string "type"
@@ -202,6 +202,7 @@ ActiveRecord::Schema.define(version: 2020_05_29_104329) do
     t.bigint "al_id"
     t.bigint "coach_id"
     t.jsonb "midata_data"
+    t.string "language"
     t.index ["al_id"], name: "index_units_on_al_id"
     t.index ["coach_id"], name: "index_units_on_coach_id"
     t.index ["lagerleiter_id"], name: "index_units_on_lagerleiter_id"

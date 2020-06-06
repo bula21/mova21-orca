@@ -7,30 +7,31 @@ module Pdf
     FONTS_PATH = Rails.root.join('app/webpacker/fonts/')
     include Prawn::View
 
-    def initialize
-      @document = Prawn::Document.new(document_options)
-      initialize_font
+    def initialize(document = Prawn::Document.new(document_options))
+      @document = document
     end
 
-    def initialize_font
-      @document.font_families.update('OpenSans' => {
-                                       normal: File.join(FONTS_PATH, 'OpenSans-Regular.ttf'),
-                                       italic: File.join(FONTS_PATH, 'OpenSans-Italic.ttf'),
-                                       bold: File.join(FONTS_PATH, 'OpenSans-Bold.ttf'),
-                                       bold_italic: File.join(FONTS_PATH, 'OpenSans-BoldItalic.ttf')
-                                     })
-      @document.font 'OpenSans'
-      @document.font_size(10)
+    def self.renderable(name, renderable = nil, &block)
+      renderables[name] = renderable || block
     end
 
-    def document_options
-      {
-        page_size: 'A4',
-        optimize_objects: true,
-        compress: true,
-        margin: [50] * 4,
-        align: :left, kerning: true
-      }
+    def self.renderables
+      @renderables ||= superclass.ancestors.include?(BasePdf) && superclass.renderables || {}
     end
+
+    def render_onto(document, only: self.class.renderables.keys)
+      prepare_document(document)
+      only.each do |renderable_key|
+        renderable = self.class.renderables[renderable_key]
+        renderable.is_a?(BasePdf) ? renderable.render_onto(document) : instance_exec(&renderable)
+      end
+    end
+
+    def render
+      render_onto(@document)
+      @document.render
+    end
+
+    def prepare_document(document); end
   end
 end

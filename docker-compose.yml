@@ -1,21 +1,29 @@
-version: '3.5'
+version: '3.7'
 services:
 
-  app:
+  app: &app
     build:
       context: .
       target: development
-    entrypoint: [".docker/entrypoints/app.sh"]
-    command: ["bin/rails", "s", "-b", "0.0.0.0", "-p", "3000"]
+      args:
+        UID: ${UID}
+        GID: ${GID}
     volumes:
-      - .:/app
-      - app_bundle:/usr/local/bundle/
+      - .:/app:delegated
+      - ./config/database.docker.yml:/app/config/database.yml:ro
+      # - ./tmp/fonts/mova:/app/app/webpacker/fonts/mova:ro
     ports:
       - '3000:3000'
+    entrypoint: [".docker/entrypoints/app.sh"]
+    command: ["bin/rails", "s", "-b", "0.0.0.0"]
     environment:
+      APP_HOST: 'app:3000'
+      E2E_SERVER_PORT: '3001'
+      E2E_APP_HOST: 'app.local:3001'
+      SELENIUM_HOST: 'selenium:4444'
+      DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL: 'true'
+      RUBYOPT: '-W:no-deprecated -W:no-experimental'
       APP_BASE_URL: http://orca.localhost:3000
-      DATABASE_URL: postgresql://postgres@db/orca_development
-      RAILS_ENV: development
       WEBPACKER_DEV_SERVER_HOST: webpack
       MEMCACHE_SERVERS: memcached
       SECRET_KEY_BASE: 'secret'
@@ -32,7 +40,7 @@ services:
       DEVISE_PEPPER: 'rake secret'
       DEVISE_SECRET_KEY: 'rake secret'
       ROOT_CAMP_UNIT_ID_WOLF: 1328
-      ROOT_CAMP_UNIT_ID_PFADI: 1337
+      ROOT_CAMP_UNIT_ID_PFADI: 1329
       ROOT_CAMP_UNIT_ID_PIO: 1328
       ROOT_CAMP_UNIT_ID_PTA: 1328
       SMTP_HOST: mail
@@ -49,93 +57,54 @@ services:
     stdin_open: true
     user: "${UID}:${GID}"
 
-  db:
-    image: postgres:11-alpine
-    volumes:
-      - db_data:/var/lib/postgresql/data
-    environment:
-      POSTGRES_DB: orca_test
-
-  webpack:
-    build:
-      context: .
-      target: development
-    command: ["bin/webpack-dev-server"]
-    entrypoint: [".docker/entrypoints/webpack.sh"]
-    volumes:
-      - .:/app
-      - webpack_node_modules:/app/node_modules
-      - webpack_bundle:/usr/local/bundle/
-    environment:
-      NODE_ENV: development
-      RAILS_ENV: development
-      WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
-    ports:
-      - '3035:3035'
-
-  mail:
-    image: tophfr/mailcatcher
-    ports:
-      - '1080:80'
-      - '1025:25'
-
-  memcached:
-    image: memcached:1.5-alpine
-    command: [ memcached, -l, '0.0.0.0', -p, '11211' ]
-
-  test:
-    build:
-      context: .
-      target: development
-    entrypoint: [".docker/entrypoints/app.sh"]
-    command: ["bin/check"]
-    volumes:
-      - .:/app
-      - app_node_modules:/app/node_modules
-      - app_bundle:/usr/local/bundle/
-    environment:
-      APP_BASE_URL: http://orca.localhost:3000
-      PORT: 3000
-      DATABASE_URL: postgresql://postgres@db/orca_test
-      DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL: 'true'
-      RAILS_ENV: test
-      SELENIUM_HOST: selenium
-      SELENIUM_PORT: 4444
-      MIDATA_BASE_URL: ${MIDATA_BASE_URL}
-      MIDATA_USER_EMAIL: ${MIDATA_USER_EMAIL}
-      MIDATA_USER_TOKEN: ${MIDATA_USER_TOKEN}
-      ROOT_CAMP_UNIT_ID_WOLF: 1328
-      ROOT_CAMP_UNIT_ID_PFADI: 1328
-      ROOT_CAMP_UNIT_ID_PIO: 1328
-      ROOT_CAMP_UNIT_ID_PTA: 1328
-    depends_on:
-      - db
-      - selenium
-    networks:
-      default:
-      selenium:
-        aliases:
-          - test
-
   selenium:
     image: selenium/standalone-chrome-debug
     logging:
       driver: none
     networks:
       selenium:
-        aliases:
-          - app
 
-  production:
-    build: .
-    image: bulacafe-orca:latest
+  db:
+    image: postgres:11-alpine
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: orca_e2e
+      POSTGRES_PASSWORD: postgres
+
+  webpack:
+    build:
+      context: .
+      target: development
+      args:
+        UID: ${UID}
+        GID: ${GID}
+    entrypoint: [".docker/entrypoints/webpack.sh"]
+    command: ["bin/webpack-dev-server"]
+    volumes:
+      - .:/app
+    environment:
+      NODE_ENV: development
+      NODE_PATH: /app/node_modules
+      RAILS_ENV: development
+      WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
+    ports:
+      - '3035:3035'
+    restart: on-failure
+
+  mail:
+    image: tophfr/mailcatcher
+    ports:
+      - '1080:80'
+  
+  memcached:
+    image: memcached:1.5-alpine
+    command: [ memcached, -l, '0.0.0.0', -p, '11211' ]
+    
+
+volumes:
+  db_data:
 
 networks:
   selenium:
 
-volumes:
-  app_bundle:
-  app_node_modules:
-  webpack_bundle:
-  webpack_node_modules:
-  db_data:

@@ -3,14 +3,19 @@
 class Invoice < ApplicationRecord
   belongs_to :unit, inverse_of: :invoices
   has_many :invoice_parts, dependent: :destroy, inverse_of: :invoice
-
-  attribute :pdf
+  has_one_attached :pdf
 
   enum category: %i[invoice pre_registration_invoice]
 
-  before_save :generate_pdf
-  after_create :set_ref
-  after_touch :recalculate_amount
+  validates :category, :unit, presence: true
+
+  before_update :generate_pdf
+  before_save :recalculate_amount
+  after_save :set_ref
+  after_create do
+    set_ref
+    generate_pdf && save
+  end
 
   def generate_pdf
     self.pdf = {
@@ -21,7 +26,7 @@ class Invoice < ApplicationRecord
   end
 
   def filename
-    'Invoice.pdf'
+    [category, unit_id, ref].join('-') + '.pdf'
   end
 
   def set_ref
@@ -29,6 +34,6 @@ class Invoice < ApplicationRecord
   end
 
   def recalculate_amount
-    update(amount: invoice_parts.reduce(0) { |result, invoice_part| invoice_part.amount + result })
+    self.amount = invoice_parts.sum(&:amount)
   end
 end

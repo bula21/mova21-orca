@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe CampUnitPuller do
   subject(:puller) { described_class.new(root_camp_unit) }
 
-  let(:root_camp_unit) { RootCampUnit[:pfadi] }
+  let(:root_camp_unit) { RootCampUnit.new(:pfadi, 1328) }
 
   describe '#pull_all', vcr: true do
     subject(:camp_units) { puller.pull_all }
@@ -16,7 +16,7 @@ RSpec.describe CampUnitPuller do
     end
   end
 
-  describe '#pull_new', vcr: true do
+  describe '#pull_new', vcr: true, record: :all do
     subject(:new_camp_units) { puller.pull_new }
 
     it do

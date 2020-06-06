@@ -45,7 +45,8 @@ en:
         expected_participants_m: Expected number of participants (m)
         full_name: Full Name
         kv_id: Cantonal association
-        lagerleiter: Main leader
+        lagerleiter: Main unit leader
+        language: Language
         starts_at: Start on
         stufe: Stufe
         title: Title
@@ -239,6 +240,45 @@ en:
       create: Create %{model}
       submit: Save %{model}
       update: Update %{model}
+  invoices:
+    payment_info:
+      amount_label: Betrag
+      issuer_account: XX-XXXXX-X
+      issuer_account_label: Konto-Nummer
+      issuer_address: |-
+        Verein Bundeslager 2021
+        c/o Pfadibewegung Schweiz
+        Speichergasse 31
+        CH-3011 Bern
+        info@bula21.ch
+        +41 27 521 20 21
+
+        CHE-452.216.319 MWST
+      issuer_name: Verein BuLa 2021, 3011 Bern
+      issuer_name_label: Zugunsten von
+      ref_label: ESR-Referenznummer
+      total_label: Total
+    pre_registration_invoice:
+      invoice_parts:
+        breakdown: "%{participants} × %{price_per_participant}"
+        label:
+          leitung: Leitung
+          pfadi: TN Pfadistufe
+          pio: TN Piostufe
+          pta: TN PTA
+          wolf: TN Wolfsstufe
+      issued_at: Bern, %{issued_at}
+      post_text: |-
+        Die Voranmeldegebühr ist eine sogenannte Anzahlung und wird bei der Bezahlung des definitiven Lagerbeitrages in Abzug gebracht. Meldet sich eine Einheit nach der provisorischen Anmeldung wieder ab (nimmt also nicht am BuLa21 teil), wird die Voranmeldegebühr zurückerstattet.
+
+        Bei Fragen stehen wir gerne zur Verfügung: finanzen@bula21.ch
+
+        Du kannst die unten stehenden Informationen nutzen, um mit Online-Banking zu bezahlen:
+      pre_text: "Hallo %{salutation_name}\n\nDu hast deine Einheit %{camp_unit_title}
+        erfolgreich für das mova im Goms vorangemeldet. Wir bitten dich, die Rechnung
+        bis 31. Juli 2020 zu begleichen. \nMova – on y va!"
+      ref: 'Rechnung: %{ref}'
+      title: Lagerbeitrag Abteilungen Bundeslager 2021
   leaders:
     edit:
       title: Edit leader
@@ -319,6 +359,7 @@ en:
       title: Participants
     new:
       title: Create participants
+  pre_text: Pre text
   simple_form:
     confirm_unsaved: 'Achtung: Alle nicht gespeicherten Änderungen gehen verloren. Sind Sie sicher?'
     options:
@@ -390,6 +431,7 @@ en:
       title: Set up a camp
     show:
       camp_link_midata: Camp on MiData
+      invoices: Invoices
       participants: Participants
       questionnaire: Form
       registration_complete: Registration complete
