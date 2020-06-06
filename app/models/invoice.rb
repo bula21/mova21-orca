@@ -34,6 +34,6 @@ class Invoice < ApplicationRecord
   end
 
   def recalculate_amount
-    self.amount = invoice_parts.reduce(0) { |result, invoice_part| invoice_part.amount + result }
+    self.amount = invoice_parts.sum(&:amount)
   end
 end
