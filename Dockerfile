@@ -1,62 +1,61 @@
+### === base === ###                 
 FROM ruby:2.7.0-alpine AS base
+RUN apk add --no-cache --update postgresql-dev tzdata nodejs
+RUN gem install bundler 
 
-### === development === ###
+RUN mkdir -p /app
+WORKDIR /app
+
+### === development === ###                 
 FROM base AS development
 RUN apk add --update build-base \
   linux-headers \
   git \
-  postgresql-dev \
-  nodejs \
   yarn \
   less \
-  bash \
   curl \
-  tzdata
+  python
 
-RUN gem install bundler
+RUN gem install solargraph
 
-RUN mkdir -p /app
-WORKDIR /app
-ENV HOME=/app
+ARG UID=1001
+ARG GID=1001
+RUN addgroup -S app -g $GID && adduser -S -u $UID -G app -D app && chown -R $UID:$GID /app || true
+USER $UID
 
-### === build === ###
-FROM development AS build
+RUN bundle config path /app/vendor/bundle && bundle config cache true
 
-ENV RAILS_ENV=production
-ENV NODE_ENV=production
+### === build === ###                                                                                                                                 [0/
+FROM development AS build                                                      
+                                       
+ENV RAILS_ENV=production               
+ENV NODE_ENV=production   
+                                       
+COPY --chown=app . /app     
 
-COPY Gemfile /app/
-COPY Gemfile.lock /app/
-RUN bundle config set deployment 'true'
-RUN bundle install --without=test --without=development --deployment
+RUN bundle config without test:development && \
+ bundle install && bundle clean && bundle package
+RUN yarn install              
 
-COPY package.json /app/
-COPY yarn.lock /app/
-RUN yarn install
-
-COPY . /app
 RUN bin/webpack
-RUN rm -rf /app/node_modules
-RUN rm -rf /app/tmp
-RUN rm -rf /app/.git
-
+RUN rm -rf /app/node_modules/* 
+                                       
 ### === production === ###
 FROM base AS production
+                                       
+RUN mkdir -p /app && adduser -D app && chown -R app /app
+USER app    
+WORKDIR /app                                                              
 
-RUN apk add --no-cache --update postgresql-dev tzdata
+RUN bundle config path /app/vendor/bundle && bundle config deployment true && bundle config without test:development
+RUN gem install bundler 
+                                       
+COPY --chown=app --from=build /app /app                              
+RUN bundle install --local
+                                       
+ENV RAILS_ENV=production               
+ENV NODE_ENV=production 
+ENV RAILS_LOG_TO_STDOUT="true"  
+ENV PORT=3000
 
-ENV RAILS_ENV=production
-ENV NODE_ENV=production
-ENV RAILS_LOG_TO_STDOUT="true"
-RUN adduser -D app
-
-COPY --from=build /app /app
-RUN chown -R app:app /app
-
-WORKDIR /app
-RUN bundle config set deployment 'true'
-RUN bundle install --without=test --without=development --deployment
-
-USER app
-EXPOSE $PORT
-CMD ["bin/rails", "s", "-b", "0.0.0.0"]
+CMD ["bin/rails", "s", "-b", "0.0.0.0"] 

@@ -4,12 +4,16 @@ class LimesurveyService
   BASEURL = 'https://limesurvey.bula21.ch/index.php'
   ADMIN_REMOTECONTROL_URL = URI.parse(BASEURL + '/admin/remotecontrol')
 
-  attr_reader :session_key
   def initialize(username = ENV['LIMESURVEY_USERNAME'],
                  password = ENV['LIMESURVEY_PASSWORD'],
                  survey_id = ENV['LIMESURVEY_SURVEY_ID'])
-    @session_key = fetch_session_key(username, password)
+    @username = username
+    @password = password
     @survey_id = survey_id
+  end
+
+  def session_key
+    @session_key ||= fetch_session_key(@username, @password)
   end
 
   def url(token:, lang: nil)
@@ -25,7 +29,7 @@ class LimesurveyService
   # adds leader to the survey, saves the token and sends an invite
   def add_leader(leader, unit)
     response = add_participant(leader.email, leader.first_and_last_name, leader.scout_name,
-                               unit.pbs_id, unit.stufe, lime_lang(leader.language || unit.kv.locale))
+                               unit.pbs_id, unit.stufe, lime_lang(leader.language || unit.kv&.locale))
 
     token = response&.dig(0, 'token').presence
     return unless token

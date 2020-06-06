@@ -2,8 +2,8 @@
 
 class EsrService
   def generate(invoice)
-    append_checksum format('%<unit_id>011d%<invoice_id>015d', unit_id: invoice.unit_id,
-                                                              invoice_id: invoice.id)
+    append_checksum format('%<unit_id>05d%<invoice_id>06d', unit_id: invoice.unit_id,
+                                                            invoice_id: invoice.id + 100_000)
   end
 
   def checksum(ref)
@@ -19,5 +19,16 @@ class EsrService
     return '' if ref.blank?
 
     ref.reverse.chars.in_groups_of(5).reverse.map { |group| group.reverse.join }.join(' ')
+  end
+
+  def code_line(esr_participant_nr: 'XXX-XXXXX-X', ref:, amount:, esr_mode: '01')
+    code = {
+      esr_mode: esr_mode,
+      amount_in_cents: amount * 100,
+      checksum_1: checksum(esr_mode.to_s + format('%<amount>010d', amount: amount * 100)),
+      ref: ref.to_s.rjust(26, '0'),
+      account_code: esr_participant_nr
+    }
+    format('%<esr_mode>s%<amount_in_cents>010d%<checksum_1>d>%<ref>s+ %<account_code>s>', code)
   end
 end

@@ -11,7 +11,9 @@ services:
       - orca_db
 
   app:
-    build: .
+    build:
+      context: .
+      target: production
     image: mova21-orca:latest
     environment:
       APP_BASE_URL: ${APP_BASE_URL}

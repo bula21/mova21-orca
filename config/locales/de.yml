@@ -31,6 +31,7 @@ de:
         full_name: Vollständiger Name
         kv_id: KV
         lagerleiter: Lagerleiter
+        language: Sprache
         starts_at: Beginn am
         stufe: Stufe
         title: Titel
@@ -235,6 +236,45 @@ de:
       create: "%{model} erstellen"
       submit: "%{model} speichern"
       update: "%{model} aktualisieren"
+  invoices:
+    payment_info:
+      amount_label: Betrag
+      issuer_account: XX-XXXXX-X
+      issuer_account_label: Konto-Nummer
+      issuer_address: |-
+        Verein Bundeslager 2021
+        c/o Pfadibewegung Schweiz
+        Speichergasse 31
+        CH-3011 Bern
+        info@bula21.ch
+        +41 27 521 20 21
+
+        CHE-452.216.319 MWST
+      issuer_name: Verein BuLa 2021, 3011 Bern
+      issuer_name_label: Zugunsten von
+      ref_label: ESR-Referenznummer
+      total_label: Total
+    pre_registration_invoice:
+      invoice_parts:
+        breakdown: "%{participants} × %{price_per_participant}"
+        label:
+          leitung: Leitung
+          pfadi: TN Pfadistufe
+          pio: TN Piostufe
+          pta: TN PTA
+          wolf: TN Wolfsstufe
+      issued_at: Bern, %{issued_at}
+      post_text: |-
+        Die Voranmeldegebühr ist eine sogenannte Anzahlung und wird bei der Bezahlung des definitiven Lagerbeitrages in Abzug gebracht. Meldet sich eine Einheit nach der provisorischen Anmeldung wieder ab (nimmt also nicht am BuLa21 teil), wird die Voranmeldegebühr zurückerstattet.
+
+        Bei Fragen stehen wir gerne zur Verfügung: finanzen@bula21.ch
+
+        Du kannst die unten stehenden Informationen nutzen, um mit Online-Banking zu bezahlen:
+      pre_text: "Hallo %{salutation_name}\n\nDu hast deine Einheit %{camp_unit_title}
+        erfolgreich für das mova im Goms vorangemeldet. Wir bitten dich, die Rechnung
+        bis 31. Juli 2020 zu begleichen. \nMova – on y va!"
+      ref: 'Rechnung: %{ref}'
+      title: Lagerbeitrag Abteilungen Bundeslager 2021
   leaders:
     edit:
       title: Leitperson editieren
@@ -316,12 +356,13 @@ de:
       format:
         delimiter: ''
   participants:
+    edit:
+      title: Teilnehmenden bearbeiten
     index:
       title: Teilnehmende
     new:
       title: Teilnehmende erstellen
-    edit:
-      title: Teilnehmenden bearbeiten
+  pre_text: Pre text
   simple_form:
     options:
       participant:
@@ -378,6 +419,7 @@ de:
       title: Lager erstellen
     show:
       camp_link_midata: Lager auf MiData
+      invoices: Invoices
       participants: Teilnehmende
       questionnaire: Fragebogen
       registration_complete: Registration vollständig

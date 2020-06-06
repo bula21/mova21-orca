@@ -26,10 +26,11 @@
 
 /public/packs
 /public/packs-test
-/node_modules
+/node_modules/*
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+/vendor/*
 
 .env
 /.local
@@ -37,3 +38,4 @@ yarn-debug.log*
 /.cache
 /.local
 /.vscode-server
+/config/database.yml
