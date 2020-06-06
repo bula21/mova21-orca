@@ -1,0 +1,174 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://limesurvey.bula21.ch/index.php/admin/remotecontrol
+    body:
+      encoding: UTF-8
+      string: '{"method":"get_session_key","params":["Folletta","?F4A%,6Hd42o7&"],"id":1}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - limesurvey.bula21.ch
+      Content-Type:
+      - application/json
+      Connection:
+      - Keep-Alive
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.17.6
+      Date:
+      - Sat, 06 Jun 2020 16:18:14 GMT
+      Content-Type:
+      - text/javascript;charset=UTF-8
+      Content-Length:
+      - '65'
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - PHP/7.2.26
+      Set-Cookie:
+      - PHPSESSID=5cmq0ftvbvi9k80e9pecqpvl8j; path=/; HttpOnly
+      - PHPSESSID=f2iifjsdkj9at66vlvu50d7t1k; path=/; HttpOnly
+      - YII_CSRF_TOKEN=deleted; expires=Thu, 01-Jan-1970 00:00:01 GMT; Max-Age=0;
+        path=/
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Cache-Control:
+      - no-store, no-cache, must-revalidate
+      Pragma:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000
+    body:
+      encoding: UTF-8
+      string: '{"id":1,"result":"rNSYqiFkC9XQFfLGoWu~oFuqnFiPQXLw","error":null}'
+    http_version: null
+  recorded_at: Sat, 06 Jun 2020 16:18:14 GMT
+- request:
+    method: post
+    uri: https://limesurvey.bula21.ch/index.php/admin/remotecontrol
+    body:
+      encoding: UTF-8
+      string: '{"method":"add_participants","params":["rNSYqiFkC9XQFfLGoWu~oFuqnFiPQXLw","187799",[{"email":"newton_azra@hitobito.example.com","lastname":"Azra
+        Newton","firstname":"Voluptate","language":"de-informal","attribute_1":223,"attribute_2":2}]],"id":1}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - limesurvey.bula21.ch
+      Content-Type:
+      - application/json
+      Connection:
+      - Keep-Alive
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.17.6
+      Date:
+      - Sat, 06 Jun 2020 16:18:14 GMT
+      Content-Type:
+      - text/javascript;charset=UTF-8
+      Content-Length:
+      - '411'
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - PHP/7.2.26
+      Set-Cookie:
+      - PHPSESSID=72c0h0ngcrv5m27kr6jdge9nh7; path=/; HttpOnly
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Cache-Control:
+      - no-store, no-cache, must-revalidate
+      Pragma:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000
+    body:
+      encoding: UTF-8
+      string: '{"id":1,"result":[{"sent":"N","remindersent":"N","remindercount":0,"completed":"N","usesleft":1,"email":"newton_azra@hitobito.example.com","lastname":"Azra
+        Newton","firstname":"Voluptate","language":"de-informal","attribute_1":"223","attribute_2":"2","token":"eO8nP6HpzguBgiv","emailstatus":"OK","tid":"147","participant_id":null,"blacklisted":null,"validfrom":null,"validuntil":null,"mpid":null}],"error":null}'
+    http_version: null
+  recorded_at: Sat, 06 Jun 2020 16:18:14 GMT
+- request:
+    method: post
+    uri: https://limesurvey.bula21.ch/index.php/admin/remotecontrol
+    body:
+      encoding: UTF-8
+      string: '{"method":"invite_participants","params":["rNSYqiFkC9XQFfLGoWu~oFuqnFiPQXLw","187799"],"id":1}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - limesurvey.bula21.ch
+      Content-Type:
+      - application/json
+      Connection:
+      - Keep-Alive
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.17.6
+      Date:
+      - Sat, 06 Jun 2020 16:18:16 GMT
+      Content-Type:
+      - text/javascript;charset=UTF-8
+      Content-Length:
+      - '744'
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - PHP/7.2.26
+      Set-Cookie:
+      - PHPSESSID=fndofb6lkmdj86u123v9fc0u4i; path=/; HttpOnly
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Cache-Control:
+      - no-store, no-cache, must-revalidate
+      Pragma:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000
+    body:
+      encoding: UTF-8
+      string: '{"id":1,"result":{"145":{"name":"Voluptate Azra Newton","email":"newton_azra@hitobito.example.com","status":"fail","error":"SMTP
+        Error: The following recipients failed: newton_azra@hitobito.example.com:
+        Recipient address reserved by RFC 2606\r\n"},"146":{"name":"Ut Mio Daudrich","email":"daudrich_mio@hitobito.example.com","status":"fail","error":"SMTP
+        Error: The following recipients failed: daudrich_mio@hitobito.example.com:
+        Recipient address reserved by RFC 2606\r\n"},"147":{"name":"Voluptate Azra
+        Newton","email":"newton_azra@hitobito.example.com","status":"fail","error":"SMTP
+        Error: The following recipients failed: newton_azra@hitobito.example.com:
+        Recipient address reserved by RFC 2606\r\n"},"status":"0 left to send"},"error":null}'
+    http_version: null
+  recorded_at: Sat, 06 Jun 2020 16:18:16 GMT
+recorded_with: VCR 5.1.0

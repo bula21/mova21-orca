@@ -21,7 +21,7 @@ http_interactions:
       Server:
       - nginx/1.12.1
       Date:
-      - Thu, 27 Feb 2020 15:10:32 GMT
+      - Sat, 06 Jun 2020 16:24:54 GMT
       Content-Type:
       - text/html; charset=utf-8
       Transfer-Encoding:
@@ -49,18 +49,20 @@ http_interactions:
       Vary:
       - Accept-Encoding
       Set-Cookie:
-      - afcc3ba8de9b9b04950e14e130f0b228=2e3db10cdff20e16f8f8e205af74f7fc; path=/;
+      - afcc3ba8de9b9b04950e14e130f0b228=c8f9c3f555864b97b87db23c60922100; path=/;
         HttpOnly; Secure
-      - locale=de; path=/; expires=Sat, 27 Feb 2021 15:10:32 GMT
+      - locale=de; path=/; expires=Sun, 06 Jun 2021 16:24:54 GMT; secure
       X-Request-Id:
-      - 24693f94-e1b4-483c-8c3b-c1b10bf90ccf
+      - 734efaed-ca09-4f80-9bb1-91d50de12d65
       X-Runtime:
-      - '0.131597'
+      - '0.192303'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
     body:
       encoding: ASCII-8BIT
       string: <html><body>You are being <a href="https://pbs.puzzle.ch/de/groups/749/events/1328.json?user_email=hussein_kohlmann%40hitobito.example.com&amp;user_token=Tu7aVJWyLYYMyCnZv2bz">redirected</a>.</body></html>
     http_version: null
-  recorded_at: Thu, 27 Feb 2020 15:10:32 GMT
+  recorded_at: Sat, 06 Jun 2020 16:24:54 GMT
 - request:
     method: get
     uri: https://pbs.puzzle.ch/de/groups/749/events/1328.json?user_email=hussein_kohlmann@hitobito.example.com&user_token=Tu7aVJWyLYYMyCnZv2bz
@@ -69,7 +71,7 @@ http_interactions:
       string: ''
     headers:
       Cookie:
-      - locale=de; afcc3ba8de9b9b04950e14e130f0b228=2e3db10cdff20e16f8f8e205af74f7fc
+      - locale=de; afcc3ba8de9b9b04950e14e130f0b228=c8f9c3f555864b97b87db23c60922100
   response:
     status:
       code: 200
@@ -78,7 +80,7 @@ http_interactions:
       Server:
       - nginx/1.12.1
       Date:
-      - Thu, 27 Feb 2020 15:10:33 GMT
+      - Sat, 06 Jun 2020 16:24:55 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -105,19 +107,143 @@ http_interactions:
       Expires:
       - Fri, 01 Jan 1990 00:00:00 GMT
       Etag:
-      - W/"4e49c717cbdf758c02200ea94580ac7e"
+      - W/"ba484241fa0f222853ab59de2b2fe0ed"
       Set-Cookie:
-      - locale=de; path=/; expires=Sat, 27 Feb 2021 15:10:32 GMT
+      - locale=de; path=/; expires=Sun, 06 Jun 2021 16:24:54 GMT; secure
       X-Request-Id:
-      - b8a09f7d-a1cc-49c0-807e-de9bef01bfbd
+      - 67e36b67-3649-40b5-8492-e09f887f7a10
       X-Runtime:
-      - '0.234450'
+      - '0.323819'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        eyJldmVudHMiOlt7ImlkIjoiMTMyOCIsInR5cGUiOiJldmVudHMiLCJuYW1lIjoiQnVMYS1DYUZlIDIxIC0gSGF1cHRsYWdlciBQZmFkaXN0dWZlIiwiZGVzY3JpcHRpb24iOiJCaXR0ZSBmw7xsbHQgZGFzIHNvIHVuZCBzbyBhdXMiLCJtb3R0byI6Ik1PVkEiLCJjb3N0IjoiMTAnMDAwJzAwMC4tIiwibWF4aW11bV9wYXJ0aWNpcGFudHMiOm51bGwsInBhcnRpY2lwYW50X2NvdW50IjowLCJsb2NhdGlvbiI6Ik9iZXJnb2JzIiwiYXBwbGljYXRpb25fb3BlbmluZ19hdCI6bnVsbCwiYXBwbGljYXRpb25fY2xvc2luZ19hdCI6bnVsbCwiYXBwbGljYXRpb25fY29uZGl0aW9ucyI6IiIsInN0YXRlIjoiY3JlYXRlZCIsInRlYW1lcl9jb3VudCI6MCwiZXhwZWN0ZWRfcGFydGljaXBhbnRzX3dvbGZfZiI6bnVsbCwiZXhwZWN0ZWRfcGFydGljaXBhbnRzX3dvbGZfbSI6bnVsbCwiZXhwZWN0ZWRfcGFydGljaXBhbnRzX3BmYWRpX2YiOm51bGwsImV4cGVjdGVkX3BhcnRpY2lwYW50c19wZmFkaV9tIjpudWxsLCJleHBlY3RlZF9wYXJ0aWNpcGFudHNfcGlvX2YiOm51bGwsImV4cGVjdGVkX3BhcnRpY2lwYW50c19waW9fbSI6bnVsbCwiZXhwZWN0ZWRfcGFydGljaXBhbnRzX3JvdmVyX2YiOm51bGwsImV4cGVjdGVkX3BhcnRpY2lwYW50c19yb3Zlcl9tIjpudWxsLCJleHBlY3RlZF9wYXJ0aWNpcGFudHNfbGVpdHVuZ19mIjpudWxsLCJleHBlY3RlZF9wYXJ0aWNpcGFudHNfbGVpdHVuZ19tIjpudWxsLCJjYW50b24iOiJ2cyIsImNvb3JkaW5hdGVzIjoiIDI2NjYnMDQ4LCAxMTUwJzQ2OSIsImFsdGl0dWRlIjoiMSIsImVtZXJnZW5jeV9waG9uZSI6IlN1bHRhbiAwNzkgOTk5IDk5IDk5Iiwial9zX2tpbmQiOiJqX3NfY2hpbGQiLCJqX3Nfc2VjdXJpdHlfc25vdyI6ZmFsc2UsImpfc19zZWN1cml0eV9tb3VudGFpbiI6ZmFsc2UsImpfc19zZWN1cml0eV93YXRlciI6ZmFsc2UsInJlcXVpcmVkX2NvbnRhY3RfYXR0cnMiOlsibmlja25hbWUiLCJnZW5kZXIiLCJiaXJ0aGRheSIsIm5hdGlvbmFsaXR5X2pfcyIsImNvcnJlc3BvbmRlbmNlX2xhbmd1YWdlIl0sImhpZGRlbl9jb250YWN0X2F0dHJzIjpbImNvbXBhbnlfbmFtZSIsImFkZHJlc3MiLCJ6aXBfY29kZSIsInRvd24iLCJjb3VudHJ5IiwicGhvbmVfbnVtYmVycyIsInRpdGxlIiwic2FsdXRhdGlvbiIsImdyYWRlX29mX3NjaG9vbCIsImVudHJ5X2RhdGUiLCJsZWF2aW5nX2RhdGUiXSwibGlua3MiOnsibGVhZGVyIjoiMzQ4NSIsInN1Yl9jYW1wcyI6WzEzMjldLCJkYXRlcyI6WyIyNDA0Il0sImdyb3VwcyI6WyI3NDkiXX0sImV4dGVybmFsX2FwcGxpY2F0aW9uX2xpbmsiOiJodHRwczovL3Bicy5wdXp6bGUuY2gvZGUvZ3JvdXBzLzc0OS9wdWJsaWNfZXZlbnRzLzEzMjgifV0sImxpbmtlZCI6eyJwZW9wbGUiOlt7ImlkIjoiMzQ4NSIsImZpcnN0X25hbWUiOiJBZGRyZXNzdmVyd2FsdGVyIiwibGFzdF9uYW1lIjoiQnVMYSIsIm5pY2tuYW1lIjoiS1YiLCJjb21wYW55X25hbWUiOiIiLCJjb21wYW55IjpmYWxzZSwiZW1haWwiOiJpdC1zdXBwb3J0QGJ1bGEuY2giLCJhZGRyZXNzIjoiIiwiemlwX2NvZGUiOiIiLCJ0b3duIjoiIiwiY291bnRyeSI6IiJ9XSwiZXZlbnRzIjpbeyJpZCI6MTMyOSwibmFtZSI6IkJ1TGEtQ2FGZSAyMSAtIEhhdXB0bGFnZXIgUGZhZGlzdHVmZTogUGZhZGlzdHVmZSIsImhyZWYiOiJodHRwczovL3Bicy5wdXp6bGUuY2gvZGUvZ3JvdXBzLzUwNy9ldmVudHMvMTMyOS5qc29uIn1dLCJldmVudF9kYXRlcyI6W3siaWQiOiIyNDA0IiwibGFiZWwiOiIiLCJzdGFydF9hdCI6IjIwMjEtMDctMDFUMDA6MDA6MDAuMDAwKzAyOjAwIiwiZmluaXNoX2F0IjoiMjAyMS0wNy0xOFQwMDowMDowMC4wMDArMDI6MDAiLCJsb2NhdGlvbiI6IiJ9XSwiZ3JvdXBzIjpbeyJpZCI6Ijc0OSIsImhyZWYiOiJodHRwczovL3Bicy5wdXp6bGUuY2gvZGUvZ3JvdXBzLzc0OS5qc29uIiwiZ3JvdXBfdHlwZSI6IkthbnRvbmFsdmVyYmFuZCIsImxheWVyIjp0cnVlLCJuYW1lIjoiQnVMYTIxIiwic2hvcnRfbmFtZSI6IiIsImVtYWlsIjoiIiwiYWRkcmVzcyI6IiIsInppcF9jb2RlIjpudWxsLCJ0b3duIjoiIiwiY291bnRyeSI6IiIsInBic19zaG9ydG5hbWUiOiIiLCJ3ZWJzaXRlIjoiIiwiYmFua19hY2NvdW50IjoiIiwiZGVzY3JpcHRpb24iOiIiLCJjcmVhdGVkX2F0IjoiMjAxOS0wOS0yNlQxMzo1Mjo0NC4wMDArMDI6MDAiLCJ1cGRhdGVkX2F0IjoiMjAxOS0wOS0yNlQxMzo1Mjo0NC4wMDArMDI6MDAiLCJsaW5rcyI6eyJjcmVhdG9yIjoiMiIsInVwZGF0ZXIiOiIyIiwicGFyZW50IjoiMSIsImxheWVyX2dyb3VwIjoiNzQ5IiwiaGllcmFyY2hpZXMiOlsiMSIsIjc0OSJdLCJjaGlsZHJlbiI6WyI3NTAiXX0sImRlbGV0ZWRfYXQiOm51bGx9LHsiaWQiOiIxIiwibmFtZSI6IlBmYWRpYmV3ZWd1bmcgU2Nod2VpeiIsImdyb3VwX3R5cGUiOiJHcnVwcGUifSx7ImlkIjoiNzQ5IiwibmFtZSI6IkJ1TGEyMSIsImdyb3VwX3R5cGUiOiJLYW50b25hbHZlcmJhbmQifSx7ImlkIjoiMSIsIm5hbWUiOiJQZmFkaWJld2VndW5nIFNjaHdlaXoiLCJncm91cF90eXBlIjoiQnVuZCJ9LHsiaWQiOiI3NTAiLCJuYW1lIjoiQnVMYSAtIEhhdXB0ZWJlbmUiLCJncm91cF90eXBlIjoiS29tbWlzc2lvbiJ9XX0sImxpbmtzIjp7Imdyb3Vwcy5jcmVhdG9yIjp7ImhyZWYiOiJodHRwczovL3Bicy5wdXp6bGUuY2gvZGUvcGVvcGxlL3tncm91cHMuY3JlYXRvcn0uanNvbiIsInR5cGUiOiJwZW9wbGUifSwiZ3JvdXBzLnVwZGF0ZXIiOnsiaHJlZiI6Imh0dHBzOi8vcGJzLnB1enpsZS5jaC9kZS9wZW9wbGUve2dyb3Vwcy51cGRhdGVyfS5qc29uIiwidHlwZSI6InBlb3BsZSJ9LCJncm91cHMuZGVsZXRlciI6eyJocmVmIjoiaHR0cHM6Ly9wYnMucHV6emxlLmNoL2RlL3Blb3BsZS97Z3JvdXBzLmRlbGV0ZXJ9Lmpzb24iLCJ0eXBlIjoicGVvcGxlIn0sImdyb3Vwcy5wYXJlbnQiOnsiaHJlZiI6Imh0dHBzOi8vcGJzLnB1enpsZS5jaC9kZS9ncm91cHMve2dyb3Vwcy5wYXJlbnR9Lmpzb24iLCJ0eXBlIjoiZ3JvdXBzIn0sImdyb3Vwcy5sYXllcl9ncm91cCI6eyJocmVmIjoiaHR0cHM6Ly9wYnMucHV6emxlLmNoL2RlL2dyb3Vwcy97Z3JvdXBzLmxheWVyX2dyb3VwfS5qc29uIiwidHlwZSI6Imdyb3VwcyJ9LCJncm91cHMuaGllcmFyY2h5Ijp7ImhyZWYiOiJodHRwczovL3Bicy5wdXp6bGUuY2gvZGUvZ3JvdXBzL3tncm91cHMuaGllcmFyY2h5fS5qc29uIiwidHlwZSI6Imdyb3VwcyJ9LCJncm91cHMuY2hpbGRyZW4iOnsiaHJlZiI6Imh0dHBzOi8vcGJzLnB1enpsZS5jaC9kZS9ncm91cHMve2dyb3Vwcy5jaGlsZHJlbn0uanNvbiIsInR5cGUiOiJncm91cHMifSwiZ3JvdXBzLnBlb3BsZSI6eyJocmVmIjoiaHR0cHM6Ly9wYnMucHV6emxlLmNoL2RlL2dyb3Vwcy97Z3JvdXBzLmlkfS9wZW9wbGUuanNvbiIsInR5cGUiOiJwZW9wbGUifX19
+        eyJldmVudHMiOlt7ImlkIjoiMTMyOCIsInR5cGUiOiJldmVudHMiLCJuYW1lIjoiQnVMYS1DYUZlIDIxIC0gSGF1cHRsYWdlciBQZmFkaXN0dWZlIiwiZGVzY3JpcHRpb24iOiJCaXR0ZSBmw7xsbHQgZGFzIHNvIHVuZCBzbyBhdXMiLCJtb3R0byI6Ik1PVkEiLCJjb3N0IjoiMTAnMDAwJzAwMC4tIiwibWF4aW11bV9wYXJ0aWNpcGFudHMiOm51bGwsInBhcnRpY2lwYW50X2NvdW50IjoyLCJsb2NhdGlvbiI6Ik9iZXJnb2JzIiwiYXBwbGljYXRpb25fb3BlbmluZ19hdCI6bnVsbCwiYXBwbGljYXRpb25fY2xvc2luZ19hdCI6bnVsbCwiYXBwbGljYXRpb25fY29uZGl0aW9ucyI6IiIsInN0YXRlIjoiY3JlYXRlZCIsInRlYW1lcl9jb3VudCI6MCwiZXhwZWN0ZWRfcGFydGljaXBhbnRzX3dvbGZfZiI6bnVsbCwiZXhwZWN0ZWRfcGFydGljaXBhbnRzX3dvbGZfbSI6bnVsbCwiZXhwZWN0ZWRfcGFydGljaXBhbnRzX3BmYWRpX2YiOm51bGwsImV4cGVjdGVkX3BhcnRpY2lwYW50c19wZmFkaV9tIjpudWxsLCJleHBlY3RlZF9wYXJ0aWNpcGFudHNfcGlvX2YiOm51bGwsImV4cGVjdGVkX3BhcnRpY2lwYW50c19waW9fbSI6bnVsbCwiZXhwZWN0ZWRfcGFydGljaXBhbnRzX3JvdmVyX2YiOm51bGwsImV4cGVjdGVkX3BhcnRpY2lwYW50c19yb3Zlcl9tIjpudWxsLCJleHBlY3RlZF9wYXJ0aWNpcGFudHNfbGVpdHVuZ19mIjpudWxsLCJleHBlY3RlZF9wYXJ0aWNpcGFudHNfbGVpdHVuZ19tIjpudWxsLCJjYW50b24iOiJ2cyIsImNvb3JkaW5hdGVzIjoiIDI2NjYnMDQ4LCAxMTUwJzQ2OSIsImFsdGl0dWRlIjoiMSIsImVtZXJnZW5jeV9waG9uZSI6IlN1bHRhbiAwNzkgOTk5IDk5IDk5Iiwial9zX2tpbmQiOiJqX3NfY2hpbGQiLCJqX3Nfc2VjdXJpdHlfc25vdyI6ZmFsc2UsImpfc19zZWN1cml0eV9tb3VudGFpbiI6ZmFsc2UsImpfc19zZWN1cml0eV93YXRlciI6ZmFsc2UsInJlcXVpcmVkX2NvbnRhY3RfYXR0cnMiOlsibmlja25hbWUiLCJnZW5kZXIiLCJiaXJ0aGRheSIsIm5hdGlvbmFsaXR5X2pfcyIsImNvcnJlc3BvbmRlbmNlX2xhbmd1YWdlIl0sImhpZGRlbl9jb250YWN0X2F0dHJzIjpbImNvbXBhbnlfbmFtZSIsImFkZHJlc3MiLCJ6aXBfY29kZSIsInRvd24iLCJjb3VudHJ5IiwicGhvbmVfbnVtYmVycyIsInRpdGxlIiwic2FsdXRhdGlvbiIsImdyYWRlX29mX3NjaG9vbCIsImVudHJ5X2RhdGUiLCJsZWF2aW5nX2RhdGUiXSwibGlua3MiOnsibGVhZGVyIjoiMzQ4NSIsInN1Yl9jYW1wcyI6WzEzMjIsMTMyOV0sImRhdGVzIjpbIjI0MDQiXSwiZ3JvdXBzIjpbIjc0OSJdfSwiZXh0ZXJuYWxfYXBwbGljYXRpb25fbGluayI6Imh0dHBzOi8vcGJzLnB1enpsZS5jaC9kZS9ncm91cHMvNzQ5L3B1YmxpY19ldmVudHMvMTMyOCJ9XSwibGlua2VkIjp7InBlb3BsZSI6W3siaWQiOiIzNDg1IiwiZmlyc3RfbmFtZSI6IkFkZHJlc3N2ZXJ3YWx0ZXIiLCJsYXN0X25hbWUiOiJCdUxhIiwibmlja25hbWUiOiJLViIsImNvbXBhbnlfbmFtZSI6IiIsImNvbXBhbnkiOmZhbHNlLCJlbWFpbCI6Iml0LXN1cHBvcnRAYnVsYS5jaCIsImFkZHJlc3MiOiIiLCJ6aXBfY29kZSI6IiIsInRvd24iOiIiLCJjb3VudHJ5IjoiIn1dLCJldmVudHMiOlt7ImlkIjoxMzIyLCJuYW1lIjoiQnVMYS1DYUZlIDIxIC0gSGF1cHRsYWdlciBQZmFkaXN0dWZlOiBQZmFkaSBBbHRiZXJnIiwiaHJlZiI6Imh0dHBzOi8vcGJzLnB1enpsZS5jaC9kZS9ncm91cHMvMTc5L2V2ZW50cy8xMzIyLmpzb24ifSx7ImlkIjoxMzI5LCJuYW1lIjoiQnVMYS1DYUZlIDIxIC0gSGF1cHRsYWdlciBQZmFkaXN0dWZlOiBQZmFkaXN0dWZlIiwiaHJlZiI6Imh0dHBzOi8vcGJzLnB1enpsZS5jaC9kZS9ncm91cHMvNTA3L2V2ZW50cy8xMzI5Lmpzb24ifV0sImV2ZW50X2RhdGVzIjpbeyJpZCI6IjI0MDQiLCJsYWJlbCI6IiIsInN0YXJ0X2F0IjoiMjAyMS0wNy0wMVQwMDowMDowMC4wMDArMDI6MDAiLCJmaW5pc2hfYXQiOiIyMDIxLTA3LTE4VDAwOjAwOjAwLjAwMCswMjowMCIsImxvY2F0aW9uIjoiIn1dLCJncm91cHMiOlt7ImlkIjoiNzQ5IiwiaHJlZiI6Imh0dHBzOi8vcGJzLnB1enpsZS5jaC9kZS9ncm91cHMvNzQ5Lmpzb24iLCJncm91cF90eXBlIjoiS2FudG9uYWx2ZXJiYW5kIiwibGF5ZXIiOnRydWUsIm5hbWUiOiJCdUxhMjEiLCJzaG9ydF9uYW1lIjoiIiwiZW1haWwiOiIiLCJhZGRyZXNzIjoiIiwiemlwX2NvZGUiOm51bGwsInRvd24iOiIiLCJjb3VudHJ5IjoiIiwicGJzX3Nob3J0bmFtZSI6IiIsIndlYnNpdGUiOiIiLCJiYW5rX2FjY291bnQiOiIiLCJkZXNjcmlwdGlvbiI6IiIsImNyZWF0ZWRfYXQiOiIyMDE5LTA5LTI2VDEzOjUyOjQ0LjAwMCswMjowMCIsInVwZGF0ZWRfYXQiOiIyMDE5LTA5LTI2VDEzOjUyOjQ0LjAwMCswMjowMCIsImxpbmtzIjp7ImNyZWF0b3IiOiIyIiwidXBkYXRlciI6IjIiLCJwYXJlbnQiOiIxIiwibGF5ZXJfZ3JvdXAiOiI3NDkiLCJoaWVyYXJjaGllcyI6WyIxIiwiNzQ5Il0sImNoaWxkcmVuIjpbIjc1MCJdfSwiZGVsZXRlZF9hdCI6bnVsbH0seyJpZCI6IjEiLCJuYW1lIjoiUGZhZGliZXdlZ3VuZyBTY2h3ZWl6IiwiZ3JvdXBfdHlwZSI6IkdydXBwZSJ9LHsiaWQiOiI3NDkiLCJuYW1lIjoiQnVMYTIxIiwiZ3JvdXBfdHlwZSI6IkthbnRvbmFsdmVyYmFuZCJ9LHsiaWQiOiIxIiwibmFtZSI6IlBmYWRpYmV3ZWd1bmcgU2Nod2VpeiIsImdyb3VwX3R5cGUiOiJCdW5kIn0seyJpZCI6Ijc1MCIsIm5hbWUiOiJCdUxhIC0gSGF1cHRlYmVuZSIsImdyb3VwX3R5cGUiOiJLb21taXNzaW9uIn1dfSwibGlua3MiOnsiZ3JvdXBzLmNyZWF0b3IiOnsiaHJlZiI6Imh0dHBzOi8vcGJzLnB1enpsZS5jaC9kZS9wZW9wbGUve2dyb3Vwcy5jcmVhdG9yfS5qc29uIiwidHlwZSI6InBlb3BsZSJ9LCJncm91cHMudXBkYXRlciI6eyJocmVmIjoiaHR0cHM6Ly9wYnMucHV6emxlLmNoL2RlL3Blb3BsZS97Z3JvdXBzLnVwZGF0ZXJ9Lmpzb24iLCJ0eXBlIjoicGVvcGxlIn0sImdyb3Vwcy5kZWxldGVyIjp7ImhyZWYiOiJodHRwczovL3Bicy5wdXp6bGUuY2gvZGUvcGVvcGxlL3tncm91cHMuZGVsZXRlcn0uanNvbiIsInR5cGUiOiJwZW9wbGUifSwiZ3JvdXBzLnBhcmVudCI6eyJocmVmIjoiaHR0cHM6Ly9wYnMucHV6emxlLmNoL2RlL2dyb3Vwcy97Z3JvdXBzLnBhcmVudH0uanNvbiIsInR5cGUiOiJncm91cHMifSwiZ3JvdXBzLmxheWVyX2dyb3VwIjp7ImhyZWYiOiJodHRwczovL3Bicy5wdXp6bGUuY2gvZGUvZ3JvdXBzL3tncm91cHMubGF5ZXJfZ3JvdXB9Lmpzb24iLCJ0eXBlIjoiZ3JvdXBzIn0sImdyb3Vwcy5oaWVyYXJjaHkiOnsiaHJlZiI6Imh0dHBzOi8vcGJzLnB1enpsZS5jaC9kZS9ncm91cHMve2dyb3Vwcy5oaWVyYXJjaHl9Lmpzb24iLCJ0eXBlIjoiZ3JvdXBzIn0sImdyb3Vwcy5jaGlsZHJlbiI6eyJocmVmIjoiaHR0cHM6Ly9wYnMucHV6emxlLmNoL2RlL2dyb3Vwcy97Z3JvdXBzLmNoaWxkcmVufS5qc29uIiwidHlwZSI6Imdyb3VwcyJ9LCJncm91cHMucGVvcGxlIjp7ImhyZWYiOiJodHRwczovL3Bicy5wdXp6bGUuY2gvZGUvZ3JvdXBzL3tncm91cHMuaWR9L3Blb3BsZS5qc29uIiwidHlwZSI6InBlb3BsZSJ9fX0=
     http_version: null
-  recorded_at: Thu, 27 Feb 2020 15:10:33 GMT
+  recorded_at: Sat, 06 Jun 2020 16:24:55 GMT
+- request:
+    method: get
+    uri: https://pbs.puzzle.ch/events/1322.json?user_email=hussein_kohlmann@hitobito.example.com&user_token=Tu7aVJWyLYYMyCnZv2bz
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 302
+      message: Found
+    headers:
+      Server:
+      - nginx/1.12.1
+      Date:
+      - Sat, 06 Jun 2020 16:24:55 GMT
+      Content-Type:
+      - text/html; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cache-Control:
+      - no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Location:
+      - https://pbs.puzzle.ch/de/groups/179/events/1322.json?user_email=hussein_kohlmann%40hitobito.example.com&user_token=Tu7aVJWyLYYMyCnZv2bz
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - afcc3ba8de9b9b04950e14e130f0b228=c8f9c3f555864b97b87db23c60922100; path=/;
+        HttpOnly; Secure
+      - locale=de; path=/; expires=Sun, 06 Jun 2021 16:24:55 GMT; secure
+      X-Request-Id:
+      - ac2889fc-44b4-4216-9fc9-8e26779b4e64
+      X-Runtime:
+      - '0.147086'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+    body:
+      encoding: ASCII-8BIT
+      string: <html><body>You are being <a href="https://pbs.puzzle.ch/de/groups/179/events/1322.json?user_email=hussein_kohlmann%40hitobito.example.com&amp;user_token=Tu7aVJWyLYYMyCnZv2bz">redirected</a>.</body></html>
+    http_version: null
+  recorded_at: Sat, 06 Jun 2020 16:24:55 GMT
+- request:
+    method: get
+    uri: https://pbs.puzzle.ch/de/groups/179/events/1322.json?user_email=hussein_kohlmann@hitobito.example.com&user_token=Tu7aVJWyLYYMyCnZv2bz
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Cookie:
+      - locale=de; afcc3ba8de9b9b04950e14e130f0b228=c8f9c3f555864b97b87db23c60922100
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.12.1
+      Date:
+      - Sat, 06 Jun 2020 16:24:56 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cache-Control:
+      - no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Etag:
+      - W/"8aaeb4e90f10c1b57e8cb4000d5e3606"
+      Set-Cookie:
+      - locale=de; path=/; expires=Sun, 06 Jun 2021 16:24:55 GMT; secure
+      X-Request-Id:
+      - 5a683eed-51cf-4278-8059-fb09dc87fcbc
+      X-Runtime:
+      - '0.345060'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJldmVudHMiOlt7ImlkIjoiMTMyMiIsInR5cGUiOiJldmVudHMiLCJuYW1lIjoiQnVMYS1DYUZlIDIxIC0gSGF1cHRsYWdlciBQZmFkaXN0dWZlOiBQZmFkaSBBbHRiZXJnIiwiZGVzY3JpcHRpb24iOiJCdUxhIDIwMjEgVGVzdGxhZ2VyIFBmYWRpc3R1ZmVcclxuXHJcbkJpdHRlIGbDvGxsdCBkYXMgc28gdW5kIHNvIGF1cyIsIm1vdHRvIjoiTU9WQSIsImNvc3QiOiIxMCcwMDAnMDAwLi0iLCJtYXhpbXVtX3BhcnRpY2lwYW50cyI6bnVsbCwicGFydGljaXBhbnRfY291bnQiOjQ5LCJsb2NhdGlvbiI6Ik9iZXJnb2JzIiwiYXBwbGljYXRpb25fb3BlbmluZ19hdCI6bnVsbCwiYXBwbGljYXRpb25fY2xvc2luZ19hdCI6bnVsbCwiYXBwbGljYXRpb25fY29uZGl0aW9ucyI6IiIsInN0YXRlIjoiY3JlYXRlZCIsInRlYW1lcl9jb3VudCI6MiwiZXhwZWN0ZWRfcGFydGljaXBhbnRzX3dvbGZfZiI6bnVsbCwiZXhwZWN0ZWRfcGFydGljaXBhbnRzX3dvbGZfbSI6bnVsbCwiZXhwZWN0ZWRfcGFydGljaXBhbnRzX3BmYWRpX2YiOjEyLCJleHBlY3RlZF9wYXJ0aWNpcGFudHNfcGZhZGlfbSI6MjAsImV4cGVjdGVkX3BhcnRpY2lwYW50c19waW9fZiI6bnVsbCwiZXhwZWN0ZWRfcGFydGljaXBhbnRzX3Bpb19tIjpudWxsLCJleHBlY3RlZF9wYXJ0aWNpcGFudHNfcm92ZXJfZiI6bnVsbCwiZXhwZWN0ZWRfcGFydGljaXBhbnRzX3JvdmVyX20iOm51bGwsImV4cGVjdGVkX3BhcnRpY2lwYW50c19sZWl0dW5nX2YiOjIsImV4cGVjdGVkX3BhcnRpY2lwYW50c19sZWl0dW5nX20iOjQsImNhbnRvbiI6InZzIiwiY29vcmRpbmF0ZXMiOiIgMjY2NicwNDgsIDExNTAnNDY5IiwiYWx0aXR1ZGUiOiIxIiwiZW1lcmdlbmN5X3Bob25lIjoiU3VsdGFuIDA3OSA5OTkgOTkgOTkiLCJqX3Nfa2luZCI6Impfc19jaGlsZCIsImpfc19zZWN1cml0eV9zbm93IjpmYWxzZSwial9zX3NlY3VyaXR5X21vdW50YWluIjpmYWxzZSwial9zX3NlY3VyaXR5X3dhdGVyIjpmYWxzZSwicmVxdWlyZWRfY29udGFjdF9hdHRycyI6WyJuaWNrbmFtZSIsImdlbmRlciIsImJpcnRoZGF5IiwibmF0aW9uYWxpdHlfal9zIiwiY29ycmVzcG9uZGVuY2VfbGFuZ3VhZ2UiXSwiaGlkZGVuX2NvbnRhY3RfYXR0cnMiOltdLCJsaW5rcyI6eyJhYnRlaWx1bmdzbGVpdHVuZyI6IjI1NzQiLCJzdXBlcl9jYW1wIjoxMzI4LCJkYXRlcyI6WyIyNTA5IiwiMjM5MiIsIjI1MDgiXSwiZ3JvdXBzIjpbIjE3OSIsIjE4MSJdfSwiZXh0ZXJuYWxfYXBwbGljYXRpb25fbGluayI6Imh0dHBzOi8vcGJzLnB1enpsZS5jaC9kZS9ncm91cHMvMTc5L3B1YmxpY19ldmVudHMvMTMyMiJ9XSwibGlua2VkIjp7InBlb3BsZSI6W3siaWQiOiIyNTc0IiwiZmlyc3RfbmFtZSI6IkFidGVpbHVuZ3NsZWl0ZXIiLCJsYXN0X25hbWUiOiJTw6R1bGlhbXQiLCJuaWNrbmFtZSI6IiIsImNvbXBhbnlfbmFtZSI6IiIsImNvbXBhbnkiOmZhbHNlLCJlbWFpbCI6ImFidGVpbHVuZ3NsZWl0ZXIuc2FldWxpYW10QGF0ZWFtLmRiLnNjb3V0LmNoIiwiYWRkcmVzcyI6bnVsbCwiemlwX2NvZGUiOm51bGwsInRvd24iOm51bGwsImNvdW50cnkiOm51bGx9XSwiZXZlbnRzIjpbeyJpZCI6MTMyOCwibmFtZSI6IkJ1TGEtQ2FGZSAyMSAtIEhhdXB0bGFnZXIgUGZhZGlzdHVmZSIsImhyZWYiOiJodHRwczovL3Bicy5wdXp6bGUuY2gvZGUvZ3JvdXBzLzc0OS9ldmVudHMvMTMyOC5qc29uIn1dLCJldmVudF9kYXRlcyI6W3siaWQiOiIyNTA5IiwibGFiZWwiOiIiLCJzdGFydF9hdCI6IjIwMjEtMDctMDFUMDA6MDA6MDAuMDAwKzAyOjAwIiwiZmluaXNoX2F0IjoiMjAyMS0wNy0xOFQwMDowMDowMC4wMDArMDI6MDAiLCJsb2NhdGlvbiI6IiJ9LHsiaWQiOiIyMzkyIiwibGFiZWwiOiIiLCJzdGFydF9hdCI6IjIwMjEtMDctMjRUMDA6MDA6MDAuMDAwKzAyOjAwIiwiZmluaXNoX2F0IjoiMjAyMS0wOC0wNlQwMDowMDowMC4wMDArMDI6MDAiLCJsb2NhdGlvbiI6IiJ9LHsiaWQiOiIyNTA4IiwibGFiZWwiOiIiLCJzdGFydF9hdCI6IjIwMjEtMDctMjRUMDA6MDA6MDAuMDAwKzAyOjAwIiwiZmluaXNoX2F0IjoiMjAyMS0wOC0wN1QwMDowMDowMC4wMDArMDI6MDAiLCJsb2NhdGlvbiI6IiJ9XSwiZ3JvdXBzIjpbeyJpZCI6IjE3OSIsImhyZWYiOiJodHRwczovL3Bicy5wdXp6bGUuY2gvZGUvZ3JvdXBzLzE3OS5qc29uIiwiZ3JvdXBfdHlwZSI6IkFidGVpbHVuZyIsImxheWVyIjp0cnVlLCJuYW1lIjoiUGZhZGkgQWx0YmVyZyIsInNob3J0X25hbWUiOiIiLCJlbWFpbCI6ImluZm9AcGZhZGlhbHRiZXJnLmNoIiwiYWRkcmVzcyI6IlBvc3RmYWNoIDM1NiIsInppcF9jb2RlIjo4OTU0LCJ0b3duIjoiR2Vyb2xkc3dpbCIsImNvdW50cnkiOiIiLCJwYnNfc2hvcnRuYW1lIjoiIiwid2Vic2l0ZSI6Ind3dy5wZmFkaWFsdGJlcmcuY2giLCJiYW5rX2FjY291bnQiOiIiLCJwdGEiOmZhbHNlLCJ2a3AiOmZhbHNlLCJwYnNfbWF0ZXJpYWxfaW5zdXJhbmNlIjpmYWxzZSwiZGVzY3JpcHRpb24iOiIiLCJnZW5kZXIiOm51bGwsInRyeV9vdXRfZGF5X2F0IjpudWxsLCJjcmVhdGVkX2F0IjoiMjAxNC0wNy0wN1QxNjo0MzowOC4wMDArMDI6MDAiLCJ1cGRhdGVkX2F0IjoiMjAxNi0wNy0yNlQxMjo0NzoxMS4wMDArMDI6MDAiLCJsaW5rcyI6eyJjcmVhdG9yIjoiMiIsInVwZGF0ZXIiOiIyODQxIiwicGFyZW50IjoiMTc4IiwibGF5ZXJfZ3JvdXAiOiIxNzkiLCJoaWVyYXJjaGllcyI6WyIxIiwiMyIsIjE3OCIsIjE3OSJdLCJjaGlsZHJlbiI6WyIyMDAiLCIxODYiLCIxOTEiLCIxOTgiLCIxOTkiLCIxODkiXX0sImRlbGV0ZWRfYXQiOm51bGx9LHsiaWQiOiIxODEiLCJocmVmIjoiaHR0cHM6Ly9wYnMucHV6emxlLmNoL2RlL2dyb3Vwcy8xODEuanNvbiIsImdyb3VwX3R5cGUiOiJBYnRlaWx1bmciLCJsYXllciI6dHJ1ZSwibmFtZSI6IkJ1ZWJlIFBmYWRpIFPDpHVsaWFtdCIsInNob3J0X25hbWUiOiIiLCJlbWFpbCI6IiIsImFkZHJlc3MiOiIiLCJ6aXBfY29kZSI6bnVsbCwidG93biI6IiIsImNvdW50cnkiOm51bGwsInBic19zaG9ydG5hbWUiOiIiLCJ3ZWJzaXRlIjoiIiwiYmFua19hY2NvdW50IjoiIiwicHRhIjpmYWxzZSwidmtwIjpmYWxzZSwicGJzX21hdGVyaWFsX2luc3VyYW5jZSI6ZmFsc2UsImRlc2NyaXB0aW9uIjoiIiwiZ2VuZGVyIjpudWxsLCJ0cnlfb3V0X2RheV9hdCI6bnVsbCwiY3JlYXRlZF9hdCI6IjIwMTQtMDctMDdUMTY6NDM6MzkuMDAwKzAyOjAwIiwidXBkYXRlZF9hdCI6IjIwMTQtMTItMDVUMTg6NDY6MDYuMDAwKzAxOjAwIiwibGlua3MiOnsiY3JlYXRvciI6IjIiLCJ1cGRhdGVyIjoiMiIsInBhcmVudCI6IjE3OCIsImxheWVyX2dyb3VwIjoiMTgxIiwiaGllcmFyY2hpZXMiOlsiMSIsIjMiLCIxNzgiLCIxODEiXSwiY2hpbGRyZW4iOlsiNDE5Il19LCJkZWxldGVkX2F0IjpudWxsfSx7ImlkIjoiMTc4IiwibmFtZSI6IktvcnBzIEhhbnMgV2FsZG1hbm4iLCJncm91cF90eXBlIjoiR3J1cHBlIn0seyJpZCI6IjE3OSIsIm5hbWUiOiJQZmFkaSBBbHRiZXJnIiwiZ3JvdXBfdHlwZSI6IkFidGVpbHVuZyJ9LHsiaWQiOiIxODEiLCJuYW1lIjoiQnVlYmUgUGZhZGkgU8OkdWxpYW10IiwiZ3JvdXBfdHlwZSI6IkFidGVpbHVuZyJ9LHsiaWQiOiIxIiwibmFtZSI6IlBmYWRpYmV3ZWd1bmcgU2Nod2VpeiIsImdyb3VwX3R5cGUiOiJCdW5kIn0seyJpZCI6IjMiLCJuYW1lIjoiUGZhZGkgWsO8cmkiLCJncm91cF90eXBlIjoiS2FudG9uYWx2ZXJiYW5kIn0seyJpZCI6IjE3OCIsIm5hbWUiOiJLb3JwcyBIYW5zIFdhbGRtYW5uIiwiZ3JvdXBfdHlwZSI6IlJlZ2lvbiJ9LHsiaWQiOiIyMDAiLCJuYW1lIjoiQVBWIiwiZ3JvdXBfdHlwZSI6IkdyZW1pdW0ifSx7ImlkIjoiMTg2IiwibmFtZSI6IkJpYmVyc3R1ZmUiLCJncm91cF90eXBlIjoiQmliZXIifSx7ImlkIjoiMTkxIiwibmFtZSI6IlBmYWRpc3R1ZmUiLCJncm91cF90eXBlIjoiUGZhZGkifSx7ImlkIjoiMTk4IiwibmFtZSI6IlBpb3N0dWZlIiwiZ3JvdXBfdHlwZSI6IlBpbyJ9LHsiaWQiOiIxOTkiLCJuYW1lIjoiUm92ZXJzdHVmZSIsImdyb3VwX3R5cGUiOiJSb3ZlciJ9LHsiaWQiOiIxODkiLCJuYW1lIjoiV29sZnNzdHVmZSIsImdyb3VwX3R5cGUiOiJXw7ZsZmUifSx7ImlkIjoiNDE5IiwibmFtZSI6IldvbGZzc3R1ZmUiLCJncm91cF90eXBlIjoiV8O2bGZlIn1dfSwibGlua3MiOnsiZ3JvdXBzLmNyZWF0b3IiOnsiaHJlZiI6Imh0dHBzOi8vcGJzLnB1enpsZS5jaC9kZS9wZW9wbGUve2dyb3Vwcy5jcmVhdG9yfS5qc29uIiwidHlwZSI6InBlb3BsZSJ9LCJncm91cHMudXBkYXRlciI6eyJocmVmIjoiaHR0cHM6Ly9wYnMucHV6emxlLmNoL2RlL3Blb3BsZS97Z3JvdXBzLnVwZGF0ZXJ9Lmpzb24iLCJ0eXBlIjoicGVvcGxlIn0sImdyb3Vwcy5kZWxldGVyIjp7ImhyZWYiOiJodHRwczovL3Bicy5wdXp6bGUuY2gvZGUvcGVvcGxlL3tncm91cHMuZGVsZXRlcn0uanNvbiIsInR5cGUiOiJwZW9wbGUifSwiZ3JvdXBzLnBhcmVudCI6eyJocmVmIjoiaHR0cHM6Ly9wYnMucHV6emxlLmNoL2RlL2dyb3Vwcy97Z3JvdXBzLnBhcmVudH0uanNvbiIsInR5cGUiOiJncm91cHMifSwiZ3JvdXBzLmxheWVyX2dyb3VwIjp7ImhyZWYiOiJodHRwczovL3Bicy5wdXp6bGUuY2gvZGUvZ3JvdXBzL3tncm91cHMubGF5ZXJfZ3JvdXB9Lmpzb24iLCJ0eXBlIjoiZ3JvdXBzIn0sImdyb3Vwcy5oaWVyYXJjaHkiOnsiaHJlZiI6Imh0dHBzOi8vcGJzLnB1enpsZS5jaC9kZS9ncm91cHMve2dyb3Vwcy5oaWVyYXJjaHl9Lmpzb24iLCJ0eXBlIjoiZ3JvdXBzIn0sImdyb3Vwcy5jaGlsZHJlbiI6eyJocmVmIjoiaHR0cHM6Ly9wYnMucHV6emxlLmNoL2RlL2dyb3Vwcy97Z3JvdXBzLmNoaWxkcmVufS5qc29uIiwidHlwZSI6Imdyb3VwcyJ9LCJncm91cHMucGVvcGxlIjp7ImhyZWYiOiJodHRwczovL3Bicy5wdXp6bGUuY2gvZGUvZ3JvdXBzL3tncm91cHMuaWR9L3Blb3BsZS5qc29uIiwidHlwZSI6InBlb3BsZSJ9fX0=
+    http_version: null
+  recorded_at: Sat, 06 Jun 2020 16:24:56 GMT
 - request:
     method: get
     uri: https://pbs.puzzle.ch/events/1329.json?user_email=hussein_kohlmann@hitobito.example.com&user_token=Tu7aVJWyLYYMyCnZv2bz
@@ -139,7 +265,7 @@ http_interactions:
       Server:
       - nginx/1.12.1
       Date:
-      - Thu, 27 Feb 2020 15:10:33 GMT
+      - Sat, 06 Jun 2020 16:24:56 GMT
       Content-Type:
       - text/html; charset=utf-8
       Transfer-Encoding:
@@ -167,18 +293,20 @@ http_interactions:
       Vary:
       - Accept-Encoding
       Set-Cookie:
-      - afcc3ba8de9b9b04950e14e130f0b228=2e3db10cdff20e16f8f8e205af74f7fc; path=/;
+      - afcc3ba8de9b9b04950e14e130f0b228=c8f9c3f555864b97b87db23c60922100; path=/;
         HttpOnly; Secure
-      - locale=de; path=/; expires=Sat, 27 Feb 2021 15:10:33 GMT
+      - locale=de; path=/; expires=Sun, 06 Jun 2021 16:24:56 GMT; secure
       X-Request-Id:
-      - 9038144c-0775-4573-aae4-22b1e38ad220
+      - 3c404656-5842-43fd-8c2d-c23bf0dbdf25
       X-Runtime:
-      - '0.134091'
+      - '0.190400'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
     body:
       encoding: ASCII-8BIT
       string: <html><body>You are being <a href="https://pbs.puzzle.ch/de/groups/507/events/1329.json?user_email=hussein_kohlmann%40hitobito.example.com&amp;user_token=Tu7aVJWyLYYMyCnZv2bz">redirected</a>.</body></html>
     http_version: null
-  recorded_at: Thu, 27 Feb 2020 15:10:33 GMT
+  recorded_at: Sat, 06 Jun 2020 16:24:56 GMT
 - request:
     method: get
     uri: https://pbs.puzzle.ch/de/groups/507/events/1329.json?user_email=hussein_kohlmann@hitobito.example.com&user_token=Tu7aVJWyLYYMyCnZv2bz
@@ -187,7 +315,7 @@ http_interactions:
       string: ''
     headers:
       Cookie:
-      - locale=de; afcc3ba8de9b9b04950e14e130f0b228=2e3db10cdff20e16f8f8e205af74f7fc
+      - locale=de; afcc3ba8de9b9b04950e14e130f0b228=c8f9c3f555864b97b87db23c60922100
   response:
     status:
       code: 200
@@ -196,7 +324,7 @@ http_interactions:
       Server:
       - nginx/1.12.1
       Date:
-      - Thu, 27 Feb 2020 15:10:33 GMT
+      - Sat, 06 Jun 2020 16:24:56 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -225,11 +353,13 @@ http_interactions:
       Etag:
       - W/"7a1716ff5589277ed8edd9ced7520eaa"
       Set-Cookie:
-      - locale=de; path=/; expires=Sat, 27 Feb 2021 15:10:33 GMT
+      - locale=de; path=/; expires=Sun, 06 Jun 2021 16:24:56 GMT; secure
       X-Request-Id:
-      - ceac73bd-c74b-497c-b021-79eb44507eb9
+      - 8645f1c1-877e-4090-bad6-02ebe77b5f5e
       X-Runtime:
-      - '0.235579'
+      - '0.284836'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
     body:
       encoding: UTF-8
       string: '{"events":[{"id":"1329","type":"events","name":"BuLa-CaFe 21 - Hauptlager
@@ -241,5 +371,180 @@ http_interactions:
         Schweiz","group_type":"Bund"},{"id":"2","name":"Pfadi Kanton Bern","group_type":"Kantonalverband"},{"id":"505","name":"Obere
         Emme","group_type":"Region"},{"id":"507","name":"Pfadistufe","group_type":"Pfadi"},{"id":"508","name":"Utteloo","group_type":"Pfadi"}]},"links":{"groups.creator":{"href":"https://pbs.puzzle.ch/de/people/{groups.creator}.json","type":"people"},"groups.updater":{"href":"https://pbs.puzzle.ch/de/people/{groups.updater}.json","type":"people"},"groups.deleter":{"href":"https://pbs.puzzle.ch/de/people/{groups.deleter}.json","type":"people"},"groups.parent":{"href":"https://pbs.puzzle.ch/de/groups/{groups.parent}.json","type":"groups"},"groups.layer_group":{"href":"https://pbs.puzzle.ch/de/groups/{groups.layer_group}.json","type":"groups"},"groups.hierarchy":{"href":"https://pbs.puzzle.ch/de/groups/{groups.hierarchy}.json","type":"groups"},"groups.children":{"href":"https://pbs.puzzle.ch/de/groups/{groups.children}.json","type":"groups"},"groups.people":{"href":"https://pbs.puzzle.ch/de/groups/{groups.id}/people.json","type":"people"}}}'
     http_version: null
-  recorded_at: Thu, 27 Feb 2020 15:10:33 GMT
+  recorded_at: Sat, 06 Jun 2020 16:24:56 GMT
+- request:
+    method: post
+    uri: https://limesurvey.bula21.ch/index.php/admin/remotecontrol
+    body:
+      encoding: UTF-8
+      string: '{"method":"get_session_key","params":["Folletta","?F4A%,6Hd42o7&"],"id":1}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - limesurvey.bula21.ch
+      Content-Type:
+      - application/json
+      Connection:
+      - Keep-Alive
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.17.6
+      Date:
+      - Sat, 06 Jun 2020 16:24:57 GMT
+      Content-Type:
+      - text/javascript;charset=UTF-8
+      Content-Length:
+      - '65'
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - PHP/7.2.26
+      Set-Cookie:
+      - PHPSESSID=4a9n7nj9434llnueh5skq77af4; path=/; HttpOnly
+      - PHPSESSID=g0v02racc39g6h7apd1mf0ngas; path=/; HttpOnly
+      - YII_CSRF_TOKEN=deleted; expires=Thu, 01-Jan-1970 00:00:01 GMT; Max-Age=0;
+        path=/
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Cache-Control:
+      - no-store, no-cache, must-revalidate
+      Pragma:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000
+    body:
+      encoding: UTF-8
+      string: '{"id":1,"result":"ReuNrbwt4CevpY5_aBXNquzFRmRZGVa7","error":null}'
+    http_version: null
+  recorded_at: Sat, 06 Jun 2020 16:24:57 GMT
+- request:
+    method: post
+    uri: https://limesurvey.bula21.ch/index.php/admin/remotecontrol
+    body:
+      encoding: UTF-8
+      string: '{"method":"add_participants","params":["ReuNrbwt4CevpY5_aBXNquzFRmRZGVa7","187799",[{"email":"xira@muster.ch","lastname":"TEST
+        Muster","firstname":"Xira","language":"de-informal","attribute_1":1329,"attribute_2":2}]],"id":1}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - limesurvey.bula21.ch
+      Content-Type:
+      - application/json
+      Connection:
+      - Keep-Alive
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.17.6
+      Date:
+      - Sat, 06 Jun 2020 16:24:57 GMT
+      Content-Type:
+      - text/javascript;charset=UTF-8
+      Content-Length:
+      - '389'
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - PHP/7.2.26
+      Set-Cookie:
+      - PHPSESSID=umfrhes3c88fq9aj2atg41r7r5; path=/; HttpOnly
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Cache-Control:
+      - no-store, no-cache, must-revalidate
+      Pragma:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000
+    body:
+      encoding: UTF-8
+      string: '{"id":1,"result":[{"sent":"N","remindersent":"N","remindercount":0,"completed":"N","usesleft":1,"email":"xira@muster.ch","lastname":"TEST
+        Muster","firstname":"Xira","language":"de-informal","attribute_1":"1329","attribute_2":"2","token":"2mGQ0pHvuZS6hSP","emailstatus":"OK","tid":"149","participant_id":null,"blacklisted":null,"validfrom":null,"validuntil":null,"mpid":null}],"error":null}'
+    http_version: null
+  recorded_at: Sat, 06 Jun 2020 16:24:57 GMT
+- request:
+    method: post
+    uri: https://limesurvey.bula21.ch/index.php/admin/remotecontrol
+    body:
+      encoding: UTF-8
+      string: '{"method":"invite_participants","params":["ReuNrbwt4CevpY5_aBXNquzFRmRZGVa7","187799"],"id":1}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - limesurvey.bula21.ch
+      Content-Type:
+      - application/json
+      Connection:
+      - Keep-Alive
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.17.6
+      Date:
+      - Sat, 06 Jun 2020 16:25:01 GMT
+      Content-Type:
+      - text/javascript;charset=UTF-8
+      Content-Length:
+      - '1047'
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - PHP/7.2.26
+      Set-Cookie:
+      - PHPSESSID=fr0mdgsr355obp447hu7ruonsj; path=/; HttpOnly
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Cache-Control:
+      - no-store, no-cache, must-revalidate
+      Pragma:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000
+    body:
+      encoding: UTF-8
+      string: '{"id":1,"result":{"145":{"name":"Voluptate Azra Newton","email":"newton_azra@hitobito.example.com","status":"fail","error":"SMTP
+        Error: The following recipients failed: newton_azra@hitobito.example.com:
+        Recipient address reserved by RFC 2606\r\n"},"146":{"name":"Ut Mio Daudrich","email":"daudrich_mio@hitobito.example.com","status":"fail","error":"SMTP
+        Error: The following recipients failed: daudrich_mio@hitobito.example.com:
+        Recipient address reserved by RFC 2606\r\n"},"147":{"name":"Voluptate Azra
+        Newton","email":"newton_azra@hitobito.example.com","status":"fail","error":"SMTP
+        Error: The following recipients failed: newton_azra@hitobito.example.com:
+        Recipient address reserved by RFC 2606\r\n"},"148":{"name":"Voluptate Azra
+        Newton","email":"newton_azra@hitobito.example.com","status":"fail","error":"SMTP
+        Error: The following recipients failed: newton_azra@hitobito.example.com:
+        Recipient address reserved by RFC 2606\r\n"},"149":{"name":"Xira TEST Muster","email":"xira@muster.ch","status":"OK"},"status":"0
+        left to send"},"error":null}'
+    http_version: null
+  recorded_at: Sat, 06 Jun 2020 16:25:01 GMT
 recorded_with: VCR 5.1.0
