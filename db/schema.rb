@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 2020_05_29_104329) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
-  
+
   create_table "invoice_parts", force: :cascade do |t|
     t.bigint "invoice_id", null: false
     t.string "type"
