@@ -2,6 +2,21 @@
 en:
   activerecord:
     attributes:
+      activity:
+        activity_documents: Documents
+        description: Description
+        duration_activity: Duration of the activity (Minutes)
+        duration_journey: Duration of the journey (Minutes)
+        goals: Leitziele
+        block_type: J+S Type
+        simo: Sicherheitsmodul
+        label: Label
+        language: Language
+        location: Location
+        participants_count_activity: Paritcipant count Activity
+        participants_count_transport: Participant count Transport (incl. leaders)
+        stufe_recommended: Age recommended
+        stufen: Age
       leader:
         birthdate: Birthdate
         first_name: Firstname
@@ -54,14 +69,23 @@ en:
       unit:
         one: Camp
         other: Camps
+  activity:
+    edit:
+      title: Aktivität editieren
+    index:
+      title: Aktivitäten
+    new:
+      title: Neue Aktivität erfassen
   app:
     title: Orca
   buttons:
     back: Back
     create: Create
+    destroy: Delete
     edit: Edit
     export_csv: Export as CSV
     save: Save
+    show: Show
   camp_unit_mailer:
     complete_notification:
       body: |-
@@ -268,6 +292,7 @@ en:
     updated:
       success: saved!
   nav:
+    activity: Activity
     language:
       de: DE
       en: EN
@@ -329,14 +354,29 @@ en:
         delimiter: ''
   participants:
     edit:
-      title: Teilnehmenden bearbeiten
+      title: Edit participants
     index:
       title: Participants
     new:
       title: Create participants
   pre_text: Pre text
   simple_form:
+    confirm_unsaved: 'Achtung: Alle nicht gespeicherten Änderungen gehen verloren. Sind Sie sicher?'
     options:
+      activity:
+        simo:
+          berg: Berg
+          wasser: Wasser
+        block_type:
+          la: Lageraktivität
+          ls: Lagersport
+          voila: Voila Bula
+        language:
+          de: Deutsch
+          en: Englisch
+          fr: Französisch
+          it: Italienisch
+          mixed: gemischt
       participant:
         gender:
           female: Female

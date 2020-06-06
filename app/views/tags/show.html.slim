@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Code:
+  = @tag.code
+p
+  strong Label:
+  = @tag.label
+p
+  strong Icon:
+  = @tag.icon
+
+=> link_to t('buttons.edit'), edit_tag_path(@tag), class: 'btn btn-primary'
+'|
+=< link_to t('buttons.back'), tags_path, class: 'btn btn-secondary'

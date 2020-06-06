@@ -9,7 +9,7 @@ class User < ApplicationRecord
   validates :uid, presence: true
   validates :pbs_id, presence: true, allow_blank: true
 
-  enum role: %i[user admin], _prefix: :role
+  enum role: %i[user admin programm], _prefix: :role
 
   def self.from_omniauth(auth)
     email = auth.info.email

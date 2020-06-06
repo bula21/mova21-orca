@@ -1,0 +1,80 @@
+.h1.pb-0 = @activity.label
+- @activity.tags.each do |tag|
+  i class="#{tag.icon} mr-2"
+
+.card.mt-3.mb-3
+  .card-body
+    = markdown(@activity.description).html_safe
+
+.card.mt-3.mb-3
+  .card-body
+    .row
+      .col-6
+        dt = t('activerecord.attributes.activity.language')
+        dd = t("simple_form.options.activity.language.#{@activity.language}")
+
+        dt = t('activerecord.attributes.activity.location')
+        dd = @activity.location
+
+      .col-6
+        dt = t('activerecord.attributes.activity.goals')
+        dd
+          ul
+            - @activity.goals.each do |s|
+              li = s.name
+.card.mt-3.mb-3
+  .card-body
+    .row
+      .col-6
+        dt = t('activerecord.attributes.activity.block_type')
+        dd = t(@activity.block_type || 'none', scope: 'simple_form.options.activity.block_type')
+
+      .col-6
+        dt = t('activerecord.attributes.activity.simo')
+        dd = t(@activity.simo || 'none', scope: 'simple_form.options.activity.simo')
+
+    .row
+      .col-6
+        dt = t('activerecord.attributes.activity.participants_count_activity')
+        dd = @activity.participants_count_activity
+      .col-6
+        dt = t('activerecord.attributes.activity.participants_count_transport')
+        dd = @activity.participants_count_transport
+
+    .row
+      .col-6
+        dt = t('activerecord.attributes.activity.duration_activity')
+        dd = @activity.duration_activity
+      .col-6
+        dt = t('activerecord.attributes.activity.duration_journey')
+        dd = @activity.duration_journey
+    .row
+      .col-6
+        dt = t('activerecord.attributes.activity.stufen')
+        dd
+          ul
+            - @activity.stufen.each do |s|
+              li = s.name
+      .col-6
+        dt = t('activerecord.attributes.activity.stufe_recommended')
+        dd
+          ul
+            - @activity.stufe_recommended.each do |s|
+              li = s.name
+
+
+
+.card.mt-3.mb-3
+  .card-body
+    .row
+      .col-6
+        dt = t('activerecord.attributes.activity.activity_documents')
+        ul.list-group
+          - @activity.activity_documents.each do |document|
+            li.list-group-item = link_to document.filename, url_for(document)
+
+
+=> link_to t('buttons.edit'), edit_activity_path(@activity), class: 'btn btn-primary'
+br
+br
+=< link_to t('buttons.back'), activities_path, class: 'btn btn-secondary'
