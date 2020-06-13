@@ -21,7 +21,7 @@ class EsrService
     ref.reverse.chars.in_groups_of(5).reverse.map { |group| group.reverse.join }.join(' ')
   end
 
-  def code_line(esr_participant_nr: 'XXX-XXXXX-X', ref:, amount:, esr_mode: '01')
+  def code_line(esr_participant_nr: '01-348230-2', ref:, amount:, esr_mode: '01')
     code = {
       esr_mode: esr_mode,
       amount_in_cents: amount * 100,
