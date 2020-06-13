@@ -47,11 +47,13 @@ FROM base AS production
 RUN mkdir -p /app && adduser -D app && chown -R app /app
 WORKDIR /app                                                              
 
-RUN bundle config deployment true && bundle config without test:development 
+RUN bundle config deployment true && bundle config --without development test
                                        
 COPY --chown=app --from=build /app /app                              
 USER app    
-RUN bundle install && bundle clean && bundle package
+RUN bundle install --without development test
+RUN bundle clean
+RUN bundle package
                                        
 ENV RAILS_ENV=production               
 ENV NODE_ENV=production 
