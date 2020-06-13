@@ -59,5 +59,5 @@ ENV RAILS_ENV=production
 ENV NODE_ENV=production 
 ENV RAILS_LOG_TO_STDOUT="true"  
 ENV PORT=3000
-
+EXPOSE $PORT
 CMD ["bin/rails", "s", "-b", "0.0.0.0"] 
