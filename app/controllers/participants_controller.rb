@@ -4,8 +4,6 @@ class ParticipantsController < ApplicationController
   load_and_authorize_resource :unit
   load_and_authorize_resource through: :unit
 
-  def index; end
-
   def show; end
 
   def new; end

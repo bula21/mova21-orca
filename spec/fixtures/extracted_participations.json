@@ -1,0 +1,94 @@
+[
+  {
+    "id": "11628",
+    "type": "event_participations",
+    "first_name": "Hans",
+    "last_name": "Muster",
+    "nickname": "Adler",
+    "company_name": "MUSTER AG",
+    "company": false,
+    "email": "aa@ass.ch",
+    "address": "Dorfstrasse 21",
+    "zip_code": "2736",
+    "town": "La Chaux-de-Fonds",
+    "country": "",
+    "gender": "m",
+    "birthday": "1984-08-14",
+    "picture": {
+      "url": "/assets/profil-3a8452c9ac8e8b1b70b9d4f4250417bea5be8a4518dbfae44db944f8fda07ca5.png",
+      "thumb": {
+        "url": "/assets/profil_thumb-0296a3526d1e1cb1a5a9c63fbe5c913977bc1d1361f8bccb23259dda216aa9e8.png"
+      }
+    },
+    "primary_group_id": 56,
+    "title": "",
+    "salutation": "",
+    "correspondence_language": "",
+    "kantonalverband_id": 2,
+    "roles": [
+      {
+        "type": "Event::Camp::Role::Participant",
+        "name": "Teilnehmer/-in"
+      }
+    ],
+    "links": {
+      "person": "1866",
+      "event_answers": [
+        "1042",
+        "1047",
+        "1052",
+        "1057",
+        "1062"
+      ]
+    },
+    "additional_information": "top :-)\r\n",
+    "active": true,
+    "qualified": null
+  },
+  {
+    "id": "11629",
+    "type": "event_participations",
+    "first_name": "TN",
+    "last_name": "Utteloo",
+    "nickname": "TEST",
+    "company_name": "",
+    "company": false,
+    "email": "tn.utteloo@test.ch",
+    "address": null,
+    "zip_code": null,
+    "town": null,
+    "country": null,
+    "gender": null,
+    "birthday": null,
+    "picture": {
+      "url": "/assets/profil-3a8452c9ac8e8b1b70b9d4f4250417bea5be8a4518dbfae44db944f8fda07ca5.png",
+      "thumb": {
+        "url": "/assets/profil_thumb-0296a3526d1e1cb1a5a9c63fbe5c913977bc1d1361f8bccb23259dda216aa9e8.png"
+      }
+    },
+    "primary_group_id": 508,
+    "title": null,
+    "salutation": null,
+    "correspondence_language": null,
+    "kantonalverband_id": 2,
+    "roles": [
+      {
+        "type": "Event::Camp::Role::Participant",
+        "name": "Teilnehmer/-in"
+      }
+    ],
+    "links": {
+      "person": "3186",
+      "event_answers": [
+        "1043",
+        "1048",
+        "1053",
+        "1058",
+        "1063"
+      ]
+    },
+    "additional_information": "ja ja",
+    "active": true,
+    "qualified": null
+  }
+]

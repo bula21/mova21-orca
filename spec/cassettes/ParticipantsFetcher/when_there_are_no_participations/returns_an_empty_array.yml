@@ -1,0 +1,67 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://pbs.puzzle.ch/groups/3/events/1257/participations.json?page=1&user_email=hussein_kohlmann@hitobito.example.com&user_token=Tu7aVJWyLYYMyCnZv2bz
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.12.1
+      Date:
+      - Sun, 14 Jun 2020 19:56:18 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cache-Control:
+      - no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Etag:
+      - W/"8ad2cc2456906dc5ecc761ffda04af7f"
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - _session_id=371b04239c10784037978e08dbbbcf5b; path=/; secure; HttpOnly
+      - afcc3ba8de9b9b04950e14e130f0b228=55a7815ee960744266b6bfd5b80cb1bd; path=/;
+        HttpOnly; Secure
+      - locale=de; path=/; expires=Mon, 14 Jun 2021 19:56:17 GMT; secure
+      X-Request-Id:
+      - 44b12adb-97f3-4aaf-b60c-dbdcf5527c53
+      X-Runtime:
+      - '0.484275'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+    body:
+      encoding: ASCII-8BIT
+      string: '{"current_page":1,"total_pages":0,"next_page_link":null,"prev_page_link":null,"event_participations":[]}'
+    http_version: null
+  recorded_at: Sun, 14 Jun 2020 19:56:18 GMT
+recorded_with: VCR 5.1.0

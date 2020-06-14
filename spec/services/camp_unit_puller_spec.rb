@@ -14,6 +14,11 @@ RSpec.describe CampUnitPuller do
       expect(camp_units.count).to be 2
       expect(camp_units.compact).to all(be_valid)
     end
+
+    it 'imports the participants correctly' do
+      expect(camp_units.second.participants.count).to be 2
+      expect(camp_units.first.participants.count).to be 2
+    end
   end
 
   describe '#pull_new', vcr: true, record: :all do

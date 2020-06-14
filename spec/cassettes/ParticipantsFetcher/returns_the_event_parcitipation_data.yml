@@ -1,0 +1,67 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://pbs.puzzle.ch/groups/749/events/1328/participations.json?page=1&user_email=hussein_kohlmann@hitobito.example.com&user_token=Tu7aVJWyLYYMyCnZv2bz
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.12.1
+      Date:
+      - Sun, 14 Jun 2020 19:56:17 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cache-Control:
+      - no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Etag:
+      - W/"08903e318c18b3d6acb81d85b5532761"
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - _session_id=915cac69bf6761ac38e252b68beae1b6; path=/; secure; HttpOnly
+      - afcc3ba8de9b9b04950e14e130f0b228=55a7815ee960744266b6bfd5b80cb1bd; path=/;
+        HttpOnly; Secure
+      - locale=de; path=/; expires=Mon, 14 Jun 2021 19:56:16 GMT; secure
+      X-Request-Id:
+      - 9583709c-a669-4e66-977e-24c76203da9c
+      X-Runtime:
+      - '0.534922'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+    body:
+      encoding: ASCII-8BIT
+      string: '{"current_page":1,"total_pages":1,"next_page_link":null,"prev_page_link":null,"event_participations":[{"id":"11986","type":"event_participations","first_name":"Andreas","last_name":null,"nickname":null,"company_name":"Gross","company":false,"email":null,"address":null,"zip_code":"3576","town":"Herisau","country":null,"gender":"m","birthday":"1990-05-29","picture":{"url":"/assets/profil-3a8452c9ac8e8b1b70b9d4f4250417bea5be8a4518dbfae44db944f8fda07ca5.png","thumb":{"url":"/assets/profil_thumb-0296a3526d1e1cb1a5a9c63fbe5c913977bc1d1361f8bccb23259dda216aa9e8.png"}},"primary_group_id":56,"title":null,"salutation":null,"correspondence_language":null,"kantonalverband_id":2,"roles":[{"type":"Event::Camp::Role::Participant","name":"Teilnehmer/-in"}],"links":{"person":"1896","event_answers":["1313"]},"additional_information":"","active":true,"qualified":null},{"id":"11985","type":"event_participations","first_name":"Norbert","last_name":null,"nickname":null,"company_name":"Hochreutener","company":false,"email":null,"address":null,"zip_code":"3884","town":"Vernier","country":null,"gender":"m","birthday":"1948-04-17","picture":{"url":"/assets/profil-3a8452c9ac8e8b1b70b9d4f4250417bea5be8a4518dbfae44db944f8fda07ca5.png","thumb":{"url":"/assets/profil_thumb-0296a3526d1e1cb1a5a9c63fbe5c913977bc1d1361f8bccb23259dda216aa9e8.png"}},"primary_group_id":56,"title":null,"salutation":null,"correspondence_language":null,"kantonalverband_id":2,"roles":[{"type":"Event::Camp::Role::Participant","name":"Teilnehmer/-in"}],"links":{"person":"1907","event_answers":["1312"]},"additional_information":"","active":true,"qualified":null}],"linked":{"event_answers":[{"id":"1313","question":"Vegi?","answer":"Ja"},{"id":"1312","question":"Vegi?","answer":"Nein"}]},"links":{"event_participations.person":{"href":"https://pbs.puzzle.ch/de/people/{event_participations.person}.json","type":"people"}}}'
+    http_version: null
+  recorded_at: Sun, 14 Jun 2020 19:56:17 GMT
+recorded_with: VCR 5.1.0

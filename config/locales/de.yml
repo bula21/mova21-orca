@@ -81,6 +81,9 @@ de:
       unit:
         one: Lager
         other: Lager
+      participant:
+        one: Teilnehmende(r)
+        other: Teilnehmende
   activity:
     edit:
       title: Aktivität editieren
@@ -147,7 +150,7 @@ de:
     - Fr
     - Sa
     abbr_month_names:
-    - 
+    -
     - Jan
     - Feb
     - Mär
@@ -173,7 +176,7 @@ de:
       long: "%e. %B %Y"
       short: "%e. %b"
     month_names:
-    - 
+    -
     - Januar
     - Februar
     - März
@@ -405,6 +408,13 @@ de:
       format:
         delimiter: ''
   participants:
+    roles:
+      event_camp_role_assistant_leader: Leitung
+      event_camp_role_helper: Küche / Helfer/-in
+      event_camp_role_participant: Teilnehmer
+      event_camp_role_leader_mountain_security: Leiter-/in Sicherheitsaktivität Berg
+      event_camp_role_leader_snow_security: Leiter-/in Sicherheitsaktivität Winter
+      event_camp_role_leader_water_security: Leiter-/in Sicherheitsaktivität Wasser
     edit:
       title: Teilnehmenden bearbeiten
     index:
@@ -494,3 +504,5 @@ de:
       questionnaire: Fragebogen
       registration_complete: Registration vollständig
       registration_incomplete: Registration nicht vollständig
+      expected_participants: "Erwartete Anzahl TN"
+      imported: "von MiData importiert"

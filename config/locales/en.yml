@@ -126,7 +126,7 @@ en:
     - Fri
     - Sat
     abbr_month_names:
-    - 
+    -
     - Jan
     - Feb
     - Mar
@@ -152,7 +152,7 @@ en:
       long: "%B %d, %Y"
       short: "%b %d"
     month_names:
-    - 
+    -
     - January
     - February
     - March
@@ -468,3 +468,5 @@ en:
       questionnaire: Form
       registration_complete: Registration complete
       registration_incomplete: Registration incomplete
+      expected_participants: "Expected number of participants"
+      imported: "imported from MiData"

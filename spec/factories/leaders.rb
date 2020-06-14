@@ -11,7 +11,9 @@ FactoryBot.define do
     email { Faker::Internet.email }
     phone_number { Faker::PhoneNumber.phone_number }
     language { Leader.languages.keys.sample }
-
+    address { Faker::Address.street_name }
+    zip_code { Faker::Address.zip_code }
+    town { Faker::Address.city }
     # trait :al do
     # end
   end

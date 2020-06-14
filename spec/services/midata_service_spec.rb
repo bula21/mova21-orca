@@ -17,6 +17,16 @@ RSpec.describe MidataService do
     subject(:camp_unit_data) { service.fetch_camp_unit_data(pbs_camp_unit_id) }
 
     it { expect(camp_unit_data.dig('events', 0, 'id')).to eq(pbs_camp_unit_id) }
-    it { expect(camp_unit_data.dig('events', 0, 'links', 'sub_camps')).to eq([1329]) }
+    it { expect(camp_unit_data.dig('events', 0, 'links', 'sub_camps')).to eq([1322, 1329]) }
+  end
+
+  describe '#fetch_participations', vcr: true do
+    subject(:event_participations_data) { service.fetch_participations(group_id, event_id) }
+
+    let(:group_id) { 749 }
+    let(:event_id) { 1328 }
+
+    it { expect(event_participations_data.dig('current_page')).to eq 1 }
+    it { expect(event_participations_data.dig('event_participations').length).to eq 2 }
   end
 end
