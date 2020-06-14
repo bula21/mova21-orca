@@ -266,7 +266,7 @@ fr:
   invoices:
     payment_info:
       amount_label: Betrag
-      issuer_account: XX-XXXXX-X
+      issuer_account: 01-348230-2
       issuer_account_label: Konto-Nummer
       issuer_address: |-
         Verein Bundeslager 2021
