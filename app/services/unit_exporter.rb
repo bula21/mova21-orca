@@ -78,6 +78,7 @@ class UnitExporter
       unit.expected_participants_leitung_m,
       unit.starts_at,
       unit.ends_at,
+      unit.language,
       unit.lagerleiter.pbs_id,
       unit.lagerleiter.last_name,
       unit.lagerleiter.first_name,
