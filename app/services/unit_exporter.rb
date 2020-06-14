@@ -16,6 +16,7 @@ class UnitExporter
     expected_participants_leitung_m
     starts_at
     ends_at
+    language
     lagerleiter_pbs_id
     lagerleiter_last_name
     lagerleiter_first_name
