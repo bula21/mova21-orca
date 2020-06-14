@@ -22,6 +22,7 @@ gem 'slim-rails'
 gem 'turbolinks', '~> 5'
 gem 'vcr'
 gem 'webpacker', '~> 4.0'
+gem 'azure-storage', '~> 0.15.0.preview', require: false
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
