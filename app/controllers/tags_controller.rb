@@ -7,8 +7,6 @@ class TagsController < ApplicationController
     @tags = Tag.all
   end
 
-  def show; end
-
   def new
     @tag = Tag.new
   end
@@ -19,7 +17,7 @@ class TagsController < ApplicationController
     @tag = Tag.new(tag_params)
 
     if @tag.save
-      redirect_to @tag, notice: 'Tag was successfully created.'
+      redirect_to tags_path, notice: 'Tag was successfully created.'
     else
       render :new
     end
@@ -27,7 +25,7 @@ class TagsController < ApplicationController
 
   def update
     if @tag.update(tag_params)
-      redirect_to @tag, notice: 'Tag was successfully updated.'
+      redirect_to tags_path, notice: 'Tag was successfully updated.'
     else
       render :edit
     end
