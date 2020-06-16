@@ -8,7 +8,7 @@ en:
         duration_activity: Duration of the activity (Minutes)
         duration_journey: Duration of the journey (Minutes)
         goals: Leitziele
-        block_type: J+S Type
+        block_type: Block Typ
         simo: Sicherheitsmodul
         label: Label
         language: Language
@@ -293,6 +293,7 @@ en:
       success: saved!
   nav:
     activity: Activity
+    tag: Tags
     language:
       de: DE
       en: EN

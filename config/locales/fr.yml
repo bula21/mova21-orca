@@ -8,7 +8,7 @@ fr:
         duration_activity: Dauer der Aktivität (Minuten)
         duration_journey: Dauer der Anreise (Minuten)
         goals: Leitziele
-        block_type: J+S Art
+        block_type: Block Typ
         simo: Sicherheitsmodul
         label: Bezeichnung
         language: Sprache
@@ -316,6 +316,7 @@ fr:
       success: Enregistré avec succès
   nav:
     activity: Activity
+    tag: Tags
     language:
       de: DE
       en: EN
