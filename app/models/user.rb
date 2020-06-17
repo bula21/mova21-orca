@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  include Bitfields
   devise :omniauthable, omniauth_providers: %i[openid_connect developer]
 
   has_one :leader, foreign_key: :pbs_id, primary_key: :pbs_id
@@ -9,7 +10,7 @@ class User < ApplicationRecord
   validates :uid, presence: true
   validates :pbs_id, presence: true, allow_blank: true
 
-  enum role: %i[user admin programm], _prefix: :role
+  bitfield :role_flags, :role_user, :role_admin, :role_programm
 
   def self.from_omniauth(auth)
     email = auth.info.email
