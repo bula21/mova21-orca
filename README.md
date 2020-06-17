@@ -11,9 +11,25 @@ If you want to run speci
 
 ## Setup Auth
 
+## Roles
+
+* User (```role_user```)
+* Admin (```role_admin```)
+* Programm (```role_programm```)
+
+```
+# Give a user admin role
+user.role_admin = true
+user.save
+
+# or
+user.update(role_admin: true)
+
+# to remove a role
+user.update(role_programm: false)
+```
+
 ### Developer Stategy
-
-
 
 ENVs that have to be set:
 
