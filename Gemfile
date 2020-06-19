@@ -3,6 +3,8 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+gem 'azure-storage', '~> 0.15.0.preview', require: false
+gem 'bitfields'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'cancancan'
 gem 'devise'
@@ -22,7 +24,6 @@ gem 'slim-rails'
 gem 'turbolinks', '~> 5'
 gem 'vcr'
 gem 'webpacker', '~> 4.0'
-gem 'azure-storage', '~> 0.15.0.preview', require: false
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

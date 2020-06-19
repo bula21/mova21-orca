@@ -16,7 +16,7 @@ FactoryBot.define do
     end
 
     trait :admin do
-      role { 'admin' }
+      role_admin { true }
     end
   end
 end
