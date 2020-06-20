@@ -203,6 +203,8 @@ ActiveRecord::Schema.define(version: 2020_06_17_061116) do
     t.bigint "coach_id"
     t.jsonb "midata_data"
     t.string "language"
+    t.string "district"
+    t.string "week"
     t.index ["al_id"], name: "index_units_on_al_id"
     t.index ["coach_id"], name: "index_units_on_coach_id"
     t.index ["lagerleiter_id"], name: "index_units_on_lagerleiter_id"

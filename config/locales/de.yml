@@ -47,6 +47,8 @@ de:
         kv_id: KV
         lagerleiter: Lagerleiter
         language: Sprache
+        week: Lagerwoche
+        district: Quartier
         starts_at: Beginn am
         stufe: Stufe
         title: Titel
@@ -461,6 +463,7 @@ de:
     show:
       camp_link_midata: Lager auf MiData
       invoices: Invoices
+      other_infos: Weitere Informationen
       participants: Teilnehmende
       questionnaire: Fragebogen
       registration_complete: Registration vollständig

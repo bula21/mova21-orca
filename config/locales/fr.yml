@@ -47,6 +47,8 @@ fr:
         kv_id: Association cantonale
         lagerleiter: Maîtrise de camp
         language: Langue
+        week: Lagerwoche
+        district: Quartier
         starts_at: Début le
         stufe: Branche
         title: Titre
@@ -456,6 +458,7 @@ fr:
     show:
       camp_link_midata: Camp sur MiData
       invoices: Invoices
+      other_infos: Information
       participants: Participants
       questionnaire: Questionaire
       registration_complete: Inscription complète

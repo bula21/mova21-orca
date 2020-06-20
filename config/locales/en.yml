@@ -47,6 +47,8 @@ en:
         kv_id: Cantonal association
         lagerleiter: Main unit leader
         language: Language
+        week: Week
+        district: District
         starts_at: Start on
         stufe: Stufe
         title: Title
@@ -433,6 +435,7 @@ en:
     show:
       camp_link_midata: Camp on MiData
       invoices: Invoices
+      other_infos: Other Information
       participants: Participants
       questionnaire: Form
       registration_complete: Registration complete
