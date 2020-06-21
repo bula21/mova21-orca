@@ -4,6 +4,7 @@ class Activity < ApplicationRecord
   extend Mobility
 
   has_many_attached :activity_documents
+  has_one_attached :picture
   has_and_belongs_to_many :tags, optional: true
   belongs_to :transport_location, optional: true
   has_and_belongs_to_many :goals

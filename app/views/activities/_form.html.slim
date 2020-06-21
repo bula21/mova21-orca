@@ -48,6 +48,15 @@
             = f.input :participants_count_activity
           .col-6
             = f.input :participants_count_transport
+            label{for='picture'} = t('activerecord.attributes.activity.picture')
+            br
+            = f.file_field :picture
+            - unless @activity.picture.blank?
+              = image_tag(@activity.picture, height: "100")
+              = link_to t('buttons.destroy'), activity_path(picture_id: @activity.picture.id),
+                    method: :delete,
+                    class: 'btn btn-sm btn-secondary float-right',
+                    data: { confirm: t('simple_form.confirm_unsaved') }
         .row
           .col-6
             = f.input :duration_activity

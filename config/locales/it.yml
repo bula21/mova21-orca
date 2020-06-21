@@ -4,6 +4,7 @@ it:
     attributes:
       activity:
         activity_documents: Dokumente
+        picture: Bild
         description: Beschreibung
         duration_activity: Dauer der Aktivität (Minuten)
         duration_journey: Dauer der Anreise (Minuten)

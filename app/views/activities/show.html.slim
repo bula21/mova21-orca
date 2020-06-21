@@ -78,6 +78,9 @@
         ul.list-group
           - @activity.activity_documents.each do |document|
             li.list-group-item = link_to document.filename, url_for(document)
+      .col-6
+        dt = t('activerecord.attributes.activity.picture')
+        dd = image_tag(@activity.picture, height: "100") unless @activity.picture.blank?
 
 
 => link_to t('buttons.edit'), edit_activity_path(@activity), class: 'btn btn-primary'

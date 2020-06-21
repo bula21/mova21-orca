@@ -4,6 +4,7 @@ en:
     attributes:
       activity:
         activity_documents: Documents
+        picture: Picture
         description: Description
         duration_activity: Duration of the activity (Minutes)
         duration_journey: Duration of the journey (Minutes)
