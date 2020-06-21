@@ -100,5 +100,18 @@
       ul
         - @unit.invoices.each do |invoice|
           li= link_to invoice.filename, url_for(invoice.pdf)
+.card.mt-4
+  .card-body
+    h2 = t('units.show.other_infos')
+
+    dt = t('activerecord.attributes.unit.district')
+    dd = @unit.district
+
+    dt = t('activerecord.attributes.unit.week')
+    dd = @unit.week
+
+    dt = t('activerecord.attributes.unit.language')
+    dd = @unit.language
+
 
 = link_to t('buttons.back'), units_path, class: 'btn btn-secondary mt-4'

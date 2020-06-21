@@ -3,7 +3,7 @@
     .col-10
       = f.input :title, autofocus: true
     .col-2
-      = f.input :language, collection: I18n.available_locales
+      = f.input :language, collection: Unit.languages
   .row
     .col-6
       = f.input :abteilung

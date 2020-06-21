@@ -24,6 +24,7 @@ class Unit < ApplicationRecord
   end
 
   enum stufe: RootCampUnit.predefined.dup.transform_values(&:to_s)
+  enum language: { de: 'de', fr: 'fr', it: 'it', en: 'en' }
 
   def kv
     Kv[kv_id]

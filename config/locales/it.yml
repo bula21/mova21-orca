@@ -47,6 +47,8 @@ it:
         kv_id: Associazione cantonale
         lagerleiter: Direzione del campo
         language: Linguaggio
+        week: Lagerwoche
+        district: Quartier
         starts_at: Inizio il
         stufe: Branca
         title: Titolo
@@ -454,6 +456,7 @@ it:
       camp_link_midata: Campo su MiData
       invoices: Invoices
       participants: Partecipanti
+      other_infos: Information
       questionnaire: Questionario
       registration_complete: Registrazione completa
       registration_incomplete: Registrazione incompleta
