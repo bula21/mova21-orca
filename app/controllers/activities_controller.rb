@@ -48,6 +48,7 @@ class ActivitiesController < ApplicationController
   def activity_params
     params.require(:activity).permit(:label, :description, :language, :block_type, :simo, :participants_count_activity,
                                      :participants_count_transport, :duration_activity, :duration_journey, :location,
+                                     :transport_location_id, :min_participants, :activity_type,
                                      I18n.available_locales.map { |l| :"label_#{l}" },
                                      I18n.available_locales.map { |l| :"description_#{l}" },
                                      stufe_ids: [], stufe_recommended_ids: [], goal_ids: [], tag_ids: [],

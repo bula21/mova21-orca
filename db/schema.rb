@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_17_061116) do
+ActiveRecord::Schema.define(version: 2020_06_21_101221) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,10 @@ ActiveRecord::Schema.define(version: 2020_06_17_061116) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "simo"
+    t.integer "min_participants"
+    t.string "activity_type"
+    t.bigint "transport_location_id"
+    t.index ["transport_location_id"], name: "index_activities_on_transport_location_id"
   end
 
   create_table "activities_goals", id: false, force: :cascade do |t|
@@ -183,6 +187,13 @@ ActiveRecord::Schema.define(version: 2020_06_17_061116) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "transport_locations", force: :cascade do |t|
+    t.string "name"
+    t.integer "max_participants"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "units", force: :cascade do |t|
     t.integer "pbs_id"
     t.string "title"
@@ -224,6 +235,7 @@ ActiveRecord::Schema.define(version: 2020_06_17_061116) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "activities", "transport_locations"
   add_foreign_key "invoice_parts", "invoices"
   add_foreign_key "invoices", "units"
   add_foreign_key "participants", "units"

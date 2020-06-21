@@ -35,13 +35,16 @@
         .row
           .col-6
             = f.input :location
+            = f.association :transport_location
             = f.input :block_type, collection: Activity.block_types.symbolize_keys.keys
           .col-6
+            = f.input :activity_type, collection: Activity.activity_types.symbolize_keys.keys
             = f.input :language, collection: Activity.languages.symbolize_keys.keys
             = f.input :simo, collection: Activity.simos.symbolize_keys.keys
 
         .row
           .col-6
+            = f.input :min_participants
             = f.input :participants_count_activity
           .col-6
             = f.input :participants_count_transport

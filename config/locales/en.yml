@@ -8,12 +8,15 @@ en:
         duration_activity: Duration of the activity (Minutes)
         duration_journey: Duration of the journey (Minutes)
         goals: Leitziele
+        transport_location: Transport-Ort
+        activity_type: Type
         block_type: Block Typ
         simo: Sicherheitsmodul
         label: Label
         language: Language
         location: Location
         participants_count_activity: Paritcipant count Activity
+        min_participants: Min. TNs
         participants_count_transport: Participant count Transport (incl. leaders)
         stufe_recommended: Age recommended
         stufen: Age
@@ -296,6 +299,7 @@ en:
   nav:
     activity: Activity
     tag: Tags
+    transport_location: Transport
     language:
       de: DE
       en: EN
@@ -370,6 +374,10 @@ en:
         simo:
           berg: Berg
           wasser: Wasser
+        activity_type:
+          excursion: Ausflug
+          activity: Aktivität
+          village_global: Village Global
         block_type:
           la: Lageraktivität
           ls: Lagersport

@@ -52,5 +52,6 @@ class Ability
   def programm_user_permissions(_user)
     can :manage, Activity
     can :manage, Tag
+    can :manage, TransportLocation
   end
 end
