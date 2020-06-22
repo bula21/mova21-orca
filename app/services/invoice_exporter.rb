@@ -19,7 +19,7 @@ class InvoiceExporter
 
   def csv_options
     {
-      headers: true
+      headers: true, force_quotes: true
     }
   end
 
