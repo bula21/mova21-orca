@@ -3,24 +3,24 @@ fr:
   activerecord:
     attributes:
       activity:
-        activity_documents: Dokumente
+        activity_documents: Document
         picture: Image
-        description: Beschreibung
+        description: Description
         duration_activity: Dauer der Aktivität (Minuten)
         duration_journey: Dauer der Anreise (Minuten)
-        goals: Leitziele
-        transport_location: Transport-Ort
-        activity_type: Art
-        block_type: Block Typ
-        simo: Sicherheitsmodul
-        label: Bezeichnung
-        language: Sprache
-        location: Ort (grob)
-        participants_count_activity: Anz. TN Aktivität
-        min_participants: Min. TNs
-        participants_count_transport: Anz. TN Transport (inkl. Leitung)
-        stufe_recommended: Stufen Empfohlen
-        stufen: Stufen
+        goals: Objectifs de l'activité
+        transport_location: Lieu du Transport
+        activity_type: Type
+        block_type: Type d'activité
+        simo: Module de sécurité
+        label: Intitulé de l'activité
+        language: Langue
+        location: Lieu (approximativement)
+        participants_count_activity: Nombre participant.e.s pour activités
+        min_participants: Min. Nombre participant
+        participants_count_transport: Nombre participant.e.s pour transport (responsables compris.e.s)
+        stufe_recommended: Branches recommandées
+        stufen: Branches éventuelles
       leader:
         birthdate: Date de naissance
         first_name: Prénom
@@ -79,11 +79,11 @@ fr:
         other: Unitées
   activity:
     edit:
-      title: Aktivität editieren
+      title: Éditer l'activité
     index:
-      title: Aktivitäten
+      title: Activités
     new:
-      title: Neue Aktivität erfassen
+      title: Créer une nouvelle activité
   app:
     title: Orca
   buttons:
@@ -271,9 +271,9 @@ fr:
       update: Modifier ce(tte) %{model}
   invoices:
     payment_info:
-      amount_label: Betrag
+      amount_label: Montant
       issuer_account: 01-348230-2
-      issuer_account_label: Konto-Nummer
+      issuer_account_label: Numéro de compte
       issuer_address: |-
         Verein Bundeslager 2021
         c/o Pfadibewegung Schweiz
@@ -284,30 +284,28 @@ fr:
 
         CHE-452.216.319 MWST
       issuer_name: Verein BuLa 2021, 3011 Bern
-      issuer_name_label: Zugunsten von
-      ref_label: ESR-Referenznummer
+      issuer_name_label: En faveur de
+      ref_label: Numéro de référence BVR
       total_label: Total
     pre_registration_invoice:
       invoice_parts:
         breakdown: "%{participants} × %{price_per_participant}"
         label:
-          leitung: Leitung
-          pfadi: TN Pfadistufe
-          pio: TN Piostufe
-          pta: TN PTA
-          wolf: TN Wolfsstufe
-      issued_at: Bern, %{issued_at}
+          leitung: Responsable
+          pfadi: Nombre participant.e.s Troupe
+          pio: Nombre participant.e.s Poste
+          pta: Nombre participant.e.s SMT
+          wolf: Nombre participant.e.s Meute
+      issued_at: Berne, %{issued_at}
       post_text: |-
-        Die Voranmeldegebühr ist eine sogenannte Anzahlung und wird bei der Bezahlung des definitiven Lagerbeitrages in Abzug gebracht. Meldet sich eine Einheit nach der provisorischen Anmeldung wieder ab (nimmt also nicht am BuLa21 teil), wird die Voranmeldegebühr zurückerstattet.
+        Les frais de préinscription servent de première inscription et seront déduits lors du paiement final du groupe. Si vous annulez l'inscription d'une unité après son inscription provisoire (elle ne prend donc pas part au CaFé21), les frais de préinscription vous seront remboursés.
 
-        Bei Fragen stehen wir gerne zur Verfügung: finanzen@bula21.ch
+        En cas de questions, nous nous tenons bien évidemment à ta disposition: finanzen@bula21.ch
 
-        Du kannst die unten stehenden Informationen nutzen, um mit Online-Banking zu bezahlen:
-      pre_text: "Hallo %{salutation_name}\n\nDu hast deine Einheit %{camp_unit_title}
-        erfolgreich für das mova im Goms vorangemeldet. Wir bitten dich, die Rechnung
-        bis 31. Juli 2020 zu begleichen. \nMova – on y va!"
-      ref: 'Rechnung: %{ref}'
-      title: Lagerbeitrag Abteilungen Bundeslager 2021
+        Pour un paiement par e-banking, tu peux te servir des informations ci-dessous:
+      pre_text: "Salut %{salutation_name}\n\nTon unité %{camp_unit_title} a été préinscrite avec succès pour le mova dans la vallée de Conches. Nous te prions te bien vouloir régler le montant jusqu'au 31 juillet 2020.\nMova - on y va!"
+      ref: 'Montant: %{ref}'
+      title: Frais du groupe pour le camp fédéral 2021
   leaders:
     edit:
       title: Modifier les responsables
@@ -321,7 +319,7 @@ fr:
     updated:
       success: Enregistré avec succès
   nav:
-    activity: Activity
+    activity: Catalogue
     tag: Tags
     transport_location: Transport
     language:
@@ -396,22 +394,21 @@ fr:
     options:
       activity:
         simo:
-          berg: Berg
-          wasser: Wasser
+          berg: Montagne
+          wasser: Eau
         activity_type:
           excursion: Ausflug
           activity: Aktivität
           village_global: Village Global
         block_type:
-          la: Lageraktivität
-          ls: Lagersport
-          voila: Voila Bula
+          la: Activité de camp
+          ls: Sport de camp
         language:
-          de: Deutsch
-          en: Englisch
-          fr: Französisch
-          it: Italienisch
-          mixed: gemischt
+          de: Allemand
+          en: Anglais
+          fr: Français
+          it: Italien
+          mixed: Toutes langues confondues
       participant:
         gender:
           female: Féminin
