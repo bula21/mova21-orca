@@ -3,9 +3,7 @@
 class TransportLocationsController < ApplicationController
   load_and_authorize_resource
 
-  def index
-    @transport_locations = TransportLocation.all
-  end
+  def index; end
 
   def new
     @transport_location = TransportLocation.new

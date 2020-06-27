@@ -33,13 +33,11 @@ class ActivitiesController < ApplicationController
     end
   end
 
-  def destroy # rubocop:disable Metrics/AbcSize
+  def destroy
     if params[:attachment_id]
-      @activity.activity_documents.find_by_id(params[:attachment_id]).purge
-      redirect_to edit_activity_url(@activity)
+      delete_attachment
     elsif params[:picture_id]
-      @activity.picture.purge
-      redirect_to edit_activity_url(@activity)
+      delete_picture
     else
       @activity.destroy
       redirect_to activities_url, notice: 'Activity was successfully destroyed.'
@@ -47,6 +45,16 @@ class ActivitiesController < ApplicationController
   end
 
   private
+
+  def delete_picture
+    @activity.picture.purge
+    redirect_to edit_activity_url(@activity)
+  end
+
+  def delete_attachment
+    @activity.activity_documents.find_by_id(params[:attachment_id]).purge
+    redirect_to edit_activity_url(@activity)
+  end
 
   def activity_params
     params.require(:activity).permit(:label, :description, :language, :block_type, :simo, :participants_count_activity,
