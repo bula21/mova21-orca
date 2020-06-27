@@ -4,6 +4,13 @@
 
   .card
     .card-body
+      .row
+        .col-6
+          = f.input :activity_type, collection: Activity.activity_types.symbolize_keys.keys
+        .col-6
+          = f.input :block_type, collection: Activity.block_types.symbolize_keys.keys
+  .card.mt-3
+    .card-body
       ul.nav.nav-tabs role="tablist"
         - I18n.available_locales.each do |locale|
           - current_locale = locale == I18n.locale
@@ -17,8 +24,9 @@
           - current_locale = locale == I18n.locale
           .tab-pane[id="name-#{locale}-tab" class="#{'show active' if current_locale}"
             aria-labelledby="name-#{locale}-tab" role='tabpanel']
-            = f.input "label_#{locale.to_s}"
-            = f.input "description_#{locale.to_s}", as: :text, input_html: { :rows => 10 }
+            = f.input "label_#{locale.to_s}", label: "#{t('activerecord.attributes.activity.label')} #{locale.upcase}"
+            = f.input "description_#{locale.to_s}", as: :text, input_html: { :rows => 10 },
+                    label: "#{t('activerecord.attributes.activity.description')} #{locale.upcase}"
   .card.mt-3
     .card-body
       .form-inputs
@@ -31,43 +39,56 @@
           = f.association :stufe_recommended, as: :check_boxes
   .card.mt-3
     .card-body
+      .row
+        .col-6
+          = f.input :location
+          = f.association :transport_location
+        .col-6
+          = f.input :duration_journey
+          = f.input :participants_count_transport
+  .card.mt-3
+    .card-body
       .form-inputs
         .row
           .col-6
-            = f.input :location
-            = f.input :block_type, collection: Activity.block_types.symbolize_keys.keys
-          .col-6
             = f.input :language, collection: Activity.languages.symbolize_keys.keys
+            = f.input :min_participants
+          .col-6
             = f.input :simo, collection: Activity.simos.symbolize_keys.keys
+            = f.input :participants_count_activity
 
         .row
           .col-6
-            = f.input :participants_count_activity
-          .col-6
-            = f.input :participants_count_transport
-        .row
-          .col-6
             = f.input :duration_activity
-          .col-6
-            = f.input :duration_journey
 
 
   .card.mt-3
     .card-body
       .form-group
-        label{for='activity_activity_documents'} = t('activerecord.attributes.activity.activity_documents')
+        .h4.label{for='activity_activity_documents'} = t('activerecord.attributes.activity.activity_documents')
         .row
           .col-6
             = f.file_field :activity_documents, multiple: true
-          .col-6
-            ul.list-group
+            ul.list-group.mt-3
               - @activity.activity_documents.each do |document|
                 li.list-group-item
                   = document.filename
                   = link_to t('buttons.destroy'), activity_path(attachment_id: document.id),
-                        method: :delete,
-                        class: 'btn btn-sm btn-secondary float-right',
-                        data: { confirm: t('simple_form.confirm_unsaved') }
+                          method: :delete,
+                          class: 'btn btn-sm btn-secondary float-right',
+                          data: { confirm: t('simple_form.confirm_unsaved') }
+
+          .col-6
+            label{for='picture'} = t('activerecord.attributes.activity.picture')
+            br
+            = f.file_field :picture
+            - unless @activity.picture.blank?
+              = image_tag(@activity.picture, height: "100")
+              = link_to t('buttons.destroy'), activity_path(picture_id: @activity.picture.id),
+                      method: :delete,
+                      class: 'btn btn-sm btn-secondary float-right',
+                      data: { confirm: t('simple_form.confirm_unsaved') }
+
 
   .actions.mt-3
     = f.submit t('buttons.save'), class: 'btn btn-primary'

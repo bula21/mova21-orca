@@ -4,16 +4,20 @@ it:
     attributes:
       activity:
         activity_documents: Dokumente
+        picture: Bild
         description: Beschreibung
         duration_activity: Dauer der Aktivität (Minuten)
         duration_journey: Dauer der Anreise (Minuten)
         goals: Leitziele
+        transport_location: Transport-Ort
+        activity_type: Art
         block_type: Block Typ
         simo: Sicherheitsmodul
         label: Bezeichnung
         language: Sprache
         location: Ort (grob)
         participants_count_activity: Anz. TN Aktivität
+        min_participants: Min. TNs
         participants_count_transport: Anz. TN Transport (inkl. Leitung)
         stufe_recommended: Stufen Empfohlen
         stufen: Stufen
@@ -316,6 +320,7 @@ it:
   nav:
     activity: Activity
     tag: Tags
+    transport_location: Transport
     language:
       de: DE
       en: EN
@@ -390,6 +395,10 @@ it:
         simo:
           berg: Berg
           wasser: Wasser
+        activity_type:
+          excursion: Ausflug
+          activity: Aktivität
+          village_global: Village Global
         block_type:
           la: Lageraktivität
           ls: Lagersport

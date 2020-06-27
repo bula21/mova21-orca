@@ -35,8 +35,9 @@ class ActivitiesController < ApplicationController
 
   def destroy
     if params[:attachment_id]
-      @activity.activity_documents.find_by_id(params[:attachment_id]).purge
-      redirect_to edit_activity_url(@activity)
+      delete_attachment
+    elsif params[:picture_id]
+      delete_picture
     else
       @activity.destroy
       redirect_to activities_url, notice: 'Activity was successfully destroyed.'
@@ -45,9 +46,20 @@ class ActivitiesController < ApplicationController
 
   private
 
+  def delete_picture
+    @activity.picture.purge
+    redirect_to edit_activity_url(@activity)
+  end
+
+  def delete_attachment
+    @activity.activity_documents.find_by_id(params[:attachment_id]).purge
+    redirect_to edit_activity_url(@activity)
+  end
+
   def activity_params
     params.require(:activity).permit(:label, :description, :language, :block_type, :simo, :participants_count_activity,
                                      :participants_count_transport, :duration_activity, :duration_journey, :location,
+                                     :transport_location_id, :min_participants, :activity_type, :picture,
                                      I18n.available_locales.map { |l| :"label_#{l}" },
                                      I18n.available_locales.map { |l| :"description_#{l}" },
                                      stufe_ids: [], stufe_recommended_ids: [], goal_ids: [], tag_ids: [],
