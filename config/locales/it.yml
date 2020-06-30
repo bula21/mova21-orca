@@ -80,6 +80,7 @@ it:
   activity:
     edit:
       title: Modificare l'attività
+      warning: "Achtung: Forumlar zuerst speichern und danach Dokumente bearbeiten (Änderungen gehen sonst verloren)"
     index:
       title: Attività
     new:

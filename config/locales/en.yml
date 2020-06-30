@@ -78,6 +78,7 @@ en:
   activity:
     edit:
       title: Aktivität editieren
+      warning: "Achtung: Forumlar zuerst speichern und danach Dokumente bearbeiten (Änderungen gehen sonst verloren)"
     index:
       title: Aktivitäten
     new:

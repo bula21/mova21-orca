@@ -80,6 +80,7 @@ fr:
   activity:
     edit:
       title: Éditer l'activité
+      warning: "Achtung: Forumlar zuerst speichern und danach Dokumente bearbeiten (Änderungen gehen sonst verloren)"
     index:
       title: Activités
     new:
