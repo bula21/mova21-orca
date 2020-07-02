@@ -301,7 +301,7 @@ fr:
       post_text: |-
         Les frais de préinscription servent de première inscription et seront déduits lors du paiement final du groupe. Si vous annulez l'inscription d'une unité après son inscription provisoire (elle ne prend donc pas part au CaFé21), les frais de préinscription vous seront remboursés.
 
-        En cas de questions, nous nous tenons bien évidemment à ta disposition: finanzen@bula21.ch
+        En cas de questions, nous nous tenons bien évidemment à ta disposition: info@bula21.ch
 
         Pour un paiement par e-banking, tu peux te servir des informations ci-dessous:
       pre_text: "Salut %{salutation_name}\n\nTon unité %{camp_unit_title} a été préinscrite avec succès pour le mova dans la vallée de Conches. Nous te prions te bien vouloir régler le montant jusqu'au 31 juillet 2020.\nMova - on y va!"
