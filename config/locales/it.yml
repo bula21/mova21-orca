@@ -298,7 +298,7 @@ it:
       post_text: |-
         La tassa di pre-iscrizione serve da acconto e verrà dedotta dalla tassa di iscrizione definitiva. Se un'unità si disiscrive dopo essersi pre-iscritta (e quindi non partecipa al CaFe), la tassa di pre-iscrizione viene rimborsata.
 
-        In caso di domande, siamo volentieri a disposizione: finanzen@bula21.ch
+        In caso di domande, siamo volentieri a disposizione: info@bula21.ch
 
         Per pagare tramite e-banking, puoi utilizzare le informazioni seguenti:
       pre_text: "Ciao %{salutation_name}\n\nLa tua unità %{camp_unit_title} è stata pre-iscritta con successo per il mova nella valle di Goms. Ti preghiamo ti saldare l'importo entro il 31 luglio 2020.
