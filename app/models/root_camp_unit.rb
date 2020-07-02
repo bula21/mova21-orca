@@ -22,8 +22,8 @@ class RootCampUnit
     {
       wolf: new(:wolf, ENV['ROOT_CAMP_UNIT_ID_WOLF'], pre_registration_price: 10.0),
       pfadi: new(:pfadi, ENV['ROOT_CAMP_UNIT_ID_PFADI'], pre_registration_price: 15.0),
-      pio: new(:pio, ENV['ROOT_CAMP_UNIT_ID_PIO']),
-      pta: new(:pta, ENV['ROOT_CAMP_UNIT_ID_PTA'])
+      pio: new(:pio, ENV['ROOT_CAMP_UNIT_ID_PIO'], pre_registration_price: 15.0),
+      pta: new(:pta, ENV['ROOT_CAMP_UNIT_ID_PTA'], pre_registration_price: 10.0)
     }.freeze
   end
 
