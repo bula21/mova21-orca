@@ -22,11 +22,4 @@ RSpec.describe InvoiceExporter, type: :service do
       it { is_expected.to include invoice.amount.to_s }
     end
   end
-
-  # describe '#filename' do
-  #   subject { described_class.new(invoices).filename }
-
-  #   it { is_expected.to start_with('invoices-') }
-  #   it { is_expected.to end_with('.csv') }
-  # end
 end
