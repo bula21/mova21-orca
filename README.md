@@ -1,13 +1,12 @@
 # orca
-Orca manages people and  activity subscriptions.
+Orca manages people and activity subscriptions.
 
 ## Development
 
 ```
 docker-compose up app
 ```
-
-If you want to run speci
+or open with VS Code Dev Container Extension
 
 ## Setup Auth
 
@@ -84,3 +83,15 @@ We use ActiveStorage to store files. To set it up in production use these ENV-Va
 - STORAGE_ACCOUNT_NAME=
 - STORAGE_ACCESS_KEY= 
 - STORAGE_CONTAINER=
+
+## Tasks
+
+### Export Invoices
+
+```ruby
+puts InvoiceExporter.new.export
+```
+
+```bash
+docker-compose run bin/rails r 'puts InvoiceExporter.new.export; STDOUT.flush' > tmp/export.csv
+```

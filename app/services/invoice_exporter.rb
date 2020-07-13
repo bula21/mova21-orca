@@ -6,7 +6,7 @@ class InvoiceExporter
     'RG-Nummer', 'Inkl. MWST', 'exkl. MWST', 'ESR-Ref.Nr.'
   ].freeze
 
-  def initialize(invoices)
+  def initialize(invoices = Invoice.all)
     @invoices = invoices
   end
 
@@ -35,8 +35,4 @@ class InvoiceExporter
     end
   end
   # rubocop: enable Metrics/AbcSize
-
-  def filename
-    "invoices-#{Time.zone.now.strftime('%Y-%m-%d')}.csv"
-  end
 end
