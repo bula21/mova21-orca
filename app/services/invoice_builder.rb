@@ -3,7 +3,7 @@
 class InvoiceBuilder
   include ActionView::Helpers::NumberHelper
 
-  def pre_registration_invoice_for_camp_unit(camp_unit, locale = camp_unit.locale)
+  def pre_registration_invoice_for_camp_unit(camp_unit, locale = camp_unit.language)
     I18n.with_locale(locale) do
       camp_unit.invoices.find_or_initialize_by(category: :pre_registration_invoice).tap do |invoice|
         invoice.invoice_parts = pre_registration_invoice_parts(camp_unit)
