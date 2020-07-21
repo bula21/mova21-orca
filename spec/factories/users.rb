@@ -12,7 +12,7 @@ FactoryBot.define do
 
     trait :midata_user do
       sequence(:pbs_id) { |n| "pbs_#{n}" }
-      role { 'user' }
+      role_user { true }
     end
 
     trait :admin do

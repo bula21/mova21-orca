@@ -29,7 +29,10 @@ class Unit < ApplicationRecord
   def kv
     Kv[kv_id]
   end
-  delegate :locale, to: :kv
+
+  def locale
+    language
+  end
 
   def root_camp_unit
     RootCampUnit[stufe&.to_sym]
