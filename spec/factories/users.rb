@@ -3,15 +3,13 @@
 FactoryBot.define do
   factory :user do
     sequence(:email) { |n| "user#{n}@bula.example" }
+    pbs_id { nil }
     uid { email }
     provider { :test }
-
-    trait :with_pbs_id do
-      sequence(:pbs_id) { |n| n }
-    end
+    leader { build(:leader, pbs_id: pbs_id, email: email) }
 
     trait :midata_user do
-      sequence(:pbs_id) { |n| "pbs_#{n}" }
+      sequence(:pbs_id) { |n| n }
       role_user { true }
     end
 

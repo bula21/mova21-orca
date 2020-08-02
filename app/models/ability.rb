@@ -9,7 +9,7 @@ class Ability
     admin_user_permissions(user) if user.role_admin?
     programm_user_permissions(user) if user.role_programm?
 
-    if user.pbs_id
+    if user.midata_user?
       midata_user_permissions(user)
     else
       external_user_permissions(user)
@@ -19,13 +19,13 @@ class Ability
   private
 
   def midata_user_permissions(user)
-    can %i[read], Unit, al: { pbs_id: user.pbs_id }
-    can %i[read], Unit, lagerleiter: { pbs_id: user.pbs_id }
+    can %i[read], Unit, al: { email: user.email }
+    can %i[read], Unit, lagerleiter: { email: user.email }
     # can %i[read update], Unit, coach: { pbs_id: user.pbs_id }
     can :read, Leader, pbs_id: user.pbs_id
 
-    can :read, Participant, unit: { al: { pbs_id: user.pbs_id } }
-    can :read, Participant, unit: { lagerleiter: { pbs_id: user.pbs_id } }
+    can :read, Participant, unit: { al: { email: user.email } }
+    can :read, Participant, unit: { lagerleiter: { email: user.email } }
 
     can :read, Activity
   end
@@ -34,12 +34,10 @@ class Ability
     # TODO: A user should only be able to see the Lagerleiter/ALs that he created. so we have to store a user_id
     # TODO: Introduce flag to avoid creation when logged in via midata
 
-    can :create, Unit unless user.pbs_id.present?
-    can %i[read update], Unit, al: { pbs_id: user.pbs_id }
-    can %i[read update], Unit, lagerleiter: { pbs_id: user.pbs_id }
-
-    can :manage, Participant, unit: { lagerleiter: { pbs_id: user.pbs_id } }
-    can :manage, Participant, unit: { al: { pbs_id: user.pbs_id } }
+    can %i[read update], Unit, al: { email: user.email }
+    can %i[read update], Unit, lagerleiter: { email: user.email }
+    can :manage, Participant, unit: { lagerleiter: { email: user.email } }
+    can :manage, Participant, unit: { al: { email: user.email } }
 
     can :read, Activity
   end
