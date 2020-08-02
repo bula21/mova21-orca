@@ -4,7 +4,7 @@ class User < ApplicationRecord
   include Bitfields
   devise :omniauthable, omniauth_providers: %i[openid_connect developer]
 
-  has_one :leader, foreign_key: :pbs_id, primary_key: :pbs_id
+  has_one :leader, foreign_key: :email, primary_key: :email
 
   validates :email, presence: true, format: { with: Devise.email_regexp }
   validates :uid, presence: true
@@ -14,13 +14,17 @@ class User < ApplicationRecord
 
   def self.from_omniauth(auth)
     email = auth.info.email
-    pbs_id = auth.info.pbs_id || auth.to_hash.dig('extra', 'raw_info', 'pbs_id')
     # locale = auth.info.locale || auth.to_hash.dig('extra', 'raw_info', 'locale')
+    pbs_id = auth.info.pbs_id || auth.to_h.dig('extra', 'raw_info', 'pbs_id')
 
     find_or_create_by(uid: auth.uid, provider: auth.provider).tap do |user|
-      user.email = email if email.present?
-      user.pbs_id = pbs_id if pbs_id.present?
+      user.email = email
+      user.pbs_id = pbs_id unless pbs_id.to_i.zero?
       user.save!
     end
+  end
+
+  def midata_user?
+    pbs_id.present? && !pbs_id.zero?
   end
 end

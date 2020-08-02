@@ -13,7 +13,7 @@ FactoryBot.define do
     expected_participants_leitung_m { (2..10).to_a.sample }
     starts_at { Faker::Date.in_date_period(year: 2021, month: 7) }
     ends_at { Faker::Date.in_date_period(year: 2021, month: 8) }
-    association :al, factory: :leader
-    association :lagerleiter, factory: :leader
+    al { build(:user).leader }
+    lagerleiter { build(:user).leader }
   end
 end

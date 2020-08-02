@@ -14,7 +14,7 @@ RSpec.describe UnitsController, type: :request do
       subject(:request) { get units_path, params: { format: format } }
 
       let(:user) { create(:user, :midata_user) }
-      let(:leader) { create(:leader, pbs_id: user.pbs_id) }
+      let(:leader) { user.leader }
       let!(:unit) { create(:unit, lagerleiter: leader) }
       let!(:unit_other) { create(:unit) }
       let(:format) { :html }

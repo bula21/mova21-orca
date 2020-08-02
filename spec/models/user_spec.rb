@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:user) { create(:user, :with_pbs_id) }
+  let(:user) { create(:user, :midata_user) }
 
   describe '::from_omniauth' do
     subject(:authenticated_user) { described_class.from_omniauth(auth) }
@@ -21,7 +21,7 @@ RSpec.describe User, type: :model do
     end
 
     context 'with new user' do
-      let(:keycloak_user) { build(:user, :with_pbs_id) }
+      let(:keycloak_user) { build(:user, :midata_user) }
       let(:auth) do
         OpenStruct.new(
           uid: keycloak_user.uid,
@@ -34,6 +34,22 @@ RSpec.describe User, type: :model do
         expect(authenticated_user).to be_persisted
         expect(authenticated_user.email).to eq(keycloak_user.email)
         expect(authenticated_user.pbs_id).to eq(keycloak_user.pbs_id)
+      end
+
+      context 'with no midata user' do
+        let(:keycloak_user) { build(:user, pbs_id: nil) }
+
+        it do
+          expect(authenticated_user.pbs_id).to eq(nil)
+        end
+      end
+
+      context 'with an invalid midata user' do
+        let(:keycloak_user) { build(:user, pbs_id: 0) }
+
+        it do
+          expect(authenticated_user.pbs_id).to eq(nil)
+        end
       end
     end
   end
@@ -61,6 +77,26 @@ RSpec.describe User, type: :model do
         expect(user).not_to be_role_admin
         expect(user.role_flags).to eq(0b0101)
       end
+    end
+  end
+
+  describe 'midata_user?' do
+    subject(:user) { build(:user, pbs_id: pbs_id).midata_user? }
+
+    let(:pbs_id) { 1 }
+
+    it { is_expected.to be true }
+
+    context 'when no pbs_id is given' do
+      let(:pbs_id) { nil }
+
+      it { is_expected.to be false }
+    end
+
+    context 'when no pbs_id is zero' do
+      let(:pbs_id) { 0 }
+
+      it { is_expected.to be false }
     end
   end
 end
