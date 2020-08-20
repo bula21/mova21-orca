@@ -4,12 +4,12 @@ it:
     attributes:
       activity:
         activity_documents: Documenti
-        picture: Illustrazione
+        picture: Immagine
         description: Descrizione
-        duration_activity: Durata dell'attività (Minuti)
-        duration_journey: Durata viagio (Minuti)
+        duration_activity: Durata dell'attività (minuti)
+        duration_journey: Durata del viaggio (minuti)
         goals: Obbiettivi dell'attività
-        transport_location: Luogo transporto
+        transport_location: Luogo trasporto
         activity_type: Tipo
         block_type: Tipo d'attività
         simo: Modulo di sicurezza
@@ -17,7 +17,7 @@ it:
         language: Lingua
         location: Luogo (approssimativo)
         participants_count_activity: Numero di partecipanti (attività)
-        min_participants: Min. partecipanti
+        min_participants: Numero min. di partecipanti
         participants_count_transport: Numero di partecipanti (trasporto, incl. capi)
         stufe_recommended: Branche raccomandate
         stufen: Branche possibili
@@ -41,18 +41,18 @@ it:
         abteilung: Sezione
         al: CSZ
         ends_at: Fine il
-        expected_participants: Erwartete Anzahl TN
+        expected_participants: Numero di partecipanti previsti
         expected_participants_f: Numero di partecipanti (f) previste
-        expected_participants_leitung: Erwartete Anzahl Leitende
-        expected_participants_leitung_f: Numero di animatori previsti
-        expected_participants_leitung_m: Numero di animatrici previste
+        expected_participants_leitung: Numero di animatori previsti
+        expected_participants_leitung_f: Numero di animatrici previste
+        expected_participants_leitung_m: Numero di animatori previsti
         expected_participants_m: Numero di partecipanti (m) previsti
         full_name: Nome completo
         kv_id: Associazione cantonale
         lagerleiter: Direzione del campo
-        language: Linguaggio
-        week: Lagerwoche
-        district: Quartier
+        language: Lingua
+        week: Settimana di campo
+        district: Quartiere
         starts_at: Inizio il
         stufe: Branca
         title: Titolo
@@ -61,10 +61,8 @@ it:
         incomplete: è incompleto
         record_invalid: 'Validazione fallita: %{errors}'
         restrict_dependent_destroy:
-          has_many: Vous ne pouvez pas supprimer l'enregistrement parce que les %{record}
-            dépendants existent
-          has_one: Vous ne pouvez pas supprimer l'enregistrement car un(e) %{record}
-            dépendant(e) existe
+          has_many: Impossibile cancellare i dati in quanto il seguente valore  %{record} esiste ancora
+          has_one: Impossibile cancellare i dati in quanto dipendono dai seguenti valori  %{record} ancora esistenti
       models:
         unit:
           attributes:
@@ -80,7 +78,7 @@ it:
   activity:
     edit:
       title: Modificare l'attività
-      warning: "Achtung: Forumlar zuerst speichern und danach Dokumente bearbeiten (Änderungen gehen sonst verloren)"
+      warning: "Attenzione: Occorre salvare il formulario prima di modificare i documenti, altrimenti le modifiche andranno perse."
     index:
       title: Attività
     new:
@@ -89,19 +87,19 @@ it:
     title: Orca
   buttons:
     back: indietro
-    create: costruire
-    destroy: löschen
-    edit: editare
-    export_csv: Esportazione come csv
+    create: creare
+    destroy: cancellare
+    edit: modificare
+    export_csv: Esportare come CSV
     save: salvare
-    show: anzeigen
+    show: visualizzare
   camp_unit_mailer:
     complete_notification:
       body: |-
-        Hallo %{salutation_name}
+        Ciao %{salutation_name}
 
-        Deine Lageranmeldung für das Bula ist jetzt vollständig. Siehe %{camp_unit_url}
-      subject: Lageranmeldung vollständig
+        La tua iscrizione al campo federale è ora completa! Siehe %{camp_unit_url}
+      subject: Iscrizione al campo completa
     incomplete_notification:
       body: |-
         Ciao %{salutation_name}
@@ -122,7 +120,7 @@ it:
 
         Viele Grüsse
         Eure BuLa21-Crew
-      subject: L'iscrizione mova non è ancora completa
+      subject: L'iscrizione al campo non è ancora completa
   date:
     abbr_day_names:
     - Dom
@@ -382,22 +380,22 @@ it:
         delimiter: ''
   participants:
     edit:
-      title: Partecipanti bearbeiten
+      title: Modificare partecipanti
     index:
       title: Partecipanti
     new:
-      title: Creare Partecipanti
+      title: Creare partecipanti
   pre_text: Pre text
   simple_form:
-    confirm_unsaved: 'Achtung: Alle nicht gespeicherten Änderungen gehen verloren. Sind Sie sicher?'
+    confirm_unsaved: 'Attenzione: Tutte le modifiche andranno perse! Vuoi continuare?'
     options:
       activity:
         simo:
           berg: Montagna
           wasser: Acqua
         activity_type:
-          excursion: Ausflug
-          activity: Aktivität
+          excursion: Escursione
+          activity: Attività
           village_global: Village Global
         block_type:
           la: Attività da campo
@@ -462,9 +460,9 @@ it:
       title: Creare un campo
     show:
       camp_link_midata: Campo su MiData
-      invoices: Invoices
+      invoices: Fatture
       participants: Partecipanti
-      other_infos: Information
+      other_infos: Informazioni supplementari
       questionnaire: Questionario
       registration_complete: Registrazione completa
       registration_incomplete: Registrazione incompleta
