@@ -11,10 +11,11 @@ Rails.application.routes.draw do
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root 'units#index'
   resources :units, except: [:destroy] do
     resources :participants, except: %i[show destroy]
   end
   resources :leaders, except: [:destroy]
   resources :activities
+
+  root 'pages#index'
 end

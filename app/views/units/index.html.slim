@@ -1,5 +1,3 @@
-= image_pack_tag 'header_image.png', class: 'img-fluid'
-
 .h1 = t('units.index.title')
 
 = link_to(t('buttons.create'), new_unit_path, class: 'btn btn-primary mb-3') if can?(:create, Unit)

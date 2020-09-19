@@ -6,13 +6,13 @@ RSpec.describe ApplicationHelper, type: :helper do
   describe '#language_change_url_for' do
     subject { helper.language_change_url_for(locale) }
 
-    let(:locale) { :en }
+    let(:locale) { :fr }
 
     before do
-      helper.params[:controller] = 'units'
+      helper.params[:controller] = 'pages'
       helper.params[:action] = 'index'
     end
 
-    it { is_expected.to eq('/?locale=en') }
+    it { is_expected.to eq('/?locale=fr') }
   end
 end

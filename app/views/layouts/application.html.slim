@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    title Orca
+    title Orca - mova21
     meta[name="viewport" content="width=device-width, initial-scale=1"]
     = csrf_meta_tags
     = csp_meta_tag
@@ -10,7 +10,8 @@ html
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
     nav.navbar.navbar-expand-lg.navbar-light.bg-light
-      = link_to t('app.title'), root_path, class: 'navbar-brand'
+      = link_to root_path, class: 'navbar-brand'
+        = image_pack_tag 'mova_logo.svg', style: 'height: 30px;'
       button.navbar-toggler[type= 'button' data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"]
         span class="navbar-toggler-icon"
       .collapse.navbar-collapse#navbarNav
