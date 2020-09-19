@@ -7,6 +7,7 @@ class Ability
     return if user.blank?
 
     admin_user_permissions(user) if user.role_admin?
+    tn_administration_user_permissions(user) if user.role_tn_administration?
     programm_user_permissions(user) if user.role_programm?
 
     if user.midata_user?
@@ -45,6 +46,12 @@ class Ability
   def admin_user_permissions(_user)
     can :manage, :all
     can :export, Unit
+  end
+
+  def tn_administration_user_permissions(_user)
+    can :manage, Unit
+    can :manage, Participant
+    can :manage, Leader
   end
 
   def programm_user_permissions(_user)
