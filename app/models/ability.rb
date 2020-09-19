@@ -39,12 +39,13 @@ class Ability
     can %i[read update], Unit, lagerleiter: { email: user.email }
     can :manage, Participant, unit: { lagerleiter: { email: user.email } }
     can :manage, Participant, unit: { al: { email: user.email } }
-
-    can :read, Activity
   end
 
   def admin_user_permissions(_user)
     can :manage, :all
+    cannot :manage, Activity
+    cannot :manage, Tag
+    cannot :manage, TransportLocation
     can :export, Unit
   end
 
