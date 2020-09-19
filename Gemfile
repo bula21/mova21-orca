@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem 'ancestry'
+gem 'annotate'
 gem 'azure-storage', '~> 0.15.0.preview', require: false
 gem 'bitfields'
 gem 'bootsnap', '>= 1.4.2', require: false

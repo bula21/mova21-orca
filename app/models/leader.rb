@@ -1,5 +1,26 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: leaders
+#
+#  id           :bigint           not null, primary key
+#  address      :string
+#  birthdate    :date
+#  country      :string
+#  email        :string
+#  first_name   :string
+#  gender       :string
+#  language     :string
+#  last_name    :string
+#  phone_number :string
+#  scout_name   :string
+#  town         :string
+#  zip_code     :string
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  pbs_id       :integer
+#
 class Leader < ApplicationRecord
   has_many :al_units, inverse_of: :al, class_name: 'Unit', foreign_key: 'al_id', dependent: :destroy
   has_many :lagerleiter_units, inverse_of: :lagerleiter, class_name: 'Unit', foreign_key: 'lagerleiter_id',
