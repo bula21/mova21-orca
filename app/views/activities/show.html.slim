@@ -1,6 +1,6 @@
 .h1.pb-0 = @activity.label
 - @activity.tags.each do |tag|
-  i class="#{tag.icon} mr-2"
+  i class="#{tag.icon} mr-2" title="#{tag.label}"
 
 .card.mt-3.mb-3
   .card-body
@@ -83,7 +83,7 @@
         dd = image_tag(@activity.picture, height: "100") unless @activity.picture.blank?
 
 
-=> link_to t('buttons.edit'), edit_activity_path(@activity), class: 'btn btn-primary'
+=> link_to t('buttons.edit'), edit_activity_path(@activity), class: 'btn btn-primary' if can?(:edit, @activity)
 br
 br
 =< link_to t('buttons.back'), activities_path, class: 'btn btn-secondary'
