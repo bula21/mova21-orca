@@ -8,6 +8,8 @@ module ApplicationHelper
   end
 
   def markdown(content)
+    return '' unless content.present?
+
     @markdown ||= Redcarpet::Markdown.new(Redcarpet::Render::HTML,
                                           autolink: true,
                                           tables: true)
