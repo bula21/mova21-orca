@@ -4,7 +4,6 @@
 
 ActiveSupport::Reloader.to_prepare do
   ApplicationController.renderer.defaults.merge!(
-    http_host: ENV.fetch('APP_HOST'),
-    https: false
+    http_host: ENV.fetch('APP_HOST')
   )
 end
