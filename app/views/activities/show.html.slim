@@ -1,6 +1,6 @@
 .h1.pb-0.d-flex.justify-content-between
   = @activity.label
-  span.badge class="badge-#{@activity.activity_type}"
+  span.badge[class="badge-#{@activity.activity_type}" style='align-self: baseline']
     = t(@activity.activity_type, scope: 'simple_form.options.activity.activity_type')
 - @activity.tags.each do |tag|
   i class="#{tag.icon} mr-2" title="#{tag.label}"
