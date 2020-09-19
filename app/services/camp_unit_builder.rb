@@ -64,8 +64,9 @@ class CampUnitBuilder
   end
 
   def group_of_camp(camp_unit_data)
+    group_types = %w[Kantonalverband Region Abteilung]
     camp_unit_data.dig('linked', 'groups').find do |group|
-      %w[Kantonalverband Region Abteilung].include?(group['group_type'])
+      group_types.include?(group['group_type'])
     end&.[]('name')
   end
 end

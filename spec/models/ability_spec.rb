@@ -42,7 +42,6 @@ RSpec.describe Ability do
 
     context 'when user is logged in without midata id' do
       let(:user) { create(:user, pbs_id: nil) }
-      let(:other_user) { create(:user, pbs_id: nil) }
       let(:leader_without_midata) { user.leader }
 
       let!(:unit_as_lagerleiter) { create(:unit, lagerleiter: leader_without_midata) }

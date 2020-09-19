@@ -9,10 +9,11 @@ services:
         UID: ${UID}
         GID: ${GID}
     entrypoint: [".docker/entrypoints/app.sh"]
-    command: ["bin/e2e"]
+    command: ["bin/check"]
     volumes:
       - .:/app
     environment:
+      APP_HOST: 'e2e_test'
       E2E_APP_HOST: 'e2e_target:3002'
       DATABASE_URL: postgresql://postgres:postgres@db/orca_e2e
       DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL: 'true'
@@ -40,6 +41,7 @@ services:
       LOG_LEVEL: 'debug'
       RUBYOPT: '-W:no-deprecated -W:no-experimental'
       APP_BASE_URL: 'e2e_target:3002'
+      APP_HOST: 'e2e_target:3002'
       RAILS_ENV: production
       SMTP_HOST: ${SMTP_HOST}
       SMTP_USER: ${SMTP_USER}

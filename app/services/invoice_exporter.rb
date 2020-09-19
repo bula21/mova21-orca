@@ -23,7 +23,6 @@ class InvoiceExporter
     }
   end
 
-  # rubocop: disable Metrics/AbcSize
   def invoice_attributes(invoice)
     invoice.instance_eval do
       lagerleiter = unit.lagerleiter
@@ -34,5 +33,4 @@ class InvoiceExporter
       ]
     end
   end
-  # rubocop: enable Metrics/AbcSize
 end
