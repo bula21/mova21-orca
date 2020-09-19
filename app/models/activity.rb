@@ -14,7 +14,8 @@ class Activity < ApplicationRecord
   enum language: { de: 'de', fr: 'fr', it: 'it', en: 'en', mixed: 'mixed' }
   enum block_type: { la: 'la', ls: 'ls' }
   enum simo: { berg: 'berg', wasser: 'wasser' }
-  enum activity_type: { excursion: 'excursion', activity: 'activity', village_global: 'village_global', frohnarbeit: 'frohnarbeit' }
+  enum activity_type: { excursion: 'excursion', activity: 'activity',
+                        village_global: 'village_global', frohnarbeit: 'frohnarbeit' }
 
   validates :label, :description, :language, :block_type, :participants_count_activity,
             :participants_count_transport, :stufen, :stufe_recommended, :activity_type, presence: true
