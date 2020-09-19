@@ -83,6 +83,15 @@ it:
       title: Attività
     new:
       title: Creare una nuova attività
+    show:
+      duration: "Dauer:"
+      activity: Aktivität
+      stufe_recommended: "Geeignet für:"
+      more_information: Weitere Informationen
+      downloads: Downloads
+      simo_text: "Benötigt Sicherheitsmodul:"
+      max_people: Max. Gruppengrösse
+      possible: möglich
   app:
     title: Orca
   buttons:
