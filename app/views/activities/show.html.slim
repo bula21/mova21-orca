@@ -1,89 +1,76 @@
-.h1.pb-0 = @activity.label
+.h1.pb-0.d-flex.justify-content-between
+  = @activity.label
+  span.badge class="badge-#{@activity.activity_type}"
+    = t(@activity.activity_type, scope: 'simple_form.options.activity.activity_type')
 - @activity.tags.each do |tag|
   i class="#{tag.icon} mr-2" title="#{tag.label}"
 
-.card.mt-3.mb-3
-  .card-body
+div.mt-4
+  = image_tag(@activity.picture, height: "100") unless @activity.picture.blank?
+
+hr
+
+.row.mt-3
+  .col-2.font-weight-bold
+    = t('activity.show.duration')
+  .col-8
+    = "#{@activity.duration_journey}' (#{t('activity.show.activity')} #{@activity.duration_activity}')"
+.row
+  .col-2.font-weight-bold
+    = t('activity.show.stufe_recommended')
+  .col-8
+    - stufen = @activity.stufen.map(&:name) - @activity.stufe_recommended.map(&:name)
+    = (@activity.stufe_recommended.map(&:name) + stufen.map { |s| "#{s} (#{t('activity.show.possible')})" }).to_sentence
+
+- if @activity.simo
+  .alert.alert-info.mt-2
+    = "#{t('activity.show.simo_text')} #{t(@activity.simo, scope: 'simple_form.options.activity.simo')}"
+hr
+.mt-4
     = markdown(@activity.description).html_safe
 
-.card.mt-3.mb-3
-  .card-body
-    .row
-      .col-6
-        dt = t('activerecord.attributes.activity.language')
-        dd = t("simple_form.options.activity.language.#{@activity.language}")
+hr
 
-        dt = t('activerecord.attributes.activity.location')
-        dd = @activity.location
+.h4.mt-3 = t('activity.show.more_information')
+.row
+  .col-6
+    dt = t('activity.show.max_people')
+    dd = @activity.participants_count_transport
 
-        dt = t('activerecord.attributes.activity.transport_location')
-        dd = @activity.transport_location
+    dt = t('activerecord.attributes.activity.language')
+    dd = t("simple_form.options.activity.language.#{@activity.language}")
 
-        dt = t('activerecord.attributes.activity.activity_type')
-        dd = t(@activity.activity_type || 'none', scope: 'simple_form.options.activity.activity_type')
-
-      .col-6
-        dt = t('activerecord.attributes.activity.goals')
-        dd
-          ul
-            - @activity.goals.each do |s|
-              li = s.name
-.card.mt-3.mb-3
-  .card-body
-    .row
-      .col-6
-        dt = t('activerecord.attributes.activity.block_type')
-        dd = t(@activity.block_type || 'none', scope: 'simple_form.options.activity.block_type')
-
-      .col-6
-        dt = t('activerecord.attributes.activity.simo')
-        dd = t(@activity.simo || 'none', scope: 'simple_form.options.activity.simo')
-
-    .row
-      .col-6
-        dt = t('activerecord.attributes.activity.participants_count_activity')
-        dd = @activity.participants_count_activity
-      .col-6
-        dt = t('activerecord.attributes.activity.participants_count_transport')
-        dd = @activity.participants_count_transport
-
-    .row
-      .col-6
-        dt = t('activerecord.attributes.activity.duration_activity')
-        dd = @activity.duration_activity
-      .col-6
-        dt = t('activerecord.attributes.activity.duration_journey')
-        dd = @activity.duration_journey
-    .row
-      .col-6
-        dt = t('activerecord.attributes.activity.stufen')
-        dd
-          ul
-            - @activity.stufen.each do |s|
-              li = s.name
-      .col-6
-        dt = t('activerecord.attributes.activity.stufe_recommended')
-        dd
-          ul
-            - @activity.stufe_recommended.each do |s|
-              li = s.name
+    dt = t('activerecord.attributes.activity.block_type')
+    dd = t(@activity.block_type || 'none', scope: 'simple_form.options.activity.block_type')
 
 
+    dt = t('activerecord.attributes.activity.activity_type')
+    dd = t(@activity.activity_type || 'none', scope: 'simple_form.options.activity.activity_type')
 
-.card.mt-3.mb-3
-  .card-body
-    .row
-      .col-6
-        dt = t('activerecord.attributes.activity.activity_documents')
-        ul.list-group
-          - @activity.activity_documents.each do |document|
-            li.list-group-item = link_to document.filename, url_for(document)
-      .col-6
-        dt = t('activerecord.attributes.activity.picture')
-        dd = image_tag(@activity.picture, height: "100") unless @activity.picture.blank?
+  .col-6
+    dt = t('activerecord.attributes.activity.goals')
+    dd
+      ul
+        - @activity.goals.each do |s|
+          li = s.name
+
+    dt = t('activerecord.attributes.activity.location')
+    dd = @activity.location
+
+    dt = t('activerecord.attributes.activity.transport_location')
+    dd = @activity.transport_location
 
 
-=> link_to t('buttons.edit'), edit_activity_path(@activity), class: 'btn btn-primary' if can?(:edit, @activity)
-br
-br
-=< link_to t('buttons.back'), activities_path, class: 'btn btn-secondary'
+hr
+
+.h4.mt-3 = t('activity.show.downloads')
+.row
+  .col-6
+    ul.list-group
+      - @activity.activity_documents.each do |document|
+        li.list-group-item = link_to document.filename, url_for(document)
+
+
+hr.mt-4
+=> link_to t('buttons.back'), activities_path, class: 'btn btn-secondary'
+=< link_to t('buttons.edit'), edit_activity_path(@activity), class: 'btn btn-primary' if can?(:edit, @activity)
