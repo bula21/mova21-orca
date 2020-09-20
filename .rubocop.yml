@@ -62,3 +62,6 @@ AllCops:
 
 RSpec/EmptyExampleGroup:
   Enabled: false
+
+Layout/TrailingEmptyLines:
+  Enabled: true
