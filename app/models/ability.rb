@@ -58,5 +58,6 @@ class Ability
     can :manage, Activity
     can :manage, Tag
     can :manage, TransportLocation
+    can :manage, ActivityCategory
   end
 end

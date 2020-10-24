@@ -1,6 +1,6 @@
 .h1 Tags
 
-= link_to t('buttons.create'), new_tag_path, class: 'btn btn-primary mb-3'
+= link_to t('buttons.create'), new_admin_tag_path, class: 'btn btn-primary mb-3'
 
 .table-responsive
   table.table
@@ -20,5 +20,5 @@
           td
             = tag.icon
             i class="#{tag.icon} ml-2"
-          td = link_to t('buttons.edit'), edit_tag_path(tag), class: 'btn btn-primary' if can?(:edit, tag)
+          td = link_to t('buttons.edit'), edit_admin_tag_path(tag), class: 'btn btn-primary' if can?(:edit, tag)
           td = link_to t('buttons.destroy'), tag, data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-secondary' if can?(:delete, tag)

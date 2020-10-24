@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :transport_locations
-  resources :tags
   devise_for :users, controllers: { sessions: 'sessions', omniauth_callbacks: 'omniauth_callbacks' }
 
   devise_scope :user do
@@ -16,6 +14,13 @@ Rails.application.routes.draw do
   end
   resources :leaders, except: [:destroy]
   resources :activities
+
+  namespace :admin do
+    get '/', to: 'admin#index'
+    resources :transport_locations
+    resources :activity_categories
+    resources :tags
+  end
 
   root 'pages#index'
 end
