@@ -8,5 +8,4 @@ class ActivityCategory < ApplicationRecord
 
   validates :name, presence: true
   translates :name, type: :string, locale_accessors: true, fallbacks: true
-
 end
