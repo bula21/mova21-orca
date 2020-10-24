@@ -12,10 +12,14 @@
 #  updated_at :datetime         not null
 #
 class Tag < ApplicationRecord
+  extend Mobility
+  
   has_and_belongs_to_many :activities
 
   validates :code, :icon, :label, presence: true
   validates :code, uniqueness: true
+
+  translates :label, type: :string, locale_accessors: true, fallbacks: true
 
   def to_s
     label

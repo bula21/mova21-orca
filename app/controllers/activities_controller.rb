@@ -4,7 +4,8 @@ class ActivitiesController < ApplicationController
   load_and_authorize_resource except: [:create]
 
   def index
-    @activities = Activity.all
+    @filter ||= filter
+    @activities = filter.apply(Activity.all)
   end
 
   def show; end
@@ -54,6 +55,10 @@ class ActivitiesController < ApplicationController
   def delete_attachment
     @activity.activity_documents.find_by(id: params[:attachment_id]).purge
     redirect_to edit_activity_url(@activity)
+  end
+
+  def filter 
+    ActivityFilter.new(params.permit(:min_participants_count))
   end
 
   def activity_params
