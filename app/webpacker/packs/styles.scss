@@ -45,6 +45,9 @@
     font-size: 3.5em;
     padding: 0;
     clear: both;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2), 0 0 5px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    overflow: hidden;
 
     &:hover {
         text-decoration: none;
@@ -74,4 +77,12 @@
 .badge-frohnarbeit {
     color: #fff;;
     background-color: #3ca434;
+}
+
+.activity-card {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2), 0 0 5px rgba(0,0,0,0.2);
+    margin-bottom: 3rem;
 }
