@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Activity < ApplicationRecord
+  include Bitfields
   extend Mobility
 
   has_many_attached :activity_documents
@@ -11,15 +12,19 @@ class Activity < ApplicationRecord
   has_and_belongs_to_many :stufen
   has_and_belongs_to_many :stufe_recommended, class_name: 'Stufe', join_table: 'activities_stufen_recommended'
 
-  enum language: { de: 'de', fr: 'fr', it: 'it', en: 'en', mixed: 'mixed' }
+  bitfield :language_flags, :language_de, :language_fr, :language_it, :language_en
   enum block_type: { la: 'la', ls: 'ls' }
   enum simo: { berg: 'berg', wasser: 'wasser' }
   enum activity_type: { excursion: 'excursion', activity: 'activity',
                         village_global: 'village_global', frohnarbeit: 'frohnarbeit' }
 
-  validates :label, :description, :language, :block_type, :participants_count_activity,
+  validates :label, :description, :block_type, :participants_count_activity,
             :participants_count_transport, :stufen, :stufe_recommended, :activity_type, presence: true
 
   translates :label, type: :string, locale_accessors: true, fallbacks: true
   translates :description, type: :text, locale_accessors: true, fallbacks: true
+
+  def languages
+    bitfield_values(:language_flags)
+  end
 end

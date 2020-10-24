@@ -14,7 +14,11 @@ fr:
         block_type: Type d'activité
         simo: Module de sécurité
         label: Intitulé de l'activité
-        language: Langue
+        languages: Langues
+        language_de: Deutsch
+        language_en: English
+        language_fr: Français
+        language_it: Italiano
         location: Lieu (approximativement)
         participants_count_activity: Nombre participant.e.s pour activités
         min_participants: Min. Nombre participant
@@ -414,12 +418,11 @@ fr:
         block_type:
           la: Activité de camp
           ls: Sport de camp
-        language:
-          de: Allemand
-          en: Anglais
-          fr: Français
-          it: Italien
-          mixed: Toutes langues confondues
+        languages: Langues
+        language_de: Deutsch
+        language_en: English
+        language_fr: Français
+        language_it: Italiano
       participant:
         gender:
           female: Féminin

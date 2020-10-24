@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_21_111339) do
+ActiveRecord::Schema.define(version: 2020_10_24_131536) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,7 +39,6 @@ ActiveRecord::Schema.define(version: 2020_07_21_111339) do
   create_table "activities", force: :cascade do |t|
     t.jsonb "label", default: {}
     t.jsonb "description", default: {}
-    t.string "language", null: false
     t.string "block_type"
     t.integer "participants_count_activity"
     t.integer "participants_count_transport"
@@ -52,6 +51,7 @@ ActiveRecord::Schema.define(version: 2020_07_21_111339) do
     t.integer "min_participants"
     t.string "activity_type"
     t.bigint "transport_location_id"
+    t.integer "language_flags"
     t.index ["transport_location_id"], name: "index_activities_on_transport_location_id"
   end
 
@@ -181,10 +181,11 @@ ActiveRecord::Schema.define(version: 2020_07_21_111339) do
 
   create_table "tags", force: :cascade do |t|
     t.string "code", null: false
-    t.string "label", null: false
+    t.string "label_untranslated", null: false
     t.string "icon", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.jsonb "label", default: {}
   end
 
   create_table "transport_locations", force: :cascade do |t|

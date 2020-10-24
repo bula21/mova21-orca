@@ -51,14 +51,13 @@
       .form-inputs
         .row
           .col-6
-            = f.input :language, collection: Activity.languages.symbolize_keys.keys
-            = f.input :min_participants
+            = f.label :languages
+            - @activity.languages.keys.each do |language|
+              = f.input language, as: :boolean
           .col-6
             = f.input :simo, collection: Activity.simos.symbolize_keys.keys
+            = f.input :min_participants
             = f.input :participants_count_activity
-
-        .row
-          .col-6
             = f.input :duration_activity
 
 

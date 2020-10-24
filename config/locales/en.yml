@@ -14,7 +14,11 @@ en:
         block_type: Block Typ
         simo: Sicherheitsmodul
         label: Label
-        language: Language
+        languages: Languages
+        language_de: Deutsch
+        language_en: English
+        language_fr: Français
+        language_it: Italiano
         location: Location
         participants_count_activity: Paritcipant count Activity
         min_participants: Min. TNs
@@ -394,12 +398,11 @@ en:
           la: Lageraktivität
           ls: Lagersport
           voila: Voila Bula
-        language:
-          de: Deutsch
-          en: Englisch
-          fr: Französisch
-          it: Italienisch
-          mixed: gemischt
+        languages: Languages
+        language_de: Deutsch
+        language_en: English
+        language_fr: Français
+        language_it: Italiano
       participant:
         gender:
           female: Female

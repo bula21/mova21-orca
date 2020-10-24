@@ -4,7 +4,7 @@ FactoryBot.define do
   factory :activity do
     label { Faker::Lorem.words(number: 3) }
     description { Faker::Lorem.paragraph(sentence_count: 5) }
-    language { Activity.languages.keys.sample }
+    language_flags { (1..8).to_a.sample }
     block_type { Activity.block_types.keys.sample }
     simo { Activity.simos.keys.sample }
     participants_count_activity { (10..20).to_a.sample }

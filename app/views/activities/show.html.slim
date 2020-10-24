@@ -37,8 +37,11 @@ hr
     dt = t('activity.show.max_people')
     dd = @activity.participants_count_transport
 
-    dt = t('activerecord.attributes.activity.language')
-    dd = t("simple_form.options.activity.language.#{@activity.language}")
+    dt = t('activerecord.attributes.activity.languages')
+    dd 
+      ul
+        - @activity.languages.select { |language, selected| selected }.keys.each do |language|
+          li= t("simple_form.options.activity.#{language}") 
 
     dt = t('activerecord.attributes.activity.block_type')
     dd = t(@activity.block_type || 'none', scope: 'simple_form.options.activity.block_type')
