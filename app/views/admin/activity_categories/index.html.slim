@@ -15,6 +15,6 @@
       - @activity_categories.each do |cat|
         tr
           td = cat.label
-          td = cat.parent.label
-          td = link_to t('buttons.edit'), edit_admin_activity_categories_path(cat), class: 'btn btn-primary' if can?(:edit, cat)
+          td = cat.parent&.label
+          td = link_to t('buttons.edit'), edit_admin_activity_category_path(cat), class: 'btn btn-primary' if can?(:edit, cat)
           td = link_to t('buttons.destroy'), admin_activity_category_path(cat), data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-secondary' if can?(:delete, cat)

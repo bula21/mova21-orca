@@ -3,9 +3,14 @@
 class ActivityCategory < ApplicationRecord
   extend Mobility
 
-  # has_and_belongs_to_many :activities
   belongs_to :parent, class_name: 'ActivityCategory', optional: true
 
-  validates :name, presence: true
-  translates :name, type: :string, locale_accessors: true, fallbacks: true
+  scope :without_self, ->(id) { where.not(id: id) }
+
+  validates :label, presence: true
+  translates :label, type: :string, locale_accessors: true, fallbacks: true
+
+  def to_s
+    label
+  end
 end

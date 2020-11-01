@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_24_133510) do
+ActiveRecord::Schema.define(version: 2020_11_01_151800) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,8 @@ ActiveRecord::Schema.define(version: 2020_10_24_133510) do
     t.string "activity_type"
     t.bigint "transport_location_id"
     t.integer "language_flags"
+    t.bigint "activity_category_id"
+    t.index ["activity_category_id"], name: "index_activities_on_activity_category_id"
     t.index ["transport_location_id"], name: "index_activities_on_transport_location_id"
   end
 
@@ -187,11 +189,10 @@ ActiveRecord::Schema.define(version: 2020_10_24_133510) do
 
   create_table "tags", force: :cascade do |t|
     t.string "code", null: false
-    t.string "label_untranslated", null: false
+    t.string "label", null: false
     t.string "icon", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.jsonb "label", default: {}
   end
 
   create_table "transport_locations", force: :cascade do |t|
@@ -241,6 +242,7 @@ ActiveRecord::Schema.define(version: 2020_10_24_133510) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "activities", "activity_categories"
   add_foreign_key "activities", "transport_locations"
   add_foreign_key "activity_categories", "activity_categories", column: "parent_id"
   add_foreign_key "invoice_parts", "invoices"

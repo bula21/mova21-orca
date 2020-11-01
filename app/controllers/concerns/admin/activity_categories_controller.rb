@@ -13,7 +13,7 @@ module Admin
     def edit; end
 
     def create
-      @activity_category = ActivityCategory.new(transport_location_params)
+      @activity_category = ActivityCategory.new(activity_category_params)
 
       if @activity_category.save
         redirect_to admin_activity_categories_path, notice: 'Activity Category was successfully created.'
@@ -23,7 +23,7 @@ module Admin
     end
 
     def update
-      if @activity_category.update(transport_location_params)
+      if @activity_category.update(activity_category_params)
         redirect_to admin_activity_categories_path, notice: 'Activity Category was successfully updated.'
       else
         render :edit
@@ -37,7 +37,7 @@ module Admin
 
     private
 
-    def transport_location_params
+    def activity_category_params
       params.require(:activity_category).permit(:label, :parent_id)
     end
   end

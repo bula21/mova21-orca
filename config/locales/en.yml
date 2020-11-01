@@ -315,6 +315,7 @@ en:
     activity: Activity
     tag: Tags
     transport_location: Transport
+    activity_category: Kategory
     language:
       de: DE
       en: EN

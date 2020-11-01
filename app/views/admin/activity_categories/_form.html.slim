@@ -6,7 +6,7 @@
     .card-body
       .form-inputs
         = f.input :label
-        / = f.input :parent
+        = f.association :parent, collection: ActivityCategory.without_self(@activity_category.id)
 
-  .actions.mt-3
+  .actions.mt-3.mb-3
     = f.submit t('buttons.save'), class: 'btn btn-primary'

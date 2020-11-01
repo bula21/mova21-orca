@@ -332,6 +332,7 @@ it:
     activity: Catalogo
     tag: Tags
     transport_location: Transport
+    activity_category: Kategorie
     language:
       de: DE
       en: EN

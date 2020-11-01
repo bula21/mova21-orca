@@ -7,6 +7,7 @@
       .row
         .col-6
           = f.input :activity_type, collection: Activity.activity_types.symbolize_keys.keys
+          = f.association :activity_category
         .col-6
           = f.input :block_type, collection: Activity.block_types.symbolize_keys.keys
   .card.mt-3
