@@ -52,6 +52,7 @@ class Ability
     can :manage, Unit
     can :manage, Participant
     can :manage, Leader
+    can :export, Unit
   end
 
   def programm_user_permissions(_user)
