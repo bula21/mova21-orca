@@ -1,6 +1,7 @@
 require:
   - rubocop-performance
   - rubocop-rspec
+  - rubocop-rails
 
 Rails:
   Enabled: true
@@ -50,6 +51,7 @@ RSpec/NestedGroups:
   Max: 5
 
 AllCops:
+  NewCops: enable
   Exclude:
     - 'bin/**/*'
     - 'script/**/*'
@@ -63,5 +65,8 @@ AllCops:
 RSpec/EmptyExampleGroup:
   Enabled: false
 
-Layout/TrailingEmptyLines:
-  Enabled: true
+Rails/HasAndBelongsToMany:
+  Enabled: false
+
+Rails/UniqueValidationWithoutIndex:
+  Enabled: false

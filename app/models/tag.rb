@@ -4,7 +4,7 @@ class Tag < ApplicationRecord
   has_and_belongs_to_many :activities
 
   validates :code, :icon, :label, presence: true
-  validates_uniqueness_of :code
+  validates :code, uniqueness: true
 
   def to_s
     label

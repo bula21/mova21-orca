@@ -3,6 +3,7 @@
 class MidataService
   include HTTParty
   attr_reader :auth_params
+
   base_uri ENV.fetch('MIDATA_BASE_URL', 'https://pbs.puzzle.ch')
 
   def initialize(user_email = ENV['MIDATA_USER_EMAIL'], user_token = ENV['MIDATA_USER_TOKEN'], _locale = 'de')

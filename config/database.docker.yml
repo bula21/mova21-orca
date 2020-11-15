@@ -8,8 +8,8 @@ docker: &docker
 
 development:
   <<: *docker
-  database: heimv_development
+  database: orca_development
 
 test:
   <<: *docker
-  database: heimv_test
+  database: orca_test

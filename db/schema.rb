@@ -181,11 +181,10 @@ ActiveRecord::Schema.define(version: 2020_10_24_131536) do
 
   create_table "tags", force: :cascade do |t|
     t.string "code", null: false
-    t.string "label_untranslated", null: false
+    t.string "label", null: false
     t.string "icon", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.jsonb "label", default: {}
   end
 
   create_table "transport_locations", force: :cascade do |t|

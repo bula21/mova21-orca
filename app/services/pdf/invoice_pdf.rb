@@ -5,6 +5,7 @@ require 'prawn'
 module Pdf
   class InvoicePdf < MovaPdf
     attr_reader :invoice
+
     include ActionView::Helpers::NumberHelper
 
     def initialize(invoice)

@@ -52,7 +52,7 @@ class ActivitiesController < ApplicationController
   end
 
   def delete_attachment
-    @activity.activity_documents.find_by_id(params[:attachment_id]).purge
+    @activity.activity_documents.find_by(id: params[:attachment_id]).purge
     redirect_to edit_activity_url(@activity)
   end
 
