@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_26_103632) do
+ActiveRecord::Schema.define(version: 2020_11_26_112550) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,8 +42,8 @@ ActiveRecord::Schema.define(version: 2020_11_26_103632) do
     t.string "block_type"
     t.integer "participants_count_activity"
     t.integer "participants_count_transport"
-    t.integer "duration_activity"
-    t.integer "duration_journey"
+    t.string "duration_activity"
+    t.string "duration_journey"
     t.string "location"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

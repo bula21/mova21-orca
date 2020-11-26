@@ -6,8 +6,8 @@ fr:
         activity_documents: Document
         picture: Image
         description: Description
-        duration_activity: Dauer der Aktivität (Minuten)
-        duration_journey: Dauer der Anreise (Minuten)
+        duration_activity: Dauer der Aktivität (HH:mm)
+        duration_journey: Dauer der Anreise (HH:mm)
         goals: Objectifs de l'activité
         transport_location: Lieu du Transport
         activity_type: Type
@@ -91,7 +91,7 @@ fr:
       title: Créer une nouvelle activité
     show:
       duration: "Dauer:"
-      activity: Aktivität
+      activity: Anreise
       stufe_recommended: "Geeignet für:"
       more_information: Weitere Informationen
       downloads: Downloads
