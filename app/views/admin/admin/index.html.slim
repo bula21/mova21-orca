@@ -1,0 +1,12 @@
+.container.py-3
+  .h1 Admin
+  ul
+    - if can?(:create, Tag)
+      li
+        = link_to t('nav.tag'), admin_tags_path
+    - if can?(:create, TransportLocation)
+      li
+        = link_to t('nav.transport_location'), admin_transport_locations_path
+    - if can?(:create, ActivityCategory)
+      li
+        = link_to t('nav.activity_category'), admin_activity_categories_path

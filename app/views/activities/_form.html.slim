@@ -6,7 +6,11 @@
     .card-body
       .row
         .col-6
-          = f.input :activity_type, collection: Activity.activity_types.symbolize_keys.keys
+          = f.association :activity_category, collection: ActivityCategory.roots,
+                  as: :grouped_select,
+                  group_method: :children, group_label_method: :label,
+                  label_method: :full_label
+
         .col-6
           = f.input :block_type, collection: Activity.block_types.symbolize_keys.keys
   .card.mt-3
@@ -41,8 +45,10 @@
     .card-body
       .row
         .col-6
-          = f.input :location
-          = f.association :transport_location
+          = f.input :duration_activity
+          = f.input :participants_count_activity
+          / = f.input :location
+          / = f.association :transport_location
         .col-6
           = f.input :duration_journey
           = f.input :participants_count_transport
@@ -57,8 +63,6 @@
           .col-6
             = f.input :simo, collection: Activity.simos.symbolize_keys.keys
             = f.input :min_participants
-            = f.input :participants_count_activity
-            = f.input :duration_activity
 
 
   .card.mt-3

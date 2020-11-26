@@ -1,0 +1,22 @@
+.h1 Transport-Orte
+
+= link_to t('buttons.create'), new_admin_transport_location_path, class: 'btn btn-primary mb-3'
+
+
+.table-responsive
+  table.table
+    thead
+      tr
+        th Bezeichnung
+        th Max TNs
+        th
+        th
+
+    tbody
+      - @transport_locations.each do |transport_location|
+        tr
+          td = transport_location.name
+          td = transport_location.max_participants
+          td = link_to t('buttons.edit'), edit_admin_transport_location_path(transport_location), class: 'btn btn-primary' if can?(:edit, transport_location)
+          td = link_to t('buttons.destroy'), admin_transport_location_path(transport_location), data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-secondary' if can?(:delete, transport_location)
+

@@ -1,12 +1,13 @@
-= simple_form_for(@transport_location) do |f|
+= simple_form_for([:admin, @tag]) do |f|
   = f.error_notification
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
   .card.mt-3
     .card-body
       .form-inputs
-        = f.input :name
-        = f.input :max_participants
+        = f.input :code
+        = f.input :label
+        = f.input :icon
 
-  .actions.mt-3
+  .actions.mt-3.mb-3
     = f.submit t('buttons.save'), class: 'btn btn-primary'

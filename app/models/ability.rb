@@ -59,5 +59,7 @@ class Ability
     can :manage, Activity
     can :manage, Tag
     can :manage, TransportLocation
+    can :manage, ActivityCategory
+    cannot :delete, ActivityCategory, parent_id: nil
   end
 end

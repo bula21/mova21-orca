@@ -1,0 +1,39 @@
+= simple_form_for([:admin, @activity_category]) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+  .card.mt-3
+    .card-body
+      .form-inputs
+
+        ul.nav.nav-tabs role="tablist"
+          - I18n.available_locales.each do |locale|
+            - current_locale = locale == I18n.locale
+            li.nav-item
+              = link_to locale.upcase, "#label-#{locale}-tab",
+                      class: "nav-link #{'active' if current_locale}",
+                      aria: { controls: "label-#{locale}-tab", selected: current_locale },
+                      data: { toggle: 'tab' }, role: 'tab'
+        .tab-content
+          - I18n.available_locales.each do |locale|
+            - current_locale = locale == I18n.locale
+            .tab-pane[id="label-#{locale}-tab" class="#{'show active' if current_locale}"
+              aria-labelledby="label-#{locale}-tab" role='tabpanel']
+              = f.input "label_#{locale.to_s}", label: "#{t('activerecord.attributes.activity.label')} #{locale.upcase}"
+
+        hr
+        = f.input :parent_id, collection: ActivityCategory.roots.without_self(@activity_category.id),
+                label_method: :label
+
+
+        - unless @activity_category.new_record?
+          = f.label 'Kinder'
+          ul
+            - @activity_category.children&.each do |child|
+              li = child.label
+
+        = f.input :code if current_user.role_admin?
+
+
+  .actions.mt-3.mb-3
+    = f.submit t('buttons.save'), class: 'btn btn-primary'

@@ -6,10 +6,11 @@ de:
         activity_documents: Dokumente
         picture: Bild
         description: Beschreibung
-        duration_activity: Dauer der Aktivität (Minuten)
-        duration_journey: Dauer der Anreise (Minuten)
+        duration_activity: Dauer der Aktivität (HH:mm)
+        duration_journey: Dauer der Anreise (HH:mm)
         goals: Leitziele
         transport_location: Transport-Ort
+        activity_category: Kategorie
         activity_type: Art
         block_type: Block Typ
         simo: Sicherheitsmodul
@@ -90,7 +91,7 @@ de:
       title: Neue Aktivität erfassen
     show:
       duration: "Dauer:"
-      activity: Aktivität
+      activity: Anreise
       stufe_recommended: "Geeignet für:"
       more_information: Weitere Informationen
       downloads: Downloads
@@ -335,6 +336,7 @@ de:
     activity: Katalog
     tag: Tags
     transport_location: Transport
+    activity_category: Kategorie
     language:
       de: DE
       en: EN

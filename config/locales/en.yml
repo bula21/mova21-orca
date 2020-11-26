@@ -6,8 +6,8 @@ en:
         activity_documents: Documents
         picture: Picture
         description: Description
-        duration_activity: Duration of the activity (Minutes)
-        duration_journey: Duration of the journey (Minutes)
+        duration_activity: Duration of the activity (HH:mm)
+        duration_journey: Duration of the journey (HH:mm)
         goals: Leitziele
         transport_location: Transport-Ort
         activity_type: Type
@@ -89,7 +89,7 @@ en:
       title: Neue Aktivität erfassen
     show:
       duration: "Dauer:"
-      activity: Aktivität
+      activity: Anreise
       stufe_recommended: "Geeignet für:"
       more_information: Weitere Informationen
       downloads: Downloads
@@ -315,6 +315,7 @@ en:
     activity: Activity
     tag: Tags
     transport_location: Transport
+    activity_category: Kategory
     language:
       de: DE
       en: EN

@@ -8,6 +8,7 @@ class Activity < ApplicationRecord
   has_one_attached :picture
   has_and_belongs_to_many :tags, optional: true
   belongs_to :transport_location, optional: true
+  belongs_to :activity_category, optional: true
   has_and_belongs_to_many :goals
   has_and_belongs_to_many :stufen
   has_and_belongs_to_many :stufe_recommended, class_name: 'Stufe', join_table: 'activities_stufen_recommended'

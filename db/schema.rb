@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_24_131536) do
+ActiveRecord::Schema.define(version: 2020_11_26_112550) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,8 +42,8 @@ ActiveRecord::Schema.define(version: 2020_10_24_131536) do
     t.string "block_type"
     t.integer "participants_count_activity"
     t.integer "participants_count_transport"
-    t.integer "duration_activity"
-    t.integer "duration_journey"
+    t.string "duration_activity"
+    t.string "duration_journey"
     t.string "location"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -52,6 +52,8 @@ ActiveRecord::Schema.define(version: 2020_10_24_131536) do
     t.string "activity_type"
     t.bigint "transport_location_id"
     t.integer "language_flags"
+    t.bigint "activity_category_id"
+    t.index ["activity_category_id"], name: "index_activities_on_activity_category_id"
     t.index ["transport_location_id"], name: "index_activities_on_transport_location_id"
   end
 
@@ -79,6 +81,13 @@ ActiveRecord::Schema.define(version: 2020_10_24_131536) do
     t.bigint "tag_id", null: false
     t.index ["activity_id", "tag_id"], name: "index_activities_tags_on_activity_id_and_tag_id"
     t.index ["tag_id", "activity_id"], name: "index_activities_tags_on_tag_id_and_activity_id"
+  end
+
+  create_table "activity_categories", force: :cascade do |t|
+    t.jsonb "label", default: {}
+    t.string "ancestry"
+    t.string "code"
+    t.index ["ancestry"], name: "index_activity_categories_on_ancestry"
   end
 
   create_table "goals", force: :cascade do |t|
@@ -234,6 +243,7 @@ ActiveRecord::Schema.define(version: 2020_10_24_131536) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "activities", "activity_categories"
   add_foreign_key "activities", "transport_locations"
   add_foreign_key "invoice_parts", "invoices"
   add_foreign_key "invoices", "units"
