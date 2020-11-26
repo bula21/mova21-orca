@@ -21,14 +21,14 @@ class EsrService
     ref.reverse.chars.in_groups_of(5).reverse.map { |group| group.reverse.join }.join(' ')
   end
 
-  def code_line(esr_participant_nr: '013482302', ref:, amount:, esr_mode: '01')
+  def code_line(ref:, amount:, esr_participant_nr: '013482302', esr_mode: '01')
     code = {
       esr_mode: esr_mode,
       amount_in_cents: amount * 100,
-      checksum_1: checksum(esr_mode.to_s + format('%<amount>010d', amount: amount * 100)),
+      checksum: checksum(esr_mode.to_s + format('%<amount>010d', amount: amount * 100)),
       ref: ref.to_s.rjust(27, '0'),
       account_code: esr_participant_nr
     }
-    format('%<esr_mode>s%<amount_in_cents>010d%<checksum_1>d>%<ref>s+ %<account_code>s>', code)
+    format('%<esr_mode>s%<amount_in_cents>010d%<checksum>d>%<ref>s+ %<account_code>s>', code)
   end
 end

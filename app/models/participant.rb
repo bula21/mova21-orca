@@ -3,7 +3,7 @@
 class Participant < ApplicationRecord
   belongs_to :unit
 
-  validates_uniqueness_of :pbs_id, allow_blank: true
+  validates :pbs_id, uniqueness: { allow_blank: true }
 
   enum gender: { male: 'male', female: 'female' }
 

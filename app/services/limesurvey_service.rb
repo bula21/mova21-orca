@@ -2,7 +2,7 @@
 
 class LimesurveyService
   BASEURL = 'https://limesurvey.bula21.ch/index.php'
-  ADMIN_REMOTECONTROL_URL = URI.parse(BASEURL + '/admin/remotecontrol')
+  ADMIN_REMOTECONTROL_URL = URI.parse("#{BASEURL}/admin/remotecontrol")
 
   def initialize(username = ENV['LIMESURVEY_USERNAME'],
                  password = ENV['LIMESURVEY_PASSWORD'],
@@ -17,7 +17,7 @@ class LimesurveyService
   end
 
   def url(token:, lang: nil)
-    return nil unless token.present?
+    return nil if token.blank?
 
     "#{BASEURL}/#{@survey_id}?lang=#{lang}&token=#{token}"
   end
@@ -74,7 +74,7 @@ class LimesurveyService
     response['result']
   end
 
-  # rubocop:disable Metrics/ParameterLists
+  # rubocop:disable Metrics/ParameterLists, Naming/VariableNumber
   def add_participant(email, lastname, firstname, camp_id, stufe, language)
     stufen = { 'wolf': 1, 'pfadi': 2, 'pio': 3, 'pta': 5 }
     user = { email: email, lastname: lastname, firstname: firstname, language: language,
@@ -82,7 +82,7 @@ class LimesurveyService
 
     add_participants([user])
   end
-  # rubocop:enable Metrics/ParameterLists
+  # rubocop:enable Metrics/ParameterLists, Naming/VariableNumber
 
   def invite_participants
     request(ADMIN_REMOTECONTROL_URL, 'invite_participants', [session_key, @survey_id])

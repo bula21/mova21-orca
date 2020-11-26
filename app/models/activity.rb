@@ -20,7 +20,7 @@ class Activity < ApplicationRecord
                         village_global: 'village_global', frohnarbeit: 'frohnarbeit' }
 
   validates :block_type, :participants_count_activity, :participants_count_transport, :stufen,
-            :stufe_recommended, presence: true
+            :stufe_recommended, :activity_type, presence: true
 
   translates :label, type: :string, locale_accessors: true, fallbacks: true
   translates :description, type: :text, locale_accessors: true, fallbacks: true

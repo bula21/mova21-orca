@@ -10,9 +10,7 @@ RSpec.describe Pdf::InvoicePdf do
 
   let(:rendered) { pdf.render }
 
-  # rubocop:disable Style/FormatStringToken
   it { expect(inspector.strings.join(' ')).to include(invoice.unit.title, format('%.2f', invoice.amount)) }
-  # rubocop:enable Style/FormatStringToken
 
   it do
     File.open('/app/tmp/invoice.pdf', 'wb') do |file|

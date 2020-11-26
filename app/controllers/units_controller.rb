@@ -6,11 +6,9 @@ class UnitsController < ApplicationController
   def index
     respond_to do |format|
       format.html
-      if current_user.role_admin?
-        format.csv do
-          exporter = UnitExporter.new(Unit.all)
-          send_data exporter.export, filename: exporter.filename
-        end
+      format.csv do
+        exporter = UnitExporter.new(Unit.accessible_by(current_ability))
+        send_data exporter.export, filename: exporter.filename
       end
     end
   end
