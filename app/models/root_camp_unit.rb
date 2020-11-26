@@ -2,6 +2,7 @@
 
 class RootCampUnit
   attr_reader :root_id, :stufe, :pre_registration_price
+
   delegate :to_s, :to_sym, to: :stufe
 
   def initialize(stufe, root_id, pre_registration_price: 0)

@@ -12,7 +12,7 @@ FactoryBot.define do
     phone_number { Faker::PhoneNumber.phone_number }
     language { Leader.languages.keys.sample }
 
-    trait :al do
-    end
+    # trait :al do
+    # end
   end
 end

@@ -5,12 +5,12 @@ class Invoice < ApplicationRecord
   has_many :invoice_parts, dependent: :destroy, inverse_of: :invoice
   has_one_attached :pdf
 
-  enum category: %i[invoice pre_registration_invoice]
+  enum category: { invoice: 0, pre_registration_invoice: 1 }
 
   validates :category, :unit, presence: true
 
-  before_update :generate_pdf
   before_save :recalculate_amount
+  before_update :generate_pdf
   after_save :set_ref
   after_create do
     set_ref
@@ -26,7 +26,7 @@ class Invoice < ApplicationRecord
   end
 
   def filename
-    [category, unit_id, ref].join('-') + '.pdf'
+    "#{[category, unit_id, ref].join('-')}.pdf"
   end
 
   def set_ref
