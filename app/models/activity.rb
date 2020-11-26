@@ -19,7 +19,7 @@ class Activity < ApplicationRecord
   enum activity_type: { excursion: 'excursion', activity: 'activity',
                         village_global: 'village_global', frohnarbeit: 'frohnarbeit' }
 
-  validates :block_type, :participants_count_activity, :participants_count_transport, :stufen,
+  validates :block_type, :participants_count_activity, :stufen,
             :stufe_recommended, :activity_type, presence: true
 
   translates :label, type: :string, locale_accessors: true, fallbacks: true
