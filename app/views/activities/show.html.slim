@@ -47,9 +47,6 @@ hr
     dd = t(@activity.block_type || 'none', scope: 'simple_form.options.activity.block_type')
 
 
-    dt = t('activerecord.attributes.activity.activity_type')
-    dd = t(@activity.activity_type || 'none', scope: 'simple_form.options.activity.activity_type')
-
   .col-6
     dt = t('activerecord.attributes.activity.goals')
     dd
@@ -57,11 +54,15 @@ hr
         - @activity.goals.each do |s|
           li = s.name
 
-    dt = t('activerecord.attributes.activity.location')
-    dd = @activity.location
+    dt = t('activerecord.attributes.activity.activity_type')
+    dd = t(@activity.activity_type || 'none', scope: 'simple_form.options.activity.activity_type')
 
-    dt = t('activerecord.attributes.activity.transport_location')
-    dd = @activity.transport_location
+
+    / dt = t('activerecord.attributes.activity.location')
+    / dd = @activity.location
+
+    / dt = t('activerecord.attributes.activity.transport_location')
+    / dd = @activity.transport_location
 
 
 hr

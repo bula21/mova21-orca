@@ -38,7 +38,7 @@ module Admin
     private
 
     def activity_category_params
-      params.require(:activity_category).permit(:label, :parent_id)
+      params.require(:activity_category).permit(:parent_id, I18n.available_locales.map { |l| :"label_#{l}" },)
     end
   end
 end

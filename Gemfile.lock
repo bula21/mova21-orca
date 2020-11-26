@@ -61,6 +61,8 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     aes_key_wrap (1.1.0)
     afm (0.2.2)
+    ancestry (3.2.1)
+      activerecord (>= 4.2.0)
     ast (2.4.1)
     attr_required (1.0.1)
     azure-core (0.1.15)
@@ -413,6 +415,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  ancestry
   azure-storage (~> 0.15.0.preview)
   bitfields
   bootsnap (>= 1.4.2)

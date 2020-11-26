@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_01_151800) do
+ActiveRecord::Schema.define(version: 2020_11_26_103632) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,8 +85,9 @@ ActiveRecord::Schema.define(version: 2020_11_01_151800) do
 
   create_table "activity_categories", force: :cascade do |t|
     t.jsonb "label", default: {}
-    t.bigint "parent_id"
-    t.index ["parent_id"], name: "index_activity_categories_on_parent_id"
+    t.string "ancestry"
+    t.string "code"
+    t.index ["ancestry"], name: "index_activity_categories_on_ancestry"
   end
 
   create_table "goals", force: :cascade do |t|
@@ -244,7 +245,6 @@ ActiveRecord::Schema.define(version: 2020_11_01_151800) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "activities", "activity_categories"
   add_foreign_key "activities", "transport_locations"
-  add_foreign_key "activity_categories", "activity_categories", column: "parent_id"
   add_foreign_key "invoice_parts", "invoices"
   add_foreign_key "invoices", "units"
   add_foreign_key "participants", "units"
