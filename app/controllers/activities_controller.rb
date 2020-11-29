@@ -57,7 +57,7 @@ class ActivitiesController < ApplicationController
     redirect_to edit_activity_url(@activity)
   end
 
-  def filter 
+  def filter
     ActivityFilter.new(params.permit(:min_participants_count))
   end
 

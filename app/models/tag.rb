@@ -13,7 +13,7 @@
 #
 class Tag < ApplicationRecord
   extend Mobility
-  
+
   has_and_belongs_to_many :activities
 
   validates :code, :icon, :label, presence: true

@@ -14,12 +14,12 @@ class ActivityFilter < ApplicationFilter
       .where(Activity.arel_table[:participants_count_transport].gteq(count))
   end
 
-  filter :tags do |activities| 
+  filter :tags do |_activities|
     next nil if tags.blank?
 
-   # activities.joins(:tags).where(tags: { id: tags })
+    # activities.joins(:tags).where(tags: { id: tags })
   end
 
-  filter :language do |activities| 
-  end
+  # filter :language do |activities|
+  # end
 end
