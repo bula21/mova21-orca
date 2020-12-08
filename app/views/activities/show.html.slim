@@ -1,7 +1,7 @@
 .h1.pb-0.d-flex.justify-content-between
   = @activity.label
-  span.badge[class="badge-#{@activity.activity_type}" style='align-self: baseline']
-    = t(@activity.activity_type, scope: 'simple_form.options.activity.activity_type')
+  span.badge[class="badge-#{@activity.activity_category&.code || @activity.activity_category&.parent&.code}" style='align-self: baseline']
+    = @activity.activity_category&.label
 - @activity.tags.each do |tag|
   i class="#{tag.icon} mr-2" title="#{tag.label}"
 
@@ -55,7 +55,7 @@ hr
           li = s.name
 
     dt = t('activerecord.attributes.activity.activity_type')
-    dd = t(@activity.activity_type || 'none', scope: 'simple_form.options.activity.activity_type')
+    dd = @activity.activity_category&.full_label
 
 
     / dt = t('activerecord.attributes.activity.location')
@@ -65,14 +65,14 @@ hr
     / dd = @activity.transport_location
 
 
-hr
-
-.h4.mt-3 = t('activity.show.downloads')
-.row
-  .col-6
-    ul.list-group
-      - @activity.activity_documents.each do |document|
-        li.list-group-item = link_to document.filename, url_for(document)
+- if @activity.activity_documents.any?
+  hr
+  .h4.mt-3 = t('activity.show.downloads')
+  .row
+    .col-6
+      ul.list-group
+        - @activity.activity_documents.each do |document|
+          li.list-group-item = link_to document.filename, url_for(document)
 
 
 hr.mt-4
