@@ -4,7 +4,7 @@
     .col-10
       .row.my-2
         .col-3
-          span.badge class="badge-#{activity.activity_category&.code || activity.activity_category&.parent&.code}"
+          span.badge class="badge-#{activity.activity_category&.css_code}"
             = activity.activity_category&.label
         .col-5
           - activity.tags.each do |tag|

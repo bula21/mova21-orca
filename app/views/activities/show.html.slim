@@ -1,6 +1,6 @@
 .h1.pb-0.d-flex.justify-content-between
   = @activity.label
-  span.badge[class="badge-#{@activity.activity_category&.code || @activity.activity_category&.parent&.code}" style='align-self: baseline']
+  span.badge[class="badge-#{@activity.activity_category.css_code}" style='align-self: baseline']
     = @activity.activity_category&.label
 - @activity.tags.each do |tag|
   i class="#{tag.icon} mr-2" title="#{tag.label}"
@@ -72,7 +72,7 @@ hr
     .col-6
       ul.list-group
         - @activity.activity_documents.each do |document|
-          li.list-group-item = link_to document.filename, url_for(document)
+          li.list-group-item = link_to document.filename, rails_blob_path(document, disposition: 'attachment')
 
 
 hr.mt-4
