@@ -12,7 +12,7 @@ it:
         transport_location: Luogo trasporto
         activity_type: Tipo
         block_type: Tipo d'attività
-        simo: Modulo di sicurezza
+        simo: Modulo di sicurezza / SSS
         label: Titolo dell'attività
         languages: Lingua
         language_de: Deutsch
@@ -20,9 +20,9 @@ it:
         language_fr: Français
         language_it: Italiano
         location: Luogo (approssimativo)
-        participants_count_activity: Numero di partecipanti (attività)
+        participants_count_activity: Max. numero di partecipanti (attività)
         min_participants: Numero min. di partecipanti
-        participants_count_transport: Numero di partecipanti (trasporto, incl. capi)
+        participants_count_transport: Anz. Personen (inkl. Leitung)
         stufe_recommended: Branche raccomandate
         stufen: Branche possibili
       leader:
@@ -402,11 +402,15 @@ it:
   pre_text: Pre text
   simple_form:
     confirm_unsaved: 'Attenzione: Tutte le modifiche andranno perse! Vuoi continuare?'
+    participants_count_activity_hint: Max Anzahl Personen die an der Aktivität teilnehmen können
+    participants_count_transport_hint: Max Kapazität der Aktivität (inkl. Leitung)
     options:
       activity:
         simo:
           berg: Montagna
           wasser: Acqua
+          pool: Basis Pool
+          lake: Modul See
         activity_type:
           excursion: Escursione
           activity: Attività

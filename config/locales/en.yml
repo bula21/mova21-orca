@@ -20,9 +20,9 @@ en:
         language_fr: Français
         language_it: Italiano
         location: Location
-        participants_count_activity: Paritcipant count Activity
+        participants_count_activity: Max. Paritcipant count Activity
         min_participants: Min. TNs
-        participants_count_transport: Participant count Transport (incl. leaders)
+        participants_count_transport: Anz. Personen (inkl. Leitung)
         stufe_recommended: Age recommended
         stufen: Age
       leader:
@@ -385,11 +385,15 @@ en:
   pre_text: Pre text
   simple_form:
     confirm_unsaved: 'Achtung: Alle nicht gespeicherten Änderungen gehen verloren. Sind Sie sicher?'
+    participants_count_activity_hint: Max Anzahl Personen die an der Aktivität teilnehmen können
+    participants_count_transport_hint: Max Kapazität der Aktivität (inkl. Leitung)
     options:
       activity:
         simo:
           berg: Berg
           wasser: Wasser
+          pool: Basis Pool
+          lake: Modul See
         activity_type:
           excursion: Ausflug
           activity: Aktivität

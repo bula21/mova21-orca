@@ -46,12 +46,12 @@
       .row
         .col-6
           = f.input :duration_activity
-          = f.input :participants_count_activity
           / = f.input :location
           / = f.association :transport_location
         .col-6
+          = f.input :simo, collection: Activity.simos.symbolize_keys.keys
           / = f.input :duration_journey
-          = f.input :participants_count_transport
+          / = f.input :participants_count_transport
   .card.mt-3
     .card-body
       .form-inputs
@@ -61,7 +61,7 @@
             - @activity.languages.keys.each do |language|
               = f.input language, as: :boolean
           .col-6
-            = f.input :simo, collection: Activity.simos.symbolize_keys.keys
+            = f.input :participants_count_activity
             = f.input :min_participants
 
 

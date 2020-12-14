@@ -16,4 +16,8 @@ class ActivityCategory < ApplicationRecord
       label
     end
   end
+
+  def css_code
+    code || parent&.code
+  end
 end

@@ -13,7 +13,7 @@ de:
         activity_category: Kategorie
         activity_type: Art
         block_type: Block Typ
-        simo: Sicherheitsmodul
+        simo: Sicherheitsmodul / SLRG
         label: Bezeichnung
         languages: Sprachen
         language_de: Deutsch
@@ -21,9 +21,9 @@ de:
         language_fr: Français
         language_it: Italiano
         location: Ort (grob)
-        participants_count_activity: Anz. TN Aktivität
+        participants_count_activity: Max. Anz. Personen
         min_participants: Min. TNs
-        participants_count_transport: Anz. TN Transport (inkl. Leitung)
+        participants_count_transport: Anz. Personen (inkl. Leitung)
         stufe_recommended: Stufen Empfohlen
         stufen: Stufen möglich
       leader:
@@ -419,6 +419,8 @@ de:
         simo:
           berg: Berg
           wasser: Wasser
+          pool: Basis Pool
+          lake: Modul See
         activity_type:
           excursion: Ausflug
           activity: Aktivität
