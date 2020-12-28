@@ -4,7 +4,6 @@ class ActivitiesController < ApplicationController
   load_and_authorize_resource except: [:create]
 
   def index
-    @filter ||= filter
     @activities = filter.apply(Activity.all)
   end
 
@@ -47,6 +46,12 @@ class ActivitiesController < ApplicationController
 
   private
 
+  def filter
+    pp params.permit(:min_participants_count)
+    pp activity_filter_params
+    @filter ||= ActivityFilter.new(activity_filter_params)
+  end
+
   def delete_picture
     @activity.picture.purge
     redirect_to edit_activity_url(@activity)
@@ -57,8 +62,8 @@ class ActivitiesController < ApplicationController
     redirect_to edit_activity_url(@activity)
   end
 
-  def filter
-    ActivityFilter.new(params.permit(:min_participants_count))
+  def activity_filter_params
+    params.permit(:activity_filter).permit(:min_participants_count)
   end
 
   def activity_params

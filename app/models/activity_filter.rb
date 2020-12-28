@@ -11,7 +11,6 @@ class ActivityFilter < ApplicationFilter
     count = min_participants_count.to_i
     activities
       .where(Activity.arel_table[:participants_count_activity].gteq(count))
-      .where(Activity.arel_table[:participants_count_transport].gteq(count))
   end
 
   filter :tags do |_activities|

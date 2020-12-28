@@ -38,7 +38,7 @@ module Admin
     private
 
     def tag_params
-      params.require(:tag).permit(:code, :label, :icon)
+      params.require(:tag).permit(:code, :icon, I18n.available_locales.map { |l| :"label_#{l}" })
     end
   end
 end
