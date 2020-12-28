@@ -1,12 +1,18 @@
 = simple_form_for(@filter, url: activities_path, method: :GET, scope: '') do |f|
   = f.hidden_field :locale, value: I18n.locale
-  .row 
-    .col-md-3 
+  .row
+    .col-md-3
       = f.input :min_participants_count
-    .col-md-3 
-      = f.input :tags
-    .col-md-3 
-      / = f.input :stufe
+    .col-md-3
+      = f.input :tags, as: :check_boxes, collection: Tag.all.map { |t| [t.label, t.id.to_s] }, include_hidden: false,
+              wrapper_html: { class: 'scrollable' }
+    .col-md-3
+    / = f.input :stufe
+    .col-md-3
+      = f.input :activity_category, collection: ActivityCategory.roots,
+              as: :grouped_select,
+              group_method: :children, group_label_method: :label,
+              label_method: :full_label
     .col-md-2
-      = f.submit class: 'btn btn-block'
+      = f.submit 'Filtern', class: 'btn btn-secondary'
 

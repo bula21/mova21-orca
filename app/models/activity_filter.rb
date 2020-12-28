@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ActivityFilter < ApplicationFilter
-  attribute :activity_type
+  attribute :activity_category
   attribute :language
   attribute :tags, default: []
   attribute :stufe
@@ -13,10 +13,16 @@ class ActivityFilter < ApplicationFilter
       .where(Activity.arel_table[:participants_count_activity].gteq(count))
   end
 
-  filter :tags do |_activities|
+  filter :tags do |activities|
     next nil if tags.blank?
 
-    # activities.joins(:tags).where(tags: { id: tags })
+    activities.joins(:tags).where(tags: { id: tags })
+  end
+
+  filter :activity_category do |activities|
+    next nil if activity_category.blank?
+
+    activities.where(activity_category_id: activity_category)
   end
 
   # filter :language do |activities|

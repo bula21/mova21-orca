@@ -47,9 +47,7 @@ class ActivitiesController < ApplicationController
   private
 
   def filter
-    pp params.permit(:min_participants_count)
-    pp activity_filter_params
-    @filter ||= ActivityFilter.new(activity_filter_params)
+    @filter ||= ActivityFilter.new(activity_filter_params.to_h)
   end
 
   def delete_picture
@@ -63,7 +61,8 @@ class ActivitiesController < ApplicationController
   end
 
   def activity_filter_params
-    params.permit(:activity_filter).permit(:min_participants_count)
+    return {} unless params[:activity_filter]
+    params.require(:activity_filter).permit(:min_participants_count, :activity_category, tags: [])
   end
 
   def activity_params
