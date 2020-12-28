@@ -4,7 +4,9 @@ class User < ApplicationRecord
   include Bitfields
   devise :omniauthable, omniauth_providers: %i[openid_connect developer]
 
+  # rubocop:disable Rails/HasManyOrHasOneDependent
   has_one :leader, foreign_key: :email, primary_key: :email, inverse_of: :user, dependent: nil
+  # rubocop:enable Rails/HasManyOrHasOneDependent
 
   validates :email, presence: true, format: { with: Devise.email_regexp }
   validates :uid, presence: true

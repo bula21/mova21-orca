@@ -26,7 +26,7 @@ RSpec.describe MidataService do
     let(:group_id) { 749 }
     let(:event_id) { 1328 }
 
-    it { expect(event_participations_data.dig('current_page')).to eq 1 }
-    it { expect(event_participations_data.dig('event_participations').length).to eq 2 }
+    it { expect(event_participations_data['current_page']).to eq 1 }
+    it { expect(event_participations_data['event_participations'].length).to eq 2 }
   end
 end

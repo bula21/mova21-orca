@@ -3,12 +3,14 @@
 class ParticipantsBuilder
   def assignable_attributes(participation_data)
     {
-      first_name: participation_data.dig('first_name'),
-      last_name: participation_data.dig('last_name'),
-      scout_name: participation_data.dig('nickname'),
+      first_name: participation_data['first_name'],
+      last_name: participation_data['last_name'],
+      scout_name: participation_data['nickname'],
+      email: participation_data['email'],
+      phone_number: mobile_phone(participation_data),
       role: role(participation_data),
       gender: convert_gender(participation_data),
-      birthdate: participation_data.dig('birthday')
+      birthdate: participation_data['birthday']
     }
   end
 
@@ -19,6 +21,18 @@ class ParticipantsBuilder
   end
 
   private
+
+  def first_mobile_looking_number(phone_numbers)
+    phone_numbers.map { |p| p['number'] }.find { |number| number =~ /^((\+|00)41 ?|0)7[5-9]/ }
+  end
+
+  def mobile_phone(participation_data)
+    phone_numbers = participation_data['phone_numbers']
+
+    return if phone_numbers.blank?
+
+    first_mobile_looking_number(phone_numbers)
+  end
 
   def role(participation_data)
     roles = participation_data['roles']
@@ -33,7 +47,7 @@ class ParticipantsBuilder
   end
 
   def convert_gender(participation_data)
-    gender = participation_data.dig('gender')
+    gender = participation_data['gender']
     { 'f' => Participant.genders['female'], 'm' => Participant.genders['male'] }[gender]
   end
 

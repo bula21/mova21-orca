@@ -64,5 +64,30 @@ RSpec.describe ParticipantsBuilder do
         end
       end
     end
+
+    describe 'phone_number' do
+      subject(:participants) { builder.from_data(partial_participants_data).first.phone_number }
+
+      let(:phone_numbers) { [] }
+      let(:partial_participants_data) do
+        [{ 'phone_numbers' => phone_numbers, 'roles' => [
+          {
+            "type": 'Event::Camp::Role::Participant',
+            "name": 'Teilnehmer*in'
+          }
+        ] }]
+      end
+
+      it { is_expected.to be_nil }
+
+      (5..9).each do |digit|
+        context "when starts with 07#{digit}" do
+          let(:phone_number) { "+41 7#{digit}1232345" }
+          let(:phone_numbers) { [{ 'number' => phone_number, 'translated_label' => 'Handy' }] }
+
+          it { is_expected.to eq phone_number }
+        end
+      end
+    end
   end
 end

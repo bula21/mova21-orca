@@ -65,6 +65,9 @@ AllCops:
 RSpec/EmptyExampleGroup:
   Enabled: false
 
+RSpec/MultipleMemoizedHelpers:
+   Max: 6
+
 Rails/HasAndBelongsToMany:
   Enabled: false
 
