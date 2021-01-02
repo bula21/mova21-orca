@@ -7,7 +7,11 @@
       = f.input :tags, as: :check_boxes, collection: Tag.all.map { |t| [t.label, t.id.to_s] }, include_hidden: false,
               wrapper_html: { class: 'scrollable' }
     .col-md-3
-    / = f.input :stufe
+    = f.input :languages, as: :check_boxes, collection: Activity::LANGUAGES.map { |t| [Activity.human_attribute_name(t), t.to_s] },
+            include_hidden: false
+    .col-md-3
+      = f.input :stufe, collection: Stufe.all.map { |t| [t.name, t.id.to_s] },
+              include_hidden: false
     .col-md-3
       = f.input :activity_category, collection: ActivityCategory.roots,
               as: :grouped_select,
@@ -15,4 +19,6 @@
               label_method: :full_label
     .col-md-2
       = f.submit 'Filtern', class: 'btn btn-secondary'
+    .col-md-2
+      = link_to t('buttons.reset'), activities_path, class: 'btn btn-primary '
 

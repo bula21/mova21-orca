@@ -62,7 +62,8 @@ class ActivitiesController < ApplicationController
 
   def activity_filter_params
     return {} unless params[:activity_filter]
-    params.require(:activity_filter).permit(:min_participants_count, :activity_category, tags: [])
+
+    params.require(:activity_filter).permit(:min_participants_count, :stufe, :activity_category, tags: [], languages: [])
   end
 
   def activity_params
