@@ -18,50 +18,54 @@ http_interactions:
       code: 200
       message: OK
     headers:
+      Date:
+      - Mon, 28 Dec 2020 14:43:48 GMT
       Server:
       - nginx/1.12.1
-      Date:
-      - Sun, 14 Jun 2020 19:56:18 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      - max-age=31536000; includeSubDomains
       X-Frame-Options:
+      - SAMEORIGIN
       - SAMEORIGIN
       X-Xss-Protection:
       - 1; mode=block
+      - 1; mode=block
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      - strict-origin-when-cross-origin
       X-Content-Type-Options:
       - nosniff
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
       X-Download-Options:
       - noopen
       X-Permitted-Cross-Domain-Policies:
       - none
-      Referrer-Policy:
-      - strict-origin-when-cross-origin
       Cache-Control:
       - no-cache, no-store
       Pragma:
       - no-cache
       Expires:
-      - Fri, 01 Jan 1990 00:00:00 GMT
+      - Mon, 01 Jan 1990 00:00:00 GMT
       Etag:
       - W/"8ad2cc2456906dc5ecc761ffda04af7f"
       Vary:
       - Accept-Encoding
-      Set-Cookie:
-      - _session_id=371b04239c10784037978e08dbbbcf5b; path=/; secure; HttpOnly
-      - afcc3ba8de9b9b04950e14e130f0b228=55a7815ee960744266b6bfd5b80cb1bd; path=/;
-        HttpOnly; Secure
-      - locale=de; path=/; expires=Mon, 14 Jun 2021 19:56:17 GMT; secure
       X-Request-Id:
-      - 44b12adb-97f3-4aaf-b60c-dbdcf5527c53
+      - 65267c2b-0aa3-4d41-9ab2-04702d793615
       X-Runtime:
-      - '0.484275'
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
+      - '0.393102'
+      Set-Cookie:
+      - _session_id=af988a2efc033d869324a86394bc1af2; path=/; secure; HttpOnly
+      - afcc3ba8de9b9b04950e14e130f0b228=513f9410ae70f8b31a9a6d09bf322046; path=/;
+        HttpOnly; Secure
+      - locale=de; path=/; expires=Tue, 28 Dec 2021 14:43:47 GMT; secure
+      Transfer-Encoding:
+      - chunked
     body:
       encoding: ASCII-8BIT
       string: '{"current_page":1,"total_pages":0,"next_page_link":null,"prev_page_link":null,"event_participations":[]}'
-    http_version: null
-  recorded_at: Sun, 14 Jun 2020 19:56:18 GMT
-recorded_with: VCR 5.1.0
+  recorded_at: Mon, 28 Dec 2020 14:43:48 GMT
+recorded_with: VCR 6.0.0

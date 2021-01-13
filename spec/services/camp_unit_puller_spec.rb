@@ -11,13 +11,33 @@ RSpec.describe CampUnitPuller do
     subject(:camp_units) { puller.pull_all }
 
     it do
-      expect(camp_units.count).to be 2
-      expect(camp_units.compact).to all(be_valid)
+      expect(camp_units.count).to be 3
+      expect(camp_units).to all(be_valid)
     end
 
     it 'imports the participants correctly' do
-      expect(camp_units.second.participants.count).to be 2
+      expect(camp_units.second.participants.count).to be 51
       expect(camp_units.first.participants.count).to be 2
+    end
+
+    context 'when pulls later' do
+      before do
+        puller.pull_all
+      end
+
+      it 'keeps all Participants' do
+        expect { puller.pull_all }.not_to change { Unit.first.participants.reload.ids }
+      end
+
+      context 'when some participants have been deleted' do
+        before do
+          create(:participant, unit: Unit.first)
+        end
+
+        it 'deletes the participants that are no longer on MiData' do
+          expect { puller.pull_all }.to change { Unit.first.participants.reload.size }.from(3).to(2)
+        end
+      end
     end
   end
 
@@ -25,7 +45,7 @@ RSpec.describe CampUnitPuller do
     subject(:new_camp_units) { puller.pull_new }
 
     it do
-      expect(new_camp_units.count).to be 1
+      expect(new_camp_units.count).to be 2
       expect(new_camp_units).to all(be_valid)
     end
 
