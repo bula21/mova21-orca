@@ -1,6 +1,5 @@
-version: '3.7'
+version: "3.7"
 services:
-
   app: &app
     build:
       context: .
@@ -13,20 +12,20 @@ services:
       - ./config/database.docker.yml:/app/config/database.yml:ro
       # - ./tmp/fonts/mova:/app/app/webpacker/fonts/mova:ro
     ports:
-      - '3000:3000'
+      - "3000:3000"
+      - "3035:3035"
     entrypoint: [".docker/entrypoints/app.sh"]
     command: ["bin/rails", "s", "-b", "0.0.0.0"]
     environment:
-      APP_HOST: 'app:3000'
-      E2E_SERVER_PORT: '3001'
-      E2E_APP_HOST: 'app.local:3001'
-      SELENIUM_HOST: 'selenium:4444'
-      DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL: 'true'
-      RUBYOPT: '-W:no-deprecated -W:no-experimental'
+      APP_HOST: "app:3000"
+      E2E_SERVER_PORT: "3001"
+      E2E_APP_HOST: "app.local:3001"
+      SELENIUM_HOST: "selenium:4444"
+      DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL: "true"
+      RUBYOPT: "-W:no-deprecated -W:no-experimental"
       APP_BASE_URL: http://orca.localhost:3000
-      WEBPACKER_DEV_SERVER_HOST: webpack
       MEMCACHE_SERVERS: memcached
-      SECRET_KEY_BASE: 'secret'
+      SECRET_KEY_BASE: "secret"
       OIDC_CLIENT_ID: ${OIDC_CLIENT_ID}
       OIDC_ISSUER: ${OIDC_ISSUER}
       OIDC_CLIENT_SECRET_KEY: ${OIDC_CLIENT_SECRET_KEY}
@@ -37,20 +36,19 @@ services:
       LIMESURVEY_PASSWORD: ${LIMESURVEY_PASSWORD}
       LIMESURVEY_SURVEY_ID: ${LIMESURVEY_SURVEY_ID}
       VIRTUAL_HOST: ${DOMAIN}
-      DEVISE_PEPPER: 'rake secret'
-      DEVISE_SECRET_KEY: 'rake secret'
+      DEVISE_PEPPER: "rake secret"
+      DEVISE_SECRET_KEY: "rake secret"
       ROOT_CAMP_UNIT_ID_WOLF: 1328
       ROOT_CAMP_UNIT_ID_PFADI: 1329
       ROOT_CAMP_UNIT_ID_PIO: 1328
       ROOT_CAMP_UNIT_ID_PTA: 1328
       SMTP_HOST: mail
-      SMTP_USER: ''
-      SMTP_PASSWORD: ''
+      SMTP_USER: ""
+      SMTP_PASSWORD: ""
       SMTP_PORT: 25
       SMTP_AUTH: ${SMTP_AUTH:-plain}
     depends_on:
       - db
-      - webpack
       - mail
       - memcached
     tty: true
@@ -72,39 +70,17 @@ services:
       POSTGRES_DB: orca_e2e
       POSTGRES_PASSWORD: postgres
 
-  webpack:
-    build:
-      context: .
-      target: development
-      args:
-        UID: ${UID}
-        GID: ${GID}
-    entrypoint: [".docker/entrypoints/webpack.sh"]
-    command: ["bin/webpack-dev-server"]
-    volumes:
-      - .:/app
-    environment:
-      NODE_ENV: development
-      NODE_PATH: /app/node_modules
-      RAILS_ENV: development
-      WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
-    ports:
-      - '3035:3035'
-    restart: on-failure
-
   mail:
     image: tophfr/mailcatcher
     ports:
-      - '1080:80'
-  
+      - "1080:80"
+
   memcached:
     image: memcached:1.5-alpine
-    command: [ memcached, -l, '0.0.0.0', -p, '11211' ]
-    
+    command: [memcached, -l, "0.0.0.0", -p, "11211"]
 
 volumes:
   db_data:
 
 networks:
   selenium:
-

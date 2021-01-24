@@ -1,4 +1,5 @@
 # orca
+
 Orca manages people and activity subscriptions.
 
 ## Development
@@ -6,15 +7,24 @@ Orca manages people and activity subscriptions.
 ```
 docker-compose up app
 ```
+
 or open with VS Code Dev Container Extension
+
+### Webpack Dev Server
+
+Inside the app container start
+
+```
+bin/webpack-dev-server
+```
 
 ## Setup Auth
 
 ## Roles
 
-* User (```role_user```)
-* Admin (```role_admin```)
-* Programm (```role_programm```)
+- User (`role_user`)
+- Admin (`role_admin`)
+- Programm (`role_programm`)
 
 ```
 # Give a user admin role
@@ -81,7 +91,7 @@ We use ActiveStorage to store files. To set it up in production use these ENV-Va
 
 - STORAGE_SERVICE=azure
 - STORAGE_ACCOUNT_NAME=
-- STORAGE_ACCESS_KEY= 
+- STORAGE_ACCESS_KEY=
 - STORAGE_CONTAINER=
 
 ## Tasks

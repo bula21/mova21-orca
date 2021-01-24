@@ -60,7 +60,7 @@ development:
     https: false
     host: 0.0.0.0
     port: 3035
-    public: webpack:3035
+    public: localhost:3035
     hmr: false
     # Inline should be set to true if using HMR
     inline: false
@@ -70,11 +70,10 @@ development:
     use_local_ip: false
     quiet: false
     headers:
-      'Access-Control-Allow-Origin': '*'
+      "Access-Control-Allow-Origin": "*"
     pretty: false
     watch_options:
-      ignored: '**/node_modules/**'
-
+      ignored: "**/node_modules/**"
 
 test:
   <<: *default
