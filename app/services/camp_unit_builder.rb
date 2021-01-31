@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class CampUnitBuilder
+  include MidataHelper
+
   def initialize(root_camp_unit)
     @root_camp_unit = root_camp_unit
     @leader_builder = LeaderBuilder.new
@@ -58,15 +60,8 @@ class CampUnitBuilder
 
   def extract_groups(camp_unit_data)
     {
-      abteilung: group_of_camp(camp_unit_data),
+      abteilung: group_of_camp(camp_unit_data)&.[]('name'),
       kv_id: camp_unit_data.dig('linked', 'groups').find { |group| group['group_type'] == 'Kantonalverband' }&.[]('id')
     }
-  end
-
-  def group_of_camp(camp_unit_data)
-    group_types = %w[Kantonalverband Region Abteilung]
-    camp_unit_data.dig('linked', 'groups').find do |group|
-      group_types.include?(group['group_type'])
-    end&.[]('name')
   end
 end

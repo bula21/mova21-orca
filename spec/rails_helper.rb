@@ -6,6 +6,7 @@ require 'webmock/rspec'
 require File.expand_path('../config/environment', __dir__)
 require 'rspec/rails'
 require 'vcr'
+require 'super_diff/rspec-rails'
 
 ActiveRecord::Migration.maintain_test_schema!
 

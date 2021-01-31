@@ -10,6 +10,11 @@ class MidataService
     @auth_params = { user_token: user_token, user_email: user_email }
   end
 
+  def fetch_participations(group_id, event_id, page = 1)
+    JSON.parse(self.class.get("/groups/#{group_id}/events/#{event_id}/participations.json",
+                              query: auth_params.merge(page: page)).body)
+  end
+
   def fetch_camp_unit_data(id)
     Rails.logger.debug "Talking to Midata Event #{id}"
 

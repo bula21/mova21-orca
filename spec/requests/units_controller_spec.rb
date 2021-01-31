@@ -43,19 +43,20 @@ RSpec.describe UnitsController, type: :request do
       context 'when format is csv' do
         let(:format) { :csv }
 
-        it { expect { request }.to raise_error(ActionController::UnknownFormat) }
+        before { request }
+
+        it 'returns a csv' do
+          expect(response.header['Content-Type']).to include 'text/csv'
+        end
+
+        it { expect(response.body).to include UnitExporter::HEADERS.join(',') }
+        it { expect(response.body).to include unit.title }
+        it { expect(response.body).not_to include unit_other.title }
 
         context 'when is admin' do
           let(:user) { create(:user, :admin) }
 
-          before { request }
-
-          it 'returns a csv' do
-            expect(response.header['Content-Type']).to include 'text/csv'
-          end
-
           it { expect(response.body).to include unit_other.title }
-          it { expect(response.body).to include UnitExporter::HEADERS.join(',') }
         end
       end
     end

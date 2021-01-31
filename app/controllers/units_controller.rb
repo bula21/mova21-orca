@@ -41,10 +41,6 @@ class UnitsController < ApplicationController
 
   private
 
-  def set_unit
-    @unit = Unit.find params[:id]
-  end
-
   def unit_params
     params.require(:unit).permit(:title, :abteilung, :kv_id, :stufe, :expected_participants_f, :expected_participants_m,
                                  :expected_participants_leitung_f, :expected_participants_leitung_m,

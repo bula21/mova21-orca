@@ -43,7 +43,8 @@
               = @unit.lagerleiter.zip_code
               =< @unit.lagerleiter.town
               =< @unit.lagerleiter.country
-            = link_to @unit.lagerleiter.phone_number, "tel:#{@unit.lagerleiter.phone_number}"
+            = link_to_if @unit.lagerleiter.phone_number, @unit.lagerleiter.phone_number,
+                    "tel:#{@unit.lagerleiter.phone_number}"
             br
             = mail_to @unit.lagerleiter.email, @unit.lagerleiter.email
 
@@ -72,8 +73,17 @@
 
     = link_to t('.participants'), unit_participants_path(@unit), class: 'btn btn-secondary'
 
-    dl
+    p
+      - participants_count = @unit.participants.count
+      => participants_count
+      =>  Participant.model_name.human(count: participants_count)
+      = t('.imported')
 
+
+    hr
+
+    h3 = t('units.show.expected_participants')
+    dl
       .row
         .col-6
           dt = t('activerecord.attributes.unit.expected_participants_leitung_f')

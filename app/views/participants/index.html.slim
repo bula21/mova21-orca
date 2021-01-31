@@ -14,7 +14,11 @@
       - @participants.each do |participant|
         tr
           td = participant.full_name
-          td = participant.birthdate
+          td
+            = participant.birthdate.present? ? I18n.l(participant.birthdate) : '-'
+          td
+            - if participant.role.present?
+              = t(participant.role.underscore.gsub('/','_'), scope: 'participants.roles')
           td.p-1
             - if can?(:edit, participant)
               = link_to(t('buttons.edit'), edit_unit_participant_path(participant.unit, participant), class: 'btn btn-primary')

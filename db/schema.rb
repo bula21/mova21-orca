@@ -179,6 +179,9 @@ ActiveRecord::Schema.define(version: 2020_11_26_112550) do
     t.integer "pbs_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "role"
+    t.string "email"
+    t.string "phone_number"
     t.index ["unit_id"], name: "index_participants_on_unit_id"
   end
 

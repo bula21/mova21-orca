@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class CampUnitPuller
+  include MidataHelper
+
   def initialize(root_camp_unit)
     @root_camp_unit = root_camp_unit
     @camp_unit_builder = CampUnitBuilder.new(root_camp_unit)
@@ -8,10 +10,13 @@ class CampUnitPuller
   end
 
   def pull(pbs_id: nil, camp_unit_data: nil)
-    camp_unit_data ||= @midata_service.fetch_camp_unit_data(pbs_id)
-    camp_unit_data = { 'events' => camp_unit_data.last } if camp_unit_data.is_a?(Array) # TODO: Fix this prod hack
+    camp_unit_data = camp_unit_data(camp_unit_data, pbs_id) # TODO: Fix this prod hack
     camp_unit = @camp_unit_builder.from_data(camp_unit_data)
-    camp_unit&.save!
+    return unless camp_unit
+
+    pbs_group_id = group_of_camp(camp_unit_data)&.[]('id')
+    camp_unit.participants = ParticipantsFetcher.new(pbs_group_id, camp_unit.pbs_id).call
+    camp_unit.save!
     camp_unit
   rescue ActiveRecord::RecordInvalid => e
     Rails.logger.error e.message
@@ -29,5 +34,14 @@ class CampUnitPuller
     existing_ids = Unit.all.pluck(:pbs_id) || []
 
     (children_ids - existing_ids).map { |new_camp_unit_id| pull(pbs_id: new_camp_unit_id) }.compact
+  end
+
+  private
+
+  def camp_unit_data(camp_unit_data, pbs_id)
+    camp_unit_data ||= @midata_service.fetch_camp_unit_data(pbs_id)
+
+    camp_unit_data = { 'events' => camp_unit_data.last } if camp_unit_data.is_a?(Array)
+    camp_unit_data
   end
 end
