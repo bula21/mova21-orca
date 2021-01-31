@@ -25,8 +25,8 @@ class Ability
     # can %i[read update], Unit, coach: { pbs_id: user.pbs_id }
     can :read, Leader, pbs_id: user.pbs_id
 
-    can :read, Participant, unit: { al: { email: user.email } }
-    can :read, Participant, unit: { lagerleiter: { email: user.email } }
+    can :read, Participant, units: { al: { email: user.email } }
+    can :read, Participant, units: { lagerleiter: { email: user.email } }
 
     can :read, Activity
   end
@@ -37,8 +37,8 @@ class Ability
 
     can %i[read update], Unit, al: { email: user.email }
     can %i[read update], Unit, lagerleiter: { email: user.email }
-    can :manage, Participant, unit: { lagerleiter: { email: user.email } }
-    can :manage, Participant, unit: { al: { email: user.email } }
+    can :manage, Participant, units: { lagerleiter: { email: user.email } }
+    can :manage, Participant, units: { al: { email: user.email } }
 
     can :read, Activity
   end

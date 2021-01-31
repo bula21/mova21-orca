@@ -24,17 +24,18 @@
 #  fk_rails_...  (unit_id => units.id)
 #
 class Participant < ApplicationRecord
-  belongs_to :unit
+  has_many :participant_units, inverse_of: :participant
+  has_many :units, through: :participant_units
 
   validates :pbs_id, uniqueness: { allow_blank: true }
 
   enum gender: { male: 'male', female: 'female' }
 
   def full_name
-    [first_and_last_name, scout_name].join(' v/o ')
+    [first_and_last_name, scout_name].compact.join(' v/o ')
   end
 
   def first_and_last_name
-    [first_name, last_name].join(' ')
+    [first_name, last_name].compact.join(' ')
   end
 end
