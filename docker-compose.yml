@@ -13,7 +13,6 @@ services:
       # - ./tmp/fonts/mova:/app/app/webpacker/fonts/mova:ro
     ports:
       - "3000:3000"
-      - "3035:3035"
     entrypoint: [".docker/entrypoints/app.sh"]
     command: ["bin/rails", "s", "-b", "0.0.0.0"]
     environment:
@@ -51,9 +50,30 @@ services:
       - db
       - mail
       - memcached
+      - webpack
     tty: true
     stdin_open: true
     user: "${UID}:${GID}"
+
+  webpack:
+    build:
+      context: .
+      target: development
+      args:
+        UID: ${UID}
+        GID: ${GID}
+    entrypoint: [".docker/entrypoints/webpack.sh"]
+    command: ["bin/webpack-dev-server"]
+    volumes:
+      - .:/app
+    environment:
+      NODE_ENV: development
+      NODE_PATH: /app/node_modules
+      RAILS_ENV: development
+      WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
+    ports:
+      - "3035:3035"
+    restart: on-failure
 
   selenium:
     image: selenium/standalone-chrome-debug

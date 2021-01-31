@@ -1,8 +1,8 @@
 #!/bin/sh
 set -e
 
-bundle check || bundle install
-yarn check --silent || yarn install
+bundle check || exit 1
+yarn check --silent || exit 1
 
 #bundle exec rails webpacker:compile
 

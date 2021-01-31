@@ -10,14 +10,6 @@ docker-compose up app
 
 or open with VS Code Dev Container Extension
 
-### Webpack Dev Server
-
-Inside the app container start
-
-```
-bin/webpack-dev-server
-```
-
 ## Setup Auth
 
 ## Roles
