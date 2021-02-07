@@ -3,6 +3,7 @@
 class LimesurveyService
   BASEURL = 'https://limesurvey.bula21.ch/index.php'
   ADMIN_REMOTECONTROL_URL = URI.parse("#{BASEURL}/admin/remotecontrol")
+  STUFEN = { 'wolf': 1, 'pfadi': 2, 'pio': 3, 'pta': 5 }.freeze
 
   def initialize(username = ENV['LIMESURVEY_USERNAME'],
                  password = ENV['LIMESURVEY_PASSWORD'],
@@ -77,7 +78,7 @@ class LimesurveyService
   # rubocop:disable Metrics/ParameterLists, Naming/VariableNumber
   def add_participant(email, lastname, firstname, camp_id, stufe, language)
     user = { email: email, lastname: lastname, firstname: firstname, language: language,
-             attribute_1: camp_id, attribute_2: stufen[stufe.to_sym] }
+             attribute_1: camp_id, attribute_2: STUFEN[stufe.to_sym] }
 
     add_participants([user])
   end
