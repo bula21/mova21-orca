@@ -11,6 +11,7 @@ class Kv
 
   # rubocop: disable Metrics/MethodLength, Metrics/AbcSize
   def self.predefined
+    # TODO: KV refactoren
     [
       new(166, 'Pfadi St. Gallen - Appenzell', locale: :de),
       new(638, 'AS Fribourgeois', locale: :fr),
@@ -40,9 +41,9 @@ class Kv
   # rubocop:enable Metrics/MethodLength, Metrics/AbcSize
 
   def self.[](id)
-    return predefined.find { |kv| kv.pbs_id == id } if midata_test_environment?
+    return predefined_development.find { |kv| kv.pbs_id == id } if midata_test_environment?
 
-    predefined_development.find { |kv| kv.pbs_id == id }
+    predefined.find { |kv| kv.pbs_id == id }
   end
 
   # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
