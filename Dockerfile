@@ -15,6 +15,7 @@ RUN apk add --update build-base \
   yarn \
   less \
   curl \
+  gnupg \
   python
 
 RUN gem install solargraph
