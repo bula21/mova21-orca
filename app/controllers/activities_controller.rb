@@ -4,7 +4,7 @@ class ActivitiesController < ApplicationController
   load_and_authorize_resource except: [:create]
 
   def index
-    @activities = filter.apply(Activity.all)
+    @activities = filter.apply(Activity.all).page params[:page]
   end
 
   def show; end

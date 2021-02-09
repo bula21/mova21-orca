@@ -1,24 +1,20 @@
 = simple_form_for(@filter, url: activities_path, method: :GET, scope: '') do |f|
   = f.hidden_field :locale, value: I18n.locale
-  .row
-    .col-md-3
-      = f.input :min_participants_count
-    .col-md-3
-      = f.input :tags, as: :check_boxes, collection: Tag.all.map { |t| [t.label, t.id.to_s] }, include_hidden: false,
+  .d-flex.flex-row.justify-content-around
+    = f.input :min_participants_count
+    = f.input :tags, as: :check_boxes, collection: Tag.all.map { |t| [t.label, t.id.to_s] }, include_hidden: false,
               wrapper_html: { class: 'scrollable' }
-    .col-md-3
     = f.input :languages, as: :check_boxes, collection: Activity::LANGUAGES.map { |t| [Activity.human_attribute_name(t), t.to_s] },
             include_hidden: false
-    .col-md-3
-      = f.input :stufe, collection: Stufe.all.map { |t| [t.name, t.id.to_s] },
+
+    = f.input :stufe, collection: Stufe.all.map { |t| [t.name, t.id.to_s] },
               include_hidden: false
-    .col-md-3
-      = f.input :activity_category, collection: ActivityCategory.roots,
+    = f.input :activity_category, collection: ActivityCategory.roots,
               as: :grouped_select,
               group_method: :children, group_label_method: :label,
               label_method: :full_label
-    .col-md-2
-      = f.submit 'Filtern', class: 'btn btn-secondary'
-    .col-md-2
-      = link_to t('buttons.reset'), activities_path, class: 'btn btn-primary '
+
+  .d-flex.flex-row
+    = f.submit 'Filtern', class: 'btn btn-secondary'
+    = link_to t('buttons.reset'), activities_path, class: 'btn btn-primary '
 

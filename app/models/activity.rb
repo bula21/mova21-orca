@@ -32,6 +32,7 @@
 class Activity < ApplicationRecord
   include Bitfields
   extend Mobility
+  paginates_per 15
 
   LANGUAGES = %i[language_de language_fr language_it language_en].freeze
 

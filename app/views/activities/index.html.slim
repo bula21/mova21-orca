@@ -4,5 +4,6 @@
 
 = render partial: 'filter'
 
-code= @activities.to_sql
 = render partial: 'activity_listing', collection: @activities, as: :activity
+
+= paginate @activities
