@@ -72,8 +72,8 @@ RSpec.describe ParticipantsBuilder do
       let(:partial_participants_data) do
         [{ 'phone_numbers' => phone_numbers, 'roles' => [
           {
-            "type": 'Event::Camp::Role::Participant',
-            "name": 'Teilnehmer*in'
+            type: 'Event::Camp::Role::Participant',
+            name: 'Teilnehmer*in'
           }
         ] }]
       end
