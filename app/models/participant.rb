@@ -24,15 +24,24 @@
 #  fk_rails_...  (unit_id => units.id)
 #
 class Participant < ApplicationRecord
+  MIDATA_EVENT_CAMP_ROLE_PARTICIPANT = 'Event::Camp::Role::Participant'
   has_many :participant_units, inverse_of: :participant
-  has_many :units, through: :participant_units
+  has_many :units, through: :participant_units, dependent: :nullify
 
   validates :pbs_id, uniqueness: { allow_blank: true }
+  validates :full_name, :birthdate, :gender, presence: true, on: :complete
+
+  scope :with_role_leaders, ->() { where.not(role: MIDATA_EVENT_CAMP_ROLE_PARTICIPANT) }
+  scope :with_role_participants, ->() { where(role: MIDATA_EVENT_CAMP_ROLE_PARTICIPANT) }
 
   enum gender: { male: 'male', female: 'female' }
 
   def full_name
     [first_and_last_name, scout_name].compact.join(' v/o ')
+  end
+
+  def complete?
+    valid?(:complete)
   end
 
   def first_and_last_name

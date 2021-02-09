@@ -38,6 +38,9 @@ en:
         first_name: Firstname
         full_name: Name
         gender: Gender
+        genders:
+          male: männlich
+          female: weiblich
         last_name: Lastname
         pbs_id: PBS ID
         scout_name: Scoutname

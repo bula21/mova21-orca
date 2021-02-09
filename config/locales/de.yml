@@ -42,6 +42,9 @@ de:
         last_name: Nachname
         pbs_id: PBS ID
         scout_name: Pfadiname
+        genders:
+          female: Weiblich
+          male: Männlich
       unit:
         abteilung: Abteilung
         al: AL
@@ -412,7 +415,7 @@ de:
     roles:
       event_camp_role_assistant_leader: Leitung
       event_camp_role_helper: Küche / Helfer/-in
-      event_camp_role_participant: Teilnehmer
+      event_camp_role_participant: Teilnehmende
       event_camp_role_leader_mountain_security: Leiter-/in Sicherheitsaktivität Berg
       event_camp_role_leader_snow_security: Leiter-/in Sicherheitsaktivität Winter
       event_camp_role_leader_water_security: Leiter-/in Sicherheitsaktivität Wasser
@@ -420,6 +423,8 @@ de:
       title: Teilnehmenden bearbeiten
     index:
       title: Teilnehmende
+      data_incomplete: Es fehlen Angaben für eine vollständige Anmeldung
+      complete_now: Jetzt vervollständigen
     new:
       title: Teilnehmende erstellen
   pre_text: Pre text

@@ -78,6 +78,18 @@
       => participants_count
       =>  Participant.model_name.human(count: participants_count)
       = t('.imported')
+    p
+      = t('participants.roles.event_camp_role_assistant_leader')
+      ' :
+      => @unit.participants.with_role_leaders.count
+    p
+      = t('participants.roles.event_camp_role_participant')
+      ' :
+      => @unit.participants.with_role_participants.count
+
+    - if @unit.participants.any? { |p| !p.complete? }
+      .alert.alert-danger
+        = t('.registration_incomplete')
 
 
     hr
