@@ -33,7 +33,7 @@ RSpec.describe CampUnitPuller do
 
       context 'when some participants have been deleted' do
         before do
-          create(:participant, unit: Unit.second)
+          create(:participant, units: [Unit.second])
         end
 
         it 'deletes the participants that are no longer on MiData' do

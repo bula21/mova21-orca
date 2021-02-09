@@ -26,7 +26,7 @@
 require 'rails_helper'
 
 RSpec.describe Participant, type: :model do
-  subject(:participant) { create(:participant, unit: unit) }
+  subject(:participant) { create(:participant, units: [unit]) }
 
   let(:unit) { create :unit }
 
