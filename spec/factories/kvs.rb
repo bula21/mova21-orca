@@ -11,42 +11,36 @@ FactoryBot.define do
     end
 
     trait :ju do
-
       pbs_id { 397 }
       name { 'AS Jurassienne' }
       locale { :fr }
     end
 
     trait :vs do
-
       pbs_id { 391 }
       name { 'AS Valaisan' }
       locale { :fr }
     end
 
     trait :gr do
-
       pbs_id { 57 }
       name { 'Battasendas Grischun' }
       locale { :de }
     end
 
     trait :ag do
-
       pbs_id { 400 }
       name { 'Pfadi Aargau' }
       locale { :de }
     end
 
     trait :gl do
-
       pbs_id { 425 }
       name { 'Pfadi Glarus' }
       locale { :de }
     end
 
     trait :be do
-
       pbs_id { 2 }
       name { 'Pfadi Kanton Bern' }
       locale { :de }
