@@ -17,7 +17,7 @@ class ParticipantsBuilder
   def from_data(participations_data)
     return [] if participations_data.empty?
 
-    participations_data.map(&method(:participant_from_data))
+    participations_data.map { |d| participant_from_data(d) }
   end
 
   private

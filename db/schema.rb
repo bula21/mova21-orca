@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_28_102400) do
+ActiveRecord::Schema.define(version: 2021_02_07_162225) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -124,6 +124,13 @@ ActiveRecord::Schema.define(version: 2020_12_28_102400) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["unit_id"], name: "index_invoices_on_unit_id"
+  end
+
+  create_table "kvs", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "pbs_id", null: false
+    t.string "locale", null: false
+    t.index ["pbs_id"], name: "index_kvs_on_pbs_id", unique: true
   end
 
   create_table "leaders", force: :cascade do |t|
@@ -252,6 +259,7 @@ ActiveRecord::Schema.define(version: 2020_12_28_102400) do
   add_foreign_key "invoice_parts", "invoices"
   add_foreign_key "invoices", "units"
   add_foreign_key "participants", "units"
+  add_foreign_key "units", "kvs", primary_key: "pbs_id"
   add_foreign_key "units", "leaders", column: "al_id"
   add_foreign_key "units", "leaders", column: "coach_id"
   add_foreign_key "units", "leaders", column: "lagerleiter_id"

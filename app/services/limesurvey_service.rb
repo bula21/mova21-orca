@@ -3,7 +3,7 @@
 class LimesurveyService
   BASEURL = 'https://limesurvey.bula21.ch/index.php'
   ADMIN_REMOTECONTROL_URL = URI.parse("#{BASEURL}/admin/remotecontrol")
-  STUFEN = { 'wolf': 1, 'pfadi': 2, 'pio': 3, 'pta': 5 }.freeze
+  STUFEN = { wolf: 1, pfadi: 2, pio: 3, pta: 5 }.freeze
 
   def initialize(username = ENV['LIMESURVEY_USERNAME'],
                  password = ENV['LIMESURVEY_PASSWORD'],
