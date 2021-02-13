@@ -42,11 +42,11 @@
 class Unit < ApplicationRecord
   belongs_to :al, class_name: 'Leader', inverse_of: :al_units, optional: true
   belongs_to :lagerleiter, class_name: 'Leader', inverse_of: :lagerleiter_units
+  has_many :invoices, inverse_of: :unit, dependent: :destroy
   has_many :participants, -> { order(role: :asc, last_name: :asc, scout_name: :asc) },
            inverse_of: :unit, dependent: :destroy
 
   # belongs_to :coach, class_name: 'Leader', inverse_of: :coach_units, optional: true
-  has_many :invoices, inverse_of: :unit, dependent: :destroy
 
   validates :title, :kv_id, :lagerleiter, presence: true, on: :complete
   validates :expected_participants, numericality: { greater_than_or_equal_to: 12 }, on: :complete

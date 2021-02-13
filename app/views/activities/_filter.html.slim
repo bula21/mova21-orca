@@ -1,20 +1,25 @@
-= simple_form_for(@filter, url: activities_path, method: :GET, scope: '') do |f|
+= simple_form_for(@filter, url: activities_path, method: :GET, scope: '', html: { class: 'row mb-5' }) do |f|
   = f.hidden_field :locale, value: I18n.locale
-  .d-flex.flex-row.justify-content-around
-    = f.input :min_participants_count
-    = f.input :tags, as: :check_boxes, collection: Tag.all.map { |t| [t.label, t.id.to_s] }, include_hidden: false,
-              wrapper_html: { class: 'scrollable' }
-    = f.input :languages, as: :check_boxes, collection: Activity::LANGUAGES.map { |t| [Activity.human_attribute_name(t), t.to_s] },
-            include_hidden: false
 
-    = f.input :stufe, collection: Stufe.all.map { |t| [t.name, t.id.to_s] },
-              include_hidden: false
-    = f.input :activity_category, collection: ActivityCategory.roots,
-              as: :grouped_select,
-              group_method: :children, group_label_method: :label,
-              label_method: :full_label
+  .col-md-3
+    = f.input :stufe_recommended, collection: Stufe.all.map { |t| [t.name, t.id.to_s] },
+              input_html: { class: 'btn-outline-secondary' }, include_hidden: false, label: false
+  .col-md-3
+    = f.input :activity_category, collection: ActivityCategory.roots, input_html: { class: 'btn-outline-secondary' },
+              as: :grouped_select,  group_method: :children, group_label_method: :label, label: false
 
-  .d-flex.flex-row
-    = f.submit 'Filtern', class: 'btn btn-secondary'
-    = link_to t('buttons.reset'), activities_path, class: 'btn btn-primary '
+  .col-md-2
+    .dropdown
+      button.btn.btn-outline-secondary.dropdown-toggle.btn-block[aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" type="button" ]
+        = ActivityFilter.human_attribute_name(:tags)
+      .dropdown-menu
+        .scrollable.px-3.py-2
+          = f.input_field :tags, as: :check_boxes, collection: Tag.all.map { |t| [t.label, t.id.to_s] },
+                          include_hidden: false, class: 'form-check-input'
+
+  .col-3
+    = f.submit t('buttons.filter'), class: 'btn btn-secondary btn-block'
+  .col-1
+    = link_to activities_path, class: 'btn', title: t('buttons.reset')
+      i.fa.fa-undo
 

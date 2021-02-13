@@ -111,6 +111,7 @@ de:
     export_csv: Export als CSV
     save: Speichern
     show: anzeigen
+    filter: Filtern
   camp_unit_mailer:
     complete_notification:
       body: |-
