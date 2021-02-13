@@ -44,7 +44,11 @@ FactoryBot.define do
     sequence(:pbs_id) { |n| n }
     title { Faker::Movies::StarWars.planet }
     abteilung { Faker::Company.name }
-    kv_id { Kv.predefined.sample.pbs_id }
+    kv do
+      kv_build = build(:kv, %i[ge ju vs gr ag gl be lu sz so zg sh blbs sgarai tg uw ur zh ti fr ne vd].sample)
+      kv_in_db = Kv.where(pbs_id: kv_build.pbs_id)
+      kv_in_db.empty? ? kv_build : kv_in_db[0]
+    end
     stufe { Unit.stufen.keys.sample }
     expected_participants_f { (10..20).to_a.sample }
     expected_participants_m { (10..20).to_a.sample }
