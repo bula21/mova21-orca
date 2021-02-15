@@ -6,7 +6,7 @@
               input_html: { class: 'btn-outline-secondary' }, include_hidden: false, label: false
   .col-md-3
     = f.input :activity_category, collection: ActivityCategory.roots, input_html: { class: 'btn-outline-secondary' },
-              as: :grouped_select,  group_method: :children, group_label_method: :label, label: false
+              as: :grouped_select,  group_method: :children, label: false, group_label_method: :label, label_method: :full_label
 
   .col-md-2
     .dropdown
