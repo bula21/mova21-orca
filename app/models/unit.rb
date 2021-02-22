@@ -48,6 +48,8 @@ class Unit < ApplicationRecord
            inverse_of: :unit, dependent: :destroy
 
   # belongs_to :coach, class_name: 'Leader', inverse_of: :coach_units, optional: true
+  has_many :invoices, inverse_of: :unit, dependent: :destroy
+  has_many_attached :documents
 
   validates :title, :kv_id, :lagerleiter, presence: true, on: :complete
   validates :expected_participants, numericality: { greater_than_or_equal_to: 12 }, on: :complete

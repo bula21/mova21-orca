@@ -462,6 +462,7 @@ en:
       title: Set up a camp
     show:
       camp_link_midata: Camp on MiData
+      documents: Documents
       invoices: Invoices
       other_infos: Other Information
       participants: Participants

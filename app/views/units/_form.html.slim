@@ -8,7 +8,7 @@
     .col-6
       = f.input :abteilung
     .col-6
-      = f.input :kv_id, collection: Kv.predefined, label_method: :name, value_method: :pbs_id
+      = f.input :kv_id, collection: Kv.all, label_method: :name, value_method: :pbs_id
 
   = f.input :stufe, collection: Unit.stufen.symbolize_keys.keys
   .row

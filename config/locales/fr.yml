@@ -482,6 +482,7 @@ fr:
       title: Créer un camp
     show:
       camp_link_midata: Camp sur MiData
+      documents: Documents
       invoices: Invoices
       other_infos: Information
       participants: Participants
