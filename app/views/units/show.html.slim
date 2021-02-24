@@ -102,14 +102,24 @@
           dt = t('activerecord.attributes.unit.expected_participants_m')
           dd = @unit.expected_participants_m
 
-- if @unit.invoices.any?
+- if @unit.invoices.any? || @unit.documents.any?
   .card.mt-4
     .card-body
-      h2 = t('units.show.invoices')
+      .row
+        .col-md-6
+          h2 = t('units.show.invoices')
 
-      ul
-        - @unit.invoices.each do |invoice|
-          li= link_to invoice.filename, url_for(invoice.pdf)
+          ul
+            - @unit.invoices.each do |invoice|
+              li= link_to invoice.filename, url_for(invoice.pdf)
+
+        .col-md-6
+          h2 = t('units.show.documents')
+
+          ul
+            - @unit.documents.each do |document|
+              li= link_to document.filename, url_for(document.pdf)
+
 .card.mt-4
   .card-body
     h2 = t('units.show.other_infos')

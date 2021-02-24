@@ -58,5 +58,6 @@ FactoryBot.define do
     ends_at { Faker::Date.in_date_period(year: 2021, month: 8) }
     al { build(:user).leader }
     lagerleiter { build(:user).leader }
+    limesurvey_token { SecureRandom.base64(10) }
   end
 end

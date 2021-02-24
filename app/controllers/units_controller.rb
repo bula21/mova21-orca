@@ -39,6 +39,13 @@ class UnitsController < ApplicationController
     end
   end
 
+  def add_document
+    @unit = Unit.find(params[:unit_id])
+    authorize! :manage, @unit
+    @unit.documents.attach(io: File.open(params[:file]),
+                           filename: (params[:filename] || params[:file].original_filename))
+  end
+
   private
 
   def unit_params

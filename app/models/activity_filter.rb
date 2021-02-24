@@ -44,7 +44,7 @@ class ActivityFilter < ApplicationFilter
     next if unit.blank?
 
     activities.joins(:stufen)
-      .where(activities_stufen: { stufe_id: unit.stufe })
-      .where(Activity.arel_table[:participants_count_activity].gteq(unit.expected_participants))
+              .where(activities_stufen: { stufe_id: unit.stufe })
+              .where(Activity.arel_table[:participants_count_activity].gteq(unit.expected_participants))
   end
 end
