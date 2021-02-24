@@ -118,7 +118,7 @@
 
           ul
             - @unit.documents.each do |document|
-              li= link_to document.filename, url_for(document.pdf)
+              li= link_to document.filename, url_for(document)
 
 .card.mt-4
   .card-body
