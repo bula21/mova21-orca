@@ -70,7 +70,7 @@ RSpec.describe UnitsController, type: :request do
     end
 
     context 'when signed in' do
-      subject(:request) { post unit_documents_path(unit), params: { file: file } }
+      subject(:request) { post unit_documents_path(unit), params: { file: file, filename: 'test.pdf' } }
 
       let(:file) { Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/sample.pdf')) }
       let(:user) { create(:user, :admin) }
@@ -83,6 +83,7 @@ RSpec.describe UnitsController, type: :request do
 
       it { expect(response).to be_successful }
       it { expect(unit.documents.count).to be(1) }
+      it { expect(unit.documents.last.filename).to eq("test.pdf") }
     end
   end
 end
