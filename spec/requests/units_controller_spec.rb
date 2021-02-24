@@ -83,7 +83,7 @@ RSpec.describe UnitsController, type: :request do
 
       it { expect(response).to be_successful }
       it { expect(unit.documents.count).to be(1) }
-      it { expect(unit.documents.last.filename).to eq("test.pdf") }
+      it { expect(unit.documents.last.filename).to eq('test.pdf') }
     end
   end
 end
