@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem 'ancestry'
+gem 'annotate'
 gem 'azure-storage', '~> 0.15.0.preview', require: false
 gem 'bitfields'
 gem 'bootsnap', '>= 1.4.2', require: false
@@ -11,6 +12,7 @@ gem 'cancancan'
 gem 'devise'
 gem 'grape-entity'
 gem 'httparty'
+gem 'kaminari'
 gem 'keycloak'
 gem 'mobility', '~> 0.8.9'
 gem 'omniauth_openid_connect'

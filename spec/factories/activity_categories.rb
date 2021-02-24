@@ -30,20 +30,7 @@
 #  fk_rails_...  (transport_location_id => transport_locations.id)
 #
 FactoryBot.define do
-  factory :activity do
-    label { Faker::Lorem.sentence(word_count: 3) }
-    activity_category { ActivityCategory.all.count > 3 ? ActivityCategory.all.sample : create(:activity_category) }
-    activity_type { Activity.activity_types.values.sample }
-    description { Faker::Lorem.paragraph(sentence_count: 5) }
-    language_flags { (1..8).to_a.sample }
-    block_type { Activity.block_types.keys.sample }
-    simo { Activity.simos.keys.sample }
-    participants_count_activity { (10..20).to_a.sample }
-    participants_count_transport { (10..20).to_a.sample }
-    duration_activity { (0..60).to_a.sample }
-    duration_journey { (0..60).to_a.sample }
-    location { Faker::Address.city }
-    stufen { Stufe.all.count > 2 ? Stufe.all.sample(2) : create_list(:stufe, 2) }
-    stufe_recommended { [stufen.sample] }
+  factory :activity_category do
+    label { Faker::Commerce.department }
   end
 end

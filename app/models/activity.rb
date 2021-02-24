@@ -1,8 +1,40 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: activities
+#
+#  id                           :bigint           not null, primary key
+#  activity_type                :string
+#  block_type                   :string
+#  description                  :jsonb
+#  duration_activity            :integer
+#  duration_journey             :integer
+#  label                        :jsonb
+#  language                     :string           not null
+#  location                     :string
+#  min_participants             :integer
+#  participants_count_activity  :integer
+#  participants_count_transport :integer
+#  simo                         :string
+#  created_at                   :datetime         not null
+#  updated_at                   :datetime         not null
+#  transport_location_id        :bigint
+#
+# Indexes
+#
+#  index_activities_on_transport_location_id  (transport_location_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (transport_location_id => transport_locations.id)
+#
 class Activity < ApplicationRecord
   include Bitfields
   extend Mobility
+  paginates_per 15
+
+  LANGUAGES = %i[language_de language_fr language_it language_en].freeze
 
   has_many_attached :activity_documents
   has_one_attached :picture
@@ -13,7 +45,7 @@ class Activity < ApplicationRecord
   has_and_belongs_to_many :stufen
   has_and_belongs_to_many :stufe_recommended, class_name: 'Stufe', join_table: 'activities_stufen_recommended'
 
-  bitfield :language_flags, :language_de, :language_fr, :language_it, :language_en
+  bitfield :language_flags, *LANGUAGES
   enum block_type: { la: 'la', ls: 'ls' }
   enum simo: { berg: 'berg', wasser: 'wasser', pool: 'pool', lake: 'lake' }
   enum activity_type: { excursion: 'excursion', activity: 'activity',
