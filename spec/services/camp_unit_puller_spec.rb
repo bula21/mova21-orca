@@ -27,17 +27,24 @@ RSpec.describe CampUnitPuller do
         puller.pull_all
       end
 
-      it 'keeps all Participants' do
+      it 'does not change the participants ids' do
         expect { puller.pull_all }.not_to(change { Unit.first.participants.reload.ids })
       end
 
       context 'when some participants have been deleted' do
-        before do
-          create(:participant, units: [Unit.second])
-        end
+        let!(:only_local_participant) { create(:participant, units: [Unit.second]) }
 
-        it 'deletes the participants that are no longer on MiData' do
+        it 'removes the participants that are no longer on MiData from the unit, but keeps them' do
           expect { puller.pull_all }.to change { Unit.second.participants.reload.size }.from(3).to(2)
+          expect(Participant.find(only_local_participant.id)).to eq(only_local_participant)
+        end
+      end
+
+      context 'when there is a manual participant in the unit' do
+        let(:non_midata_user) { create(:participant, :non_midata, units: [Unit.second]) }
+
+        it 'obtains the user' do
+          expect { puller.pull_all }.not_to(change { non_midata_user.units.reload.size })
         end
       end
     end

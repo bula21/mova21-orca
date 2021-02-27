@@ -11,13 +11,13 @@
       tr
         th
         th = Participant.human_attribute_name(:full_name)
-        th = Participant.human_attribute_name(:birthdate)
-        / th = Participant.human_attribute_name(:address) maybe later (Stand: 2.08.2020)
+        th  = Participant.human_attribute_name(:birthdate)
+        / th = Participant.human_attribute_name(:address) # maybe later (Stand: 2.08.2020)
         th = Participant.human_attribute_name(:gender)
         th = Participant.human_attribute_name(:email)
         th = Participant.human_attribute_name(:phone_number)
+        th = Participant.human_attribute_name(:role)
         th
-
     tbody
       - @participants.each do |participant|
         - incomplete = !participant.complete?
@@ -34,10 +34,11 @@
           td = participant.phone_number
           td
             - if participant.role.present?
-              = t(participant.role.underscore.gsub('/','_'), scope: 'participants.roles')
+              = translated_midata_role(participant.role)
           td.p-1
             - if can?(:edit, participant)
-              = link_to(t('buttons.edit'), edit_unit_participant_path(@unit, participant), class: 'btn btn-primary')
+              = link_to edit_unit_participant_path(@unit, participant), class: 'btn btn-primary ml-2' do
+                i.fa.fa-edit
         - if incomplete
           tr
             td.border-top-0
@@ -47,5 +48,7 @@
                 ul.pb-0.mb-0
                   - participant.errors.full_messages.each do |message|
                     li = message
-                / TODO: LINKHELPER
-                = link_to t('participants.index.complete_now'), "#{ENV['MIDATA_BASE_URL']}/#{I18n.locale}/people/#{participant.pbs_id}.html", class: 'btn btn-secondary mt-2'
+                - if participant.pbs_id.present?
+                  = link_to t('participants.index.complete_now'), midata_link_to_participant(participant), target: '_blank', class: 'btn btn-secondary mt-2'
+                - else
+                  = link_to t('participants.index.complete_now'), edit_unit_participant_path(@unit, participant), class: 'btn btn-secondary mt-2'

@@ -195,7 +195,6 @@ ActiveRecord::Schema.define(version: 2021_02_24_181501) do
     t.string "role"
     t.string "email", default: ""
     t.string "phone_number", default: ""
-    t.index ["unit_id"], name: "index_participants_on_unit_id"
   end
 
   create_table "stufen", force: :cascade do |t|

@@ -25,9 +25,10 @@ class Ability
     # can %i[read update], Unit, coach: { pbs_id: user.pbs_id }
     can :read, Leader, pbs_id: user.pbs_id
 
-    can :read, Participant, units: { al: { email: user.email } }
-    can :read, Participant, units: { lagerleiter: { email: user.email } }
-
+    can %i[read create], Participant, units: { al: { email: user.email } }
+    can %i[read create], Participant, units: { lagerleiter: { email: user.email } }
+    can %i[edit update], Participant, pbs_id: nil, units: { al: { email: user.email } }
+    can %i[edit update], Participant, pbs_id: nil, units: { lagerleiter: { email: user.email } }
     can :read, Activity
   end
 

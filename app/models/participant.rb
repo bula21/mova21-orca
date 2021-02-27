@@ -31,22 +31,22 @@ class Participant < ApplicationRecord
   MIDATA_EVENT_CAMP_ROLE_LEADER_SNOW_SECURITY = 'Event::Camp::Role::LeaderSnowSecurity'
   MIDATA_EVENT_CAMP_ROLE_LEADER_WATER_SECURITY = 'Event::Camp::Role::LeaderWaterSecurity'
 
-  has_many :participant_units, inverse_of: :participant
+  has_many :participant_units, inverse_of: :participant, dependent: :destroy
   has_many :units, through: :participant_units, dependent: :nullify
 
   validates :pbs_id, uniqueness: { allow_blank: true }
   validates :full_name, :birthdate, :gender, presence: true, on: :complete
 
-  scope :with_role_leaders, ->() { where.not(role: MIDATA_EVENT_CAMP_ROLE_PARTICIPANT) }
-  scope :with_role_participants, ->() { where(role: MIDATA_EVENT_CAMP_ROLE_PARTICIPANT) }
+  scope :with_role, ->(role) { where(role: role) }
+  scope :non_midata, -> { where(pbs_id: nil) }
 
   enum gender: { male: 'male', female: 'female' }
   enum role: { MIDATA_EVENT_CAMP_ROLE_PARTICIPANT => MIDATA_EVENT_CAMP_ROLE_PARTICIPANT,
-              MIDATA_EVENT_CAMP_ROLE_ASSISTANT_LEADER => MIDATA_EVENT_CAMP_ROLE_ASSISTANT_LEADER,
-              MIDATA_EVENT_CAMP_ROLE_HELPER => MIDATA_EVENT_CAMP_ROLE_HELPER,
-              MIDATA_EVENT_CAMP_ROLE_LEADER_MOUNTAIN_SECURITY => MIDATA_EVENT_CAMP_ROLE_LEADER_MOUNTAIN_SECURITY,
-              MIDATA_EVENT_CAMP_ROLE_LEADER_SNOW_SECURITY => MIDATA_EVENT_CAMP_ROLE_LEADER_SNOW_SECURITY,
-              MIDATA_EVENT_CAMP_ROLE_LEADER_WATER_SECURITY => MIDATA_EVENT_CAMP_ROLE_LEADER_WATER_SECURITY }
+               MIDATA_EVENT_CAMP_ROLE_ASSISTANT_LEADER => MIDATA_EVENT_CAMP_ROLE_ASSISTANT_LEADER,
+               MIDATA_EVENT_CAMP_ROLE_HELPER => MIDATA_EVENT_CAMP_ROLE_HELPER,
+               MIDATA_EVENT_CAMP_ROLE_LEADER_MOUNTAIN_SECURITY => MIDATA_EVENT_CAMP_ROLE_LEADER_MOUNTAIN_SECURITY,
+               MIDATA_EVENT_CAMP_ROLE_LEADER_SNOW_SECURITY => MIDATA_EVENT_CAMP_ROLE_LEADER_SNOW_SECURITY,
+               MIDATA_EVENT_CAMP_ROLE_LEADER_WATER_SECURITY => MIDATA_EVENT_CAMP_ROLE_LEADER_WATER_SECURITY }
 
   def full_name
     [first_and_last_name, scout_name].compact.join(' v/o ')

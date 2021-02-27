@@ -1,6 +1,6 @@
 .h1.pb-0 = @unit.title
 
-= link_to [ENV['MIDATA_BASE_URL'], 'events', @unit.pbs_id].join('/'), class: 'mb-3' do
+= link_to midata_link_to_unit(@unit), class: 'mb-3' do
   i.fas.fa-link
   =< t('.camp_link_midata')
 
@@ -63,6 +63,7 @@
         - @unit.errors.full_messages.each do |error|
           li= error
 
+
 .card.mt-4
   .card-body
     h2 = t('units.show.expected_participants')
@@ -87,6 +88,34 @@
         .col-6
           dt = t('activerecord.attributes.unit.expected_participants_m')
           dd = @unit.expected_participants_m
+
+
+.card.mt-4[class=(@unit.participants.all?(&:complete?) ? 'border-success' : 'border-danger')]
+  .card-body
+    h2 = t('units.show.participants')
+
+    = link_to t('.participants'), unit_participants_path(@unit), class: 'btn btn-secondary'
+
+    p
+      - participants_count = @unit.participants.count
+      => participants_count
+      =>  Participant.model_name.human(count: participants_count)
+      = t('.imported')
+    p
+      dl
+        - Participant.roles.keys.each do |role|
+          - role_participants = @unit.participants.with_role(role).count
+          - unless role_participants.zero?
+            dt
+              = translated_midata_role(role)
+              ' :
+            dd = @unit.participants.with_role(role).count
+  - if @unit.participants.all?(&:complete?)
+    .card-footer.bg-success.border-success.text-white
+      = t('.data_complete')
+  - else
+    .card-footer.bg-danger.border-danger.text-white
+      = t('.data_incomplete')
 
 - if @unit.invoices.any? || @unit.documents.any?
   .card.mt-4

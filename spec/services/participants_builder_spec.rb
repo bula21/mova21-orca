@@ -21,7 +21,7 @@ RSpec.describe ParticipantsBuilder do
 
     it 'has attributes' do
       expect(participants.first).to have_attributes(
-        pbs_id: 11_628,
+        pbs_id: 1866,
         first_name: 'Hans',
         last_name: 'Muster',
         scout_name: 'Adler',

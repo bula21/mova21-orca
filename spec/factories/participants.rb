@@ -32,5 +32,9 @@ FactoryBot.define do
     birthdate { Faker::Date.birthday(min_age: 5, max_age: 35) }
     gender { Participant.genders.keys.sample }
     units { build_list(:unit, 1) }
+
+    trait :non_midata do
+      pbs_id { nil }
+    end
   end
 end
