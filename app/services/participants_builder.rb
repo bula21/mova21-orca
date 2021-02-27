@@ -52,7 +52,7 @@ class ParticipantsBuilder
   end
 
   def participant_from_data(participation_data)
-    participant = Participant.find_or_initialize_by(pbs_id: participation_data['id'])
+    participant = Participant.find_or_initialize_by(pbs_id: participation_data.dig('links', 'person'))
     participant.assign_attributes(assignable_attributes(participation_data))
     participant
   end
