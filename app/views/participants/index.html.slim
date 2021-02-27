@@ -1,6 +1,9 @@
 .h1 = t('participants.index.title')
 
-= link_to(t('buttons.create'), new_unit_participant_path, class: 'btn btn-primary mb-3') if can?(:create, Participant)
+.alert.alert-info
+  i.fas.fa-info-circle
+  p =< t('participants.index.create_hint')
+  = link_to(t('buttons.create'), new_unit_participant_path, class: 'btn btn-info mb-3') if can?(:create, Participant)
 
 .table-responsive
   table.table

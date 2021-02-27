@@ -45,7 +45,8 @@
               =< @unit.lagerleiter.country
             = link_to_if @unit.lagerleiter.phone_number, @unit.lagerleiter.phone_number,
                     "tel:#{@unit.lagerleiter.phone_number}"
-            br
+            - if @unit.lagerleiter.phone_number.present?
+              br
             = mail_to @unit.lagerleiter.email, @unit.lagerleiter.email
 
 
@@ -53,10 +54,10 @@
 
   - if @unit.complete?
     .card-footer.bg-success.border-success.text-white
-      = t('.registration_complete')
+      = t('.data_complete')
   - else
     .card-footer.bg-danger.border-danger.text-white
-      = t('.registration_incomplete')
+      = t('.data_incomplete')
 
       ul.pt-3.pb-1
         - @unit.errors.full_messages.each do |error|
@@ -64,37 +65,10 @@
 
 .card.mt-4
   .card-body
-    h2 = t('units.show.questionnaire')
-    = link_to t('units.show.questionnaire'), @unit.limesurvey_url, class: 'btn btn-secondary'
-
-.card.mt-4
-  .card-body
-    h2 = t('units.show.participants')
-
-    = link_to t('.participants'), unit_participants_path(@unit), class: 'btn btn-secondary'
-
-    p
-      - participants_count = @unit.participants.count
-      => participants_count
-      =>  Participant.model_name.human(count: participants_count)
-      = t('.imported')
-    p
-      = t('participants.roles.event_camp_role_assistant_leader')
-      ' :
-      => @unit.participants.with_role_leaders.count
-    p
-      = t('participants.roles.event_camp_role_participant')
-      ' :
-      => @unit.participants.with_role_participants.count
-
-    - if @unit.participants.any? { |p| !p.complete? }
-      .alert.alert-danger
-        = t('.registration_incomplete')
-
-
-    hr
-
-    h3 = t('units.show.expected_participants')
+    h2 = t('units.show.expected_participants')
+    p.alert.alert-info
+      i.fas.fa-info-circle
+      =< t('units.show.expected_participants_explanation_html', link: [ENV['MIDATA_BASE_URL'], 'events', @unit.pbs_id].join('/'))
     dl
       .row
         .col-6

@@ -41,6 +41,18 @@ fr:
         last_name: Nom de famille
         pbs_id: MSdS ID
         scout_name: Totem
+        email: Adresse e-mail
+        phone_number: Numéro de téléphone
+        genders:
+          female: Femmes
+          male: Hommes
+        roles:
+          event_camp_role_assistant_leader: Responsable
+          event_camp_role_helper: Cuisine / Aide
+          event_camp_role_participant: Participant·e
+          event_camp_role_leader_mountain_security: Responsable activité de sécurité Montagne
+          event_camp_role_leader_snow_security: Responsable activité de sécurité Hiver
+          event_camp_role_leader_water_security: Responsable activité de sécurité Eau
       unit:
         abteilung: Groupe
         al: RG
@@ -147,7 +159,7 @@ fr:
     - ven
     - sam
     abbr_month_names:
-    - 
+    -
     - jan.
     - fév.
     - mar.
@@ -173,7 +185,7 @@ fr:
       long: "%e %B %Y"
       short: "%e %b"
     month_names:
-    - 
+    -
     - janvier
     - février
     - mars
@@ -487,5 +499,5 @@ fr:
       other_infos: Information
       participants: Participants
       questionnaire: Questionaire
-      registration_complete: Inscription complète
-      registration_incomplete: Inscription pas complète
+      data_complete: Inscription complète
+      data_incomplete: Inscription pas complète

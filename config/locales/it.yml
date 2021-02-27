@@ -41,6 +41,18 @@ it:
         last_name: Cognome
         pbs_id: MSS ID
         scout_name: Totem
+        email: Indirizzo e-mail
+        phone_number: Numero di telefono
+        genders:
+          female: Donne
+          male: Uomini
+        roles:
+          event_camp_role_assistant_leader: Responsabile
+          event_camp_role_helper: Cucina / aiutante
+          event_camp_role_participant: Partecipante
+          event_camp_role_leader_mountain_security: Animatore ambito di sicurezza Montagna
+          event_camp_role_leader_snow_security: Animatore ambito di sicurezza Inverno
+          event_camp_role_leader_water_security: Animatore ambito di sicurezza Acqua
       unit:
         abteilung: Sezione
         al: CSZ
@@ -144,7 +156,7 @@ it:
     - Ven
     - Sab
     abbr_month_names:
-    - 
+    -
     - Gen
     - Feb
     - Mar
@@ -170,7 +182,7 @@ it:
       long: "%d %B %Y"
       short: "%d %b"
     month_names:
-    - 
+    -
     - Gennaio
     - Febbraio
     - Marzo
@@ -483,5 +495,5 @@ it:
       participants: Partecipanti
       other_infos: Informazioni supplementari
       questionnaire: Questionario
-      registration_complete: Registrazione completa
-      registration_incomplete: Registrazione incompleta
+      data_complete: Registrazione completa
+      data_incomplete: Registrazione incompleta

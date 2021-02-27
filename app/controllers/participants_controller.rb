@@ -29,6 +29,7 @@ class ParticipantsController < ApplicationController
   private
 
   def participant_params
-    params.require(:participant).permit(:first_name, :last_name, :scout_name, :gender, :birthdate, :pbs_id)
+    params.require(:participant).permit(:first_name, :last_name, :scout_name, :role, :gender, :birthdate, :pbs_id,
+                                        :email, :phone_number)
   end
 end

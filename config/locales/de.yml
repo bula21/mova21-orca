@@ -42,9 +42,18 @@ de:
         last_name: Nachname
         pbs_id: PBS ID
         scout_name: Pfadiname
+        email: E-Mail
+        phone_number: Telefonnummer
         genders:
           female: Weiblich
           male: Männlich
+        roles:
+          event_camp_role_assistant_leader: Leitung
+          event_camp_role_helper: Küche / Helfer/-in
+          event_camp_role_participant: Teilnehmende
+          event_camp_role_leader_mountain_security: Leiter-/in Sicherheitsaktivität Berg
+          event_camp_role_leader_snow_security: Leiter-/in Sicherheitsaktivität Winter
+          event_camp_role_leader_water_security: Leiter-/in Sicherheitsaktivität Wasser
       unit:
         abteilung: Abteilung
         al: AL
@@ -412,19 +421,14 @@ de:
       format:
         delimiter: ''
   participants:
-    roles:
-      event_camp_role_assistant_leader: Leitung
-      event_camp_role_helper: Küche / Helfer/-in
-      event_camp_role_participant: Teilnehmende
-      event_camp_role_leader_mountain_security: Leiter-/in Sicherheitsaktivität Berg
-      event_camp_role_leader_snow_security: Leiter-/in Sicherheitsaktivität Winter
-      event_camp_role_leader_water_security: Leiter-/in Sicherheitsaktivität Wasser
     edit:
       title: Teilnehmenden bearbeiten
     index:
       title: Teilnehmende
       data_incomplete: Es fehlen Angaben für eine vollständige Anmeldung
       complete_now: Jetzt vervollständigen
+      create_hint: "Die Teilnehmenden sollten via MiData verwaltet werden. Solltest gewisse Personen nicht dort hinterlegt haben, kannst du sie hier manuell hinzufügen."
+
     new:
       title: Teilnehmende erstellen
   pre_text: Pre text
@@ -509,7 +513,8 @@ de:
       other_infos: Weitere Informationen
       participants: Teilnehmende
       questionnaire: Fragebogen
-      registration_complete: Registration vollständig
-      registration_incomplete: Registration nicht vollständig
+      data_complete: Daten vollständig
+      data_incomplete: Daten nicht vollständig
       expected_participants: "Erwartete Anzahl TN"
       imported: "von MiData importiert"
+      expected_participants_explanation_html: "Die erwartete Anzahl Teilnehmende wird aus der <a href='%{link}' target='_blank'>MiData</a> importiert."

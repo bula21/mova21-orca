@@ -12,10 +12,15 @@
     .col-6
       = f.input :scout_name
     .col-6
-      = f.input :pbs_id
+      = f.input :role, collection: Participant.roles.transform_keys{ |key| I18n.t(key.underscore.gsub('/','_'), scope: 'activerecord.attributes.participant.roles') }
+    .col-6
+      = f.input :email
+    .col-6
+      = f.input :phone_number
+    .col-6
+      = f.input :gender, collection: Participant.genders.symbolize_keys.keys
   .row
     .col-12
-      = f.input :gender, collection: Participant.genders.symbolize_keys.keys
       = f.input :birthdate, wrapper: :inline_date, start_year: 1930, end_year: Date.today.year
       br
       = f.submit t('buttons.save'), class: 'btn btn-primary'

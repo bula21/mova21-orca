@@ -38,12 +38,21 @@ en:
         first_name: Firstname
         full_name: Name
         gender: Gender
-        genders:
-          male: männlich
-          female: weiblich
         last_name: Lastname
         pbs_id: PBS ID
         scout_name: Scoutname
+        email: E-Mail
+        phone_number: Phone number
+        genders:
+          female: Female
+          male: Male
+        roles:
+          event_camp_role_assistant_leader: Leader
+          event_camp_role_helper: Kitchen / Assistance
+          event_camp_role_participant: Participant
+          event_camp_role_leader_mountain_security: Leader Mountain Security
+          event_camp_role_leader_snow_security: Leader Snow Security
+          event_camp_role_leader_water_security: Leader Water Security
       unit:
         abteilung: Group
         al: Group leader
@@ -383,6 +392,7 @@ en:
       title: Edit participants
     index:
       title: Participants
+      create_hint: ""
     new:
       title: Create participants
   pre_text: Pre text
@@ -470,7 +480,8 @@ en:
       other_infos: Other Information
       participants: Participants
       questionnaire: Form
-      registration_complete: Registration complete
-      registration_incomplete: Registration incomplete
+      data_complete: Registration complete
+      data_incomplete: Registration incomplete
       expected_participants: "Expected number of participants"
       imported: "imported from MiData"
+      expected_participants_explanation_html: "The expected amount of participants is imported from your entered numbers in <a href='%{link}' target='_blank'>MiData</a>"

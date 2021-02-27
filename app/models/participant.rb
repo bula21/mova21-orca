@@ -25,6 +25,12 @@
 #
 class Participant < ApplicationRecord
   MIDATA_EVENT_CAMP_ROLE_PARTICIPANT = 'Event::Camp::Role::Participant'
+  MIDATA_EVENT_CAMP_ROLE_ASSISTANT_LEADER = 'Event::Camp::Role::AssistantLeader'
+  MIDATA_EVENT_CAMP_ROLE_HELPER = 'Event::Camp::Role::Helper'
+  MIDATA_EVENT_CAMP_ROLE_LEADER_MOUNTAIN_SECURITY = 'Event::Camp::Role::LeaderMountainSecurity'
+  MIDATA_EVENT_CAMP_ROLE_LEADER_SNOW_SECURITY = 'Event::Camp::Role::LeaderSnowSecurity'
+  MIDATA_EVENT_CAMP_ROLE_LEADER_WATER_SECURITY = 'Event::Camp::Role::LeaderWaterSecurity'
+
   has_many :participant_units, inverse_of: :participant
   has_many :units, through: :participant_units, dependent: :nullify
 
@@ -35,6 +41,12 @@ class Participant < ApplicationRecord
   scope :with_role_participants, ->() { where(role: MIDATA_EVENT_CAMP_ROLE_PARTICIPANT) }
 
   enum gender: { male: 'male', female: 'female' }
+  enum role: { MIDATA_EVENT_CAMP_ROLE_PARTICIPANT => MIDATA_EVENT_CAMP_ROLE_PARTICIPANT,
+              MIDATA_EVENT_CAMP_ROLE_ASSISTANT_LEADER => MIDATA_EVENT_CAMP_ROLE_ASSISTANT_LEADER,
+              MIDATA_EVENT_CAMP_ROLE_HELPER => MIDATA_EVENT_CAMP_ROLE_HELPER,
+              MIDATA_EVENT_CAMP_ROLE_LEADER_MOUNTAIN_SECURITY => MIDATA_EVENT_CAMP_ROLE_LEADER_MOUNTAIN_SECURITY,
+              MIDATA_EVENT_CAMP_ROLE_LEADER_SNOW_SECURITY => MIDATA_EVENT_CAMP_ROLE_LEADER_SNOW_SECURITY,
+              MIDATA_EVENT_CAMP_ROLE_LEADER_WATER_SECURITY => MIDATA_EVENT_CAMP_ROLE_LEADER_WATER_SECURITY }
 
   def full_name
     [first_and_last_name, scout_name].compact.join(' v/o ')
