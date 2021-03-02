@@ -5,10 +5,16 @@ Orca manages people and activity subscriptions.
 ## Development
 
 ```
-docker-compose up app
+docker-compose up
 ```
 
 or open with VS Code Dev Container Extension
+
+If you have started a container, and you want the functionality of a bash:
+
+```
+docker-compose exec app ash
+```
 
 ## Setup Auth
 
@@ -59,15 +65,14 @@ bin/rails r "PullAllCampUnitsJob.perform_now"
 ## Tests
 
 ```
-docker-compose run --use-aliases test
+docker-compose run app bin/rspec
 ```
 
-or run a shell in the test env and run tests from within
+or much faster (if you already have started a container)
 
 ```
-docker-compose run --use-aliases test sh
-bin/check
-```
+docker-compose exec app bin/rspec
+``` 
 
 ## Production
 

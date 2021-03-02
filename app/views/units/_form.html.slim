@@ -25,5 +25,15 @@
       = f.association :al, label_method: :scout_name
     .col-6
       = f.association :lagerleiter, label_method: :scout_name
-  .actions
+  
+  - if can?(:manage, @unit)
+    .card.border-danger
+      .card-header.bg-danger.text-white
+        = t('.danger_zone')
+      .card-body
+        .row
+          .col-6
+            = f.input :pbs_id
+            
+  .actions.mt-4
     = f.submit t('buttons.save'), class: 'btn btn-primary'

@@ -12,12 +12,14 @@ RSpec.describe CampUnitBuilder do
   describe '#from_data', vcr: true do
     subject(:camp_unit) { builder.from_data(camp_unit_data) }
 
+    let!(:kv) { create(:kv, :zh) } # all KVs must exist before the import
+
     let(:starts_at) { Time.zone.parse('2021-07-01 00:00:00.000000000 +0200') }
     let(:ends_at) { Time.zone.parse('2021-07-18 00:00:00.000000000 +0200') }
 
     it 'has attributes' do
       expect(camp_unit).to have_attributes(
-        title: 'Sommerlager Pfadistufe', abteilung: 'H2O', kv_id: 1145, stufe: 'pfadi',
+        title: 'Sommerlager Pfadistufe', abteilung: 'H2O', kv: kv, stufe: 'pfadi',
         expected_participants_f: 12, expected_participants_m: 10,
         expected_participants_leitung_m: 3, expected_participants_leitung_f: 5,
         starts_at: starts_at, ends_at: ends_at

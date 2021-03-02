@@ -3,28 +3,29 @@ it:
   activerecord:
     attributes:
       activity:
+        activity_category: Kategorie
         activity_documents: Documenti
-        picture: Immagine
+        activity_type: Tipo
+        block_type: Tipo d'attività
         description: Descrizione
         duration_activity: Durata dell'attività (HH:mm)
         duration_journey: Durata del viaggio (HH:mm)
         goals: Obbiettivi dell'attività
-        transport_location: Luogo trasporto
-        activity_type: Tipo
-        block_type: Tipo d'attività
-        simo: Modulo di sicurezza / SSS
         label: Titolo dell'attività
-        languages: Lingua
         language_de: Deutsch
         language_en: English
         language_fr: Français
         language_it: Italiano
+        languages: Lingua
         location: Luogo (approssimativo)
-        participants_count_activity: Max. numero di partecipanti (attività)
         min_participants: Numero min. di partecipanti
+        participants_count_activity: Max. numero di partecipanti (attività)
         participants_count_transport: Anz. Personen (inkl. Leitung)
+        picture: Immagine
+        simo: Modulo di sicurezza / SSS
         stufe_recommended: Branche raccomandate
         stufen: Branche possibili
+        transport_location: Luogo trasporto
       leader:
         birthdate: Data di nascita
         first_name: Nome
@@ -35,15 +36,29 @@ it:
         scout_name: Totem
       participant:
         birthdate: Data di nascita
+        email: Indirizzo e-mail
         first_name: Nome
         full_name: Nome
         gender: Sesso
+        genders:
+          female: Donne
+          male: Uomini
         last_name: Cognome
         pbs_id: MSS ID
+        phone_number: Numero di telefono
+        role: Rolle
+        roles:
+          assistant_leader: Responsabile
+          helper: Cucina / aiutante
+          leader_mountain_security: Animatore ambito di sicurezza Montagna
+          leader_snow_security: Animatore ambito di sicurezza Inverno
+          leader_water_security: Animatore ambito di sicurezza Acqua
+          participant: Partecipante
         scout_name: Totem
       unit:
         abteilung: Sezione
         al: CSZ
+        district: Quartiere
         ends_at: Fine il
         expected_participants: Numero di partecipanti previsti
         expected_participants_f: Numero di partecipanti (f) previste
@@ -55,18 +70,21 @@ it:
         kv_id: Associazione cantonale
         lagerleiter: Direzione del campo
         language: Lingua
-        week: Settimana di campo
-        district: Quartiere
+        on_site_at: Lagerdaten
+        pbs_id: Lager ID in der Midata
         starts_at: Inizio il
         stufe: Branca
         title: Titolo
+        week: Settimana di campo
     errors:
       messages:
         incomplete: è incompleto
         record_invalid: 'Validazione fallita: %{errors}'
         restrict_dependent_destroy:
-          has_many: Impossibile cancellare i dati in quanto il seguente valore  %{record} esiste ancora
-          has_one: Impossibile cancellare i dati in quanto dipendono dai seguenti valori  %{record} ancora esistenti
+          has_many: Impossibile cancellare i dati in quanto il seguente valore  %{record}
+            esiste ancora
+          has_one: Impossibile cancellare i dati in quanto dipendono dai seguenti
+            valori  %{record} ancora esistenti
       models:
         unit:
           attributes:
@@ -76,26 +94,29 @@ it:
       leader:
         one: Animatore/trice responsabile
         other: Animatori/trici responsabili
+      participant:
+        one: Teilnehmende(r)
+        other: Teilnehmende
       unit:
         one: Unità
         other: Unitàs
   activity:
     edit:
       title: Modificare l'attività
-      warning: "Attenzione: Occorre salvare il formulario prima di modificare i documenti, altrimenti le modifiche andranno perse."
+      warning: 'Attenzione: Occorre salvare il formulario prima di modificare i documenti,
+        altrimenti le modifiche andranno perse.'
     index:
       title: Attività
     new:
       title: Creare una nuova attività
     show:
-      duration: "Dauer:"
-      activity: Anreise
-      stufe_recommended: "Geeignet für:"
-      more_information: Weitere Informationen
       downloads: Downloads
-      simo_text: "Benötigt Sicherheitsmodul:"
+      duration: 'Dauer:'
       max_people: Max. Gruppengrösse
+      more_information: Weitere Informationen
       possible: möglich
+      simo_text: 'Benötigt Sicherheitsmodul:'
+      stufe_recommended: 'Geeignet für:'
   app:
     title: Orca
   buttons:
@@ -104,6 +125,8 @@ it:
     destroy: cancellare
     edit: modificare
     export_csv: Esportare come CSV
+    filter: Filtern
+    reset: Reset
     save: salvare
     show: visualizzare
   camp_unit_mailer:
@@ -169,6 +192,7 @@ it:
       default: "%d-%m-%Y"
       long: "%d %B %Y"
       short: "%d %b"
+    from_to: "%{from} bis %{to}"
     month_names:
     - 
     - Gennaio
@@ -312,8 +336,9 @@ it:
         In caso di domande, siamo volentieri a disposizione: info@bula21.ch
 
         Per pagare tramite e-banking, puoi utilizzare le informazioni seguenti:
-      pre_text: "Ciao %{salutation_name}\n\nLa tua unità %{camp_unit_title} è stata pre-iscritta con successo per il mova nella valle di Goms. Ti preghiamo ti saldare l'importo entro il 31 luglio 2020.
-                  \nMova - on y va!"
+      pre_text: "Ciao %{salutation_name}\n\nLa tua unità %{camp_unit_title} è stata
+        pre-iscritta con successo per il mova nella valle di Goms. Ti preghiamo ti
+        saldare l'importo entro il 31 luglio 2020. \nMova - on y va!"
       ref: 'Fattura: %{ref}'
       title: Tassa di iscrizione sezionale per il campo federale 2021
   leaders:
@@ -330,8 +355,6 @@ it:
       success: Salvato con successo!
   nav:
     activity: Catalogo
-    tag: Tags
-    transport_location: Transport
     activity_category: Kategorie
     language:
       de: DE
@@ -341,6 +364,8 @@ it:
     leader: Animatori/trici responsabili
     login: Login
     logout: Logout
+    tag: Tags
+    transport_location: Transport
     unit: Unità
   number:
     currency:
@@ -396,34 +421,36 @@ it:
     edit:
       title: Modificare partecipanti
     index:
+      complete_now: Jetzt vervollständigen
+      create_hint: Create hint
+      data_incomplete: Es fehlen Angaben für eine vollständige Anmeldung
       title: Partecipanti
     new:
       title: Creare partecipanti
   pre_text: Pre text
   simple_form:
     confirm_unsaved: 'Attenzione: Tutte le modifiche andranno perse! Vuoi continuare?'
-    participants_count_activity_hint: Max Anzahl Personen die an der Aktivität teilnehmen können
-    participants_count_transport_hint: Max Kapazität der Aktivität (inkl. Leitung)
     options:
       activity:
-        simo:
-          berg: Montagna
-          wasser: Acqua
-          pool: Basis Pool
-          lake: Modul See
         activity_type:
-          excursion: Escursione
           activity: Attività
-          village_global: Village Global
+          excursion: Escursione
           frohnarbeit: Frohnarbeit
+          village_global: Village Global
         block_type:
           la: Attività da campo
           ls: Sport da campo
-        languages: Lingue
+          voila: Voila Bula
         language_de: Deutsch
         language_en: English
         language_fr: Français
         language_it: Italiano
+        languages: Lingue
+        simo:
+          berg: Montagna
+          lake: Modul See
+          pool: Basis Pool
+          wasser: Acqua
       participant:
         gender:
           female: Femminile
@@ -434,6 +461,9 @@ it:
           pio: Pionieri
           pta: SOC
           wolf: Lupetti
+    participants_count_activity_hint: Max Anzahl Personen die an der Aktivität teilnehmen
+      können
+    participants_count_transport_hint: Max Kapazität der Aktivität (inkl. Leitung)
   support:
     array:
       last_word_connector: " e "
@@ -449,6 +479,8 @@ it:
   units:
     edit:
       title: Modificare il campo
+    form:
+      danger_zone: Danger zone
     index:
       title: Il tuo campo
     kv_ids:
@@ -478,10 +510,21 @@ it:
       title: Creare un campo
     show:
       camp_link_midata: Campo su MiData
+      data_complete: Registrazione completa
+      data_incomplete: Registrazione incompleta
       documents: Documenti
+      expected_participants: Expected number of participants
+      expected_participants_explanation_html: The expected amount of participants
+        is imported from your entered numbers in <a href='%{link}' target='_blank'>MiData</a>
+      imported: imported from MiData
       invoices: Fatture
-      participants: Partecipanti
       other_infos: Informazioni supplementari
+      participants: Partecipanti
       questionnaire: Questionario
-      registration_complete: Registrazione completa
-      registration_incomplete: Registrazione incompleta
+  views:
+    pagination:
+      first: First
+      last: Last
+      next: Next
+      previous: Previous
+      truncate: Truncate

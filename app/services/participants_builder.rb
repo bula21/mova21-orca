@@ -48,11 +48,11 @@ class ParticipantsBuilder
 
   def convert_gender(participation_data)
     gender = participation_data['gender']
-    { 'f' => Participant.genders['female'], 'm' => Participant.genders['male'] }[gender]
+    { 'w' => Participant.genders['female'], 'm' => Participant.genders['male'] }[gender]
   end
 
   def participant_from_data(participation_data)
-    participant = Participant.find_or_initialize_by(pbs_id: participation_data['id'])
+    participant = Participant.find_or_initialize_by(pbs_id: participation_data.dig('links', 'person'))
     participant.assign_attributes(assignable_attributes(participation_data))
     participant
   end

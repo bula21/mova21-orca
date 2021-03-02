@@ -176,11 +176,17 @@ ActiveRecord::Schema.define(version: 2021_02_24_181501) do
     t.index ["translatable_id", "translatable_type", "locale", "key"], name: "index_mobility_text_translations_on_keys", unique: true
   end
 
+  create_table "participant_units", force: :cascade do |t|
+    t.bigint "unit_id", null: false
+    t.bigint "participant_id", null: false
+    t.index ["participant_id"], name: "index_participant_units_on_participant_id"
+    t.index ["unit_id"], name: "index_participant_units_on_unit_id"
+  end
+
   create_table "participants", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "scout_name"
-    t.bigint "unit_id", null: false
     t.string "gender"
     t.date "birthdate"
     t.integer "pbs_id"
@@ -189,7 +195,6 @@ ActiveRecord::Schema.define(version: 2021_02_24_181501) do
     t.string "role"
     t.string "email", default: ""
     t.string "phone_number", default: ""
-    t.index ["unit_id"], name: "index_participants_on_unit_id"
   end
 
   create_table "stufen", force: :cascade do |t|
@@ -258,7 +263,8 @@ ActiveRecord::Schema.define(version: 2021_02_24_181501) do
   add_foreign_key "activities", "transport_locations"
   add_foreign_key "invoice_parts", "invoices"
   add_foreign_key "invoices", "units"
-  add_foreign_key "participants", "units"
+  add_foreign_key "participant_units", "participants"
+  add_foreign_key "participant_units", "units"
   add_foreign_key "units", "kvs", primary_key: "pbs_id"
   add_foreign_key "units", "leaders", column: "al_id"
   add_foreign_key "units", "leaders", column: "coach_id"

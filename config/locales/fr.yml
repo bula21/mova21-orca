@@ -3,28 +3,29 @@ fr:
   activerecord:
     attributes:
       activity:
+        activity_category: Kategorie
         activity_documents: Document
-        picture: Image
+        activity_type: Type
+        block_type: Type d'activité
         description: Description
         duration_activity: Dauer der Aktivität (HH:mm)
         duration_journey: Dauer der Anreise (HH:mm)
         goals: Objectifs de l'activité
-        transport_location: Lieu du Transport
-        activity_type: Type
-        block_type: Type d'activité
-        simo: Module de sécurité / SSS
         label: Intitulé de l'activité
-        languages: Langues
         language_de: Deutsch
         language_en: English
         language_fr: Français
         language_it: Italiano
+        languages: Langues
         location: Lieu (approximativement)
-        participants_count_activity: Max. nombre participant.e.s pour activités
         min_participants: Min. Nombre participant
+        participants_count_activity: Max. nombre participant.e.s pour activités
         participants_count_transport: Anz. Personen (inkl. Leitung)
+        picture: Image
+        simo: Module de sécurité / SSS
         stufe_recommended: Branches recommandées
         stufen: Branches éventuelles
+        transport_location: Lieu du Transport
       leader:
         birthdate: Date de naissance
         first_name: Prénom
@@ -35,15 +36,29 @@ fr:
         scout_name: Totem
       participant:
         birthdate: Date de naissance
+        email: Adresse e-mail
         first_name: Prénom
         full_name: Nom
         gender: Sexe
+        genders:
+          female: Femmes
+          male: Hommes
         last_name: Nom de famille
         pbs_id: MSdS ID
+        phone_number: Numéro de téléphone
+        role: Rolle
+        roles:
+          assistant_leader: Responsable
+          helper: Cuisine / Aide
+          leader_mountain_security: Responsable activité de sécurité Montagne
+          leader_snow_security: Responsable activité de sécurité Hiver
+          leader_water_security: Responsable activité de sécurité Eau
+          participant: Participant·e
         scout_name: Totem
       unit:
         abteilung: Groupe
         al: RG
+        district: Quartier
         ends_at: Fin le
         expected_participants: Erwartete Anzahl TN
         expected_participants_f: Nombre de participantes attendues (f)
@@ -55,11 +70,12 @@ fr:
         kv_id: Association cantonale
         lagerleiter: Maîtrise de camp
         language: Langue
-        week: Lagerwoche
-        district: Quartier
+        on_site_at: Lagerdaten
+        pbs_id: Lager ID in der Midata
         starts_at: Début le
         stufe: Branche
         title: Titre
+        week: Lagerwoche
     errors:
       messages:
         incomplete: est incomplète
@@ -78,26 +94,29 @@ fr:
       leader:
         one: Responsable
         other: Responsables
+      participant:
+        one: Teilnehmende(r)
+        other: Teilnehmende
       unit:
         one: Unité
         other: Unitées
   activity:
     edit:
       title: Éditer l'activité
-      warning: "Achtung: Forumlar zuerst speichern und danach Dokumente bearbeiten (Änderungen gehen sonst verloren)"
+      warning: 'Achtung: Forumlar zuerst speichern und danach Dokumente bearbeiten
+        (Änderungen gehen sonst verloren)'
     index:
       title: Activités
     new:
       title: Créer une nouvelle activité
     show:
-      duration: "Dauer:"
-      activity: Anreise
-      stufe_recommended: "Geeignet für:"
-      more_information: Weitere Informationen
       downloads: Downloads
-      simo_text: "Benötigt Sicherheitsmodul:"
+      duration: 'Dauer:'
       max_people: Max. Gruppengrösse
+      more_information: Weitere Informationen
       possible: möglich
+      simo_text: 'Benötigt Sicherheitsmodul:'
+      stufe_recommended: 'Geeignet für:'
   app:
     title: Orca
   buttons:
@@ -106,6 +125,8 @@ fr:
     destroy: löschen
     edit: éditer
     export_csv: Exporter en csv
+    filter: Filtern
+    reset: Reset
     save: sauvegarder
     show: anzeigen
   camp_unit_mailer:
@@ -172,6 +193,7 @@ fr:
       default: "%d.%m.%Y"
       long: "%e %B %Y"
       short: "%e %b"
+    from_to: "%{from} bis %{to}"
     month_names:
     - 
     - janvier
@@ -317,7 +339,11 @@ fr:
         En cas de questions, nous nous tenons bien évidemment à ta disposition: info@bula21.ch
 
         Pour un paiement par e-banking, tu peux te servir des informations ci-dessous:
-      pre_text: "Salut %{salutation_name}\n\nTon unité %{camp_unit_title} a été préinscrite avec succès pour le mova dans la vallée de Conches. Nous te prions te bien vouloir régler le montant jusqu'au 31 juillet 2020.\nMova - on y va!"
+      pre_text: |-
+        Salut %{salutation_name}
+
+        Ton unité %{camp_unit_title} a été préinscrite avec succès pour le mova dans la vallée de Conches. Nous te prions te bien vouloir régler le montant jusqu'au 31 juillet 2020.
+        Mova - on y va!
       ref: 'Montant: %{ref}'
       title: Frais du groupe pour le camp fédéral 2021
   leaders:
@@ -334,8 +360,6 @@ fr:
       success: Enregistré avec succès
   nav:
     activity: Catalogue
-    tag: Tags
-    transport_location: Transport
     activity_category: Kategorie
     language:
       de: DE
@@ -345,6 +369,8 @@ fr:
     leader: Responsables
     login: Login
     logout: Logout
+    tag: Tags
+    transport_location: Transport
     unit: Camp
   number:
     currency:
@@ -400,34 +426,37 @@ fr:
     edit:
       title: Edit participants
     index:
+      complete_now: Jetzt vervollständigen
+      create_hint: Create hint
+      data_incomplete: Es fehlen Angaben für eine vollständige Anmeldung
       title: Participants
     new:
       title: Créer articipants
   pre_text: Pre text
   simple_form:
-    confirm_unsaved: 'Achtung: Alle nicht gespeicherten Änderungen gehen verloren. Sind Sie sicher?'
-    participants_count_activity_hint: Max Anzahl Personen die an der Aktivität teilnehmen können
-    participants_count_transport_hint: Max Kapazität der Aktivität (inkl. Leitung)
+    confirm_unsaved: 'Achtung: Alle nicht gespeicherten Änderungen gehen verloren.
+      Sind Sie sicher?'
     options:
       activity:
-        simo:
-          berg: Montagne
-          wasser: Eau
-          pool: Basis Pool
-          lake: Modul See
         activity_type:
-          excursion: Ausflug
           activity: Aktivität
-          village_global: Village Global
+          excursion: Ausflug
           frohnarbeit: Frohnarbeit
+          village_global: Village Global
         block_type:
           la: Activité de camp
           ls: Sport de camp
-        languages: Langues
+          voila: Voila Bula
         language_de: Deutsch
         language_en: English
         language_fr: Français
         language_it: Italiano
+        languages: Langues
+        simo:
+          berg: Montagne
+          lake: Modul See
+          pool: Basis Pool
+          wasser: Eau
       participant:
         gender:
           female: Féminin
@@ -438,6 +467,9 @@ fr:
           pio: Picos
           pta: SMT
           wolf: Louveteaux
+    participants_count_activity_hint: Max Anzahl Personen die an der Aktivität teilnehmen
+      können
+    participants_count_transport_hint: Max Kapazität der Aktivität (inkl. Leitung)
   support:
     array:
       last_word_connector: " et "
@@ -453,6 +485,8 @@ fr:
   units:
     edit:
       title: Modifier un camp
+    form:
+      danger_zone: Danger zone
     index:
       title: Ton camp
     kv_ids:
@@ -482,10 +516,21 @@ fr:
       title: Créer un camp
     show:
       camp_link_midata: Camp sur MiData
+      data_complete: Inscription complète
+      data_incomplete: Inscription pas complète
       documents: Documents
+      expected_participants: Expected number of participants
+      expected_participants_explanation_html: The expected amount of participants
+        is imported from your entered numbers in <a href='%{link}' target='_blank'>MiData</a>
+      imported: imported from MiData
       invoices: Invoices
       other_infos: Information
       participants: Participants
       questionnaire: Questionaire
-      registration_complete: Inscription complète
-      registration_incomplete: Inscription pas complète
+  views:
+    pagination:
+      first: First
+      last: Last
+      next: Next
+      previous: Previous
+      truncate: Truncate

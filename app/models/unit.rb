@@ -42,10 +42,12 @@
 class Unit < ApplicationRecord
   belongs_to :al, class_name: 'Leader', inverse_of: :al_units, optional: true
   belongs_to :lagerleiter, class_name: 'Leader', inverse_of: :lagerleiter_units
-  belongs_to :kv, inverse_of: :units, primary_key: :pbs_id
   has_many :invoices, inverse_of: :unit, dependent: :destroy
-  has_many :participants, -> { order(role: :asc, last_name: :asc, scout_name: :asc) },
-           inverse_of: :unit, dependent: :destroy
+  has_many :participant_units, inverse_of: :unit, dependent: :destroy
+  has_many :participants, lambda {
+                            order(role: :asc, last_name: :asc, scout_name: :asc)
+                          }, through: :participant_units, inverse_of: :units, dependent: :destroy
+  belongs_to :kv, inverse_of: :units, primary_key: :pbs_id
 
   # belongs_to :coach, class_name: 'Leader', inverse_of: :coach_units, optional: true
   has_many :invoices, inverse_of: :unit, dependent: :destroy

@@ -1,25 +1,58 @@
 .h1 = t('participants.index.title')
 
-= link_to(t('buttons.create'), new_unit_participant_path, class: 'btn btn-primary mb-3') if can?(:create, Participant)
+.alert.alert-info
+  i.fas.fa-info-circle
+  p =< t('participants.index.create_hint')
+  = link_to(t('buttons.create'), new_unit_participant_path, class: 'btn btn-info mb-3') if can?(:create, Participant)
 
 .table-responsive
   table.table
     thead
       tr
-        th = Participant.human_attribute_name(:full_name)
-        th = Participant.human_attribute_name(:birthdate)
         th
-
+        th = Participant.human_attribute_name(:full_name)
+        th  = Participant.human_attribute_name(:birthdate)
+        / th = Participant.human_attribute_name(:address) # maybe later (Stand: 2.08.2020)
+        th = Participant.human_attribute_name(:gender)
+        / th = Participant.human_attribute_name(:email)
+        / th = Participant.human_attribute_name(:phone_number)
+        th = Participant.human_attribute_name(:role)
+        th
     tbody
       - @participants.each do |participant|
-        tr
+        - incomplete = !participant.complete?
+        tr class="#{incomplete ? 'incomplete' : 'complete'}"
+          td
+            - if incomplete
+              span.badge.badge-danger.p-2
+                i.fas.fa-exclamation-triangle
           td = participant.full_name
           td
             = participant.birthdate.present? ? I18n.l(participant.birthdate) : '-'
+          td = participant.gender.present? ? t(participant.gender, scope: 'activerecord.attributes.participant.genders'): ''
+          / td = participant.email
+          / td = participant.phone_number
           td
             - if participant.role.present?
-              = t(participant.role.underscore.gsub('/','_'), scope: 'participants.roles')
-          td.p-1
+              = translated_midata_role(participant.role)
+          td.p-1.text-right
             - if can?(:edit, participant)
-              = link_to(t('buttons.edit'), edit_unit_participant_path(participant.unit, participant), class: 'btn btn-primary')
-
+              - if participant.pbs_id.present?
+                = link_to midata_link_to_participant(participant), target: '_blank', class: 'btn'
+                  i.fa.fa-edit
+              - else
+                = link_to edit_unit_participant_path(@unit, participant), class: 'btn btn-primary'
+                  i.fa.fa-edit
+        - if incomplete
+          tr
+            td.border-top-0
+            td.border-top-0 colspan=7
+              .alert.alert-danger
+                = "#{t('participants.index.data_incomplete')}:"
+                ul.pb-0.mb-0
+                  - participant.errors.full_messages.each do |message|
+                    li = message
+                - if participant.pbs_id.present?
+                  = link_to t('participants.index.complete_now'), midata_link_to_participant(participant), target: '_blank', class: 'btn btn-secondary mt-2'
+                - else
+                  = link_to t('participants.index.complete_now'), edit_unit_participant_path(@unit, participant), class: 'btn btn-secondary mt-2'

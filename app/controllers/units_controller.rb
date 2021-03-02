@@ -50,8 +50,11 @@ class UnitsController < ApplicationController
   private
 
   def unit_params
-    params.require(:unit).permit(:title, :abteilung, :kv_id, :stufe, :expected_participants_f, :expected_participants_m,
-                                 :expected_participants_leitung_f, :expected_participants_leitung_m,
-                                 :starts_at, :ends_at, :al_id, :lagerleiter_id, :language, :week, :district)
+    permitted = %i[title abteilung kv_id stufe expected_participants_f expected_participants_m
+                   expected_participants_leitung_f expected_participants_leitung_m
+                   starts_at ends_at al_id lagerleiter_id language week district]
+    permitted << :pbs_id if can?(:manage, @unit)
+
+    params.require(:unit).permit(permitted)
   end
 end

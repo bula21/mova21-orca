@@ -31,6 +31,10 @@ FactoryBot.define do
     scout_name { Faker::Superhero.name }
     birthdate { Faker::Date.birthday(min_age: 5, max_age: 35) }
     gender { Participant.genders.keys.sample }
-    unit
+    units { build_list(:unit, 1) }
+
+    trait :non_midata do
+      pbs_id { nil }
+    end
   end
 end

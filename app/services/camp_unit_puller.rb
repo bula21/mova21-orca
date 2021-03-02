@@ -15,7 +15,8 @@ class CampUnitPuller
     return unless camp_unit
 
     pbs_group_id = group_of_camp(camp_unit_data)&.[]('id')
-    camp_unit.participants = ParticipantsFetcher.new(pbs_group_id, camp_unit.pbs_id).call
+
+    camp_unit.participants = fetch_participants(camp_unit, pbs_group_id)
     camp_unit.save!
     camp_unit
   rescue ActiveRecord::RecordInvalid => e
@@ -37,6 +38,12 @@ class CampUnitPuller
   end
 
   private
+
+  def fetch_participants(camp_unit, pbs_group_id)
+    manual_non_midata_participants = camp_unit.participants.select { |participant| participant.pbs_id.nil? }
+    midata_participants = ParticipantsFetcher.new(pbs_group_id, camp_unit.pbs_id).call
+    [*manual_non_midata_participants, *midata_participants]
+  end
 
   def camp_unit_data(camp_unit_data, pbs_id)
     camp_unit_data ||= @midata_service.fetch_camp_unit_data(pbs_id)

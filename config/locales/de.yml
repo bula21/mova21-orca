@@ -3,29 +3,29 @@ de:
   activerecord:
     attributes:
       activity:
+        activity_category: Kategorie
         activity_documents: Dokumente
-        picture: Bild
+        activity_type: Art
+        block_type: Block Typ
         description: Beschreibung
         duration_activity: Dauer der Aktivität (HH:mm)
         duration_journey: Dauer der Anreise (HH:mm)
         goals: Leitziele
-        transport_location: Transport-Ort
-        activity_category: Kategorie
-        activity_type: Art
-        block_type: Block Typ
-        simo: Sicherheitsmodul / SLRG
         label: Bezeichnung
-        languages: Sprachen
         language_de: Deutsch
         language_en: English
         language_fr: Français
         language_it: Italiano
+        languages: Sprachen
         location: Ort (grob)
-        participants_count_activity: Max. Anz. Personen
         min_participants: Min. TNs
+        participants_count_activity: Max. Anz. Personen
         participants_count_transport: Anz. Personen (inkl. Leitung)
+        picture: Bild
+        simo: Sicherheitsmodul / SLRG
         stufe_recommended: Stufen Empfohlen
         stufen: Stufen möglich
+        transport_location: Transport-Ort
       leader:
         birthdate: Geburtsdatum
         first_name: Vorname
@@ -36,15 +36,29 @@ de:
         scout_name: Pfadiname
       participant:
         birthdate: Geburtsdatum
+        email: E-Mail
         first_name: Vorname
         full_name: Name
         gender: Geschlecht
+        genders:
+          female: Weiblich
+          male: Männlich
         last_name: Nachname
         pbs_id: PBS ID
+        phone_number: Telefonnummer
+        role: Rolle
+        roles:
+          assistant_leader: Leitung
+          helper: Küche / Helfer/-in
+          leader_mountain_security: Leiter-/in Sicherheitsaktivität Berg
+          leader_snow_security: Leiter-/in Sicherheitsaktivität Winter
+          leader_water_security: Leiter-/in Sicherheitsaktivität Wasser
+          participant: Teilnehmende/-r
         scout_name: Pfadiname
       unit:
         abteilung: Abteilung
         al: AL
+        district: Quartier
         ends_at: Ende am
         expected_participants: Erwartete Anzahl TN
         expected_participants_f: Erwartete Anzahl TN (f)
@@ -56,11 +70,12 @@ de:
         kv_id: KV
         lagerleiter: Lagerleiter
         language: Sprache
-        week: Lagerwoche
-        district: Quartier
+        on_site_at: Lagerdaten
+        pbs_id: Lager ID in der Midata
         starts_at: Beginn am
         stufe: Stufe
         title: Titel
+        week: Lagerwoche
     errors:
       messages:
         incomplete: ist unvollständig
@@ -78,29 +93,29 @@ de:
       leader:
         one: Leitperson
         other: Leitpersonen
-      unit:
-        one: Lager
-        other: Lager
       participant:
         one: Teilnehmende(r)
         other: Teilnehmende
+      unit:
+        one: Lager
+        other: Lager
   activity:
     edit:
       title: Aktivität editieren
-      warning: "Achtung: Forumlar zuerst speichern und danach Dokumente bearbeiten (Änderungen gehen sonst verloren)"
+      warning: 'Achtung: Forumlar zuerst speichern und danach Dokumente bearbeiten
+        (Änderungen gehen sonst verloren)'
     index:
       title: Aktivitäten
     new:
       title: Neue Aktivität erfassen
     show:
-      duration: "Dauer:"
-      activity: Anreise
-      stufe_recommended: "Geeignet für:"
-      more_information: Weitere Informationen
       downloads: Downloads
-      simo_text: "Benötigt Sicherheitsmodul:"
+      duration: 'Dauer:'
       max_people: Max. Gruppengrösse
+      more_information: Weitere Informationen
       possible: möglich
+      simo_text: 'Benötigt Sicherheitsmodul:'
+      stufe_recommended: 'Geeignet für:'
   app:
     title: Orca
   buttons:
@@ -109,9 +124,10 @@ de:
     destroy: löschen
     edit: editieren
     export_csv: Export als CSV
+    filter: Filtern
+    reset: Reset
     save: Speichern
     show: anzeigen
-    filter: Filtern
   camp_unit_mailer:
     complete_notification:
       body: |-
@@ -151,7 +167,7 @@ de:
     - Fr
     - Sa
     abbr_month_names:
-    -
+    - 
     - Jan
     - Feb
     - Mär
@@ -176,8 +192,9 @@ de:
       default: "%d.%m.%Y"
       long: "%e. %B %Y"
       short: "%e. %b"
+    from_to: "%{from} bis %{to}"
     month_names:
-    -
+    - 
     - Januar
     - Februar
     - März
@@ -338,8 +355,6 @@ de:
       success: Erfolgreich gespeichert!
   nav:
     activity: Katalog
-    tag: Tags
-    transport_location: Transport
     activity_category: Kategorie
     language:
       de: DE
@@ -349,6 +364,8 @@ de:
     leader: Leitpersonen
     login: Login
     logout: Logout
+    tag: Tags
+    transport_location: Transport
     unit: Lager
   number:
     currency:
@@ -409,34 +426,27 @@ de:
       format:
         delimiter: ''
   participants:
-    roles:
-      event_camp_role_assistant_leader: Leitung
-      event_camp_role_helper: Küche / Helfer/-in
-      event_camp_role_participant: Teilnehmer
-      event_camp_role_leader_mountain_security: Leiter-/in Sicherheitsaktivität Berg
-      event_camp_role_leader_snow_security: Leiter-/in Sicherheitsaktivität Winter
-      event_camp_role_leader_water_security: Leiter-/in Sicherheitsaktivität Wasser
     edit:
       title: Teilnehmenden bearbeiten
     index:
+      complete_now: Jetzt vervollständigen
+      create_hint: Die Teilnehmenden sollten via MiData verwaltet werden. Solltest
+        gewisse Personen nicht dort hinterlegt haben, kannst du sie hier manuell hinzufügen.
+      data_incomplete: Es fehlen Angaben für eine vollständige Anmeldung
       title: Teilnehmende
     new:
       title: Teilnehmende erstellen
   pre_text: Pre text
   simple_form:
-    confirm_unsaved: 'Achtung: Alle nicht gespeicherten Änderungen gehen verloren. Sind Sie sicher?'
+    confirm_unsaved: 'Achtung: Alle nicht gespeicherten Änderungen gehen verloren.
+      Sind Sie sicher?'
     options:
       activity:
-        simo:
-          berg: Berg
-          wasser: Wasser
-          pool: Basis Pool
-          lake: Modul See
         activity_type:
-          excursion: Ausflug
           activity: Aktivität
-          village_global: Village Global
+          excursion: Ausflug
           frohnarbeit: Frohnarbeit
+          village_global: Village Global
         block_type:
           la: Lageraktivität
           ls: Lagersport
@@ -445,6 +455,12 @@ de:
         language_en: English
         language_fr: Français
         language_it: Italiano
+        languages: Languages
+        simo:
+          berg: Berg
+          lake: Modul See
+          pool: Basis Pool
+          wasser: Wasser
       participant:
         gender:
           female: Weiblich
@@ -455,6 +471,9 @@ de:
           pio: Pio
           pta: PTA
           wolf: Wolf
+    participants_count_activity_hint: Max Anzahl Personen die an der Aktivität teilnehmen
+      können
+    participants_count_transport_hint: Max Kapazität der Aktivität (inkl. Leitung)
   support:
     array:
       last_word_connector: " und "
@@ -470,6 +489,8 @@ de:
   units:
     edit:
       title: Lager editieren
+    form:
+      danger_zone: Danger zone
     index:
       title: Deine Lager
     kv_ids:
@@ -499,12 +520,21 @@ de:
       title: Lager erstellen
     show:
       camp_link_midata: Lager auf MiData
+      data_complete: Daten vollständig
+      data_incomplete: Daten nicht vollständig
       documents: Dokumente
+      expected_participants: Erwartete Anzahl TN
+      expected_participants_explanation_html: Die erwartete Anzahl Teilnehmende wird
+        aus der <a href='%{link}' target='_blank'>MiData</a> importiert.
+      imported: von MiData importiert
       invoices: Rechnungen
       other_infos: Weitere Informationen
-      participants: Teilnehmende
+      participants: Teilnehmende anzeigen
       questionnaire: Fragebogen
-      registration_complete: Registration vollständig
-      registration_incomplete: Registration nicht vollständig
-      expected_participants: "Erwartete Anzahl TN"
-      imported: "von MiData importiert"
+  views:
+    pagination:
+      first: First
+      last: Last
+      next: Next
+      previous: Previous
+      truncate: Truncate

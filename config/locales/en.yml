@@ -3,28 +3,29 @@ en:
   activerecord:
     attributes:
       activity:
+        activity_category: Kategorie
         activity_documents: Documents
-        picture: Picture
+        activity_type: Type
+        block_type: Block Typ
         description: Description
         duration_activity: Duration of the activity (HH:mm)
         duration_journey: Duration of the journey (HH:mm)
         goals: Leitziele
-        transport_location: Transport-Ort
-        activity_type: Type
-        block_type: Block Typ
-        simo: Sicherheitsmodul
         label: Label
-        languages: Languages
         language_de: Deutsch
         language_en: English
         language_fr: Français
         language_it: Italiano
+        languages: Languages
         location: Location
-        participants_count_activity: Max. Paritcipant count Activity
         min_participants: Min. TNs
+        participants_count_activity: Max. Paritcipant count Activity
         participants_count_transport: Anz. Personen (inkl. Leitung)
+        picture: Picture
+        simo: Sicherheitsmodul
         stufe_recommended: Age recommended
         stufen: Age
+        transport_location: Transport-Ort
       leader:
         birthdate: Birthdate
         first_name: Firstname
@@ -35,15 +36,29 @@ en:
         scout_name: Scoutname
       participant:
         birthdate: Birthdate
+        email: E-Mail
         first_name: Firstname
         full_name: Name
         gender: Gender
+        genders:
+          female: Female
+          male: Male
         last_name: Lastname
         pbs_id: PBS ID
+        phone_number: Phone number
+        role: Rolle
+        roles:
+          assistant_leader: Leader
+          helper: Kitchen / Assistance
+          leader_mountain_security: Leader Mountain Security
+          leader_snow_security: Leader Snow Security
+          leader_water_security: Leader Water Security
+          participant: Participant
         scout_name: Scoutname
       unit:
         abteilung: Group
         al: Group leader
+        district: District
         ends_at: End on
         expected_participants: Erwartete Anzahl TN
         expected_participants_f: Expected number of participants (w)
@@ -55,11 +70,12 @@ en:
         kv_id: Cantonal association
         lagerleiter: Main unit leader
         language: Language
-        week: Week
-        district: District
+        on_site_at: Lagerdaten
+        pbs_id: Lager ID in der Midata
         starts_at: Start on
         stufe: Stufe
         title: Title
+        week: Week
     errors:
       messages:
         incomplete: ist unvollständig
@@ -76,26 +92,29 @@ en:
       leader:
         one: Leader
         other: Leaders
+      participant:
+        one: Teilnehmende(r)
+        other: Teilnehmende
       unit:
         one: Camp
         other: Camps
   activity:
     edit:
       title: Aktivität editieren
-      warning: "Achtung: Forumlar zuerst speichern und danach Dokumente bearbeiten (Änderungen gehen sonst verloren)"
+      warning: 'Achtung: Forumlar zuerst speichern und danach Dokumente bearbeiten
+        (Änderungen gehen sonst verloren)'
     index:
       title: Aktivitäten
     new:
       title: Neue Aktivität erfassen
     show:
-      duration: "Dauer:"
-      activity: Anreise
-      stufe_recommended: "Geeignet für:"
-      more_information: Weitere Informationen
       downloads: Downloads
-      simo_text: "Benötigt Sicherheitsmodul:"
+      duration: 'Dauer:'
       max_people: Max. Gruppengrösse
+      more_information: Weitere Informationen
       possible: möglich
+      simo_text: 'Benötigt Sicherheitsmodul:'
+      stufe_recommended: 'Geeignet für:'
   app:
     title: Orca
   buttons:
@@ -104,6 +123,8 @@ en:
     destroy: Delete
     edit: Edit
     export_csv: Export as CSV
+    filter: Filtern
+    reset: Reset
     save: Save
     show: Show
   camp_unit_mailer:
@@ -126,7 +147,7 @@ en:
     - Fri
     - Sat
     abbr_month_names:
-    -
+    - 
     - Jan
     - Feb
     - Mar
@@ -151,8 +172,9 @@ en:
       default: "%Y-%m-%d"
       long: "%B %d, %Y"
       short: "%b %d"
+    from_to: "%{from} bis %{to}"
     month_names:
-    -
+    - 
     - January
     - February
     - March
@@ -313,8 +335,6 @@ en:
       success: saved!
   nav:
     activity: Activity
-    tag: Tags
-    transport_location: Transport
     activity_category: Kategory
     language:
       de: DE
@@ -324,6 +344,8 @@ en:
     leader: Leader
     login: Login
     logout: Logout
+    tag: Tags
+    transport_location: Transport
     unit: Unit
   number:
     currency:
@@ -379,35 +401,37 @@ en:
     edit:
       title: Edit participants
     index:
+      complete_now: Jetzt vervollständigen
+      create_hint: ''
+      data_incomplete: Es fehlen Angaben für eine vollständige Anmeldung
       title: Participants
     new:
       title: Create participants
   pre_text: Pre text
   simple_form:
-    confirm_unsaved: 'Achtung: Alle nicht gespeicherten Änderungen gehen verloren. Sind Sie sicher?'
-    participants_count_activity_hint: Max Anzahl Personen die an der Aktivität teilnehmen können
-    participants_count_transport_hint: Max Kapazität der Aktivität (inkl. Leitung)
+    confirm_unsaved: 'Achtung: Alle nicht gespeicherten Änderungen gehen verloren.
+      Sind Sie sicher?'
     options:
       activity:
-        simo:
-          berg: Berg
-          wasser: Wasser
-          pool: Basis Pool
-          lake: Modul See
         activity_type:
-          excursion: Ausflug
           activity: Aktivität
-          village_global: Village Global
+          excursion: Ausflug
           frohnarbeit: Frohnarbeit
+          village_global: Village Global
         block_type:
           la: Lageraktivität
           ls: Lagersport
           voila: Voila Bula
-        languages: Languages
         language_de: Deutsch
         language_en: English
         language_fr: Français
         language_it: Italiano
+        languages: Languages
+        simo:
+          berg: Berg
+          lake: Modul See
+          pool: Basis Pool
+          wasser: Wasser
       participant:
         gender:
           female: Female
@@ -418,6 +442,9 @@ en:
           pio: Venture Scout
           pta: PTA
           wolf: Cub Scout
+    participants_count_activity_hint: Max Anzahl Personen die an der Aktivität teilnehmen
+      können
+    participants_count_transport_hint: Max Kapazität der Aktivität (inkl. Leitung)
   support:
     array:
       last_word_connector: ", and "
@@ -433,6 +460,8 @@ en:
   units:
     edit:
       title: Edit a camp
+    form:
+      danger_zone: Danger zone
     index:
       title: Your camps
     kv_ids:
@@ -462,12 +491,21 @@ en:
       title: Set up a camp
     show:
       camp_link_midata: Camp on MiData
+      data_complete: Registration complete
+      data_incomplete: Registration incomplete
       documents: Documents
+      expected_participants: Expected number of participants
+      expected_participants_explanation_html: The expected amount of participants
+        is imported from your entered numbers in <a href='%{link}' target='_blank'>MiData</a>
+      imported: imported from MiData
       invoices: Invoices
       other_infos: Other Information
       participants: Participants
       questionnaire: Form
-      registration_complete: Registration complete
-      registration_incomplete: Registration incomplete
-      expected_participants: "Expected number of participants"
-      imported: "imported from MiData"
+  views:
+    pagination:
+      first: First
+      last: Last
+      next: Next
+      previous: Previous
+      truncate: Truncate
