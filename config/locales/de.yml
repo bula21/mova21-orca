@@ -69,10 +69,12 @@ de:
         kv_id: KV
         lagerleiter: Lagerleiter
         language: Sprache
+        pbs_id: Lager ID in der Midata
         week: Lagerwoche
         district: Quartier
         starts_at: Beginn am
         stufe: Stufe
+        on_site_at: Lagerdaten
         title: Titel
     errors:
       messages:
@@ -189,6 +191,7 @@ de:
       default: "%d.%m.%Y"
       long: "%e. %B %Y"
       short: "%e. %b"
+    from_to: "%{from} bis %{to}"
     month_names:
     -
     - Januar
@@ -512,7 +515,7 @@ de:
       documents: Dokumente
       invoices: Rechnungen
       other_infos: Weitere Informationen
-      participants: Teilnehmende
+      participants: Teilnehmende anzeigen
       questionnaire: Fragebogen
       data_complete: Daten vollständig
       data_incomplete: Daten nicht vollständig

@@ -1,8 +1,4 @@
-.h1.pb-0 = @unit.title
-
-= link_to midata_link_to_unit(@unit), class: 'mb-3' do
-  i.fas.fa-link
-  =< t('.camp_link_midata')
+.h1.pb-5 = @unit.title
 
 .card.mt-3.position-relative[class=(@unit.complete? ? 'border-success' : 'border-danger')]
   .card-body
@@ -19,18 +15,19 @@
 
       .row
         .col-6
-          dt = t('activerecord.attributes.unit.starts_at')
-          dd = l(@unit.starts_at)
+          dt = t('activerecord.attributes.unit.on_site_at')
+          dd = t('date.from_to', from: l(@unit.starts_at.to_date), to: l(@unit.ends_at.to_date))
 
-        .col-6
-          dt = t('activerecord.attributes.unit.ends_at')
-          dd = l(@unit.ends_at)
-
-
-      .row
         .col-6
           dt = t('activerecord.attributes.unit.al')
           dd = @unit.al&.full_name
+
+      .row
+        .col-6.pt-4
+          - if @unit.pbs_id.present?
+            = link_to midata_link_to_unit(@unit), class: 'mb-3' do 
+              i.fas.fa-link
+              =< t('.camp_link_midata')
 
         .col-6
           dt = t('activerecord.attributes.unit.lagerleiter')
@@ -51,8 +48,9 @@
 
 
     - if can?(:edit, @unit)
-      = link_to(edit_unit_path(@unit), class: 'stretched-link')
+      = link_to(edit_unit_path(@unit))
         i.fa.fa-edit
+        =< t('buttons.edit')
 
   - if @unit.complete?
     .card-footer.bg-success.border-success.text-white
