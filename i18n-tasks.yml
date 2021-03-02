@@ -3,6 +3,7 @@ ignore_unused:
 - '{authlogic,kaminari}.*'
 - '{time,datetime,date,support,number,helpers}.*'
 - 'flash.*'
+- 'app.title'
 - 'titles.*'
 - 'faker.*'
 - 'units.*'
