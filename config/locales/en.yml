@@ -47,12 +47,12 @@ en:
           female: Female
           male: Male
         roles:
-          event_camp_role_assistant_leader: Leader
-          event_camp_role_helper: Kitchen / Assistance
-          event_camp_role_participant: Participant
-          event_camp_role_leader_mountain_security: Leader Mountain Security
-          event_camp_role_leader_snow_security: Leader Snow Security
-          event_camp_role_leader_water_security: Leader Water Security
+          assistant_leader: Leader
+          helper: Kitchen / Assistance
+          participant: Participant
+          leader_mountain_security: Leader Mountain Security
+          leader_snow_security: Leader Snow Security
+          leader_water_security: Leader Water Security
       unit:
         abteilung: Group
         al: Group leader

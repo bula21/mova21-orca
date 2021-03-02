@@ -47,12 +47,12 @@ fr:
           female: Femmes
           male: Hommes
         roles:
-          event_camp_role_assistant_leader: Responsable
-          event_camp_role_helper: Cuisine / Aide
-          event_camp_role_participant: Participant·e
-          event_camp_role_leader_mountain_security: Responsable activité de sécurité Montagne
-          event_camp_role_leader_snow_security: Responsable activité de sécurité Hiver
-          event_camp_role_leader_water_security: Responsable activité de sécurité Eau
+          assistant_leader: Responsable
+          helper: Cuisine / Aide
+          participant: Participant·e
+          leader_mountain_security: Responsable activité de sécurité Montagne
+          leader_snow_security: Responsable activité de sécurité Hiver
+          leader_water_security: Responsable activité de sécurité Eau
       unit:
         abteilung: Groupe
         al: RG

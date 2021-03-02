@@ -4,7 +4,7 @@
   i.fas.fa-link
   =< t('.camp_link_midata')
 
-.card.mt-3[class=(@unit.complete? ? 'border-success' : 'border-danger')]
+.card.mt-3.position-relative[class=(@unit.complete? ? 'border-success' : 'border-danger')]
   .card-body
     dl
       .row
@@ -50,7 +50,9 @@
             = mail_to @unit.lagerleiter.email, @unit.lagerleiter.email
 
 
-    = link_to(t('buttons.edit'), edit_unit_path(@unit), class: 'btn btn-primary') if can?(:edit, @unit)
+    - if can?(:edit, @unit)
+      = link_to(edit_unit_path(@unit), class: 'stretched-link')
+        i.fa.fa-edit
 
   - if @unit.complete?
     .card-footer.bg-success.border-success.text-white
@@ -67,9 +69,6 @@
 .card.mt-4
   .card-body
     h2 = t('units.show.expected_participants')
-    p.alert.alert-info
-      i.fas.fa-info-circle
-      =< t('units.show.expected_participants_explanation_html', link: [ENV['MIDATA_BASE_URL'], 'events', @unit.pbs_id].join('/'))
     dl
       .row
         .col-6
@@ -88,13 +87,15 @@
         .col-6
           dt = t('activerecord.attributes.unit.expected_participants_m')
           dd = @unit.expected_participants_m
+  - if @unit.pbs_id.present?
+    .card-footer.bg-info.text-white
+      i.fas.fa-info-circle
+      =< t('units.show.expected_participants_explanation_html', link: [ENV['MIDATA_BASE_URL'], 'events', @unit.pbs_id].join('/'))
 
 
 .card.mt-4[class=(@unit.participants.all?(&:complete?) ? 'border-success' : 'border-danger')]
   .card-body
     h2 = t('units.show.participants')
-
-    = link_to t('.participants'), unit_participants_path(@unit), class: 'btn btn-secondary'
 
     p
       - participants_count = @unit.participants.count
@@ -110,6 +111,9 @@
               = translated_midata_role(role)
               ' :
             dd = @unit.participants.with_role(role).count
+
+    = link_to t('.participants'), unit_participants_path(@unit), class: 'stretched-link'
+
   - if @unit.participants.all?(&:complete?)
     .card-footer.bg-success.border-success.text-white
       = t('.data_complete')

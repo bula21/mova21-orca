@@ -47,12 +47,12 @@ it:
           female: Donne
           male: Uomini
         roles:
-          event_camp_role_assistant_leader: Responsabile
-          event_camp_role_helper: Cucina / aiutante
-          event_camp_role_participant: Partecipante
-          event_camp_role_leader_mountain_security: Animatore ambito di sicurezza Montagna
-          event_camp_role_leader_snow_security: Animatore ambito di sicurezza Inverno
-          event_camp_role_leader_water_security: Animatore ambito di sicurezza Acqua
+          assistant_leader: Responsabile
+          helper: Cucina / aiutante
+          participant: Partecipante
+          leader_mountain_security: Animatore ambito di sicurezza Montagna
+          leader_snow_security: Animatore ambito di sicurezza Inverno
+          leader_water_security: Animatore ambito di sicurezza Acqua
       unit:
         abteilung: Sezione
         al: CSZ

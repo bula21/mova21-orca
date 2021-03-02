@@ -47,13 +47,14 @@ de:
         genders:
           female: Weiblich
           male: Männlich
+        role: Rolle
         roles:
-          event_camp_role_assistant_leader: Leitung
-          event_camp_role_helper: Küche / Helfer/-in
-          event_camp_role_participant: Teilnehmende
-          event_camp_role_leader_mountain_security: Leiter-/in Sicherheitsaktivität Berg
-          event_camp_role_leader_snow_security: Leiter-/in Sicherheitsaktivität Winter
-          event_camp_role_leader_water_security: Leiter-/in Sicherheitsaktivität Wasser
+          assistant_leader: Leitung
+          helper: Küche / Helfer/-in
+          participant: Teilnehmende/-r
+          leader_mountain_security: Leiter-/in Sicherheitsaktivität Berg
+          leader_snow_security: Leiter-/in Sicherheitsaktivität Winter
+          leader_water_security: Leiter-/in Sicherheitsaktivität Wasser
       unit:
         abteilung: Abteilung
         al: AL

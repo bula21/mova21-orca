@@ -24,12 +24,14 @@
 #  fk_rails_...  (unit_id => units.id)
 #
 class Participant < ApplicationRecord
-  MIDATA_EVENT_CAMP_ROLE_PARTICIPANT = 'Event::Camp::Role::Participant'
-  MIDATA_EVENT_CAMP_ROLE_ASSISTANT_LEADER = 'Event::Camp::Role::AssistantLeader'
-  MIDATA_EVENT_CAMP_ROLE_HELPER = 'Event::Camp::Role::Helper'
-  MIDATA_EVENT_CAMP_ROLE_LEADER_MOUNTAIN_SECURITY = 'Event::Camp::Role::LeaderMountainSecurity'
-  MIDATA_EVENT_CAMP_ROLE_LEADER_SNOW_SECURITY = 'Event::Camp::Role::LeaderSnowSecurity'
-  MIDATA_EVENT_CAMP_ROLE_LEADER_WATER_SECURITY = 'Event::Camp::Role::LeaderWaterSecurity'
+  MIDATA_EVENT_CAMP_ROLES = {
+    participant: 'Event::Camp::Role::Participant',
+    assistant_leader: 'Event::Camp::Role::AssistantLeader',
+    helper: 'Event::Camp::Role::Helper',
+    leader_mountain_security: 'Event::Camp::Role::LeaderMountainSecurity',
+    leader_snow_security: 'Event::Camp::Role::LeaderSnowSecurity',
+    leader_water_security: 'Event::Camp::Role::LeaderWaterSecurity'
+  }.freeze
 
   has_many :participant_units, inverse_of: :participant, dependent: :destroy
   has_many :units, through: :participant_units, dependent: :nullify
@@ -41,15 +43,10 @@ class Participant < ApplicationRecord
   scope :non_midata, -> { where(pbs_id: nil) }
 
   enum gender: { male: 'male', female: 'female' }
-  enum role: { MIDATA_EVENT_CAMP_ROLE_PARTICIPANT => MIDATA_EVENT_CAMP_ROLE_PARTICIPANT,
-               MIDATA_EVENT_CAMP_ROLE_ASSISTANT_LEADER => MIDATA_EVENT_CAMP_ROLE_ASSISTANT_LEADER,
-               MIDATA_EVENT_CAMP_ROLE_HELPER => MIDATA_EVENT_CAMP_ROLE_HELPER,
-               MIDATA_EVENT_CAMP_ROLE_LEADER_MOUNTAIN_SECURITY => MIDATA_EVENT_CAMP_ROLE_LEADER_MOUNTAIN_SECURITY,
-               MIDATA_EVENT_CAMP_ROLE_LEADER_SNOW_SECURITY => MIDATA_EVENT_CAMP_ROLE_LEADER_SNOW_SECURITY,
-               MIDATA_EVENT_CAMP_ROLE_LEADER_WATER_SECURITY => MIDATA_EVENT_CAMP_ROLE_LEADER_WATER_SECURITY }
+  enum role: MIDATA_EVENT_CAMP_ROLES
 
   def full_name
-    [first_and_last_name, scout_name].compact.join(' v/o ')
+    [first_and_last_name, scout_name.presence].compact.join(' v/o ')
   end
 
   def complete?
