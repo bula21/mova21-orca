@@ -28,7 +28,7 @@ class Leader < ApplicationRecord
 
   validates :email, presence: true
   validates :pbs_id, uniqueness: { allow_blank: true }
-  validates :last_name, :first_name, :address, :zip_code, :town, :phone_number, presence: true, on: :complete
+  validates :last_name, :first_name, :address, :zip_code, :town, presence: true, on: :complete
   belongs_to :user, optional: true, inverse_of: :leader, foreign_key: :email, primary_key: :email
 
   enum gender: { male: 'male', female: 'female' }

@@ -32,6 +32,7 @@ RSpec.describe CampUnitBuilder do
       it 'has the leader' do
         expect(lagerleiter).to be_a(Leader)
         expect(lagerleiter).to be_valid
+        expect(lagerleiter).to be_valid(:complete)
         expect(lagerleiter).to have_attributes(pbs_id: 10, last_name: 'Newton', first_name: 'Azra',
                                                scout_name: 'Voluptate', email: 'newton_azra@hitobito.example.com',
                                                address: 'Sauerbruchstr. 42c', zip_code: '1125', town: 'Jaridorf',
