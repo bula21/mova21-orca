@@ -120,6 +120,8 @@ de:
     title: Orca
   buttons:
     back: zurück
+    close: Schliessen
+    confirm_delete: Bist du dir sicher, dass du Löschen möchtest?
     create: Erstellen
     destroy: löschen
     edit: editieren
@@ -350,8 +352,13 @@ de:
       title: Neue Leitperson erfassen
   messages:
     created:
+      error: Fehler beim erstellt.
       success: Erfolgreich erstellt
+    deleted:
+      error: Fehler beim löschen.
+      success: Erfolgreich gelöscht!
     updated:
+      error: Fehler beim bearbeiten.
       success: Erfolgreich gespeichert!
   nav:
     activity: Katalog

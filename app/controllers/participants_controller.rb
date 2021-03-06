@@ -22,6 +22,15 @@ class ParticipantsController < ApplicationController
     end
   end
 
+  def destroy
+    flash = if @participant.destroy
+              { success: I18n.t('messages.deleted.success') }
+            else
+              { error: I18n.t('messages.deleted.error') }
+            end
+    redirect_to unit_participants_path(@unit), flash: flash
+  end
+
   def update
     if @participant.update(participant_params)
       redirect_to unit_participants_path(@unit), notice: I18n.t('messages.updated.success')

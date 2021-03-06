@@ -12,7 +12,7 @@
     .col-6
       = f.input :scout_name
     .col-6
-      = f.input :role, collection: Participant.roles.transform_keys{ |key| translated_midata_role(key) }
+      = f.input :role, collection: Participant.roles.keys.map { |key| [translated_midata_role(key), key] }
     .col-6
       = f.input :email
     .col-6
