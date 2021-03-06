@@ -44,4 +44,5 @@ html
             li.nav-item
               = link_to t('nav.login'), new_user_session_path, class: 'nav-link'
     .container
+      = render 'flash_messages'
       = yield

@@ -1,0 +1,5 @@
+- flash.each do |type, message|
+  .alert.alert-dismissible role=alert class=alert_class_for(type)
+    button class='close' data-dismiss='alert' aria-label=t('buttons.close')
+      span aria-hidden="true" &times;
+    == message
