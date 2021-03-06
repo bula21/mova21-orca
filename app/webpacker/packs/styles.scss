@@ -91,3 +91,7 @@
     max-height: 100px;
     overflow-y: scroll;
 }
+
+.page-item.active > .page-link {
+    background-color: $secondary;
+}
