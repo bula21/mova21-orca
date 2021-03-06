@@ -43,6 +43,9 @@
               - else
                 = link_to edit_unit_participant_path(@unit, participant), class: 'btn btn-primary'
                   i.fa.fa-edit
+                = link_to unit_participant_path(@unit, participant), class: 'btn ml-1 btn-primary',
+                        data: { confirm: t('buttons.confirm_delete') }, method: :delete
+                  i.fa.fa-trash
         - if incomplete
           tr
             td.border-top-0

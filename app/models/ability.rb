@@ -27,8 +27,8 @@ class Ability
 
     can %i[read create], Participant, units: { al: { email: user.email } }
     can %i[read create], Participant, units: { lagerleiter: { email: user.email } }
-    can %i[edit update], Participant, pbs_id: nil, units: { al: { email: user.email } }
-    can %i[edit update], Participant, pbs_id: nil, units: { lagerleiter: { email: user.email } }
+    can %i[edit update destroy], Participant, pbs_id: nil, units: { al: { email: user.email } }
+    can %i[edit update destroy], Participant, pbs_id: nil, units: { lagerleiter: { email: user.email } }
     can :read, Activity
   end
 
