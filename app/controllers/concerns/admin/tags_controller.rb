@@ -16,7 +16,7 @@ module Admin
       @tag = Tag.new(tag_params)
 
       if @tag.save
-        redirect_to admin_tags_path, notice: 'Tag was successfully created.'
+        redirect_to admin_tags_path, notice: I18n.t('messages.created.success')
       else
         render :new
       end
@@ -24,7 +24,7 @@ module Admin
 
     def update
       if @tag.update(tag_params)
-        redirect_to admin_tags_path, notice: 'Tag was successfully updated.'
+        redirect_to admin_tags_path, notice: I18n.t('messages.updated.success')
       else
         render :edit
       end
@@ -32,7 +32,7 @@ module Admin
 
     def destroy
       @tag.destroy
-      redirect_to admin_tags_url, notice: 'Tag was successfully destroyed.'
+      redirect_to admin_tags_url, notice: I18n.t('messages.deleted.success')
     end
 
     private

@@ -78,3 +78,4 @@ hr
 hr.mt-4
 => link_to t('buttons.back'), activities_path, class: 'btn btn-secondary'
 =< link_to t('buttons.edit'), edit_activity_path(@activity), class: 'btn btn-primary' if can?(:edit, @activity)
+=< link_to t('buttons.destroy'), activity_path(@activity), data: { confirm: t('buttons.confirm_delete') }, method: :delete, class: 'btn btn-secondary float-right' if can?(:delete, @activity)
