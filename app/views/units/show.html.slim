@@ -135,7 +135,14 @@
 
           ul
             - @unit.documents.each do |document|
-              li= link_to document.filename, url_for(document)
+              li
+                = link_to document.filename, url_for(document)
+                - if can?(:manage, @unit)
+                  = link_to unit_document_url(@unit, document), class: 'btn ml-1 btn-danger float-right',
+                          data: { confirm: t('buttons.confirm_delete') }, method: :delete
+                    i.fa.fa-trash
+                br
+                small.text-muted = I18n.l(document.created_at)
 
 .card.mt-4
   .card-body

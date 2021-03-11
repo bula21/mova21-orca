@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class UnitsController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource except: %i[add_document delete_document]
   skip_before_action :verify_authenticity_token, only: :add_document
 
   def index
@@ -45,6 +45,14 @@ class UnitsController < ApplicationController
     authorize! :manage, @unit
     @unit.documents.attach(io: File.open(params[:file]),
                            filename: (params[:filename] || params[:file].original_filename))
+  end
+
+  def delete_document
+    @unit = Unit.find(params[:unit_id])
+    authorize! :manage, @unit
+    @unit.documents.find(params[:id]).purge
+
+    redirect_to unit_path(@unit), notice: I18n.t('messages.deleted.success')
   end
 
   private
