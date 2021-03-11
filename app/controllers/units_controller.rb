@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class UnitsController < ApplicationController
-  load_and_authorize_resource except: :delete_document
+  load_and_authorize_resource except: %i[add_document delete_document]
   skip_before_action :verify_authenticity_token, only: :add_document
 
   def index
