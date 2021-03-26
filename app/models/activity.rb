@@ -52,7 +52,7 @@ class Activity < ApplicationRecord
                         village_global: 'village_global', frohnarbeit: 'frohnarbeit' }
 
   validates :block_type, :participants_count_activity, :stufen,
-            :stufe_recommended, :activity_category, presence: true
+            :stufe_recommended, :activity_category, :duration_activity, presence: true
   validates :duration_activity, format: { with: /\A\d{2}:\d{2}\z/ }, allow_nil: true
 
   translates :label, type: :string, locale_accessors: true, fallbacks: true

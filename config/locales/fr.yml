@@ -524,6 +524,9 @@ fr:
         is imported from your entered numbers in <a href='%{link}' target='_blank'>MiData</a>
       imported: imported from MiData
       invoices: Invoices
+      paid:
+        true: payé
+        false: ouvert
       other_infos: Information
       participants: Participants
       questionnaire: Questionaire
