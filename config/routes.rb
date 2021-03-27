@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :units, except: [:destroy] do
     resources :participants, except: %i[show]
     post :documents, to: 'units#add_document', as: :documents
+    delete 'document/:id', to: 'units#delete_document', as: :document
   end
   resources :leaders, except: [:destroy]
   resources :activities

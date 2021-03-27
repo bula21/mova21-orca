@@ -535,6 +535,9 @@ de:
         aus der <a href='%{link}' target='_blank'>MiData</a> importiert.
       imported: von MiData importiert
       invoices: Rechnungen
+      paid:
+        true: bezahlt
+        false: offen
       other_infos: Weitere Informationen
       participants: Teilnehmende anzeigen
       questionnaire: Fragebogen

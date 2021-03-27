@@ -21,4 +21,4 @@
             = tag.icon
             i class="#{tag.icon} ml-2"
           td = link_to t('buttons.edit'), edit_admin_tag_path(tag), class: 'btn btn-primary' if can?(:edit, tag)
-          td = link_to t('buttons.destroy'), admin_tag_path(tag), data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-secondary' if can?(:delete, tag)
+          td = link_to t('buttons.destroy'), admin_tag_path(tag), data: { confirm: t('buttons.confirm_delete') }, method: :delete, class: 'btn btn-secondary' if can?(:delete, tag)

@@ -19,7 +19,7 @@ class ActivitiesController < ApplicationController
     @activity = Activity.new(activity_params)
 
     if @activity.save
-      redirect_to @activity, notice: 'Activity was successfully created.'
+      redirect_to @activity, notice: I18n.t('messages.created.success')
     else
       render :new
     end
@@ -27,7 +27,7 @@ class ActivitiesController < ApplicationController
 
   def update
     if @activity.update(activity_params)
-      redirect_to @activity, notice: 'Activity was successfully updated.'
+      redirect_to @activity, notice: I18n.t('messages.updated.success')
     else
       render :edit
     end
@@ -40,7 +40,7 @@ class ActivitiesController < ApplicationController
       delete_picture
     else
       @activity.destroy
-      redirect_to activities_url, notice: 'Activity was successfully destroyed.'
+      redirect_to activities_url, notice: I18n.t('messages.deleted.success')
     end
   end
 

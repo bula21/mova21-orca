@@ -518,6 +518,9 @@ it:
         is imported from your entered numbers in <a href='%{link}' target='_blank'>MiData</a>
       imported: imported from MiData
       invoices: Fatture
+      paid:
+        true: pagato
+        false: aperto
       other_infos: Informazioni supplementari
       participants: Partecipanti
       questionnaire: Questionario

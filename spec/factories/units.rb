@@ -59,5 +59,9 @@ FactoryBot.define do
     al { build(:user).leader }
     lagerleiter { build(:user).leader }
     limesurvey_token { SecureRandom.base64(10) }
+
+    trait :with_documents do
+      documents { [Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/sample.pdf'))] }
+    end
   end
 end

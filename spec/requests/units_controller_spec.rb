@@ -86,4 +86,28 @@ RSpec.describe UnitsController, type: :request do
       it { expect(unit.documents.last.filename).to eq('test.pdf') }
     end
   end
+
+  describe 'DELETE #remove_document' do
+    let!(:unit) { create(:unit, :with_documents) }
+
+    context 'when not signed in' do
+      it_behaves_like 'a login protected page' do
+        let(:test_request) { delete unit_document_path(unit, unit.documents.first) }
+      end
+    end
+
+    context 'when signed in' do
+      subject(:request) { delete unit_document_path(unit, unit.documents.first) }
+
+      let(:user) { create(:user, :admin) }
+
+      before do
+        sign_in user
+      end
+
+      it 'deletes the file' do
+        expect { request }.to change { unit.documents.count }.from(1).to(0)
+      end
+    end
+  end
 end
