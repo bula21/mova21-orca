@@ -1,8 +1,9 @@
+# frozen_string_literal: true
 
 class FeatureToggle
   class << self
-    def with(name, &block)
-      block.call if enabled?(name)
+    def with(name)
+      yield if enabled?(name)
     end
 
     def enabled?(name)
@@ -14,8 +15,7 @@ class FeatureToggle
     end
 
     def enabled_features
-      @enabled_features ||= ENV.fetch('FEATURES', '').split(%r{[,;:]}).map(&:to_sym)
+      @enabled_features ||= ENV.fetch('FEATURES', '').split(/[,;:]/).map(&:to_sym)
     end
   end
 end
-
