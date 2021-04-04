@@ -1,4 +1,4 @@
-= simple_form_for(@filter, url: activities_path, method: :GET, scope: '', html: { class: 'row mb-5' }) do |f|
+= simple_form_for(@filter, url: unit_unit_activities_path(@unit), method: :GET, scope: '', html: { class: 'row mb-5' }) do |f|
   = f.hidden_field :locale, value: I18n.locale
 
   .col-md-3

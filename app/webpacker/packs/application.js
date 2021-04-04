@@ -6,6 +6,7 @@
 import jQuery from 'jquery';
 import Turbolinks from 'turbolinks';
 import Rails from '@rails/ujs'
+import Sortable from 'sortablejs';
 import 'jquery'
 import 'popper.js'
 import 'bootstrap'
@@ -26,3 +27,28 @@ window.$ = jQuery;
 var componentRequireContext = require.context("components", true);
 var ReactRailsUJS = require("react_ujs");
 ReactRailsUJS.useContext(componentRequireContext);
+
+
+document.addEventListener("turbolinks:load", () => {
+  for (const el of document.getElementsByClassName('sortable-list')) {
+    setupDragSort(el);
+  }
+});
+
+function setupDragSort(el) {
+  if (!el) return;
+
+  Sortable.create(el, {
+    onEnd: (event) => {
+      fetch(event.item.dataset.sortCallbackUrl, {
+        body: JSON.stringify({ sort_index: event.newIndex }),
+        method: 'PATCH',
+        redirect: 'manual',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-Token': document.querySelector('meta[name=csrf-token]').content,
+        }
+      })
+    }
+  });
+}

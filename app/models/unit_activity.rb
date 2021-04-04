@@ -8,4 +8,6 @@ class UnitActivity < ApplicationRecord
   ranks :priority, with_same: :unit_id
 
   scope :prioritized, -> { rank(:priority) }
+
+  validates :activity_id, uniqueness: { scope: :unit_id }
 end

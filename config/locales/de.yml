@@ -492,6 +492,11 @@ de:
       long: "%A, %d. %B %Y, %H:%M Uhr"
       short: "%d. %B, %H:%M Uhr"
     pm: nachmittags
+  unit_activities:
+    index:
+      title: Title
+  unit_activity:
+    book: Book
   units:
     edit:
       title: Lager editieren
@@ -526,6 +531,9 @@ de:
       title: Lager erstellen
     show:
       camp_id: Lager Id
+      activity_booking: Activity booking
+      activity_booking_complete: Activity booking complete
+      activity_booking_incomplete: Activity booking incomplete
       camp_link_midata: Lager auf MiData
       data_complete: Daten vollständig
       data_incomplete: Daten nicht vollständig

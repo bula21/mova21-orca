@@ -482,6 +482,11 @@ it:
       long: "%d %B %Y %H:%M"
       short: "%d %b %H:%M"
     pm: pm
+  unit_activities:
+    index:
+      title: Title
+  unit_activity:
+    book: Book
   units:
     edit:
       title: Modificare il campo
@@ -516,6 +521,9 @@ it:
       title: Creare un campo
     show:
       camp_id: Campo id
+      activity_booking: Activity booking
+      activity_booking_complete: Activity booking complete
+      activity_booking_incomplete: Activity booking incomplete
       camp_link_midata: Campo su MiData
       data_complete: Registrazione completa
       data_incomplete: Registrazione incompleta

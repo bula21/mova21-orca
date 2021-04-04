@@ -1,0 +1,73 @@
+.h1.pb-0.d-flex.justify-content-between
+  = @activity.label
+  span.badge[class="badge-#{@activity.activity_category.css_code}" style='align-self: baseline']
+    = @activity.activity_category&.label
+- @activity.tags.each do |tag|
+  i class="#{tag.icon} mr-2" title="#{tag.label}"
+
+div.mt-4
+  = image_tag(@activity.picture, height: "100") unless @activity.picture.blank?
+
+hr
+
+.row.mt-3
+  .col-2.font-weight-bold
+    = t('activity.show.duration')
+  .col-8
+    = "#{@activity.duration_activity}"
+.row
+  .col-2.font-weight-bold
+    = t('activity.show.stufe_recommended')
+  .col-8
+    - stufen = @activity.stufen.map(&:name) - @activity.stufe_recommended.map(&:name)
+    = (@activity.stufe_recommended.map(&:name) + stufen.map { |s| "#{s} (#{t('activity.show.possible')})" }).to_sentence
+
+- if @activity.simo
+  .alert.alert-info.mt-2
+    = "#{t('activity.show.simo_text')} #{t(@activity.simo, scope: 'simple_form.options.activity.simo')}"
+hr
+.mt-4
+    = markdown(@activity.description).html_safe
+
+hr
+
+.h4.mt-3 = t('activity.show.more_information')
+.row
+  .col-6
+    dt = t('activity.show.max_people')
+    dd = @activity.participants_count_transport
+
+    dt = t('activerecord.attributes.activity.languages')
+    dd 
+      ul
+        - @activity.languages.select { |language, selected| selected }.keys.each do |language|
+          li= t("simple_form.options.activity.#{language}") 
+
+    dt = t('activerecord.attributes.activity.block_type')
+    dd = t(@activity.block_type || 'none', scope: 'simple_form.options.activity.block_type')
+
+
+  .col-6
+    dt = t('activerecord.attributes.activity.goals')
+    dd
+      ul
+        - @activity.goals.each do |s|
+          li = s.name
+
+    dt = t('activerecord.attributes.activity.activity_type')
+    dd = @activity.activity_category&.full_label
+
+
+- if @activity.activity_documents.any?
+  hr
+  .h4.mt-3 = t('activity.show.downloads')
+  .row
+    .col-6
+      ul.list-group
+        - @activity.activity_documents.each do |document|
+          li.list-group-item = link_to document.filename, rails_blob_path(document, disposition: 'attachment')
+
+
+hr.mt-4
+=> link_to t('buttons.back'), unit_unit_activities_path(@unit, anchor: anchor_for(@activity)), class: 'btn btn-secondary'
+=< button_to t('unit_activity.book'), unit_unit_activities_path(@unit, unit_activity: { activity_id: @activity.to_param }), method: :post, class: 'btn btn-primary'

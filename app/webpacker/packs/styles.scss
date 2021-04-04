@@ -95,3 +95,11 @@
 .page-item.active > .page-link {
     background-color: $secondary;
 }
+
+.draggable {
+    background-image: url(../images/drag-vertical.png);
+    cursor: grab;
+    background-repeat: no-repeat;
+    background-position: -.5rem;
+    background-size: 2rem;
+}

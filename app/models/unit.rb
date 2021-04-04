@@ -113,4 +113,8 @@ class Unit < ApplicationRecord
   def limesurvey_url
     @limesurvey_url ||= LimesurveyService.new.url(token: limesurvey_token, lang: lagerleiter.language)
   end
+
+  def activity_booking 
+    @activity_booking ||= ActivityBooking.new(self)
+  end
 end

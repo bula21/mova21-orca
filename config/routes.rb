@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :units, except: [:destroy] do
     resources :participants, except: %i[show]
+    resources :unit_activities, except: %i[new edit]
     post :documents, to: 'units#add_document', as: :documents
     delete 'document/:id', to: 'units#delete_document', as: :document
   end

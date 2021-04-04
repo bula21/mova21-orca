@@ -1,0 +1,21 @@
+.h1 = t('.title')
+
+.row 
+  .col-md-9
+    = render partial: 'filter'
+    = render partial: 'activity_listing', collection: @activities, as: :activity
+    = paginate @activities
+
+  .col-md-3 
+    .card 
+      .card-header
+        | Booked
+      .card-body.p-0
+        ol#unit-activities-list.sortable-list.list-group
+          - @unit_activities.each do |unit_activity|
+            li.list-group-item.draggable[data-sort-callback-url=unit_unit_activity_path(@unit, unit_activity) id=anchor_for(unit_activity.activity)]
+              = unit_activity.activity.label
+              =< link_to t('buttons.destroy'), unit_unit_activity_path(@unit, unit_activity), data: { confirm: t('buttons.confirm_delete') }, method: :delete, class: 'btn btn-secondary btn-sm'
+      .card-footer 
+        = @unit.unit_activities.count
+

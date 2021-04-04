@@ -163,5 +163,19 @@
     dt = t('activerecord.attributes.unit.language')
     dd = @unit.language
 
+- if @unit.activity_booking.open?
+  .card.mt-4
+    .card-body
+      h2 = t('units.show.activity_booking')
+
+      = link_to unit_unit_activities_path(@unit)
+        = t('units.show.activity_booking')
+
+    - if @unit.activity_booking.complete?
+      .card-footer.bg-success.border-success.text-white
+        = t('.activity_booking_complete')
+    - else
+      .card-footer.bg-danger.border-danger.text-white
+        = t('.activity_booking_incomplete')
 
 = link_to t('buttons.back'), units_path, class: 'btn btn-secondary mt-4'

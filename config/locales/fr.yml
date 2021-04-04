@@ -488,6 +488,11 @@ fr:
       long: "%A, %d %B %Y %H h %M min %S s %Z"
       short: "%d %b %H h %M"
     pm: pm
+  unit_activities:
+    index:
+      title: Title
+  unit_activity:
+    book: Book
   units:
     edit:
       title: Modifier un camp
@@ -522,6 +527,9 @@ fr:
       title: Créer un camp
     show:
       camp_id: Camp id
+      activity_booking: Activity booking
+      activity_booking_complete: Activity booking complete
+      activity_booking_incomplete: Activity booking incomplete
       camp_link_midata: Camp sur MiData
       data_complete: Inscription complète
       data_incomplete: Inscription pas complète
