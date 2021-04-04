@@ -1,21 +1,26 @@
 .h1 = t('.title')
 
-.row 
+.row
   .col-md-9
     = render partial: 'filter'
     = render partial: 'activity_listing', collection: @activities, as: :activity
     = paginate @activities
 
-  .col-md-3 
-    .card 
+  .col-md-3.position-relative
+    .card.position-sticky[style="top: 2rem;"]
       .card-header
-        | Booked
+        =<> UnitActivity.model_name.human(count: :other)
+        .badge.badge-primary
+          = @unit.unit_activities.count
+          | /3
       .card-body.p-0
-        ol#unit-activities-list.sortable-list.list-group
-          - @unit_activities.each do |unit_activity|
-            li.list-group-item.draggable[data-sort-callback-url=unit_unit_activity_path(@unit, unit_activity) id=anchor_for(unit_activity.activity)]
+        ol.sortable-list.list-group.small
+          - @unit_activities.prioritized.each do |unit_activity|
+            li.list-group-item.draggable.p-1.pl-4[data-sort-callback-url=priorize_unit_unit_activity_path(@unit, unit_activity) id=anchor_for(unit_activity.activity)]
               = unit_activity.activity.label
-              =< link_to t('buttons.destroy'), unit_unit_activity_path(@unit, unit_activity), data: { confirm: t('buttons.confirm_delete') }, method: :delete, class: 'btn btn-secondary btn-sm'
-      .card-footer 
-        = @unit.unit_activities.count
+              .d-flex.justify-content-end
+                = link_to unit_unit_activity_path(@unit, unit_activity.activity), class: 'btn btn-sm', title: t('buttons.show') 
+                  i.fa.fa-eye
+                = link_to unit_unit_activity_path(@unit, unit_activity), data: { confirm: t('buttons.confirm_delete') }, method: :delete, class: 'btn btn-sm', title: t('buttons.destroy') 
+                  i.fa.fa-trash
 

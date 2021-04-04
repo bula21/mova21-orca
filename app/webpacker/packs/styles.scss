@@ -1,105 +1,112 @@
-@import '../src/stylesheets/variables';
-@import '~bootstrap/scss/bootstrap';
-@import '~@fortawesome/fontawesome-free/scss/fontawesome';
-@import '~@fortawesome/fontawesome-free/scss/regular';
-@import '~@fortawesome/fontawesome-free/scss/solid';
+@import "../src/stylesheets/variables";
+@import "~bootstrap/scss/bootstrap";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+@import "~@fortawesome/fontawesome-free/scss/solid";
 
 .container {
   margin-bottom: 20px;
 }
 
-.h1, .title {
+.h1,
+.title {
   padding: 4rem 0 2rem 0;
 }
 
-.bg-primary-light{
-    background: #3490df;
+.bg-primary-light {
+  background: #3490df;
 }
-.bg-success-light{
-    background: #6cbf6c;
+.bg-success-light {
+  background: #6cbf6c;
 }
-.bg-info-light{
-    background: #6bc6e1;
+.bg-info-light {
+  background: #6bc6e1;
 }
-.bg-warning-light{
-    background: #f1b55f;
+.bg-warning-light {
+  background: #f1b55f;
 }
-.bg-danger-light{
-    background: #dc6460;
+.bg-danger-light {
+  background: #dc6460;
 }
 
 .mova-yellow {
-    background-color: $_yellow;
-    color: black;
+  background-color: $_yellow;
+  color: black;
 }
 
 .mova-orange {
-    background-color: $_orange;
-    color: black;
+  background-color: $_orange;
+  color: black;
 }
 
 .mova-block-btn {
-    display: block;
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  font-size: 3.5em;
+  padding: 0;
+  clear: both;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2), 0 0 5px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  overflow: hidden;
+
+  &:hover {
     text-decoration: none;
-    text-align: center;
-    font-size: 3.5em;
-    padding: 0;
-    clear: both;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.2), 0 0 5px rgba(0,0,0,0.2);
-    border-radius: 5px;
-    overflow: hidden;
+  }
 
-    &:hover {
-        text-decoration: none;
-    }
-
-    &>div {
-        padding: .25em;
-        font-weight: bold;
-    }
+  & > div {
+    padding: 0.25em;
+    font-weight: bold;
+  }
 }
 
 .badge-excursion {
-    color: #fff;
-    background-color: #E6500F;
+  color: #fff;
+  background-color: #e6500f;
 }
 
 .badge-village_global {
-    color: #212529;;
-    background-color: #FFEB00;
+  color: #212529;
+  background-color: #ffeb00;
 }
 
 .badge-activity {
-    color: #212529;;
-    background-color: #55BEFF;
+  color: #212529;
+  background-color: #55beff;
 }
 
 .badge-frohnarbeit {
-    color: #fff;;
-    background-color: #3ca434;
+  color: #fff;
+  background-color: #3ca434;
 }
 
 .activity-card {
-    background-color: white;
-    padding: 1rem;
-    border-radius: 5px;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.2), 0 0 5px rgba(0,0,0,0.2);
-    margin-bottom: 3rem;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2), 0 0 5px rgba(0, 0, 0, 0.2);
+  margin-bottom: 3rem;
+  display: block;
 }
 
 .scrollable {
-    max-height: 100px;
-    overflow-y: scroll;
+  max-height: 100px;
+  overflow-y: scroll;
 }
 
 .page-item.active > .page-link {
-    background-color: $secondary;
+  background-color: $secondary;
 }
 
 .draggable {
-    background-image: url(../images/drag-vertical.png);
-    cursor: grab;
-    background-repeat: no-repeat;
-    background-position: -.5rem;
-    background-size: 2rem;
+  background-image: url(../images/drag-vertical.png);
+  cursor: grab;
+  background-repeat: no-repeat;
+  background-position: -0.5rem;
+  background-size: 2rem;
+}
+
+.z-100 {
+  position: relative;
+  z-index: 100;
 }

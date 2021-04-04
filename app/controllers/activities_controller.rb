@@ -3,8 +3,7 @@
 class ActivitiesController < ApplicationController
   load_and_authorize_resource except: [:create]
 
-  def index
-  end
+  def index; end
 
   def show; end
 

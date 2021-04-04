@@ -41,7 +41,7 @@ function setupDragSort(el) {
   Sortable.create(el, {
     onEnd: (event) => {
       fetch(event.item.dataset.sortCallbackUrl, {
-        body: JSON.stringify({ sort_index: event.newIndex }),
+        body: JSON.stringify({ index: event.newIndex }),
         method: 'PATCH',
         redirect: 'manual',
         headers: {

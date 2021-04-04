@@ -69,5 +69,7 @@ hr
 
 
 hr.mt-4
-=> link_to t('buttons.back'), unit_unit_activities_path(@unit, anchor: anchor_for(@activity)), class: 'btn btn-secondary'
-=< button_to t('unit_activity.book'), unit_unit_activities_path(@unit, unit_activity: { activity_id: @activity.to_param }), method: :post, class: 'btn btn-primary'
+
+.d-flex
+  => link_to t('buttons.back'), unit_unit_activities_path(@unit, anchor: anchor_for(@activity)), class: 'btn '
+  =< button_to t('unit_activity.book'), unit_unit_activities_path(@unit, unit_activity: { activity_id: @activity.to_param }), method: :post, class: 'btn btn-primary'

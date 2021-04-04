@@ -54,7 +54,7 @@ class Activity < ApplicationRecord
   enum activity_type: { excursion: 'excursion', activity: 'activity',
                         village_global: 'village_global', frohnarbeit: 'frohnarbeit' }
 
-  scope :bookable_by, ->(unit) { all }
+  scope :bookable_by, ->(_unit) { all }
 
   validates :block_type, :participants_count_activity, :stufen,
             :stufe_recommended, :activity_category, :duration_activity, presence: true

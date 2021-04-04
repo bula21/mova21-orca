@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class UnitActivitiesController < ApplicationController
   load_and_authorize_resource :unit
   load_and_authorize_resource through: :unit, except: %i[show]
 
-  def index 
+  def index
     @activities = filter.apply(Activity.bookable_by(@unit)).page params[:page]
   end
 
@@ -10,8 +12,8 @@ class UnitActivitiesController < ApplicationController
     @activity = Activity.accessible_by(current_ability).find(params[:id])
   end
 
-
   def create
+    @unit_activity.priority_position = :last
     flash = if @unit_activity.save
               { success: I18n.t('messages.created.success') }
             else
@@ -22,18 +24,21 @@ class UnitActivitiesController < ApplicationController
 
   def destroy
     @unit_activity.destroy
-    redirect_to unit_unit_activities_path(@unit)
+    redirect_to unit_unit_activities_path(@unit), notice: I18n.t('messages.deleted.success')
+  end
+
+  def priorize
+    @unit_activity.update(priority_position: params[:index])
   end
 
   def update
     @unit_activity.assign_attributes(unit_activity_params)
-    @unit_activity.priority_position = params[:sort_index] if params[:sort_index].present?
 
     if @unit_activity.save
-      redirect_to unit_unit_activities_path(@unit, anchor: helpers.anchor_for(@unit_activity.activity)), 
-        notice: I18n.t('messages.updated.success')
+      redirect_to unit_unit_activities_path(@unit, anchor: helpers.anchor_for(@unit_activity.activity)),
+                  notice: I18n.t('messages.updated.success')
     else
-      render :edit
+      render :edit, alert: I18n.t('messages.updated.error')
     end
   end
 

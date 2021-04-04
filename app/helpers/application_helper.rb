@@ -16,7 +16,7 @@ module ApplicationHelper
     markdown.render(content)
   end
 
-  def anchor_for(model) 
+  def anchor_for(model)
     "#{model.model_name.param_key}-#{model.to_param}"
   end
 

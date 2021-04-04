@@ -6,7 +6,6 @@ class UnitActivity < ApplicationRecord
 
   include RankedModel
   ranks :priority, with_same: :unit_id
-
   scope :prioritized, -> { rank(:priority) }
 
   validates :activity_id, uniqueness: { scope: :unit_id }

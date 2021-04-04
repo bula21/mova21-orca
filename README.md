@@ -17,10 +17,7 @@ If you have started the containers, you can access a bash CLI from the running d
 docker-compose exec app ash
 ```
 
-To improve the reload process of the website during development the webpack-dev-server can be launch used the following command
-```
-docker-compose exec app bin/webpack-dev-server
-```
+### Roles
 
 ### Tests
 ```
@@ -39,7 +36,6 @@ Build
 docker-compose -f docker-compose.production.yml build production
 ```
 
-
 ## Environemnt variables
 ### Developer Stategy
 ENVs that have to be set:
@@ -55,7 +51,14 @@ ENVs that have to be set:
 - ROOT_CAMP_UNIT_ID_PIO: The ID of the root Piostufen-Lager
 - ROOT_CAMP_UNIT_ID_PTA: The ID of the root Pta-Lager
 
-### Setup Auth
+### Feature Flips
+
+Use the `FEATURES` ENV variable to enable features.
+
+Currently available features are:
+
+- unit_activity_booking
+
 
 ### STORAGE
 We use ActiveStorage to store files. To set it up in production use these ENV-Variables:
@@ -65,6 +68,10 @@ We use ActiveStorage to store files. To set it up in production use these ENV-Va
 - STORAGE_ACCESS_KEY=
 - STORAGE_CONTAINER=
 
+
+## Tests
+
+docker-compose exec app bin/rspec
 ## Database structure
 ### User roles
 - User (`role_user`)
@@ -81,6 +88,7 @@ We use ActiveStorage to store files. To set it up in production use these ENV-Va
 # Get the first user
 bin/rails c
 user = User.first
+```
 
 # Give a user admin role
 user.role_admin = true
@@ -101,9 +109,9 @@ bin/rails r "PullAllCampUnitsJob.perform_now"
 reload!
 ```
 
-## Tasks
+### Tasks
 
-### Export Invoices
+#### Export Invoices
 
 ```ruby
 puts InvoiceExporter.new.export
