@@ -100,6 +100,9 @@ it:
       unit:
         one: Unità
         other: Unitàs
+      unit_activity:
+        one: Buchbare Aktivität
+        other: Buchbare Aktivitäten
   activity:
     edit:
       title: Modificare l'attività
@@ -352,11 +355,13 @@ it:
       title: Registrare un nuovo animatore/trice
   messages:
     created:
+      error: Fehler beim erstellen!
       success: Creato con successo
     deleted:
       error: Fehler beim löschen.
       success: Erfolgreich gelöscht!
     updated:
+      error: Fehler beim speichern!
       success: Salvato con successo!
   nav:
     activity: Catalogo
@@ -482,11 +487,9 @@ it:
       long: "%d %B %Y %H:%M"
       short: "%d %b %H:%M"
     pm: pm
-  unit_activities:
-    index:
-      title: Title
   unit_activity:
     book: Book
+    read_more: Read more
   units:
     edit:
       title: Modificare il campo
