@@ -172,7 +172,7 @@ de:
     - Fr
     - Sa
     abbr_month_names:
-    - 
+    -
     - Jan
     - Feb
     - Mär
@@ -199,7 +199,7 @@ de:
       short: "%e. %b"
     from_to: "%{from} bis %{to}"
     month_names:
-    - 
+    -
     - Januar
     - Februar
     - März
