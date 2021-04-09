@@ -35,7 +35,7 @@ class ParticipantsBuilder
   end
 
   def role(participation_data)
-    roles = participation_data['roles']
+    roles = participation_data['roles'].uniq
     warn_if_multiple_roles(participation_data['id'], roles)
     roles.first['type']
   end
