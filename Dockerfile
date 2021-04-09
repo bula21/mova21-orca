@@ -1,5 +1,5 @@
 ### === base === ###
-FROM ruby:2.7.3-alpine3.13 AS base
+FROM ruby:2.7.3-alpine AS base
 RUN apk add --no-cache --update postgresql-dev tzdata nodejs
 
 ENV BUNDLE_PATH=/app/vendor/bundle
@@ -10,13 +10,14 @@ WORKDIR /app
 ### === development === ###
 FROM base AS development
 RUN apk add --update build-base \
+  libffi \
   linux-headers \
   git \
   yarn \
   less \
   curl \
-  gnupg \
-  python3
+  gnupg 
+# python3
 
 RUN gem install solargraph
 
@@ -36,7 +37,7 @@ ENV NODE_ENV=production
 COPY --chown=app . /app
 
 RUN bundle config without test:development && bundle config cache true \
- bundle install && bundle cache
+  bundle install && bundle cache
 RUN yarn install
 
 RUN bin/webpack
