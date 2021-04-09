@@ -121,6 +121,8 @@ fr:
     title: Orca
   buttons:
     back: retour
+    close: Schliessen
+    confirm_delete: Bist du dir sicher, dass du Löschen möchtest?
     create: créer
     destroy: löschen
     edit: éditer
@@ -168,7 +170,7 @@ fr:
     - ven
     - sam
     abbr_month_names:
-    - 
+    -
     - jan.
     - fév.
     - mar.
@@ -195,7 +197,7 @@ fr:
       short: "%e %b"
     from_to: "%{from} bis %{to}"
     month_names:
-    - 
+    -
     - janvier
     - février
     - mars
@@ -356,6 +358,9 @@ fr:
   messages:
     created:
       success: Crée avec succès
+    deleted:
+      error: Fehler beim löschen.
+      success: Erfolgreich gelöscht!
     updated:
       success: Enregistré avec succès
   nav:
@@ -524,10 +529,10 @@ fr:
         is imported from your entered numbers in <a href='%{link}' target='_blank'>MiData</a>
       imported: imported from MiData
       invoices: Invoices
-      paid:
-        true: payé
-        false: ouvert
       other_infos: Information
+      paid:
+        'false': ouvert
+        'true': payé
       participants: Participants
       questionnaire: Questionaire
   views:
