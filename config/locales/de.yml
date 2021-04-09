@@ -169,7 +169,7 @@ de:
     - Fr
     - Sa
     abbr_month_names:
-    - 
+    -
     - Jan
     - Feb
     - Mär
@@ -196,7 +196,7 @@ de:
       short: "%e. %b"
     from_to: "%{from} bis %{to}"
     month_names:
-    - 
+    -
     - Januar
     - Februar
     - März
@@ -352,13 +352,11 @@ de:
       title: Neue Leitperson erfassen
   messages:
     created:
-      error: Fehler beim erstellt.
       success: Erfolgreich erstellt
     deleted:
       error: Fehler beim löschen.
       success: Erfolgreich gelöscht!
     updated:
-      error: Fehler beim bearbeiten.
       success: Erfolgreich gespeichert!
   nav:
     activity: Katalog
@@ -535,10 +533,10 @@ de:
         aus der <a href='%{link}' target='_blank'>MiData</a> importiert.
       imported: von MiData importiert
       invoices: Rechnungen
-      paid:
-        true: bezahlt
-        false: offen
       other_infos: Weitere Informationen
+      paid:
+        'false': offen
+        'true': bezahlt
       participants: Teilnehmende anzeigen
       questionnaire: Fragebogen
   views:

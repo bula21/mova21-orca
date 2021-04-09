@@ -8,8 +8,7 @@ SimpleCov.start 'rails' do
   add_filter 'app/mailers/application_mailer.rb'
   add_filter 'app/models/application_record.rb'
 end
-# SimpleCov.minimum_coverage 100
-SimpleCov.refuse_coverage_drop
+SimpleCov.minimum_coverage 60
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
