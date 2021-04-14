@@ -514,6 +514,7 @@ it:
     new:
       title: Creare un campo
     show:
+      camp_id: Campo id
       camp_link_midata: Campo su MiData
       data_complete: Registrazione completa
       data_incomplete: Registrazione incompleta

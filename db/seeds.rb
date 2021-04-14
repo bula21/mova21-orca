@@ -15,3 +15,4 @@ FactoryBot.create(:unit, title: 'Sommerlager Pfadistufe', stufe: 'wolf', abteilu
                   al: al, lagerleiter: lagerleiter)
 FactoryBot.create(:unit, title: 'Sommerlager Wolfsstufe', stufe: 'pfadi', abteilung: 'Pfadi H2O',
                   al: al, lagerleiter: lagerleiter)
+FactoryBot.create_list(:activity, 20)

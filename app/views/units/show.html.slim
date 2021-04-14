@@ -23,7 +23,11 @@
           dd = @unit.al&.full_name
 
       .row
-        .col-6.pt-4
+        .col-6
+          dt = t('.camp_id')
+          dd 
+            #
+            = @unit.id
           - if @unit.pbs_id.present?
             = link_to midata_link_to_unit(@unit), class: 'mb-3' do 
               i.fas.fa-link

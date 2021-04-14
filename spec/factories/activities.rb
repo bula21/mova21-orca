@@ -40,7 +40,7 @@ FactoryBot.define do
     simo { Activity.simos.keys.sample }
     participants_count_activity { (10..20).to_a.sample }
     participants_count_transport { (10..20).to_a.sample }
-    duration_activity { (0..60).to_a.sample }
+    duration_activity { "0#{(0..4).to_a.sample}:#{(10..60).to_a.sample}" }
     duration_journey { (0..60).to_a.sample }
     location { Faker::Address.city }
     stufen { Stufe.all.count > 2 ? Stufe.all.sample(2) : create_list(:stufe, 2) }
