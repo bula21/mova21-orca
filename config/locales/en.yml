@@ -490,6 +490,7 @@ en:
     new:
       title: Set up a camp
     show:
+      camp_id: Camp id
       camp_link_midata: Camp on MiData
       data_complete: Registration complete
       data_incomplete: Registration incomplete

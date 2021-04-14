@@ -526,6 +526,7 @@ de:
     new:
       title: Lager erstellen
     show:
+      camp_id: Lager Id
       camp_link_midata: Lager auf MiData
       data_complete: Daten vollständig
       data_incomplete: Daten nicht vollständig

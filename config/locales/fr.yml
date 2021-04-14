@@ -515,6 +515,7 @@ fr:
     new:
       title: Créer un camp
     show:
+      camp_id: Camp id
       camp_link_midata: Camp sur MiData
       data_complete: Inscription complète
       data_incomplete: Inscription pas complète
