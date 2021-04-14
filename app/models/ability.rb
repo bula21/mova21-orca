@@ -9,6 +9,7 @@ class Ability
     admin_user_permissions(user) if user.role_admin?
     tn_administration_user_permissions(user) if user.role_tn_administration?
     programm_user_permissions(user) if user.role_programm?
+    editor_user_permissions(user) if user.role_editor?
 
     if user.midata_user?
       midata_user_permissions(user)
@@ -62,5 +63,9 @@ class Ability
     can :manage, TransportLocation
     can :manage, ActivityCategory
     cannot :delete, ActivityCategory, parent_id: nil
+  end
+
+  def editor_user_permissions(_user)
+    can :edit, Activity
   end
 end

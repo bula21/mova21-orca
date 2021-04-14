@@ -23,6 +23,11 @@ docker-compose exec app ash
 - User (`role_user`)
 - Admin (`role_admin`)
 - Programm (`role_programm`)
+  - Activity, Tag, Category
+- TN Administration (`role_tn_administration`)
+  - Unit, Participant, Leader
+- Editor (`role_editor`)
+  - Activity
 
 ```
 # Give a user admin role
