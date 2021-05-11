@@ -12,7 +12,8 @@
 	"extensions": [
 		"rebornix.Ruby",
 		"castwide.solargraph",
-		"esbenp.prettier-vscode"
+		"esbenp.prettier-vscode",
+		"eamodio.gitlens"
 	],
 	
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
