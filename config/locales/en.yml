@@ -1,5 +1,11 @@
 ---
 en:
+  activemodel:
+    attributes:
+      activity_filter:
+        activity_category: Kategorie
+        stufe_recommended: Empfohlene Stufe
+        tags: Tags
   activerecord:
     attributes:
       activity:
@@ -504,10 +510,10 @@ en:
     new:
       title: Set up a camp
     show:
-      camp_id: Camp id
       activity_booking: Activity booking
       activity_booking_complete: Activity booking complete
       activity_booking_incomplete: Activity booking incomplete
+      camp_id: Camp id
       camp_link_midata: Camp on MiData
       data_complete: Registration complete
       data_incomplete: Registration incomplete

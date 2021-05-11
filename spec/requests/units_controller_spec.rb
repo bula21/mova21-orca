@@ -16,7 +16,7 @@ RSpec.describe UnitsController, type: :request do
       let(:user) { create(:user, :midata_user) }
       let(:leader) { user.leader }
       let!(:unit) { create(:unit, lagerleiter: leader) }
-      let!(:unit_other) { create(:unit) }
+      let!(:unit_other) { create(:unit, title: 'Some other unit 2112') }
       let(:format) { :html }
 
       before do

@@ -7,6 +7,10 @@ RSpec.describe UnitActivityBooking, type: :model do
 
   let(:unit) { create(:unit) }
 
+  before do
+    allow(FeatureToggle).to receive(:enabled?).with(:unit_activity_booking).and_return(false)
+  end
+
   describe '#open?' do
     it { is_expected.not_to be_open }
   end

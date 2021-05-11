@@ -1,5 +1,11 @@
 ---
 de:
+  activemodel:
+    attributes:
+      activity_filter:
+        activity_category: Kategorie
+        stufe_recommended: Empfohlene Stufe
+        tags: Tags
   activerecord:
     attributes:
       activity:
@@ -533,10 +539,10 @@ de:
     new:
       title: Lager erstellen
     show:
-      camp_id: Lager Id
       activity_booking: Activity booking
       activity_booking_complete: Activity booking complete
       activity_booking_incomplete: Activity booking incomplete
+      camp_id: Lager Id
       camp_link_midata: Lager auf MiData
       data_complete: Daten vollständig
       data_incomplete: Daten nicht vollständig

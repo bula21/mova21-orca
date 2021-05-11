@@ -1,5 +1,11 @@
 ---
 it:
+  activemodel:
+    attributes:
+      activity_filter:
+        activity_category: Kategorie
+        stufe_recommended: Empfohlene Stufe
+        tags: Tags
   activerecord:
     attributes:
       activity:
@@ -523,10 +529,10 @@ it:
     new:
       title: Creare un campo
     show:
-      camp_id: Campo id
       activity_booking: Activity booking
       activity_booking_complete: Activity booking complete
       activity_booking_incomplete: Activity booking incomplete
+      camp_id: Campo id
       camp_link_midata: Campo su MiData
       data_complete: Registrazione completa
       data_incomplete: Registrazione incompleta
