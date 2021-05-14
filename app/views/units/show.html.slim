@@ -171,7 +171,7 @@
       = link_to unit_unit_activities_path(@unit)
         = t('units.show.activity_booking')
 
-    - if @unit.activity_booking.complete?
+    - if @unit.activity_booking.fullfilled?
       .card-footer.bg-success.border-success.text-white
         = t('.activity_booking_complete')
     - else

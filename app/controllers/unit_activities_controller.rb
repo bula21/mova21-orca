@@ -6,6 +6,7 @@ class UnitActivitiesController < ApplicationController
 
   def index
     @activities = filter.apply(Activity.bookable_by(@unit)).page params[:page]
+    @unit_activity_booking = UnitActivityBooking.new(@unit)
   end
 
   def show

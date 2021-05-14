@@ -15,7 +15,7 @@ RSpec.describe UnitActivityBooking, type: :model do
     it { is_expected.not_to be_open }
   end
 
-  describe '#complete?' do
-    it { is_expected.not_to be_complete }
+  describe '#fullfilled?' do
+    it { is_expected.not_to be_fullfilled }
   end
 end
