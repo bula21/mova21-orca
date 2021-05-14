@@ -11,26 +11,14 @@
 # Liste "Village Global"
 # - 1x Village Global
 # - Village Global findet eine Woche in DE und eine in FR statt
-# - fur die PTA freiwillig (mail von tux) => sie können noch eine weitere LS/LA wählen
+# - fur die PTA freiwillig (mail von tux) => sie konnen noch eine weitere LS/LA wahlen
 #
 # Liste "mova-Aktivitat"
 class UnitActivityBooking
-  class Score
-    attr_reader :numerator, :denominator, :ok
-
-    def initialize(numerator, denominator = 1, ok: numerator == denominator)
-      @numerator = numerator
-      @denominator = denominator
-      @ok = ok
-    end
-
-    def to_s
-      "#{numerator}/#{denominator}"
-    end
-  end
-
   delegate :unit_activities, to: :unit
   attr_reader :unit
+
+  COMPLIANT_VALUES = [true, 1].freeze
 
   def initialize(unit)
     @unit = unit
@@ -40,27 +28,41 @@ class UnitActivityBooking
     FeatureToggle.enabled?(:unit_activity_booking)
   end
 
-  def fullfilled?
-    fullfillments.values.all? { _1.nil? || _1.ok }
+  def all_comply?
+    compliance.values.compact.all? { COMPLIANT_VALUES.include?(_1) }
   end
 
-  def fullfillments
-    @fullfillments ||= self.class.rules.transform_values do |rule_block|
-      instance_exec(&rule_block)
+  def compliance
+    self.class.compliance_evaluators.transform_values do |evaluation_block|
+      instance_exec(&evaluation_block)
     end
   end
 
-  def self.rules
-    @rules ||= {}
+  def weeks
+    1 if unit.root_camp_unit&.stufe == :wolf
+    1 if unit.root_camp_unit&.stufe == :pta
+    2 if unit.root_camp_unit&.stufe == :pfadi
+    0
   end
 
-  def self.rule(name, &rule_block)
-    rules[name] = rule_block
+  def self.compliance_evaluators
+    @compliance_evaluators ||= {}
   end
 
-  rule :ein_ausflug_pro_woche do
-    weeks = 2
+  def self.compliance_evaluator(name, &block)
+    compliance_evaluators[name] = block
+  end
+
+  compliance_evaluator :ein_ausflug_pro_woche do
+    next nil if weeks < 1
+
     activities = unit_activities.count
-    Score.new(activities, weeks)
+    activities == weeks || Rational(activities, weeks)
+  end
+
+  compliance_evaluator :eine_aktivitaet_pro_kategorie do
+    category_counts = unit_activities.joins(:activity).pluck(:activity_category_id).tally
+
+    category_counts.values.any? { _1 > 1 }
   end
 end

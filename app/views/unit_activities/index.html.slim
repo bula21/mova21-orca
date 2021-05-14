@@ -3,6 +3,20 @@
 .row
   .col-md-9
     = render partial: 'filter'
+    ul.my-5 
+      - @unit.activity_booking.compliance.each do |name, compliance|
+        - next if compliance.nil?
+        li 
+          span.mr-2= t(name, scope: %w[unit_activity_booking compliance_evaluators])
+          - if UnitActivityBooking::COMPLIANT_VALUES.include?(compliance)
+            .badge.badge-pill.badge-success 
+              i.fa.fa-check
+          - else 
+            .badge.badge-pill.badge-warning
+              - if compliance == false 
+                i.fa.fa-times
+              - else  
+                = compliance
     = render partial: 'activity_listing', collection: @activities, as: :activity
     = paginate @activities
 
@@ -12,13 +26,6 @@
         =<> UnitActivity.model_name.human(count: :other)
         .badge.badge-primary
           = @unit.unit_activities.count
-          | /3
-      .card-body.p-0
-        ul 
-          - @unit_activity_booking.fullfillments.each do |name, fullfillment|
-            li 
-              span= name 
-              .badge.badge-pill= fullfillment.to_s
       .card-body.p-0
         ol.sortable-list.list-group.small
           - @unit_activities.prioritized.each do |unit_activity|

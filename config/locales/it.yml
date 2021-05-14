@@ -496,6 +496,9 @@ it:
   unit_activity:
     book: Book
     read_more: Read more
+  unit_activity_booking:
+    compliance_evaluators:
+      eine_aktivitaet_pro_kategorie: Max. eine Aktivität pro Kategorie
   units:
     edit:
       title: Modificare il campo

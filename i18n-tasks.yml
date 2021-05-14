@@ -10,6 +10,7 @@ ignore_unused:
 - 'errors.*'
 - 'invoices.*'
 - 'simple_form.*'
+- 'unit_activity_booking.compliance_evaluators.*'
 
 ignore_inconsistent_interpolations:
 - 'camp_unit_mailer.*'
