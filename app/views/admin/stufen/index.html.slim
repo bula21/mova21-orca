@@ -1,0 +1,20 @@
+.h1 Stufen
+
+= link_to t('buttons.create'), new_admin_stufe_path, class: 'btn btn-primary mb-3'
+
+.table-responsive
+  table.table
+    thead
+      tr
+        th Label
+        th Code
+        th
+        th
+
+    tbody
+      - @stufen.each do |stufe|
+        tr
+          td = stufe.name
+          td = stufe.code
+          td = link_to t('buttons.edit'), edit_admin_stufe_path(stufe), class: 'btn btn-primary' if can?(:edit, stufe)
+          td = link_to t('buttons.destroy'), admin_stufe_path(stufe), data: { confirm: t('buttons.confirm_delete') }, method: :delete, class: 'btn btn-secondary' if can?(:delete, stufe)

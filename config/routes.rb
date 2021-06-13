@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     resources :transport_locations
     resources :activity_categories
     resources :tags
+    resources :stufen
   end
 
   root 'pages#index'

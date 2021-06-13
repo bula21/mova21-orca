@@ -361,6 +361,7 @@ it:
   nav:
     activity: Catalogo
     activity_category: Kategorie
+    stufen: Stufen
     language:
       de: DE
       en: EN

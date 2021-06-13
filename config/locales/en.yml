@@ -341,6 +341,7 @@ en:
   nav:
     activity: Activity
     activity_category: Kategory
+    stufen: Stufen
     language:
       de: DE
       en: EN
