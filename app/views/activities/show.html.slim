@@ -1,5 +1,5 @@
 .h1.pb-0.d-flex.justify-content-between
-  = @activity.label
+  = "#{@activity.id} -  #{@activity.label}"
   span.badge[class="badge-#{@activity.activity_category.css_code}" style='align-self: baseline']
     = @activity.activity_category&.label
 - @activity.tags.each do |tag|
