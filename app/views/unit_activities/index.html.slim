@@ -1,9 +1,28 @@
 .h1 = UnitActivity.model_name.human(count: :other)
 
 .row
-  .col-md-9
+  .col-md-3.position-relative.mb-5.order-sm-2
+    .card.position-sticky[style="top: 2rem;"]
+      .card-header
+        =<> UnitActivity.model_name.human(count: :other)
+        .badge.badge-primary
+          = @unit.unit_activities.count
+      .card-body.p-0
+        ol.sortable-list.list-group.small
+          - @unit_activities.prioritized.each do |unit_activity|
+            li.list-group-item.draggable.p-1.pl-4[data-sort-callback-url=priorize_unit_unit_activity_path(@unit, unit_activity)]
+              h6.m-0= unit_activity.activity.label
+              span.badge class="badge-#{unit_activity.activity.activity_category&.css_code}"
+                = unit_activity.activity.activity_category&.label
+              .d-flex.justify-content-end
+                = link_to unit_unit_activity_path(@unit, unit_activity.activity), class: 'btn btn-sm', title: t('buttons.show') 
+                  i.fa.fa-eye
+                = link_to unit_unit_activity_path(@unit, unit_activity), data: { confirm: t('buttons.confirm_delete') }, method: :delete, class: 'btn btn-sm', title: t('buttons.destroy') 
+                  i.fa.fa-trash
+
+  .col-md-9.order-sm-1
     = render partial: 'filter'
-    ul.my-5 
+    ul.mt-4.mb-5
       - @unit.activity_booking.compliance.each do |name, compliance|
         - next if compliance.nil?
         li 
@@ -20,20 +39,4 @@
     = render partial: 'activity_listing', collection: @activities, as: :activity
     = paginate @activities
 
-  .col-md-3.position-relative
-    .card.position-sticky[style="top: 2rem;"]
-      .card-header
-        =<> UnitActivity.model_name.human(count: :other)
-        .badge.badge-primary
-          = @unit.unit_activities.count
-      .card-body.p-0
-        ol.sortable-list.list-group.small
-          - @unit_activities.prioritized.each do |unit_activity|
-            li.list-group-item.draggable.p-1.pl-4[data-sort-callback-url=priorize_unit_unit_activity_path(@unit, unit_activity) id=anchor_for(unit_activity.activity)]
-              = unit_activity.activity.label
-              .d-flex.justify-content-end
-                = link_to unit_unit_activity_path(@unit, unit_activity.activity), class: 'btn btn-sm', title: t('buttons.show') 
-                  i.fa.fa-eye
-                = link_to unit_unit_activity_path(@unit, unit_activity), data: { confirm: t('buttons.confirm_delete') }, method: :delete, class: 'btn btn-sm', title: t('buttons.destroy') 
-                  i.fa.fa-trash
 

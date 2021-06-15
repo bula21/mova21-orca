@@ -15,7 +15,6 @@
 #
 # Liste "mova-Aktivitat"
 class UnitActivityBooking
-  delegate :unit_activities, to: :unit
   attr_reader :unit
 
   COMPLIANT_VALUES = [true, 1].freeze
@@ -45,12 +44,29 @@ class UnitActivityBooking
     0
   end
 
+  def stufe
+    # @stufe ||= Stufe.find_by(code: unit.stufe)
+    Stufe.first
+  end
+
   def self.compliance_evaluators
     @compliance_evaluators ||= {}
   end
 
   def self.compliance_evaluator(name, &block)
     compliance_evaluators[name] = block
+  end
+
+  def include?(activity)
+    @activity_ids ||= unit.unit_activities.pluck(:activity_id)
+    @activity_ids.include?(activity.is_a?(Integer) ? activity : activity&.id)
+  end
+
+  def unit_activities(only: nil, without: nil)
+    unit_activities = unit.unit_activities.joins(activity: [:activity_category])
+    unit_activities = unit_activities.where(activity_categories: { code: only }) if only
+    unit_activities = unit_activities.where.not(activity_categories: { code: without }) if without
+    unit_activities
   end
 
   compliance_evaluator :ein_ausflug_pro_woche do
@@ -60,9 +76,26 @@ class UnitActivityBooking
     activities == weeks || Rational(activities, weeks)
   end
 
-  compliance_evaluator :eine_aktivitaet_pro_kategorie do
-    category_counts = unit_activities.joins(:activity).pluck(:activity_category_id).tally
+  compliance_evaluator :max_eine_aktivitaet_pro_kategorie do
+    category_counts = unit_activities(without: %i[village_global])
+                      .pluck(:activity_category_id).tally
+
+    category_counts.values.none? { _1 > 1 }
+  end
+
+  compliance_evaluator :eine_mova_aktivitaet_pro_woche do
+    category_counts = unit_activities.pluck(:activity_category_id).tally
 
     category_counts.values.any? { _1 > 1 }
+  end
+
+  compliance_evaluator :village_global_workshops do
+    count = unit_activities(only: :village_global).count
+
+    # next nil if unit.stufe == 'pta'
+    next false if count <= 0
+    next Rational(count, 3) if count < 3
+
+    true
   end
 end

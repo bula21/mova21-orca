@@ -54,7 +54,12 @@ class Activity < ApplicationRecord
   enum activity_type: { excursion: 'excursion', activity: 'activity',
                         village_global: 'village_global', frohnarbeit: 'frohnarbeit' }
 
-  scope :bookable_by, ->(_unit) { all }
+  scope :bookable_by, (lambda do |unit|
+    stufe = unit.stufe
+    stufe = Stufe.all
+    joins(:activities_stufen).where(activities_stufen: { stufe: stufe })
+     .where(arel_table[:participants_count_activity].gteq(unit.expected_participants))
+  end)
 
   validates :block_type, :participants_count_activity, :stufen,
             :stufe_recommended, :activity_category, :duration_activity, presence: true

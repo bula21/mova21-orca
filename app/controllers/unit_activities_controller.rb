@@ -5,7 +5,7 @@ class UnitActivitiesController < ApplicationController
   load_and_authorize_resource through: :unit, except: %i[show]
 
   def index
-    @activities = filter.apply(Activity.bookable_by(@unit)).page params[:page]
+    @activities = filter.apply(Activity.bookable_by(@unit).distinct).page params[:page]
     @unit_activity_booking = UnitActivityBooking.new(@unit)
   end
 
@@ -46,14 +46,10 @@ class UnitActivitiesController < ApplicationController
   private
 
   def filter
-    @filter ||= ActivityFilter.new(activity_filter_params.to_h)
-  end
-
-  def activity_filter_params
-    return {} unless params[:activity_filter]
-
-    params.require(:activity_filter).permit(:min_participants_count, :stufe_recommended, :activity_category,
-                                            tags: [], languages: [])
+    activity_filter_params = params[:activity_filter]&.permit(:min_participants_count, :stufe_recommended,
+                                                              :activity_category, tags: [], languages: [])
+    session[:activity_filter_params] = activity_filter_params if params.key?(:activity_filter)
+    @filter ||= ActivityFilter.new(session[:activity_filter_params] || {})
   end
 
   def unit_activity_params
