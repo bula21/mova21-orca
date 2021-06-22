@@ -63,6 +63,7 @@ it:
         scout_name: Totem
       unit:
         abteilung: Sezione
+        activity_booking_phase: Buchungsphase
         al: CSZ
         district: Quartiere
         ends_at: Fine il
@@ -372,7 +373,6 @@ it:
   nav:
     activity: Catalogo
     activity_category: Kategorie
-    stufen: Stufen
     language:
       de: DE
       en: EN
@@ -381,6 +381,7 @@ it:
     leader: Animatori/trici responsabili
     login: Login
     logout: Logout
+    stufen: Stufen
     tag: Tags
     transport_location: Transport
     unit: Unità
@@ -495,10 +496,14 @@ it:
     pm: pm
   unit_activity:
     book: Book
+    booked: Booked
     read_more: Read more
   unit_activity_booking:
     compliance_evaluators:
       eine_aktivitaet_pro_kategorie: Max. eine Aktivität pro Kategorie
+      eine_mova_aktivitaet_pro_woche: Mindestens eine mova Aktivität pro Woche
+      max_eine_aktivitaet_pro_kategorie: Maximal eine Aktivität pro Kategorie
+      village_global_workshops: Mindestens 3 Village Global Workshops
   units:
     edit:
       title: Modificare il campo
@@ -553,8 +558,8 @@ it:
       questionnaire: Questionario
   views:
     pagination:
-      first: '<<'
-      last: '>>'
-      next: '>'
-      previous: '<'
+      first: !!str '<<'
+      last: ">>"
+      next: ">"
+      previous: "<"
       truncate: "&hellip;"

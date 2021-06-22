@@ -39,12 +39,4 @@ class ActivityFilter < ApplicationFilter
 
     activities.joins(:stufe_recommended).where(activities_stufen_recommended: { stufe_id: stufe_recommended })
   end
-
-  filter :available_to_unit do
-    next if unit.blank?
-
-    activities.joins(:stufen)
-              .where(activities_stufen: { stufe_id: unit.stufe })
-              .where(Activity.arel_table[:participants_count_activity].gteq(unit.expected_participants))
-  end
 end

@@ -55,8 +55,7 @@ class Activity < ApplicationRecord
                         village_global: 'village_global', frohnarbeit: 'frohnarbeit' }
 
   scope :bookable_by, (lambda do |unit|
-    stufe = unit.stufe
-    stufe = Stufe.all
+    stufe = Stufe.find_by(code: unit.stufe)
     joins(activities_stufen: :stufe).where(activities_stufen: { stufe: stufe })
      .where(arel_table[:participants_count_activity].gteq(unit.expected_participants))
   end)

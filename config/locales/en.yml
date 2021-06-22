@@ -63,6 +63,7 @@ en:
         scout_name: Scoutname
       unit:
         abteilung: Group
+        activity_booking_phase: Buchungsphase
         al: Group leader
         district: District
         ends_at: End on
@@ -352,7 +353,6 @@ en:
   nav:
     activity: Activity
     activity_category: Kategory
-    stufen: Stufen
     language:
       de: DE
       en: EN
@@ -361,6 +361,7 @@ en:
     leader: Leader
     login: Login
     logout: Logout
+    stufen: Stufen
     tag: Tags
     transport_location: Transport
     unit: Unit
@@ -476,10 +477,14 @@ en:
     pm: pm
   unit_activity:
     book: Book
+    booked: Booked
     read_more: Read more
   unit_activity_booking:
     compliance_evaluators:
       eine_aktivitaet_pro_kategorie: Max. eine Aktivität pro Kategorie
+      eine_mova_aktivitaet_pro_woche: Mindestens eine mova Aktivität pro Woche
+      max_eine_aktivitaet_pro_kategorie: Maximal eine Aktivität pro Kategorie
+      village_global_workshops: Mindestens 3 Village Global Workshops
   units:
     edit:
       title: Edit a camp
@@ -534,8 +539,8 @@ en:
       questionnaire: Form
   views:
     pagination:
-      first: '<<'
-      last: '>>'
-      next: '>'
-      previous: '<'
+      first: !!str '<<'
+      last: ">>"
+      next: ">"
+      previous: "<"
       truncate: "&hellip;"
