@@ -1,5 +1,5 @@
-= simple_form_for(@filter, url: unit_unit_activities_path(@unit), method: :GET, scope: '') do |f|
-  = f.hidden_field :locale, value: I18n.locale
+= simple_form_for(@filter, url: unit_unit_activities_path(@unit, locale: I18n.locale), method: :GET, scope: '') do |f|
+  = hidden_field_tag :locale, I18n.locale
 
   .row.mb-4
     .col

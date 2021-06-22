@@ -23,10 +23,6 @@ class UnitActivityBooking
     @unit = unit
   end
 
-  def open?
-    FeatureToggle.enabled?(:unit_activity_booking)
-  end
-
   def all_comply?
     compliance.values.compact.all? { COMPLIANT_VALUES.include?(_1) }
   end
@@ -38,15 +34,14 @@ class UnitActivityBooking
   end
 
   def weeks
-    1 if unit.root_camp_unit&.stufe == :wolf
-    1 if unit.root_camp_unit&.stufe == :pta
-    2 if unit.root_camp_unit&.stufe == :pfadi
+    1 if stufe == :wolf
+    1 if stufe == :pta
+    2 if stufe == :pfadi
     0
   end
 
   def stufe
-    # @stufe ||= Stufe.find_by(code: unit.stufe)
-    Stufe.first
+    unit.root_camp_unit&.stufe
   end
 
   def self.compliance_evaluators

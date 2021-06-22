@@ -63,6 +63,7 @@ de:
         scout_name: Pfadiname
       unit:
         abteilung: Abteilung
+        activity_booking_phase: Buchungsphase
         al: AL
         district: Quartier
         ends_at: Ende am

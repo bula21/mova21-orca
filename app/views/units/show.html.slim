@@ -163,7 +163,7 @@
     dt = t('activerecord.attributes.unit.language')
     dd = @unit.language
 
-- if @unit.activity_booking.open?
+- if @unit.activity_booking_phase_preview? || @unit.activity_booking_phase_open?
   .card.mt-4
     .card-body
       h2 = t('units.show.activity_booking')

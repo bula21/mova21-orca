@@ -5,10 +5,11 @@ class UnitsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: :add_document
 
   def index
+    @units = @units.order(id: :asc)
     respond_to do |format|
       format.html
       format.csv do
-        exporter = UnitExporter.new(Unit.accessible_by(current_ability))
+        exporter = UnitExporter.new(@units)
         send_data exporter.export, filename: exporter.filename
       end
     end
@@ -61,7 +62,7 @@ class UnitsController < ApplicationController
     permitted = %i[title abteilung kv_id stufe expected_participants_f expected_participants_m
                    expected_participants_leitung_f expected_participants_leitung_m
                    starts_at ends_at al_id lagerleiter_id language week district]
-    permitted << :pbs_id if can?(:manage, @unit)
+    permitted += %i[pbs_id activity_booking_phase] if can?(:manage, @unit)
 
     params.require(:unit).permit(permitted)
   end

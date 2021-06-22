@@ -57,7 +57,7 @@ class Activity < ApplicationRecord
   scope :bookable_by, (lambda do |unit|
     stufe = unit.stufe
     stufe = Stufe.all
-    joins(:activities_stufen).where(activities_stufen: { stufe: stufe })
+    joins(activities_stufen: :stufe).where(activities_stufen: { stufe: stufe })
      .where(arel_table[:participants_count_activity].gteq(unit.expected_participants))
   end)
 

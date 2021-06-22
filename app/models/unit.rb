@@ -72,6 +72,7 @@ class Unit < ApplicationRecord
 
   enum stufe: RootCampUnit.predefined.dup.transform_values(&:to_s)
   enum language: { de: 'de', fr: 'fr', it: 'it', en: 'en' }
+  enum activity_booking_phase: { closed: 0, preview: 1, open: 2 }, _prefix: true
 
   delegate :locale, to: :kv
 
