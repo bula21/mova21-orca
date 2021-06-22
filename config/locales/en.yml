@@ -341,6 +341,7 @@ en:
   nav:
     activity: Activity
     activity_category: Kategory
+    stufen: Stufen
     language:
       de: DE
       en: EN
@@ -513,8 +514,8 @@ en:
       questionnaire: Form
   views:
     pagination:
-      first: First
-      last: Last
-      next: Next
-      previous: Previous
-      truncate: Truncate
+      first: '<<'
+      last: '>>'
+      next: '>'
+      previous: '<'
+      truncate: "&hellip;"

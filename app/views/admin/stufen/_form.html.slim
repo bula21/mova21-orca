@@ -1,4 +1,4 @@
-= simple_form_for([:admin, @activity_category]) do |f|
+= simple_form_for([:admin, @stufe]) do |f|
   = f.error_notification
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
@@ -19,18 +19,9 @@
             - current_locale = locale == I18n.locale
             .tab-pane[id="label-#{locale}-tab" class="#{'show active' if current_locale}"
               aria-labelledby="label-#{locale}-tab" role='tabpanel']
-              = f.input "label_#{locale.to_s}", label: "#{t('activerecord.attributes.activity.label')} #{locale.upcase}"
+              = f.input "name_#{locale.to_s}", label: "#{t('activerecord.attributes.activity.label')} #{locale.upcase}"
 
         hr
-        = f.input :parent_id, collection: ActivityCategory.roots.without_self(@activity_category.id),
-                label_method: :label
-
-
-        - unless @activity_category.new_record?
-          = f.label 'Kinder'
-          ul
-            - @activity_category.children&.each do |child|
-              li = child.label
 
         = f.input :code
 

@@ -361,6 +361,7 @@ de:
   nav:
     activity: Katalog
     activity_category: Kategorie
+    stufen: Stufen
     language:
       de: DE
       en: EN
@@ -542,8 +543,8 @@ de:
       questionnaire: Fragebogen
   views:
     pagination:
-      first: First
-      last: Last
-      next: Next
-      previous: Previous
-      truncate: Truncate
+      first: '<<'
+      last: '>>'
+      next: '>'
+      previous: '<'
+      truncate: "&hellip;"

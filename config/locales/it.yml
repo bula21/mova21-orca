@@ -361,6 +361,7 @@ it:
   nav:
     activity: Catalogo
     activity_category: Kategorie
+    stufen: Stufen
     language:
       de: DE
       en: EN
@@ -532,8 +533,8 @@ it:
       questionnaire: Questionario
   views:
     pagination:
-      first: First
-      last: Last
-      next: Next
-      previous: Previous
-      truncate: Truncate
+      first: '<<'
+      last: '>>'
+      next: '>'
+      previous: '<'
+      truncate: "&hellip;"

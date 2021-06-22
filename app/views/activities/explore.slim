@@ -6,6 +6,7 @@
   table.table
     thead
       tr
+        th = Activity.human_attribute_name(:id)
         th = Activity.human_attribute_name(:label)
         th = t('activerecord.attributes.activity.description')
         th = t('activerecord.attributes.activity.location')
@@ -17,6 +18,7 @@
     tbody
       - @activities.each do |activity|
         tr
+          td = activity.id
           td = activity.label
           td = activity.description&.truncate(20)
           td = activity.location
