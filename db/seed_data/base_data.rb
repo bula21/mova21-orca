@@ -1,9 +1,9 @@
-if Stufe.none?
-  FactoryBot.create(:stufe, :wolf)
-  FactoryBot.create(:stufe, :pfadi)
-  FactoryBot.create(:stufe, :pio)
-  FactoryBot.create(:stufe, :pta)
-end
+stufen = {
+  wolf: Stufe.create!(code: 'wolf', root_camp_unit_id: ENV['ROOT_CAMP_UNIT_ID_WOLF'], name: "Wolfsstufe"),
+  pfadi: Stufe.create!(code: 'pfadi', root_camp_unit_id: ENV['ROOT_CAMP_UNIT_ID_PFADI'], name: "Pfadistufe"),
+  pio: Stufe.create!(code: 'pio', root_camp_unit_id: ENV['ROOT_CAMP_UNIT_ID_PIO'], name: "Piostufe"),
+  pta: Stufe.create!(code: 'pta', root_camp_unit_id: ENV['ROOT_CAMP_UNIT_ID_PTA'], name: "PTA")
+}
 
 if Kv.none?
   if ENV['MIDATA_BASE_URL'].include?('pbs.puzzle.ch')
