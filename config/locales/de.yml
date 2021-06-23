@@ -108,7 +108,7 @@ de:
         other: Lager
       unit_activity:
         one: Gebuchte Aktivität
-        other: Gebuchte Aktivitäten
+        other: Warenkorb
   activity:
     edit:
       title: Aktivität editieren
@@ -504,9 +504,13 @@ de:
       long: "%A, %d. %B %Y, %H:%M Uhr"
       short: "%d. %B, %H:%M Uhr"
     pm: nachmittags
+  unit_activities:
+    index:
+      finish_booking: Finish booking
+      help_text: Help text
   unit_activity:
-    book: Book
-    booked: Booked
+    book: zum Warenkorb hinzufügen
+    booked: zum Warenkorb hinzugefügt
     read_more: Read more
   unit_activity_booking:
     compliance_evaluators:

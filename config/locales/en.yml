@@ -475,6 +475,10 @@ en:
       long: "%B %d, %Y %H:%M"
       short: "%d %b %H:%M"
     pm: pm
+  unit_activities:
+    index:
+      finish_booking: Finish booking
+      help_text: Help text
   unit_activity:
     book: Book
     booked: Booked

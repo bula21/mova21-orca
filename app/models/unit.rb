@@ -43,6 +43,7 @@ class Unit < ApplicationRecord
   belongs_to :al, class_name: 'Leader', inverse_of: :al_units, optional: true
   belongs_to :lagerleiter, class_name: 'Leader', inverse_of: :lagerleiter_units
   belongs_to :kv, inverse_of: :units, primary_key: :pbs_id
+  belongs_to :kv, inverse_of: :units, primary_key: :pbs_id
 
   has_many :invoices, inverse_of: :unit, dependent: :destroy
   has_many :invoices, inverse_of: :unit, dependent: :destroy
@@ -70,15 +71,10 @@ class Unit < ApplicationRecord
   end
   accepts_nested_attributes_for :participants
 
-  enum stufe: RootCampUnit.predefined.dup.transform_values(&:to_s)
   enum language: { de: 'de', fr: 'fr', it: 'it', en: 'en' }
   enum activity_booking_phase: { closed: 0, preview: 1, open: 2 }, _prefix: true
 
   delegate :locale, to: :kv
-
-  def root_camp_unit
-    RootCampUnit[stufe&.to_sym]
-  end
 
   def expected_participants
     (expected_participants_f || 0) + (expected_participants_m || 0)

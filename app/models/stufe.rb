@@ -17,7 +17,7 @@ class Stufe < ApplicationRecord
   # has_many :units, inverse_of: :stufe
 
   validates :name, presence: true
-  delegate :to_s, to: :code
+  delegate :to_s, :to_sym, to: :code
 
   translates :name, type: :string, locale_accessors: true, fallbacks: true
 end

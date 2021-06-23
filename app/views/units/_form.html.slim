@@ -10,7 +10,7 @@
     .col-6
       = f.input :kv_id, collection: Kv.all, label_method: :name, value_method: :pbs_id
 
-  = f.input :stufe, collection: Unit.stufen.symbolize_keys.keys
+  = f.input :stufe_id, collection: Stufe.all, label_method: :name 
   .row
     .col-6
       = f.input :expected_participants_f

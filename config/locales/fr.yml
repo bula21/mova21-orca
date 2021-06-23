@@ -500,6 +500,10 @@ fr:
       long: "%A, %d %B %Y %H h %M min %S s %Z"
       short: "%d %b %H h %M"
     pm: pm
+  unit_activities:
+    index:
+      finish_booking: Finish booking
+      help_text: Help text
   unit_activity:
     book: Book
     booked: Booked

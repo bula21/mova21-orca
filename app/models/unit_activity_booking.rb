@@ -41,7 +41,7 @@ class UnitActivityBooking
   end
 
   def stufe
-    unit.root_camp_unit&.stufe
+    unit&.stufe
   end
 
   def self.compliance_evaluators

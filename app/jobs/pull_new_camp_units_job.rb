@@ -4,8 +4,8 @@ class PullNewCampUnitsJob < ApplicationJob
   queue_as :default
 
   def perform(*_args)
-    RootCampUnit.predefined.each_value do |root_camp_unit|
-      root_camp_unit.puller.pull_new
+    Stufe.where.not(root_camp_unit_id: nil).each do |stufe|
+      CampUnitPuller.new(stufe).pull_new
     end
   end
 end

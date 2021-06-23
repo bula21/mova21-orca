@@ -8,7 +8,6 @@ RSpec.describe ParticipantsBuilder do
   # `participants_json_path` is the result of `MidataService#fetch_all_participations_data`
   let(:participants_json_path) { 'spec/fixtures/extracted_participations.json' }
   let(:participants_data) { JSON.parse(File.read(Rails.root.join(participants_json_path))) }
-  let(:root_camp_unit) { RootCampUnit[:pfadi] }
 
   describe '#from_data' do
     subject(:participants) { builder.from_data(participants_data) }

@@ -14,7 +14,8 @@ class InvoiceBuilder
   end
 
   def pre_registration_invoice_parts(camp_unit)
-    price_per_participant = camp_unit.root_camp_unit.pre_registration_price
+    # price_per_participant = camp_unit.stufe.pre_registration_price
+    price_per_participant = 0
     [
       pre_registration_invoice_part(camp_unit.expected_participants, price_per_participant, camp_unit.stufe),
       pre_registration_invoice_part(camp_unit.expected_participants_leitung, price_per_participant, :leitung)

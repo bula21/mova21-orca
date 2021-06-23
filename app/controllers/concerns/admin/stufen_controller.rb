@@ -38,7 +38,8 @@ module Admin
     private
 
     def stufen_params
-      params.require(:stufe).permit(:code, I18n.available_locales.map { |l| :"name_#{l}" })
+      params.require(:stufe).permit(:root_camp_unit_id, :code,
+                                    I18n.available_locales.map { |l| :"name_#{l}" })
     end
   end
 end

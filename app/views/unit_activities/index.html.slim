@@ -19,23 +19,28 @@
                   i.fa.fa-eye
                 = link_to unit_unit_activity_path(@unit, unit_activity), data: { confirm: t('buttons.confirm_delete') }, method: :delete, class: 'btn btn-sm', title: t('buttons.destroy') 
                   i.fa.fa-trash
+      .card-footer.text-right
+        button.btn.btn-primary[disabled=true]= t('.finish_booking')
 
   .col-md-9.order-sm-1
     = render partial: 'filter'
-    ul.mt-4.mb-5
-      - @unit.activity_booking.compliance.each do |name, compliance|
-        - next if compliance.nil?
-        li 
-          span.mr-2= t(name, scope: %w[unit_activity_booking compliance_evaluators])
-          - if UnitActivityBooking::COMPLIANT_VALUES.include?(compliance)
-            .badge.badge-pill.badge-success 
-              i.fa.fa-check
-          - else 
-            .badge.badge-pill.badge-warning
-              - if compliance == false 
-                i.fa.fa-times
-              - else  
-                = compliance
+    .card.mb-5.mt-4[style='background-color: #aae3ec']
+      .card-body
+        p= t('.help_text')
+        ul.my-0
+          - @unit.activity_booking.compliance.each do |name, compliance|
+            - next if compliance.nil?
+            li 
+              span.mr-2= t(name, scope: %w[unit_activity_booking compliance_evaluators])
+              - if UnitActivityBooking::COMPLIANT_VALUES.include?(compliance)
+                .badge.badge-pill.badge-success 
+                  i.fa.fa-check
+              - else 
+                .badge.badge-pill.badge-warning
+                  - if compliance == false 
+                    i.fa.fa-times
+                  - else  
+                    = compliance
     = render partial: 'activity_listing', collection: @activities, as: :activity
     = paginate @activities
 

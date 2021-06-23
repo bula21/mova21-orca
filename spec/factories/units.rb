@@ -49,7 +49,7 @@ FactoryBot.define do
       kv_in_db = Kv.where(pbs_id: kv_build.pbs_id)
       kv_in_db.empty? ? kv_build : kv_in_db[0]
     end
-    stufe { Unit.stufen.keys.sample }
+    stufe { Stufe.all.sample || build(:stufe) }
     expected_participants_f { (10..20).to_a.sample }
     expected_participants_m { (10..20).to_a.sample }
     expected_participants_leitung_f { (2..10).to_a.sample }
