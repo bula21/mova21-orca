@@ -504,20 +504,29 @@ de:
       long: "%A, %d. %B %Y, %H:%M Uhr"
       short: "%d. %B, %H:%M Uhr"
     pm: nachmittags
-  unit_activities:
-    index:
-      finish_booking: Finish booking
-      help_text: Help text
   unit_activity:
+    book: Book
+  unit_activity_booking:
     book: zum Warenkorb hinzufügen
     booked: zum Warenkorb hinzugefügt
-    read_more: Read more
-  unit_activity_booking:
+    commit: Buchung abschliessen
     compliance_evaluators:
       eine_aktivitaet_pro_kategorie: Max. eine Aktivität pro Kategorie
       eine_mova_aktivitaet_pro_woche: Mindestens eine mova Aktivität pro Woche
       max_eine_aktivitaet_pro_kategorie: Maximal eine Aktivität pro Kategorie
       village_global_workshops: Mindestens 3 Village Global Workshops
+    guide_text: "Jede Einheit wird während der dauer des Lagers für ein oder mehrere
+      Aktivitäten eingeteilt. Für diese Einteilung werden die Wünsche eurer Einheit
+      so gut wie möglich berücksichtigt. Innerhalb der Wunschliste in Form des \"Warenkorbes\"
+      auf der rechten Seite kann eine Priorisierung mit Drag & Drop vorgenommen werden:
+      Aktivitäten die weiter oben im Warenkorb werden eher berücksichtigt als Aktivitäten
+      weiter unten. Es kann nicht garantiert werden, das eure Einheit für die Aktivitäten
+      auf der Wunschliste eingeteilt werden, aber wir versuchen unser bestes.\n\nBis
+      ihr die Buchung auf \"abgeschlossen\" setzt, dient der Warenkorb als Merkliste.
+      Alle Leiter der Einheit mit Zugriff auf orca können Aktivitäten hinzufügen,
+      entfernen oder neu priorisieren. \n\nDamit die Buchung abgeschlossen werden
+      kann, müssen folgende Regeln eingehlaten werden:"
+    read_more: Details
   units:
     edit:
       title: Lager editieren
@@ -551,9 +560,15 @@ de:
     new:
       title: Lager erstellen
     show:
-      activity_booking: Activity booking
+      activity_booking: Aktivitäten Buchen
+      activity_booking_commited: Buchung abgeschlossen
+      activity_booking_committed: Activity booking committed
       activity_booking_complete: Activity booking complete
       activity_booking_incomplete: Activity booking incomplete
+      activity_booking_open: Buchung offen
+      activity_booking_preview: Buchungsvorschau offen
+      activity_booking_text: Aktivitäten Buchen
+      basic_infos: Allgemein
       camp_id: Lager Id
       camp_link_midata: Lager auf MiData
       data_complete: Daten vollständig

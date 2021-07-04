@@ -19,14 +19,16 @@
                   i.fa.fa-eye
                 = link_to unit_unit_activity_path(@unit, unit_activity), data: { confirm: t('buttons.confirm_delete') }, method: :delete, class: 'btn btn-sm', title: t('buttons.destroy') 
                   i.fa.fa-trash
-      .card-footer.text-right
-        = button_to t('.finish_booking'), commit_unit_unit_activities_path(@unit), method: :post, class: 'btn btn-primary', disabled: !@unit_activity_booking.phase?(:open)
+      - if @unit_activity_booking.phase?(:open)
+        .card-footer.text-right
+          = button_to t('unit_activity_booking.commit'), commit_unit_unit_activities_path(@unit), method: :post, class: 'btn btn-primary', disabled: !@unit_activity_booking.all_comply?
 
   .col-md-9.order-sm-1
     = render partial: 'filter'
     .card.mb-5.mt-4[style='background-color: #aae3ec']
       .card-body
-        p= t('.help_text')
+        - t('unit_activity_booking.guide_text').lines.each do |line|
+          p= line
         ul.my-0
           - @unit.activity_booking.compliance.each do |name, compliance|
             - next if compliance.nil?

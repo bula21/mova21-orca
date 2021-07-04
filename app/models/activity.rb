@@ -54,10 +54,14 @@ class Activity < ApplicationRecord
   enum activity_type: { excursion: 'excursion', activity: 'activity',
                         village_global: 'village_global', frohnarbeit: 'frohnarbeit' }
 
+  scope :with_language, (lambda do |language|
+    where(language.present? && Activity.bitfield_sql({ "language_#{language}" => true }))
+  end)
   scope :bookable_by, (lambda do |unit|
     stufe = Stufe.find_by(code: unit.stufe)
     joins(activities_stufen: :stufe).where(activities_stufen: { stufe: stufe })
      .where(arel_table[:participants_count_activity].gteq(unit.expected_participants))
+     .merge(Activity.with_language(unit.language))
   end)
 
   validates :block_type, :participants_count_activity, :stufen,

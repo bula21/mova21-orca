@@ -171,19 +171,16 @@
 
       p= t('units.show.activity_booking_text')
 
-      - if @unit.activity_booking_phase_preview?
-        = link_to unit_unit_activities_path(@unit)
-          = t('units.show.activity_booking_preview')
-
-      - if @unit.activity_booking_phase_open?
-        = link_to unit_unit_activities_path(@unit)
+      - if @unit.activity_booking.phase?(:open, :preview)
+        = link_to unit_unit_activities_path(@unit), class: 'btn btn-primary'
           = t('units.show.activity_booking')
 
-    - if @unit.activity_booking.all_comply?
-      .card-footer.bg-success.border-success.text-white
-        = t('.activity_booking_complete')
-    - else
-      .card-footer.bg-danger.border-danger.text-white
-        = t('.activity_booking_incomplete')
+    .card-footer.bg-success.border-success.text-white
+      - if @unit.activity_booking.phase?(:committed)
+        = t('.activity_booking_committed')
+      - elsif @unit.activity_booking.phase?(:preview)
+        = t('.activity_booking_preview')
+      - elsif @unit.activity_booking.phase?(:open)
+        = t('.activity_booking_open')
 
 = link_to t('buttons.back'), units_path, class: 'btn btn-secondary mt-4'
