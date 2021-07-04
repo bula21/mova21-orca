@@ -5,8 +5,9 @@ class UnitActivitiesController < ApplicationController
   load_and_authorize_resource through: :unit, except: %i[show]
 
   def index
+    raise CanCanCan::AccessDenied unless unit_activity_booking.phase?(:preview, :open, :committed)
+
     @activities = filter.apply(Activity.bookable_by(@unit).distinct).page params[:page]
-    @unit_activity_booking = UnitActivityBooking.new(@unit)
   end
 
   def show
@@ -15,7 +16,7 @@ class UnitActivitiesController < ApplicationController
 
   def create
     @unit_activity.priority_position = :last
-    flash = if @unit_activity.save
+    flash = if unit_activity_booking.phase?(:preview, :open) && @unit_activity.save
               { success: I18n.t('messages.created.success') }
             else
               { error: I18n.t('messages.created.error') }
@@ -23,19 +24,23 @@ class UnitActivitiesController < ApplicationController
     redirect_to unit_unit_activities_path(@unit, anchor: helpers.anchor_for(@unit_activity.activity)), flash: flash
   end
 
+  def commit
+    unit_activity_booking.phase?(:open)
+  end
+
   def destroy
-    @unit_activity.destroy
+    unit_activity_booking.phase?(:preview, :open) && @unit_activity.destroy
     redirect_to unit_unit_activities_path(@unit), notice: I18n.t('messages.deleted.success')
   end
 
   def priorize
-    @unit_activity.update(priority_position: params[:index])
+    @unit_activity.update(priority_position: params[:index]) if unit_activity_booking.phase?(:preview, :open)
   end
 
   def update
     @unit_activity.assign_attributes(unit_activity_params)
 
-    if @unit_activity.save
+    if unit_activity_booking.phase?(:preview, :open) && @unit_activity.save
       redirect_to unit_unit_activities_path(@unit, anchor: helpers.anchor_for(@unit_activity.activity)),
                   notice: I18n.t('messages.updated.success')
     else
@@ -50,6 +55,10 @@ class UnitActivitiesController < ApplicationController
                                                               :activity_category, tags: [], languages: [])
     session[:activity_filter_params] = activity_filter_params if params.key?(:activity_filter)
     @filter ||= ActivityFilter.new(session[:activity_filter_params] || {})
+  end
+
+  def unit_activity_booking
+    @unit_activity_booking ||= UnitActivityBooking.new(@unit)
   end
 
   def unit_activity_params

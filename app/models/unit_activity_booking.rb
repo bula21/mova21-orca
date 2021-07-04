@@ -33,6 +33,10 @@ class UnitActivityBooking
     end
   end
 
+  def phase?(*phases)
+    phases&.map(&:to_sym)&.include?(unit.activity_booking_phase&.to_sym)
+  end
+
   def weeks
     1 if stufe == :wolf
     1 if stufe == :pta

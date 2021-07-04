@@ -72,7 +72,7 @@ class Unit < ApplicationRecord
   accepts_nested_attributes_for :participants
 
   enum language: { de: 'de', fr: 'fr', it: 'it', en: 'en' }
-  enum activity_booking_phase: { closed: 0, preview: 1, open: 2 }, _prefix: true
+  enum activity_booking_phase: { closed: 0, preview: 1, open: 2, committed: 3 }, _prefix: true
 
   delegate :locale, to: :kv
 

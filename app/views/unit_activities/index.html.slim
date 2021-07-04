@@ -20,7 +20,7 @@
                 = link_to unit_unit_activity_path(@unit, unit_activity), data: { confirm: t('buttons.confirm_delete') }, method: :delete, class: 'btn btn-sm', title: t('buttons.destroy') 
                   i.fa.fa-trash
       .card-footer.text-right
-        button.btn.btn-primary[disabled=true]= t('.finish_booking')
+        = button_to t('.finish_booking'), commit_unit_unit_activities_path(@unit), method: :post, class: 'btn btn-primary', disabled: !@unit_activity_booking.phase?(:open)
 
   .col-md-9.order-sm-1
     = render partial: 'filter'
