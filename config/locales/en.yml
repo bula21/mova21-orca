@@ -475,8 +475,6 @@ en:
       long: "%B %d, %Y %H:%M"
       short: "%d %b %H:%M"
     pm: pm
-  unit_activity:
-    book: Book
   unit_activity_booking:
     book: zum Warenkorb hinzufügen
     booked: zum Warenkorb hinzugefügt
@@ -485,6 +483,7 @@ en:
       eine_aktivitaet_pro_kategorie: Max. eine Aktivität pro Kategorie
       eine_mova_aktivitaet_pro_woche: Mindestens eine mova Aktivität pro Woche
       max_eine_aktivitaet_pro_kategorie: Maximal eine Aktivität pro Kategorie
+      phase_open: Die Buchungsphase ist offen
       village_global_workshops: Mindestens 3 Village Global Workshops
     guide_text: "Jede Einheit wird während der dauer des Lagers für ein oder mehrere
       Aktivitäten eingeteilt. Für diese Einteilung werden die Wünsche eurer Einheit
@@ -497,6 +496,8 @@ en:
       Alle Leiter der Einheit mit Zugriff auf orca können Aktivitäten hinzufügen,
       entfernen oder neu priorisieren. \n\nDamit die Buchung abgeschlossen werden
       kann, müssen folgende Regeln eingehlaten werden:"
+    not_all_comply: 'Die Buchung kann nicht abgeschlossen werden: es werden noch nicht
+      alle Regeln eingehalten'
     read_more: Details
   units:
     edit:

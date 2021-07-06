@@ -4,9 +4,18 @@
   .col-md-3.position-relative.mb-5.order-sm-2
     .card.position-sticky[style="top: 2rem;"]
       .card-header
-        =<> UnitActivity.model_name.human(count: :other)
-        .badge.badge-primary
-          = @unit.unit_activities.count
+        .d-flex.justify-content-between.align-items-center
+          div
+            =<> UnitActivity.model_name.human(count: :other)
+            .badge.badge-primary
+              = @unit.unit_activities.count
+          div
+            - if @unit.activity_booking.all_comply?
+              .badge.badge-pill.badge-success 
+                i.fa.fa-check
+            - else 
+              .badge.badge-pill.badge-warning[title=t('unit_activity_booking.not_all_comply')]
+                i.fa.fa-times
       .card-body.p-0
         ol.sortable-list.list-group.small
           - @unit_activities.prioritized.each do |unit_activity|
@@ -19,9 +28,10 @@
                   i.fa.fa-eye
                 = link_to unit_unit_activity_path(@unit, unit_activity), data: { confirm: t('buttons.confirm_delete') }, method: :delete, class: 'btn btn-sm', title: t('buttons.destroy') 
                   i.fa.fa-trash
+
       - if @unit_activity_booking.phase?(:open)
         .card-footer.text-right
-          = button_to t('unit_activity_booking.commit'), commit_unit_unit_activities_path(@unit), method: :post, class: 'btn btn-primary', disabled: !@unit_activity_booking.all_comply?
+          = button_to t('unit_activity_booking.commit'), commit_unit_unit_activities_path(@unit), method: :post, class: 'btn btn-primary', disabled: (!@unit_activity_booking.all_comply?)
 
   .col-md-9.order-sm-1
     = render partial: 'filter'

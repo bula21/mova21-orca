@@ -38,14 +38,15 @@ class UnitActivityBooking
   end
 
   def weeks
-    1 if stufe == :wolf
-    1 if stufe == :pta
-    2 if stufe == :pfadi
-    0
+    {
+      wolf: 1,
+      pta: 1,
+      pfadi: 2
+    }.fetch(stufe, 0)
   end
 
   def stufe
-    unit&.stufe
+    unit&.stufe&.to_sym
   end
 
   def self.compliance_evaluators
@@ -61,6 +62,12 @@ class UnitActivityBooking
     @activity_ids.include?(activity.is_a?(Integer) ? activity : activity&.id)
   end
 
+  def commit
+    unit.activity_booking_phase_committed if all_comply?
+
+    phase?(:committed)
+  end
+
   def unit_activities(only: nil, without: nil)
     unit_activities = unit.unit_activities.joins(activity: [:activity_category])
     unit_activities = unit_activities.where(activity_categories: { code: only }) if only
@@ -68,30 +75,35 @@ class UnitActivityBooking
     unit_activities
   end
 
+  compliance_evaluator :phase_open do
+    phase?(:open)
+  end
+
   compliance_evaluator :ein_ausflug_pro_woche do
     next nil if weeks < 1
 
-    activities = unit_activities.count
+    activities = unit_activities(only: 'excursion').count
     activities == weeks || Rational(activities, weeks)
   end
 
   compliance_evaluator :max_eine_aktivitaet_pro_kategorie do
-    category_counts = unit_activities(without: %i[village_global])
+    category_counts = unit_activities(without: %i[village_global taufe])
                       .pluck(:activity_category_id).tally
 
     category_counts.values.none? { _1 > 1 }
   end
 
   compliance_evaluator :eine_mova_aktivitaet_pro_woche do
-    category_counts = unit_activities.pluck(:activity_category_id).tally
+    next nil if weeks < 1
 
-    category_counts.values.any? { _1 > 1 }
+    count = unit_activities(without: %i[village_global taufe]).count
+    count > weeks || Rational(count, weeks)
   end
 
   compliance_evaluator :village_global_workshops do
     count = unit_activities(only: :village_global).count
 
-    # next nil if unit.stufe == 'pta'
+    next nil if unit.stufe == 'pta'
     next false if count <= 0
     next Rational(count, 3) if count < 3
 

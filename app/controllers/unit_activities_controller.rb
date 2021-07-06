@@ -3,15 +3,14 @@
 class UnitActivitiesController < ApplicationController
   load_and_authorize_resource :unit
   load_and_authorize_resource through: :unit, except: %i[show]
+  before_action :check_phase
 
   def index
-    raise CanCanCan::AccessDenied unless unit_activity_booking.phase?(:preview, :open, :committed)
-
     @activities = filter.apply(Activity.bookable_by(@unit).distinct).page params[:page]
   end
 
   def show
-    @activity = Activity.accessible_by(current_ability).find(params[:id])
+    @activity = Activity.find(params[:id])
   end
 
   def create
@@ -25,7 +24,7 @@ class UnitActivitiesController < ApplicationController
   end
 
   def commit
-    unit_activity_booking.phase?(:open)
+    redirect_to unit_unit_activities_path(@unit) if unit_activity_booking.commit
   end
 
   def destroy
@@ -55,6 +54,10 @@ class UnitActivitiesController < ApplicationController
                                                               :activity_category, tags: [], languages: [])
     session[:activity_filter_params] = activity_filter_params if params.key?(:activity_filter)
     @filter ||= ActivityFilter.new(session[:activity_filter_params] || {})
+  end
+
+  def check_phase
+    raise CanCanCan::AccessDenied unless unit_activity_booking.phase?(:preview, :open, :committed)
   end
 
   def unit_activity_booking
