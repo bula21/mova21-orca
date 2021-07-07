@@ -1,0 +1,24 @@
+.h1 = UnitActivity.model_name.human(count: :other)
+
+.card.mb-5.mt-4[style='background-color: #aae3ec']
+  .card-body
+    - t('unit_activity_booking.not_all_comply').lines.each do |line|
+      p= line
+    ul.my-0
+      - @unit.activity_booking.compliance.each do |name, compliance|
+        - next if compliance.nil?
+        li 
+          span.mr-2= t(name, scope: %w[unit_activity_booking compliance_evaluators])
+          - if UnitActivityBooking::COMPLIANT_VALUES.include?(compliance)
+            .badge.badge-pill.badge-success 
+              i.fa.fa-check
+          - else 
+            .badge.badge-pill.badge-warning
+              - if compliance == false 
+                i.fa.fa-times
+              - else  
+                = compliance
+
+= link_to t('buttons.back'), unit_unit_activities_path(@unit), class: 'btn btn-secondary'
+
+

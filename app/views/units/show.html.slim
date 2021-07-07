@@ -2,6 +2,7 @@
 
 .card.mt-3.position-relative[class=(@unit.complete? ? 'border-success' : 'border-danger')]
   .card-body
+    h3.mb-4 = t('units.show.basic_infos')
     dl
       .row
         .col-6
@@ -67,10 +68,22 @@
         - @unit.errors.full_messages.each do |error|
           li= error
 
-
-.card.mt-4
+.card.mt-5
   .card-body
-    h2 = t('units.show.expected_participants')
+    h3.mb-4 = t('units.show.other_infos')
+
+    dt = t('activerecord.attributes.unit.district')
+    dd = @unit.district
+
+    dt = t('activerecord.attributes.unit.week')
+    dd = @unit.week
+
+    dt = t('activerecord.attributes.unit.language')
+    dd = @unit.language
+
+.card.mt-5
+  .card-body
+    h3.mb-4 = t('units.show.expected_participants')
     dl
       .row
         .col-6
@@ -95,9 +108,9 @@
       =< t('units.show.expected_participants_explanation_html', link: [ENV['MIDATA_BASE_URL'], 'events', @unit.pbs_id].join('/'))
 
 
-.card.mt-4[class=(@unit.participants.all?(&:complete?) ? 'border-success' : 'border-danger')]
+.card.mt-5[class=(@unit.participants.all?(&:complete?) ? 'border-success' : 'border-danger')]
   .card-body
-    h2 = t('units.show.participants')
+    h3.mb-4 = t('units.show.participants')
 
     p
       - participants_count = @unit.participants.count
@@ -124,11 +137,11 @@
       = t('.data_incomplete')
 
 - if @unit.invoices.any? || @unit.documents.any?
-  .card.mt-4
+  .card.mt-5
     .card-body
       .row
         .col-md-6
-          h2 = t('units.show.invoices')
+          h3.mb-4 = t('units.show.invoices')
 
           ul
             - @unit.invoices.each do |invoice|
@@ -137,7 +150,7 @@
                 span.badge.badge-warning.ml-3 = t("units.show.paid.#{invoice.paid}")
 
         .col-md-6
-          h2 = t('units.show.documents')
+          h3.mb-4 = t('units.show.documents')
 
           ul
             - @unit.documents.each do |document|
@@ -150,18 +163,24 @@
                 br
                 small.text-muted = I18n.l(document.created_at)
 
-.card.mt-4
-  .card-body
-    h2 = t('units.show.other_infos')
 
-    dt = t('activerecord.attributes.unit.district')
-    dd = @unit.district
+- if @unit.activity_booking_phase_preview? || @unit.activity_booking_phase_open?
+  .card.mt-5
+    .card-body
+      h3.mb-4 = t('units.show.activity_booking')
 
-    dt = t('activerecord.attributes.unit.week')
-    dd = @unit.week
+      p= t('units.show.activity_booking_text')
 
-    dt = t('activerecord.attributes.unit.language')
-    dd = @unit.language
+      - if @unit.activity_booking.phase?(:open, :preview)
+        = link_to unit_unit_activities_path(@unit), class: 'btn btn-primary'
+          = t('units.show.activity_booking')
 
+    .card-footer.bg-success.border-success.text-white
+      - if @unit.activity_booking.phase?(:committed)
+        = t('.activity_booking_committed')
+      - elsif @unit.activity_booking.phase?(:preview)
+        = t('.activity_booking_preview')
+      - elsif @unit.activity_booking.phase?(:open)
+        = t('.activity_booking_open')
 
 = link_to t('buttons.back'), units_path, class: 'btn btn-secondary mt-4'

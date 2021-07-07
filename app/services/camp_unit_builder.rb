@@ -3,8 +3,8 @@
 class CampUnitBuilder
   include MidataHelper
 
-  def initialize(root_camp_unit)
-    @root_camp_unit = root_camp_unit
+  def initialize(stufe)
+    @stufe = stufe
     @leader_builder = LeaderBuilder.new
   end
 
@@ -13,7 +13,7 @@ class CampUnitBuilder
       starts_at: camp_unit_data.dig('linked', 'event_dates', 0, 'start_at'),
       ends_at: camp_unit_data.dig('linked', 'event_dates', 0, 'finish_at'),
       title: camp_unit_data.dig('events', 0, 'name'),
-      stufe: @root_camp_unit.to_sym,
+      stufe: @stufe.to_sym,
       midata_data: camp_unit_data,
       **extract_groups(camp_unit_data),
       **extract_people(camp_unit_data),
@@ -22,7 +22,7 @@ class CampUnitBuilder
   end
 
   def from_data(camp_unit_data, id: camp_unit_data&.dig('events', 0, 'id'))
-    return unless id.present? && id != @root_camp_unit.root_id
+    return unless id.present? && id != @stufe.root_camp_unit_id
 
     camp_unit = Unit.find_or_initialize_by(pbs_id: id)
     camp_unit.update(assignable_attributes(camp_unit_data))
@@ -32,11 +32,11 @@ class CampUnitBuilder
   private
 
   def extract_expected_participants(camp_unit_data)
-    stufe = @root_camp_unit.to_sym == :pta ? %i[wolf pfadi pio rover] : @root_camp_unit.to_sym
+    stufe = @stufe.to_sym == :pta ? %i[wolf pfadi pio rover] : @stufe.to_sym
 
     {
-      expected_participants_f: extract_expected_participant_count(stufe,    :f, from: camp_unit_data),
-      expected_participants_m: extract_expected_participant_count(stufe,    :m, from: camp_unit_data),
+      expected_participants_f: extract_expected_participant_count(stufe, :f, from: camp_unit_data),
+      expected_participants_m: extract_expected_participant_count(stufe, :m, from: camp_unit_data),
       expected_participants_leitung_f: extract_expected_participant_count(:leitung, :f, from: camp_unit_data),
       expected_participants_leitung_m: extract_expected_participant_count(:leitung, :m, from: camp_unit_data)
     }
@@ -59,11 +59,10 @@ class CampUnitBuilder
   end
 
   def extract_groups(camp_unit_data)
+    kv = camp_unit_data.dig('linked', 'groups').find { |group| group['group_type'] == 'Kantonalverband' }
     {
       abteilung: group_of_camp(camp_unit_data)&.[]('name'),
-      kv: Kv.find_by(pbs_id: camp_unit_data.dig('linked', 'groups').find do |group|
-                               group['group_type'] == 'Kantonalverband'
-                             end&.[]('id'))
+      kv: Kv.find_by(pbs_id: kv&.[]('id'))
     }
   end
 end

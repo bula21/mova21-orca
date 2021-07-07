@@ -1,5 +1,11 @@
 ---
 en:
+  activemodel:
+    attributes:
+      activity_filter:
+        activity_category: Kategorie
+        stufe_recommended: Empfohlene Stufe
+        tags: Tags
   activerecord:
     attributes:
       activity:
@@ -57,6 +63,7 @@ en:
         scout_name: Scoutname
       unit:
         abteilung: Group
+        activity_booking_phase: Buchungsphase
         al: Group leader
         district: District
         ends_at: End on
@@ -98,6 +105,9 @@ en:
       unit:
         one: Camp
         other: Camps
+      unit_activity:
+        one: Buchbare Aktivität
+        other: Buchbare Aktivitäten
   activity:
     edit:
       title: Aktivität editieren
@@ -332,16 +342,17 @@ en:
       title: Register a new leader
   messages:
     created:
+      error: Fehler beim erstellen!
       success: Successfully created
     deleted:
       error: Fehler beim löschen.
       success: Erfolgreich gelöscht!
     updated:
+      error: Fehler beim speichern!
       success: saved!
   nav:
     activity: Activity
     activity_category: Kategory
-    stufen: Stufen
     language:
       de: DE
       en: EN
@@ -350,6 +361,7 @@ en:
     leader: Leader
     login: Login
     logout: Logout
+    stufen: Stufen
     tag: Tags
     transport_location: Transport
     unit: Unit
@@ -463,6 +475,30 @@ en:
       long: "%B %d, %Y %H:%M"
       short: "%d %b %H:%M"
     pm: pm
+  unit_activity_booking:
+    book: zum Warenkorb hinzufügen
+    booked: zum Warenkorb hinzugefügt
+    commit: Buchung abschliessen
+    compliance_evaluators:
+      eine_aktivitaet_pro_kategorie: Max. eine Aktivität pro Kategorie
+      eine_mova_aktivitaet_pro_woche: Mindestens eine mova Aktivität pro Woche
+      max_eine_aktivitaet_pro_kategorie: Maximal eine Aktivität pro Kategorie
+      phase_open: Die Buchungsphase ist offen
+      village_global_workshops: Mindestens 3 Village Global Workshops
+    guide_text: "Jede Einheit wird während der dauer des Lagers für ein oder mehrere
+      Aktivitäten eingeteilt. Für diese Einteilung werden die Wünsche eurer Einheit
+      so gut wie möglich berücksichtigt. Innerhalb der Wunschliste in Form des \"Warenkorbes\"
+      auf der rechten Seite kann eine Priorisierung mit Drag & Drop vorgenommen werden:
+      Aktivitäten die weiter oben im Warenkorb werden eher berücksichtigt als Aktivitäten
+      weiter unten. Es kann nicht garantiert werden, das eure Einheit für die Aktivitäten
+      auf der Wunschliste eingeteilt werden, aber wir versuchen unser bestes.\n\nBis
+      ihr die Buchung auf \"abgeschlossen\" setzt, dient der Warenkorb als Merkliste.
+      Alle Leiter der Einheit mit Zugriff auf orca können Aktivitäten hinzufügen,
+      entfernen oder neu priorisieren. \n\nDamit die Buchung abgeschlossen werden
+      kann, müssen folgende Regeln eingehlaten werden:"
+    not_all_comply: 'Die Buchung kann nicht abgeschlossen werden: es werden noch nicht
+      alle Regeln eingehalten'
+    read_more: Details
   units:
     edit:
       title: Edit a camp
@@ -496,6 +532,15 @@ en:
     new:
       title: Set up a camp
     show:
+      activity_booking: Activity booking
+      activity_booking_commited: Buchung abgeschlossen
+      activity_booking_committed: Activity booking committed
+      activity_booking_complete: Activity booking complete
+      activity_booking_incomplete: Activity booking incomplete
+      activity_booking_open: Buchung offen
+      activity_booking_preview: Buchungsvorschau offen
+      activity_booking_text: Aktivitäten Buchen
+      basic_infos: Allgemein
       camp_id: Camp id
       camp_link_midata: Camp on MiData
       data_complete: Registration complete
@@ -514,8 +559,8 @@ en:
       questionnaire: Form
   views:
     pagination:
-      first: '<<'
-      last: '>>'
-      next: '>'
-      previous: '<'
+      first: !!str '<<'
+      last: ">>"
+      next: ">"
+      previous: "<"
       truncate: "&hellip;"

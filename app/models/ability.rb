@@ -30,7 +30,8 @@ class Ability
     can %i[read create], Participant, units: { lagerleiter: { email: user.email } }
     can %i[edit update destroy], Participant, pbs_id: nil, units: { al: { email: user.email } }
     can %i[edit update destroy], Participant, pbs_id: nil, units: { lagerleiter: { email: user.email } }
-    can :read, Activity
+    can :manage, UnitActivity, unit: { lagerleiter: { email: user.email } }
+    can :read, UnitActivity, unit: { al: { email: user.email } }
   end
 
   def external_user_permissions(user)
@@ -42,7 +43,8 @@ class Ability
     can :manage, Participant, units: { lagerleiter: { email: user.email } }
     can :manage, Participant, units: { al: { email: user.email } }
 
-    can :read, Activity
+    can :manage, UnitActivity, unit: { lagerleiter: { email: user.email } }
+    can :read, UnitActivity, unit: { al: { email: user.email } }
   end
 
   def admin_user_permissions(_user)

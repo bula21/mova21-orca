@@ -3,9 +3,9 @@
 class CampUnitPuller
   include MidataHelper
 
-  def initialize(root_camp_unit)
-    @root_camp_unit = root_camp_unit
-    @camp_unit_builder = CampUnitBuilder.new(root_camp_unit)
+  def initialize(stufe)
+    @stufe = stufe
+    @camp_unit_builder = CampUnitBuilder.new(stufe)
     @midata_service = MidataService.new
   end
 
@@ -25,12 +25,12 @@ class CampUnitPuller
   end
 
   def pull_all
-    camp_unit_data_hierarchy = @midata_service.fetch_camp_unit_data_hierarchy(@root_camp_unit.root_id)
+    camp_unit_data_hierarchy = @midata_service.fetch_camp_unit_data_hierarchy(@stufe.root_camp_unit_id)
     camp_unit_data_hierarchy.map { |camp_unit_data| pull(camp_unit_data: camp_unit_data) }.compact
   end
 
   def pull_new
-    root_data = @midata_service.fetch_camp_unit_data(@root_camp_unit.root_id)
+    root_data = @midata_service.fetch_camp_unit_data(@stufe.root_camp_unit_id)
     children_ids = root_data.dig('events', 0, 'links', 'sub_camps') || []
     existing_ids = Unit.all.pluck(:pbs_id) || []
 

@@ -3,11 +3,11 @@
 require 'rails_helper'
 
 RSpec.describe CampUnitBuilder do
-  subject(:builder) { described_class.new(root_camp_unit) }
+  subject(:builder) { described_class.new(stufe) }
 
   let(:camp_unit_json_path) { 'spec/fixtures/unit.json' }
   let(:camp_unit_data) { JSON.parse(File.read(Rails.root.join(camp_unit_json_path))) }
-  let(:root_camp_unit) { RootCampUnit.new(:pfadi, 1329) }
+  let(:stufe) { build(:stufe, code: :pfadi, root_camp_unit_id: 1329) }
 
   describe '#from_data', vcr: true do
     subject(:camp_unit) { builder.from_data(camp_unit_data) }
@@ -62,7 +62,6 @@ RSpec.describe CampUnitBuilder do
 
     context 'when is pta' do
       let(:camp_unit_json_path) { 'spec/fixtures/unit_pta.json' }
-      let(:root_camp_unit) { RootCampUnit[:pta] }
 
       it 'imports the right attributes for the unit', skip: true do
         expect(camp_unit).to have_attributes(title: 'Sommerlager PTA', abteilung: 'H2O', kv_id: 1145, stufe: 'pta',

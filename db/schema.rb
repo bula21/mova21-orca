@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_13_111629) do
+ActiveRecord::Schema.define(version: 2021_06_22_124902) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -202,6 +202,7 @@ ActiveRecord::Schema.define(version: 2021_06_13_111629) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "code"
+    t.integer "root_camp_unit_id"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -254,9 +255,12 @@ ActiveRecord::Schema.define(version: 2021_06_13_111629) do
     t.string "language"
     t.string "district"
     t.string "week"
+    t.integer "activity_booking_phase", default: 0
+    t.bigint "stufe_id"
     t.index ["al_id"], name: "index_units_on_al_id"
     t.index ["coach_id"], name: "index_units_on_coach_id"
     t.index ["lagerleiter_id"], name: "index_units_on_lagerleiter_id"
+    t.index ["stufe_id"], name: "index_units_on_stufe_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -284,4 +288,5 @@ ActiveRecord::Schema.define(version: 2021_06_13_111629) do
   add_foreign_key "units", "leaders", column: "al_id"
   add_foreign_key "units", "leaders", column: "coach_id"
   add_foreign_key "units", "leaders", column: "lagerleiter_id"
+  add_foreign_key "units", "stufen"
 end

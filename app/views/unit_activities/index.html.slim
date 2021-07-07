@@ -1,0 +1,59 @@
+.h1 = UnitActivity.model_name.human(count: :other)
+
+.row
+  .col-md-3.position-relative.mb-5.order-sm-2
+    .card.position-sticky[style="top: 2rem;"]
+      .card-header
+        .d-flex.justify-content-between.align-items-center
+          div
+            =<> UnitActivity.model_name.human(count: :other)
+            .badge.badge-primary
+              = @unit.unit_activities.count
+          div
+            - if @unit.activity_booking.all_comply?
+              .badge.badge-pill.badge-success 
+                i.fa.fa-check
+            - else 
+              .badge.badge-pill.badge-warning[title=t('unit_activity_booking.not_all_comply')]
+                i.fa.fa-times
+      .card-body.p-0
+        ol.sortable-list.list-group.small
+          - @unit_activities.prioritized.each do |unit_activity|
+            li.list-group-item.draggable.p-1.pl-4[data-sort-callback-url=priorize_unit_unit_activity_path(@unit, unit_activity)]
+              h6.m-0= unit_activity.activity.label
+              span.badge class="badge-#{unit_activity.activity.activity_category&.css_code}"
+                = unit_activity.activity.activity_category&.label
+              .d-flex.justify-content-end
+                = link_to unit_unit_activity_path(@unit, unit_activity.activity), class: 'btn btn-sm', title: t('buttons.show') 
+                  i.fa.fa-eye
+                = link_to unit_unit_activity_path(@unit, unit_activity), data: { confirm: t('buttons.confirm_delete') }, method: :delete, class: 'btn btn-sm', title: t('buttons.destroy') 
+                  i.fa.fa-trash
+
+      - if @unit_activity_booking.phase?(:open)
+        .card-footer.text-right
+          = button_to t('unit_activity_booking.commit'), commit_unit_unit_activities_path(@unit), method: :post, class: 'btn btn-primary', disabled: (!@unit_activity_booking.all_comply?)
+
+  .col-md-9.order-sm-1
+    = render partial: 'filter'
+    .card.mb-5.mt-4[style='background-color: #aae3ec']
+      .card-body
+        - t('unit_activity_booking.guide_text').lines.each do |line|
+          p= line
+        ul.my-0
+          - @unit.activity_booking.compliance.each do |name, compliance|
+            - next if compliance.nil?
+            li 
+              span.mr-2= t(name, scope: %w[unit_activity_booking compliance_evaluators])
+              - if UnitActivityBooking::COMPLIANT_VALUES.include?(compliance)
+                .badge.badge-pill.badge-success 
+                  i.fa.fa-check
+              - else 
+                .badge.badge-pill.badge-warning
+                  - if compliance == false 
+                    i.fa.fa-times
+                  - else  
+                    = compliance
+    = render partial: 'activity_listing', collection: @activities, as: :activity
+    = paginate @activities
+
+

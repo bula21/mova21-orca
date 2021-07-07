@@ -32,10 +32,12 @@
 require 'rails_helper'
 
 RSpec.describe Activity, type: :model do
-  subject(:activity) { described_class.new(params) }
+  describe '::bookable_by' do
+    let(:unit) { create(:unit) }
+    let(:activity) { create(:activity) }
 
-  let(:params) { attributes_for :activity }
-
-  # it { is_expected.to validate_presence_of(:label) }
-  # it { is_expected.to validate_presence_of(:description) }
+    it do
+      # binding.pry
+    end
+  end
 end

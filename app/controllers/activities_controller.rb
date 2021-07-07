@@ -3,9 +3,7 @@
 class ActivitiesController < ApplicationController
   load_and_authorize_resource except: [:create]
 
-  def index
-    @activities = filter.apply(Activity.all).page params[:page]
-  end
+  def index; end
 
   def show; end
 
@@ -46,10 +44,6 @@ class ActivitiesController < ApplicationController
 
   private
 
-  def filter
-    @filter ||= ActivityFilter.new(activity_filter_params.to_h)
-  end
-
   def delete_picture
     @activity.picture.purge
     redirect_to edit_activity_url(@activity)
@@ -58,13 +52,6 @@ class ActivitiesController < ApplicationController
   def delete_attachment
     @activity.activity_documents.find_by(id: params[:attachment_id]).purge
     redirect_to edit_activity_url(@activity)
-  end
-
-  def activity_filter_params
-    return {} unless params[:activity_filter]
-
-    params.require(:activity_filter).permit(:min_participants_count, :stufe_recommended, :activity_category,
-                                            tags: [], languages: [])
   end
 
   def activity_params

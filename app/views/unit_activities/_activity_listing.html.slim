@@ -1,0 +1,32 @@
+.position-relative.activity-card[id=anchor_for(activity)]
+  .row
+    .col-sm-9
+      h4= activity.label
+    .col-sm-3.d-flex.justify-content-between.align-items-center
+      .ml-2[title=Activity.human_attribute_name(:participants_count_activity)]
+        i.fa.fa-users.mr-1
+        = activity.participants_count_activity
+
+      .ml-2[title=Activity.human_attribute_name(:duration_activity)]
+        i.fa.fa-clock.mr-1
+        = activity.duration_activity
+
+  .row.my-2
+    .col-3
+      span.badge class="badge-#{activity.activity_category&.css_code}"
+        = activity.activity_category&.label
+    .col-5
+      - activity.tags.each do |tag|
+        i class="#{tag.icon} mr-2" title="#{tag.label}"
+
+  p.my-2 = activity.description&.truncate(250)
+
+  .d-flex.justify-content-between
+    = link_to t('unit_activity_booking.read_more'), unit_unit_activity_path(@unit, activity), class: 'pt-2 stretched-link'
+    - if @unit_activity_booking.include?(activity)
+      button.btn.disabled[disabled=true]
+        = t('unit_activity_booking.booked')
+    - else
+      =< button_to t('unit_activity_booking.book'), unit_unit_activities_path(@unit, unit_activity: { activity_id: activity.to_param }), method: :post, class: 'btn btn-primary ml-2 z-100'
+
+

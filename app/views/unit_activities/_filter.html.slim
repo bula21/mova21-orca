@@ -1,0 +1,42 @@
+= simple_form_for(@filter, url: unit_unit_activities_path(@unit, locale: I18n.locale), method: :GET, scope: '') do |f|
+  = hidden_field_tag :locale, I18n.locale
+
+  .row.mb-4
+    .col
+      ul.nav
+        li.nav-item.mr-2.mb-2
+          a.btn.btn-outline-secondary[data-toggle="pill" href="#filter-stufe" role="pill"]
+            = ActivityFilter.human_attribute_name(:stufe_recommended)
+            - if @filter.stufe_recommended.present?
+              .badge.badge-pill.badge-info.ml-2= 1
+        li.nav-item.mr-2.mb-2
+          a.btn.btn-outline-secondary[data-toggle="pill" href="#filter-category" role="pill"]
+            = ActivityFilter.human_attribute_name(:activity_category)
+            - if @filter.activity_category.present? 
+              .badge.badge-pill.badge-info.ml-2= 1
+        li.nav-item.mr-2.mb-2
+          a.btn.btn-outline-secondary[data-toggle="pill" href="#filter-tags" role="pill"]
+            = ActivityFilter.human_attribute_name(:tags)
+            - if @filter.tags.present?
+              .badge.badge-pill.badge-info.ml-2= @filter.tags&.count
+        li.nav-item.mr-2.mb-2
+          = link_to unit_unit_activities_path(@unit, activity_filter: { reset: true }), class: 'btn btn-outline-secondary', role: :pill, title: t('buttons.reset')
+            i.fa.fa-undo
+
+    .col-12.order-sm-3
+      .tab-content
+        #filter-stufe.py-3.tab-pane.show[role="tabpanel"]
+          = f.input :stufe_recommended, collection: Stufe.all.map { |t| [t.name, t.id.to_s] }, include_hidden: false
+
+        #filter-category.py-3.tab-pane[role="tabpanel"]
+          = f.input :activity_category, collection: ActivityCategory.roots, as: :grouped_select,  group_method: :children, group_label_method: :label, label_method: :full_label
+
+        #filter-tags.py-3.tab-pane[role="tabpanel"]
+          = f.input_field :tags, as: :check_boxes, collection: Tag.all.map { |t| [t.label, t.id.to_s] },
+                                 include_hidden: false, class: 'form-check-input'
+
+    .col-sm-3.order-sm-2
+      = f.submit t('buttons.filter'), class: 'btn w-100 btn-secondary'
+
+
+

@@ -9,43 +9,47 @@ Rails:
 Layout/LineLength:
   Max: 120
   Exclude:
-    - 'config/initializers/**/*.rb'
+    - "config/initializers/**/*.rb"
+
+Metrics/AbcSize:
+  Exclude:
+    - "app/models/ability.rb"
 
 Style/Documentation:
   Enabled: false
 
 Style/MixinUsage:
   Exclude:
-    - 'bin/setup'
-    - 'bin/update'
+    - "bin/setup"
+    - "bin/update"
 
 Style/NonNilCheck:
   IncludeSemanticChanges: true
 
 Metrics/BlockLength:
   Exclude:
-    - 'spec/**/*.rb'
-    - 'config/environments/**/*.rb'
-    - 'config/initializers/**/*.rb'
+    - "spec/**/*.rb"
+    - "config/environments/**/*.rb"
+    - "config/initializers/**/*.rb"
 
 RSpec/MultipleExpectations:
   Enabled: false
 
 RSpec/DescribedClass:
   Exclude:
-    - 'spec/system/**/*'
-    - 'spec/views/**/*'
+    - "spec/system/**/*"
+    - "spec/views/**/*"
   SkipBlocks: true
 
 RSpec/DescribeClass:
   Exclude:
-    - 'spec/models/seeds_spec.rb'
+    - "spec/models/seeds_spec.rb"
 
 RSpec/ExampleLength:
   Max: 10
   Exclude:
-    - 'spec/system/**/*'
-    - 'spec/requests/**/*'
+    - "spec/system/**/*"
+    - "spec/requests/**/*"
 
 RSpec/NestedGroups:
   Max: 5
@@ -53,20 +57,20 @@ RSpec/NestedGroups:
 AllCops:
   NewCops: enable
   Exclude:
-    - 'bin/**/*'
-    - 'script/**/*'
-    - 'log/**/*'
-    - 'public/**/*'
-    - 'tmp/**/*'
-    - 'db/**/*'
-    - 'vendor/**/*'
-    - 'node_modules/**/*'
+    - "bin/**/*"
+    - "script/**/*"
+    - "log/**/*"
+    - "public/**/*"
+    - "tmp/**/*"
+    - "db/**/*"
+    - "vendor/**/*"
+    - "node_modules/**/*"
 
 RSpec/EmptyExampleGroup:
   Enabled: false
 
 RSpec/MultipleMemoizedHelpers:
-   Max: 6
+  Max: 6
 
 Rails/HasAndBelongsToMany:
   Enabled: false
