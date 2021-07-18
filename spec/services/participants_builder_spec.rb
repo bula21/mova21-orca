@@ -59,7 +59,7 @@ RSpec.describe ParticipantsBuilder do
           participants
           expect(Rollbar).to have_received(:warning)
             .with('User with pbs_id 11629 has multiple roles in participation: '\
-            '["Event::Camp::Role::Participant", "Event::Camp::Role::AssistantLeader"]')
+                  '["Event::Camp::Role::Participant", "Event::Camp::Role::AssistantLeader"]')
         end
       end
     end

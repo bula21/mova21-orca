@@ -29,7 +29,9 @@ RSpec.configure do |config|
   end
 
   config.after do
+    # rubocop:disable Rails/I18nLocaleAssignment
     I18n.locale = I18n.default_locale
+    # rubocop:enable Rails/I18nLocaleAssignment
   end
 
   config.include Devise::Test::IntegrationHelpers, type: :request

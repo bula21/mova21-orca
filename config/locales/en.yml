@@ -499,6 +499,7 @@ en:
     not_all_comply: 'Die Buchung kann nicht abgeschlossen werden: es werden noch nicht
       alle Regeln eingehalten'
     read_more: Details
+    video_src: https://www.youtube.com/embed/TZQT-Zngcyc
   units:
     edit:
       title: Edit a camp

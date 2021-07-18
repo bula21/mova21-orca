@@ -91,7 +91,7 @@ class LimesurveyService
   private
 
   def request(url, method, params)
-    Rails.logger.debug "Talking to Limesurvey: #{url} #{method}, #{params.inspect}"
+    Rails.logger.debug { "Talking to Limesurvey: #{url} #{method}, #{params.inspect}" }
 
     body = { method: method, params: params, id: 1 }
     response = Net::HTTP.start(url.host, url.port, use_ssl: true) do |http|

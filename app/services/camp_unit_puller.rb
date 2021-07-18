@@ -26,7 +26,7 @@ class CampUnitPuller
 
   def pull_all
     camp_unit_data_hierarchy = @midata_service.fetch_camp_unit_data_hierarchy(@stufe.root_camp_unit_id)
-    camp_unit_data_hierarchy.map { |camp_unit_data| pull(camp_unit_data: camp_unit_data) }.compact
+    camp_unit_data_hierarchy.filter_map { |camp_unit_data| pull(camp_unit_data: camp_unit_data) }
   end
 
   def pull_new
@@ -34,7 +34,7 @@ class CampUnitPuller
     children_ids = root_data.dig('events', 0, 'links', 'sub_camps') || []
     existing_ids = Unit.all.pluck(:pbs_id) || []
 
-    (children_ids - existing_ids).map { |new_camp_unit_id| pull(pbs_id: new_camp_unit_id) }.compact
+    (children_ids - existing_ids).filter_map { |new_camp_unit_id| pull(pbs_id: new_camp_unit_id) }
   end
 
   private

@@ -86,7 +86,7 @@ it:
     errors:
       messages:
         incomplete: è incompleto
-        record_invalid: 'Validazione fallita: %{errors}'
+        record_invalid: "Validazione fallita: %{errors}"
         restrict_dependent_destroy:
           has_many: Impossibile cancellare i dati in quanto il seguente valore  %{record}
             esiste ancora
@@ -113,20 +113,20 @@ it:
   activity:
     edit:
       title: Modificare l'attività
-      warning: 'Attenzione: Occorre salvare il formulario prima di modificare i documenti,
-        altrimenti le modifiche andranno perse.'
+      warning: "Attenzione: Occorre salvare il formulario prima di modificare i documenti,
+        altrimenti le modifiche andranno perse."
     index:
       title: Attività
     new:
       title: Creare una nuova attività
     show:
       downloads: Downloads
-      duration: 'Dauer:'
+      duration: "Dauer:"
       max_people: Max. Gruppengrösse
       more_information: Weitere Informationen
       possible: möglich
-      simo_text: 'Benötigt Sicherheitsmodul:'
-      stufe_recommended: 'Geeignet für:'
+      simo_text: "Benötigt Sicherheitsmodul:"
+      stufe_recommended: "Geeignet für:"
   app:
     title: Orca
   buttons:
@@ -171,58 +171,58 @@ it:
       subject: L'iscrizione al campo non è ancora completa
   date:
     abbr_day_names:
-    - Dom
-    - Lun
-    - Mar
-    - Mer
-    - Gio
-    - Ven
-    - Sab
+      - Dom
+      - Lun
+      - Mar
+      - Mer
+      - Gio
+      - Ven
+      - Sab
     abbr_month_names:
-    -
-    - Gen
-    - Feb
-    - Mar
-    - Apr
-    - Mag
-    - Giu
-    - Lug
-    - Ago
-    - Set
-    - Ott
-    - Nov
-    - Dic
+      -
+      - Gen
+      - Feb
+      - Mar
+      - Apr
+      - Mag
+      - Giu
+      - Lug
+      - Ago
+      - Set
+      - Ott
+      - Nov
+      - Dic
     day_names:
-    - Domenica
-    - Lunedì
-    - Martedì
-    - Mercoledì
-    - Giovedì
-    - Venerdì
-    - Sabato
+      - Domenica
+      - Lunedì
+      - Martedì
+      - Mercoledì
+      - Giovedì
+      - Venerdì
+      - Sabato
     formats:
       default: "%d-%m-%Y"
       long: "%d %B %Y"
       short: "%d %b"
     from_to: "%{from} bis %{to}"
     month_names:
-    -
-    - Gennaio
-    - Febbraio
-    - Marzo
-    - Aprile
-    - Maggio
-    - Giugno
-    - Luglio
-    - Agosto
-    - Settembre
-    - Ottobre
-    - Novembre
-    - Dicembre
+      -
+      - Gennaio
+      - Febbraio
+      - Marzo
+      - Aprile
+      - Maggio
+      - Giugno
+      - Luglio
+      - Agosto
+      - Settembre
+      - Ottobre
+      - Novembre
+      - Dicembre
     order:
-    - :day
-    - :month
-    - :year
+      - :day
+      - :month
+      - :year
   datetime:
     distance_in_words:
       about_x_hours:
@@ -285,7 +285,7 @@ it:
       invalid: non è valido
       less_than: deve essere meno di %{count}
       less_than_or_equal_to: deve essere meno o uguale a %{count}
-      model_invalid: 'Validation failed: %{errors}'
+      model_invalid: "Validation failed: %{errors}"
       not_a_number: non è un numero
       not_an_integer: non è un intero
       odd: deve essere dispari
@@ -303,10 +303,10 @@ it:
         one: è della lunghezza sbagliata (deve essere di 1 carattere)
         other: è della lunghezza sbagliata (deve essere di %{count} caratteri)
     template:
-      body: 'Per favore ricontrolla i seguenti campi:'
+      body: "Per favore ricontrolla i seguenti campi:"
       header:
-        one: 'Non posso salvare questo %{model}: 1 errore'
-        other: 'Non posso salvare questo %{model}: %{count} errori.'
+        one: "Non posso salvare questo %{model}: 1 errore"
+        other: "Non posso salvare questo %{model}: %{count} errori."
   helpers:
     select:
       prompt: Per favore, seleziona
@@ -351,7 +351,7 @@ it:
       pre_text: "Ciao %{salutation_name}\n\nLa tua unità %{camp_unit_title} è stata
         pre-iscritta con successo per il mova nella valle di Goms. Ti preghiamo ti
         saldare l'importo entro il 31 luglio 2020. \nMova - on y va!"
-      ref: 'Fattura: %{ref}'
+      ref: "Fattura: %{ref}"
       title: Tassa di iscrizione sezionale per il campo federale 2021
   leaders:
     edit:
@@ -410,9 +410,9 @@ it:
           quadrillion: Biliardi
           thousand: Mila
           trillion: Bilioni
-          unit: ''
+          unit: ""
       format:
-        delimiter: ''
+        delimiter: ""
         precision: 1
         significant: true
         strip_insignificant_zeros: true
@@ -430,11 +430,11 @@ it:
           tb: TB
     percentage:
       format:
-        delimiter: ''
+        delimiter: ""
         format: "%n%"
     precision:
       format:
-        delimiter: ''
+        delimiter: ""
   participants:
     edit:
       title: Modificare partecipanti
@@ -447,7 +447,7 @@ it:
       title: Creare partecipanti
   pre_text: Pre text
   simple_form:
-    confirm_unsaved: 'Attenzione: Tutte le modifiche andranno perse! Vuoi continuare?'
+    confirm_unsaved: "Attenzione: Tutte le modifiche andranno perse! Vuoi continuare?"
     options:
       activity:
         activity_type:
@@ -515,9 +515,10 @@ it:
       Alle Leiter der Einheit mit Zugriff auf orca können Aktivitäten hinzufügen,
       entfernen oder neu priorisieren. \n\nDamit die Buchung abgeschlossen werden
       kann, müssen folgende Regeln eingehlaten werden:"
-    not_all_comply: 'Die Buchung kann nicht abgeschlossen werden: es werden noch nicht
-      alle Regeln eingehalten'
+    not_all_comply: "Die Buchung kann nicht abgeschlossen werden: es werden noch nicht
+      alle Regeln eingehalten"
     read_more: Details
+    video_src: https://www.youtube.com/embed/7XusNePwv_o
   units:
     edit:
       title: Modificare il campo
@@ -526,28 +527,28 @@ it:
     index:
       title: Il tuo campo
     kv_ids:
-      '1018': AS Genevois
-      '1145': Pfadi Zueri
-      '142': Pfadi Kanton Schwyz
-      '161': Pfadi Glarus
-      '166': Pfadi St. Gallen - Appenzell
-      '167': Battasendas Grischun
-      '179': Pfadi Luzern
-      '187': Pfadi Unterwalden
-      '237': Pfadi Kanton Zug
-      '238': Scoutismo Ticino
-      '299': Pfadi Region Basel
-      '3': Pfadi Kanton Solothurn
-      '4': Pfadi Kanton Bern
-      '4691': Pfadi Aargau
-      '513': Scouts Vaudois
-      '631': Pfadi Kanton Schaffhausen
-      '638': AS Fribourgeois
-      '85': Pfadi Uri
-      '880': Scouts Neuchatelois
-      '911': AS Jurassienne
-      '993': Pfadi Thurgau
-      '994': AS Valaisan
+      "1018": AS Genevois
+      "1145": Pfadi Zueri
+      "142": Pfadi Kanton Schwyz
+      "161": Pfadi Glarus
+      "166": Pfadi St. Gallen - Appenzell
+      "167": Battasendas Grischun
+      "179": Pfadi Luzern
+      "187": Pfadi Unterwalden
+      "237": Pfadi Kanton Zug
+      "238": Scoutismo Ticino
+      "299": Pfadi Region Basel
+      "3": Pfadi Kanton Solothurn
+      "4": Pfadi Kanton Bern
+      "4691": Pfadi Aargau
+      "513": Scouts Vaudois
+      "631": Pfadi Kanton Schaffhausen
+      "638": AS Fribourgeois
+      "85": Pfadi Uri
+      "880": Scouts Neuchatelois
+      "911": AS Jurassienne
+      "993": Pfadi Thurgau
+      "994": AS Valaisan
     new:
       title: Creare un campo
     show:
@@ -572,13 +573,13 @@ it:
       invoices: Fatture
       other_infos: Informazioni supplementari
       paid:
-        'false': aperto
-        'true': pagato
+        "false": aperto
+        "true": pagato
       participants: Partecipanti
       questionnaire: Questionario
   views:
     pagination:
-      first: !!str '<<'
+      first: !!str "<<"
       last: ">>"
       next: ">"
       previous: "<"

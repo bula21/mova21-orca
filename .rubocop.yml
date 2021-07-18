@@ -65,6 +65,7 @@ AllCops:
     - "db/**/*"
     - "vendor/**/*"
     - "node_modules/**/*"
+    - "app/services/tester_service.rb"
 
 RSpec/EmptyExampleGroup:
   Enabled: false

@@ -1,4 +1,8 @@
-.h1 = UnitActivity.model_name.human(count: :other)
+h1.h1.pb-0
+  = UnitActivity.model_name.human(count: :other)
+  small=< @unit.title
+
+.pb-5 = link_to t('buttons.back'), unit_path(@unit)
 
 .row
   .col-md-3.position-relative.mb-5.order-sm-2

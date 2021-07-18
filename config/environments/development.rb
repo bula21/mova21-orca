@@ -55,5 +55,5 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::FileUpdateChecker
 
   # Allow web_console
-  config.web_console.whitelisted_ips = '0.0.0.0/0'
+  config.web_console.permissions = '0.0.0.0/0'
 end

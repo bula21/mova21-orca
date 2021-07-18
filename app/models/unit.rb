@@ -62,13 +62,7 @@ class Unit < ApplicationRecord
   end
 
   before_save :set_limesurvey_token
-  after_create do
-    if complete?
-      # notify_complete
-    else
-      notify_incomplete
-    end
-  end
+  after_create :notify_incomplete
   accepts_nested_attributes_for :participants
 
   enum language: { de: 'de', fr: 'fr', it: 'it', en: 'en' }
