@@ -510,5 +510,8 @@ DEPENDENCIES
   webmock (~> 3.8)
   webpacker
 
+RUBY VERSION
+   ruby 2.7.3p183
+
 BUNDLED WITH
    2.2.17
