@@ -1,5 +1,5 @@
 h1.h1.pb-0
-  = UnitActivity.model_name.human(count: :other)
+  = UnitActivity.model_name.human(count: 2)
   small=< @unit.title
 
 .pb-5 = link_to t('buttons.back'), unit_path(@unit)
@@ -10,7 +10,7 @@ h1.h1.pb-0
       .card-header
         .d-flex.justify-content-between.align-items-center
           div
-            =<> UnitActivity.model_name.human(count: :other)
+            =<> UnitActivity.model_name.human(count: 2)
             .badge.badge-primary
               = @unit.unit_activities.count
           div
