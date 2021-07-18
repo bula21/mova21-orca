@@ -20,6 +20,11 @@
             - if @filter.tags.present?
               .badge.badge-pill.badge-info.ml-2= @filter.tags&.count
         li.nav-item.mr-2.mb-2
+          a.btn.btn-outline-secondary[data-toggle="pill" href="#filter-text" role="pill"]
+            = ActivityFilter.human_attribute_name(:text)
+            - if @filter.text&.size&.>(2)
+              .badge.badge-pill.badge-info.ml-2= 1
+        li.nav-item.mr-2.mb-2
           = link_to unit_unit_activities_path(@unit, activity_filter: { reset: true }), class: 'btn btn-outline-secondary', role: :pill, title: t('buttons.reset')
             i.fa.fa-undo
 
@@ -34,6 +39,9 @@
         #filter-tags.py-3.tab-pane[role="tabpanel"]
           = f.input_field :tags, as: :check_boxes, collection: Tag.all.map { |t| [t.label, t.id.to_s] },
                                  include_hidden: false, class: 'form-check-input'
+
+        #filter-text.py-3.tab-pane[role="tabpanel"]
+          = f.input :text, label_method: :full_label
 
     .col-sm-3.order-sm-2
       = f.submit t('buttons.filter'), class: 'btn w-100 btn-secondary'

@@ -6,6 +6,7 @@ en:
         activity_category: Kategorie
         stufe_recommended: Empfohlene Stufe
         tags: Tags
+        text: Text
   activerecord:
     attributes:
       activity:
@@ -480,6 +481,7 @@ en:
     booked: zum Warenkorb hinzugefügt
     commit: Buchung abschliessen
     compliance_evaluators:
+      ein_ausflug_pro_woche: Une excursion par semaine
       eine_aktivitaet_pro_kategorie: Max. eine Aktivität pro Kategorie
       eine_mova_aktivitaet_pro_woche: Mindestens eine mova Aktivität pro Woche
       max_eine_aktivitaet_pro_kategorie: Maximal eine Aktivität pro Kategorie

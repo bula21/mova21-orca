@@ -4,6 +4,7 @@ class ActivityFilter < ApplicationFilter
   attribute :activity_category
   attribute :languages, default: []
   attribute :tags, default: []
+  attribute :text
   attribute :stufe_recommended
   attribute :unit
   attribute :min_participants_count
@@ -18,6 +19,13 @@ class ActivityFilter < ApplicationFilter
     next if tags.blank?
 
     activities.joins(:tags).where(tags: { id: tags }).group(:id).having("count('activities.id') = ?", tags.count)
+  end
+
+  filter :text do |activities|
+    next if text&.size&.<(3)
+
+    match_text = text
+    activities.merge(Activity.i18n { label.matches("%#{match_text}%") })
   end
 
   filter :activity_category do |activities|
