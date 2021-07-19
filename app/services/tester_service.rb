@@ -10,7 +10,7 @@ class TesterService
     testers.each { |tester| add_test_units(**tester) }
   end
 
-  def add_test_unit(lagerleiter:, title:, stufe:, tn:, leitung:, language: :de)
+  def add_test_unit(lagerleiter:, title:, stufe:, tn:, leitung:, language: :de, kv: Kv.last)
     I18n.with_locale(language) do
       Unit.create!(title: title, stufe: stufe, abteilung: abteilung, lagerleiter: lagerleiter, kv: kv,
                    expected_participants_leitung_f: (leitung / 2), expected_participants_leitung_m: (leitung / 2),
