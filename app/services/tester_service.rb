@@ -39,7 +39,7 @@ class TesterService
           title = "#{abteilung} #{stufe.name} #{Unit.model_name.human} ##{i + 1}"
 
           add_test_unit(title: title, lagerleiter: lagerleiter, stufe: stufe, tn: tn, leitung: leitung,
-                        language: language)
+                        language: language, abteilung: abteilung)
         end
       end
     end
