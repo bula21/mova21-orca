@@ -34,15 +34,20 @@ class TesterService
       STUFEN.each do |code|
         stufe = Stufe.find_by!(code: code)
         units_per_stufe.times do |i|
-          tn = rand(TN_RANGE.begin + (tn_slice_size * i))..(TN_RANGE.begin + (tn_slice_size * (i + 1)))
-          leitung = rand(LEITUNG_RANGE.begin + (leitung_slice_size * i))..(LEITUNG_RANGE.begin + (leitung_slice_size * (i + 1)))
+          tn = range_slice(TN_RANGE, units_per_stufe, i)
+          leitung = range_slice(LEITUNG_RANGE, units_per_stufe, i)
           title = "#{abteilung} #{stufe.name} #{Unit.model_name.human} ##{i + 1}"
 
-          add_test_unit(title: title, lagerleiter: lagerleiter, stufe: stufe, tn: tn, leitung: leitung,
-                        language: language, abteilung: abteilung)
+          add_test_unit(title: title, lagerleiter: lagerleiter, stufe: stufe, tn: rand(tn), 
+                        leitung: rand(leitung), language: language, abteilung: abteilung)
         end
       end
     end
+  end
+
+  def range_slice(range, slices, i)
+    slice_size = range.size / slices
+    (range.begin + (slice_size * i))..(range.begin + (slice_size * (i + 1)))
   end
 end
 # rubocop:enable all
