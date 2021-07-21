@@ -87,7 +87,7 @@ fr:
     errors:
       messages:
         incomplete: est incomplète
-        record_invalid: "La validation a échoué : %{errors}"
+        record_invalid: 'La validation a échoué : %{errors}'
         restrict_dependent_destroy:
           has_many: Vous ne pouvez pas supprimer l'enregistrement parce que les %{record}
             dépendants existent
@@ -114,20 +114,20 @@ fr:
   activity:
     edit:
       title: Éditer l'activité
-      warning: "Achtung: Forumlar zuerst speichern und danach Dokumente bearbeiten
-        (Änderungen gehen sonst verloren)"
+      warning: 'Achtung: Forumlar zuerst speichern und danach Dokumente bearbeiten
+        (Änderungen gehen sonst verloren)'
     index:
       title: Activités
     new:
       title: Créer une nouvelle activité
     show:
       downloads: Downloads
-      duration: "Dauer:"
+      duration: 'Dauer:'
       max_people: Max. Gruppengrösse
       more_information: Weitere Informationen
       possible: möglich
-      simo_text: "Benötigt Sicherheitsmodul:"
-      stufe_recommended: "Geeignet für:"
+      simo_text: 'Benötigt Sicherheitsmodul:'
+      stufe_recommended: 'Geeignet für:'
   app:
     title: Orca
   buttons:
@@ -173,58 +173,58 @@ fr:
       subject: Inscription mova n'est pas encore complète
   date:
     abbr_day_names:
-      - dim
-      - lun
-      - mar
-      - mer
-      - jeu
-      - ven
-      - sam
+    - dim
+    - lun
+    - mar
+    - mer
+    - jeu
+    - ven
+    - sam
     abbr_month_names:
-      -
-      - jan.
-      - fév.
-      - mar.
-      - avr.
-      - mai
-      - juin
-      - juil.
-      - août
-      - sept.
-      - oct.
-      - nov.
-      - déc.
+    -
+    - jan.
+    - fév.
+    - mar.
+    - avr.
+    - mai
+    - juin
+    - juil.
+    - août
+    - sept.
+    - oct.
+    - nov.
+    - déc.
     day_names:
-      - dimanche
-      - lundi
-      - mardi
-      - mercredi
-      - jeudi
-      - vendredi
-      - samedi
+    - dimanche
+    - lundi
+    - mardi
+    - mercredi
+    - jeudi
+    - vendredi
+    - samedi
     formats:
       default: "%d.%m.%Y"
       long: "%e %B %Y"
       short: "%e %b"
     from_to: "%{from} bis %{to}"
     month_names:
-      -
-      - janvier
-      - février
-      - mars
-      - avril
-      - mai
-      - juin
-      - juillet
-      - août
-      - septembre
-      - octobre
-      - novembre
-      - décembre
+    -
+    - janvier
+    - février
+    - mars
+    - avril
+    - mai
+    - juin
+    - juillet
+    - août
+    - septembre
+    - octobre
+    - novembre
+    - décembre
     order:
-      - :day
-      - :month
-      - :year
+    - :day
+    - :month
+    - :year
   datetime:
     distance_in_words:
       about_x_hours:
@@ -289,7 +289,7 @@ fr:
       invalid: n'est pas valide
       less_than: doit être inférieur à %{count}
       less_than_or_equal_to: doit être inférieur ou égal à %{count}
-      model_invalid: "Validation échouée : %{errors}"
+      model_invalid: 'Validation échouée : %{errors}'
       not_a_number: n'est pas un nombre
       not_an_integer: doit être un nombre entier
       odd: doit être impair
@@ -307,10 +307,10 @@ fr:
         one: ne fait pas la bonne longueur (doit comporter un seul caractère)
         other: ne fait pas la bonne longueur (doit comporter %{count} caractères)
     template:
-      body: "Veuillez vérifier les champs suivants : "
+      body: 'Veuillez vérifier les champs suivants : '
       header:
-        one: "Impossible d'enregistrer ce(tte) %{model} : 1 erreur"
-        other: "Impossible d'enregistrer ce(tte) %{model} : %{count} erreurs"
+        one: 'Impossible d''enregistrer ce(tte) %{model} : 1 erreur'
+        other: 'Impossible d''enregistrer ce(tte) %{model} : %{count} erreurs'
   helpers:
     select:
       prompt: Veuillez sélectionner
@@ -357,7 +357,7 @@ fr:
 
         Ton unité %{camp_unit_title} a été préinscrite avec succès pour le mova dans la vallée de Conches. Nous te prions te bien vouloir régler le montant jusqu'au 31 juillet 2020.
         Mova - on y va!
-      ref: "Montant: %{ref}"
+      ref: 'Montant: %{ref}'
       title: Frais du groupe pour le camp fédéral 2021
   leaders:
     edit:
@@ -416,9 +416,9 @@ fr:
           quadrillion: million de milliards
           thousand: millier
           trillion: billion
-          unit: ""
+          unit: ''
       format:
-        delimiter: ""
+        delimiter: ''
         precision: 3
         significant: true
         strip_insignificant_zeros: true
@@ -436,11 +436,11 @@ fr:
           tb: To
     percentage:
       format:
-        delimiter: ""
+        delimiter: ''
         format: "%n%"
     precision:
       format:
-        delimiter: ""
+        delimiter: ''
   participants:
     edit:
       title: Edit participants
@@ -453,8 +453,8 @@ fr:
       title: Créer articipants
   pre_text: Pre text
   simple_form:
-    confirm_unsaved: "Achtung: Alle nicht gespeicherten Änderungen gehen verloren.
-      Sind Sie sicher?"
+    confirm_unsaved: 'Achtung: Alle nicht gespeicherten Änderungen gehen verloren.
+      Sind Sie sicher?'
     options:
       activity:
         activity_type:
@@ -517,8 +517,8 @@ fr:
       Tant que vous n'aurez pas défini la réservation sur "complete", le panier d'achat servira de Tous les chefs d'unité ayant accès à orca peuvent supprimer ou redéfinir les activités.
 
       Pour que la réservation soit complète, les règles suivantes doivent être incluses:
-    not_all_comply: "La réservation ne peut pas être clôturée : toutes les règles
-      sont toujours respectées."
+    not_all_comply: 'La réservation ne peut pas être clôturée : toutes les règles
+      sont toujours respectées.'
     read_more: Détails
     video_src: https://www.youtube.com/embed/7XusNePwv_o
   units:
@@ -529,28 +529,28 @@ fr:
     index:
       title: Ton camp
     kv_ids:
-      "1018": AS Genevois
-      "1145": Pfadi Zueri
-      "142": Pfadi Kanton Schwyz
-      "161": Pfadi Glarus
-      "166": Pfadi St. Gallen - Appenzell
-      "167": Battasendas Grischun
-      "179": Pfadi Luzern
-      "187": Pfadi Unterwalden
-      "237": Pfadi Kanton Zug
-      "238": Scoutismo Ticino
-      "299": Pfadi Region Basel
-      "3": Pfadi Kanton Solothurn
-      "4": Pfadi Kanton Bern
-      "4691": Pfadi Aargau
-      "513": Scouts Vaudois
-      "631": Pfadi Kanton Schaffhausen
-      "638": AS Fribourgeois
-      "85": Pfadi Uri
-      "880": Scouts Neuchatelois
-      "911": AS Jurassienne
-      "993": Pfadi Thurgau
-      "994": AS Valaisan
+      '1018': AS Genevois
+      '1145': Pfadi Zueri
+      '142': Pfadi Kanton Schwyz
+      '161': Pfadi Glarus
+      '166': Pfadi St. Gallen - Appenzell
+      '167': Battasendas Grischun
+      '179': Pfadi Luzern
+      '187': Pfadi Unterwalden
+      '237': Pfadi Kanton Zug
+      '238': Scoutismo Ticino
+      '299': Pfadi Region Basel
+      '3': Pfadi Kanton Solothurn
+      '4': Pfadi Kanton Bern
+      '4691': Pfadi Aargau
+      '513': Scouts Vaudois
+      '631': Pfadi Kanton Schaffhausen
+      '638': AS Fribourgeois
+      '85': Pfadi Uri
+      '880': Scouts Neuchatelois
+      '911': AS Jurassienne
+      '993': Pfadi Thurgau
+      '994': AS Valaisan
     new:
       title: Créer un camp
     show:
@@ -575,13 +575,13 @@ fr:
       invoices: Invoices
       other_infos: Information
       paid:
-        "false": ouvert
-        "true": payé
+        'false': ouvert
+        'true': payé
       participants: Participants
       questionnaire: Questionaire
   views:
     pagination:
-      first: !!str "<<"
+      first: !!str '<<'
       last: ">>"
       next: ">"
       previous: "<"
