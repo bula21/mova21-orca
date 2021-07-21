@@ -79,25 +79,25 @@ class UnitActivityBooking
     phase?(:open)
   end
 
-  compliance_evaluator :ein_ausflug_pro_woche do
+  compliance_evaluator :hiking do
     next nil if weeks < 1
 
-    activities = unit_activities(only: 'excursion').count
-    activities == weeks || Rational(activities, weeks)
+    activities = unit_activities(only: :hiking).count
+    activities >= (weeks * 3) || "#{activities}/#{weeks * 3}"
   end
 
-  compliance_evaluator :max_eine_aktivitaet_pro_kategorie do
-    category_counts = unit_activities(without: %i[village_global taufe])
-                      .pluck(:activity_category_id).tally
-
-    category_counts.values.none? { _1 > 1 }
-  end
-
-  compliance_evaluator :eine_mova_aktivitaet_pro_woche do
+  compliance_evaluator :excursions do
     next nil if weeks < 1
 
-    count = unit_activities(without: %i[village_global taufe]).count
-    count > weeks || Rational(count, weeks)
+    activities = unit_activities(only: :excursion).count
+    activities >= (weeks * 3) || "#{activities}/#{weeks * 3}"
+  end
+
+  compliance_evaluator :mova_activities do
+    next nil if weeks < 1
+
+    count = unit_activities(without: %i[village_global taufe excursion hiking]).count
+    count >= (weeks * 4) || "#{count}/#{weeks * 4}"
   end
 
   compliance_evaluator :village_global_workshops do
@@ -105,7 +105,7 @@ class UnitActivityBooking
 
     next nil if unit.stufe == 'pta'
     next false if count <= 0
-    next Rational(count, 3) if count < 3
+    next "#{count}/3" if count < 3
 
     true
   end
