@@ -17,7 +17,7 @@
         = activity.activity_category&.label
     .col-5
       - activity.tags.each do |tag|
-        i class="#{tag.icon} mr-2" title="#{tag.label}"
+        i[class="#{tag.icon} mr-2 z-100" title=tag.label]
 
   p.my-2 = activity.description&.truncate(250)
 

@@ -104,6 +104,7 @@ class UnitActivityBooking
     count = unit_activities(only: :village_global).count
 
     next nil if unit.stufe == 'pta'
+
     count >= 3 || "#{count}/3"
   end
 end
