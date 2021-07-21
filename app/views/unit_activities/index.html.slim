@@ -38,7 +38,7 @@ h1.h1.pb-0
           = button_to t('unit_activity_booking.commit'), commit_unit_unit_activities_path(@unit), method: :post, class: 'btn btn-primary', disabled: (!@unit_activity_booking.all_comply?)
 
   .col-md-9.order-sm-1
-    = render partial: 'filter'
+    = render partial: 'activities/filter', locals: { submit_url: unit_unit_activities_path(@unit, locale: I18n.locale), reset_url: unit_unit_activities_path(@unit, activity_filter: { reset: true }) }
     .card.mb-5.mt-4[style='background-color: #aae3ec']
       .card-body
         - t('unit_activity_booking.guide_text').lines.each do |line|

@@ -2,6 +2,8 @@
 
 = link_to(t('buttons.create'), new_activity_path, class: 'btn btn-primary mb-3') if can?(:create, Activity)
 
+= render partial: 'filter', locals: { submit_url: activities_path(locale: I18n.locale), reset_url: activities_path(activity_filter: { reset: true }) }
+
 .table-responsive
   table.table
     thead

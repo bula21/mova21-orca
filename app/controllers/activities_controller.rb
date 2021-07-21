@@ -3,7 +3,9 @@
 class ActivitiesController < ApplicationController
   load_and_authorize_resource except: [:create]
 
-  def index; end
+  def index
+    @activities = filter.apply(Activity.accessible_by(current_ability).distinct).page params[:page]
+  end
 
   def show; end
 
@@ -52,6 +54,13 @@ class ActivitiesController < ApplicationController
   def delete_attachment
     @activity.activity_documents.find_by(id: params[:attachment_id]).purge
     redirect_to edit_activity_url(@activity)
+  end
+
+  def filter
+    activity_filter_params = params[:activity_filter]&.permit(:min_participants_count, :stufe_recommended, :text,
+                                                              :activity_category, tags: [], languages: [])
+    session[:activity_filter_params] = activity_filter_params if params.key?(:activity_filter)
+    @filter ||= ActivityFilter.new(session[:activity_filter_params] || {})
   end
 
   def activity_params

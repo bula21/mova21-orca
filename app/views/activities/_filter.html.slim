@@ -1,4 +1,4 @@
-= simple_form_for(@filter, url: unit_unit_activities_path(@unit, locale: I18n.locale), method: :GET, scope: '') do |f|
+= simple_form_for(@filter, url: submit_url, method: :GET, scope: '') do |f|
   = hidden_field_tag :locale, I18n.locale
 
   .row.mb-4
@@ -25,7 +25,7 @@
             - if @filter.text&.size&.>(2)
               .badge.badge-pill.badge-info.ml-2= 1
         li.nav-item.mr-2.mb-2
-          = link_to unit_unit_activities_path(@unit, activity_filter: { reset: true }), class: 'btn btn-outline-secondary', role: :pill, title: t('buttons.reset')
+          = link_to reset_url, class: 'btn btn-outline-secondary', role: :pill, title: t('buttons.reset')
             i.fa.fa-undo
 
     .col-12.order-sm-3
