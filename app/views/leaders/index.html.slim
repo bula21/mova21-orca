@@ -10,7 +10,7 @@
         th = Leader.human_attribute_name(:email)
         th
     tbody
-      - @leaders.each do |leader|
+      - @leaders&.each do |leader|
         tr
           td = leader.full_name
           td = leader.email

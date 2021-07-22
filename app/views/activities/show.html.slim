@@ -27,7 +27,7 @@ hr
     = "#{t('activity.show.simo_text')} #{t(@activity.simo, scope: 'simple_form.options.activity.simo')}"
 hr
 .mt-4
-    = markdown(@activity.description).html_safe
+  = markdown(@activity.description).html_safe
 
 hr
 
@@ -38,10 +38,10 @@ hr
     dd = @activity.participants_count_transport
 
     dt = t('activerecord.attributes.activity.languages')
-    dd 
+    dd
       ul
         - @activity.languages.select { |language, selected| selected }.keys.each do |language|
-          li= t("simple_form.options.activity.#{language}") 
+          li= t("simple_form.options.activity.#{language}")
 
     dt = t('activerecord.attributes.activity.block_type')
     dd = t(@activity.block_type || 'none', scope: 'simple_form.options.activity.block_type')
@@ -58,11 +58,11 @@ hr
     dd = @activity.activity_category&.full_label
 
 
-    / dt = t('activerecord.attributes.activity.location')
-    / dd = @activity.location
+/ dt = t('activerecord.attributes.activity.location')
+/ dd = @activity.location
 
-    / dt = t('activerecord.attributes.activity.transport_location')
-    / dd = @activity.transport_location
+/ dt = t('activerecord.attributes.activity.transport_location')
+/ dd = @activity.transport_location
 
 
 - if @activity.activity_documents.any?
@@ -73,6 +73,15 @@ hr
       ul.list-group
         - @activity.activity_documents.each do |document|
           li.list-group-item = link_to document.filename, rails_blob_path(document, disposition: 'attachment')
+
+
+- if can?(:edit, @activity)
+  hr
+  .h4.mt-3 = t('activity.show.executions')
+  = react_component("CalendarManager", { activityId: @activity.id,
+          availableLanguages: @activity.languages.keys.map { |language| language.to_s.sub('language_', '')},
+          defaultAmountParticipants: @activity.participants_count_transport,
+          spots: @spots })
 
 
 hr.mt-4

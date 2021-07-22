@@ -90,6 +90,34 @@ ActiveRecord::Schema.define(version: 2021_06_22_124902) do
     t.index ["ancestry"], name: "index_activity_categories_on_ancestry"
   end
 
+  create_table "activity_executions", force: :cascade do |t|
+    t.bigint "activity_id", null: false
+    t.datetime "starts_at"
+    t.datetime "ends_at"
+    t.integer "language_flags"
+    t.integer "amount_participants"
+    t.bigint "field_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.boolean "transport"
+    t.index ["activity_id"], name: "index_activity_executions_on_activity_id"
+    t.index ["field_id"], name: "index_activity_executions_on_field_id"
+  end
+
+  create_table "fields", force: :cascade do |t|
+    t.string "name"
+    t.bigint "spot_id", null: false
+    t.index ["spot_id"], name: "index_fields_on_spot_id"
+  end
+
+  create_table "fixed_events", force: :cascade do |t|
+    t.jsonb "title", default: {}
+    t.datetime "starts_at"
+    t.datetime "ends_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "goals", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -197,6 +225,11 @@ ActiveRecord::Schema.define(version: 2021_06_22_124902) do
     t.string "phone_number", default: ""
   end
 
+  create_table "spots", force: :cascade do |t|
+    t.string "name"
+    t.string "color"
+  end
+
   create_table "stufen", force: :cascade do |t|
     t.jsonb "name", default: {}
     t.datetime "created_at", precision: 6, null: false
@@ -278,6 +311,9 @@ ActiveRecord::Schema.define(version: 2021_06_22_124902) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "activities", "activity_categories"
   add_foreign_key "activities", "transport_locations"
+  add_foreign_key "activity_executions", "activities"
+  add_foreign_key "activity_executions", "fields"
+  add_foreign_key "fields", "spots"
   add_foreign_key "invoice_parts", "invoices"
   add_foreign_key "invoices", "units"
   add_foreign_key "participant_units", "participants"

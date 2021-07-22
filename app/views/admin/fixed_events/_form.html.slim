@@ -1,0 +1,18 @@
+= simple_form_for([:admin, @fixed_event]) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+  .form-inputs
+    .card.mt-3
+      .card-body
+        = render 'shared/translatable_fields' do
+          - I18n.available_locales.each do |locale|
+            - current_locale = locale == I18n.locale
+            .tab-pane[id="name-#{locale}-tab" class="#{'show active' if current_locale}"
+              aria-labelledby="name-#{locale}-tab" role='tabpanel']
+              = f.input "title_#{locale.to_s}", label: "#{t('activerecord.attributes.fixed_event.title')} #{locale.upcase}"
+    = f.input :starts_at
+    = f.input :ends_at
+
+  .actions.mt-3.mb-3
+    = f.submit t('buttons.save'), class: 'btn btn-primary'

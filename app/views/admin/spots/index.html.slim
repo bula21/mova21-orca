@@ -1,0 +1,20 @@
+h1 = t('spots.index.title')
+
+.table-responsive
+  table.table
+    thead
+      tr
+        th = Spot.human_attribute_name(:name)
+        th = Spot.human_attribute_name(:fields)
+        th
+    tbody
+      - @spots.each do |spot|
+        tr
+          td = spot.name
+          td = link_to admin_spot_fields_path(spot) do
+            => spot.fields.count
+            i.fa.fa-edit
+          td = link_to t('buttons.edit'), edit_admin_spot_path(spot)
+          td = link_to t('buttons.destroy'), admin_spot_path(spot), data: { confirm: t('buttons.confirm_delete') }, method: :delete
+
+= link_to t('buttons.create'), new_admin_spot_path, class: 'btn btn-primary mb-3'

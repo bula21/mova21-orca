@@ -38,7 +38,8 @@ class Activity < ApplicationRecord
 
   has_many_attached :activity_documents
   has_one_attached :picture
-
+  has_and_belongs_to_many :tags, optional: true
+  has_many :activity_executions, inverse_of: :activity, dependent: :destroy
   belongs_to :transport_location, optional: true
   belongs_to :activity_category, optional: true
 
@@ -67,6 +68,7 @@ class Activity < ApplicationRecord
   validates :block_type, :participants_count_activity, :stufen,
             :stufe_recommended, :activity_category, :duration_activity, presence: true
   validates :duration_activity, format: { with: /\A\d{2}:\d{2}\z/ }, allow_nil: true
+  validates :language_flags, numericality: { greater_than: 0 }, allow_nil: false
 
   translates :label, type: :string, locale_accessors: true, fallbacks: true
   translates :description, type: :text, locale_accessors: true, fallbacks: true

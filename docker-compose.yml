@@ -8,8 +8,9 @@ services:
         UID: ${UID}
         GID: ${GID}
     volumes:
-      - .:/app:delegated
+      - .:/app
       - ./config/database.docker.yml:/app/config/database.yml:ro
+      - ~/.composer/docker-cache/:/root/.composer
       # - ./tmp/fonts/mova:/app/app/webpacker/fonts/mova:ro
     ports:
       - "3000:3000"
@@ -20,6 +21,8 @@ services:
       E2E_SERVER_PORT: "3001"
       E2E_APP_HOST: "app.local:3001"
       SELENIUM_HOST: "selenium:4444"
+      CAMP_START: ${CAMP_START}
+      CAMP_END: ${CAMP_END}
       DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL: "true"
       RUBYOPT: "-W:no-deprecated -W:no-experimental"
       APP_BASE_URL: http://orca.localhost:3000

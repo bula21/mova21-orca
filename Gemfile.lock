@@ -87,6 +87,7 @@ GEM
     bindex (0.8.1)
     bitfields (0.14.0)
       activerecord (>= 5.1)
+    blueprinter (0.25.3)
     bootsnap (1.7.5)
       msgpack (~> 1.0)
     builder (3.2.4)
@@ -465,7 +466,8 @@ DEPENDENCIES
   annotate
   azure-storage (~> 0.15.0.preview)
   bitfields
-  bootsnap
+  blueprinter
+  bootsnap (>= 1.4.2)
   byebug
   cancancan
   capybara (>= 2.15)

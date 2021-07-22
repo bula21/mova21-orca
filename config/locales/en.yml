@@ -121,11 +121,37 @@ en:
     show:
       downloads: Downloads
       duration: 'Dauer:'
+      executions: Executions
       max_people: Max. Gruppengrösse
       more_information: Weitere Informationen
       possible: möglich
       simo_text: 'Benötigt Sicherheitsmodul:'
       stufe_recommended: 'Geeignet für:'
+  activity_execution_calendar:
+    copy:
+      error: 'Error while copying:'
+      success: Activity execution successfully copied
+    create:
+      error: 'Error while creating:'
+      success: Activity execution successfully created
+    delete:
+      confirm: Are you sure you would like to delete the activity execution?
+      error: Could not delete activity execution
+      success: Activity execution successfully removed
+    editor:
+      date_invalid: The start time cannot be before the end time
+      has_transport: With transport
+      languages: Languages
+      manage_spot_hint: 'If you need more program spots, click here:'
+      manage_spot_link_text: Manage program spots
+      title_copy: Copy
+      title_edit: Edit
+    move:
+      error: 'Error while moving activity execution:'
+      success: Activity execution successfully moved
+    update:
+      error: 'Error while updating:'
+      success: Activity execution successfully updated
   app:
     title: Orca
   buttons:
@@ -354,6 +380,7 @@ en:
   nav:
     activity: Activity
     activity_category: Kategory
+    fixed_event: Fixed events
     language:
       de: DE
       en: EN

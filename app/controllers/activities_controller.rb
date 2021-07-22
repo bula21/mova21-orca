@@ -7,7 +7,9 @@ class ActivitiesController < ApplicationController
     @activities = filter.apply(Activity.accessible_by(current_ability).distinct).page params[:page]
   end
 
-  def show; end
+  def show
+    @spots = SpotBlueprint.render_as_hash Spot.all
+  end
 
   def new
     @activity = Activity.new

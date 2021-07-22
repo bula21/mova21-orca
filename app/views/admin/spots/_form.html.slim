@@ -1,0 +1,10 @@
+= simple_form_for([:admin, @spot]) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+  .form-inputs
+    = f.input :name
+    = f.input :color, as: :color
+
+  .form-actions
+    = f.submit t('buttons.save'), class: 'btn btn-primary'

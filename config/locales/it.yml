@@ -123,6 +123,7 @@ it:
     show:
       downloads: Downloads
       duration: 'Dauer:'
+      executions: Esecuzioni
       max_people: Max. Gruppengrösse
       more_information: Weitere Informationen
       possible: möglich
@@ -374,6 +375,7 @@ it:
   nav:
     activity: Catalogo
     activity_category: Kategorie
+    fixed_event: programma approssimativo
     language:
       de: DE
       en: EN
