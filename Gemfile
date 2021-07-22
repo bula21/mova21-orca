@@ -8,7 +8,8 @@ gem 'ancestry'
 gem 'annotate'
 gem 'azure-storage', '~> 0.15.0.preview', require: false
 gem 'bitfields'
-gem 'bootsnap'
+gem 'blueprinter'
+gem 'bootsnap', '>= 1.4.2', require: false
 gem 'cancancan'
 gem 'devise'
 gem 'grape-entity'

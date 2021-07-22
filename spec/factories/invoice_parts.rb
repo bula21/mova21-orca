@@ -24,7 +24,7 @@
 #
 FactoryBot.define do
   factory :invoice_part do
-    invoice { nil }
+    invoice { build(:invoice) }
     type { '' }
     amount { '9.99' }
     label { 'MyString' }

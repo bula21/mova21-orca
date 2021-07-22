@@ -4,9 +4,15 @@
     - if can?(:create, Tag)
       li
         = link_to t('nav.tag'), admin_tags_path
+    - if can?(:create, FixedEvent)
+      li
+        = link_to t('nav.fixed_event'), admin_fixed_events_path
     - if can?(:create, TransportLocation)
       li
         = link_to t('nav.transport_location'), admin_transport_locations_path
     - if can?(:create, ActivityCategory)
       li
         = link_to t('nav.activity_category'), admin_activity_categories_path
+    - if can?(:create, Spot)
+      li
+        = link_to t('nav.spots'), admin_spots_path

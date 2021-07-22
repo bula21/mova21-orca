@@ -33,6 +33,17 @@ de:
         stufe_recommended: Stufen Empfohlen
         stufen: Stufen möglich
         transport_location: Transport-Ort
+      activity_execution:
+        language_flags: Sprachen
+        field: Feld
+        amount_participants: Anzahl TN
+        spot: Programmspot
+      field:
+        name: Name
+      fixed_event:
+        ends_at: Endet um
+        starts_at: Beginnt um
+        title: Titel
       leader:
         birthdate: Geburtsdatum
         first_name: Vorname
@@ -62,6 +73,10 @@ de:
           leader_water_security: Leiter-/in Sicherheitsaktivität Wasser
           participant: Teilnehmende/-r
         scout_name: Pfadiname
+      spot:
+        color: Farbe für Erfassung der Durchführung
+        fields: Felder
+        name: Name
       unit:
         abteilung: Abteilung
         activity_booking_phase: Buchungsphase
@@ -92,18 +107,32 @@ de:
           has_many: Datensatz kann nicht gelöscht werden, da abhängige %{record} existieren.
           has_one: Datensatz kann nicht gelöscht werden, da ein abhängiger %{record}-Datensatz
             existiert.
+        start_not_before_end: das Startdatum muss vor dem Enddatum liegen
       models:
+        activity_execution:
+          attributes:
+            language_flags:
+              greater_than: Es muss mindestens eine Sprache gewählt werden.
         unit:
           attributes:
             lagerleiter:
               incomplete: ist unvollständig (Name, E-Mail, Adresse)
     models:
+      field:
+        one: Feld
+        other: Felder
+      fixed_event:
+        one: Groprogramm-Punkt
+        other: Groprogramm-Punkte
       leader:
         one: Leitperson
         other: Leitpersonen
       participant:
         one: Teilnehmende(r)
         other: Teilnehmende
+      spot:
+        one: Programmspot
+        other: Programmspots
       unit:
         one: Lager
         other: Lager
@@ -122,11 +151,53 @@ de:
     show:
       downloads: Downloads
       duration: 'Dauer:'
+      executions: Durchführungen
       max_people: Max. Gruppengrösse
       more_information: Weitere Informationen
       possible: möglich
       simo_text: 'Benötigt Sicherheitsmodul:'
       stufe_recommended: 'Geeignet für:'
+  activity_execution:
+    edit:
+      title: Programmpunkt editieren
+    index:
+      title: Grobprogramm
+    new:
+      title: Neuen Programmpunkt erfassen
+  activity_execution_calendar:
+    copy:
+      error: 'Fehler beim Kopieren der Durchführung:'
+      success: Durchführung erfolgreich kopiert
+    create:
+      error: 'Fehler beim Erstellen der Durchführung:'
+      success: Durchführung erfolgreich erstellt
+    delete:
+      confirm: Bist du sicher, dass du die Durchführung löschen willst?
+      error: 'Fehler beim Löschen der Durchführung:'
+      success: Durchführung erfolgreich gelöscht
+    editor:
+      title_copy: Kopieren
+      title_edit: Editieren
+      date_invalid: Der Startzeitpunkt kann nicht vor dem Endzeitpunkt liegen
+      has_transport: Mit Transport
+      languages: Sprachen
+      start_time: Startzeit
+      end_time: Endzeit
+      amount_participants: Anzahl TN
+      spot: Programmspot
+      field: Feld
+      manage_spot_hint: 'Falls du mehr Programmspots brauchst, klicke hier:'
+      manage_spot_link_text: Programmspots verwalten
+      save: Speichern
+      copy: Kopieren
+      delete: Löschen
+      cancel: Abbrechen
+    move:
+      error: 'Fehler beim Verschieben der Durchführung:'
+      success: Durchführung erfolgreich verschoben
+    update:
+      error: 'Fehler beim Ändern der Durchführung:'
+      success: Durchführung erfolgreich geändert
   app:
     title: Orca
   buttons:
@@ -308,6 +379,13 @@ de:
       header:
         one: 'Konnte %{model} nicht speichern: ein Fehler.'
         other: 'Konnte %{model} nicht speichern: %{count} Fehler.'
+  fields:
+    edit:
+      title: Feld editieren
+    index:
+      title: "%{spot}: Felder verwalten"
+    new:
+      title: Neues Feld erfassen
   helpers:
     select:
       prompt: Bitte wählen
@@ -374,6 +452,8 @@ de:
   nav:
     activity: Katalog
     activity_category: Kategorie
+    fixed_event: Grobprogramm
+    stufen: Stufen
     language:
       de: DE
       en: EN
@@ -382,6 +462,7 @@ de:
     leader: Leitpersonen
     login: Login
     logout: Logout
+    spots: Programmspots & Felder
     stufen: Stufen
     tag: Tags
     transport_location: Transport
@@ -493,6 +574,13 @@ de:
     participants_count_activity_hint: Max Anzahl Personen die an der Aktivität teilnehmen
       können
     participants_count_transport_hint: Max Kapazität der Aktivität (inkl. Leitung)
+  spots:
+    edit:
+      title: Programmspot editieren
+    index:
+      title: Programmspots verwalten
+    new:
+      title: Neuen Programmspot erfassen
   support:
     array:
       last_word_connector: " und "
