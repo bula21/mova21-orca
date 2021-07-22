@@ -38,7 +38,8 @@ BULA_START  = Time.new(2022, 7, 23, 9, 0)
 BULA_END  = Time.new(2022, 8, 6, 12, 0)
 activities.each do |activity|
   4.times do
-    FactoryBot.create(:activity_execution, starts_at:  Faker::Time.between(from: BULA_START, to: BULA_END), activity: activity, field: Field.all.sample)
+    FactoryBot.create(:activity_execution, amount_participants: activity.participants_count_transport,
+                      starts_at:  Faker::Time.between(from: BULA_START, to: BULA_END), activity: activity, field: Field.all.sample)
   end
 end
 

@@ -48,7 +48,6 @@ module Admin
 
     private
 
-    # Only allow a trusted parameter "white list" through.
     def spot_params
       params.require(:spot).permit(:name, :color)
     end

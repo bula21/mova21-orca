@@ -49,7 +49,6 @@ module Admin
 
     private
 
-    # Only allow a trusted parameter "white list" through.
     def field_params
       params.require(:field).permit(:name)
     end

@@ -11,7 +11,8 @@ class ActivityExecution < ApplicationRecord
   validates :transport, inclusion: { in: [true, false] }
   validates :language_flags, numericality: { greater_than: 0 }, allow_nil: false
   validates :amount_participants,
-            numericality: { greater_than_or_equal_to: :min_amount_participants, less_than_or_equal_to: :max_amount_participants }, allow_nil: false
+            numericality: { greater_than_or_equal_to: :min_amount_participants, less_than_or_equal_to:
+              :max_amount_participants }, allow_nil: false
 
   bitfield :language_flags, *Activity::LANGUAGES
 
