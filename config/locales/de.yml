@@ -34,9 +34,9 @@ de:
         stufen: Stufen möglich
         transport_location: Transport-Ort
       activity_execution:
-        language_flags: Sprachen
-        field: Feld
         amount_participants: Anzahl TN
+        field: Feld
+        language_flags: Sprachen
         spot: Programmspot
       field:
         name: Name
@@ -176,22 +176,22 @@ de:
       error: 'Fehler beim Löschen der Durchführung:'
       success: Durchführung erfolgreich gelöscht
     editor:
-      title_copy: Kopieren
-      title_edit: Editieren
+      amount_participants: Anzahl TN
+      cancel: Abbrechen
+      copy: Kopieren
       date_invalid: Der Startzeitpunkt kann nicht vor dem Endzeitpunkt liegen
+      delete: Löschen
+      end_time: Endzeit
+      field: Feld
       has_transport: Mit Transport
       languages: Sprachen
-      start_time: Startzeit
-      end_time: Endzeit
-      amount_participants: Anzahl TN
-      spot: Programmspot
-      field: Feld
       manage_spot_hint: 'Falls du mehr Programmspots brauchst, klicke hier:'
       manage_spot_link_text: Programmspots verwalten
       save: Speichern
-      copy: Kopieren
-      delete: Löschen
-      cancel: Abbrechen
+      spot: Programmspot
+      start_time: Startzeit
+      title_copy: Kopieren
+      title_edit: Editieren
     move:
       error: 'Fehler beim Verschieben der Durchführung:'
       success: Durchführung erfolgreich verschoben
@@ -453,7 +453,6 @@ de:
     activity: Katalog
     activity_category: Kategorie
     fixed_event: Grobprogramm
-    stufen: Stufen
     language:
       de: DE
       en: EN

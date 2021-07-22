@@ -139,13 +139,13 @@ en:
       error: Could not delete activity execution
       success: Activity execution successfully removed
     editor:
-      title_copy: Copy
-      title_edit: Edit
       date_invalid: The start time cannot be before the end time
       has_transport: With transport
       languages: Languages
       manage_spot_hint: 'If you need more program spots, click here:'
       manage_spot_link_text: Manage program spots
+      title_copy: Copy
+      title_edit: Edit
     move:
       error: 'Error while moving activity execution:'
       success: Activity execution successfully moved
@@ -381,7 +381,6 @@ en:
     activity: Activity
     activity_category: Kategory
     fixed_event: Fixed events
-    stufen: Stufen
     language:
       de: DE
       en: EN
