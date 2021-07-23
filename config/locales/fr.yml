@@ -568,6 +568,9 @@ fr:
       sont toujours respectées.'
     read_more: Détails
     video_src: https://www.youtube.com/embed/7XusNePwv_o
+    tag_legend:
+      button: Tag Legende öffnen
+      title: Legende Tags
   units:
     edit:
       title: Modifier un camp

@@ -522,6 +522,9 @@ it:
       alle Regeln eingehalten'
     read_more: Details
     video_src: https://www.youtube.com/embed/7XusNePwv_o
+    tag_legend:
+      button: Tag Legende öffnen
+      title: Legende Tags
   units:
     edit:
       title: Modificare il campo
