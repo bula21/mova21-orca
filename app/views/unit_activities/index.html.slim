@@ -43,6 +43,7 @@ h1.h1.pb-0
       .card-body
         - t('unit_activity_booking.guide_text').lines.each do |line|
           p= line
+
         ul.my-0
           - @unit.activity_booking.compliance.each do |name, compliance|
             - next if compliance.nil?
@@ -57,6 +58,24 @@ h1.h1.pb-0
                     i.fa.fa-times
                   - else  
                     = compliance
+        p
+        a.btn.btn-outline-secondary[data-toggle="modal" data-target="#tagModal"] = t('unit_activity_booking.tag_legend.button')
+
+        #tagModal.modal[tabindex="-1" role="dialog"]
+          .modal-dialog[role="document"]
+            .modal-content
+              .modal-header
+                h5 = t('unit_activity_booking.tag_legend.title')
+                button[type="button" class="close" data-dismiss="modal" aria-label="Close"]
+              .modal-body
+                ul
+                  - Tag.all.each do |tag|
+                    li
+                      i[class="#{tag.icon} mr-2"]
+                      = tag.label
+
+                button.btn.btn-primary[type="button" data-dismiss="modal"] = t('buttons.close')
+
     = render partial: 'activity_listing', collection: @activities, as: :activity
     = paginate @activities
 
