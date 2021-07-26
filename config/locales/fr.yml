@@ -73,6 +73,10 @@ fr:
           leader_water_security: Responsable activité de sécurité Eau
           participant: Participant·e
         scout_name: Totem
+      spot:
+        color: Farbe für Erfassung der Durchführung
+        fields: Felder
+        name: Name
       unit:
         abteilung: Groupe
         activity_booking_phase: Buchungsphase
@@ -104,18 +108,32 @@ fr:
             dépendants existent
           has_one: Vous ne pouvez pas supprimer l'enregistrement car un(e) %{record}
             dépendant(e) existe
+        start_not_before_end: das Startdatum muss vor dem Enddatum liegen
       models:
+        activity_execution:
+          attributes:
+            language_flags:
+              greater_than: Es muss mindestens eine Sprache gewählt werden.
         unit:
           attributes:
             lagerleiter:
               incomplete: est incomplète (nom, e-mail, adresse))
     models:
+      field:
+        one: Feld
+        other: Felder
+      fixed_event:
+        one: Groprogramm-Punkt
+        other: Groprogramm-Punkte
       leader:
         one: Responsable
         other: Responsables
       participant:
         one: Teilnehmende(r)
         other: Teilnehmende
+      spot:
+        one: Programmspot
+        other: Programmspots
       unit:
         one: Unité
         other: Unitées
@@ -134,11 +152,19 @@ fr:
     show:
       downloads: Downloads
       duration: 'Dauer:'
+      executions: Executions
       max_people: Max. Gruppengrösse
       more_information: Weitere Informationen
       possible: möglich
       simo_text: 'Benötigt Sicherheitsmodul:'
       stufe_recommended: 'Geeignet für:'
+  activity_execution:
+    edit:
+      title: Programmpunkt editieren
+    index:
+      title: Grobprogramm
+    new:
+      title: Neuen Programmpunkt erfassen
   activity_execution_calendar:
     copy:
       error: 'Erreur pendant la copie:'
@@ -357,6 +383,13 @@ fr:
       header:
         one: 'Impossible d''enregistrer ce(tte) %{model} : 1 erreur'
         other: 'Impossible d''enregistrer ce(tte) %{model} : %{count} erreurs'
+  fields:
+    edit:
+      title: Feld editieren
+    index:
+      title: "%{spot}: Felder verwalten"
+    new:
+      title: Neues Feld erfassen
   helpers:
     select:
       prompt: Veuillez sélectionner
@@ -434,6 +467,7 @@ fr:
     leader: Responsables
     login: Login
     logout: Logout
+    spots: Programmspots & Felder
     stufen: Stufen
     tag: Tags
     transport_location: Transport
@@ -536,6 +570,16 @@ fr:
     participants_count_activity_hint: Max Anzahl Personen die an der Aktivität teilnehmen
       können
     participants_count_transport_hint: Max Kapazität der Aktivität (inkl. Leitung)
+  spot:
+    edit:
+      title: Title
+  spots:
+    edit:
+      title: Programmspot editieren
+    index:
+      title: Programmspots verwalten
+    new:
+      title: Neuen Programmspot erfassen
   support:
     array:
       last_word_connector: " et "
@@ -553,9 +597,10 @@ fr:
     booked: ajouté au panier d'achat
     commit: Finaliser la réservation
     compliance_evaluators:
-      excursions: Min. 3 mögliche Ausflüge
-      hiking: Min. 3 mögliche Wanderungen
-      mova_activities: Min. 4 mova Aktivitäten pro Lagerwoche
+      excursions: Min. 3 mögliche Ausflüge pro Lageroche
+      hiking: Min. 3 mögliche Wanderungen pro Lagerwoche
+      hiking_or_excursions: Min. 3 mögliche Ausflüge oder Wanderungen
+      mova_activities: Min. 4 mögliche mova Aktivitäten pro Lagerwoche
       phase_open: Die Buchungsphase ist offen
       village_global_workshops: Min. 3 Village Global Workshops
     guide_text: |-

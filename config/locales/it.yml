@@ -33,6 +33,17 @@ it:
         stufe_recommended: Branche raccomandate
         stufen: Branche possibili
         transport_location: Luogo trasporto
+      activity_execution:
+        amount_participants: Nombre de participants
+        field: Terrain
+        language_flags: Langues
+        spot: spot du programme
+      field:
+        name: Nom
+      fixed_event:
+        ends_at: Se termine à
+        starts_at: Commence à
+        title: Titre
       leader:
         birthdate: Data di nascita
         first_name: Nome
@@ -62,6 +73,10 @@ it:
           leader_water_security: Animatore ambito di sicurezza Acqua
           participant: Partecipante
         scout_name: Totem
+      spot:
+        color: Farbe für Erfassung der Durchführung
+        fields: Felder
+        name: Name
       unit:
         abteilung: Sezione
         activity_booking_phase: Buchungsphase
@@ -93,18 +108,32 @@ it:
             esiste ancora
           has_one: Impossibile cancellare i dati in quanto dipendono dai seguenti
             valori  %{record} ancora esistenti
+        start_not_before_end: das Startdatum muss vor dem Enddatum liegen
       models:
+        activity_execution:
+          attributes:
+            language_flags:
+              greater_than: Es muss mindestens eine Sprache gewählt werden.
         unit:
           attributes:
             lagerleiter:
               incomplete: è incompleto (nome, e-mail, indirizzo)
     models:
+      field:
+        one: Feld
+        other: Felder
+      fixed_event:
+        one: Groprogramm-Punkt
+        other: Groprogramm-Punkte
       leader:
         one: Animatore/trice responsabile
         other: Animatori/trici responsabili
       participant:
         one: Teilnehmende(r)
         other: Teilnehmende
+      spot:
+        one: Programmspot
+        other: Programmspots
       unit:
         one: Unità
         other: Unitàs
@@ -129,6 +158,47 @@ it:
       possible: möglich
       simo_text: 'Benötigt Sicherheitsmodul:'
       stufe_recommended: 'Geeignet für:'
+  activity_execution:
+    edit:
+      title: Programmpunkt editieren
+    index:
+      title: Grobprogramm
+    new:
+      title: Neuen Programmpunkt erfassen
+  activity_execution_calendar:
+    copy:
+      error: 'Error while copying:'
+      success: Activity execution successfully copied
+    create:
+      error: 'Error while creating:'
+      success: Activity execution successfully created
+    delete:
+      confirm: Are you sure you would like to delete the activity execution?
+      error: Could not delete activity execution
+      success: Activity execution successfully removed
+    editor:
+      amount_participants: Nombre de participants
+      cancel: Annuler
+      copy: Copier
+      date_invalid: The start time cannot be before the end time
+      delete: Supprimer
+      end_time: Heure de fin
+      field: Terrain
+      has_transport: With transport
+      languages: Languages
+      manage_spot_hint: 'If you need more program spots, click here:'
+      manage_spot_link_text: Manage program spots
+      save: Enregistrer
+      spot: spot du programme
+      start_time: Heure de début
+      title_copy: Copy
+      title_edit: Edit
+    move:
+      error: 'Error while moving activity execution:'
+      success: Activity execution successfully moved
+    update:
+      error: 'Error while updating:'
+      success: Activity execution successfully updated
   app:
     title: Orca
   buttons:
@@ -309,6 +379,13 @@ it:
       header:
         one: 'Non posso salvare questo %{model}: 1 errore'
         other: 'Non posso salvare questo %{model}: %{count} errori.'
+  fields:
+    edit:
+      title: Feld editieren
+    index:
+      title: "%{spot}: Felder verwalten"
+    new:
+      title: Neues Feld erfassen
   helpers:
     select:
       prompt: Per favore, seleziona
@@ -384,6 +461,7 @@ it:
     leader: Animatori/trici responsabili
     login: Login
     logout: Logout
+    spots: Programmspots & Felder
     stufen: Stufen
     tag: Tags
     transport_location: Transport
@@ -485,6 +563,16 @@ it:
     participants_count_activity_hint: Max Anzahl Personen die an der Aktivität teilnehmen
       können
     participants_count_transport_hint: Max Kapazität der Aktivität (inkl. Leitung)
+  spot:
+    edit:
+      title: Title
+  spots:
+    edit:
+      title: Programmspot editieren
+    index:
+      title: Programmspots verwalten
+    new:
+      title: Neuen Programmspot erfassen
   support:
     array:
       last_word_connector: " e "
@@ -504,6 +592,7 @@ it:
     compliance_evaluators:
       excursions: Min. 3 excursions possibles
       hiking: Min. 3 randonnées possibles
+      hiking_or_excursions: Min. 3 mögliche Ausflüge oder Wanderungen
       mova_activities: Min. 4 activités mova par semaine de camp
       phase_open: La phase de réservation est ouverte
       village_global_workshops: Au moins 3 ateliers Village Global
