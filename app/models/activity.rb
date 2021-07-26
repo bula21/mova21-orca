@@ -60,8 +60,10 @@ class Activity < ApplicationRecord
   end)
   scope :bookable_by, (lambda do |unit|
     stufe = Stufe.find_by(code: unit.stufe)
+    participant_count = unit.expected_participants
+
     joins(activities_stufen: :stufe).where(activities_stufen: { stufe: stufe })
-     .where(arel_table[:participants_count_activity].gteq(unit.expected_participants))
+     .where(arel_table[:participants_count_activity].gteq(participant_count))
      .merge(Activity.with_language(unit.language))
   end)
 

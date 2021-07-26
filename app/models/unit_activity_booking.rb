@@ -80,7 +80,7 @@ class UnitActivityBooking
   end
 
   def commit
-    unit.activity_booking_phase_committed if all_comply?
+    unit.activity_booking_phase_committed! if all_comply?
 
     phase?(:committed)
   end
