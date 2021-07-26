@@ -33,6 +33,9 @@ document.addEventListener("turbolinks:load", () => {
   for (const el of document.getElementsByClassName('sortable-list')) {
     setupDragSort(el);
   }
+  for (const el of document.querySelectorAll('[data-onchange-submit]')) {
+    el.addEventListener('change', (ev) => ev.currentTarget.form.submit());
+  }
 });
 
 function setupDragSort(el) {
