@@ -33,6 +33,17 @@ en:
         stufe_recommended: Age recommended
         stufen: Age
         transport_location: Transport-Ort
+      activity_execution:
+        amount_participants: Nombre de participants
+        field: Terrain
+        language_flags: Langues
+        spot: spot du programme
+      field:
+        name: Nom
+      fixed_event:
+        ends_at: Se termine à
+        starts_at: Commence à
+        title: Titre
       leader:
         birthdate: Birthdate
         first_name: Firstname
@@ -62,6 +73,10 @@ en:
           leader_water_security: Leader Water Security
           participant: Participant
         scout_name: Scoutname
+      spot:
+        color: Farbe für Erfassung der Durchführung
+        fields: Felder
+        name: Name
       unit:
         abteilung: Group
         activity_booking_phase: Buchungsphase
@@ -91,18 +106,32 @@ en:
         restrict_dependent_destroy:
           has_many: Cannot delete record because dependent %{record} exist
           has_one: Cannot delete record because a dependent %{record} exists
+        start_not_before_end: das Startdatum muss vor dem Enddatum liegen
       models:
+        activity_execution:
+          attributes:
+            language_flags:
+              greater_than: Es muss mindestens eine Sprache gewählt werden.
         unit:
           attributes:
             lagerleiter:
               incomplete: ist unvollständig (Name, E-Mail, Adresse)
     models:
+      field:
+        one: Feld
+        other: Felder
+      fixed_event:
+        one: Groprogramm-Punkt
+        other: Groprogramm-Punkte
       leader:
         one: Leader
         other: Leaders
       participant:
         one: Teilnehmende(r)
         other: Teilnehmende
+      spot:
+        one: Programmspot
+        other: Programmspots
       unit:
         one: Camp
         other: Camps
@@ -127,6 +156,13 @@ en:
       possible: möglich
       simo_text: 'Benötigt Sicherheitsmodul:'
       stufe_recommended: 'Geeignet für:'
+  activity_execution:
+    edit:
+      title: Programmpunkt editieren
+    index:
+      title: Grobprogramm
+    new:
+      title: Neuen Programmpunkt erfassen
   activity_execution_calendar:
     copy:
       error: 'Error while copying:'
@@ -139,11 +175,20 @@ en:
       error: Could not delete activity execution
       success: Activity execution successfully removed
     editor:
+      amount_participants: Nombre de participants
+      cancel: Annuler
+      copy: Copier
       date_invalid: The start time cannot be before the end time
+      delete: Supprimer
+      end_time: Heure de fin
+      field: Terrain
       has_transport: With transport
       languages: Languages
       manage_spot_hint: 'If you need more program spots, click here:'
       manage_spot_link_text: Manage program spots
+      save: Enregistrer
+      spot: spot du programme
+      start_time: Heure de début
       title_copy: Copy
       title_edit: Edit
     move:
@@ -314,6 +359,13 @@ en:
       header:
         one: 1 error prohibited this %{model} from being saved
         other: "%{count} errors prohibited this %{model} from being saved"
+  fields:
+    edit:
+      title: Feld editieren
+    index:
+      title: "%{spot}: Felder verwalten"
+    new:
+      title: Neues Feld erfassen
   helpers:
     select:
       prompt: Please select
@@ -389,6 +441,7 @@ en:
     leader: Leader
     login: Login
     logout: Logout
+    spots: Programmspots & Felder
     stufen: Stufen
     tag: Tags
     transport_location: Transport
@@ -491,6 +544,16 @@ en:
     participants_count_activity_hint: Max Anzahl Personen die an der Aktivität teilnehmen
       können
     participants_count_transport_hint: Max Kapazität der Aktivität (inkl. Leitung)
+  spot:
+    edit:
+      title: Title
+  spots:
+    edit:
+      title: Programmspot editieren
+    index:
+      title: Programmspots verwalten
+    new:
+      title: Neuen Programmspot erfassen
   support:
     array:
       last_word_connector: ", and "
@@ -510,6 +573,7 @@ en:
     compliance_evaluators:
       excursions: Min. 3 possible excursions
       hiking: Min. 3 possible hikes
+      hiking_or_excursions: Min. 3 mögliche Ausflüge oder Wanderungen
       mova_activities: Min. 4 mova activities per camp week
       phase_open: The booking phase is open
       village_global_workshops: Min. 3 Village Global workshops

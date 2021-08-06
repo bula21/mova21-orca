@@ -22,7 +22,7 @@
   p.my-2 = activity.description&.truncate(250)
 
   .d-flex.justify-content-between
-    = link_to t('unit_activity_booking.read_more'), unit_unit_activity_path(@unit, activity), class: 'pt-2 stretched-link'
+    = link_to t('unit_activity_booking.read_more'), unit_unit_activity_path(@unit, activity, page: params[:page]), class: 'pt-2 stretched-link'
     - if @unit_activity_booking.include?(activity)
       button.btn.disabled[disabled=true]
         = t('unit_activity_booking.booked')

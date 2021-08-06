@@ -31,14 +31,14 @@
     .col-12.order-sm-3
       .tab-content
         #filter-stufe.py-3.tab-pane.show[role="tabpanel"]
-          = f.input :stufe_recommended, collection: Stufe.all.map { |t| [t.name, t.id.to_s] }, include_hidden: false
+          = f.input :stufe_recommended, collection: Stufe.all.map { |t| [t.name, t.id.to_s] }, include_hidden: false, input_html: { onchange: 'this.form.submit()' }
 
         #filter-category.py-3.tab-pane[role="tabpanel"]
-          = f.input :activity_category, collection: ActivityCategory.roots, as: :grouped_select,  group_method: :children, group_label_method: :label, label_method: :full_label
+          = f.input :activity_category, collection: ActivityCategory.roots, as: :grouped_select,  group_method: :children, group_label_method: :label, label_method: :full_label, input_html: { onchange: 'this.form.submit()' }
 
         #filter-tags.py-3.tab-pane[role="tabpanel"]
           = f.input_field :tags, as: :check_boxes, collection: Tag.all.map { |t| [t.label, t.id.to_s] },
-                                 include_hidden: false, class: 'form-check-input'
+                                 include_hidden: false, class: 'form-check-input', input_html: { onchange: 'this.form.submit()' }
 
         #filter-text.py-3.tab-pane[role="tabpanel"]
           = f.input :text, label_method: :full_label

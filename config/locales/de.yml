@@ -573,6 +573,9 @@ de:
     participants_count_activity_hint: Max Anzahl Personen die an der Aktivität teilnehmen
       können
     participants_count_transport_hint: Max Kapazität der Aktivität (inkl. Leitung)
+  spot:
+    edit:
+      title: Title
   spots:
     edit:
       title: Programmspot editieren
@@ -597,9 +600,10 @@ de:
     booked: zum Warenkorb hinzugefügt
     commit: Buchung abschliessen
     compliance_evaluators:
-      excursions: Min. 3 mögliche Ausflüge
-      hiking: Min. 3 mögliche Wanderungen
-      mova_activities: Min. 4 mova Aktivitäten pro Lagerwoche
+      excursions: Min. 3 mögliche Ausflüge pro Lageroche
+      hiking: Min. 3 mögliche Wanderungen pro Lagerwoche
+      hiking_or_excursions: Min. 3 mögliche Ausflüge oder Wanderungen
+      mova_activities: Min. 4 mögliche mova Aktivitäten pro Lagerwoche
       phase_open: Die Buchungsphase ist offen
       village_global_workshops: Min. 3 Village Global Workshops
     guide_text: "Jede Einheit wird während der dauer des Lagers für ein oder mehrere

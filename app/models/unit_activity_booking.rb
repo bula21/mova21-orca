@@ -41,12 +41,29 @@ class UnitActivityBooking
     {
       wolf: 1,
       pta: 1,
-      pfadi: 2
+      pfadi: 2,
+      pio: 2
     }.fetch(stufe, 0)
   end
 
   def stufe
     unit&.stufe&.to_sym
+  end
+
+  def stufe_pio?
+    stufe == :pio
+  end
+
+  def stufe_pfadi?
+    stufe == :pfadi
+  end
+
+  def stufe_wolf?
+    stufe == :wolf
+  end
+
+  def stufe_pta?
+    stufe == :pta
   end
 
   def self.compliance_evaluators
@@ -63,7 +80,7 @@ class UnitActivityBooking
   end
 
   def commit
-    unit.activity_booking_phase_committed if all_comply?
+    unit.activity_booking_phase_committed! if all_comply?
 
     phase?(:committed)
   end
@@ -80,31 +97,37 @@ class UnitActivityBooking
   end
 
   compliance_evaluator :hiking do
-    next nil if weeks < 1
+    next nil unless stufe_pfadi? || stufe_pio?
 
     activities = unit_activities(only: :hiking).count
     activities >= (weeks * 3) || "#{activities}/#{weeks * 3}"
   end
 
   compliance_evaluator :excursions do
-    next nil if weeks < 1
+    next nil unless stufe_pfadi? || stufe_pio?
 
-    activities = unit_activities(only: :excursion).count
+    activities = unit_activities(only: %i[excursion water culture]).count
+    activities >= (weeks * 3) || "#{activities}/#{weeks * 3}"
+  end
+
+  compliance_evaluator :hiking_or_excursions do
+    next nil unless stufe_wolf? || stufe_pta?
+
+    activities = unit_activities(only: %i[excursion water culture hiking]).count
     activities >= (weeks * 3) || "#{activities}/#{weeks * 3}"
   end
 
   compliance_evaluator :mova_activities do
     next nil if weeks < 1
 
-    count = unit_activities(without: %i[village_global taufe excursion hiking]).count
+    count = unit_activities(without: %i[village_global water culture taufe excursion hiking]).count
     count >= (weeks * 4) || "#{count}/#{weeks * 4}"
   end
 
   compliance_evaluator :village_global_workshops do
+    next nil if stufe_pta?
+
     count = unit_activities(only: :village_global).count
-
-    next nil if unit.stufe == 'pta'
-
     count >= 3 || "#{count}/3"
   end
 end
