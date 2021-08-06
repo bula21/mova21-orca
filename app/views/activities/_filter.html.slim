@@ -40,6 +40,23 @@
           = f.input_field :tags, as: :check_boxes, collection: Tag.all.map { |t| [t.label, t.id.to_s] },
                                  include_hidden: false, class: 'form-check-input', input_html: { onchange: 'this.form.submit()' }
 
+          a.mt-3.btn.btn-outline-secondary[data-toggle="modal" data-target="#tagModal"] = t('unit_activity_booking.tag_legend.button')
+
+          #tagModal.modal[tabindex="-1" role="dialog"]
+            .modal-dialog[role="document"]
+              .modal-content
+                .modal-header
+                  h5 = t('unit_activity_booking.tag_legend.title')
+                  button[type="button" class="close" data-dismiss="modal" aria-label="Close"]
+                .modal-body
+                  ul
+                    - Tag.all.each do |tag|
+                      li
+                        i[class="#{tag.icon} mr-2"]
+                        = tag.label
+
+                  button.btn.btn-primary[type="button" data-dismiss="modal"] = t('buttons.close')
+
         #filter-text.py-3.tab-pane[role="tabpanel"]
           = f.input :text, label_method: :full_label
 

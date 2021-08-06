@@ -14,7 +14,7 @@ h1.h1.pb-0
             .badge.badge-primary
               = @unit.unit_activities.count
           div
-            - if @unit.activity_booking.all_comply?
+            - if @unit.activity_booking.all_comply? || @unit_activity_booking.phase?(:committed)
               .badge.badge-pill.badge-success 
                 i.fa.fa-check
             - else 
@@ -23,15 +23,17 @@ h1.h1.pb-0
       .card-body.p-0
         ol.sortable-list.list-group.small
           - @unit_activities.prioritized.each do |unit_activity|
-            li.list-group-item.draggable.p-1.pl-4[data-sort-callback-url=priorize_unit_unit_activity_path(@unit, unit_activity)]
+            li.list-group-item.p-1.pl-4[data-sort-callback-url=priorize_unit_unit_activity_path(@unit, unit_activity) class=(@unit_activity_booking.phase?(:preview, :open) && :draggable)]
               h6.m-0= unit_activity.activity.label
               span.badge class="badge-#{unit_activity.activity.activity_category&.css_code}"
                 = unit_activity.activity.activity_category&.label
-              .d-flex.justify-content-end
-                = link_to unit_unit_activity_path(@unit, unit_activity.activity), class: 'btn btn-sm', title: t('buttons.show') 
-                  i.fa.fa-eye
-                = link_to unit_unit_activity_path(@unit, unit_activity), data: { confirm: t('buttons.confirm_delete') }, method: :delete, class: 'btn btn-sm', title: t('buttons.destroy') 
-                  i.fa.fa-trash
+              
+              - if @unit_activity_booking.phase?(:preview, :open)
+                .d-flex.justify-content-end
+                  = link_to unit_unit_activity_path(@unit, unit_activity.activity), class: 'btn btn-sm', title: t('buttons.show') 
+                    i.fa.fa-eye
+                  = link_to unit_unit_activity_path(@unit, unit_activity), data: { confirm: t('buttons.confirm_delete') }, method: :delete, class: 'btn btn-sm', title: t('buttons.destroy') 
+                    i.fa.fa-trash
 
       - if @unit_activity_booking.phase?(:open)
         .card-footer.text-right
@@ -39,42 +41,32 @@ h1.h1.pb-0
 
   .col-md-9.order-sm-1
     = render partial: 'activities/filter', locals: { submit_url: unit_unit_activities_path(@unit, locale: I18n.locale), reset_url: unit_unit_activities_path(@unit, activity_filter: { reset: true }) }
-    .card.mb-5.mt-4[style='background-color: #aae3ec']
-      .card-body
-        - t('unit_activity_booking.guide_text').lines.each do |line|
-          p= line
 
-        ul.my-0
-          - @unit.activity_booking.compliance.each do |name, compliance|
-            - next if compliance.nil?
-            li 
-              span.mr-2= t(name, scope: %w[unit_activity_booking compliance_evaluators])
-              - if UnitActivityBooking::COMPLIANT_VALUES.include?(compliance)
-                .badge.badge-pill.badge-success 
-                  i.fa.fa-check
-              - else 
-                .badge.badge-pill.badge-warning
-                  - if compliance == false 
-                    i.fa.fa-times
-                  - else  
-                    = compliance
-        p
-        a.btn.btn-outline-secondary[data-toggle="modal" data-target="#tagModal"] = t('unit_activity_booking.tag_legend.button')
+    - if @unit_activity_booking.phase?(:committed)
+      .card.mb-5.mt-4[style='background-color: #bcecaa']
+        .card-body
+          = t('unit_activity_booking.committed_text')
 
-        #tagModal.modal[tabindex="-1" role="dialog"]
-          .modal-dialog[role="document"]
-            .modal-content
-              .modal-header
-                h5 = t('unit_activity_booking.tag_legend.title')
-                button[type="button" class="close" data-dismiss="modal" aria-label="Close"]
-              .modal-body
-                ul
-                  - Tag.all.each do |tag|
-                    li
-                      i[class="#{tag.icon} mr-2"]
-                      = tag.label
+    - elsif @unit_activity_booking.phase?(:preview, :open)
+      .card.mb-5.mt-4[style='background-color: #aae3ec']
+        .card-body
+          - t('unit_activity_booking.guide_text').lines.each do |line|
+            p= line
 
-                button.btn.btn-primary[type="button" data-dismiss="modal"] = t('buttons.close')
+          ul.my-0
+            - @unit.activity_booking.compliance.each do |name, compliance|
+              - next if compliance.nil?
+              li 
+                span.mr-2= t(name, scope: %w[unit_activity_booking compliance_evaluators])
+                - if UnitActivityBooking::COMPLIANT_VALUES.include?(compliance)
+                  .badge.badge-pill.badge-success 
+                    i.fa.fa-check
+                - else 
+                  .badge.badge-pill.badge-warning
+                    - if compliance == false 
+                      i.fa.fa-times
+                    - else  
+                      = compliance
 
     = render partial: 'activity_listing', collection: @activities, as: :activity
     = paginate @activities

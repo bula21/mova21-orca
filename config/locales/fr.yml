@@ -596,6 +596,8 @@ fr:
     book: ajouter au panier d'achat
     booked: ajouté au panier d'achat
     commit: Finaliser la réservation
+    committed_text: Merci beaucoup, la réservation est terminée ! La division finale
+      sera annoncé au début de l'année 2022.
     compliance_evaluators:
       excursions: Min. 3 mögliche Ausflüge pro Lageroche
       hiking: Min. 3 mögliche Wanderungen pro Lagerwoche
@@ -612,10 +614,10 @@ fr:
     not_all_comply: 'La réservation ne peut pas être clôturée : toutes les règles
       sont toujours respectées.'
     read_more: Détails
-    video_src: https://www.youtube.com/embed/7XusNePwv_o
     tag_legend:
       button: Tag Legende öffnen
       title: Legende Tags
+    video_src: https://www.youtube.com/embed/7XusNePwv_o
   units:
     edit:
       title: Modifier un camp

@@ -589,6 +589,8 @@ it:
     book: zum Warenkorb hinzufügen
     booked: zum Warenkorb hinzugefügt
     commit: Buchung abschliessen
+    committed_text: Besten Dank, die Buchung ist abgeschlossen! Die entgültige Einteilung
+      wird Anfang 2022 bekanntgegeben.
     compliance_evaluators:
       excursions: Min. 3 excursions possibles
       hiking: Min. 3 randonnées possibles
@@ -610,10 +612,10 @@ it:
     not_all_comply: 'Die Buchung kann nicht abgeschlossen werden: es werden noch nicht
       alle Regeln eingehalten'
     read_more: Details
-    video_src: https://www.youtube.com/embed/7XusNePwv_o
     tag_legend:
       button: Tag Legende öffnen
       title: Legende Tags
+    video_src: https://www.youtube.com/embed/7XusNePwv_o
   units:
     edit:
       title: Modificare il campo
