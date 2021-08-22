@@ -77,12 +77,7 @@ hr
 
 - if can?(:edit, @activity)
   hr
-  .h4.mt-3 = t('activity.show.executions')
-  = react_component("CalendarManager", { activityId: @activity.id,
-          availableLanguages: @activity.languages.keys.map { |language| language.to_s.sub('language_', '')},
-          defaultAmountParticipants: @activity.participants_count_transport,
-          spots: @spots })
-
+  = render 'activities/activity_executions'
 
 hr.mt-4
 => link_to t('buttons.back'), activities_path, class: 'btn btn-secondary'

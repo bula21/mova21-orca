@@ -211,6 +211,7 @@ en:
     reset: Reset
     save: Save
     show: Show
+    upload: Upload
   camp_unit_mailer:
     complete_notification:
       body: |-

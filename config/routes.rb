@@ -20,7 +20,11 @@ Rails.application.routes.draw do
   end
   resources :leaders, except: [:destroy]
   resources :activities do
-    resources :activity_executions
+    resources :delete_activity_executions, only: :index
+    delete :delete_activity_executions, to: 'delete_activity_executions#destroy'
+    resources :activity_executions do
+      post :import, on: :collection
+    end
   end
 
   namespace :admin do

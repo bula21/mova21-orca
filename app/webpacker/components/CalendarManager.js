@@ -127,11 +127,11 @@ class CalendarManager extends React.Component {
   writeErrorMessage = (orcaI18nText, err) => {
     let errorMessage = err
 
-    if(Array.isArray(err)) {
+    if (Array.isArray(err)) {
       errorMessage = err.join(',')
     }
 
-    this.setState({error: { message: `${orcaI18nText} ${errorMessage}`}})
+    this.setState({error: {message: `${orcaI18nText} ${errorMessage}`}})
   }
 
   handleEventSave = (selectedEvent) => {
@@ -174,7 +174,7 @@ class CalendarManager extends React.Component {
           showEditor: false,
         })
       }).catch((err) => {
-        this.writeErrorMessage(Orca.i18n.activityExecutionCalendar.create.error, err.errors || err )
+        this.writeErrorMessage(Orca.i18n.activityExecutionCalendar.create.error, err.errors || err)
       })
     }
   }
@@ -402,8 +402,17 @@ class CalendarManager extends React.Component {
               plugins={[bootstrapPlugin, dayGridPlugin, timeGridPlugin, interactionPlugin]}
               headerToolbar={{
                 left: 'prev,next',
-                center: 'title',
+                center: 'title,deleteExecutions',
                 right: 'timeGridWeek,timeGridDay'
+              }}
+              customButtons={{
+                deleteExecutions: {
+                  text: 'custom!',
+                  click: function () {
+                    debugger;
+                    alert('clicked the custom button!');
+                  }
+                }
               }}
               locale={Orca.shortLocale}
               themeSystem='bootstrap'

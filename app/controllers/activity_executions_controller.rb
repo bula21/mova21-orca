@@ -33,6 +33,19 @@ class ActivityExecutionsController < ApplicationController
     end
   end
 
+  def import
+    import_service = ActivityExecutionsImport.new(params.require(:import).permit(:file)[:file], @activity)
+    if import_service.call
+      redirect_to @activity, flash: { success: I18n.t('activity_execution.import.success',
+                                                      count: import_service.imported_items_count) }
+    else
+      @import_errors = import_service.errors
+      render 'activities/show'
+    end
+  rescue TypeError
+    redirect_to @activity, flash: { error: I18n.t('activity_execution.import.invalid_file_type') }
+  end
+
   private
 
   def activity_execution_params

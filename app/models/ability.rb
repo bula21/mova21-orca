@@ -67,6 +67,8 @@ class Ability
     can :manage, TransportLocation
     can :manage, FixedEvent
     can :manage, ActivityCategory
+    can :manage, Spot
+    can :manage, Field
     cannot :delete, ActivityCategory, parent_id: nil
   end
 
