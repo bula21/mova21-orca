@@ -15,7 +15,7 @@ stages:
     steps:
     - task: Docker@2
       inputs:
-        containerRegistry: 'mova21 Container Registry'
+        containerRegistry: 'mova21.azurecr.io'
         repository: 'orca'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
