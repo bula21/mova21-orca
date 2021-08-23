@@ -6,17 +6,18 @@ RSpec.describe ActivityExecutionsImport do
   subject(:import_service) { described_class.new(file, activity) }
 
   let(:activity) { create(:activity, participants_count_transport: 10) }
+  let(:file) do
+    Rack::Test::UploadedFile.new(Rails.root.join(filename),
+                                 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+  end
 
   before do
-    create(:field, name: 'Feld 1')
+    spot = create(:spot, name: 'Lagerplatz')
+    create(:field, name: 'Feld 1', spot: spot)
     create(:activity_execution, activity: activity, amount_participants: 10)
   end
 
   context 'when is valid' do
-    let(:file) do
-      Rack::Test::UploadedFile.new(Rails.root.join(filename),
-                                   'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
-    end
     let(:filename) { 'spec/support/data/valid_sample_import_activity_executions.xlsx' }
 
     it 'imports the data' do
@@ -30,7 +31,7 @@ RSpec.describe ActivityExecutionsImport do
 
     it 'imports the data' do
       expect { import_service.call }.not_to change(ActivityExecution, :count)
-      expect(import_service.errors).to eq ['Row: Anzahl TN muss kleiner oder gleich 10 sein']
+      expect(import_service.errors).to eq ['Row 2: Anzahl TN muss kleiner oder gleich 10 sein']
     end
   end
 

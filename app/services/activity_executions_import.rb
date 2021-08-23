@@ -62,8 +62,7 @@ class ActivityExecutionsImport
       starts_at: row[0],
       ends_at: row[1],
       amount_participants: row[2],
-      # spot: row[3],
-      field: Field.find_by(name: row[4]),
+      field: Field.includes(:spot).find_by(name: row[4], spots: { name: row[3] }),
       **language_flags(row[5].split(',').map(&:strip)),
       transport: row[6] == 'ja'
     )
