@@ -405,15 +405,6 @@ class CalendarManager extends React.Component {
                 center: 'title,deleteExecutions',
                 right: 'timeGridWeek,timeGridDay'
               }}
-              customButtons={{
-                deleteExecutions: {
-                  text: 'custom!',
-                  click: function () {
-                    debugger;
-                    alert('clicked the custom button!');
-                  }
-                }
-              }}
               locale={Orca.shortLocale}
               themeSystem='bootstrap'
               allDaySlot={false}                                  // don't allow full day event
