@@ -402,7 +402,7 @@ class CalendarManager extends React.Component {
               plugins={[bootstrapPlugin, dayGridPlugin, timeGridPlugin, interactionPlugin]}
               headerToolbar={{
                 left: 'prev,next',
-                center: 'title,deleteExecutions',
+                center: 'title',
                 right: 'timeGridWeek,timeGridDay'
               }}
               locale={Orca.shortLocale}
