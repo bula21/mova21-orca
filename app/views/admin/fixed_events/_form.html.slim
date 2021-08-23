@@ -5,7 +5,7 @@
   .form-inputs
     .card.mt-3
       .card-body
-        = render 'shared/translatable_fields' do
+        = render 'shared/translatable_fields' do |locale|
           - I18n.available_locales.each do |locale|
             - current_locale = locale == I18n.locale
             .tab-pane[id="name-#{locale}-tab" class="#{'show active' if current_locale}"
