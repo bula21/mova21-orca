@@ -59,8 +59,8 @@ class ActivityExecutionsImport
 
   def build_activity_execution(row)
     @activity.activity_executions.build(
-      starts_at: row[0].change(offset: Time.zone.now.strftime("%z")),
-      ends_at: row[1].change(offset: Time.zone.now.strftime("%z")),
+      starts_at: row[0].change(offset: Time.zone.now.strftime('%z')),
+      ends_at: row[1].change(offset: Time.zone.now.strftime('%z')),
       amount_participants: row[2],
       field: Field.includes(:spot).find_by(name: row[4], spots: { name: row[3] }),
       **language_flags(row[5].split(',').map(&:strip)),
