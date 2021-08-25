@@ -17,8 +17,9 @@ html
         span class="navbar-toggler-icon"
       .collapse.navbar-collapse#navbarNav
         ul.navbar-nav
-          li.nav-item
-            = link_to t('nav.leader'), leaders_path, class: 'nav-link'
+          - if can?(:manage, Leader)
+            li.nav-item
+              = link_to t('nav.leader'), leaders_path, class: 'nav-link'
           li.nav-item
             = link_to t('nav.unit'), units_path, class: 'nav-link'
           - if can?(:edit, Activity)
