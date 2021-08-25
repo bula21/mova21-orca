@@ -3,6 +3,13 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!, :set_locale
 
+  rescue_from CanCan::AccessDenied do |exception|
+    respond_to do |format|
+      format.json { head :forbidden }
+      format.html { redirect_to root_path, alert: exception.message }
+    end
+  end
+
   def set_locale
     I18n.locale = requested_locale
   end

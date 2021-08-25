@@ -656,6 +656,8 @@ en:
         'true': payed
       participants: Participants
       questionnaire: Form
+  unauthorized:
+    default: You are not authorized to access this page.
   views:
     pagination:
       first: !!str '<<'
