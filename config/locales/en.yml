@@ -545,9 +545,6 @@ en:
     participants_count_activity_hint: Max Anzahl Personen die an der Aktivität teilnehmen
       können
     participants_count_transport_hint: Max Kapazität der Aktivität (inkl. Leitung)
-  spot:
-    edit:
-      title: Title
   spots:
     edit:
       title: Programmspot editieren
