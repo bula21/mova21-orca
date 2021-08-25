@@ -1,5 +1,4 @@
 h4.mt-3 = t('activity.show.executions')
-pre = @activity.languages
 = react_component("CalendarManager", { activityId: @activity.id,
         availableLanguages: available_languages_for_frontend(@activity),
         defaultAmountParticipants: @activity.participants_count_transport,
