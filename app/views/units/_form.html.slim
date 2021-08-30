@@ -22,9 +22,9 @@
   = f.input :ends_at, wrapper: :inline_date, start_year: 2021, end_year: 2021
   .row
     .col-6
-      = f.association :al, label_method: :scout_name
+      = f.association :al, label_method: :full_name
     .col-6
-      = f.association :lagerleiter, label_method: :scout_name
+      = f.association :lagerleiter, label_method: :full_name
   
   - if can?(:manage, @unit)
     .card.border-danger

@@ -65,6 +65,7 @@ fr:
         pbs_id: MSdS ID
         phone_number: Numéro de téléphone
         role: Rolle
+        guest_troop: Gast Trupp
         roles:
           assistant_leader: Responsable
           helper: Cuisine / Aide
@@ -89,6 +90,8 @@ fr:
         expected_participants_leitung_f: Nombre de responsables attendues (f)
         expected_participants_leitung_m: Nombre de responsables attendues (m)
         expected_participants_m: Nombre de participants attendus (m)
+        expected_guest_participants: Erwartete Anzahl Gäste (TN)
+        expected_guest_leaders: Erwartete Anzahl Gäste (Leitung)
         full_name: Nom complet
         kv_id: Association cantonale
         lagerleiter: Maîtrise de camp

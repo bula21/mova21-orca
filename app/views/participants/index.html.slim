@@ -17,6 +17,7 @@
         / th = Participant.human_attribute_name(:email)
         / th = Participant.human_attribute_name(:phone_number)
         th = Participant.human_attribute_name(:role)
+        th = Participant.human_attribute_name(:guest_troop)
         th
     tbody
       - @participants.each do |participant|
@@ -35,6 +36,9 @@
           td
             - if participant.role.present?
               = translated_midata_role(participant.role)
+          td
+            - if participant.guest_troop.present?
+              = participant.guest_troop
           td.p-1.text-right
             - if can?(:edit, participant)
               - if participant.pbs_id.present?

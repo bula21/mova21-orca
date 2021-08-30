@@ -65,6 +65,7 @@ de:
         pbs_id: PBS ID
         phone_number: Telefonnummer
         role: Rolle
+        guest_troop: Gast Trupp
         roles:
           assistant_leader: Leitung
           helper: Küche / Helfer/-in
@@ -89,6 +90,8 @@ de:
         expected_participants_leitung_f: Erwartete Anzahl Leitende (f)
         expected_participants_leitung_m: Erwartete Anzahl Leitende (m)
         expected_participants_m: Erwartete Anzahl TN (m)
+        expected_guest_participants: Erwartete Anzahl Gäste (TN)
+        expected_guest_leaders: Erwartete Anzahl Gäste (Leitung)
         full_name: Vollständiger Name
         kv_id: KV
         lagerleiter: Lagerleiter

@@ -102,6 +102,17 @@
         .col-6
           dt = t('activerecord.attributes.unit.expected_participants_m')
           dd = @unit.expected_participants_m
+
+      - if @unit.expected_guest_participants
+        .row
+          .col-6
+            dt = t('activerecord.attributes.unit.expected_guest_participants')
+            dd = @unit.expected_guest_participants
+
+          .col-6
+            dt = t('activerecord.attributes.unit.expected_guest_leaders')
+            dd = @unit.expected_guest_leaders
+
   - if @unit.pbs_id.present?
     .card-footer.bg-info.text-white
       i.fas.fa-info-circle

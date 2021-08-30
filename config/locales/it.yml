@@ -65,6 +65,7 @@ it:
         pbs_id: MSS ID
         phone_number: Numero di telefono
         role: Rolle
+        guest_troop: Gast Trupp
         roles:
           assistant_leader: Responsabile
           helper: Cucina / aiutante
@@ -89,6 +90,8 @@ it:
         expected_participants_leitung_f: Numero di animatrici previste
         expected_participants_leitung_m: Numero di animatori previsti
         expected_participants_m: Numero di partecipanti (m) previsti
+        expected_guest_participants: Erwartete Anzahl Gäste (TN)
+        expected_guest_leaders: Erwartete Anzahl Gäste (Leitung)
         full_name: Nome completo
         kv_id: Associazione cantonale
         lagerleiter: Direzione del campo
