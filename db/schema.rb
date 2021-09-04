@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_22_124902) do
+ActiveRecord::Schema.define(version: 2021_08_30_182809) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -223,6 +223,7 @@ ActiveRecord::Schema.define(version: 2021_06_22_124902) do
     t.string "role"
     t.string "email", default: ""
     t.string "phone_number", default: ""
+    t.string "guest_troop"
   end
 
   create_table "spots", force: :cascade do |t|
@@ -290,6 +291,8 @@ ActiveRecord::Schema.define(version: 2021_06_22_124902) do
     t.string "week"
     t.integer "activity_booking_phase", default: 0
     t.bigint "stufe_id"
+    t.integer "expected_guest_participants"
+    t.integer "expected_guest_leaders"
     t.index ["al_id"], name: "index_units_on_al_id"
     t.index ["coach_id"], name: "index_units_on_coach_id"
     t.index ["lagerleiter_id"], name: "index_units_on_lagerleiter_id"

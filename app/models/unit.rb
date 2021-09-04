@@ -72,11 +72,11 @@ class Unit < ApplicationRecord
   delegate :locale, to: :kv
 
   def expected_participants
-    (expected_participants_f || 0) + (expected_participants_m || 0)
+    (expected_participants_f || 0) + (expected_participants_m || 0) + (expected_guest_participants || 0)
   end
 
   def expected_participants_leitung
-    (expected_participants_leitung_f || 0) + (expected_participants_leitung_m || 0)
+    (expected_participants_leitung_f || 0) + (expected_participants_leitung_m || 0) + (expected_guest_leaders || 0)
   end
 
   def complete?
