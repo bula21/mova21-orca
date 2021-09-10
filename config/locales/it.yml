@@ -3,14 +3,14 @@ it:
   activemodel:
     attributes:
       activity_filter:
-        activity_category: Kategorie
-        stufe_recommended: Empfohlene Stufe
+        activity_category: Categoria
+        stufe_recommended: Branca raccomandata
         tags: Tags
-        text: Text
+        text: Testo
   activerecord:
     attributes:
       activity:
-        activity_category: Kategorie
+        activity_category: Categoria
         activity_documents: Documenti
         activity_type: Tipo
         block_type: Tipo d'attività
@@ -19,38 +19,38 @@ it:
         duration_journey: Durata del viaggio (HH:mm)
         goals: Obbiettivi dell'attività
         label: Titolo dell'attività
-        language_de: Deutsch
-        language_en: English
-        language_fr: Français
+        language_de: Tedesco
+        language_en: Inglese
+        language_fr: Francese
         language_it: Italiano
         languages: Lingua
         location: Luogo (approssimativo)
-        min_participants: Numero min. di partecipanti
-        participants_count_activity: Max. numero di partecipanti (attività)
-        participants_count_transport: Anz. Personen (inkl. Leitung)
+        min_participants: N° min. di partecipanti
+        participants_count_activity: N° max. di partecipanti (attività)
+        participants_count_transport: N° di persone (incl. Animatori/trici)
         picture: Immagine
         simo: Modulo di sicurezza / SSS
         stufe_recommended: Branche raccomandate
         stufen: Branche possibili
-        transport_location: Luogo trasporto
+        transport_location: Luogo del trasporto
       activity_execution:
-        amount_participants: Nombre de participants
-        field: Terrain
-        language_flags: Langues
-        spot: spot du programme
+        amount_participants: Numero di partecipanti
+        field: Terreno
+        language_flags: Lingue
+        spot: Zona del programma
       field:
-        name: Nom
+        name: Nome
       fixed_event:
-        ends_at: Se termine à
-        starts_at: Commence à
-        title: Titre
+        ends_at: Termina alle
+        starts_at: Inizia alle
+        title: Titolo
       leader:
         birthdate: Data di nascita
         first_name: Nome
         full_name: Nome
         gender: Sesso
         last_name: Cognome
-        pbs_id: MSS ID
+        pbs_id: ID MSS
         scout_name: Totem
       participant:
         birthdate: Data di nascita
@@ -62,25 +62,25 @@ it:
           female: Donne
           male: Uomini
         last_name: Cognome
-        pbs_id: MSS ID
+        pbs_id: ID MSS
         phone_number: Numero di telefono
-        role: Rolle
-        guest_troop: Gast Trupp
+        role: Ruolo
+        guest_troop: Unità ospite
         roles:
           assistant_leader: Responsabile
           helper: Cucina / aiutante
-          leader_mountain_security: Animatore ambito di sicurezza Montagna
-          leader_snow_security: Animatore ambito di sicurezza Inverno
-          leader_water_security: Animatore ambito di sicurezza Acqua
+          leader_mountain_security: Animatore/trice ambito di sicurezza Montagna
+          leader_snow_security: Animatore/trice ambito di sicurezza Inverno
+          leader_water_security: Animatore/trice ambito di sicurezza Acqua
           participant: Partecipante
         scout_name: Totem
       spot:
-        color: Farbe für Erfassung der Durchführung
-        fields: Felder
-        name: Name
+        color: Colore per segnare lo svolgimento
+        fields: Campi
+        name: Nome
       unit:
         abteilung: Sezione
-        activity_booking_phase: Buchungsphase
+        activity_booking_phase: Fase di prenotazione
         al: CSZ
         district: Quartiere
         ends_at: Fine il
@@ -90,14 +90,14 @@ it:
         expected_participants_leitung_f: Numero di animatrici previste
         expected_participants_leitung_m: Numero di animatori previsti
         expected_participants_m: Numero di partecipanti (m) previsti
-        expected_guest_participants: Erwartete Anzahl Gäste (TN)
-        expected_guest_leaders: Erwartete Anzahl Gäste (Leitung)
+        expected_guest_participants: Numero di ospiti attesi (partecipanti)
+        expected_guest_leaders: Numero di ospiti attesi (animatori/trici)
         full_name: Nome completo
         kv_id: Associazione cantonale
         lagerleiter: Direzione del campo
         language: Lingua
-        on_site_at: Lagerdaten
-        pbs_id: Lager ID in der Midata
+        on_site_at: Date del campo
+        pbs_id: ID del campo su Midata
         starts_at: Inizio il
         stufe: Branca
         title: Titolo
@@ -105,26 +105,30 @@ it:
     errors:
       messages:
         incomplete: è incompleto
-        record_invalid: 'Validazione fallita: %{errors}'
+        record_invalid: 'Verifica fallita: %{errors}'
         restrict_dependent_destroy:
           has_many: Impossibile cancellare i dati in quanto il seguente valore  %{record}
             esiste ancora
           has_one: Impossibile cancellare i dati in quanto dipendono dai seguenti
             valori  %{record} ancora esistenti
-        start_not_before_end: das Startdatum muss vor dem Enddatum liegen
+        start_not_before_end: la data di inizio deve essere precedente alla data di
+          fine
       models:
         activity_execution:
           attributes:
             language_flags:
-              greater_than: Es muss mindestens eine Sprache gewählt werden.
+              greater_than: Deve essere almeno scelta una lingua
         unit:
           attributes:
             lagerleiter:
               incomplete: è incompleto (nome, e-mail, indirizzo)
     models:
+      activity_execution:
+        one: Durchführung
+        other: Durchführungen
       field:
-        one: Feld
-        other: Felder
+        one: Campo
+        other: Campi
       fixed_event:
         one: Groprogramm-Punkt
         other: Groprogramm-Punkte
@@ -132,17 +136,17 @@ it:
         one: Animatore/trice responsabile
         other: Animatori/trici responsabili
       participant:
-        one: Teilnehmende(r)
-        other: Teilnehmende
+        one: Partecipante
+        other: Partecipanti
       spot:
-        one: Programmspot
-        other: Programmspots
+        one: Zona del programma
+        other: Zone del programma
       unit:
         one: Unità
-        other: Unitàs
+        other: Unità
       unit_activity:
-        one: Buchbare Aktivität
-        other: Buchbare Aktivitäten
+        one: Attività prenotata
+        other: Carrello degli acquisti
   activity:
     edit:
       title: Modificare l'attività
@@ -154,68 +158,81 @@ it:
       title: Creare una nuova attività
     show:
       downloads: Downloads
-      duration: 'Dauer:'
-      executions: Esecuzioni
-      max_people: Max. Gruppengrösse
-      more_information: Weitere Informationen
-      possible: möglich
-      simo_text: 'Benötigt Sicherheitsmodul:'
-      stufe_recommended: 'Geeignet für:'
+      duration: 'Durata:'
+      excel_import:
+        description: 'Du kannst Durchführungen im Excel erfassen und hier hochladen:'
+        template_download: Scarica il modello in formato Excel
+        title: Importazione Excel
+      executions: Durchführungen
+      executions_delete:
+        description: 'Achtung: Du kannst Durchführungen eines ganzen Tages löschen.
+                Klicke dazu auf den untenstehenden Link um zur Tagesauswahl zu kommen.'
+        link: Vai alla selezione
+      max_people: Grandezza massima del gruppo
+      more_information: Informazioni supplementari
+      possible: possibile
+      simo_text: 'Necessita un modulo di sicurezza:'
+      stufe_recommended: 'Adatto per:'
   activity_execution:
     edit:
       title: Programmpunkt editieren
+    import:
+      error: L'importazione non ha funzionato. Vedi errore.
+      invalid_file_type: Documento non valido. Utilizza il modello Excel
+      success: Erfolgreich %{count} Durchführungen importiert
     index:
       title: Grobprogramm
     new:
       title: Neuen Programmpunkt erfassen
   activity_execution_calendar:
     copy:
-      error: 'Error while copying:'
-      success: Activity execution successfully copied
+      error: 'Fehler beim Kopieren der Durchführung:'
+      success: Durchführung erfolgreich kopiert
     create:
-      error: 'Error while creating:'
-      success: Activity execution successfully created
+      error: 'Fehler beim Erstellen der Durchführung:'
+      success: Durchführung erfolgreich erstellt
     delete:
-      confirm: Are you sure you would like to delete the activity execution?
-      error: Could not delete activity execution
-      success: Activity execution successfully removed
+      confirm: Bist du sicher, dass du die Durchführung löschen willst?
+      error: 'Fehler beim Löschen der Durchführung:'
+      success: Durchführung erfolgreich gelöscht
     editor:
-      amount_participants: Nombre de participants
-      cancel: Annuler
-      copy: Copier
-      date_invalid: The start time cannot be before the end time
-      delete: Supprimer
-      end_time: Heure de fin
-      field: Terrain
-      has_transport: With transport
-      languages: Languages
-      manage_spot_hint: 'If you need more program spots, click here:'
-      manage_spot_link_text: Manage program spots
-      save: Enregistrer
-      spot: spot du programme
-      start_time: Heure de début
-      title_copy: Copy
-      title_edit: Edit
+      amount_participants: Numero di partecipanti
+      cancel: Annullare
+      copy: Copiare
+      date_invalid: L'orario di inizio non può essere dopo l'orario di ifine
+      delete: Eliminare
+      end_time: Orario di fine
+      field: Terreno
+      has_transport: Con trasporto
+      languages: Lingue
+      manage_spot_hint: Se hai bisogno di più zone del programma, clicca qui
+      manage_spot_link_text: Gestisci le zone del programma
+      save: Salvare
+      spot: Zona del programma
+      start_time: Orario di inizio
+      title_copy: Copiare
+      title_edit: Modificare
     move:
-      error: 'Error while moving activity execution:'
-      success: Activity execution successfully moved
+      error: 'Fehler beim Verschieben der Durchführung:'
+      success: Durchführung erfolgreich verschoben
     update:
-      error: 'Error while updating:'
-      success: Activity execution successfully updated
+      error: 'Fehler beim Ändern der Durchführung:'
+      success: Durchführung erfolgreich geändert
   app:
     title: Orca
   buttons:
     back: indietro
-    close: Schliessen
-    confirm_delete: Bist du dir sicher, dass du Löschen möchtest?
-    create: creare
-    destroy: cancellare
-    edit: modificare
+    close: Chiudere
+    confirm_delete: Sei sicuro/a di voler cancellare?
+    create: Creare
+    destroy: Eliminare
+    edit: Modificare
     export_csv: Esportare come CSV
-    filter: Filtern
+    filter: Filtrare
     reset: Reset
-    save: salvare
-    show: visualizzare
+    save: Salvare
+    show: Visualizzare
+    upload: Caricare
   camp_unit_mailer:
     complete_notification:
       body: |-
@@ -310,15 +327,17 @@ it:
         one: circa un anno
         other: circa %{count} anni
       almost_x_years:
-        one: circa 1 anno
-        other: circa %{count} anni
+        one: quasi 1 anno
+        other: quasi %{count} anni
       half_a_minute: mezzo minuto
       less_than_x_minutes:
         one: meno di un minuto
         other: meno di %{count} minuti
+        zero: meno di un minuto
       less_than_x_seconds:
         one: meno di un secondo
         other: meno di %{count} secondi
+        zero: meno di un secondo
       over_x_years:
         one: oltre un anno
         other: oltre %{count} anni
@@ -344,54 +363,60 @@ it:
       month: Mese
       second: Secondi
       year: Anno
+  delete_activity_executions:
+    destroy:
+      success: Erfolgreich %{count} Durchführungen gelöscht.
+    index:
+      activity_executions_count: "%{count} Durchführungen"
+      title: Durchführungen löschen
   errors:
     format: "%{attribute} %{message}"
     messages:
       accepted: deve essere accettata
-      blank: non può essere lasciato in bianco
+      blank: deve essere riempito
       confirmation: non coincide con %{attribute}
-      empty: non può essere vuoto
+      empty: deve essere riempito
       equal_to: deve essere uguale a %{count}
       even: deve essere pari
-      exclusion: è riservato
+      exclusion: non è disponibile
       greater_than: deve essere superiore a %{count}
       greater_than_or_equal_to: deve essere superiore o uguale a %{count}
-      inclusion: non è incluso nella lista
+      inclusion: non è un valore valido
       invalid: non è valido
       less_than: deve essere meno di %{count}
       less_than_or_equal_to: deve essere meno o uguale a %{count}
-      model_invalid: 'Validation failed: %{errors}'
+      model_invalid: 'Verifica fallita: %{errors}'
       not_a_number: non è un numero
-      not_an_integer: non è un intero
+      not_an_integer: deve essere un numero intero
       odd: deve essere dispari
-      other_than: must be other than %{count}
-      present: must be blank
-      required: must exist
+      other_than: deve essere diverso/a da %{count}
+      present: non deve essere compilato
+      required: deve essere compilato
       taken: è già in uso
       too_long:
-        one: è troppo lungo (il massimo è 1 carattere)
-        other: è troppo lungo (il massimo è %{count} caratteri)
+        one: è troppo lungo (oltre 1 carattere)
+        other: è troppo lungo (oltre %{count} caratteri)
       too_short:
-        one: è troppo corto (il minimo è 1 carattere)
-        other: è troppo corto (il minimo è %{count} caratteri)
+        one: è troppo corto (almeno 1 carattere)
+        other: è troppo corto (almeno %{count} caratteri)
       wrong_length:
         one: è della lunghezza sbagliata (deve essere di 1 carattere)
         other: è della lunghezza sbagliata (deve essere di %{count} caratteri)
     template:
       body: 'Per favore ricontrolla i seguenti campi:'
       header:
-        one: 'Non posso salvare questo %{model}: 1 errore'
-        other: 'Non posso salvare questo %{model}: %{count} errori.'
+        one: 'Non posso salvare questo/a %{model}: 1 errore'
+        other: 'Non posso salvare questo/a %{model}: %{count} errori.'
   fields:
     edit:
-      title: Feld editieren
+      title: Modifica campo
     index:
-      title: "%{spot}: Felder verwalten"
+      title: "%{spot}: gestisci campi"
     new:
-      title: Neues Feld erfassen
+      title: Crea un nuovo campo
   helpers:
     select:
-      prompt: Per favore, seleziona
+      prompt: Scegliere
     submit:
       create: Crea %{model}
       submit: Invia %{model}
@@ -401,16 +426,8 @@ it:
       amount_label: Importo
       issuer_account: 01-348230-2
       issuer_account_label: Numero di conto
-      issuer_address: |-
-        Verein Bundeslager 2021
-        c/o Pfadibewegung Schweiz
-        Speichergasse 31
-        CH-3011 Bern
-        info@bula21.ch
-        +41 27 521 20 21
-
-        CHE-452.216.319 MWST
-      issuer_name: Verein BuLa 2021, 3011 Bern
+      issuer_address: Associazione campo federale 2021
+      issuer_name: Associazione Cafe 2021, 3011 Bern
       issuer_name_label: A favore di
       ref_label: Numero di riferimento PVR
       total_label: Totale
@@ -434,28 +451,28 @@ it:
         pre-iscritta con successo per il mova nella valle di Goms. Ti preghiamo ti
         saldare l'importo entro il 31 luglio 2020. \nMova - on y va!"
       ref: 'Fattura: %{ref}'
-      title: Tassa di iscrizione sezionale per il campo federale 2021
+      title: Tassa di iscrizione sezionale al campo federale 2021
   leaders:
     edit:
-      title: Modificare responsabili
+      title: Modificare animatori/animatrici
     index:
-      title: Animatori/trici responsabili
+      title: Gestisci animatori/animatrici
     new:
-      title: Registrare un nuovo animatore/trice
+      title: Aggiungi un/a nuovo/a animatore/animatrice
   messages:
     created:
-      error: Fehler beim erstellen!
+      error: Errore nella creazione!
       success: Creato con successo
     deleted:
-      error: Fehler beim löschen.
-      success: Erfolgreich gelöscht!
+      error: Errore nell'eliminazione
+      success: Eliminato con successo
     updated:
-      error: Fehler beim speichern!
+      error: Errore nel salvataggio!
       success: Salvato con successo!
   nav:
     activity: Catalogo
-    activity_category: Kategorie
-    fixed_event: programma approssimativo
+    activity_category: Categoria
+    fixed_event: Programma di massima
     language:
       de: DE
       en: EN
@@ -464,10 +481,10 @@ it:
     leader: Animatori/trici responsabili
     login: Login
     logout: Logout
-    spots: Programmspots & Felder
-    stufen: Stufen
+    spots: Zone dle programma & Campi
+    stufen: Branche
     tag: Tags
-    transport_location: Transport
+    transport_location: Trasporti
     unit: Unità
   number:
     currency:
@@ -489,11 +506,11 @@ it:
       decimal_units:
         format: "%n %u"
         units:
-          billion: Miliardi
-          million: Milioni
-          quadrillion: Biliardi
-          thousand: Mila
-          trillion: Bilioni
+          billion: miliardo
+          million: milione
+          quadrillion: biliardo
+          thousand: migliaia
+          trillion: bilione
           unit: ''
       format:
         delimiter: ''
@@ -523,9 +540,10 @@ it:
     edit:
       title: Modificare partecipanti
     index:
-      complete_now: Jetzt vervollständigen
-      create_hint: Create hint
-      data_incomplete: Es fehlen Angaben für eine vollständige Anmeldung
+      complete_now: Completare ora
+      create_hint: I/Le partecipanti dovrebbero essere gestiti tramite MiData. Se
+        non avete inserito delle persone, potete aggiungerle manualmente qui.
+      data_incomplete: Mancano dei dati per completare l'iscrizione
       title: Partecipanti
     new:
       title: Creare partecipanti
@@ -536,22 +554,22 @@ it:
       activity:
         activity_type:
           activity: Attività
-          excursion: Escursione
-          frohnarbeit: Frohnarbeit
+          excursion: Gita
+          frohnarbeit: 'BA '
           village_global: Village Global
         block_type:
           la: Attività da campo
           ls: Sport da campo
-          voila: Voila Bula
-        language_de: Deutsch
-        language_en: English
-        language_fr: Français
+          voila: Voila CaFe
+        language_de: Tedesco
+        language_en: Inglese
+        language_fr: Francese
         language_it: Italiano
         languages: Lingue
         simo:
           berg: Montagna
-          lake: Modul See
-          pool: Basis Pool
+          lake: Modulo acqua
+          pool: Base Pool
           wasser: Acqua
       participant:
         gender:
@@ -563,19 +581,19 @@ it:
           pio: Pionieri
           pta: SOC
           wolf: Lupetti
-    participants_count_activity_hint: Max Anzahl Personen die an der Aktivität teilnehmen
-      können
-    participants_count_transport_hint: Max Kapazität der Aktivität (inkl. Leitung)
+    participants_count_activity_hint: Numero massimo di persone che possono partecipare
+      all'attività
+    participants_count_transport_hint: Capacità massima dell'attività (incl. animatori/trici)
   spot:
     edit:
-      title: Title
+      title: Titolo
   spots:
     edit:
-      title: Programmspot editieren
+      title: Modifica zona del programma
     index:
-      title: Programmspots verwalten
+      title: Gestisci zone del programma
     new:
-      title: Neuen Programmspot erfassen
+      title: Crea una nuova zona del programma
   support:
     array:
       last_word_connector: " e "
@@ -589,11 +607,10 @@ it:
       short: "%d %b %H:%M"
     pm: pm
   unit_activity_booking:
-    book: zum Warenkorb hinzufügen
-    booked: zum Warenkorb hinzugefügt
-    commit: Buchung abschliessen
+    book: Inserire nel carrello degli acquisti
+    booked: inserito nel carrello degli acquisti
+    commit: Terminare la prenotazione
     committed_text: Besten Dank, die Buchung ist abgeschlossen! Die entgültige Einteilung
-      wird Anfang 2022 bekanntgegeben.
     compliance_evaluators:
       excursions: Min. 3 excursions possibles
       hiking: Min. 3 randonnées possibles
@@ -601,29 +618,23 @@ it:
       mova_activities: Min. 4 activités mova par semaine de camp
       phase_open: La phase de réservation est ouverte
       village_global_workshops: Au moins 3 ateliers Village Global
-    guide_text: "Jede Einheit wird während der dauer des Lagers für ein oder mehrere
-      Aktivitäten eingeteilt. Für diese Einteilung werden die Wünsche eurer Einheit
-      so gut wie möglich berücksichtigt. Innerhalb der Wunschliste in Form des \"Warenkorbes\"
-      auf der rechten Seite kann eine Priorisierung mit Drag & Drop vorgenommen werden:
-      Aktivitäten die weiter oben im Warenkorb werden eher berücksichtigt als Aktivitäten
-      weiter unten. Es kann nicht garantiert werden, das eure Einheit für die Aktivitäten
-      auf der Wunschliste eingeteilt werden, aber wir versuchen unser bestes.\n\nBis
-      ihr die Buchung auf \"abgeschlossen\" setzt, dient der Warenkorb als Merkliste.
-      Alle Leiter der Einheit mit Zugriff auf orca können Aktivitäten hinzufügen,
-      entfernen oder neu priorisieren. \n\nDamit die Buchung abgeschlossen werden
-      kann, müssen folgende Regeln eingehlaten werden:"
-    not_all_comply: 'Die Buchung kann nicht abgeschlossen werden: es werden noch nicht
-      alle Regeln eingehalten'
+    guide_text: "Ad ogni unità sarà assegnata una o più attività durante il campo. Per questa assegnazione,
+      nel limite del possibile, i desideri della vostra unità saranno presi in considerazione.
+      All'interno della lista dei desideri sotto forma di \"carrello della spesa\" sul lato destro, è possibile stabilire
+       una priorità con il drag & drop: Le attività più in alto nella lista avranno più probabilità di essere considerate
+       rispetto a quelle più in basso. Non c'è garanzia che alla tua unità saranno assegnate tutte le attività della vostra
+        lista dei desideri, ma faremo del nostro meglio."
+    not_all_comply: "La prenotazione non può essere completata: non sono ancora state rispettate tutte le regole."
     read_more: Details
     tag_legend:
-      button: Tag Legende öffnen
-      title: Legende Tags
+      button: Aprire la legenda dei tag
+      title: Legenda dei tag
     video_src: https://www.youtube.com/embed/7XusNePwv_o
   units:
     edit:
       title: Modificare il campo
     form:
-      danger_zone: Danger zone
+      danger_zone: Zona di pericolo
     index:
       title: Il tuo campo
     kv_ids:
@@ -652,30 +663,29 @@ it:
     new:
       title: Creare un campo
     show:
-      activity_booking: Activity booking
-      activity_booking_commited: Buchung abgeschlossen
+      activity_booking: Prenotare un'attività
+      activity_booking_commited: Prenotazione completata
       activity_booking_committed: Activity booking committed
       activity_booking_complete: Activity booking complete
       activity_booking_incomplete: Activity booking incomplete
-      activity_booking_open: Buchung offen
-      activity_booking_preview: Buchungsvorschau offen
-      activity_booking_text: Aktivitäten Buchen
-      basic_infos: Allgemein
-      camp_id: Campo id
+      activity_booking_open: Prenotazione aperta
+      activity_booking_preview: Aprire l'anteprima delle prenotazioni
+      activity_booking_text: Prenotare un'attività
+      basic_infos: Vario
+      camp_id: Id Campo
       camp_link_midata: Campo su MiData
-      data_complete: Registrazione completa
-      data_incomplete: Registrazione incompleta
+      data_complete: Dati completi
+      data_incomplete: Dati incompleti
       documents: Documenti
-      expected_participants: Expected number of participants
-      expected_participants_explanation_html: The expected amount of participants
-        is imported from your entered numbers in <a href='%{link}' target='_blank'>MiData</a>
-      imported: imported from MiData
+      expected_participants: Numero di partecipanti stimato
+      expected_participants_explanation_html: "Il numero previsto di partecipanti sarà importato da <a href='%{link}' target='_blank'>MiData</a>."
+      imported: importato da MiData
       invoices: Fatture
       other_infos: Informazioni supplementari
       paid:
         'false': aperto
         'true': pagato
-      participants: Partecipanti
+      participants: Visulaizzare i partecipanti
       questionnaire: Questionario
   views:
     pagination:
@@ -683,4 +693,4 @@ it:
       last: ">>"
       next: ">"
       previous: "<"
-      truncate: "&hellip;"
+      truncate: "&hellip,"
