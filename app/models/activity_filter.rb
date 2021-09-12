@@ -16,26 +16,26 @@ class ActivityFilter < ApplicationFilter
   end
 
   filter :tags do |activities|
-    next activities if tags.blank?
+    next if tags.blank?
 
     activities.joins(:tags).where(tags: { id: tags }).group(:id).having("count('activities.id') = ?", tags.count)
   end
 
   filter :text do |activities|
-    next activities if text&.size&.<(3)
+    next if text&.size&.<(3)
 
     match_text = text
     activities.merge(Activity.i18n { label.matches("%#{match_text}%") })
   end
 
   filter :activity_category do |activities|
-    next activities if activity_category.blank?
+    next if activity_category.blank?
 
     activities.where(activity_category_id: activity_category)
   end
 
   filter :languages do |activities|
-    next activities if languages.blank?
+    next if languages.blank?
 
     query_params = languages.each_with_object({}) { |curr, res| res[curr.to_sym] = true; }
 
