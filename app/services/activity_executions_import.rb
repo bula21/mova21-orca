@@ -57,6 +57,7 @@ class ActivityExecutionsImport
     end
   end
 
+  # rubocop:disable Metrics/AbcSize
   def build_activity_execution(row)
     @activity.activity_executions.build(
       starts_at: row[0].change(offset: Time.zone.now.strftime('%z')),
@@ -67,6 +68,7 @@ class ActivityExecutionsImport
       transport: row[6] == 'ja'
     )
   end
+  # rubocop:enable Metrics/AbcSize
 
   def imported_items
     @imported_items ||= load_imported_items
