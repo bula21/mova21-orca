@@ -42,11 +42,11 @@ const styles = ({ spacing }: Theme) => createStyles({
     display: 'flex',
     flexDirection: 'column',
   },
-  marginTop: {
-    marginTop: spacing(2),
+  formControl: {
+    marginTop: spacing(1)
   },
   inputField: {
-    marginTop: spacing(1)
+    marginBottom: spacing(2)
   }
 });
 
@@ -290,7 +290,11 @@ class EventEditor extends Component<EventEditorProps, EventEditorState> {
                   </Select>
                 </Fragment>
               )}
-              <FormHelperText id="helpertext-labelInputField">{Orca.i18n.activityExecutionCalendar.editor.manage_spot_hint} <a href={Orca.manage_spot_link}>{Orca.i18n.activityExecutionCalendar.editor.manage_spot_link_text}</a></FormHelperText>
+              <FormHelperText 
+                id="helpertext-labelInputField"
+              >
+                {Orca.i18n.activityExecutionCalendar.editor.manage_spot_hint} <a href={Orca.manage_spot_link}>{Orca.i18n.activityExecutionCalendar.editor.manage_spot_link_text}</a>
+              </FormHelperText>
 
               <FormControl className={ classes.formControl }>
                 <InputLabel id="labelInputLanguages">{Orca.i18n.activityExecutionCalendar.editor.languages}</InputLabel>
@@ -315,8 +319,10 @@ class EventEditor extends Component<EventEditorProps, EventEditorState> {
                   }
                 </Select>
               </FormControl>
+              <FormHelperText id="helpertext-labelInputField">{Orca.i18n.activityExecutionCalendar.editor.manage_languages_hint}</FormHelperText>
 
               <FormControlLabel
+                className={ classes.formControl }
                 control={
                   <Checkbox
                     id="inputHasTransport"

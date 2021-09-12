@@ -7,6 +7,7 @@ de:
         stufe_recommended: Empfohlene Stufe
         tags: Tags
         text: Text
+        languages: Sprachen
   activerecord:
     attributes:
       activity:
@@ -201,6 +202,7 @@ de:
       field: Feld
       has_transport: Mit Transport
       languages: Sprachen
+      manage_languages_hint: 'Sprache in welcher die Aktivität durchgeführt werden kann.'
       manage_spot_hint: 'Falls du mehr Programmspots brauchst, klicke hier:'
       manage_spot_link_text: Programmspots verwalten
       save: Speichern
