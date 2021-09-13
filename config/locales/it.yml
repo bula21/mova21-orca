@@ -84,14 +84,14 @@ it:
         al: CSZ
         district: Quartiere
         ends_at: Fine il
-        expected_participants: Numero di partecipanti previsti
-        expected_participants_f: Numero di partecipanti (f) previste
-        expected_participants_leitung: Numero di animatori previsti
-        expected_participants_leitung_f: Numero di animatrici previste
-        expected_participants_leitung_m: Numero di animatori previsti
-        expected_participants_m: Numero di partecipanti (m) previsti
-        expected_guest_participants: Numero di ospiti attesi (partecipanti)
-        expected_guest_leaders: Numero di ospiti attesi (animatori/trici)
+        expected_participants: Numero definitivo di partecipanti
+        expected_participants_f: Numero definitivo delle partecipanti (f)
+        expected_participants_leitung: Numero definitivo di animatori/trici
+        expected_participants_leitung_f: Numero definitivo delle animatrici (f)
+        expected_participants_leitung_m: Numero definitivo di animatori (m)
+        expected_participants_m: Numero definitivo di partecipanti (m)
+        expected_guest_participants: Numero definitivo di ospiti (partecipanti)
+        expected_guest_leaders: Numero definitivo di ospiti (animatori/trici)
         full_name: Nome completo
         kv_id: Associazione cantonale
         lagerleiter: Direzione del campo
@@ -677,8 +677,8 @@ it:
       data_complete: Dati completi
       data_incomplete: Dati incompleti
       documents: Documenti
-      expected_participants: Numero di partecipanti stimato
-      expected_participants_explanation_html: "Il numero previsto di partecipanti sarà importato da <a href='%{link}' target='_blank'>MiData</a>."
+      expected_participants: Numero definitivo di partecipanti
+      expected_participants_explanation_html: Il numero definitivo di partecipanti è importato dal campo "Numero di partecipanti stimato" <a href='%{link}' target='_blank'>MiData</a>.
       imported: importato da MiData
       invoices: Fatture
       other_infos: Informazioni supplementari

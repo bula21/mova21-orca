@@ -84,14 +84,14 @@ fr:
         al: RG
         district: Quartier
         ends_at: Fin le
-        expected_participants: Nombre de participant.e.s attendu.e.s
-        expected_participants_f: Nombre de participantes attendues (f)
-        expected_participants_leitung: Nombre de responsables attendu.e.s
-        expected_participants_leitung_f: Nombre de responsables attendues (f)
-        expected_participants_leitung_m: Nombre de responsables attendus (m)
-        expected_participants_m: Nombre de participants attendus (m)
-        expected_guest_participants: Nombre d’invité.e.s attendu.e.s (part.)
-        expected_guest_leaders: Nombre d’invité.e.s attendu.e.s(resp.)
+        expected_participants: Nombre définitif de participant-e-s
+        expected_participants_f: Nombre définitif de participantes (f)
+        expected_participants_leitung: Nombre définitif de responsables
+        expected_participants_leitung_f: Nombre définitif de responsables (f)
+        expected_participants_leitung_m: Nombre définitif de responsables (m)
+        expected_participants_m: Nombre définitif de participants (m)
+        expected_guest_participants: Nombre définitif d’invité.e.s (part.)
+        expected_guest_leaders: Nombre définitif d’invité.e.s (resp.)
         full_name: Nom complet
         kv_id: Association cantonale AC
         lagerleiter: Maîtrise de camp
@@ -691,8 +691,9 @@ fr:
       data_complete: Inscription complète
       data_incomplete: Inscription pas complète
       documents: Documents
-      expected_participants: Nombre de participant.e.s attendu.e.s
-      expected_participants_explanation_html: Le nombre attendu de participant.e.s va être importé depuis <a href=‘%{link}’ target=‘_blank’>MiData</a> .
+      expected_participants: Nombre définitif de participant-e-s
+      expected_participants_explanation_html: Le nombre définitif de participant-e-s est de
+        importé du champ "Nombre attendu de participant-e-s" <a href='%{link}' target='_blank'>MiData</a>.
       imported: imported from MiData
       invoices: Factures
       other_infos: Informations supplémentaires
