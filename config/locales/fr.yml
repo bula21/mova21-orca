@@ -84,7 +84,7 @@ fr:
         al: RG
         district: Quartier
         ends_at: Fin le
-        expected_participants: Nombre définitif de participant-e-s
+        expected_participants: Nombre définitif de participant.e.s.
         expected_participants_f: Nombre définitif de participantes (f)
         expected_participants_leitung: Nombre définitif de responsables
         expected_participants_leitung_f: Nombre définitif de responsables (f)
@@ -691,9 +691,9 @@ fr:
       data_complete: Inscription complète
       data_incomplete: Inscription pas complète
       documents: Documents
-      expected_participants: Nombre définitif de participant-e-s
-      expected_participants_explanation_html: Le nombre définitif de participant-e-s est de
-        importé du champ "Nombre attendu de participant-e-s" <a href='%{link}' target='_blank'>MiData</a>.
+      expected_participants: Nombre définitif de participant.e.s.
+      expected_participants_explanation_html: Le nombre définitif de participant.e.s. est de
+        importé du champ "Nombre attendu de participant.e.s." <a href='%{link}' target='_blank'>MiData</a>.
       imported: imported from MiData
       invoices: Factures
       other_infos: Informations supplémentaires
