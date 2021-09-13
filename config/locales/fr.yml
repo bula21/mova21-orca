@@ -6,17 +6,17 @@ fr:
         activity_category: Catégorie
         stufe_recommended: Branches recommandées
         tags: Tags
-        text: Text
+        text: Texte
   activerecord:
     attributes:
       activity:
-        activity_category: Kategorie
+        activity_category: Catégorie
         activity_documents: Document
         activity_type: Type
         block_type: Type d'activité
         description: Description
-        duration_activity: Dauer der Aktivität (HH:mm)
-        duration_journey: Dauer der Anreise (HH:mm)
+        duration_activity: Durée de l’activité (HH:mm)
+        duration_journey: Durée du voyage (HH:mm)
         goals: Objectifs de l'activité
         label: Intitulé de l'activité
         language_de: Deutsch
@@ -25,19 +25,19 @@ fr:
         language_it: Italiano
         languages: Langues
         location: Lieu (approximativement)
-        min_participants: Min. Nombre participant
-        participants_count_activity: Max. nombre participant.e.s pour activités
-        participants_count_transport: Anz. Personen (inkl. Leitung)
+        min_participants: Min. nombre participant.e.s
+        participants_count_activity: Max. nombre participant.e.s
+        participants_count_transport: Nb. personnes (responsables inclus)
         picture: Image
         simo: Module de sécurité / SSS
         stufe_recommended: Branches recommandées
-        stufen: Branches éventuelles
-        transport_location: Lieu du Transport
+        stufen: Branches possibles
+        transport_location: Lieu du transport
       activity_execution:
-        amount_participants: Nombre de participants
+        amount_participants: Nombre de participant.e.s
         field: Terrain
         language_flags: Langues
-        spot: spot du programme
+        spot: Zone de programme
       field:
         name: Nom
       fixed_event:
@@ -50,7 +50,7 @@ fr:
         full_name: Nom
         gender: Sexe
         last_name: Nom de famille
-        pbs_id: MSdS ID
+        pbs_id: ID MSdS
         scout_name: Totem
       participant:
         birthdate: Date de naissance
@@ -59,12 +59,13 @@ fr:
         full_name: Nom
         gender: Sexe
         genders:
-          female: Femmes
-          male: Hommes
+          female: Femme
+          male: Homme
         last_name: Nom de famille
-        pbs_id: MSdS ID
+        pbs_id: ID MSdS
         phone_number: Numéro de téléphone
-        role: Rolle
+        role: Rôle
+        guest_troop: Troupe invitée
         roles:
           assistant_leader: Responsable
           helper: Cuisine / Aide
@@ -75,107 +76,126 @@ fr:
         scout_name: Totem
       spot:
         color: Farbe für Erfassung der Durchführung
-        fields: Felder
-        name: Name
+        fields: Terrains
+        name: Nom
       unit:
         abteilung: Groupe
-        activity_booking_phase: Buchungsphase
+        activity_booking_phase: Phase de réservation
         al: RG
         district: Quartier
         ends_at: Fin le
-        expected_participants: Erwartete Anzahl TN
+        expected_participants: Nombre de participant.e.s attendu.e.s
         expected_participants_f: Nombre de participantes attendues (f)
-        expected_participants_leitung: Erwartete Anzahl Leitende
+        expected_participants_leitung: Nombre de responsables attendu.e.s
         expected_participants_leitung_f: Nombre de responsables attendues (f)
-        expected_participants_leitung_m: Nombre de responsables attendues (m)
+        expected_participants_leitung_m: Nombre de responsables attendus (m)
         expected_participants_m: Nombre de participants attendus (m)
+        expected_guest_participants: Nombre d’invité.e.s attendu.e.s (part.)
+        expected_guest_leaders: Nombre d’invité.e.s attendu.e.s(resp.)
         full_name: Nom complet
-        kv_id: Association cantonale
+        kv_id: Association cantonale AC
         lagerleiter: Maîtrise de camp
         language: Langue
-        on_site_at: Lagerdaten
-        pbs_id: Lager ID in der Midata
+        on_site_at: Donnée du camp
+        pbs_id: ID du camp sur MiData
         starts_at: Début le
         stufe: Branche
         title: Titre
-        week: Lagerwoche
+        week: Semaine de camp
     errors:
       messages:
-        incomplete: est incomplète
+        incomplete: est incomplet
         record_invalid: 'La validation a échoué : %{errors}'
         restrict_dependent_destroy:
           has_many: Vous ne pouvez pas supprimer l'enregistrement parce que les %{record}
             dépendants existent
           has_one: Vous ne pouvez pas supprimer l'enregistrement car un(e) %{record}
             dépendant(e) existe
-        start_not_before_end: das Startdatum muss vor dem Enddatum liegen
+        start_not_before_end: La date de début doit être avant la date de fin.
       models:
         activity_execution:
           attributes:
             language_flags:
-              greater_than: Es muss mindestens eine Sprache gewählt werden.
+              greater_than: Au moins une langue doit être choisie.
         unit:
           attributes:
             lagerleiter:
               incomplete: est incomplète (nom, e-mail, adresse))
     models:
+      activity_execution:
+        one: Réalisation
+        other: Réalisations
       field:
-        one: Feld
-        other: Felder
+        one: Terrain
+        other: Terrains
       fixed_event:
-        one: Groprogramm-Punkt
-        other: Groprogramm-Punkte
+        one: Point du programme (picasso)
+        other: 'Points du programme (picasso) '
       leader:
         one: Responsable
         other: Responsables
       participant:
-        one: Teilnehmende(r)
-        other: Teilnehmende
+        one: Participant·e
+        other: Participant.e.s
       spot:
-        one: Programmspot
-        other: Programmspots
+        one: Zone de programme
+        other: Zones de programme
       unit:
         one: Unité
         other: Unitées
       unit_activity:
         one: Activité réservée
-        other: Panier d'achat
+        other: Liste de souhaits
   activity:
     edit:
       title: Éditer l'activité
-      warning: 'Achtung: Forumlar zuerst speichern und danach Dokumente bearbeiten
-        (Änderungen gehen sonst verloren)'
+      warning: 'Attention : Sauvegardez d''abord le formulaire et modifiez ensuite
+        les documents (sinon les modifications seront perdues).'
     index:
       title: Activités
     new:
       title: Créer une nouvelle activité
     show:
-      downloads: Downloads
-      duration: 'Dauer:'
-      executions: Executions
-      max_people: Max. Gruppengrösse
-      more_information: Weitere Informationen
-      possible: möglich
-      simo_text: 'Benötigt Sicherheitsmodul:'
-      stufe_recommended: 'Geeignet für:'
+      downloads: Téléchargements
+      duration: 'Durée: '
+      excel_import:
+        description: 'Vous pouvez enregistrer les activités dans Excel et les télécharger
+          ici :'
+        template_download: Télécharger le modèle Excel
+        title: Importer Excel
+      executions: Activités
+      executions_delete:
+        description: 'Attention : Vous pouvez supprimer les activités d''une journée
+          entière. Cliquez sur le lien ci-dessous pour accéder à la sélection des
+          jours.'
+        link: Poursuivre la sélection
+      max_people: Taille maximal du groupe
+      more_information: Informations complémentaires
+      possible: possible
+      simo_text: Module de sécurité nécessaire
+      stufe_recommended: Adapté à
   activity_execution:
     edit:
-      title: Programmpunkt editieren
+      title: Modifier le programme
+    import:
+      error: L'importation n'a pas réussi. Voir erreur.
+      invalid_file_type: Fichier non valide. Veuillez télécharger le modèle Excel.
+      success: Acticités importées avec succès
     index:
-      title: Grobprogramm
+      title: Picasso
     new:
-      title: Neuen Programmpunkt erfassen
+      title: Ajouter de nouvelles activités au programme
   activity_execution_calendar:
     copy:
       error: 'Erreur pendant la copie:'
-      success: L'événement a été copié avec succès
+      success: L’activité a été copiée avec succès
     create:
       error: 'Erreur lors de la création:'
-      success: L'événement a été créé avec succès
+      success: L’activité a été créée avec succès
     delete:
-      confirm: Êtes-vous sûr de vouloir supprimer l'exécution de l'activité ?
-      error: Impossible de supprimer l'exécution de l'événement
-      success: L'événement a été supprimé avec succès
+      confirm: Êtes-vous sûr de vouloir supprimer l'activité ?
+      error: Impossible de supprimer l’activité
+      success: L’activité a été supprimée avec succès
     editor:
       amount_participants: Nombre de participants
       cancel: Annuler
@@ -188,39 +208,40 @@ fr:
       languages: Langues
       manage_spot_hint: 'Si vous avez besoin de plus de places dans le programme,
         cliquez ici :'
-      manage_spot_link_text: Gérer les spots du programme
+      manage_spot_link_text: Gérer les zones de programme
       save: Enregistrer
-      spot: spot du programme
+      spot: Zone de programme
       start_time: Heure de début
       title_copy: Copier
       title_edit: Modifier
     move:
-      error: 'erreur lors du déplacement de l''événement:'
+      error: 'Erreur lors du déplacement de l''événement:'
       success: L'événement a été déplacé avec succès
     update:
-      error: 'erreur lors de la mise à jour:'
-      success: L'événement a été mis à jour avec succès
+      error: 'Erreur lors de la mise à jour:'
+      success: L’activité a été mise à jour avec succès
   app:
     title: Orca
   buttons:
     back: retour
-    close: Schliessen
-    confirm_delete: Bist du dir sicher, dass du Löschen möchtest?
+    close: Fermer
+    confirm_delete: Es-tu sûr.e de vouloir supprimer cela?
     create: créer
     destroy: supprimer
     edit: éditer
     export_csv: Exporter en csv
-    filter: filtrer
-    reset: réinitialiser
-    save: sauvegarder
-    show: montrer
+    filter: Filtrer
+    reset: Réinitialiser
+    save: Sauvegarder
+    show: Montrer
+    upload: Charger
   camp_unit_mailer:
     complete_notification:
       body: |-
-        Hallo %{salutation_name}
+        Salut %{salutation_name}
 
-        Deine Lageranmeldung für das Bula ist jetzt vollständig. Siehe %{camp_unit_url}
-      subject: Lageranmeldung vollständig
+        Ton inscription au camp est maintenant complète. Voir %{camp_unit_url}
+      subject: Inscription au camp complète
     incomplete_notification:
       body: |-
         Bonjour %{salutation_name}
@@ -242,7 +263,7 @@ fr:
 
         Viele Grüsse
         Eure BuLa21-Crew
-      subject: Inscription mova n'est pas encore complète
+      subject: L’inscription au mova n'est pas encore complète
   date:
     abbr_day_names:
     - dim
@@ -345,6 +366,12 @@ fr:
       month: Mois
       second: Seconde
       year: Année
+  delete_activity_executions:
+    destroy:
+      success: Activités supprimées avec succès
+    index:
+      activity_executions_count: Activités
+      title: Supprimer activités
   errors:
     format: "%{attribute} %{message}"
     messages:
@@ -366,7 +393,7 @@ fr:
       not_an_integer: doit être un nombre entier
       odd: doit être impair
       other_than: doit être différent de %{count}
-      present: doit être vide
+      present: doit rester vide
       required: doit exister
       taken: n'est pas disponible
       too_long:
@@ -385,11 +412,11 @@ fr:
         other: 'Impossible d''enregistrer ce(tte) %{model} : %{count} erreurs'
   fields:
     edit:
-      title: Feld editieren
+      title: Editer le champ
     index:
-      title: "%{spot}: Felder verwalten"
+      title: "%{spot}: Modifier un champ"
     new:
-      title: Neues Feld erfassen
+      title: Créer un nouveau champ
   helpers:
     select:
       prompt: Veuillez sélectionner
@@ -420,10 +447,10 @@ fr:
         breakdown: "%{participants} × %{price_per_participant}"
         label:
           leitung: Responsable
-          pfadi: Nombre participant.e.s Troupe
-          pio: Nombre participant.e.s Poste
+          pfadi: Nombre participant.e.s Eclais
+          pio: Nombre participant.e.s Picos
           pta: Nombre participant.e.s SMT
-          wolf: Nombre participant.e.s Meute
+          wolf: Nombre participant.e.s Louveteux
       issued_at: Berne, %{issued_at}
       post_text: |-
         Les frais de préinscription servent de première inscription et seront déduits lors du paiement final du groupe. Si vous annulez l'inscription d'une unité après son inscription provisoire (elle ne prend donc pas part au CaFé21), les frais de préinscription vous seront remboursés.
@@ -447,18 +474,18 @@ fr:
       title: Entrer un nouveau ou une nouvelle responsable
   messages:
     created:
-      error: Fehler beim erstellen!
+      error: Erreur lors de la création!
       success: Crée avec succès
     deleted:
-      error: Fehler beim löschen.
-      success: Erfolgreich gelöscht!
+      error: Erreur lors de la suppression
+      success: Supprimé avec succès
     updated:
       error: Fehler beim speichern!
       success: Enregistré avec succès
   nav:
     activity: Catalogue
-    activity_category: Kategorie
-    fixed_event: programme approximatif
+    activity_category: Categorie
+    fixed_event: Programme approximatif
     language:
       de: DE
       en: EN
@@ -467,8 +494,8 @@ fr:
     leader: Responsables
     login: Login
     logout: Logout
-    spots: Programmspots & Felder
-    stufen: Stufen
+    spots: Zone de programme et terrains
+    stufen: Branches
     tag: Tags
     transport_location: Transport
     unit: Camp
@@ -492,11 +519,11 @@ fr:
       decimal_units:
         format: "%n %u"
         units:
-          billion: milliard
-          million: million
-          quadrillion: million de milliards
+          billion: Miliardi
+          million: Milioni
+          quadrillion: Biliardi
           thousand: millier
-          trillion: billion
+          trillion: Bilioni
           unit: ''
       format:
         delimiter: ''
@@ -524,29 +551,29 @@ fr:
         delimiter: ''
   participants:
     edit:
-      title: Edit participants
+      title: Modifier participant.e.s
     index:
-      complete_now: Jetzt vervollständigen
+      complete_now: Terminer maintenant
       create_hint: Create hint
-      data_incomplete: Es fehlen Angaben für eine vollständige Anmeldung
-      title: Participants
+      data_incomplete: Des données sont manquantes pour finaliser l’inscription.
+      title: Participant.e.s
     new:
-      title: Créer articipants
-  pre_text: Pre text
+      title: Créer participants
+  pre_text: Pre texte
   simple_form:
-    confirm_unsaved: 'Achtung: Alle nicht gespeicherten Änderungen gehen verloren.
-      Sind Sie sicher?'
+    confirm_unsaved: 'Attention: toutes les modifications vont être perdue. Etes-vous
+      sûr.e.s?'
     options:
       activity:
         activity_type:
-          activity: Aktivität
-          excursion: Ausflug
-          frohnarbeit: Frohnarbeit
+          activity: Activité
+          excursion: Excursion
+          frohnarbeit: BA (bonne action)
           village_global: Village Global
         block_type:
           la: Activité de camp
           ls: Sport de camp
-          voila: Voila Bula
+          voila: Voila CaFé
         language_de: Deutsch
         language_en: English
         language_fr: Français
@@ -554,7 +581,7 @@ fr:
         languages: Langues
         simo:
           berg: Montagne
-          lake: Modul See
+          lake: Module Eau
           pool: Basis Pool
           wasser: Eau
       participant:
@@ -567,62 +594,61 @@ fr:
           pio: Picos
           pta: SMT
           wolf: Louveteaux
-    participants_count_activity_hint: Max Anzahl Personen die an der Aktivität teilnehmen
-      können
-    participants_count_transport_hint: Max Kapazität der Aktivität (inkl. Leitung)
+    participants_count_activity_hint: Nb. personnes max. pouvant participer à l’activité
+    participants_count_transport_hint: Capacité max. de l’activité (responsables inclus)
   spot:
     edit:
-      title: Title
+      title: Titre
   spots:
     edit:
-      title: Programmspot editieren
+      title: Editer une zone de programme
     index:
-      title: Programmspots verwalten
+      title: Gérer les zones de programme
     new:
-      title: Neuen Programmspot erfassen
+      title: Créer une nouvelle zone de programme
   support:
     array:
       last_word_connector: " et "
       two_words_connector: " et "
       words_connector: ", "
   time:
-    am: am
+    am: Matin
     formats:
       default: "%d. %B %Y %H h %M"
       long: "%A, %d %B %Y %H h %M min %S s %Z"
       short: "%d %b %H h %M"
-    pm: pm
+    pm: après-midi
   unit_activity_booking:
-    book: ajouter au panier d'achat
-    booked: ajouté au panier d'achat
+    book: ajouter à la liste de souhaits
+    booked: ajouté à la liste de souhaits
     commit: Finaliser la réservation
     committed_text: Merci beaucoup, la réservation est terminée ! La division finale
       sera annoncé au début de l'année 2022.
     compliance_evaluators:
-      excursions: Min. 3 mögliche Ausflüge pro Lageroche
-      hiking: Min. 3 mögliche Wanderungen pro Lagerwoche
-      hiking_or_excursions: Min. 3 mögliche Ausflüge oder Wanderungen
-      mova_activities: Min. 4 mögliche mova Aktivitäten pro Lagerwoche
-      phase_open: Die Buchungsphase ist offen
-      village_global_workshops: Min. 3 Village Global Workshops
+      excursions: Min. 3 excursions possible par semaine de camp
+      hiking: Min. 3 randonnées possibles par semaine de camp
+      hiking_or_excursions: 'Min. 3 excursions ou randonnée possibles '
+      mova_activities: Min. 4 activités mova possibles par semaine de camp
+      phase_open: La phase de réservation est ouverte
+      village_global_workshops: Min. 3 workshops au Village Global
     guide_text: |-
-      Chaque unité sera affectée à une ou plusieurs activités pendant le camp. Pour cette allocation, les souhaits de votre unité seront pris en compte dans la mesure du possible. Dans la liste de souhaits sous la forme d'un panier d'achat sur le côté droit, la hiérarchisation peut être effectuée par glisser-déposer : Les activités situées plus haut dans le panier ont plus de chances d'être prises en compte que les activités situées plus bas. Il n'y a aucune garantie que votre unité sera affectée aux activités figurant sur la liste de souhaits, mais nous ferons de notre mieux.
+      Chaque unité sera affectée à une ou plusieurs activités pendant le camp. Pour cette allocation, les souhaits de votre unité seront pris en compte dans la mesure du possible. Dans la liste de souhaits sous la forme d'un panier d'achat sur le côté droit, la hiérarchisation peut être effectuée par glisser-déposer : Les activités situées plus haut dans votre liste de souhaits ont plus de chances d'être prises en compte que les activités situées plus bas. Il n'y a aucune garantie que votre unité sera affectée aux activités figurant sur la liste de souhaits, mais nous ferons de notre mieux.
 
-      Tant que vous n'aurez pas défini la réservation sur "complete", le panier d'achat servira de Tous les chefs d'unité ayant accès à orca peuvent supprimer ou redéfinir les activités.
+      Tant que vous n'aurez pas terminer la réservation, la liste de souhaits servira de liste de favoris. Tou.te.s les responsables de l’unité ayant accès à orca peuvent supprimer ou redéfinir les activités.
 
       Pour que la réservation soit complète, les règles suivantes doivent être incluses:
     not_all_comply: 'La réservation ne peut pas être clôturée : toutes les règles
       sont toujours respectées.'
     read_more: Détails
     tag_legend:
-      button: Tag Legende öffnen
-      title: Legende Tags
+      button: Ouvrir les légendes des tags
+      title: Légendes Tags
     video_src: https://www.youtube.com/embed/7XusNePwv_o
   units:
     edit:
       title: Modifier un camp
     form:
-      danger_zone: Danger zone
+      danger_zone: Zone de danger
     index:
       title: Ton camp
     kv_ids:
@@ -651,30 +677,29 @@ fr:
     new:
       title: Créer un camp
     show:
-      activity_booking: Activity booking
-      activity_booking_commited: Buchung abgeschlossen
-      activity_booking_committed: Activity booking committed
-      activity_booking_complete: Activity booking complete
-      activity_booking_incomplete: Activity booking incomplete
-      activity_booking_open: Buchung offen
+      activity_booking: Réserver des activités
+      activity_booking_commited: Terminer la réservation
+      activity_booking_committed: Réservation d'activité effectuée
+      activity_booking_complete: Réservation d’activité complète
+      activity_booking_incomplete: Réservation d’activité incomplète
+      activity_booking_open: Ouvrir réservation
       activity_booking_preview: Buchungsvorschau offen
-      activity_booking_text: Aktivitäten Buchen
-      basic_infos: Allgemein
-      camp_id: Camp id
+      activity_booking_text: Réserver des activités
+      basic_infos: Général
+      camp_id: ID du camp
       camp_link_midata: Camp sur MiData
       data_complete: Inscription complète
       data_incomplete: Inscription pas complète
       documents: Documents
-      expected_participants: Expected number of participants
-      expected_participants_explanation_html: The expected amount of participants
-        is imported from your entered numbers in <a href='%{link}' target='_blank'>MiData</a>
+      expected_participants: Nombre de participant.e.s attendu.e.s
+      expected_participants_explanation_html: Le nombre attendu de participant.e.s va être importé depuis <a href=‘%{link}’ target=‘_blank’>MiData</a> .
       imported: imported from MiData
-      invoices: Invoices
-      other_infos: Information
+      invoices: Factures
+      other_infos: Informations supplémentaires
       paid:
         'false': ouvert
         'true': payé
-      participants: Participants
+      participants: Participant.e.s
       questionnaire: Questionaire
   unauthorized:
     default: Vous n'êtes pas autorisé à accéder à cette page.

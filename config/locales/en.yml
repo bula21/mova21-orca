@@ -65,6 +65,7 @@ en:
         pbs_id: PBS ID
         phone_number: Phone number
         role: Rolle
+        guest_troop: Guest Troop
         roles:
           assistant_leader: Leader
           helper: Kitchen / Assistance
@@ -89,6 +90,8 @@ en:
         expected_participants_leitung_f: Expected number of leaders (m)
         expected_participants_leitung_m: Expected number of leaders (w)
         expected_participants_m: Expected number of participants (m)
+        expected_guest_participants: Erwartete Anzahl Gäste (TN)
+        expected_guest_leaders: Erwartete Anzahl Gäste (Leitung)
         full_name: Full Name
         kv_id: Cantonal association
         lagerleiter: Main unit leader
