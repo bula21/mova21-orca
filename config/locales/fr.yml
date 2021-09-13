@@ -701,6 +701,8 @@ fr:
         'true': payé
       participants: Participant.e.s
       questionnaire: Questionaire
+  unauthorized:
+    default: Vous n'êtes pas autorisé à accéder à cette page.
   views:
     pagination:
       first: !!str '<<'

@@ -22,7 +22,7 @@ class ActivityFilter < ApplicationFilter
   end
 
   filter :text do |activities|
-    next if text&.size&.<(3)
+    next if text.blank? || text.length < 3
 
     match_text = text
     activities.merge(Activity.i18n { label.matches("%#{match_text}%") })

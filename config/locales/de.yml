@@ -709,6 +709,8 @@ de:
         'true': bezahlt
       participants: Teilnehmende anzeigen
       questionnaire: Fragebogen
+  unauthorized:
+    default: Du bist nicht berechtigt, auf diese Seite zuzugreifen.
   views:
     pagination:
       first: !!str '<<'

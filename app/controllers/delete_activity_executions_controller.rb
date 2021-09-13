@@ -6,9 +6,8 @@ class DeleteActivityExecutionsController < ApplicationController
   def index; end
 
   def destroy
-    deletions = @activity.activity_executions
-                         .where('starts_at::date IN (?)',
-                                delete_activity_executions_params[:days].filter(&:present?))
+    deletions = @activity.activity_executions.where('starts_at::date IN (?)',
+                                                    delete_activity_executions_params[:days].filter(&:present?))
                          .destroy_all
     if deletions
       redirect_to activity_delete_activity_executions_path(@activity),

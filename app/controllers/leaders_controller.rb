@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class LeadersController < ApplicationController
-  load_and_authorize_resource :activity
+  load_and_authorize_resource
 
   def index; end
 
