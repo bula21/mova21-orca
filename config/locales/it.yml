@@ -693,4 +693,4 @@ it:
       last: ">>"
       next: ">"
       previous: "<"
-      truncate: "&hellip,"
+      truncate: "&hellip;"
