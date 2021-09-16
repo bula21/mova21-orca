@@ -16,7 +16,7 @@ module Pdf
     end
 
     def self.renderables
-      @renderables ||= superclass.ancestors.include?(BasePdf) && superclass.renderables || {}
+      @renderables ||= (superclass.ancestors.include?(BasePdf) && superclass.renderables) || {}
     end
 
     def render_onto(document, only: self.class.renderables.keys)
