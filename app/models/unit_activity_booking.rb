@@ -117,6 +117,13 @@ class UnitActivityBooking
     activities >= (weeks * 3) || "#{activities}/#{weeks * 3}"
   end
 
+  compliance_evaluator :visitor_day do
+    next nil if weeks < 2
+
+    count = unit_activities(only: :visitor_day).count
+    count >= 1 || '0/1'
+  end
+
   compliance_evaluator :mova_activities do
     next nil if weeks < 1
 
