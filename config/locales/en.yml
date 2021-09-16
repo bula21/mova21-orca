@@ -61,11 +61,11 @@ en:
         genders:
           female: Female
           male: Male
+        guest_troop: Guest Troop
         last_name: Lastname
         pbs_id: PBS ID
         phone_number: Phone number
         role: Rolle
-        guest_troop: Guest Troop
         roles:
           assistant_leader: Leader
           helper: Kitchen / Assistance
@@ -84,14 +84,14 @@ en:
         al: Group leader
         district: District
         ends_at: End on
+        expected_guest_leaders: Erwartete Anzahl Gäste (Leitung)
+        expected_guest_participants: Erwartete Anzahl Gäste (TN)
         expected_participants: Erwartete Anzahl TN
         expected_participants_f: Expected number of participants (w)
         expected_participants_leitung: Erwartete Anzahl Leitende
         expected_participants_leitung_f: Expected number of leaders (m)
         expected_participants_leitung_m: Expected number of leaders (w)
         expected_participants_m: Expected number of participants (m)
-        expected_guest_participants: Erwartete Anzahl Gäste (TN)
-        expected_guest_leaders: Erwartete Anzahl Gäste (Leitung)
         full_name: Full Name
         kv_id: Cantonal association
         lagerleiter: Main unit leader
@@ -120,6 +120,9 @@ en:
             lagerleiter:
               incomplete: ist unvollständig (Name, E-Mail, Adresse)
     models:
+      activity_execution:
+        one: Durchführung
+        other: Durchführungen
       field:
         one: Feld
         other: Felder
@@ -153,7 +156,15 @@ en:
     show:
       downloads: Downloads
       duration: 'Dauer:'
+      excel_import:
+        description: 'Du kannst Durchführungen im Excel erfassen und hier hochladen:'
+        template_download: Scarica il modello in formato Excel
+        title: Importazione Excel
       executions: Executions
+      executions_delete:
+        description: 'Achtung: Du kannst Durchführungen eines ganzen Tages löschen.
+          Klicke dazu auf den untenstehenden Link um zur Tagesauswahl zu kommen.'
+        link: Vai alla selezione
       max_people: Max. Gruppengrösse
       more_information: Weitere Informationen
       possible: möglich
@@ -162,6 +173,10 @@ en:
   activity_execution:
     edit:
       title: Programmpunkt editieren
+    import:
+      error: L'importazione non ha funzionato. Vedi errore.
+      invalid_file_type: Documento non valido. Utilizza il modello Excel
+      success: Erfolgreich %{count} Durchführungen importiert
     index:
       title: Grobprogramm
     new:
@@ -325,6 +340,12 @@ en:
       month: Month
       second: Second
       year: Year
+  delete_activity_executions:
+    destroy:
+      success: Erfolgreich %{count} Durchführungen gelöscht.
+    index:
+      activity_executions_count: "%{count} Durchführungen"
+      title: Durchführungen löschen
   errors:
     format: "%{attribute} %{message}"
     messages:
@@ -548,6 +569,9 @@ en:
     participants_count_activity_hint: Max Anzahl Personen die an der Aktivität teilnehmen
       können
     participants_count_transport_hint: Max Kapazität der Aktivität (inkl. Leitung)
+  spot:
+    edit:
+      title: Titolo
   spots:
     edit:
       title: Programmspot editieren
@@ -567,6 +591,8 @@ en:
       long: "%B %d, %Y %H:%M"
       short: "%d %b %H:%M"
     pm: pm
+  unauthorized:
+    default: You are not authorized to access this page.
   unit_activity_booking:
     book: zum Warenkorb hinzufügen
     booked: zum Warenkorb hinzugefügt
@@ -580,6 +606,7 @@ en:
       mova_activities: Min. 4 mova activities per camp week
       phase_open: The booking phase is open
       village_global_workshops: Min. 3 Village Global workshops
+      visitor_day: Min. 1 Auswahl für den Besuchstag
     guide_text: "Jede Einheit wird während der dauer des Lagers für ein oder mehrere
       Aktivitäten eingeteilt. Für diese Einteilung werden die Wünsche eurer Einheit
       so gut wie möglich berücksichtigt. Innerhalb der Wunschliste in Form des \"Warenkorbes\"
@@ -656,8 +683,6 @@ en:
         'true': payed
       participants: Participants
       questionnaire: Form
-  unauthorized:
-    default: You are not authorized to access this page.
   views:
     pagination:
       first: !!str '<<'

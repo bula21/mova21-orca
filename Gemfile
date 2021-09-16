@@ -41,6 +41,7 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 4.11'
   gem 'faker'
   gem 'i18n-tasks'
+  gem 'locales_export_import'
   gem 'pdf-inspector', require: 'pdf/inspector'
   gem 'pry-rails'
   gem 'rspec-rails'
@@ -48,7 +49,6 @@ group :development, :test do
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
-  gem 'locales_export_import'
 end
 
 group :development do

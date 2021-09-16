@@ -61,11 +61,11 @@ de:
         genders:
           female: Weiblich
           male: Männlich
+        guest_troop: Gast Trupp
         last_name: Nachname
         pbs_id: PBS ID
         phone_number: Telefonnummer
         role: Rolle
-        guest_troop: Gast Trupp
         roles:
           assistant_leader: Leitung
           helper: Küche / Helfer/-in
@@ -84,14 +84,14 @@ de:
         al: AL
         district: Quartier
         ends_at: Ende am
+        expected_guest_leaders: Definitive Anzahl Gäste (Leitung)
+        expected_guest_participants: Definitive Anzahl Gäste (TN)
         expected_participants: Definitive Anzahl TN
         expected_participants_f: Definitive Anzahl TN (f)
         expected_participants_leitung: Definitive Anzahl Leitende
         expected_participants_leitung_f: Definitive Anzahl Leitende (f)
         expected_participants_leitung_m: Definitive Anzahl Leitende (m)
         expected_participants_m: Definitive Anzahl TN (m)
-        expected_guest_participants: Definitive Anzahl Gäste (TN)
-        expected_guest_leaders: Definitive Anzahl Gäste (Leitung)
         full_name: Vollständiger Name
         kv_id: KV
         lagerleiter: Lagerleiter
@@ -620,6 +620,8 @@ de:
       long: "%A, %d. %B %Y, %H:%M Uhr"
       short: "%d. %B, %H:%M Uhr"
     pm: nachmittags
+  unauthorized:
+    default: Du bist nicht berechtigt, auf diese Seite zuzugreifen.
   unit_activity_booking:
     book: zum Warenkorb hinzufügen
     booked: zum Warenkorb hinzugefügt
@@ -633,6 +635,7 @@ de:
       mova_activities: Min. 4 mögliche mova Aktivitäten pro Lagerwoche
       phase_open: Die Buchungsphase ist offen
       village_global_workshops: Min. 3 Village Global Workshops
+      visitor_day: Min. 1 Auswahl für den Besuchstag
     guide_text: "Jede Einheit wird während der dauer des Lagers für ein oder mehrere
       Aktivitäten eingeteilt. Für diese Einteilung werden die Wünsche eurer Einheit
       so gut wie möglich berücksichtigt. Innerhalb der Wunschliste in Form des \"Warenkorbes\"
@@ -700,7 +703,8 @@ de:
       documents: Dokumente
       expected_participants: Definitive Anzahl Teilnehmende
       expected_participants_explanation_html: Die definitive Anzahl Teilnehmende wird
-        aus dem Feld "Erwartete Anzahl Teilnehmende" <a href='%{link}' target='_blank'>MiData</a> importiert.
+        aus dem Feld "Erwartete Anzahl Teilnehmende" <a href='%{link}' target='_blank'>MiData</a>
+        importiert.
       imported: von MiData importiert
       invoices: Rechnungen
       other_infos: Weitere Informationen
@@ -709,8 +713,6 @@ de:
         'true': bezahlt
       participants: Teilnehmende anzeigen
       questionnaire: Fragebogen
-  unauthorized:
-    default: Du bist nicht berechtigt, auf diese Seite zuzugreifen.
   views:
     pagination:
       first: !!str '<<'

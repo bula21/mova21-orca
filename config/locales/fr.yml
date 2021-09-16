@@ -61,11 +61,11 @@ fr:
         genders:
           female: Femme
           male: Homme
+        guest_troop: Troupe invitée
         last_name: Nom de famille
         pbs_id: ID MSdS
         phone_number: Numéro de téléphone
         role: Rôle
-        guest_troop: Troupe invitée
         roles:
           assistant_leader: Responsable
           helper: Cuisine / Aide
@@ -84,14 +84,14 @@ fr:
         al: RG
         district: Quartier
         ends_at: Fin le
+        expected_guest_leaders: Nombre définitif d’invité.e.s (resp.)
+        expected_guest_participants: Nombre définitif d’invité.e.s (part.)
         expected_participants: Nombre définitif de participant.e.s.
         expected_participants_f: Nombre définitif de participantes (f)
         expected_participants_leitung: Nombre définitif de responsables
         expected_participants_leitung_f: Nombre définitif de responsables (f)
         expected_participants_leitung_m: Nombre définitif de responsables (m)
         expected_participants_m: Nombre définitif de participants (m)
-        expected_guest_participants: Nombre définitif d’invité.e.s (part.)
-        expected_guest_leaders: Nombre définitif d’invité.e.s (resp.)
         full_name: Nom complet
         kv_id: Association cantonale AC
         lagerleiter: Maîtrise de camp
@@ -180,7 +180,7 @@ fr:
     import:
       error: L'importation n'a pas réussi. Voir erreur.
       invalid_file_type: Fichier non valide. Veuillez télécharger le modèle Excel.
-      success: Acticités importées avec succès
+      success: "%{count} Acticités importées avec succès"
     index:
       title: Picasso
     new:
@@ -368,9 +368,9 @@ fr:
       year: Année
   delete_activity_executions:
     destroy:
-      success: Activités supprimées avec succès
+      success: "%{count} Activités supprimées avec succès"
     index:
-      activity_executions_count: Activités
+      activity_executions_count: "%{count} Activités"
       title: Supprimer activités
   errors:
     format: "%{attribute} %{message}"
@@ -618,6 +618,8 @@ fr:
       long: "%A, %d %B %Y %H h %M min %S s %Z"
       short: "%d %b %H h %M"
     pm: après-midi
+  unauthorized:
+    default: Vous n'êtes pas autorisé à accéder à cette page.
   unit_activity_booking:
     book: ajouter à la liste de souhaits
     booked: ajouté à la liste de souhaits
@@ -631,6 +633,7 @@ fr:
       mova_activities: Min. 4 activités mova possibles par semaine de camp
       phase_open: La phase de réservation est ouverte
       village_global_workshops: Min. 3 workshops au Village Global
+      visitor_day: Min. 1 sélection pour le jour de la visite
     guide_text: |-
       Chaque unité sera affectée à une ou plusieurs activités pendant le camp. Pour cette allocation, les souhaits de votre unité seront pris en compte dans la mesure du possible. Dans la liste de souhaits sous la forme d'un panier d'achat sur le côté droit, la hiérarchisation peut être effectuée par glisser-déposer : Les activités situées plus haut dans votre liste de souhaits ont plus de chances d'être prises en compte que les activités situées plus bas. Il n'y a aucune garantie que votre unité sera affectée aux activités figurant sur la liste de souhaits, mais nous ferons de notre mieux.
 
@@ -692,8 +695,9 @@ fr:
       data_incomplete: Inscription pas complète
       documents: Documents
       expected_participants: Nombre définitif de participant.e.s.
-      expected_participants_explanation_html: Le nombre définitif de participant.e.s. est de
-        importé du champ "Nombre attendu de participant.e.s." <a href='%{link}' target='_blank'>MiData</a>.
+      expected_participants_explanation_html: Le nombre définitif de participant.e.s.
+        est de importé du champ "Nombre attendu de participant.e.s." <a href='%{link}'
+        target='_blank'>MiData</a>.
       imported: imported from MiData
       invoices: Factures
       other_infos: Informations supplémentaires
@@ -702,8 +706,6 @@ fr:
         'true': payé
       participants: Participant.e.s
       questionnaire: Questionaire
-  unauthorized:
-    default: Vous n'êtes pas autorisé à accéder à cette page.
   views:
     pagination:
       first: !!str '<<'
