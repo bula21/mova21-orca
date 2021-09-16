@@ -175,11 +175,8 @@ de:
     edit:
       title: Programmpunkt editieren
     import:
-      error: Import nicht erfolgreich. Siehe Fehler.
       invalid_file_type: Ungültige Datei. Bitte lade die Excel-Vorlage hoch.
       success: Erfolgreich %{count} Durchführungen importiert
-    index:
-      title: Grobprogramm
     new:
       title: Neuen Programmpunkt erfassen
   activity_execution_calendar:
@@ -598,9 +595,6 @@ de:
     participants_count_activity_hint: Max Anzahl Personen die an der Aktivität teilnehmen
       können
     participants_count_transport_hint: Max Kapazität der Aktivität (inkl. Leitung)
-  spot:
-    edit:
-      title: Title
   spots:
     edit:
       title: Programmspot editieren
@@ -620,8 +614,6 @@ de:
       long: "%A, %d. %B %Y, %H:%M Uhr"
       short: "%d. %B, %H:%M Uhr"
     pm: nachmittags
-  unauthorized:
-    default: Du bist nicht berechtigt, auf diese Seite zuzugreifen.
   unit_activity_booking:
     book: zum Warenkorb hinzufügen
     booked: zum Warenkorb hinzugefügt

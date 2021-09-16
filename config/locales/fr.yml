@@ -178,11 +178,8 @@ fr:
     edit:
       title: Modifier le programme
     import:
-      error: L'importation n'a pas réussi. Voir erreur.
       invalid_file_type: Fichier non valide. Veuillez télécharger le modèle Excel.
       success: "%{count} Acticités importées avec succès"
-    index:
-      title: Picasso
     new:
       title: Ajouter de nouvelles activités au programme
   activity_execution_calendar:
@@ -596,9 +593,6 @@ fr:
           wolf: Louveteaux
     participants_count_activity_hint: Nb. personnes max. pouvant participer à l’activité
     participants_count_transport_hint: Capacité max. de l’activité (responsables inclus)
-  spot:
-    edit:
-      title: Titre
   spots:
     edit:
       title: Editer une zone de programme
@@ -618,8 +612,6 @@ fr:
       long: "%A, %d %B %Y %H h %M min %S s %Z"
       short: "%d %b %H h %M"
     pm: après-midi
-  unauthorized:
-    default: Vous n'êtes pas autorisé à accéder à cette page.
   unit_activity_booking:
     book: ajouter à la liste de souhaits
     booked: ajouté à la liste de souhaits

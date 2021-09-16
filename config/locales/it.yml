@@ -177,11 +177,8 @@ it:
     edit:
       title: Programmpunkt editieren
     import:
-      error: L'importazione non ha funzionato. Vedi errore.
       invalid_file_type: Documento non valido. Utilizza il modello Excel
       success: Erfolgreich %{count} Durchführungen importiert
-    index:
-      title: Grobprogramm
     new:
       title: Neuen Programmpunkt erfassen
   activity_execution_calendar:
@@ -584,9 +581,6 @@ it:
     participants_count_activity_hint: Numero massimo di persone che possono partecipare
       all'attività
     participants_count_transport_hint: Capacità massima dell'attività (incl. animatori/trici)
-  spot:
-    edit:
-      title: Titolo
   spots:
     edit:
       title: Modifica zona del programma
@@ -606,8 +600,6 @@ it:
       long: "%d %B %Y %H:%M"
       short: "%d %b %H:%M"
     pm: pm
-  unauthorized:
-    default: You are not authorized to access this page.
   unit_activity_booking:
     book: Inserire nel carrello degli acquisti
     booked: inserito nel carrello degli acquisti
