@@ -17,7 +17,7 @@ it:
         description: Descrizione
         duration_activity: Durata dell'attività (HH:mm)
         duration_journey: Durata del viaggio (HH:mm)
-        goals: Obbiettivi dell'attività
+        goals: Obiettivi generali
         label: Titolo dell'attività
         language_de: Tedesco
         language_en: Inglese
@@ -26,8 +26,8 @@ it:
         languages: Lingua
         location: Luogo (approssimativo)
         min_participants: N° min. di partecipanti
-        participants_count_activity: N° max. di partecipanti (attività)
-        participants_count_transport: N° di persone (incl. Animatori/trici)
+        participants_count_activity: N° max. di persone
+        participants_count_transport: N° di persone (incl. animatori/trici)
         picture: Immagine
         simo: Modulo di sicurezza / SSS
         stufe_recommended: Branche raccomandate
@@ -68,7 +68,7 @@ it:
         role: Ruolo
         roles:
           assistant_leader: Responsabile
-          helper: Cucina / aiutante
+          helper: Cucina / Aiuto
           leader_mountain_security: Animatore/trice ambito di sicurezza Montagna
           leader_snow_security: Animatore/trice ambito di sicurezza Inverno
           leader_water_security: Animatore/trice ambito di sicurezza Acqua
@@ -146,7 +146,7 @@ it:
         other: Unità
       unit_activity:
         one: Attività prenotata
-        other: Carrello degli acquisti
+        other: Lista dei desideri
   activity:
     edit:
       title: Modificare l'attività
@@ -293,7 +293,7 @@ it:
       default: "%d-%m-%Y"
       long: "%d %B %Y"
       short: "%d %b"
-    from_to: "%{from} bis %{to}"
+    from_to: dal %{from} al %{to}
     month_names:
     -
     - Gennaio
@@ -478,7 +478,7 @@ it:
     leader: Animatori/trici responsabili
     login: Login
     logout: Logout
-    spots: Zone dle programma & Campi
+    spots: Zone del programma & terreni
     stufen: Branche
     tag: Tags
     transport_location: Trasporti
@@ -538,7 +538,7 @@ it:
       title: Modificare partecipanti
     index:
       complete_now: Completare ora
-      create_hint: I/Le partecipanti dovrebbero essere gestiti tramite MiData. Se
+      create_hint: I/Le partecipanti dovrebbero essere gestiti/e tramite MiData. Se
         non avete inserito delle persone, potete aggiungerle manualmente qui.
       data_incomplete: Mancano dei dati per completare l'iscrizione
       title: Partecipanti
@@ -601,29 +601,28 @@ it:
       short: "%d %b %H:%M"
     pm: pm
   unit_activity_booking:
-    book: Inserire nel carrello degli acquisti
-    booked: inserito nel carrello degli acquisti
+    book: Inserire nel lista dei desideri
+    booked: inserita nel lista dei desideri
     commit: Terminare la prenotazione
-    committed_text: Besten Dank, die Buchung ist abgeschlossen! Die entgültige Einteilung
+    committed_text: Grazie mille, la prenotazione è completata! La ripartizione finale
+      sarà annunciata ad inizio 2022.
     compliance_evaluators:
-      excursions: Min. 3 excursions possibles
-      hiking: Min. 3 randonnées possibles
-      hiking_or_excursions: Min. 3 mögliche Ausflüge oder Wanderungen
-      mova_activities: Min. 4 activités mova par semaine de camp
-      phase_open: La phase de réservation est ouverte
-      village_global_workshops: Au moins 3 ateliers Village Global
+      excursions: Min. 3 gite per ogni settimana di campo
+      hiking: Min. 3 escursioni per ogni settimana di campo
+      hiking_or_excursions: Min. 3 gite o escursioni
+      mova_activities: Min. 4 attività mova per ogni settimana di campo
+      phase_open: La fase di prenotazione è aperta
+      village_global_workshops: Min. 3 workshop del Village Global
       visitor_day: Min. 1 selezione per il giorno della visita
-    guide_text: 'Ad ogni unità sarà assegnata una o più attività durante il campo.
-      Per questa assegnazione, nel limite del possibile, i desideri della vostra unità
-      saranno presi in considerazione. All''interno della lista dei desideri sotto
-      forma di "carrello della spesa" sul lato destro, è possibile stabilire una priorità
-      con il drag & drop: Le attività più in alto nella lista avranno più probabilità
-      di essere considerate rispetto a quelle più in basso. Non c''è garanzia che
-      alla tua unità saranno assegnate tutte le attività della vostra lista dei desideri,
-      ma faremo del nostro meglio.'
+    guide_text: |
+      Ad ogni unità sarà assegnata una o più attività durante il campo. Per questa assegnazione, nel limite del possibile, i desideri della vostra unità saranno presi in considerazione. All'interno della lista dei desideri sotto forma di "carrello della spesa" sul lato destro, è possibile stabilire una priorità con il drag & drop: Le attività più in alto nella lista avranno più probabilità di essere considerate rispetto a quelle più in basso. Non c'è garanzia che alla tua unità saranno assegnate tutte le attività della vostra lista dei desideri, ma faremo del nostro meglio.
+
+      Fino a quando non avrete completato la prenotazione, la lista dei desideri serve da lista di controllo. Tutti/e i/le capi unità con accesso a Orca possono aggiungere, rimuovere o modificare le priorità delle attività.
+
+      Per poter completare la prenotazione, si devono osservare le seguenti regole:
     not_all_comply: 'La prenotazione non può essere completata: non sono ancora state
       rispettate tutte le regole.'
-    read_more: Details
+    read_more: Dettagli
     tag_legend:
       button: Aprire la legenda dei tag
       title: Legenda dei tag
@@ -676,15 +675,14 @@ it:
       data_incomplete: Dati incompleti
       documents: Documenti
       expected_participants: Numero definitivo di partecipanti
-      expected_participants_explanation_html: Il numero definitivo di partecipanti
-        è importato dal campo "Numero di partecipanti stimato" <a href='%{link}' target='_blank'>MiData</a>.
-      imported: importato da MiData
+      expected_participants_explanation_html: Il numero definitivo di partecipanti sarà importato dal campo "Numero di partecipanti stimato" da <a href='%{link}' target='_blank'>MiData</a>.
+      imported: importati da MiData
       invoices: Fatture
       other_infos: Informazioni supplementari
       paid:
         'false': aperto
         'true': pagato
-      participants: Visulaizzare i partecipanti
+      participants: Visualizzare i partecipanti
       questionnaire: Questionario
   views:
     pagination:
