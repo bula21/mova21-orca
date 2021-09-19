@@ -13,7 +13,7 @@ class ActivityExecutionsImport
   end
 
   def call
-    if imported_items.map(&:valid?).all?
+    if imported_items.compact.map(&:valid?).all?
       on_success
     else
       on_error
@@ -31,7 +31,7 @@ class ActivityExecutionsImport
   end
 
   def on_error
-    imported_items.each_with_index do |item, index|
+    imported_items.compact.each_with_index do |item, index|
       item.errors.full_messages.each do |msg|
         @errors.push "Row #{index + 2}: #{msg}"
       end
@@ -53,20 +53,22 @@ class ActivityExecutionsImport
       row = spreadsheet.row(i)
       break if row[1..7].all?(&:blank?)
 
-      build_activity_execution(row)
+      build_activity_execution(row, i)
     end
   end
 
   # rubocop:disable Metrics/AbcSize
-  def build_activity_execution(row)
+  def build_activity_execution(row, index)
     @activity.activity_executions.build(
       starts_at: row[0].change(offset: Time.zone.now.strftime('%z')),
       ends_at: row[1].change(offset: Time.zone.now.strftime('%z')),
-      amount_participants: row[2],
+      amount_participants: row[2], transport: row[6] == 'ja',
       field: Field.includes(:spot).find_by(name: row[4], spots: { name: row[3] }),
-      **language_flags(row[5].split(',').map(&:strip)),
-      transport: row[6] == 'ja'
+      **language_flags(row[5].split(',').map(&:strip))
     )
+  rescue StandardError => e
+    @errors.push "Row #{index + 2}: Invalid values in row"
+    Rollbar.warning e if Rollbar.configuration.enabled
   end
   # rubocop:enable Metrics/AbcSize
 
