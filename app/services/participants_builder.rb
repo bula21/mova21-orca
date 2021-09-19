@@ -35,15 +35,15 @@ class ParticipantsBuilder
   end
 
   def role(participation_data)
-    roles = participation_data['roles'].uniq
-    warn_if_multiple_roles(participation_data['id'], roles)
-    roles.first['type']
+    role_types = participation_data['roles'].map { |r| r['type'] }.uniq
+    warn_if_multiple_roles(participation_data['id'], role_types)
+    role_types.first
   end
 
-  def warn_if_multiple_roles(pbs_id, roles)
-    return unless Rollbar.configuration.enabled && roles.size > 1
+  def warn_if_multiple_roles(pbs_id, role_types)
+    return unless Rollbar.configuration.enabled && role_types.size > 1
 
-    Rollbar.warning "User with pbs_id #{pbs_id} has multiple roles in participation: #{roles.map { |r| r['type'] }}"
+    Rollbar.warning "User with pbs_id #{pbs_id} has multiple roles in participation: #{role_types}}"
   end
 
   def convert_gender(participation_data)
