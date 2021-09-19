@@ -17,7 +17,7 @@ it:
         description: Descrizione
         duration_activity: Durata dell'attività (HH:mm)
         duration_journey: Durata del viaggio (HH:mm)
-        goals: Obbiettivi dell'attività
+        goals: Obiettivi generali
         label: Titolo dell'attività
         language_de: Tedesco
         language_en: Inglese
@@ -26,8 +26,8 @@ it:
         languages: Lingua
         location: Luogo (approssimativo)
         min_participants: N° min. di partecipanti
-        participants_count_activity: N° max. di partecipanti (attività)
-        participants_count_transport: N° di persone (incl. Animatori/trici)
+        participants_count_activity: N° max. di persone
+        participants_count_transport: N° di persone (incl. animatori/trici)
         picture: Immagine
         simo: Modulo di sicurezza / SSS
         stufe_recommended: Branche raccomandate
@@ -68,7 +68,7 @@ it:
         role: Ruolo
         roles:
           assistant_leader: Responsabile
-          helper: Cucina / aiutante
+          helper: Cucina / Aiuto
           leader_mountain_security: Animatore/trice ambito di sicurezza Montagna
           leader_snow_security: Animatore/trice ambito di sicurezza Inverno
           leader_water_security: Animatore/trice ambito di sicurezza Acqua
@@ -124,14 +124,14 @@ it:
               incomplete: è incompleto (nome, e-mail, indirizzo)
     models:
       activity_execution:
-        one: Durchführung
-        other: Durchführungen
+        one: Realizzazione
+        other: Realizzazioni
       field:
         one: Campo
         other: Campi
       fixed_event:
-        one: Groprogramm-Punkt
-        other: Groprogramm-Punkte
+        one: Spazio del programma (picasso)
+        other: Spazi del programma (picasso)
       leader:
         one: Animatore/trice responsabile
         other: Animatori/trici responsabili
@@ -146,7 +146,7 @@ it:
         other: Unità
       unit_activity:
         one: Attività prenotata
-        other: Carrello degli acquisti
+        other: Lista dei desideri
   activity:
     edit:
       title: Modificare l'attività
@@ -160,13 +160,13 @@ it:
       downloads: Downloads
       duration: 'Durata:'
       excel_import:
-        description: 'Du kannst Durchführungen im Excel erfassen und hier hochladen:'
+        description: 'Puoi creare delle realizazzioni in Excel e c aricarle qui:'
         template_download: Scarica il modello in formato Excel
         title: Importazione Excel
-      executions: Durchführungen
+      executions: Realizzazioni
       executions_delete:
-        description: 'Achtung: Du kannst Durchführungen eines ganzen Tages löschen.
-          Klicke dazu auf den untenstehenden Link um zur Tagesauswahl zu kommen.'
+        description: 'Attenzione: è possibile cancellare le attività di un giorno
+          intero. Clicca sul link qui sotto per accedere alla selezione dei giorni.'
         link: Vai alla selezione
       max_people: Grandezza massima del gruppo
       more_information: Informazioni supplementari
@@ -175,23 +175,25 @@ it:
       stufe_recommended: 'Adatto per:'
   activity_execution:
     edit:
-      title: Programmpunkt editieren
+      title: Modificare il programma
     import:
       invalid_file_type: Documento non valido. Utilizza il modello Excel
-      success: Erfolgreich %{count} Durchführungen importiert
+      success: "%{count} realizazioni importate correttamente"
+    index:
+      title: Picasso
     new:
-      title: Neuen Programmpunkt erfassen
+      title: Creare un nuovo spazio del programma
   activity_execution_calendar:
     copy:
-      error: 'Fehler beim Kopieren der Durchführung:'
-      success: Durchführung erfolgreich kopiert
+      error: Errore durante la copia
+      success: La realizzazione è stata copiata con successo
     create:
-      error: 'Fehler beim Erstellen der Durchführung:'
-      success: Durchführung erfolgreich erstellt
+      error: Error durante la creazione di una realizazzione
+      success: Realizzazione creata correttamente
     delete:
-      confirm: Bist du sicher, dass du die Durchführung löschen willst?
-      error: 'Fehler beim Löschen der Durchführung:'
-      success: Durchführung erfolgreich gelöscht
+      confirm: Se sicuro di voler eliminare una realizzazione
+      error: Impossibile cancellare la realizzazione
+      success: Realizazzione concellata con successo
     editor:
       amount_participants: Numero di partecipanti
       cancel: Annullare
@@ -210,11 +212,11 @@ it:
       title_copy: Copiare
       title_edit: Modificare
     move:
-      error: 'Fehler beim Verschieben der Durchführung:'
-      success: Durchführung erfolgreich verschoben
+      error: Errore durante la spostamento della realizzazione
+      success: Realizazzione spostata correttamente
     update:
-      error: 'Fehler beim Ändern der Durchführung:'
-      success: Durchführung erfolgreich geändert
+      error: Errore durante la modifica
+      success: Realizzazione modificata con successo
   app:
     title: Orca
   buttons:
@@ -293,7 +295,7 @@ it:
       default: "%d-%m-%Y"
       long: "%d %B %Y"
       short: "%d %b"
-    from_to: "%{from} bis %{to}"
+    from_to: dal %{from} al %{to}
     month_names:
     -
     - Gennaio
@@ -362,10 +364,10 @@ it:
       year: Anno
   delete_activity_executions:
     destroy:
-      success: Erfolgreich %{count} Durchführungen gelöscht.
+      success: "%{count} realizzazioni eliminate"
     index:
-      activity_executions_count: "%{count} Durchführungen"
-      title: Durchführungen löschen
+      activity_executions_count: "%{count} realizzazioni"
+      title: Eliminare la realizzazione
   errors:
     format: "%{attribute} %{message}"
     messages:
@@ -423,7 +425,15 @@ it:
       amount_label: Importo
       issuer_account: 01-348230-2
       issuer_account_label: Numero di conto
-      issuer_address: Associazione campo federale 2021
+      issuer_address: |-
+        Verein Bundeslager 2021
+        c/o Pfadibewegung Schweiz
+        Speichergasse 31
+        CH-3011 Bern
+        info@bula21.ch
+        +41 27 521 20 21
+
+        CHE-452.216.319 MWST
       issuer_name: Associazione Cafe 2021, 3011 Bern
       issuer_name_label: A favore di
       ref_label: Numero di riferimento PVR
@@ -440,13 +450,11 @@ it:
       issued_at: Berna, %{issued_at}
       post_text: |-
         La tassa di pre-iscrizione serve da acconto e verrà dedotta dalla tassa di iscrizione definitiva. Se un'unità si disiscrive dopo essersi pre-iscritta (e quindi non partecipa al CaFe), la tassa di pre-iscrizione viene rimborsata.
-
         In caso di domande, siamo volentieri a disposizione: info@bula21.ch
-
         Per pagare tramite e-banking, puoi utilizzare le informazioni seguenti:
-      pre_text: "Ciao %{salutation_name}\n\nLa tua unità %{camp_unit_title} è stata
-        pre-iscritta con successo per il mova nella valle di Goms. Ti preghiamo ti
-        saldare l'importo entro il 31 luglio 2020. \nMova - on y va!"
+      pre_text: |-
+        Ciao %{salutation_name}
+        La tua unità %{camp_unit_title} è stata pre-iscritta con successo per il mova nella valle di Goms. Ti preghiamo ti saldare l'importo entro il 31 luglio 2020. Mova - on y va!
       ref: 'Fattura: %{ref}'
       title: Tassa di iscrizione sezionale al campo federale 2021
   leaders:
@@ -469,7 +477,7 @@ it:
   nav:
     activity: Catalogo
     activity_category: Categoria
-    fixed_event: Programma di massima
+    fixed_event: Picasso
     language:
       de: DE
       en: EN
@@ -478,7 +486,7 @@ it:
     leader: Animatori/trici responsabili
     login: Login
     logout: Logout
-    spots: Zone dle programma & Campi
+    spots: Zone del programma & terreni
     stufen: Branche
     tag: Tags
     transport_location: Trasporti
@@ -503,11 +511,19 @@ it:
       decimal_units:
         format: "%n %u"
         units:
-          billion: miliardo
-          million: milione
-          quadrillion: biliardo
+          billion:
+            one: miliardo
+            other: miliardi
+          million:
+            one: milione
+            other: milioni
+          quadrillion:
+            one: biliardo
+            other: biliardi
           thousand: migliaia
-          trillion: bilione
+          trillion:
+            one: bilione
+            other: bilioni
           unit: ''
       format:
         delimiter: ''
@@ -538,7 +554,7 @@ it:
       title: Modificare partecipanti
     index:
       complete_now: Completare ora
-      create_hint: I/Le partecipanti dovrebbero essere gestiti tramite MiData. Se
+      create_hint: I/Le partecipanti dovrebbero essere gestiti/e tramite MiData. Se
         non avete inserito delle persone, potete aggiungerle manualmente qui.
       data_incomplete: Mancano dei dati per completare l'iscrizione
       title: Partecipanti
@@ -601,29 +617,34 @@ it:
       short: "%d %b %H:%M"
     pm: pm
   unit_activity_booking:
-    book: Inserire nel carrello degli acquisti
-    booked: inserito nel carrello degli acquisti
+    book: Inserire nel lista dei desideri
+    booked: inserita nel lista dei desideri
     commit: Terminare la prenotazione
-    committed_text: Besten Dank, die Buchung ist abgeschlossen! Die entgültige Einteilung
+    committed_text: Grazie mille, la prenotazione è completata! La ripartizione finale
+      sarà annunciata ad inizio 2022.
     compliance_evaluators:
-      excursions: Min. 3 excursions possibles
-      hiking: Min. 3 randonnées possibles
-      hiking_or_excursions: Min. 3 mögliche Ausflüge oder Wanderungen
-      mova_activities: Min. 4 activités mova par semaine de camp
-      phase_open: La phase de réservation est ouverte
-      village_global_workshops: Au moins 3 ateliers Village Global
+      excursions: Min. 3 gite per ogni settimana di campo
+      hiking: Min. 3 escursioni per ogni settimana di campo
+      hiking_or_excursions: Min. 3 gite o escursioni
+      mova_activities: Min. 4 attività mova per ogni settimana di campo
+      phase_open: La fase di prenotazione è aperta
+      village_global_workshops: Min. 3 workshop del Village Global
       visitor_day: Min. 1 selezione per il giorno della visita
-    guide_text: 'Ad ogni unità sarà assegnata una o più attività durante il campo.
+    guide_text: "Ad ogni unità sarà assegnata una o più attività durante il campo.
       Per questa assegnazione, nel limite del possibile, i desideri della vostra unità
-      saranno presi in considerazione. All''interno della lista dei desideri sotto
-      forma di "carrello della spesa" sul lato destro, è possibile stabilire una priorità
-      con il drag & drop: Le attività più in alto nella lista avranno più probabilità
-      di essere considerate rispetto a quelle più in basso. Non c''è garanzia che
-      alla tua unità saranno assegnate tutte le attività della vostra lista dei desideri,
-      ma faremo del nostro meglio.'
+      saranno presi in considerazione. All'interno della lista dei desideri sotto
+      forma di \"carrello della spesa\" sul lato destro, è possibile stabilire una
+      priorità con il drag & drop: Le attività più in alto nella lista avranno più
+      probabilità di essere considerate rispetto a quelle più in basso. Non c'è garanzia
+      che alla tua unità saranno assegnate tutte le attività della vostra lista dei
+      desideri, ma faremo del nostro meglio.\nFino a quando non avrete completato
+      la prenotazione, la lista dei desideri serve da lista di controllo. Tutti/e
+      i/le capi unità con accesso a Orca possono aggiungere, rimuovere o modificare
+      le priorità delle attività.\nPer poter completare la prenotazione, si devono
+      osservare le seguenti regole: "
     not_all_comply: 'La prenotazione non può essere completata: non sono ancora state
       rispettate tutte le regole.'
-    read_more: Details
+    read_more: Dettagli
     tag_legend:
       button: Aprire la legenda dei tag
       title: Legenda dei tag
@@ -677,14 +698,15 @@ it:
       documents: Documenti
       expected_participants: Numero definitivo di partecipanti
       expected_participants_explanation_html: Il numero definitivo di partecipanti
-        è importato dal campo "Numero di partecipanti stimato" <a href='%{link}' target='_blank'>MiData</a>.
-      imported: importato da MiData
+        sarà importato dal campo "Numero di partecipanti stimato" da <a href='%{link}'
+        target='_blank'>MiData</a>.
+      imported: importati da MiData
       invoices: Fatture
       other_infos: Informazioni supplementari
       paid:
         'false': aperto
         'true': pagato
-      participants: Visulaizzare i partecipanti
+      participants: Visualizzare i partecipanti
       questionnaire: Questionario
   views:
     pagination:

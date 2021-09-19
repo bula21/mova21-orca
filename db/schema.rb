@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_30_182809) do
+ActiveRecord::Schema.define(version: 2021_09_18_090543) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -100,8 +100,10 @@ ActiveRecord::Schema.define(version: 2021_08_30_182809) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "transport"
+    t.bigint "spot_id"
     t.index ["activity_id"], name: "index_activity_executions_on_activity_id"
     t.index ["field_id"], name: "index_activity_executions_on_field_id"
+    t.index ["spot_id"], name: "index_activity_executions_on_spot_id"
   end
 
   create_table "fields", force: :cascade do |t|
@@ -119,9 +121,9 @@ ActiveRecord::Schema.define(version: 2021_08_30_182809) do
   end
 
   create_table "goals", force: :cascade do |t|
-    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.jsonb "name", default: {}
   end
 
   create_table "invoice_parts", force: :cascade do |t|
@@ -316,6 +318,7 @@ ActiveRecord::Schema.define(version: 2021_08_30_182809) do
   add_foreign_key "activities", "transport_locations"
   add_foreign_key "activity_executions", "activities"
   add_foreign_key "activity_executions", "fields"
+  add_foreign_key "activity_executions", "spots"
   add_foreign_key "fields", "spots"
   add_foreign_key "invoice_parts", "invoices"
   add_foreign_key "invoices", "units"
