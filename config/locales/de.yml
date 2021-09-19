@@ -329,6 +329,7 @@ de:
       less_than_x_minutes:
         one: weniger als eine Minute
         other: weniger als %{count} Minuten
+        zero: weniger als eine Minute
       less_than_x_seconds:
         one: weniger als eine Sekunde
         other: weniger als %{count} Sekunden
@@ -638,7 +639,7 @@ de:
       ihr die Buchung auf \"abgeschlossen\" setzt, dient der Warenkorb als Merkliste.
       Alle Leiter der Einheit mit Zugriff auf orca können Aktivitäten hinzufügen,
       entfernen oder neu priorisieren. \n\nDamit die Buchung abgeschlossen werden
-      kann, müssen folgende Regeln eingehlaten werden:"
+      kann, müssen folgende Regeln eingehalten werden:"
     not_all_comply: 'Die Buchung kann nicht abgeschlossen werden: es werden noch nicht
       alle Regeln eingehalten'
     read_more: Details

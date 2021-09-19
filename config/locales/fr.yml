@@ -75,7 +75,7 @@ fr:
           participant: Participant·e
         scout_name: Totem
       spot:
-        color: Farbe für Erfassung der Durchführung
+        color: Couleur pour la création de réalisation
         fields: Terrains
         name: Nom
       unit:
@@ -236,32 +236,24 @@ fr:
     upload: Charger
   camp_unit_mailer:
     complete_notification:
-      body: |-
-        Salut %{salutation_name}
-
-        Ton inscription au camp est maintenant complète. Voir %{camp_unit_url}
+      body: "Salut %{salutation_name}\n\nTon inscription au camp est maintenant
+        complète. Voir %{camp_unit_url}"
       subject: Inscription au camp complète
     incomplete_notification:
-      body: |-
-        Bonjour %{salutation_name}
-
-        Ta déclaration de camp sur MiData pour le CaFé 2021 n’est pas encore complète. Tu dois encore ajouter ou corriger certains détails sur MiData. Tu trouveras plus d’infos ici : %{camp_unit_url}
-
-        En cas de questions, tu peux tout d’abord aller faire un tour sur notre wikimova (avanti.bula21.ch/display/FAQ). Si après cela certains points restent peu clairs ou que certaines questions persistent, n’hésite pas à contacter notre secrétariat par mail (info@cafe21.ch) ou par téléphone (027 521 20 21).
-
-        Meilleures salutations,
-        Votre Team CaFé21
-
-        *******
-
-        Hallo %{salutation_name}
-
-        Deine MiData-Lageranmeldung für das BuLa-CaFé 2021 ist noch nicht vollständig. Du musst die Details in der MiData ergänzen oder korrigieren. Siehe %{camp_unit_url}
-
-        Bei Fragen schau in unserem wikimova vorbei unter https://avanti.bula21.ch/display/FAQ. Bei weiteren Unklarheiten steht dir unsere Geschäftsstelle via eMail (info@bula21.ch) oder per Telefon (027 521 20 21) zur Verfügung.
-
-        Viele Grüsse
-        Eure BuLa21-Crew
+      body: "Bonjour %{salutation_name}\n\nTa déclaration de camp sur MiData pour
+        le CaFé 2021 n’est pas encore complète. Tu dois encore ajouter ou corriger
+        certains détails sur MiData. Tu trouveras plus d’infos ici : %{camp_unit_url}\n\nEn
+        cas de questions, tu peux tout d’abord aller faire un tour sur notre wikimova
+        (avanti.bula21.ch/display/FAQ). Si après cela certains points restent peu
+        clairs ou que certaines questions persistent, n’hésite pas à contacter notre
+        secrétariat par mail (info@cafe21.ch) ou par téléphone (027 521 20 21).\n\nMeilleures
+        salutations,\nVotre Team CaFé21\n\n*******\n\nHallo %{salutation_name}\n\nDeine
+        MiData-Lageranmeldung für das BuLa-CaFé 2021 ist noch nicht vollständig. Du
+        musst die Details in der MiData ergänzen oder korrigieren. Siehe %{camp_unit_url}\n\nBei
+        Fragen schau in unserem wikimova vorbei unter https://avanti.bula21.ch/display/FAQ.
+        Bei weiteren Unklarheiten steht dir unsere Geschäftsstelle via eMail (info@bula21.ch)
+        oder per Telefon (027 521 20 21) zur Verfügung.\n\nViele Grüsse\nEure
+        BuLa21-Crew"
       subject: L’inscription au mova n'est pas encore complète
   date:
     abbr_day_names:
@@ -451,17 +443,16 @@ fr:
           pta: Nombre participant.e.s SMT
           wolf: Nombre participant.e.s Louveteux
       issued_at: Berne, %{issued_at}
-      post_text: |-
-        Les frais de préinscription servent de première inscription et seront déduits lors du paiement final du groupe. Si vous annulez l'inscription d'une unité après son inscription provisoire (elle ne prend donc pas part au CaFé21), les frais de préinscription vous seront remboursés.
-
-        En cas de questions, nous nous tenons bien évidemment à ta disposition: info@bula21.ch
-
-        Pour un paiement par e-banking, tu peux te servir des informations ci-dessous:
-      pre_text: |-
-        Salut %{salutation_name}
-
-        Ton unité %{camp_unit_title} a été préinscrite avec succès pour le mova dans la vallée de Conches. Nous te prions te bien vouloir régler le montant jusqu'au 31 juillet 2020.
-        Mova - on y va!
+      post_text: "Les frais de préinscription servent de première inscription et seront
+        déduits lors du paiement final du groupe. Si vous annulez l'inscription d'une
+        unité après son inscription provisoire (elle ne prend donc pas part au CaFé21),
+        les frais de préinscription vous seront remboursés.\n\nEn cas de questions,
+        nous nous tenons bien évidemment à ta disposition: info@bula21.ch\n\nPour
+        un paiement par e-banking, tu peux te servir des informations ci-dessous:"
+      pre_text: "Salut %{salutation_name}\n\nTon unité %{camp_unit_title} a été
+        préinscrite avec succès pour le mova dans la vallée de Conches. Nous te prions
+        te bien vouloir régler le montant jusqu'au 31 juillet 2020.\nMova - on y
+        va!"
       ref: 'Montant: %{ref}'
       title: Frais du groupe pour le camp fédéral 2021
   leaders:
@@ -484,7 +475,7 @@ fr:
   nav:
     activity: Catalogue
     activity_category: Categorie
-    fixed_event: Programme approximatif
+    fixed_event: Picasso
     language:
       de: DE
       en: EN
@@ -518,11 +509,19 @@ fr:
       decimal_units:
         format: "%n %u"
         units:
-          billion: Miliardi
-          million: Milioni
-          quadrillion: Biliardi
-          thousand: millier
-          trillion: Bilioni
+          billion:
+            one: milliard
+            other: milliard
+          million:
+            one: million
+            other: millions
+          quadrillion:
+            one: quadrillion
+            other: quadrillions
+          thousand: mille
+          trillion:
+            one: trillion
+            other: trillions
           unit: ''
       format:
         delimiter: ''
@@ -623,17 +622,23 @@ fr:
     compliance_evaluators:
       excursions: Min. 3 excursions possible par semaine de camp
       hiking: Min. 3 randonnées possibles par semaine de camp
-      hiking_or_excursions: 'Min. 3 excursions ou randonnée possibles '
+      hiking_or_excursions: Min. 3 excursions ou randonnée possibles
       mova_activities: Min. 4 activités mova possibles par semaine de camp
       phase_open: La phase de réservation est ouverte
       village_global_workshops: Min. 3 workshops au Village Global
       visitor_day: Min. 1 sélection pour le jour de la visite
-    guide_text: |-
-      Chaque unité sera affectée à une ou plusieurs activités pendant le camp. Pour cette allocation, les souhaits de votre unité seront pris en compte dans la mesure du possible. Dans la liste de souhaits sous la forme d'un panier d'achat sur le côté droit, la hiérarchisation peut être effectuée par glisser-déposer : Les activités situées plus haut dans votre liste de souhaits ont plus de chances d'être prises en compte que les activités situées plus bas. Il n'y a aucune garantie que votre unité sera affectée aux activités figurant sur la liste de souhaits, mais nous ferons de notre mieux.
-
-      Tant que vous n'aurez pas terminer la réservation, la liste de souhaits servira de liste de favoris. Tou.te.s les responsables de l’unité ayant accès à orca peuvent supprimer ou redéfinir les activités.
-
-      Pour que la réservation soit complète, les règles suivantes doivent être incluses:
+    guide_text: "Chaque unité sera affectée à une ou plusieurs activités pendant le
+      camp. Pour cette allocation, les souhaits de votre unité seront pris en compte
+      dans la mesure du possible. Dans la liste de souhaits sous la forme d'un panier
+      d'achat sur le côté droit, la hiérarchisation peut être effectuée par glisser-déposer
+      : Les activités situées plus haut dans votre liste de souhaits ont plus de chances
+      d'être prises en compte que les activités situées plus bas. Il n'y a aucune
+      garantie que votre unité sera affectée aux activités figurant sur la liste de
+      souhaits, mais nous ferons de notre mieux.\n\nTant que vous n'aurez pas
+      terminer la réservation, la liste de souhaits servira de liste de favoris. Tou.te.s
+      les responsables de l’unité ayant accès à orca peuvent supprimer ou redéfinir
+      les activités.\n\nPour que la réservation soit complète, les règles suivantes
+      doivent être incluses:"
     not_all_comply: 'La réservation ne peut pas être clôturée : toutes les règles
       sont toujours respectées.'
     read_more: Détails
