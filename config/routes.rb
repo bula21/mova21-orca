@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :participants, except: %i[show]
     resources :unit_activities, except: %i[new edit] do
       patch :priorize, to: 'unit_activities#priorize', on: :member
+      get :stage_commit, to: 'unit_activities#stage_commit', on: :collection
       post :commit, to: 'unit_activities#commit', on: :collection
     end
     post :documents, to: 'units#add_document', as: :documents

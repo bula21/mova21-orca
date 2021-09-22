@@ -2,7 +2,7 @@
 
 class UnitActivitiesController < ApplicationController
   load_and_authorize_resource :unit
-  load_and_authorize_resource through: :unit, except: %i[show]
+  load_and_authorize_resource through: :unit, except: %i[show commit stage_commit]
   before_action :check_phase
 
   def index
@@ -23,8 +23,16 @@ class UnitActivitiesController < ApplicationController
     redirect_to unit_unit_activities_path(@unit, anchor: helpers.anchor_for(@unit_activity.activity)), flash: flash
   end
 
+  def stage_commit
+    authorize!(:commit, @unit)
+  end
+
   def commit
-    redirect_to unit_unit_activities_path(@unit) if unit_activity_booking.commit
+    authorize!(:commit, @unit)
+
+    if @unit.update(params.require(:unit).permit(:visitor_day_tickets)) && unit_activity_booking.commit
+      redirect_to unit_unit_activities_path(@unit)
+    end
   end
 
   def destroy
@@ -38,7 +46,7 @@ class UnitActivitiesController < ApplicationController
 
   def update
     @unit_activity.assign_attributes(unit_activity_params)
-
+    raise 'x'
     if unit_activity_booking.phase?(:preview, :open) && @unit_activity.save
       redirect_to unit_unit_activities_path(@unit, anchor: helpers.anchor_for(@unit_activity.activity)),
                   notice: I18n.t('messages.updated.success')

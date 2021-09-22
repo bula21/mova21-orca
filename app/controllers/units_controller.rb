@@ -60,7 +60,7 @@ class UnitsController < ApplicationController
 
   def unit_params
     permitted = %i[title abteilung kv_id stufe_id expected_participants_f expected_participants_m
-                   expected_participants_leitung_f expected_participants_leitung_m
+                   expected_participants_leitung_f expected_participants_leitung_m visitor_day_tickets
                    starts_at ends_at al_id lagerleiter_id language week district]
     permitted += %i[pbs_id activity_booking_phase] if can?(:manage, @unit)
 

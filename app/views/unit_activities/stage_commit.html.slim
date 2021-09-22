@@ -18,6 +18,12 @@
                 i.fa.fa-times
               - else  
                 = compliance
+    
+.card.mb-5.mt-4
+  .card-body
+    = simple_form_for @unit, url: commit_unit_unit_activities_path(@unit), method: :post do |f|
+      = f.input :visitor_day_tickets
+      = f.submit t('unit_activity_booking.commit'), class: 'btn btn-primary'
 
 = link_to t('buttons.back'), unit_unit_activities_path(@unit), class: 'btn btn-secondary'
 

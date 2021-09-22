@@ -21,8 +21,8 @@ class Ability
   private
 
   def midata_user_permissions(user)
-    can %i[read], Unit, al: { email: user.email }
-    can %i[read], Unit, lagerleiter: { email: user.email }
+    can %i[read commit], Unit, al: { email: user.email }
+    can %i[read commit], Unit, lagerleiter: { email: user.email }
     # can %i[read update], Unit, coach: { pbs_id: user.pbs_id }
     can :read, Leader, pbs_id: user.pbs_id
 
@@ -31,7 +31,7 @@ class Ability
     can %i[edit update destroy], Participant, pbs_id: nil, units: { al: { email: user.email } }
     can %i[edit update destroy], Participant, pbs_id: nil, units: { lagerleiter: { email: user.email } }
     can :manage, UnitActivity, unit: { lagerleiter: { email: user.email } }
-    can :read, UnitActivity, unit: { al: { email: user.email } }
+    can :manage, UnitActivity, unit: { al: { email: user.email } }
   end
 
   def external_user_permissions(user)

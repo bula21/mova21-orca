@@ -37,7 +37,7 @@ h1.h1.pb-0
 
       - if @unit_activity_booking.phase?(:open)
         .card-footer.text-right
-          = button_to t('unit_activity_booking.commit'), commit_unit_unit_activities_path(@unit), method: :post, class: 'btn btn-primary', disabled: (!@unit_activity_booking.all_comply?)
+          = link_to t('unit_activity_booking.commit'), stage_commit_unit_unit_activities_path(@unit)
 
   .col-md-9.order-sm-1
     = render partial: 'activities/filter', locals: { submit_url: unit_unit_activities_path(@unit, locale: I18n.locale), reset_url: unit_unit_activities_path(@unit, activity_filter: { reset: true }) }

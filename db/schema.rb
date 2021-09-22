@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_18_090543) do
+ActiveRecord::Schema.define(version: 2021_09_22_185706) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -100,10 +100,8 @@ ActiveRecord::Schema.define(version: 2021_09_18_090543) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "transport"
-    t.bigint "spot_id"
     t.index ["activity_id"], name: "index_activity_executions_on_activity_id"
     t.index ["field_id"], name: "index_activity_executions_on_field_id"
-    t.index ["spot_id"], name: "index_activity_executions_on_spot_id"
   end
 
   create_table "fields", force: :cascade do |t|
@@ -295,6 +293,7 @@ ActiveRecord::Schema.define(version: 2021_09_18_090543) do
     t.bigint "stufe_id"
     t.integer "expected_guest_participants"
     t.integer "expected_guest_leaders"
+    t.integer "visitor_day_tickets", default: 0
     t.index ["al_id"], name: "index_units_on_al_id"
     t.index ["coach_id"], name: "index_units_on_coach_id"
     t.index ["lagerleiter_id"], name: "index_units_on_lagerleiter_id"
@@ -318,7 +317,6 @@ ActiveRecord::Schema.define(version: 2021_09_18_090543) do
   add_foreign_key "activities", "transport_locations"
   add_foreign_key "activity_executions", "activities"
   add_foreign_key "activity_executions", "fields"
-  add_foreign_key "activity_executions", "spots"
   add_foreign_key "fields", "spots"
   add_foreign_key "invoice_parts", "invoices"
   add_foreign_key "invoices", "units"
