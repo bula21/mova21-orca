@@ -89,8 +89,8 @@ en:
         expected_participants: Erwartete Anzahl TN
         expected_participants_f: Expected number of participants (w)
         expected_participants_leitung: Erwartete Anzahl Leitende
-        expected_participants_leitung_f: Expected number of leaders (m)
-        expected_participants_leitung_m: Expected number of leaders (w)
+        expected_participants_leitung_f: Expected number of leaders (w)
+        expected_participants_leitung_m: Expected number of leaders (m)
         expected_participants_m: Expected number of participants (m)
         full_name: Full Name
         kv_id: Cantonal association
