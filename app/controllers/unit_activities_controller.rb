@@ -29,9 +29,10 @@ class UnitActivitiesController < ApplicationController
 
   def commit
     authorize!(:commit, @unit)
-
     if @unit.update(params.require(:unit).permit(:visitor_day_tickets)) && unit_activity_booking.commit
       redirect_to unit_unit_activities_path(@unit)
+    else
+      render 'stage_commit'
     end
   end
 
@@ -46,7 +47,7 @@ class UnitActivitiesController < ApplicationController
 
   def update
     @unit_activity.assign_attributes(unit_activity_params)
-    raise 'x'
+
     if unit_activity_booking.phase?(:preview, :open) && @unit_activity.save
       redirect_to unit_unit_activities_path(@unit, anchor: helpers.anchor_for(@unit_activity.activity)),
                   notice: I18n.t('messages.updated.success')

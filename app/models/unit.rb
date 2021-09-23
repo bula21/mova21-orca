@@ -57,7 +57,7 @@ class Unit < ApplicationRecord
   validates :title, :kv_id, :lagerleiter, presence: true, on: :complete
   validates :expected_participants, numericality: { greater_than_or_equal_to: 12 }, on: :complete
   validates :expected_participants_leitung, numericality: { greater_than_or_equal_to: 2 }, on: :complete
-  # validate { errors.add(:ends_at, :invalid) if starts_at && ends_at && starts_at > ends_at }
+  validates :visitor_day_tickets, numericality: { greater_than_or_equal_to: 0 }, allow_nil: true
   validate on: :complete do
     errors.add(:lagerleiter, :incomplete) unless lagerleiter.valid?(:complete)
   end

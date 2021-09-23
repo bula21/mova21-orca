@@ -101,6 +101,7 @@ it:
         starts_at: Inizio il
         stufe: Branca
         title: Titolo
+        visitor_day_tickets: Anzahl Tickets für den Besuchstag
         week: Settimana di campo
     errors:
       messages:
@@ -179,8 +180,6 @@ it:
     import:
       invalid_file_type: Documento non valido. Utilizza il modello Excel
       success: "%{count} realizazioni importate correttamente"
-    index:
-      title: Picasso
     new:
       title: Creare un nuovo spazio del programma
   activity_execution_calendar:
@@ -617,6 +616,7 @@ it:
       short: "%d %b %H:%M"
     pm: pm
   unit_activity_booking:
+    all_comply: All comply
     book: Inserire nel lista dei desideri
     booked: inserita nel lista dei desideri
     commit: Terminare la prenotazione
@@ -630,6 +630,7 @@ it:
       phase_open: La fase di prenotazione è aperta
       village_global_workshops: Min. 3 workshop del Village Global
       visitor_day: Min. 1 selezione per il giorno della visita
+    confirm_commit: Confirm commit
     guide_text: "Ad ogni unità sarà assegnata una o più attività durante il campo.
       Per questa assegnazione, nel limite del possibile, i desideri della vostra unità
       saranno presi in considerazione. All'interno della lista dei desideri sotto
@@ -649,6 +650,7 @@ it:
       button: Aprire la legenda dei tag
       title: Legenda dei tag
     video_src: https://www.youtube.com/embed/7XusNePwv_o
+    visitor_day_tickets_text: Visitor day tickets text
   units:
     edit:
       title: Modificare il campo

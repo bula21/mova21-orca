@@ -5,6 +5,12 @@ h1.h1.pb-0
 .pb-5 = link_to t('buttons.back'), unit_path(@unit)
 
 .row
+  .col-md-9
+    = render partial: 'activities/filter', locals: { submit_url: unit_unit_activities_path(@unit, locale: I18n.locale), reset_url: unit_unit_activities_path(@unit, activity_filter: { reset: true }) }
+
+  .col-md-3
+
+.row
   .col-md-3.position-relative.mb-5.order-sm-2
     .card.position-sticky[style="top: 2rem;"]
       .card-header
@@ -37,23 +43,21 @@ h1.h1.pb-0
 
       - if @unit_activity_booking.phase?(:open)
         .card-footer.text-right
-          = link_to t('unit_activity_booking.commit'), stage_commit_unit_unit_activities_path(@unit)
+          = link_to t('unit_activity_booking.commit'), stage_commit_unit_unit_activities_path(@unit), class: 'btn btn-primary'
 
-  .col-md-9.order-sm-1
-    = render partial: 'activities/filter', locals: { submit_url: unit_unit_activities_path(@unit, locale: I18n.locale), reset_url: unit_unit_activities_path(@unit, activity_filter: { reset: true }) }
-
+  .col-sm-9.order-sm-1
     - if @unit_activity_booking.phase?(:committed)
-      .card.mb-5.mt-4[style='background-color: #bcecaa']
+      .card.mb-5[style='background-color: #bcecaa']
         .card-body
           = t('unit_activity_booking.committed_text')
 
     - elsif @unit_activity_booking.phase?(:preview, :open)
-      .card.mb-5.mt-4[style='background-color: #aae3ec']
+      .card.mb-5[style='background-color: #aae3ec']
         .card-body
           - t('unit_activity_booking.guide_text').lines.each do |line|
             p= line
 
-          ul.my-0
+          ul.my-0.mb-3
             - @unit.activity_booking.compliance.each do |name, compliance|
               - next if compliance.nil?
               li 
@@ -68,6 +72,10 @@ h1.h1.pb-0
                     - else  
                       = compliance
 
+          - if @unit_activity_booking.phase?(:open) && @unit.activity_booking.all_comply?
+            = link_to t('unit_activity_booking.commit'), stage_commit_unit_unit_activities_path(@unit), class: 'btn btn-primary'
+          - else
+            button.btn.btn-primary[disabled=true] = t('unit_activity_booking.commit')
     = render partial: 'activity_listing', collection: @activities, as: :activity
     = paginate @activities
 

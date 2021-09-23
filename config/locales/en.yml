@@ -101,6 +101,7 @@ en:
         starts_at: Start on
         stufe: Stufe
         title: Title
+        visitor_day_tickets: Anzahl Tickets für den Besuchstag
         week: Week
     errors:
       messages:
@@ -586,6 +587,7 @@ en:
       short: "%d %b %H:%M"
     pm: pm
   unit_activity_booking:
+    all_comply: All comply
     book: zum Warenkorb hinzufügen
     booked: zum Warenkorb hinzugefügt
     commit: Buchung abschliessen
@@ -599,6 +601,7 @@ en:
       phase_open: The booking phase is open
       village_global_workshops: Min. 3 Village Global workshops
       visitor_day: Min. 1 Auswahl für den Besuchstag
+    confirm_commit: Confirm commit
     guide_text: "Jede Einheit wird während der dauer des Lagers für ein oder mehrere
       Aktivitäten eingeteilt. Für diese Einteilung werden die Wünsche eurer Einheit
       so gut wie möglich berücksichtigt. Innerhalb der Wunschliste in Form des \"Warenkorbes\"
@@ -617,6 +620,7 @@ en:
       button: Tag Legende öffnen
       title: Legende Tags
     video_src: https://www.youtube.com/embed/TZQT-Zngcyc
+    visitor_day_tickets_text: Visitor day tickets text
   units:
     edit:
       title: Edit a camp

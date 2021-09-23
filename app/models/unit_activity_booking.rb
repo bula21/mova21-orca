@@ -80,7 +80,8 @@ class UnitActivityBooking
   end
 
   def commit
-    unit.activity_booking_phase_committed! if all_comply?
+    unit.erros.add(:visitor_day_tickets) if unit.visitor_day_tickets.blank?
+    unit.activity_booking_phase_committed! if all_comply? && unit.valid?
 
     phase?(:committed)
   end
