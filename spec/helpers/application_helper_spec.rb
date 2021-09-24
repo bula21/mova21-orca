@@ -9,10 +9,10 @@ RSpec.describe ApplicationHelper, type: :helper do
     let(:locale) { :fr }
 
     before do
-      helper.params[:controller] = 'pages'
+      helper.params[:controller] = 'units'
       helper.params[:action] = 'index'
     end
 
-    it { is_expected.to eq('/?locale=fr') }
+    it { is_expected.to eq('/units?locale=fr') }
   end
 end
