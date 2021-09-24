@@ -40,5 +40,5 @@ Rails.application.routes.draw do
     resources :stufen
   end
 
-  root 'pages#index'
+  root 'units#index'
 end

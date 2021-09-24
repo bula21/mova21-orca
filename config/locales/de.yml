@@ -685,7 +685,7 @@ de:
     new:
       title: Lager erstellen
     show:
-      activity_booking: Aktivitäten Buchen
+      activity_booking: Katalog
       activity_booking_commited: Buchung abgeschlossen
       activity_booking_committed: Activity booking committed
       activity_booking_complete: Activity booking complete

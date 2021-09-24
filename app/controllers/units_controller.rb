@@ -7,7 +7,9 @@ class UnitsController < ApplicationController
   def index
     @units = @units.order(id: :asc)
     respond_to do |format|
-      format.html
+      format.html do
+        redirect_to unit_path(@units.take) if @units.count == 1
+      end
       format.csv do
         exporter = UnitExporter.new(@units)
         send_data exporter.export, filename: exporter.filename

@@ -684,7 +684,7 @@ fr:
     new:
       title: Créer un camp
     show:
-      activity_booking: Réserver des activités
+      activity_booking: Catalogue
       activity_booking_commited: Terminer la réservation
       activity_booking_committed: Réservation d'activité effectuée
       activity_booking_complete: Réservation d’activité complète
