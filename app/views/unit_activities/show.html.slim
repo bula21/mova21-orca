@@ -72,4 +72,6 @@ hr.mt-4
 
 .d-flex
   => link_to t('buttons.back'), unit_unit_activities_path(@unit, anchor: anchor_for(@activity), page: params[:page]), class: 'btn '
-  =< button_to t('unit_activity_booking.book'), unit_unit_activities_path(@unit, unit_activity: { activity_id: @activity.to_param }), method: :post, class: 'btn btn-primary'
+
+  - if can?(:commit, @unit)
+    =< button_to t('unit_activity_booking.book'), unit_unit_activities_path(@unit, unit_activity: { activity_id: @activity.to_param }), method: :post, class: 'btn btn-primary'

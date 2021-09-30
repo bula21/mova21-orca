@@ -26,22 +26,23 @@ h1.h1.pb-0
             - else 
               .badge.badge-pill.badge-warning[title=t('unit_activity_booking.not_all_comply')]
                 i.fa.fa-times
+
       .card-body.p-0
         ol.sortable-list.list-group.small
           - @unit_activities.prioritized.each do |unit_activity|
-            li.list-group-item.p-1.pl-4[data-sort-callback-url=priorize_unit_unit_activity_path(@unit, unit_activity) class=(@unit_activity_booking.phase?(:preview, :open) && :draggable)]
+            li.list-group-item.p-1.pl-4[data-sort-callback-url=priorize_unit_unit_activity_path(@unit, unit_activity) class=(@unit_activity_booking.phase?(:preview, :open) && can?(:commit, @unit) && :draggable)]
               h6.m-0= unit_activity.activity.label
               span.badge class="badge-#{unit_activity.activity.activity_category&.css_code}"
                 = unit_activity.activity.activity_category&.label
               
-              - if @unit_activity_booking.phase?(:preview, :open)
-                .d-flex.justify-content-end
-                  = link_to unit_unit_activity_path(@unit, unit_activity.activity), class: 'btn btn-sm', title: t('buttons.show') 
-                    i.fa.fa-eye
+              .d-flex.justify-content-end
+                = link_to unit_unit_activity_path(@unit, unit_activity.activity), class: 'btn btn-sm', title: t('buttons.show') 
+                  i.fa.fa-eye
+                - if @unit_activity_booking.phase?(:preview, :open) && can?(:commit, @unit)
                   = link_to unit_unit_activity_path(@unit, unit_activity), data: { confirm: t('buttons.confirm_delete') }, method: :delete, class: 'btn btn-sm', title: t('buttons.destroy') 
                     i.fa.fa-trash
 
-      - if @unit_activity_booking.phase?(:open)
+      - if @unit_activity_booking.phase?(:open) && can?(:commit, @unit)
         .card-footer.text-right
           = link_to t('unit_activity_booking.commit'), stage_commit_unit_unit_activities_path(@unit), class: 'btn btn-primary'
 
@@ -72,10 +73,11 @@ h1.h1.pb-0
                     - else  
                       = compliance
 
-          - if @unit_activity_booking.phase?(:open) && @unit.activity_booking.all_comply?
+          - if @unit_activity_booking.phase?(:open) && @unit.activity_booking.all_comply? && can?(:commit, @unit)
             = link_to t('unit_activity_booking.commit'), stage_commit_unit_unit_activities_path(@unit), class: 'btn btn-primary'
           - else
             button.btn.btn-primary[disabled=true] = t('unit_activity_booking.commit')
+
     = render partial: 'activity_listing', collection: @activities, as: :activity
     = paginate @activities
 

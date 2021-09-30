@@ -23,10 +23,11 @@
 
   .d-flex.justify-content-between
     = link_to t('unit_activity_booking.read_more'), unit_unit_activity_path(@unit, activity, page: params[:page]), class: 'pt-2 stretched-link'
-    - if @unit_activity_booking.include?(activity)
-      button.btn.disabled[disabled=true]
-        = t('unit_activity_booking.booked')
-    - else
-      =< button_to t('unit_activity_booking.book'), unit_unit_activities_path(@unit, unit_activity: { activity_id: activity.to_param }), method: :post, class: 'btn btn-primary ml-2 z-100'
+    - if can?(:commit, @unit)
+      - if @unit_activity_booking.include?(activity)
+        button.btn.disabled[disabled=true]
+          = t('unit_activity_booking.booked')
+      - else
+        =< button_to t('unit_activity_booking.book'), unit_unit_activities_path(@unit, unit_activity: { activity_id: activity.to_param }), method: :post, class: 'btn btn-primary ml-2 z-100'
 
 

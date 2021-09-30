@@ -29,13 +29,6 @@ h1.h1.pb-0
                 - else  
                   = compliance
       
-  .card.mb-5.mt-4
-    .card-body
-      - t('unit_activity_booking.visitor_day_tickets_text').lines.each do |line|
-        p= line
-      = f.input :visitor_day_tickets
-
-
   = f.submit t('unit_activity_booking.commit'), class: 'btn btn-primary btn-lg', disabled: !all_comply, data: { confirm: t('unit_activity_booking.confirm_commit') }
   = link_to t('buttons.back'), unit_unit_activities_path(@unit), class: 'btn btn-default ml-3'
 

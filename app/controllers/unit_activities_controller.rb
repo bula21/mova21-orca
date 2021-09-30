@@ -29,7 +29,7 @@ class UnitActivitiesController < ApplicationController
 
   def commit
     authorize!(:commit, @unit)
-    if @unit.update(params.require(:unit).permit(:visitor_day_tickets)) && unit_activity_booking.commit
+    if unit_activity_booking.commit
       redirect_to unit_unit_activities_path(@unit)
     else
       render 'stage_commit'
