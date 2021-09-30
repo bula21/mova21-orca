@@ -3,7 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe UnitsController, type: :request do
-
   describe 'GET #index' do
     context 'when not signed in' do
       it_behaves_like 'a login protected page' do
@@ -24,14 +23,13 @@ RSpec.describe UnitsController, type: :request do
         sign_in user
       end
 
-
       context 'when format is html' do
         before do
           test_request
         end
 
         it { expect(response).to redirect_to(unit_path(unit, locale: I18n.default_locale)) }
-        
+
         context 'when is admin' do
           let(:user) { create(:user, :admin) }
 
@@ -61,13 +59,14 @@ RSpec.describe UnitsController, type: :request do
       end
     end
   end
-  describe 'GET #show' do
-      subject(:test_request) { get unit_path(unit) }
 
-      let(:user) { create(:user, :midata_user) }
-      let(:leader) { user.leader }
-      let!(:unit) { create(:unit, lagerleiter: leader) }
-      let!(:unit_other) { create(:unit, title: 'Some other unit 2112') }
+  describe 'GET #show' do
+    subject(:test_request) { get unit_path(unit) }
+
+    let(:user) { create(:user, :midata_user) }
+    let(:leader) { user.leader }
+    let!(:unit) { create(:unit, lagerleiter: leader) }
+    let!(:unit_other) { create(:unit, title: 'Some other unit 2112') }
 
     context 'when not signed in' do
       it_behaves_like 'a login protected page'

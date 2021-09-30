@@ -32,6 +32,20 @@ class Ability
     can %i[edit update destroy], Participant, pbs_id: nil, units: { lagerleiter: { email: user.email } }
     can :manage, UnitActivity, unit: { lagerleiter: { email: user.email } }
     can :manage, UnitActivity, unit: { al: { email: user.email } }
+
+    assistant_leader_permission(user)
+  end
+
+  def assistant_leader_permission(user)
+    participants = Participant.assistant_leader.where(email: user.email)
+    unit_ids = participants.map(&:unit_ids).flatten
+    return if unit_ids.empty?
+
+    can :read, Unit, id: unit_ids
+    can :read, UnitActivity, unit: { id: unit_ids }
+    can :read, Participant, units: { id: unit_ids }
+  rescue StandardError => e
+    Rollbar.warning e if Rollbar.configuration.enabled
   end
 
   def external_user_permissions(user)
@@ -57,6 +71,7 @@ class Ability
     can :manage, Participant
     can :manage, Leader
     can :export, Unit
+    can :manage, UnitActivity
   end
 
   def programm_user_permissions(_user)
