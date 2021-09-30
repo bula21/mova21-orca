@@ -49,7 +49,6 @@ services:
       SMTP_PASSWORD: ""
       SMTP_PORT: 25
       SMTP_AUTH: ${SMTP_AUTH:-plain}
-      FEATURES: "unit_activity_booking"
     depends_on:
       - db
       - mail

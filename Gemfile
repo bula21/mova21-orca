@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-ruby '2.7.3' # See Dockerfile
+ruby '3.0.2' # See Dockerfile
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -52,7 +52,7 @@ group :development, :test do
 end
 
 group :development do
-  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'listen', '>= 3.0.5' # , '< 3.2'
   gem 'web-console', '>= 3.3.0'
 end
 

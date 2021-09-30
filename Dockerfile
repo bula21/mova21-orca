@@ -1,6 +1,7 @@
 ### === base === ###
-FROM ruby:2.7.3-alpine AS base
-RUN apk add --no-cache --update postgresql-dev tzdata nodejs
+FROM ruby:3.0.2-alpine AS base
+RUN apk add --no-cache --update postgresql-dev tzdata nodejs ca-certificates
+RUN update-ca-certificates
 
 ENV BUNDLE_PATH=/app/vendor/bundle
 RUN gem install bundler && bundle config path $BUNDLE_PATH
@@ -23,7 +24,10 @@ RUN gem install solargraph
 
 ARG UID=1001
 ARG GID=1001
-RUN addgroup -S app -g $GID && adduser -S -u $UID -G app -D app && chown -R $UID:$GID /app || true
+RUN addgroup --gid $GID --system app && \ 
+    adduser --system --uid $UID --ingroup app --disabled-password app && \
+    chown -R app:app /app && \
+    chown -R app:app /usr/local/bundle || true
 USER $UID
 
 RUN bundle config cache true
@@ -46,7 +50,9 @@ RUN rm -rf /app/node_modules/*
 ### === production === ###
 FROM base AS production
 
-RUN mkdir -p /app && adduser -D app && chown -R app /app
+RUN adduser --disabled-password app && \
+    chown -R app /app
+
 WORKDIR /app
 
 RUN bundle config deployment true && bundle config --without development test
