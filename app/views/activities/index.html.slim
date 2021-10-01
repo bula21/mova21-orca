@@ -9,9 +9,8 @@
     thead
       tr
         th = Activity.human_attribute_name(:label)
+        th = Activity.human_attribute_name(:activity_category)
         th = Activity.human_attribute_name(:description)
-        th = ActivityCategory.model_name.human
-        th = Activity.human_attribute_name(:location)
         th = Activity.human_attribute_name(:tags)
         th
         th
@@ -23,7 +22,6 @@
           td = activity.label
           td = activity.description&.truncate(20)
           td = activity.activity_category.to_s
-          td = activity.location
           td
             - activity.tags.each do |tag|
               i[class="#{tag.icon} mr-2" title=tag.label]

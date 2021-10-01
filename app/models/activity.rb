@@ -42,6 +42,7 @@ class Activity < ApplicationRecord
   has_many :activity_executions, inverse_of: :activity, dependent: :destroy
   belongs_to :transport_location, optional: true
   belongs_to :activity_category, optional: true
+  has_many :unit_activities, inverse_of: :activity, dependent: :destroy
 
   has_and_belongs_to_many :goals
   has_and_belongs_to_many :stufen

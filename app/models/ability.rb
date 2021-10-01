@@ -3,22 +3,25 @@
 class Ability
   include CanCan::Ability
 
+  # rubocop:disable Metrics/CyclomaticComplexity
   def initialize(user)
     return if user.blank?
 
+    any_user_permissions(user)
     admin_user_permissions(user) if user.role_admin?
     tn_administration_user_permissions(user) if user.role_tn_administration?
     programm_user_permissions(user) if user.role_programm?
     editor_user_permissions(user) if user.role_editor?
-
-    if user.midata_user?
-      midata_user_permissions(user)
-    else
-      external_user_permissions(user)
-    end
+    midata_user_permissions(user) if user.midata_user?
+    external_user_permissions(user) unless user.midata_user?
   end
+  # rubocop:enable Metrics/CyclomaticComplexity
 
   private
+
+  def any_user_permissions(_user)
+    can :read, Activity
+  end
 
   def midata_user_permissions(user)
     can %i[read commit], Unit, al: { email: user.email }
