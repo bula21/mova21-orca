@@ -42,7 +42,7 @@
           = f.input :activity_category, collection: ActivityCategory.roots, as: :grouped_select,  group_method: :children, group_label_method: :label, label_method: :full_label, input_html: { onchange: 'this.form.submit()' }
         
         #filter-languages.py-3.tab-pane[role="tabpanel"]
-          = f.input_field :languages, as: :check_boxes, collection: I18n.available_locales.map { |lang| [I18n.t("activerecord.attributes.activity.language_#{lang}"), lang.to_s] },
+          = f.input_field :languages, as: :check_boxes, collection: I18n.available_locales.without(:en).map { |lang| [I18n.t("activerecord.attributes.activity.language_#{lang}"), lang.to_s] },
                                  include_hidden: false, class: 'form-check-input', input_html: { onchange: 'this.form.submit()' }
 
         #filter-tags.py-3.tab-pane[role="tabpanel"]
