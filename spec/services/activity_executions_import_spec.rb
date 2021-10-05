@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe ActivityExecutionsImport do
   subject(:import_service) { described_class.new(file, activity) }
 
-  let(:activity) { create(:activity, participants_count_transport: 10) }
+  let(:activity) { create(:activity, participants_count_activity: 10) }
   let(:file) do
     Rack::Test::UploadedFile.new(Rails.root.join(filename),
                                  'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
