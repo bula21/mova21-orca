@@ -52,7 +52,7 @@ class UnitExporter
 
   def export
     CSV.generate(headers: true) do |csv|
-      csv << HEADERS
+      csv << (HEADERS + Participant::MIDATA_EVENT_CAMP_ROLES.keys)
       @units.each { |unit| csv << unit_attributes(unit) }
     end
   end
@@ -72,41 +72,19 @@ class UnitExporter
       unit.abteilung,
       unit.kv_id,
       unit.stufe,
-      unit.expected_participants_f,
-      unit.expected_participants_m,
-      unit.expected_participants_leitung_f,
-      unit.expected_participants_leitung_m,
-      unit.starts_at,
-      unit.ends_at,
+      unit.expected_participants_f, unit.expected_participants_m,
+      unit.expected_participants_leitung_f, unit.expected_participants_leitung_m,
+      unit.starts_at, unit.ends_at,
       unit.language,
-      unit.lagerleiter.pbs_id,
-      unit.lagerleiter.last_name,
-      unit.lagerleiter.first_name,
-      unit.lagerleiter.scout_name,
-      unit.lagerleiter.birthdate,
-      unit.lagerleiter.gender,
-      unit.lagerleiter.email,
-      unit.lagerleiter.phone_number,
-      unit.lagerleiter.language,
-      unit.lagerleiter.address,
-      unit.lagerleiter.zip_code,
-      unit.lagerleiter.town,
+      unit.lagerleiter.pbs_id, unit.lagerleiter.last_name, unit.lagerleiter.first_name, unit.lagerleiter.scout_name,
+      unit.lagerleiter.birthdate, unit.lagerleiter.gender, unit.lagerleiter.email, unit.lagerleiter.phone_number,
+      unit.lagerleiter.language, unit.lagerleiter.address, unit.lagerleiter.zip_code, unit.lagerleiter.town,
       unit.lagerleiter.country,
-      unit.al&.pbs_id,
-      unit.al&.last_name,
-      unit.al&.first_name,
-      unit.al&.scout_name,
-      unit.al&.birthdate,
-      unit.al&.gender,
-      unit.al&.email,
-      unit.al&.phone_number,
-      unit.al&.language,
-      unit.al&.address,
-      unit.al&.zip_code,
-      unit.al&.town,
-      unit.al&.country,
+      unit.al&.pbs_id, unit.al&.last_name, unit.al&.first_name, unit.al&.scout_name,
+      unit.al&.birthdate, unit.al&.gender, unit.al&.email, unit.al&.phone_number, unit.al&.language,
+      unit.al&.address, unit.al&.zip_code, unit.al&.town, unit.al&.country,
       unit.coach_id
-    ]
+    ] + unit.participant_role_counts.values
   end
   # rubocop: enable Metrics/MethodLength, Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
 end

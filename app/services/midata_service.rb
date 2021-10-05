@@ -21,12 +21,12 @@ class MidataService
     JSON.parse(self.class.get("/events/#{id}.json", query: auth_params).body)
   end
 
-  def fetch_camp_unit_data_hierarchy(root_id, root = true)
+  def fetch_camp_unit_data_hierarchy(root_id, root: true)
     root_data = fetch_camp_unit_data(root_id)
     children_ids = root_data.dig('events', 0, 'links', 'sub_camps')
 
     return root_data if children_ids.nil? && !root
 
-    [root_data, children_ids.map { |child_id| fetch_camp_unit_data_hierarchy(child_id, false) }].flatten
+    [root_data, children_ids.map { |child_id| fetch_camp_unit_data_hierarchy(child_id, root: false) }].flatten
   end
 end
