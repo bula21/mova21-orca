@@ -7,6 +7,7 @@ fr:
         stufe_recommended: Branches recommandées
         tags: Tags
         text: Texte
+        languages: Langues
   activerecord:
     attributes:
       activity:
@@ -204,6 +205,7 @@ fr:
       field: Terrain
       has_transport: Avec le transport
       languages: Langues
+      manage_languages_hint: "Langue dans laquelle l'activité peut être exercée."
       manage_spot_hint: 'Si vous avez besoin de plus de places dans le programme,
         cliquez ici :'
       manage_spot_link_text: Gérer les zones de programme

@@ -37,8 +37,7 @@ class ActivityFilter < ApplicationFilter
   filter :languages do |activities|
     next if languages.blank?
 
-    query_params = languages.each_with_object({}) { |curr, res| res[curr.to_sym] = true; }
-
+    query_params = languages.each_with_object({}) { |curr, res| res["language_#{curr}".to_sym] = true; }
     activities.where(Activity.bitfield_sql(query_params, query_mode: :bit_operator_or))
   end
 

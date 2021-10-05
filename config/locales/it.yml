@@ -7,6 +7,7 @@ it:
         stufe_recommended: Branca raccomandata
         tags: Tags
         text: Testo
+        languages: lingua
   activerecord:
     attributes:
       activity:
@@ -203,6 +204,7 @@ it:
       field: Terreno
       has_transport: Con trasporto
       languages: Lingue
+      manage_languages_hint: Lingua in cui si può svolgere l'attività.
       manage_spot_hint: Se hai bisogno di più zone del programma, clicca qui
       manage_spot_link_text: Gestisci le zone del programma
       save: Salvare
