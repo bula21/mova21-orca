@@ -14,7 +14,7 @@ then
   exit 1
 fi
 
-bundle exec rspec
+bundle exec rspec --fail-fast
 if [ $? -ne 0 ]; then
   echo 'RSpec did not run successfully, commit aborted'
   exit 1
