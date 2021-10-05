@@ -5,6 +5,12 @@ class ActivitiesController < ApplicationController
 
   def index
     @activities = filter.apply(Activity.accessible_by(current_ability).distinct).page params[:page]
+    respond_to do |format|
+      format.html
+      format.json do
+        render json: ActivityBlueprint.render(@activities)
+      end
+    end
   end
 
   def show

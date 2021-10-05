@@ -108,4 +108,9 @@ class Unit < ApplicationRecord
   def activity_booking
     @activity_booking ||= UnitActivityBooking.new(self)
   end
+
+  def participant_role_counts
+    baseline = Participant::MIDATA_EVENT_CAMP_ROLES.transform_values { 0 }
+    participants.group_by(&:role).transform_values(&:count).symbolize_keys.reverse_merge(baseline)
+  end
 end

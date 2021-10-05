@@ -63,11 +63,6 @@ class UnitExporter
 
   private
 
-  def participant_role_counts(unit)
-    baseline = Participant::MIDATA_EVENT_CAMP_ROLES.transform_values { 0 }
-    unit.participants.group_by(&:role).transform_values(&:count).symbolize_keys.reverse_merge(baseline)
-  end
-
   # rubocop: disable Metrics/MethodLength, Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
   def unit_attributes(unit)
     [
@@ -89,7 +84,7 @@ class UnitExporter
       unit.al&.birthdate, unit.al&.gender, unit.al&.email, unit.al&.phone_number, unit.al&.language,
       unit.al&.address, unit.al&.zip_code, unit.al&.town, unit.al&.country,
       unit.coach_id
-    ] + participant_role_counts(unit).values
+    ] + unit.participant_role_counts.values
   end
   # rubocop: enable Metrics/MethodLength, Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
 end
