@@ -4,12 +4,10 @@ class ActivitiesController < ApplicationController
   load_and_authorize_resource except: [:create]
 
   def index
-    @activities = filter.apply(Activity.accessible_by(current_ability).distinct).page params[:page]
+    @activities = filter.apply(Activity.accessible_by(current_ability).distinct)
     respond_to do |format|
-      format.html
-      format.json do
-        render json: ActivityBlueprint.render(@activities)
-      end
+      format.html { @activities = @activities.page params[:page] }
+      format.json { render json: ActivityBlueprint.render(@activities) }
     end
   end
 
