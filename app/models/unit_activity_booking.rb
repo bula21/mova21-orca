@@ -101,21 +101,21 @@ class UnitActivityBooking
     next nil unless stufe_pfadi? || stufe_pio?
 
     activities = unit_activities(only: :hiking).count
-    activities >= (weeks * 3) || "#{activities}/#{weeks * 3}"
+    activities >= 3 || "#{activities}/3"
   end
 
   compliance_evaluator :excursions do
     next nil unless stufe_pfadi? || stufe_pio?
 
-    activities = unit_activities(only: %i[excursion water culture]).count
-    activities >= (weeks * 3) || "#{activities}/#{weeks * 3}"
+    activities = unit_activities(only: %i[excursion water culture hiking]).count
+    activities >= 6 || "#{activities}/6"
   end
 
   compliance_evaluator :hiking_or_excursions do
     next nil unless stufe_wolf? || stufe_pta?
 
     activities = unit_activities(only: %i[excursion water culture hiking]).count
-    activities >= (weeks * 3) || "#{activities}/#{weeks * 3}"
+    activities >= 3 || "#{activities}/3"
   end
 
   compliance_evaluator :visitor_day do
