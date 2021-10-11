@@ -4,10 +4,10 @@ it:
     attributes:
       activity_filter:
         activity_category: Categoria
+        languages: lingua
         stufe_recommended: Branca raccomandata
         tags: Tags
         text: Testo
-        languages: lingua
   activerecord:
     attributes:
       activity:
