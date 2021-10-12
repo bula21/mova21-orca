@@ -108,7 +108,7 @@ class UnitActivityBooking
     next nil unless stufe_pfadi? || stufe_pio?
 
     activities = unit_activities(only: %i[excursion water culture hiking]).count
-    activities >= 8 || "#{activities}/8"
+    activities >= 12 || "#{activities}/12"
   end
 
   compliance_evaluator :hiking_or_excursions do
