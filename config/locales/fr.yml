@@ -631,7 +631,8 @@ fr:
     committed_text: Merci beaucoup, la réservation est terminée ! La division finale
       sera annoncé au début de l'année 2022.
     compliance_evaluators:
-      excursions: Min. 3 excursions possible par semaine de camp
+      excursions: Min. 6 excursions ou randonnées supplémentaires possible par semaine
+        de camp
       hiking: Min. 3 randonnées possibles par semaine de camp
       hiking_or_excursions: Min. 3 excursions ou randonnée possibles
       mova_activities: Min. 4 activités mova possibles par semaine de camp

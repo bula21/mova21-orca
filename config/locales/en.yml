@@ -597,7 +597,7 @@ en:
     committed_text: Besten Dank, die Buchung ist abgeschlossen! Die entgültige Einteilung
       wird Anfang 2022 bekanntgegeben.
     compliance_evaluators:
-      excursions: Min. 3 possible excursions
+      excursions: Min. 6 possible excursions
       hiking: Min. 3 possible hikes
       hiking_or_excursions: Min. 3 mögliche Ausflüge oder Wanderungen
       mova_activities: Min. 4 mova activities per camp week

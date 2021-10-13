@@ -627,7 +627,7 @@ de:
     committed_text: Besten Dank, die Buchung ist abgeschlossen! Die entgültige Einteilung
       wird Anfang 2022 bekanntgegeben.
     compliance_evaluators:
-      excursions: Min. 3 mögliche Ausflüge pro Lageroche
+      excursions: Min. 6 mögliche Ausflüge oder weitere Wanderungen pro Lageroche
       hiking: Min. 3 mögliche Wanderungen pro Lagerwoche
       hiking_or_excursions: Min. 3 mögliche Ausflüge oder Wanderungen
       mova_activities: Min. 4 mögliche mova Aktivitäten pro Lagerwoche
