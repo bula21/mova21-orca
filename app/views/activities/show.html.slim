@@ -65,15 +65,22 @@ hr
 / dd = @activity.transport_location
 
 
-- if @activity.activity_documents.any?
-  hr
-  .h4.mt-3 = t('activity.show.downloads')
-  .row
+hr
+.h4.mt-3 = t('activity.show.downloads')
+.row
+  - if @activity.activity_documents.any?
     .col-6
       ul.list-group
         - @activity.activity_documents.each do |document|
           li.list-group-item = link_to document.filename, rails_blob_path(document, disposition: 'attachment')
 
+  - if can?(:edit, @activity)
+    .col-6
+      = t('activerecord.attributes.activity.detail_description')
+      ul
+        li = link_to @activity.detail_description_de.filename, rails_blob_path(@activity.detail_description_de, disposition: 'attachment') if @activity.detail_description_de.present?
+        li = link_to @activity.detail_description_fr.filename, rails_blob_path(@activity.detail_description_fr, disposition: 'attachment') if @activity.detail_description_fr.present?
+        li = link_to @activity.detail_description_it.filename, rails_blob_path(@activity.detail_description_it, disposition: 'attachment') if @activity.detail_description_it.present?
 
 - if can?(:edit, @activity)
   hr

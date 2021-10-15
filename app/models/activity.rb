@@ -38,6 +38,9 @@ class Activity < ApplicationRecord
 
   has_many_attached :activity_documents
   has_one_attached :picture
+  has_one_attached :detail_description_de
+  has_one_attached :detail_description_fr
+  has_one_attached :detail_description_it
   has_and_belongs_to_many :tags, optional: true
   has_many :activity_executions, inverse_of: :activity, dependent: :destroy
   belongs_to :transport_location, optional: true

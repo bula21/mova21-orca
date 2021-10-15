@@ -30,6 +30,10 @@ fr:
         participants_count_activity: Max. nombre participant.e.s
         participants_count_transport: Nb. personnes (responsables inclus)
         picture: Image
+        detail_description: Descriptifs détaillés
+        detail_description_de: Descriptifs détaillés DE
+        detail_description_fr: Descriptifs détaillés FR
+        detail_description_it: Descriptifs détaillés IT
         simo: Module de sécurité / SSS
         stufe_recommended: Branches recommandées
         stufen: Branches possibles

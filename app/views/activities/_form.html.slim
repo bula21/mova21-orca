@@ -85,6 +85,36 @@
                       class: 'btn btn-sm btn-secondary float-right',
                       data: { confirm: t('simple_form.confirm_unsaved') }
 
+        - if can?(:edit, Activity)
+          .row
+            .col-12
+              hr
+              .h5 = t('activerecord.attributes.activity.detail_description')
+
+              ul
+                li
+                  label{for='picture'} = t('activerecord.attributes.activity.detail_description_de')
+                  br
+                  = f.file_field :detail_description_de
+                  ul.list-group.mt-3
+                  - unless @activity.detail_description_de.blank?
+                    li.list-group-item = @activity.detail_description_de.filename
+                li
+                  label{for='picture'} = t('activerecord.attributes.activity.detail_description_fr')
+                  br
+                  = f.file_field :detail_description_fr
+                  ul.list-group.mt-3
+                  - unless @activity.detail_description_fr.blank?
+                    li.list-group-item = @activity.detail_description_fr.filename
+                li
+                  label{for='picture'} = t('activerecord.attributes.activity.detail_description_it')
+                  br
+                  = f.file_field :detail_description_it
+                  ul.list-group.mt-3
+                  - unless @activity.detail_description_it.blank?
+                    li.list-group-item = @activity.detail_description_it.filename
+
+
 
   .actions.mt-3
     = f.submit t('buttons.save'), class: 'btn btn-primary'

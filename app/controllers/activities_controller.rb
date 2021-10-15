@@ -74,6 +74,7 @@ class ActivitiesController < ApplicationController
                                      :participants_count_transport, :duration_activity, :duration_journey, :location,
                                      :transport_location_id, :min_participants, :activity_type, :activity_category_id,
                                      :picture, :language_de, :language_en, :language_fr, :language_it,
+                                     :detail_description_de, :detail_description_fr, :detail_description_it,
                                      I18n.available_locales.map { |l| :"label_#{l}" },
                                      I18n.available_locales.map { |l| :"description_#{l}" },
                                      stufe_ids: [], stufe_recommended_ids: [], goal_ids: [], tag_ids: [],
