@@ -82,4 +82,8 @@ class Activity < ApplicationRecord
   def languages
     bitfield_values(:language_flags)
   end
+
+  def detail_description(locale: I18n.locale)
+    send("detail_description_#{locale}") if respond_to?("detail_description_#{locale}")
+  end
 end

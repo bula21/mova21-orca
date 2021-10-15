@@ -16,6 +16,10 @@ en:
         activity_type: Type
         block_type: Block Typ
         description: Description
+        detail_description: Detailbeschriebe
+        detail_description_de: Detailbeschrieb DE
+        detail_description_fr: Detailbeschrieb FR
+        detail_description_it: Detailbeschrieb IT
         duration_activity: Duration of the activity (HH:mm)
         duration_journey: Duration of the journey (HH:mm)
         goals: Leitziele
@@ -30,10 +34,6 @@ en:
         participants_count_activity: Max. Paritcipant count Activity
         participants_count_transport: Anz. Personen (inkl. Leitung)
         picture: Picture
-        detail_description: Detailbeschriebe
-        detail_description_de: Detailbeschrieb DE
-        detail_description_fr: Detailbeschrieb FR
-        detail_description_it: Detailbeschrieb IT
         simo: Sicherheitsmodul
         stufe_recommended: Age recommended
         stufen: Age

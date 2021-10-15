@@ -16,6 +16,10 @@ it:
         activity_type: Tipo
         block_type: Tipo d'attività
         description: Descrizione
+        detail_description: Descrizione dettagliata
+        detail_description_de: Descrizione dettagliata DE
+        detail_description_fr: Descrizione dettagliata FR
+        detail_description_it: Descrizione dettagliata IT
         duration_activity: Durata dell'attività (HH:mm)
         duration_journey: Durata del viaggio (HH:mm)
         goals: Obiettivi generali
@@ -30,10 +34,6 @@ it:
         participants_count_activity: N° max. di persone
         participants_count_transport: N° di persone (incl. animatori/trici)
         picture: Immagine
-        detail_description: Descrizione dettagliata
-        detail_description_de: Descrizione dettagliata DE
-        detail_description_fr: Descrizione dettagliata FR
-        detail_description_it: Descrizione dettagliata IT
         simo: Modulo di sicurezza / SSS
         stufe_recommended: Branche raccomandate
         stufen: Branche possibili

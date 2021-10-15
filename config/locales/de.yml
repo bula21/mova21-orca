@@ -16,6 +16,10 @@ de:
         activity_type: Art
         block_type: Block Typ
         description: Beschreibung
+        detail_description: Detailbeschriebe
+        detail_description_de: Detailbeschrieb DE
+        detail_description_fr: Detailbeschrieb FR
+        detail_description_it: Detailbeschrieb IT
         duration_activity: Dauer der Aktivität (HH:mm)
         duration_journey: Dauer der Anreise (HH:mm)
         goals: Leitziele
@@ -30,10 +34,6 @@ de:
         participants_count_activity: Max. Anz. Personen
         participants_count_transport: Anz. Personen (inkl. Leitung)
         picture: Bild
-        detail_description: Detailbeschriebe
-        detail_description_de: Detailbeschrieb DE
-        detail_description_fr: Detailbeschrieb FR
-        detail_description_it: Detailbeschrieb IT
         simo: Sicherheitsmodul / SLRG
         stufe_recommended: Stufen Empfohlen
         stufen: Stufen möglich
