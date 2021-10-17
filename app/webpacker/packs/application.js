@@ -39,6 +39,7 @@ document.addEventListener("turbolinks:load", () => {
 });
 
 function setupDragSort(el) {
+  const mitigateError = () => { window.location.reload() }
   if (!el) return;
 
   Sortable.create(el, {
@@ -51,7 +52,8 @@ function setupDragSort(el) {
           'Content-Type': 'application/json',
           'X-CSRF-Token': document.querySelector('meta[name=csrf-token]').content,
         }
-      })
+      }).then((response => response.status == 204 || mitigateError()), mitigateError)
+        .catch(mitigateError)
     }
   });
 }
