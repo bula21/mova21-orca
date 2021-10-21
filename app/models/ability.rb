@@ -77,6 +77,7 @@ class Ability
     can :manage, UnitActivity
   end
 
+  # rubocop:disable Metrics/MethodLength
   def programm_user_permissions(_user)
     can :manage, Activity
     can :manage, ActivityExecution
@@ -87,8 +88,11 @@ class Ability
     can :manage, ActivityCategory
     can :manage, Spot
     can :manage, Field
+    can :read, UnitActivity
+    can :read, Unit
     cannot :delete, ActivityCategory, parent_id: nil
   end
+  # rubocop:enable Metrics/MethodLength
 
   def editor_user_permissions(_user)
     can :edit, Activity
