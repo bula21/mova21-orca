@@ -14,7 +14,8 @@ interface ActivityExecutionRequest {
         field_id: number;
         amount_participants: number;
         languages: Array<Language>;
-        transport: boolean
+        transport: boolean;
+        mixed_languages: boolean;
     }
 }
 
@@ -27,7 +28,8 @@ interface ActivityExecution {
     field: Field;
     amount_participants: number;
     languages: Array<Language>;
-    transport: boolean
+    transport: boolean;
+    mixed_languages: boolean;
 }
 
 interface FixedEvent {
@@ -47,7 +49,7 @@ export interface Spot {
     id: number;
     name: string;
     color: string;
-    fields: Array<Field>
+    fields: Array<Field>;
 }
 
 interface SuccessfulBackendResponse<T> {
@@ -77,9 +79,10 @@ export interface FullCalendarEvent {
     extendedProps?: {
         languages: Array<Language>;
         amountParticipants: number;
-        field: Field,
-        spot: Spot,
-        hasTransport: boolean
+        field: Field;
+        spot: Spot;
+        hasTransport: boolean;
+        mixed_languages: boolean;
     }
     fixedEvent: boolean;
     color: string;
@@ -130,7 +133,8 @@ export class ActivityExecutionService {
                 amountParticipants: activityExexution.amount_participants,
                 spot: activityExexution.spot,
                 field: activityExexution.field,
-                hasTransport: activityExexution.transport
+                hasTransport: activityExexution.transport,
+                mixed_languages: activityExexution.mixed_languages
             },
             fixedEvent: false,
             color: activityExexution.spot.color
@@ -175,7 +179,8 @@ export class ActivityExecutionService {
                 languages: fullCalendarEvent.extendedProps.languages,
                 field_id: fullCalendarEvent.extendedProps.field.id,
                 amount_participants: fullCalendarEvent.extendedProps.amountParticipants,
-                transport: fullCalendarEvent.extendedProps.hasTransport
+                transport: fullCalendarEvent.extendedProps.hasTransport,
+                mixed_languages: fullCalendarEvent.extendedProps.mixed_languages
             }
         };
         return JSON.stringify(request);

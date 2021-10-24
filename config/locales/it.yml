@@ -207,6 +207,7 @@ it:
       end_time: Orario di fine
       field: Terreno
       has_transport: Con trasporto
+      mixed_languages: Attuazione mista
       languages: Lingue
       manage_languages_hint: Lingua in cui si può svolgere l'attività.
       manage_spot_hint: Se hai bisogno di più zone del programma, clicca qui

@@ -205,6 +205,7 @@ de:
       end_time: Endzeit
       field: Feld
       has_transport: Mit Transport
+      mixed_languages: Gemischte Durchführung
       languages: Sprachen
       manage_languages_hint: Sprache in welcher die Aktivität durchgeführt werden
         kann.
