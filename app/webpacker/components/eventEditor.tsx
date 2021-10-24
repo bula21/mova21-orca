@@ -64,9 +64,10 @@ interface FlattenedFullcalendarEvent {
   end: string;
   amountParticipants: number;
   languages: Array<Language>;
-  spot: Spot,
+  spot: Spot;
   hasTransport: boolean;
-  field: Field,
+  mixed_languages: boolean;
+  field: Field;
   allDay: boolean;
   fixedEvent: boolean;
 }
@@ -110,6 +111,7 @@ class EventEditor extends Component<EventEditorProps, EventEditorState> {
         spot: defaultSpot,
         field: defaultField,
         hasTransport: true,
+        mixed_languages: false,
         languages: [],
         allDay: false,
         fixedEvent: true
@@ -335,6 +337,22 @@ class EventEditor extends Component<EventEditorProps, EventEditorState> {
                   />
                 }
                 label={Orca.i18n.activityExecutionCalendar.editor.has_transport}
+              />
+
+              <FormControlLabel
+                className={ classes.formControl }
+                control={
+                  <Checkbox
+                    id="inputMixedLanguages"
+                    name="mixed_languages"
+                    checked={ this.state.selectedEvent.mixed_languages }
+                    value={false}
+                    onChange={ this.handleChange }
+                    color="primary"
+                    inputProps={{ 'aria-label': 'secondary checkbox' }}
+                  />
+                }
+                label={Orca.i18n.activityExecutionCalendar.editor.mixed_languages}
               />
             </CardContent>
 

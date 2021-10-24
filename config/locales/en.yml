@@ -207,6 +207,7 @@ en:
       end_time: Heure de fin
       field: Terrain
       has_transport: With transport
+      mixed_languages: Mixed Execution
       languages: Languages
       manage_languages_hint: Sprache in welcher die Aktivität durchgeführt werden
         kann.
