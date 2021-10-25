@@ -7,5 +7,9 @@ class UnitActivityBlueprint < Blueprinter::Base
   # association :unit, blueprint: UnitBlueprint
   fields :unit_id, :activity_id
 
-  field :priority, &:priority_rank
+  # rubocop:disable Style/SymbolProc
+  field :priority do |unit_activity|
+    unit_activity.priority_rank
+  end
+  # rubocop:enable Style/SymbolProc
 end

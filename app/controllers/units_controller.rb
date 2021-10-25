@@ -30,7 +30,12 @@ class UnitsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    respond_to do |format|
+      format.html
+      format.json { render json: UnitBlueprint.render(@unit) }
+    end
+  end
 
   def edit; end
 
