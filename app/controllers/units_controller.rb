@@ -33,7 +33,7 @@ class UnitsController < ApplicationController
   def show
     respond_to do |format|
       format.html
-      format.json { render json: UnitBlueprint.render(@unit) }
+      format.json { render json: UnitBlueprint.render(@unit, view: :with_unit_activities) }
     end
   end
 
