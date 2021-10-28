@@ -5,9 +5,9 @@ class Ability
 
   # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
   def initialize(user)
+    anonymous_permissions(user)
     return if user.blank?
 
-    any_user_permissions(user)
     admin_user_permissions(user) if user.role_admin?
     tn_administration_user_permissions(user) if user.role_tn_administration?
     programm_user_permissions(user) if user.role_programm?
@@ -20,7 +20,7 @@ class Ability
 
   private
 
-  def any_user_permissions(_user)
+  def anonymous_permissions(_user)
     can :read, Activity
   end
 
