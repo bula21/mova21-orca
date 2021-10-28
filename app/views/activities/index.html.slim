@@ -20,8 +20,8 @@
       - @activities.each do |activity|
         tr
           td = activity.label
-          td = activity.description&.truncate(20)
           td = activity.activity_category.to_s
+          td = activity.description&.truncate(20)
           td
             - activity.tags.each do |tag|
               i[class="#{tag.icon} mr-2" title=tag.label]
