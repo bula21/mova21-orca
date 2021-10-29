@@ -90,29 +90,62 @@
             .col-12
               hr
               .h5 = t('activerecord.attributes.activity.detail_description')
-
               ul
                 li
-                  label{for='picture'} = t('activerecord.attributes.activity.detail_description_de')
+                  label{for='detail_description_de'} = t('activerecord.attributes.activity.detail_description_de')
                   br
                   = f.file_field :detail_description_de
                   ul.list-group.mt-3
                   - unless @activity.detail_description_de.blank?
                     li.list-group-item = @activity.detail_description_de.filename
                 li
-                  label{for='picture'} = t('activerecord.attributes.activity.detail_description_fr')
+                  label{for='detail_description_fr'} = t('activerecord.attributes.activity.detail_description_fr')
                   br
                   = f.file_field :detail_description_fr
                   ul.list-group.mt-3
                   - unless @activity.detail_description_fr.blank?
                     li.list-group-item = @activity.detail_description_fr.filename
                 li
-                  label{for='picture'} = t('activerecord.attributes.activity.detail_description_it')
+                  label{for='detail_description_it'} = t('activerecord.attributes.activity.detail_description_it')
                   br
                   = f.file_field :detail_description_it
                   ul.list-group.mt-3
                   - unless @activity.detail_description_it.blank?
                     li.list-group-item = @activity.detail_description_it.filename
+
+
+              .h5.label{for='language_documents_de'} = t('activerecord.attributes.activity.language_documents_de')
+              = f.file_field :language_documents_de, multiple: true
+              ul.list-group.mt-3
+                - @activity.language_documents_de.each do |document|
+                  li.list-group-item
+                    = document.filename
+                    = link_to t('buttons.destroy'), activity_path(language_documents_de_id: document.id),
+                            method: :delete,
+                            class: 'btn btn-sm btn-secondary float-right',
+                            data: { confirm: t('simple_form.confirm_unsaved') }
+
+              .h5.label{for='language_documents_fr'} = t('activerecord.attributes.activity.language_documents_fr')
+              = f.file_field :language_documents_fr, multiple: true
+              ul.list-group.mt-3
+                - @activity.language_documents_fr.each do |document|
+                  li.list-group-item
+                    = document.filename
+                    = link_to t('buttons.destroy'), activity_path(language_documents_fr_id: document.id),
+                            method: :delete,
+                            class: 'btn btn-sm btn-secondary float-right',
+                            data: { confirm: t('simple_form.confirm_unsaved') }
+
+              .h5.label{for='language_documents_it'} = t('activerecord.attributes.activity.language_documents_it')
+              = f.file_field :language_documents_it, multiple: true
+              ul.list-group.mt-3
+                - @activity.language_documents_it.each do |document|
+                  li.list-group-item
+                    = document.filename
+                    = link_to t('buttons.destroy'), activity_path(language_documents_it_id: document.id),
+                            method: :delete,
+                            class: 'btn btn-sm btn-secondary float-right',
+                            data: { confirm: t('simple_form.confirm_unsaved') }
 
 
 

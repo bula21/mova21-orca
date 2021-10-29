@@ -13,6 +13,9 @@ it:
       activity:
         activity_category: Categoria
         activity_documents: Documenti
+        language_documents_de: Documenti DE
+        language_documents_fr: Documenti FR
+        language_documents_it: Documenti IT
         activity_type: Tipo
         block_type: Tipo d'attività
         description: Descrizione

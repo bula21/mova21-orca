@@ -41,7 +41,7 @@ class ActivitiesController < ApplicationController
   end
 
   def destroy
-    if params[:attachment_id]
+    if params[:attachment_id] || params[:language_documents_de_id] || params[:language_documents_fr_id] || params[:language_documents_it_id]
       delete_attachment
     elsif params[:picture_id]
       delete_picture
@@ -59,7 +59,15 @@ class ActivitiesController < ApplicationController
   end
 
   def delete_attachment
-    @activity.activity_documents.find_by(id: params[:attachment_id]).purge
+    if params[:attachment_id]
+      @activity.activity_documents.find_by(id: params[:attachment_id]).purge
+    elsif params[:language_documents_de_id]
+      @activity.language_documents_de.find_by(id: params[:language_documents_de_id]).purge
+    elsif params[:language_documents_fr_id]
+      @activity.language_documents_fr.find_by(id: params[:language_documents_fr_id]).purge
+    elsif params[:language_documents_it_id]
+      @activity.language_documents_it.find_by(id: params[:language_documents_it_id]).purge
+    end
     redirect_to edit_activity_url(@activity)
   end
 
@@ -76,9 +84,10 @@ class ActivitiesController < ApplicationController
                                      :transport_location_id, :min_participants, :activity_type, :activity_category_id,
                                      :picture, :language_de, :language_en, :language_fr, :language_it,
                                      :detail_description_de, :detail_description_fr, :detail_description_it,
+                                     :language_documents_de_id, :language_documents_fr_id, :language_documents_it_id,
                                      I18n.available_locales.map { |l| :"label_#{l}" },
                                      I18n.available_locales.map { |l| :"description_#{l}" },
                                      stufe_ids: [], stufe_recommended_ids: [], goal_ids: [], tag_ids: [],
-                                     activity_documents: [])
+                                     activity_documents: [], language_documents_de: [], language_documents_fr: [], language_documents_it: [])
   end
 end

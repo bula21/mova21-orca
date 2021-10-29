@@ -41,6 +41,9 @@ class Activity < ApplicationRecord
   has_one_attached :detail_description_de
   has_one_attached :detail_description_fr
   has_one_attached :detail_description_it
+  has_many_attached :language_documents_de
+  has_many_attached :language_documents_fr
+  has_many_attached :language_documents_it
   has_and_belongs_to_many :tags, optional: true
   has_many :activity_executions, inverse_of: :activity, dependent: :destroy
   belongs_to :transport_location, optional: true
