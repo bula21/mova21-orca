@@ -117,7 +117,7 @@ class CalendarManager extends React.Component {
     extendedProps: {
       languages: selectedEvent.languages,
       hasTransport: selectedEvent.hasTransport,
-      mixed_languages: selectedEvent.mixed_languages,
+      mixedLanguages: selectedEvent.mixedLanguages,
       amountParticipants: selectedEvent.amountParticipants,
       field: selectedEvent.field,
       spot: selectedEvent.spot,
@@ -150,7 +150,7 @@ class CalendarManager extends React.Component {
         this.state.event.setExtendedProp("field", result.extendedProps.field)
         this.state.event.setExtendedProp("amountParticipants", result.extendedProps.amountParticipants)
         this.state.event.setExtendedProp("hasTransport", result.extendedProps.hasTransport)
-        this.state.event.setExtendedProp("mixed_languages", result.extendedProps.mixed_languages)
+        this.state.event.setExtendedProp("mixedLanguages", result.extendedProps.mixedLanguages)
 
         // set base attributes to event object
         this.state.event.setProp("backgroundColor", result.color)
