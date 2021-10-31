@@ -29,7 +29,7 @@ interface ActivityExecution {
     amount_participants: number;
     languages: Array<Language>;
     transport: boolean;
-    mixed_languages: boolean;
+    mixedLanguages: boolean;
 }
 
 interface FixedEvent {
@@ -82,7 +82,7 @@ export interface FullCalendarEvent {
         field: Field;
         spot: Spot;
         hasTransport: boolean;
-        mixed_languages: boolean;
+        mixedLanguages: boolean;
     }
     fixedEvent: boolean;
     color: string;
@@ -134,7 +134,7 @@ export class ActivityExecutionService {
                 spot: activityExexution.spot,
                 field: activityExexution.field,
                 hasTransport: activityExexution.transport,
-                mixed_languages: activityExexution.mixed_languages
+                mixedLanguages: activityExexution.mixedLanguages
             },
             fixedEvent: false,
             color: activityExexution.spot.color
@@ -180,7 +180,7 @@ export class ActivityExecutionService {
                 field_id: fullCalendarEvent.extendedProps.field.id,
                 amount_participants: fullCalendarEvent.extendedProps.amountParticipants,
                 transport: fullCalendarEvent.extendedProps.hasTransport,
-                mixed_languages: fullCalendarEvent.extendedProps.mixed_languages
+                mixed_languages: fullCalendarEvent.extendedProps.mixedLanguages
             }
         };
         return JSON.stringify(request);
