@@ -352,7 +352,7 @@ class EventEditor extends Component<EventEditorProps, EventEditorState> {
                     inputProps={{ 'aria-label': 'secondary checkbox' }}
                   />
                 }
-                label={Orca.i18n.activityExecutionCalendar.editor.mixedLanguages}
+                label={Orca.i18n.activityExecutionCalendar.editor.mixed_languages}
               />
             </CardContent>
 
