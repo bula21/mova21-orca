@@ -3,23 +3,24 @@
 class Ability
   include CanCan::Ability
 
-  # rubocop:disable Metrics/CyclomaticComplexity
+  # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
   def initialize(user)
+    anonymous_permissions(user)
     return if user.blank?
 
-    any_user_permissions(user)
     admin_user_permissions(user) if user.role_admin?
     tn_administration_user_permissions(user) if user.role_tn_administration?
     programm_user_permissions(user) if user.role_programm?
+    allocation_user_permissions(user) if user.role_allocation?
     editor_user_permissions(user) if user.role_editor?
     midata_user_permissions(user) if user.midata_user?
     external_user_permissions(user) unless user.midata_user?
   end
-  # rubocop:enable Metrics/CyclomaticComplexity
+  # rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
 
   private
 
-  def any_user_permissions(_user)
+  def anonymous_permissions(_user)
     can :read, Activity
   end
 
@@ -88,6 +89,13 @@ class Ability
     can :manage, Spot
     can :manage, Field
     cannot :delete, ActivityCategory, parent_id: nil
+  end
+
+  def allocation_user_permissions(user)
+    programm_user_permissions(user)
+
+    can :manage, UnitActivity
+    can :manage, Unit
   end
 
   def editor_user_permissions(_user)

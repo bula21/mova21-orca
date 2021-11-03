@@ -66,7 +66,7 @@ class UnitActivitiesController < ApplicationController
   end
 
   def check_phase
-    raise CanCanCan::AccessDenied unless unit_activity_booking.phase?(:preview, :open, :committed)
+    raise CanCan::AccessDenied unless unit_activity_booking.phase?(:preview, :open, :committed)
   end
 
   def unit_activity_booking
