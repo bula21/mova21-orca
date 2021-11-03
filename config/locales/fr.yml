@@ -208,6 +208,7 @@ fr:
       end_time: Heure de fin
       field: Terrain
       has_transport: Avec le transport
+      mixed_languages: Mise en œuvre mixte
       languages: Langues
       manage_languages_hint: Langue dans laquelle l'activité peut être exercée.
       manage_spot_hint: 'Si vous avez besoin de plus de places dans le programme,

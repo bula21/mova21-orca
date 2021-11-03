@@ -9,6 +9,7 @@ class ActivityExecution < ApplicationRecord
   has_one :spot, through: :field
   validates :starts_at, :ends_at, presence: true
   validates :transport, inclusion: { in: [true, false] }
+  validates :mixed_languages, inclusion: { in: [true, false] }
   # TODO: check that at most the ones from activity_execution
   validates :language_flags, numericality: { greater_than: 0 }, allow_nil: false
   validates :amount_participants, numericality: { greater_than_or_equal_to: 0,

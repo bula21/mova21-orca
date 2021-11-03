@@ -4,7 +4,7 @@ class ActivityExecutionBlueprint < Blueprinter::Base
   extend ActivityExecutionHelper
   identifier :id
 
-  fields :languages, :starts_at, :ends_at, :amount_participants, :transport, :spot
+  fields :languages, :starts_at, :ends_at, :amount_participants, :transport, :mixed_languages, :spot
 
   association :field, blueprint: FieldBlueprint
   association :spot, blueprint: SpotBlueprint
