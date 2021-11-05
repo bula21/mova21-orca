@@ -16,15 +16,14 @@ en:
         activity_type: Type
         block_type: Block Typ
         description: Description
-        detail_description: Detailbeschriebe
-        detail_description_de: Detailbeschrieb DE
-        detail_description_fr: Detailbeschrieb FR
-        detail_description_it: Detailbeschrieb IT
         duration_activity: Duration of the activity (HH:mm)
         duration_journey: Duration of the journey (HH:mm)
         goals: Leitziele
         label: Label
         language_de: Deutsch
+        language_documents_de: Dokumente DE
+        language_documents_fr: Dokumente FR
+        language_documents_it: Dokumente IT
         language_en: English
         language_fr: Français
         language_it: Italiano
@@ -210,6 +209,7 @@ en:
         kann.
       manage_spot_hint: 'If you need more program spots, click here:'
       manage_spot_link_text: Manage program spots
+      mixed_languages: Mixed Execution
       save: Enregistrer
       spot: spot du programme
       start_time: Heure de début

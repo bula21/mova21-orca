@@ -35,12 +35,13 @@ class Activity < ApplicationRecord
   paginates_per 15
 
   LANGUAGES = %i[language_de language_fr language_it language_en].freeze
+  ATTACHMENTS = %i[attachment picture language_documents_de language_documents_fr language_documents_it].freeze
 
   has_many_attached :activity_documents
   has_one_attached :picture
-  has_one_attached :detail_description_de
-  has_one_attached :detail_description_fr
-  has_one_attached :detail_description_it
+  has_many_attached :language_documents_de
+  has_many_attached :language_documents_fr
+  has_many_attached :language_documents_it
   has_and_belongs_to_many :tags, optional: true
   has_many :activity_executions, inverse_of: :activity, dependent: :destroy
   belongs_to :transport_location, optional: true
@@ -81,9 +82,5 @@ class Activity < ApplicationRecord
 
   def languages
     bitfield_values(:language_flags)
-  end
-
-  def detail_description(locale: I18n.locale)
-    send("detail_description_#{locale}") if respond_to?("detail_description_#{locale}")
   end
 end

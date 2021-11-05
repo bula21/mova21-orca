@@ -4,7 +4,7 @@ FactoryBot.define do
   factory :activity_execution do
     activity
     starts_at { Faker::Date.between(from: 2.days.ago, to: Time.zone.today) }
-    amount_participants { Faker::Number.between(from: 12, to: 30) }
+    amount_participants { Faker::Number.between(from: 12, to: activity&.participants_count_activity || 30) }
     transport { true }
     mixed_languages { true }
     language_flags { activity.language_flags }

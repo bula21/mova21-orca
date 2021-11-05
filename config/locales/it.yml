@@ -16,15 +16,14 @@ it:
         activity_type: Tipo
         block_type: Tipo d'attività
         description: Descrizione
-        detail_description: Descrizione dettagliata
-        detail_description_de: Descrizione dettagliata DE
-        detail_description_fr: Descrizione dettagliata FR
-        detail_description_it: Descrizione dettagliata IT
         duration_activity: Durata dell'attività (HH:mm)
         duration_journey: Durata del viaggio (HH:mm)
         goals: Obiettivi generali
         label: Titolo dell'attività
         language_de: Tedesco
+        language_documents_de: Documenti DE
+        language_documents_fr: Documenti FR
+        language_documents_it: Documenti IT
         language_en: Inglese
         language_fr: Francese
         language_it: Italiano
@@ -212,6 +211,7 @@ it:
       manage_languages_hint: Lingua in cui si può svolgere l'attività.
       manage_spot_hint: Se hai bisogno di più zone del programma, clicca qui
       manage_spot_link_text: Gestisci le zone del programma
+      mixed_languages: Attuazione mista
       save: Salvare
       spot: Zona del programma
       start_time: Orario di inizio
