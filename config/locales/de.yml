@@ -13,21 +13,17 @@ de:
       activity:
         activity_category: Kategorie
         activity_documents: Dokumente
-        language_documents_de: Dokumente DE
-        language_documents_fr: Dokumente FR
-        language_documents_it: Dokumente IT
         activity_type: Art
         block_type: Block Typ
         description: Beschreibung
-        detail_description: Detailbeschriebe
-        detail_description_de: Detailbeschrieb DE
-        detail_description_fr: Detailbeschrieb FR
-        detail_description_it: Detailbeschrieb IT
         duration_activity: Dauer der Aktivität (HH:mm)
         duration_journey: Dauer der Anreise (HH:mm)
         goals: Leitziele
         label: Bezeichnung
         language_de: Deutsch
+        language_documents_de: Dokumente DE
+        language_documents_fr: Dokumente FR
+        language_documents_it: Dokumente IT
         language_en: English
         language_fr: Français
         language_it: Italiano
@@ -208,12 +204,12 @@ de:
       end_time: Endzeit
       field: Feld
       has_transport: Mit Transport
-      mixed_languages: Gemischte Durchführung
       languages: Sprachen
       manage_languages_hint: Sprache in welcher die Aktivität durchgeführt werden
         kann.
       manage_spot_hint: 'Falls du mehr Programmspots brauchst, klicke hier:'
       manage_spot_link_text: Programmspots verwalten
+      mixed_languages: Gemischte Durchführung
       save: Speichern
       spot: Programmspot
       start_time: Startzeit

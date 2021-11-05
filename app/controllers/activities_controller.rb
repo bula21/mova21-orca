@@ -24,6 +24,7 @@ class ActivitiesController < ApplicationController
 
   def create
     @activity = Activity.new(activity_params)
+    attach_attachments
 
     if @activity.save
       redirect_to @activity, notice: I18n.t('messages.created.success')
@@ -33,6 +34,7 @@ class ActivitiesController < ApplicationController
   end
 
   def update
+    attach_attachments
     if @activity.update(activity_params)
       redirect_to @activity, notice: I18n.t('messages.updated.success')
     else
@@ -41,34 +43,28 @@ class ActivitiesController < ApplicationController
   end
 
   def destroy
-    if params[:attachment_id] || params[:language_documents_de_id] || params[:language_documents_fr_id] || params[:language_documents_it_id]
-      delete_attachment
-    elsif params[:picture_id]
-      delete_picture
-    else
-      @activity.destroy
-      redirect_to activities_url, notice: I18n.t('messages.deleted.success')
+    @activity.destroy
+    redirect_to activities_url, notice: I18n.t('messages.deleted.success')
+  end
+
+  def delete_attachment
+    type = params[:type]&.to_sym
+    if Activity::ATTACHMENTS.include?(type)
+      attachment = @activity.send(type)
+      attachment = attachment.find_by(id: params[:attachment_id]) if params[:attachment_id].present?
+      attachment.purge if attachment.respond_to?(:purge)
     end
+    redirect_to edit_activity_url(@activity)
   end
 
   private
 
-  def delete_picture
-    @activity.picture.purge
-    redirect_to edit_activity_url(@activity)
-  end
+  def attach_attachments
+    %i[language_documents_de language_documents_fr language_documents_it activity_documents].each do |attachment|
+      next if params[:activity][attachment].blank?
 
-  def delete_attachment
-    if params[:attachment_id]
-      @activity.activity_documents.find_by(id: params[:attachment_id]).purge
-    elsif params[:language_documents_de_id]
-      @activity.language_documents_de.find_by(id: params[:language_documents_de_id]).purge
-    elsif params[:language_documents_fr_id]
-      @activity.language_documents_fr.find_by(id: params[:language_documents_fr_id]).purge
-    elsif params[:language_documents_it_id]
-      @activity.language_documents_it.find_by(id: params[:language_documents_it_id]).purge
+      @activity.send(attachment).attach(params[:activity][attachment])
     end
-    redirect_to edit_activity_url(@activity)
   end
 
   def filter
@@ -79,15 +75,11 @@ class ActivitiesController < ApplicationController
   end
 
   def activity_params
-    params.require(:activity).permit(:label, :description, :block_type, :simo, :participants_count_activity,
-                                     :participants_count_transport, :duration_activity, :duration_journey, :location,
-                                     :transport_location_id, :min_participants, :activity_type, :activity_category_id,
-                                     :picture, :language_de, :language_en, :language_fr, :language_it,
-                                     :detail_description_de, :detail_description_fr, :detail_description_it,
-                                     :language_documents_de_id, :language_documents_fr_id, :language_documents_it_id,
-                                     I18n.available_locales.map { |l| :"label_#{l}" },
-                                     I18n.available_locales.map { |l| :"description_#{l}" },
-                                     stufe_ids: [], stufe_recommended_ids: [], goal_ids: [], tag_ids: [],
-                                     activity_documents: [], language_documents_de: [], language_documents_fr: [], language_documents_it: [])
+    params.require(:activity)
+          .permit(:label, :description, :block_type, :simo, :participants_count_activity, :participants_count_transport,
+                  :duration_activity, :duration_journey, :location, :transport_location_id, :min_participants,
+                  :activity_type, :activity_category_id, :picture,
+                  I18n.available_locales.map { |l| ["label_#{l}", "description_#{l}", "language_#{l}"] }.flatten,
+                  stufe_ids: [], stufe_recommended_ids: [], goal_ids: [], tag_ids: [], activity_documents: [])
   end
 end

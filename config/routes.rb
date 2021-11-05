@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   resources :activities do
     resources :delete_activity_executions, only: :index
     delete :delete_activity_executions, to: 'delete_activity_executions#destroy'
+    delete :attachment, to: 'activities#delete_attachment', on: :member
     resources :activity_executions do
       post :import, on: :collection
     end
