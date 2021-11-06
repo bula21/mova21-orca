@@ -29,7 +29,7 @@ interface ActivityExecution {
     amount_participants: number;
     languages: Array<Language>;
     transport: boolean;
-    mixedLanguages: boolean;
+    mixed_languages: boolean;
 }
 
 interface FixedEvent {
@@ -134,7 +134,7 @@ export class ActivityExecutionService {
                 spot: activityExexution.spot,
                 field: activityExexution.field,
                 hasTransport: activityExexution.transport,
-                mixedLanguages: activityExexution.mixedLanguages
+                mixedLanguages: activityExexution.mixed_languages
             },
             fixedEvent: false,
             color: activityExexution.spot.color
