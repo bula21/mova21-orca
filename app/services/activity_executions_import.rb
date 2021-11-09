@@ -60,8 +60,8 @@ class ActivityExecutionsImport
   # rubocop:disable Metrics/AbcSize
   def build_activity_execution(row, index)
     @activity.activity_executions.build(
-      starts_at: row[0].change(offset: Time.zone.now.strftime('%z')),
-      ends_at: row[1].change(offset: Time.zone.now.strftime('%z')),
+      starts_at: time_in_swiss_timezone(row[0]),
+      ends_at: time_in_swiss_timezone(row[1]),
       amount_participants: row[2], transport: row[6] == 'ja', mixed_languages: row[7] == 'ja',
       field: Field.includes(:spot).find_by(name: row[4], spots: { name: row[3] }),
       **language_flags(row[5].split(',').map(&:strip))
@@ -70,6 +70,11 @@ class ActivityExecutionsImport
     @errors.push "Row #{index + 2}: Invalid values in row"
     Rollbar.warning e if Rollbar.configuration.enabled
   end
+
+  def time_in_swiss_timezone(date_time)
+    ActiveSupport::TimeZone['Europe/Zurich'].parse(date_time.to_s(:long))
+  end
+
   # rubocop:enable Metrics/AbcSize
 
   def imported_items
