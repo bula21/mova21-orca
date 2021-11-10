@@ -66,6 +66,7 @@ interface FlattenedFullcalendarEvent {
   languages: Array<Language>;
   spot: Spot;
   hasTransport: boolean;
+  transportIds: string;
   mixedLanguages: boolean;
   field: Field;
   allDay: boolean;
@@ -114,7 +115,8 @@ class EventEditor extends Component<EventEditorProps, EventEditorState> {
         mixedLanguages: false,
         languages: [],
         allDay: false,
-        fixedEvent: true
+        fixedEvent: true,
+        transportIds: ''
       },
       availableLanguages: [],       // languages available for this activity execution
 
@@ -292,7 +294,7 @@ class EventEditor extends Component<EventEditorProps, EventEditorState> {
                   </Select>
                 </Fragment>
               )}
-              <FormHelperText 
+              <FormHelperText
                 id="helpertext-labelInputField"
               >
                 {Orca.i18n.activityExecutionCalendar.editor.manage_spot_hint} <a href={Orca.manage_spot_link}>{Orca.i18n.activityExecutionCalendar.editor.manage_spot_link_text}</a>
@@ -338,6 +340,10 @@ class EventEditor extends Component<EventEditorProps, EventEditorState> {
                 }
                 label={Orca.i18n.activityExecutionCalendar.editor.has_transport}
               />
+              {
+                  this.state.selectedEvent.hasTransport && this.state.selectedEvent.transportIds &&
+                  <FormHelperText>Transport-IDs: {this.state.selectedEvent.transportIds}</FormHelperText>
+              }
 
               <FormControlLabel
                 className={ classes.formControl }
