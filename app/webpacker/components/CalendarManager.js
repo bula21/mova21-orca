@@ -1,10 +1,6 @@
 import React from 'react'
 import {compose} from 'react-recompose';
-import {
-  Menu,
-  MenuItem,
-  withStyles
-} from '@material-ui/core';
+import {Menu, MenuItem, withStyles} from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete'
 import CopyIcon from '@material-ui/icons/FileCopy'
 import EditIcon from '@material-ui/icons/Edit'
@@ -19,7 +15,7 @@ import InfoSnackbar from './infoSnackbar'
 import ErrorSnackbar from './errorSnackbar'
 import LoadingBar from './loadingBar'
 
-import {ActivityExecutionService, Field} from "../services/activity-execution-service"
+import {ActivityExecutionService} from "../services/activity-execution-service"
 
 // define range of calendar view
 const START_DATE = new Date(Orca.campStart);
@@ -197,9 +193,9 @@ class CalendarManager extends React.Component {
     }
   }
 
-  handleEdit() {
+  handleEdit(id = null) {
     const API = this.state.calendarRef.current.getApi()
-    let event = API.getEventById(this.state.clickedEventId)
+    let event = API.getEventById(id || this.state.clickedEventId)
 
     if (event) {
       this.setState({
@@ -294,6 +290,7 @@ class CalendarManager extends React.Component {
       <>
         <div title={`${eventInfo.timeText} - ${eventDescription}`}
              className={classes.eventContent}
+             onDoubleClick={() => this.handleEdit(eventInfo.event.id)}
              onContextMenu={(evt) => eventInfo.event.extendedProps.fixedEvent ? null : this.handleContextMenuClick(evt, eventInfo.event.id)}
              style={{cursor: 'context-menu'}}
         >
@@ -418,7 +415,6 @@ class CalendarManager extends React.Component {
               selectMirror={true}
               dayMaxEvents={false}
               eventContent={(eventContent) => this.renderEventContent(eventContent)}              // custom render function
-              eventClick={(elem) => elem.event.extendedProps.fixedEvent ? null : this.handleEdit(elem.event.id)}
               eventResize={this.handleEventResize}
               eventDrop={this.handleEventDrag}
               events={this.state.events}
