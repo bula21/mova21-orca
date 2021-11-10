@@ -232,6 +232,7 @@ class EventEditor extends Component<EventEditorProps, EventEditorState> {
                 label={ Orca.i18n.activityExecutionCalendar.editor.start_time }
                 type="datetime-local"
                 value={ this.state.selectedEvent.start }
+                onChange={ this.handleChange }
                 className={ classes.inputField }
               />
 
