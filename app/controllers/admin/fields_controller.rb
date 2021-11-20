@@ -44,7 +44,7 @@ module Admin
     # DELETE /fields/1
     def destroy
       @field.destroy
-      redirect_to admin_fields_path, notice: t('messages.deleted.success')
+      redirect_to admin_spot_fields_path(@spot), notice: t('messages.deleted.success')
     end
 
     private
