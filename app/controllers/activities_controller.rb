@@ -5,7 +5,7 @@ class ActivitiesController < ApplicationController
   load_and_authorize_resource except: [:create]
 
   def index
-    @activities = filter.apply(Activity.accessible_by(current_ability).distinct)
+    @activities = filter.apply(Activity.accessible_by(current_ability).distinct).order(sort_direction)
     respond_to do |format|
       format.html { @activities = @activities.page params[:page] }
       format.json { render json: ActivityBlueprint.render(@activities) }
@@ -58,6 +58,13 @@ class ActivitiesController < ApplicationController
   end
 
   private
+
+  def sort_direction
+    return :id unless params[:sort]
+    return { id: :desc } if params[:sort] == 'id_desc'
+    return :label if params[:sort] == 'label'
+    return { label: :desc } if params[:sort] == 'label_desc'
+  end
 
   def attach_attachments
     %i[language_documents_de language_documents_fr language_documents_it activity_documents].each do |attachment|
