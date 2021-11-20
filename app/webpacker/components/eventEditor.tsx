@@ -233,6 +233,8 @@ class EventEditor extends Component<EventEditorProps, EventEditorState> {
                 type="datetime-local"
                 value={ this.state.selectedEvent.start }
                 onChange={ this.handleChange }
+                error={ this.state.errorText.length === 0 ? false : true }
+                helperText={ this.state.errorText }
                 className={ classes.inputField }
               />
 
