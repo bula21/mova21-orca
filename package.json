@@ -12,6 +12,7 @@
     "@fullcalendar/timegrid": "^5.7.0",
     "@material-ui/core": "^4.11.4",
     "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.60",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.2-1",
     "@rails/webpacker": "^4.2.0",
