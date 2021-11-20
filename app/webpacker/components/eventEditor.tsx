@@ -17,16 +17,17 @@ import {
   FormHelperText,
   FormControlLabel, Theme, createStyles
 } from '@material-ui/core';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 import DeleteIcon from '@material-ui/icons/Delete'; // to-do: change icons to fontawesome
 import SaveAltIcon from '@material-ui/icons/SaveAlt';
 import ClearIcon from '@material-ui/icons/Clear';
 import CopyIcon from '@material-ui/icons/FileCopy'
-import {compose} from 'react-recompose';
+import { compose } from 'react-recompose';
 import { Field, FullCalendarEvent, Language, Spot } from "../services/activity-execution-service"
 import * as moment from 'moment';
 import 'moment-timezone';
 
-const styles = ({ spacing }: Theme) => createStyles({
+const styles = ({spacing}: Theme) => createStyles({
   modal: {
     display: 'flex',
     outline: 0,
@@ -54,8 +55,8 @@ function convertDateToIso(date) {
   return moment(date).toISOString(true).substring(0, 16)
 }
 
-const defaultSpot = { id: undefined, name: '', fields: [], color: '' };
-const defaultField = { id: undefined, name: '' };
+const defaultSpot = {id: undefined, name: '', fields: [], color: ''};
+const defaultField = {id: undefined, name: ''};
 
 interface FlattenedFullcalendarEvent {
   id?: number;
@@ -172,19 +173,18 @@ class EventEditor extends Component<EventEditorProps, EventEditorState> {
   mutateSelectedEventState(field, value) {
     const newState = {};
     newState[field] = value;
-    return {...this.state.selectedEvent, ...newState };
+    return {...this.state.selectedEvent, ...newState};
   }
 
-  handleSpotChange = evt => {
-    let spotId = evt.target.value
-
+  handleSpotChange = (evt, spot: Spot) => {
+    const selectedField = spot.fields.length === 1 ? spot.fields[0] : defaultField;
     this.setState({
-      selectedEvent: { ...this.mutateSelectedEventState('spot', this.state.availableSpots.find(spot => spot.id === spotId)), field: defaultField }
+      selectedEvent: {...this.mutateSelectedEventState('spot', spot), field: selectedField}
     });
   }
 
-  handleFieldChange = evt => {
-    let fieldId = evt.target.value
+  handleFieldChange = (evt, field: Field) => {
+    let fieldId = field.id;
 
     this.setState({
       selectedEvent: this.mutateSelectedEventState('field', this.state.selectedEvent.spot.fields.find(field => field.id === fieldId))
@@ -194,7 +194,7 @@ class EventEditor extends Component<EventEditorProps, EventEditorState> {
   // function handling submit of form
   handleSubmit = evt => {
     evt.preventDefault();
-    const { onSave } = this.props
+    const {onSave} = this.props
     let selectedEvent = this.state.selectedEvent
 
     // trigger parent function passed by props
@@ -213,39 +213,42 @@ class EventEditor extends Component<EventEditorProps, EventEditorState> {
   }
 
   render() {
-    const { classes, onClose, onDelete } = this.props;
+    const {classes, onClose, onDelete} = this.props;
 
     return (
       <Modal
-        className={ classes.modal }
-        onClose={ onClose }
+        className={classes.modal}
+        onClose={onClose}
         open
       >
-        <Card className={ classes.modalCard }>
-          <form onSubmit={ (evt) => this.handleSubmit(evt) }>
-            <CardContent className={ classes.modalCardContent }>
-              <h2 id="modal-title">{ this.state.selectedEvent.id === null ? Orca.i18n.activityExecutionCalendar.editor.title_copy : Orca.i18n.activityExecutionCalendar.editor.title_edit }</h2>
+        <Card className={classes.modalCard}>
+          <form onSubmit={(evt) => this.handleSubmit(evt)}>
+            <CardContent className={classes.modalCardContent}>
+              <h2
+                id="modal-title">{this.state.selectedEvent.id === null ? Orca.i18n.activityExecutionCalendar.editor.title_copy : Orca.i18n.activityExecutionCalendar.editor.title_edit}</h2>
 
               <TextField
                 key="inputStartTime"
                 name="start"
-                label={ Orca.i18n.activityExecutionCalendar.editor.start_time }
+                label={Orca.i18n.activityExecutionCalendar.editor.start_time}
                 type="datetime-local"
-                value={ this.state.selectedEvent.start }
-                onChange={ this.handleChange }
-                className={ classes.inputField }
+                value={this.state.selectedEvent.start}
+                onChange={this.handleChange}
+                error={this.state.errorText.length === 0 ? false : true}
+                helperText={this.state.errorText}
+                className={classes.inputField}
               />
 
               <TextField
                 key="inputEndTime"
                 name="end"
-                label={ Orca.i18n.activityExecutionCalendar.editor.end_time }
+                label={Orca.i18n.activityExecutionCalendar.editor.end_time}
                 type="datetime-local"
-                value={ this.state.selectedEvent.end }
-                onChange={ this.handleChange }
-                error={ this.state.errorText.length === 0 ? false : true }
-                helperText={ this.state.errorText }
-                className={ classes.inputField }
+                value={this.state.selectedEvent.end}
+                onChange={this.handleChange}
+                error={this.state.errorText.length === 0 ? false : true}
+                helperText={this.state.errorText}
+                className={classes.inputField}
               />
 
               <TextField
@@ -254,109 +257,100 @@ class EventEditor extends Component<EventEditorProps, EventEditorState> {
                 key="inputAmountParticipants"
                 name="amountParticipants"
                 placeholder="100"
-                label={ Orca.i18n.activityExecutionCalendar.editor.amount_participants }
-                value={ this.state.selectedEvent.amountParticipants }
-                onChange={ this.handleChange }
-                className={ classes.inputField }
+                label={Orca.i18n.activityExecutionCalendar.editor.amount_participants}
+                value={this.state.selectedEvent.amountParticipants}
+                onChange={this.handleChange}
+                className={classes.inputField}
               />
 
-              <InputLabel required id="labelInputSpot">{Orca.i18n.activityExecutionCalendar.editor.spot}</InputLabel>
-              <Select
-                labelId="labelInputSpot"
+              <Autocomplete
                 id="inputspot"
-                name="spot"
-                value={ this.state.selectedEvent.spot.id }
-                onChange={ this.handleSpotChange }
-                autoWidth
-              >
-                {
-                  this.state.availableSpots.map((spot, i) => (
-                    <MenuItem key={ `spot-${i}`} value={spot.id}><em>{spot.name }</em></MenuItem>
-                  ))
-                }
-              </Select>
+                options={this.state.availableSpots}
+                getOptionLabel={(option) => option.name}
+                onChange={this.handleSpotChange}
+                value={this.state.selectedEvent.spot}
+                className={classes.inputField}
+                renderInput={(params) => <TextField {...params} variant="standard" required
+                                                    label={Orca.i18n.activityExecutionCalendar.editor.spot}/>}
+              />
 
               {this.state.selectedEvent.spot.id && (
-                <Fragment>
-                  <InputLabel required id="labelInputField">{ Orca.i18n.activityExecutionCalendar.editor.field }</InputLabel>
-                  <Select
-                    labelId="labelInputField"
-                    id="inputfield"
-                    name="field"
-                    onChange={ this.handleFieldChange }
-                    value={ this.state.selectedEvent.field.id }
-                    autoWidth
-                  >
-                    {
-                      this.state.selectedEvent.spot.fields.map((field, i) => (
-                        <MenuItem key={ `field-${ i }` } value={ field.id }><em>{ field.name }</em></MenuItem>
-                      ))
-                    }
-                  </Select>
-                </Fragment>
+                <Autocomplete
+                  id="inputfield"
+                  options={this.state.selectedEvent.spot.fields}
+                  getOptionLabel={(option) => option.name}
+                  onChange={this.handleFieldChange}
+                  value={this.state.selectedEvent.field}
+                  className={classes.inputField}
+                  renderInput={(params) => <TextField {...params} variant="standard" required
+                                                      label={Orca.i18n.activityExecutionCalendar.editor.field}/>}
+                />
               )}
               <FormHelperText
                 id="helpertext-labelInputField"
+                className={classes.inputField}
               >
-                {Orca.i18n.activityExecutionCalendar.editor.manage_spot_hint} <a href={Orca.manage_spot_link}>{Orca.i18n.activityExecutionCalendar.editor.manage_spot_link_text}</a>
+                {Orca.i18n.activityExecutionCalendar.editor.manage_spot_hint} <a
+                href={Orca.manage_spot_link}>{Orca.i18n.activityExecutionCalendar.editor.manage_spot_link_text}</a>
               </FormHelperText>
 
-              <FormControl className={ classes.formControl }>
+              <FormControl className={classes.formControl}>
                 <InputLabel id="labelInputLanguages">{Orca.i18n.activityExecutionCalendar.editor.languages}</InputLabel>
                 <Select
                   labelId="labelInputLanguages"
                   id="inputLanguages"
                   name="languages"
                   multiple
-                  value={ this.state.selectedEvent.languages }
-                  onChange={ this.handleChange }
+                  value={this.state.selectedEvent.languages}
+                  onChange={this.handleChange}
                   autoWidth
-                  input={ <Input/> }
-                  renderValue={ (selected: string[]) => selected.join(', ') }
+                  input={<Input/>}
+                  renderValue={(selected: string[]) => selected.join(', ')}
                 >
                   {
                     this.state.availableLanguages.map((language, i) => (
-                      <MenuItem key={ `lang-${ i }`} value={ language }>
-                        <Checkbox checked={ this.state.selectedEvent.languages.indexOf(language) > -1 }/>
-                        <ListItemText primary={ language }/>
+                      <MenuItem key={`lang-${i}`} value={language}>
+                        <Checkbox checked={this.state.selectedEvent.languages.indexOf(language) > -1}/>
+                        <ListItemText primary={language}/>
                       </MenuItem>
                     ))
                   }
                 </Select>
               </FormControl>
-              <FormHelperText id="helpertext-labelInputField">{Orca.i18n.activityExecutionCalendar.editor.manage_languages_hint}</FormHelperText>
+              <FormHelperText
+                id="helpertext-labelInputField">{Orca.i18n.activityExecutionCalendar.editor.manage_languages_hint}</FormHelperText>
 
               <FormControlLabel
-                className={ classes.formControl }
+                className={classes.formControl}
                 control={
                   <Checkbox
                     id="inputHasTransport"
                     name="hasTransport"
-                    checked={ this.state.selectedEvent.hasTransport }
+                    checked={this.state.selectedEvent.hasTransport}
                     value={true}
-                    onChange={ this.handleChange }
+                    onChange={this.handleChange}
                     color="primary"
-                    inputProps={{ 'aria-label': 'secondary checkbox' }}
+                    inputProps={{'aria-label': 'secondary checkbox'}}
                   />
                 }
                 label={Orca.i18n.activityExecutionCalendar.editor.has_transport}
               />
               {
-                  this.state.selectedEvent.hasTransport && this.state.selectedEvent.transportIds &&
-                  <FormHelperText>Transport-IDs: {this.state.selectedEvent.transportIds}</FormHelperText>
+                this.state.selectedEvent.hasTransport && this.state.selectedEvent.transportIds &&
+                <FormHelperText>Transport-IDs: {this.state.selectedEvent.transportIds}</FormHelperText>
               }
 
               <FormControlLabel
-                className={ classes.formControl }
+                className={classes.formControl}
                 control={
                   <Checkbox
                     id="inputMixedLanguages"
                     name="mixedLanguages"
-                    checked={ this.state.selectedEvent.mixedLanguages }
+                    checked={this.state.selectedEvent.mixedLanguages}
                     value={false}
-                    onChange={ this.handleChange }
+                    onChange={this.handleChange}
                     color="primary"
-                    inputProps={{ 'aria-label': 'secondary checkbox' }}
+                    inputProps={{'aria-label': 'secondary checkbox'}}
                   />
                 }
                 label={Orca.i18n.activityExecutionCalendar.editor.mixed_languages}
@@ -364,11 +358,15 @@ class EventEditor extends Component<EventEditorProps, EventEditorState> {
             </CardContent>
 
             <CardActions>
-              <Button size="small" color="primary" type="submit"><SaveAltIcon/>{Orca.i18n.activityExecutionCalendar.editor.save}</Button>
-              <Button size="small" onClick={ this.handleCopy }><CopyIcon/>{Orca.i18n.activityExecutionCalendar.editor.copy}</Button>
+              <Button size="small" color="primary"
+                      type="submit"><SaveAltIcon/>{Orca.i18n.activityExecutionCalendar.editor.save}</Button>
               <Button size="small"
-                      onClick={ () => onDelete(this.state.selectedEvent.id) }><DeleteIcon/>{Orca.i18n.activityExecutionCalendar.editor.delete}</Button>
-              <Button size="small" onClick={ () => onClose() }><ClearIcon/>{Orca.i18n.activityExecutionCalendar.editor.cancel}</Button>
+                      onClick={this.handleCopy}><CopyIcon/>{Orca.i18n.activityExecutionCalendar.editor.copy}</Button>
+              <Button size="small"
+                      onClick={() => onDelete(this.state.selectedEvent.id)}><DeleteIcon/>{Orca.i18n.activityExecutionCalendar.editor.delete}
+              </Button>
+              <Button size="small"
+                      onClick={() => onClose()}><ClearIcon/>{Orca.i18n.activityExecutionCalendar.editor.cancel}</Button>
             </CardActions>
           </form>
         </Card>
