@@ -49,8 +49,9 @@ class ActivityExecutionsController < ApplicationController
   private
 
   def activity_execution_params
-    params.require(:activity_execution).permit(:starts_at, :ends_at, :field_id, :spot_id, :amount_participants,
-                                               :transport, :mixed_languages, languages: []).tap do |params|
+    params.require(:activity_execution).permit(:starts_at, :ends_at, :field_id, :spot_id,
+                                               :amount_participants, :transport_ids, :transport,
+                                               :mixed_languages, languages: []).tap do |params|
       convert_language_array_to_flags(params) if params[:languages]
     end
   end
