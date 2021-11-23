@@ -7,6 +7,6 @@ class UnitBlueprint < Blueprinter::Base
 
   view :with_unit_activities do
     association :unit_activities, blueprint: UnitActivityBlueprint
-    association :unit_activity_executions, blueprint: UnitActivityExecutionsBlueprint
+    association :unit_activity_executions, blueprint: UnitActivityExecutionBlueprint
   end
 end
