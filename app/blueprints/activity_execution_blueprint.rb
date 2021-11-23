@@ -8,6 +8,7 @@ class ActivityExecutionBlueprint < Blueprinter::Base
 
   association :field, blueprint: FieldBlueprint
   association :spot, blueprint: SpotBlueprint
+  association :unit_activity_executions, blueprint: UnitActivityExecutionsBlueprint
   field :languages do |activity_execution|
     available_languages_for_frontend(activity_execution)
   end

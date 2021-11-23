@@ -6,7 +6,10 @@ class UnitActivitiesController < ApplicationController
   before_action :check_phase
 
   def index
-    @activities = filter.apply(Activity.bookable_by(@unit).distinct).page params[:page]
+    @activities = Activity.accessible_by(current_ability)
+    @activities = @activities.bookable_by(@unit).distinct unless params[:prefilter] == '0' && can?(:manage,
+                                                                                                   UnitActivity)
+    @activities = filter.apply(@activities).page params[:page]
   end
 
   def show
