@@ -58,13 +58,6 @@ class CalendarManager extends React.Component {
   componentDidMount() {
     const {activityId, availableLanguages, spots, defaultAmountParticipants} = this.props
 
-    document.addEventListener('click', (e) => {
-      if (e.ctrlKey) {
-        // todo define what action should be executed with ctrl key
-        console.log('With ctrl, do something...');
-      }
-    });
-
     // todo: improve error handling
     this.state.activityExecutionService.getAll(this.props.activityId).then((result) => {
       this.setState({

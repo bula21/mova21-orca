@@ -2,8 +2,8 @@ javascript:
     var Orca = {
         locale: '#{I18n.locale}-CH',
         shortLocale: '#{I18n.locale[0..1]}',
-        campStart: '#{Orca::CAMP_START.strftime("%Y-%m-%d %H:%M")}',
-        campEnd: '#{Orca::CAMP_END.end_of_day.strftime("%Y-%m-%d %H:%M")}',
+        campStart: '#{Orca::CAMP_START.iso8601}',
+        campEnd: '#{Orca::CAMP_END.end_of_day.iso8601}',
         i18n: {
             activityExecutionCalendar: #{(I18n.j('activity_execution_calendar'))}
         },
