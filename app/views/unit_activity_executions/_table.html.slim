@@ -1,0 +1,24 @@
+.table-responsive
+  table.table
+    thead
+      tr
+        th = Unit.model_name.human
+        th = ActivityExecution.model_name.human
+        th = UnitActivityExecution.human_attribute_name(:headcount)
+        th
+    tbody
+      - unit_activity_executions.each do |unit_activity_execution|
+        tr
+          td 
+            = link_to unit_activity_execution.unit, unit_path(unit_activity_execution.unit)
+          td
+            = link_to unit_activity_execution.activity_execution, activity_path(unit_activity_execution.activity_execution.activity)
+          td = unit_activity_execution.headcount
+          td.p-1
+            = link_to(t('buttons.edit'), edit_unit_activity_execution_path(unit_activity_execution), class: 'btn btn-primary') if can?(:edit, unit_activity_execution)
+            = link_to t('buttons.destroy'), unit_activity_execution_path(unit_activity_execution), data: { confirm: t('buttons.confirm_delete') }, method: :delete, class: 'btn btn-secondary' if can?(:delete, unit_activity_execution)
+
+- if defined?(unit_id) && unit_id.present?
+  = link_to t('buttons.create'), new_unit_activity_execution_path(unit_id: unit_id), class: 'btn btn-secondary mt-4'
+- elsif defined?(activity_execution_id) && activity_execution_id.present?
+  = link_to t('buttons.create'), new_unit_activity_execution_path(activity_execution_id: activity_execution_id), class: 'btn btn-secondary mt-4'

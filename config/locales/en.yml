@@ -107,6 +107,10 @@ en:
         title: Title
         visitor_day_tickets: Anzahl Tickets für den Besuchstag
         week: Week
+      unit_activity_execution:
+        activity_execution_id: Durchführung
+        headcount: Anzahl Personen
+        unit_id: Einheit
     errors:
       messages:
         incomplete: ist unvollständig
@@ -149,6 +153,9 @@ en:
       unit_activity:
         one: Buchbare Aktivität
         other: Buchbare Aktivitäten
+      unit_activity_execution:
+        one: Zugewiesene Aktivitätsdurchführung
+        other: Zugewiesene Aktivitätsdurchführungen
   activity:
     edit:
       title: Aktivität editieren

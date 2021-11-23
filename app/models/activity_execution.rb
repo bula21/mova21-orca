@@ -7,6 +7,8 @@ class ActivityExecution < ApplicationRecord
   belongs_to :activity, inverse_of: :activity_executions
   belongs_to :field, inverse_of: :activity_executions
   has_one :spot, through: :field
+  has_many :unit_activity_executions, inverse_of: :activity_execution, dependent: :destroy
+
   validates :starts_at, :ends_at, presence: true
   validates :transport, inclusion: { in: [true, false] }
   validates :transport_ids, absence: { unless: :transport? }
@@ -22,7 +24,20 @@ class ActivityExecution < ApplicationRecord
     activity&.participants_count_activity || 0
   end
 
+  def headcount
+    unit_activity_executions.sum(:headcount)
+  end
+
+  def available_headcount
+    max_amount_participants - headcount
+  end
+
   def languages
     bitfield_values(:language_flags)
+  end
+
+  def to_s
+    super unless activity && starts_at.present?
+    "#{activity.label}, #{I18n.l(starts_at)}"
   end
 end

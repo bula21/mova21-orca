@@ -24,6 +24,7 @@ class Ability
     can :read, Activity
   end
 
+  # rubocop:disable Metrics/MethodLength
   def midata_user_permissions(user)
     can %i[read commit], Unit, al: { email: user.email }
     can %i[read commit], Unit, lagerleiter: { email: user.email }
@@ -36,9 +37,12 @@ class Ability
     can %i[edit update destroy], Participant, pbs_id: nil, units: { lagerleiter: { email: user.email } }
     can :manage, UnitActivity, unit: { lagerleiter: { email: user.email } }
     can :manage, UnitActivity, unit: { al: { email: user.email } }
+    can :read, UnitActivityExecution, unit: { lagerleiter: { email: user.email } }
+    can :read, UnitActivityExecution, unit: { al: { email: user.email } }
 
     assistant_leader_permission(user)
   end
+  # rubocop:enable Metrics/MethodLength
 
   def assistant_leader_permission(user)
     participants = Participant.assistant_leader.where(email: user.email)
@@ -48,6 +52,7 @@ class Ability
     can :read, Unit, id: unit_ids
     can :read, UnitActivity, unit: { id: unit_ids }
     can :read, Participant, units: { id: unit_ids }
+    can :read, UnitActivityExecution, unit: { id: unit_ids }
   rescue StandardError => e
     Rollbar.warning e if Rollbar.configuration.enabled
   end
@@ -96,6 +101,7 @@ class Ability
 
     can :manage, UnitActivity
     can :manage, Unit
+    can :manage, UnitActivityExecution
   end
 
   def editor_user_permissions(_user)

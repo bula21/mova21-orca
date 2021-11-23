@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     delete 'document/:id', to: 'units#delete_document', as: :document
   end
   resources :leaders, except: [:destroy]
+  resources :unit_activity_executions
   resources :activities do
     resources :delete_activity_executions, only: :index
     delete :delete_activity_executions, to: 'delete_activity_executions#destroy'

@@ -107,6 +107,10 @@ it:
         title: Titolo
         visitor_day_tickets: Anzahl Tickets für den Besuchstag
         week: Settimana di campo
+      unit_activity_execution:
+        activity_execution_id: Durchführung
+        headcount: Anzahl Personen
+        unit_id: Einheit
     errors:
       messages:
         incomplete: è incompleto
@@ -152,6 +156,9 @@ it:
       unit_activity:
         one: Attività prenotata
         other: Lista dei desideri
+      unit_activity_execution:
+        one: Zugewiesene Aktivitätsdurchführung
+        other: Zugewiesene Aktivitätsdurchführungen
   activity:
     edit:
       title: Modificare l'attività
