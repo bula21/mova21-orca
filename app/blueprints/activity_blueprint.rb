@@ -6,11 +6,8 @@ class ActivityBlueprint < Blueprinter::Base
   association :activity_category, blueprint: ActivityCategoryBlueprint
   association :activity_executions, blueprint: ActivityExecutionBlueprint
   fields :label_in_database
-
-  field :stufen_allowed do |activity|
-    activity.stufen.map(&:to_s)
+  field :stufen do |activity|
+    activity&.stufen&.map(&:code)
   end
-  # field :stufen_recommended do |activity|
-  #   activity.stufen_recommended.map(&:to_s)
-  # end
+
 end
