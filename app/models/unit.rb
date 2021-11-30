@@ -51,6 +51,7 @@ class Unit < ApplicationRecord
   has_many :participant_units, inverse_of: :unit, dependent: :destroy
   has_many :participants, -> { order(role: :asc, last_name: :asc, scout_name: :asc) },
            through: :participant_units, inverse_of: :units, dependent: :destroy
+  has_many :unit_activity_executions, inverse_of: :unit, dependent: :destroy
 
   has_many_attached :documents
 
@@ -112,5 +113,9 @@ class Unit < ApplicationRecord
   def participant_role_counts
     baseline = Participant::MIDATA_EVENT_CAMP_ROLES.transform_values { 0 }
     participants.group_by(&:role).transform_values(&:count).symbolize_keys.reverse_merge(baseline)
+  end
+
+  def to_s
+    "#{id}: #{title}"
   end
 end
