@@ -3,6 +3,8 @@
 class UnitActivityExecution < ApplicationRecord
   belongs_to :unit, inverse_of: :unit_activity_executions
   belongs_to :activity_execution, inverse_of: :unit_activity_executions
+  has_one :activity, through: :activity_execution
+
 
   before_validation :prefill_headcount
   validates :unit_id, :activity_execution_id, presence: true
