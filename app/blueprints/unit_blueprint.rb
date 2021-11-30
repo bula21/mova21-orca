@@ -5,8 +5,15 @@ class UnitBlueprint < Blueprinter::Base
 
   fields :language, :stufe, :week, :starts_at, :ends_at, :participant_role_counts, :district
 
+  field :expected_participant_counts do |unit|
+    {
+      participant: unit.expected_participants,
+      leader: unit.expected_participants_leitung
+    }
+  end
+
   view :with_unit_activities do
     association :unit_activities, blueprint: UnitActivityBlueprint
-    association :unit_activity_executions, blueprint: UnitActivityExecutionsBlueprint
+    association :unit_activity_executions, blueprint: UnitActivityExecutionBlueprint
   end
 end
