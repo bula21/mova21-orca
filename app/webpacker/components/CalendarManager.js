@@ -410,6 +410,7 @@ class CalendarManager extends React.Component {
               eventContent={(eventContent) => this.renderEventContent(eventContent)}              // custom render function
               eventResize={this.handleEventResize}
               eventDrop={this.handleEventDrag}
+              eventDragStart={() => this.setState({success: null, error: null})}
               events={this.state.events}
               select={this.handleDateSelect}
               contentHeight="auto"

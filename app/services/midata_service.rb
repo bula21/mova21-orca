@@ -11,12 +11,16 @@ class MidataService
   end
 
   def fetch_participations(group_id, event_id, page = 1)
+    Rails.logger.debug do
+      "URL: #{"/groups/#{group_id}/events/#{event_id}/participations.json"}, QUERY: #{auth_params.merge(page: page)}"
+    end
     JSON.parse(self.class.get("/groups/#{group_id}/events/#{event_id}/participations.json",
                               query: auth_params.merge(page: page)).body)
   end
 
   def fetch_camp_unit_data(id)
     Rails.logger.debug { "Talking to Midata Event #{id}" }
+    Rails.logger.debug { "URL: #{"/events/#{id}.json"}, QUERY: #{auth_params}" }
 
     JSON.parse(self.class.get("/events/#{id}.json", query: auth_params).body)
   end
