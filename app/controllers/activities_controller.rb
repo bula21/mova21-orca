@@ -8,7 +8,7 @@ class ActivitiesController < ApplicationController
     @activities = filter.apply(Activity.accessible_by(current_ability).distinct).order(sort_direction)
     respond_to do |format|
       format.html { @activities = @activities.page params[:page] }
-      format.json { render json: ActivityBlueprint.render(@activities) }
+      format.json { render json: ActivityBlueprint.render(@activities, view: :with_activity_executions) }
     end
   end
 
