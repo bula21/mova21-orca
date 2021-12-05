@@ -32,6 +32,23 @@ class ActivityExecution < ApplicationRecord
     max_amount_participants - headcount
   end
 
+  def headcount_utilization
+    return 1 if available_headcount.zero?
+
+    headcount / available_headcount
+  end
+
+  def headcount_utilization_color
+    case headcount_utilization * 100
+    when 0..50
+      'green'
+    when 50..80
+      'yellow'
+    else
+      'red'
+    end
+  end
+
   def languages
     bitfield_values(:language_flags)
   end

@@ -84,4 +84,8 @@ class Activity < ApplicationRecord
   def languages
     bitfield_values(:language_flags)
   end
+
+  def to_s
+    label
+  end
 end

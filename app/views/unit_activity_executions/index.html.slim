@@ -1,3 +1,43 @@
 .h1 = UnitActivityExecution.model_name.human(count: :other)
 
-= render partial: 'table', locals: { unit_activity_executions: @unit_activity_executions, activity_execution_id: params[:activity_execution_id], unit_id: params[:unit_id] }
+.row
+	- if @unit 
+		dl.col-md-6
+			dd = link_to @unit.title, unit_path(@unit)
+			dt = t('activerecord.attributes.unit.stufe')
+			dd = t("simple_form.options.unit.stufe.#{@unit.stufe}")
+			dt = t('activerecord.attributes.unit.language')
+			dd = t("simple_form.options.unit.language.#{@unit.language}")
+			dt = t('activerecord.attributes.unit.expected_participants')
+			dd 
+				= @unit.expected_participants
+				| +
+				= @unit.expected_participants_leitung
+	- if @activity_execution
+		dl.col-md-6
+			dd = @activity_execution
+			dt = Activity.model_name.human 
+			dd = link_to @activity_execution.activity, activity_path(@activity_execution.activity)
+			dt = ActivityCategory.model_name.human
+			dd = @activity_execution.activity.activity_category
+			dt = t('activerecord.attributes.activity_exection.utilization')
+			dd 
+				.w-100[style="padding: 2px; border: 1px solid black;"]
+					div[style="min-width: fit-content; width: #{@activity_execution.headcount_utilization * 100}%; max-width: 100%; background-color: #{@activity_execution.headcount_utilization_color}; padding: 2px; color: white;"]
+						= "#{@activity_execution.headcount}/#{@activity_execution.available_headcount} (#{@activity_execution.headcount_utilization * 100}%)"
+
+
+= render partial: 'table', locals: { unit_activity_executions: @unit_activity_executions, activity_execution_id: @activity_execution&.id, unit_id: @unit&.id }
+
+
+.card.d-none
+	.card-body
+		- if @import_errors.present?
+			ul.alert.alert-danger
+				- @import_errors.values.each do |error|
+					li = error
+
+		= simple_form_for :import, url: import_unit_activity_executions_path, method: :post do |f|
+			= f.input :file, as: :file
+			= f.submit t('buttons.upload'), class: 'btn btn-secondary'
+
