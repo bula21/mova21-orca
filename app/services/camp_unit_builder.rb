@@ -48,8 +48,7 @@ class CampUnitBuilder
   end
 
   def extract_people(camp_unit_data)
-    # mapping = { al: 'abteilungsleitung', lagerleiter: 'leader', coach: 'coach' }
-    mapping = { al: 'abteilungsleitung', lagerleiter: 'leader' }
+    mapping = { al: 'abteilungsleitung', lagerleiter: 'leader', coach: 'coach' }
     mapping.transform_values do |data_key|
       person_id   = camp_unit_data.dig('events', 0, 'links', data_key)
       person_data = camp_unit_data.dig('linked', 'people')&.find { |person| person['id'] == person_id }

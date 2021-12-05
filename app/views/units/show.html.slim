@@ -22,6 +22,9 @@
         .col-6
           dt = t('activerecord.attributes.unit.al')
           dd = @unit.al&.full_name
+          - if @unit.coach
+            dt = t('activerecord.attributes.unit.coach')
+            dd = @unit.coach&.full_name
 
       .row
         .col-6
