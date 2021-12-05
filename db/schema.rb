@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_23_093143) do
+ActiveRecord::Schema.define(version: 2021_12_04_111429) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -275,6 +275,7 @@ ActiveRecord::Schema.define(version: 2021_11_23_093143) do
     t.integer "headcount"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.jsonb "additional_data"
     t.index ["activity_execution_id"], name: "index_unit_activity_executions_on_activity_execution_id"
     t.index ["unit_id"], name: "index_unit_activity_executions_on_unit_id"
   end
