@@ -221,6 +221,7 @@ en:
       start_time: Heure de début
       title_copy: Copy
       title_edit: Edit
+      title_new: Neu
     move:
       error: 'Error while moving activity execution:'
       success: Activity execution successfully moved

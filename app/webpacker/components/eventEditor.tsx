@@ -225,7 +225,7 @@ class EventEditor extends Component<EventEditorProps, EventEditorState> {
           <form onSubmit={(evt) => this.handleSubmit(evt)}>
             <CardContent className={classes.modalCardContent}>
               <h2
-                id="modal-title">{this.state.selectedEvent.id === null ? Orca.i18n.activityExecutionCalendar.editor.title_copy : Orca.i18n.activityExecutionCalendar.editor.title_edit}</h2>
+                id="modal-title">{this.state.selectedEvent.id === null ? Orca.i18n.activityExecutionCalendar.editor.title_copy : this.state.selectedEvent.id === undefined ? Orca.i18n.activityExecutionCalendar.editor.title_new : `${Orca.i18n.activityExecutionCalendar.editor.title_edit} (ID #${this.state.selectedEvent.id})`}</h2>
 
               <TextField
                 key="inputStartTime"

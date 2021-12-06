@@ -225,6 +225,7 @@ fr:
       start_time: Heure de début
       title_copy: Copier
       title_edit: Modifier
+      title_new: Nouveau
     move:
       error: 'Erreur lors du déplacement de l''événement:'
       success: L'événement a été déplacé avec succès
