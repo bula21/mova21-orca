@@ -56,7 +56,7 @@ class UnitActivityExecutionsController < ApplicationController
 
   def set_units_and_activity_executions
     @units = Unit.accessible_by(current_ability).order(:id)
-    @activity_executions = ActivityExecution.accessible_by(current_ability).order(:id)
+    @activity_executions = ActivityExecution.accessible_by(current_ability).includes(:activity).order(:id)
   end
 
   def linked_params
