@@ -211,7 +211,6 @@ class EventEditor extends Component<EventEditorProps, EventEditorState> {
 
   render() {
     const { classes, onClose, onDelete, onCopy } = this.props;
-    console.log('rerender ed', this.state.selectedEvent.id);
     return (
       <Modal
         className={classes.modal}

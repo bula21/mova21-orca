@@ -32,6 +32,7 @@ export interface ActivityExecution {
     transport: boolean;
     mixed_languages: boolean;
     transport_ids: string;
+    activity?: Activity
 }
 
 interface FixedEvent {
@@ -85,9 +86,10 @@ interface FixedFullCalendarEvent {
     backgroundColor: string;
 }
 
-export interface NonFixedFullCalendarEvent  {
+export interface NonFixedFullCalendarEvent {
     id: string;
     start: Date;
+    title?: string;
     end: Date;
     allDay: boolean;
     editable?: boolean;
@@ -100,6 +102,7 @@ export interface NonFixedFullCalendarEvent  {
         hasTransport?: boolean;
         mixedLanguages?: boolean;
         transportIds?: string;
+        activity?: Activity;
     }
     backgroundColor: string;
 }
@@ -121,7 +124,7 @@ export class ActivityExecutionService {
             headers: this.getHeaders()
         })
             .then(response => {
-                if(response.status === 200) {
+                if (response.status === 200) {
                     return response.json()
                 }
                 else {
@@ -132,7 +135,7 @@ export class ActivityExecutionService {
                 activityExexutions.map(activityExexution => this.convertActivityExecutionToFullCalendarEvent(activityExexution)));
     }
 
-    private fetchFixedEvents(): Promise<Array<FullCalendarEvent>> {
+    public fetchFixedEvents(): Promise<Array<FullCalendarEvent>> {
         return fetch('/admin/fixed_events', {
             method: 'GET',
             headers: this.getHeaders()
@@ -141,8 +144,8 @@ export class ActivityExecutionService {
             .then(fixedEvents => fixedEvents.map(fixedEvent => this.convertFixedEventsToFullCalendarEvent(fixedEvent)));
     }
 
-    private convertActivityExecutionToFullCalendarEvent(activityExexution: ActivityExecution): NonFixedFullCalendarEvent {
-        return {
+    public convertActivityExecutionToFullCalendarEvent(activityExexution: ActivityExecution): NonFixedFullCalendarEvent {
+        const calendarEvent: NonFixedFullCalendarEvent = {
             id: activityExexution.id.toString(),
             start: new Date(activityExexution.starts_at),
             end: new Date(activityExexution.ends_at),
@@ -159,6 +162,13 @@ export class ActivityExecutionService {
             },
             backgroundColor: activityExexution.spot.color
         };
+        if (activityExexution.title) {
+            calendarEvent.title = activityExexution.title;
+        }
+        if (activityExexution.activity) {
+            calendarEvent.extendedProps.activity = activityExexution.activity;
+        }
+        return calendarEvent;
     }
 
     private convertFixedEventsToFullCalendarEvent(fixedEvent: FixedEvent): FullCalendarEvent {
@@ -238,7 +248,7 @@ export class ActivityExecutionService {
     }
 
     private getHeaders(): { [key: string]: string } {
-        return {'Content-Type': 'application/json', 'X-CSRF-Token': this.getAuthenticityToken()};
+        return { 'Content-Type': 'application/json', 'X-CSRF-Token': this.getAuthenticityToken() };
     }
 
     private getAuthenticityToken(): string {
