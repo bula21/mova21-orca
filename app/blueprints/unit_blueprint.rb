@@ -3,7 +3,7 @@
 class UnitBlueprint < Blueprinter::Base
   identifier :id
 
-  fields :language, :stufe, :week, :starts_at, :ends_at, :participant_role_counts, :district
+  fields :language, :stufe, :week, :starts_at, :ends_at, :participant_role_counts, :district, :abteilung
 
   field :expected_participant_counts do |unit|
     {
