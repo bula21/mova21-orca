@@ -8,15 +8,15 @@ then
   exit 1
 fi
 
-if ! bundle exec i18n-tasks health
-then
-  echo 'i18n detected issues!'
-  exit 1
-fi
-
 bundle exec rspec --fail-fast
 if [ $? -ne 0 ]; then
   echo 'RSpec did not run successfully, commit aborted'
+  exit 1
+fi
+
+if ! bundle exec i18n-tasks health
+then
+  echo 'i18n detected issues!'
   exit 1
 fi
 

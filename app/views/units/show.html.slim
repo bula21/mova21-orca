@@ -202,6 +202,21 @@
       - elsif @unit.activity_booking.phase?(:open)
         = t('.activity_booking_open')
 
+- if @unit.unit_visitor_day.present?
+  .card.mt-5
+    .card-body
+      h3.mb-4 = UnitVisitorDay.model_name.human
+      h3.display-4.text-center.mb-5.mt-5 = l(@unit.unit_visitor_day.at, format: :long_with_weekday)
+      = link_to unit_unit_visitor_day_path(@unit), class: 'btn btn-primary'
+        = t('units.show.book_visitor_day_tickets')
+    / .card-footer.bg-success.border-success.text-white
+    /   - if @unit.activity_booking.phase?(:committed)
+    /     = t('.activity_booking_committed')
+    /   - elsif @unit.activity_booking.phase?(:preview)
+    /     = t('.activity_booking_preview')
+    /   - elsif @unit.activity_booking.phase?(:open)
+    /     = t('.activity_booking_open')
+
 - if can? :manage, UnitActivityExecution
   .card.mt-5
     .card-body
