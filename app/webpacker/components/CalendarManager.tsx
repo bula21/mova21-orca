@@ -1,21 +1,25 @@
 import React from 'react'
-import {compose} from 'react-recompose';
-import {Menu, MenuItem, withStyles} from '@material-ui/core';
+import { compose } from 'react-recompose';
+import { Menu, MenuItem, StyleRulesCallback, WithStyles, withStyles } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete'
 import CopyIcon from '@material-ui/icons/FileCopy'
 import EditIcon from '@material-ui/icons/Edit'
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
-import interactionPlugin from '@fullcalendar/interaction'
+import interactionPlugin, { EventResizeDoneArg } from '@fullcalendar/interaction'
 import bootstrapPlugin from '@fullcalendar/bootstrap'
+import { DateSelectArg, EventApi, EventContentArg, EventDropArg } from '@fullcalendar/common';
 
-import EventEditor from './eventEditor'
+import EventEditor, { FlattenedFullcalendarEvent } from './eventEditor'
 import InfoSnackbar from './infoSnackbar'
 import ErrorSnackbar from './errorSnackbar'
 import LoadingBar from './loadingBar'
 
-import {ActivityExecutionService} from "../services/activity-execution-service"
+import { ActivityExecutionService, FullCalendarEvent, isNonFixedEvent, NonFixedFullCalendarEvent, Spot } from "../services/activity-execution-service"
+import { Component } from 'react';
+import { RefObject } from 'react';
+import { ClassNameMap, ClassKeyOfStyles } from '@material-ui/styles';
 
 // define range of calendar view
 const START_DATE = new Date(Orca.campStart);
@@ -31,32 +35,61 @@ const styles = theme => ({
   }
 })
 
-class CalendarManager extends React.Component {
-  constructor() {
-    super()
+
+interface CalendarManagerProps {
+  activityId: number;
+  availableLanguages: string[];
+  spots: Array<Spot>;
+  defaultAmountParticipants: number;
+  classes: ClassNameMap<ClassKeyOfStyles<typeof styles>>
+}
+
+
+interface CalendarManagerState {
+  activityId: number;
+  activityExecutionService: ActivityExecutionService;
+  availableLanguages: string[];
+  defaultAmountParticipants: number;
+  event: Partial<NonFixedFullCalendarEvent>;
+  events: FullCalendarEvent[];
+  spots: Array<Spot>;
+  calendarRef: RefObject<FullCalendar>
+  showEditor: boolean;
+  loading: boolean;
+  error: ErrorSnackbar
+  success: string;
+  mouseX: number;
+  mouseY: number;
+  clickedEventId: string | null;
+}
+
+
+
+class CalendarManager extends Component<CalendarManagerProps, CalendarManagerState> {
+  constructor(props: Readonly<CalendarManagerProps>) {
+    super(props)
 
     this.state = {
       activityId: 0,                                // activity ID
       activityExecutionService: new ActivityExecutionService(),
       availableLanguages: [],                       // executions can have same or less languages then the activity
-
       event: null,                                  // working event
       events: [],                                   // fullcalendar source for events
       spots: [],                                    // spots including available fields
       calendarRef: React.createRef(),               // reference to full calendar
-
+      defaultAmountParticipants: 0,
       showEditor: false,    // flag to open editor
       loading: true,        // flag to trigger loading icon
       error: null,          // to trigger error banner
       success: null,        // to trigger success banner
       mouseX: null,         // position of context menu
       mouseY: null,         // position of context menu
-      clickedEventId: 0     // event id of the right clicked event
+      clickedEventId: null     // event id of the right clicked event
     }
   }
 
   componentDidMount() {
-    const {activityId, availableLanguages, spots, defaultAmountParticipants} = this.props
+    const { activityId, availableLanguages, spots, defaultAmountParticipants } = this.props
 
     // todo: improve error handling
     this.state.activityExecutionService.getAll(this.props.activityId).then((result) => {
@@ -86,8 +119,8 @@ class CalendarManager extends React.Component {
     })
   }
 
-  handleDateSelect = (selectInfo) => {
-    let event = {
+  handleDateSelect = (selectInfo: DateSelectArg) => {
+    let event: Partial<NonFixedFullCalendarEvent> = {
       start: selectInfo.start,
       end: selectInfo.end,
       allDay: false
@@ -99,10 +132,11 @@ class CalendarManager extends React.Component {
     })
   }
 
-  convertFormEventToFullCalendarEvent = (selectedEvent) => ({
+  convertFormEventToFullCalendarEvent = (selectedEvent: FlattenedFullcalendarEvent): NonFixedFullCalendarEvent => ({
     id: selectedEvent.id,
-    start: selectedEvent.start,
-    end: selectedEvent.end,
+    start: new Date(selectedEvent.start),
+    end: new Date(selectedEvent.end),
+    allDay: selectedEvent.allDay,
     extendedProps: {
       languages: selectedEvent.languages,
       hasTransport: selectedEvent.hasTransport,
@@ -110,8 +144,9 @@ class CalendarManager extends React.Component {
       amountParticipants: selectedEvent.amountParticipants,
       field: selectedEvent.field,
       spot: selectedEvent.spot,
+      fixedEvent: selectedEvent.fixedEvent,
     },
-    fixedEvent: selectedEvent.fixedEvent
+    backgroundColor: selectedEvent.spot.color
   });
 
   writeErrorMessage = (orcaI18nText, err) => {
@@ -121,10 +156,10 @@ class CalendarManager extends React.Component {
       errorMessage = err.join(',')
     }
 
-    this.setState({error: {message: `${orcaI18nText} ${errorMessage}`}})
+    this.setState({ error: { message: `${orcaI18nText} ${errorMessage}` } })
   }
 
-  handleEventSave = (selectedEvent) => {
+  handleEventSave = (selectedEvent: FlattenedFullcalendarEvent) => {
     const event = this.convertFormEventToFullCalendarEvent(selectedEvent)
     const API = this.state.calendarRef.current.getApi()
 
@@ -132,23 +167,22 @@ class CalendarManager extends React.Component {
     if (event.id) {
       this.state.activityExecutionService.update(this.state.activityId, event).then(result => {
         // save extended attributes to event object
-
-        // TODO: avoid mutating the state
-        this.state.event.setExtendedProp("languages", result.extendedProps.languages)
-        this.state.event.setExtendedProp("spot", result.extendedProps.spot)
-        this.state.event.setExtendedProp("field", result.extendedProps.field)
-        this.state.event.setExtendedProp("amountParticipants", result.extendedProps.amountParticipants)
-        this.state.event.setExtendedProp("hasTransport", result.extendedProps.hasTransport)
-        this.state.event.setExtendedProp("mixedLanguages", result.extendedProps.mixedLanguages)
+        const event = API.getEventById(result.id);
+        event.setExtendedProp("languages", result.extendedProps.languages)
+        event.setExtendedProp("spot", result.extendedProps.spot)
+        event.setExtendedProp("field", result.extendedProps.field)
+        event.setExtendedProp("amountParticipants", result.extendedProps.amountParticipants)
+        event.setExtendedProp("hasTransport", result.extendedProps.hasTransport)
+        event.setExtendedProp("mixedLanguages", result.extendedProps.mixedLanguages)
 
         // set base attributes to event object
-        this.state.event.setProp("backgroundColor", result.color)
-        this.state.event.setDates(result.start)
-        this.state.event.setEnd(result.end)
-        this.state.event.setProp("fixedEvent", result.fixedEvent)
+        event.setProp("backgroundColor", result.backgroundColor)
+        event.setDates(result.start, result.end)
+        event.setProp("fixedEvent", result.extendedProps.fixedEvent)
 
         this.handlContextMenuClose()
         this.setState({
+          event: null,
           success: Orca.i18n.activityExecutionCalendar.update.success,
           showEditor: false,
         })
@@ -170,41 +204,42 @@ class CalendarManager extends React.Component {
     }
   }
 
-  handleEventCopy() {
+  handleEventCopy(eventId: string): void {
     const API = this.state.calendarRef.current.getApi()
-    let event = API.getEventById(this.state.clickedEventId)
+    let event = API.getEventById(eventId)
+    const fullCalendarEvent = this.convertEventApiToNonFixedFullCalendarEvent(event);
 
-    if (event) {
+    if (event && isNonFixedEvent(fullCalendarEvent)) {
       // reset id and provide as template for editor
-      event = event.toPlainObject()
-      event.id = null
+      fullCalendarEvent.id = null;
 
       this.setState({
         showEditor: true,
-        event: event
+        event: fullCalendarEvent
       })
     }
   }
 
-  handleEdit(id = null) {
+  handleEdit(id: string) {
     const API = this.state.calendarRef.current.getApi()
-    let event = API.getEventById(id || this.state.clickedEventId)
+    let event = API.getEventById(id)
 
-    if (event) {
+    const fullCalendarEvent = this.convertEventApiToNonFixedFullCalendarEvent(event);
+    if (event && isNonFixedEvent(fullCalendarEvent)) {
       this.setState({
         showEditor: true,
-        event: event
+        event: fullCalendarEvent
       })
     }
   }
 
-  handleEventRemove() {
+  handleEventRemove(eventId: string): void {
     const API = this.state.calendarRef.current.getApi()
-    let event = API.getEventById(this.state.clickedEventId)
+    let event = API.getEventById(eventId)
 
     if (event) {
       if (window.confirm(Orca.i18n.activityExecutionCalendar.delete.confirm)) {
-        this.state.activityExecutionService.delete(this.state.activityId, event.id).then((success) => {
+        this.state.activityExecutionService.delete(this.state.activityId, parseInt(event.id, 10)).then((success) => {
           if (success) {
             event.remove()
 
@@ -227,9 +262,9 @@ class CalendarManager extends React.Component {
     }
   }
 
-  handleEventDrag = (evnt) => {
+  handleEventDrag = (evnt: EventDropArg) => {
     if (!evnt.event.extendedProps.fixedEvent) {
-      this.state.activityExecutionService.update(this.state.activityId, evnt.event).then(result => {
+      this.state.activityExecutionService.update(this.state.activityId, this.convertEventApiToNonFixedFullCalendarEvent(evnt.event)).then(result => {
         this.setState({
           success: Orca.i18n.activityExecutionCalendar.move.success
         })
@@ -242,9 +277,9 @@ class CalendarManager extends React.Component {
     }
   }
 
-  handleEventResize = (evnt) => {
+  handleEventResize = (evnt: EventResizeDoneArg) => {
     if (!evnt.event.extendedProps.fixedEvent) {
-      this.state.activityExecutionService.update(this.state.activityId, evnt.event).then(result => {
+      this.state.activityExecutionService.update(this.state.activityId, this.convertEventApiToNonFixedFullCalendarEvent(evnt.event)).then(result => {
         this.setState({
           success: Orca.i18n.activityExecutionCalendar.move.success
         })
@@ -271,21 +306,21 @@ class CalendarManager extends React.Component {
     this.setState({
       mouseX: null,
       mouseY: null,
-      clickedEventId: 0
+      clickedEventId: null
     })
   };
 
   // function to render the event content within the calendar
-  renderEventContent(eventInfo) {
-    const {classes} = this.props
+  renderEventContent(eventInfo: EventContentArg) {
+    const { classes } = this.props
     const eventDescription = eventInfo.event.extendedProps.field ? eventInfo.event.extendedProps.field.name : eventInfo.event.title;
     return (
       <>
         <div title={`${eventInfo.timeText} - ${eventDescription}`}
-             className={classes.eventContent}
-             onDoubleClick={() => this.handleEdit(eventInfo.event.id)}
-             onContextMenu={(evt) => eventInfo.event.extendedProps.fixedEvent ? null : this.handleContextMenuClick(evt, eventInfo.event.id)}
-             style={{cursor: 'context-menu'}}
+          className={classes.eventContent}
+          onDoubleClick={() => this.handleEdit(eventInfo.event.id)}
+          onContextMenu={(evt) => eventInfo.event.extendedProps.fixedEvent ? null : this.handleContextMenuClick(evt, eventInfo.event.id)}
+          style={{ cursor: 'context-menu' }}
         >
           {eventInfo.timeText && (
             <>
@@ -301,13 +336,13 @@ class CalendarManager extends React.Component {
             anchorReference="anchorPosition"
             anchorPosition={
               this.state.mouseY !== null && this.state.mouseX !== null
-                ? {top: this.state.mouseY, left: this.state.mouseX}
+                ? { top: this.state.mouseY, left: this.state.mouseX }
                 : undefined
             }
           >
-            <MenuItem onClick={() => this.handleEdit()}><EditIcon/>Edit</MenuItem>
-            <MenuItem onClick={() => this.handleEventCopy()}><CopyIcon/>Copy</MenuItem>
-            <MenuItem size="small" onClick={() => this.handleEventRemove()}><DeleteIcon/>Delete</MenuItem>
+            <MenuItem onClick={() => this.handleEdit(this.state.clickedEventId)}><EditIcon />Edit</MenuItem>
+            <MenuItem onClick={() => this.handleEventCopy(this.state.clickedEventId)}><CopyIcon />Copy</MenuItem>
+            <MenuItem onClick={() => this.handleEventRemove(this.state.clickedEventId)}><DeleteIcon />Delete</MenuItem>
           </Menu>
         </div>
       </>
@@ -347,20 +382,20 @@ class CalendarManager extends React.Component {
         {this.state.error && (
           /* Show error bar based on flag*/
           <ErrorSnackbar
-            onClose={() => this.setState({error: null})}
+            onClose={() => this.setState({ error: null })}
             message={this.state.error.message}
           />
         )}
 
         {this.state.loading && (
           /* Show loading based on flag*/
-          <LoadingBar/>
+          <LoadingBar />
         )}
 
         {this.state.success && (
           /* show info bar based on flag*/
           <InfoSnackbar
-            onClose={() => this.setState({success: null})}
+            onClose={() => this.setState({ success: null })}
             message={this.state.success}
           />
         )}
@@ -368,7 +403,29 @@ class CalendarManager extends React.Component {
     )
   }
 
+  private convertEventApiToNonFixedFullCalendarEvent(event: EventApi): FullCalendarEvent {
+    return {
+      id: event.id,
+      start: event.start,
+      title: event.title,
+      end: event.end,
+      allDay: event.allDay,
+      extendedProps: {
+        languages: event.extendedProps.languages,
+        amountParticipants: event.extendedProps.amountParticipants,
+        spot: event.extendedProps.spot,
+        field: event.extendedProps.field,
+        hasTransport: event.extendedProps.hasTransport,
+        mixedLanguages: event.extendedProps.mixedLanguages,
+        transportIds: event.extendedProps.transportIds,
+        fixedEvent: event.extendedProps.fixedEvent,
+      },
+      backgroundColor: event.extendedProps.spot.color
+    }
+  }
+
   render() {
+    console.log('rerender');
     return (
       <div className='calendar-manager'>
         <div className='calendar-manager-main'>
@@ -378,9 +435,8 @@ class CalendarManager extends React.Component {
               onSave={(selectedEvent) => this.handleEventSave(selectedEvent)}
               onDelete={(eventId) => this.handleEventRemove(eventId)}
               onClose={() => this.handleOnClose()}
-              onCopy={(eventId) => this.handleEventCopy(eventId)}
+              onCopy={(eventId) => { this.handleEventCopy(eventId) }}
               event={this.state.event}
-              events={this.state.events}
               availableLanguages={this.state.availableLanguages}
               spots={this.state.spots}
               defaultAmountParticipants={this.state.defaultAmountParticipants}
@@ -401,7 +457,7 @@ class CalendarManager extends React.Component {
               themeSystem='bootstrap'
               allDaySlot={false}                                  // don't allow full day event
               firstDay={6}                                        // set first day of week to saturday 6
-              validRange={{start: START_DATE, end: END_DATE}}   // calendar is only available in given period
+              validRange={{ start: START_DATE, end: END_DATE }}   // calendar is only available in given period
               initialView='timeGridWeek'
               editable={true}
               selectable={true}
@@ -410,7 +466,7 @@ class CalendarManager extends React.Component {
               eventContent={(eventContent) => this.renderEventContent(eventContent)}              // custom render function
               eventResize={this.handleEventResize}
               eventDrop={this.handleEventDrag}
-              eventDragStart={() => this.setState({success: null, error: null})}
+              eventDragStart={() => this.setState({ success: null, error: null })}
               events={this.state.events}
               select={this.handleDateSelect}
               contentHeight="auto"
@@ -423,7 +479,6 @@ class CalendarManager extends React.Component {
     )
   }
 }
-
 export default compose(
   withStyles(styles),
 )(CalendarManager);

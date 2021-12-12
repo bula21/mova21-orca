@@ -23,11 +23,11 @@ import SaveAltIcon from '@material-ui/icons/SaveAlt';
 import ClearIcon from '@material-ui/icons/Clear';
 import CopyIcon from '@material-ui/icons/FileCopy'
 import { compose } from 'react-recompose';
-import { Field, FullCalendarEvent, Language, Spot } from "../services/activity-execution-service"
+import { Field, FullCalendarEvent, Language, NonFixedFullCalendarEvent, Spot } from "../services/activity-execution-service"
 import * as moment from 'moment';
 import 'moment-timezone';
 
-const styles = ({spacing}: Theme) => createStyles({
+const styles = ({ spacing }: Theme) => createStyles({
   modal: {
     display: 'flex',
     outline: 0,
@@ -55,11 +55,11 @@ function convertDateToIso(date) {
   return moment(date).toISOString(true).substring(0, 16)
 }
 
-const defaultSpot = {id: undefined, name: '', fields: [], color: ''};
-const defaultField = {id: undefined, name: ''};
+const defaultSpot = { id: undefined, name: '', fields: [], color: '' };
+const defaultField = { id: undefined, name: '' };
 
-interface FlattenedFullcalendarEvent {
-  id?: number;
+export interface FlattenedFullcalendarEvent {
+  id?: string;
   title: string;
   start: string;
   end: string;
@@ -75,20 +75,18 @@ interface FlattenedFullcalendarEvent {
 }
 
 interface EventEditorProps {
-  event: FullCalendarEvent;
-  events: Array<FullCalendarEvent>;
+  event: NonFixedFullCalendarEvent;
   availableLanguages: Array<Language>;
   spots: Array<Spot>;
   onSave: (event: FlattenedFullcalendarEvent) => void;
   onClose: () => void;
   defaultAmountParticipants: number;
-  onCopy: (eventId: number) => void;
-  onDelete: (eventId: number) => void;
+  onCopy: (eventId: string) => void;
+  onDelete: (eventId: string) => void;
   classes: any; // TODO
 }
 
 interface EventEditorState {
-  events: Array<FullCalendarEvent>;
   availableSpots: Array<Spot>;
   selectedEvent: FlattenedFullcalendarEvent;
   availableLanguages: Array<Language>;
@@ -100,7 +98,6 @@ class EventEditor extends Component<EventEditorProps, EventEditorState> {
     super(props);
 
     this.state = {
-      events: [],                     // all events
       availableSpots: [],
       /* TODO: Since we are passing a reference of event, this will change already the object, even if we don't
                save. make sure we pass always pass a copy and make the object immutable. */
@@ -125,24 +122,35 @@ class EventEditor extends Component<EventEditorProps, EventEditorState> {
     };
   }
 
+  componentDidUpdate(prevProps: EventEditorProps) {
+    if (prevProps.event !== this.props.event) {
+      this.setState({
+        selectedEvent: this.flattenEvent(this.props.event)
+      })
+    }
+  }
+
   componentDidMount() {
-    const {event, events, availableLanguages, spots} = this.props
-    let selectedEvent = {
+    const { event, availableLanguages, spots } = this.props
+    let selectedEvent = this.flattenEvent(event);
+
+    this.setState({
+      availableSpots: spots,
+      selectedEvent: selectedEvent,
+      availableLanguages: availableLanguages
+    })
+  }
+
+  private flattenEvent(event: NonFixedFullCalendarEvent) {
+    return {
       ...this.state.selectedEvent,
       id: event.id,
       start: convertDateToIso(event.start),
       end: convertDateToIso(event.end),
       allDay: event.allDay,
       ...event.extendedProps,
-      languages: event?.extendedProps?.languages || availableLanguages
+      languages: event?.extendedProps?.languages || this.props.availableLanguages
     };
-
-    this.setState({
-      events: events,
-      availableSpots: spots,
-      selectedEvent: selectedEvent,
-      availableLanguages: availableLanguages
-    })
   }
 
   isEventOverlapping(event1, event2) {
@@ -173,13 +181,13 @@ class EventEditor extends Component<EventEditorProps, EventEditorState> {
   mutateSelectedEventState(field, value) {
     const newState = {};
     newState[field] = value;
-    return {...this.state.selectedEvent, ...newState};
+    return { ...this.state.selectedEvent, ...newState };
   }
 
   handleSpotChange = (evt, spot: Spot) => {
     const selectedField = spot.fields.length === 1 ? spot.fields[0] : defaultField;
     this.setState({
-      selectedEvent: {...this.mutateSelectedEventState('spot', spot), field: selectedField}
+      selectedEvent: { ...this.mutateSelectedEventState('spot', spot), field: selectedField }
     });
   }
 
@@ -194,27 +202,16 @@ class EventEditor extends Component<EventEditorProps, EventEditorState> {
   // function handling submit of form
   handleSubmit = evt => {
     evt.preventDefault();
-    const {onSave} = this.props
+    const { onSave } = this.props
     let selectedEvent = this.state.selectedEvent
 
     // trigger parent function passed by props
     onSave(selectedEvent)
   };
 
-  // handling copy of event
-  handleCopy = () => {
-    // reset
-    let event = this.state.selectedEvent
-    event.id = null
-
-    this.setState({
-      selectedEvent: event
-    })
-  }
-
   render() {
-    const {classes, onClose, onDelete} = this.props;
-
+    const { classes, onClose, onDelete, onCopy } = this.props;
+    console.log('rerender ed', this.state.selectedEvent.id);
     return (
       <Modal
         className={classes.modal}
@@ -267,11 +264,12 @@ class EventEditor extends Component<EventEditorProps, EventEditorState> {
                 id="inputspot"
                 options={this.state.availableSpots}
                 getOptionLabel={(option) => option.name}
+                getOptionSelected={(option: Spot, value: Spot) => option.id === value.id}
                 onChange={this.handleSpotChange}
                 value={this.state.selectedEvent.spot}
                 className={classes.inputField}
                 renderInput={(params) => <TextField {...params} variant="standard" required
-                                                    label={Orca.i18n.activityExecutionCalendar.editor.spot}/>}
+                  label={Orca.i18n.activityExecutionCalendar.editor.spot} />}
               />
 
               {this.state.selectedEvent.spot.id && (
@@ -279,11 +277,12 @@ class EventEditor extends Component<EventEditorProps, EventEditorState> {
                   id="inputfield"
                   options={this.state.selectedEvent.spot.fields}
                   getOptionLabel={(option) => option.name}
+                  getOptionSelected={(option: Spot, value: Spot) => option.id === value.id}
                   onChange={this.handleFieldChange}
                   value={this.state.selectedEvent.field}
                   className={classes.inputField}
                   renderInput={(params) => <TextField {...params} variant="standard" required
-                                                      label={Orca.i18n.activityExecutionCalendar.editor.field}/>}
+                    label={Orca.i18n.activityExecutionCalendar.editor.field} />}
                 />
               )}
               <FormHelperText
@@ -291,7 +290,7 @@ class EventEditor extends Component<EventEditorProps, EventEditorState> {
                 className={classes.inputField}
               >
                 {Orca.i18n.activityExecutionCalendar.editor.manage_spot_hint} <a
-                href={Orca.manage_spot_link}>{Orca.i18n.activityExecutionCalendar.editor.manage_spot_link_text}</a>
+                  href={Orca.manage_spot_link}>{Orca.i18n.activityExecutionCalendar.editor.manage_spot_link_text}</a>
               </FormHelperText>
 
               <FormControl className={classes.formControl}>
@@ -304,14 +303,14 @@ class EventEditor extends Component<EventEditorProps, EventEditorState> {
                   value={this.state.selectedEvent.languages}
                   onChange={this.handleChange}
                   autoWidth
-                  input={<Input/>}
+                  input={<Input />}
                   renderValue={(selected: string[]) => selected.join(', ')}
                 >
                   {
                     this.state.availableLanguages.map((language, i) => (
                       <MenuItem key={`lang-${i}`} value={language}>
-                        <Checkbox checked={this.state.selectedEvent.languages.indexOf(language) > -1}/>
-                        <ListItemText primary={language}/>
+                        <Checkbox checked={this.state.selectedEvent.languages.indexOf(language) > -1} />
+                        <ListItemText primary={language} />
                       </MenuItem>
                     ))
                   }
@@ -330,7 +329,7 @@ class EventEditor extends Component<EventEditorProps, EventEditorState> {
                     value={true}
                     onChange={this.handleChange}
                     color="primary"
-                    inputProps={{'aria-label': 'secondary checkbox'}}
+                    inputProps={{ 'aria-label': 'secondary checkbox' }}
                   />
                 }
                 label={Orca.i18n.activityExecutionCalendar.editor.has_transport}
@@ -350,7 +349,7 @@ class EventEditor extends Component<EventEditorProps, EventEditorState> {
                     value={false}
                     onChange={this.handleChange}
                     color="primary"
-                    inputProps={{'aria-label': 'secondary checkbox'}}
+                    inputProps={{ 'aria-label': 'secondary checkbox' }}
                   />
                 }
                 label={Orca.i18n.activityExecutionCalendar.editor.mixed_languages}
@@ -359,14 +358,20 @@ class EventEditor extends Component<EventEditorProps, EventEditorState> {
 
             <CardActions>
               <Button size="small" color="primary"
-                      type="submit"><SaveAltIcon/>{Orca.i18n.activityExecutionCalendar.editor.save}</Button>
+                type="submit"><SaveAltIcon />{Orca.i18n.activityExecutionCalendar.editor.save}</Button>
+              {
+                this.state.selectedEvent.id &&
+                <Button size="small"
+                  onClick={() => onCopy(this.state.selectedEvent.id)}><CopyIcon />{Orca.i18n.activityExecutionCalendar.editor.copy}</Button>
+              }
+              {
+                this.state.selectedEvent.id &&
+                <Button size="small"
+                  onClick={() => onDelete(this.state.selectedEvent.id)}><DeleteIcon />{Orca.i18n.activityExecutionCalendar.editor.delete}
+                </Button>
+              }
               <Button size="small"
-                      onClick={this.handleCopy}><CopyIcon/>{Orca.i18n.activityExecutionCalendar.editor.copy}</Button>
-              <Button size="small"
-                      onClick={() => onDelete(this.state.selectedEvent.id)}><DeleteIcon/>{Orca.i18n.activityExecutionCalendar.editor.delete}
-              </Button>
-              <Button size="small"
-                      onClick={() => onClose()}><ClearIcon/>{Orca.i18n.activityExecutionCalendar.editor.cancel}</Button>
+                onClick={() => onClose()}><ClearIcon />{Orca.i18n.activityExecutionCalendar.editor.cancel}</Button>
             </CardActions>
           </form>
         </Card>
