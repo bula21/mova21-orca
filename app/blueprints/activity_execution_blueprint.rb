@@ -14,4 +14,12 @@ class ActivityExecutionBlueprint < Blueprinter::Base
   field :languages do |activity_execution|
     available_languages_for_frontend(activity_execution)
   end
+
+  view :with_activity do
+    association :activity, blueprint: ActivityBlueprint
+
+    field :title do |activity_execution|
+      activity_execution.activity.label
+    end
+  end
 end

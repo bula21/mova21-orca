@@ -207,6 +207,7 @@
     .card-body
       h3.mb-4= UnitActivityExecution.model_name.human
       = render partial: 'unit_activity_executions/table', locals: { unit_activity_executions: @unit.unit_activity_executions, unit_id: @unit.id }
-
+  hr
+  = react_component("ReadOnlyCalendarManager", { editable: false, events: @unit.unit_activity_executions.map { |d| JSON.parse(ActivityExecutionBlueprint.render(d.activity_execution, view: :with_activity).as_json) }})
 
 = link_to t('buttons.back'), units_path, class: 'btn btn-secondary mt-4'
