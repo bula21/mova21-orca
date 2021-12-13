@@ -27,7 +27,7 @@ class Leader < ApplicationRecord
                                dependent: :destroy
 
   has_many :coach_units, inverse_of: :coach, class_name: 'Unit', foreign_key: 'coach_id',
-                               dependent: :destroy
+                         dependent: :destroy
 
   validates :email, presence: true
   validates :pbs_id, uniqueness: { allow_blank: true }
