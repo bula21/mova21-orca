@@ -5,9 +5,12 @@ class UnitActivityExecutionsController < ApplicationController
   before_action :set_units_and_activity_executions, except: %i[index destroy]
 
   def index
-    return if params[:unit_id].blank?
+    @unit = Unit.find_by(id: params[:unit_id])
+    execution = ActivityExecution.find_by(id: params[:activity_execution_id])
+    @activity_execution = execution
 
-    @unit_activity_executions = @unit_activity_executions.where(unit_id: params[:unit_id])
+    @unit_activity_executions = @unit_activity_executions.where(unit: @unit) if @unit
+    @unit_activity_executions = @unit_activity_executions.where(activity_execution: execution) if execution
   end
 
   def new
@@ -39,11 +42,21 @@ class UnitActivityExecutionsController < ApplicationController
     redirect_to unit_activity_executions_path(**linked_params), notice: I18n.t('messages.deleted.success')
   end
 
+  def import
+    @import_service = UnitActivityExecutionsImport.new(params.require(:import).permit(:file)[:file])
+    if @import_service.call
+      redirect_to unit_activity_executions_path(**linked_params), notice: I18n.t('messages.import.success')
+    else
+      @import_errors = @import_service.errors
+      render 'index'
+    end
+  end
+
   private
 
   def set_units_and_activity_executions
     @units = Unit.accessible_by(current_ability).order(:id)
-    @activity_executions = ActivityExecution.accessible_by(current_ability).order(:id)
+    @activity_executions = ActivityExecution.accessible_by(current_ability).includes(:activity).order(:id)
   end
 
   def linked_params

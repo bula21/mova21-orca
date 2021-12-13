@@ -39,6 +39,8 @@ class Ability
     can :manage, UnitActivity, unit: { al: { email: user.email } }
     can :read, UnitActivityExecution, unit: { lagerleiter: { email: user.email } }
     can :read, UnitActivityExecution, unit: { al: { email: user.email } }
+    can %i[read edit], UnitVisitorDay, unit: { lagerleiter: { email: user.email } }
+    can %i[read edit], UnitVisitorDay, unit: { al: { email: user.email } }
 
     assistant_leader_permission(user)
   end
@@ -53,6 +55,7 @@ class Ability
     can :read, UnitActivity, unit: { id: unit_ids }
     can :read, Participant, units: { id: unit_ids }
     can :read, UnitActivityExecution, unit: { id: unit_ids }
+    can :read, UnitVisitorDay, unit: { id: unit_ids }
   rescue StandardError => e
     Rollbar.warning e if Rollbar.configuration.enabled
   end
@@ -102,6 +105,7 @@ class Ability
     can :manage, UnitActivity
     can :manage, Unit
     can :manage, UnitActivityExecution
+    can :manage, UnitVisitorDay
   end
 
   def editor_user_permissions(_user)

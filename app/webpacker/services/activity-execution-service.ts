@@ -20,7 +20,7 @@ interface ActivityExecutionRequest {
     }
 }
 
-interface ActivityExecution {
+export interface ActivityExecution {
     id: number;
     title: string;
     starts_at: Date;
@@ -32,6 +32,7 @@ interface ActivityExecution {
     transport: boolean;
     mixed_languages: boolean;
     transport_ids: string;
+    activity?: Activity
 }
 
 interface FixedEvent {
@@ -71,26 +72,44 @@ function isSuccessfulBackendResponse<T>(backendResponse: SuccessfulBackendRespon
 export type BackendResponse<T> = SuccessfulBackendResponse<T> | UnsuccessfulBackendResponse;
 
 // fullcalendar definition of an event
-export interface FullCalendarEvent {
-    id: number;
+
+interface FixedFullCalendarEvent {
+    id: string;
     start: Date;
     end: Date;
+    title: string;
+    allDay: boolean;
+    editable: boolean;
+    extendedProps: {
+        fixedEvent: boolean;
+    }
+    backgroundColor: string;
+}
+
+export interface NonFixedFullCalendarEvent {
+    id: string;
+    start: Date;
     title?: string;
+    end: Date;
     allDay: boolean;
     editable?: boolean;
     extendedProps?: {
-        languages: Array<Language>;
-        amountParticipants: number;
-        field: Field;
-        spot: Spot;
-        hasTransport: boolean;
-        mixedLanguages: boolean;
-        transportIds: string;
+        fixedEvent: boolean;
+        languages?: Array<Language>;
+        amountParticipants?: number;
+        field?: Field;
+        spot?: Spot;
+        hasTransport?: boolean;
+        mixedLanguages?: boolean;
+        transportIds?: string;
+        activity?: Activity;
     }
-    fixedEvent: boolean;
-    color: string;
+    backgroundColor: string;
 }
 
+export type FullCalendarEvent = FixedFullCalendarEvent | NonFixedFullCalendarEvent;
+
+export const isNonFixedEvent = (event: FullCalendarEvent): event is NonFixedFullCalendarEvent => event.extendedProps.fixedEvent === false;
 
 export class ActivityExecutionService {
     public getAll(activityId: number): Promise<Array<FullCalendarEvent>> {
@@ -105,7 +124,7 @@ export class ActivityExecutionService {
             headers: this.getHeaders()
         })
             .then(response => {
-                if(response.status === 200) {
+                if (response.status === 200) {
                     return response.json()
                 }
                 else {
@@ -116,7 +135,7 @@ export class ActivityExecutionService {
                 activityExexutions.map(activityExexution => this.convertActivityExecutionToFullCalendarEvent(activityExexution)));
     }
 
-    private fetchFixedEvents(): Promise<Array<FullCalendarEvent>> {
+    public fetchFixedEvents(): Promise<Array<FullCalendarEvent>> {
         return fetch('/admin/fixed_events', {
             method: 'GET',
             headers: this.getHeaders()
@@ -125,9 +144,9 @@ export class ActivityExecutionService {
             .then(fixedEvents => fixedEvents.map(fixedEvent => this.convertFixedEventsToFullCalendarEvent(fixedEvent)));
     }
 
-    private convertActivityExecutionToFullCalendarEvent(activityExexution: ActivityExecution): FullCalendarEvent {
-        return {
-            id: activityExexution.id,
+    public convertActivityExecutionToFullCalendarEvent(activityExexution: ActivityExecution): NonFixedFullCalendarEvent {
+        const calendarEvent: NonFixedFullCalendarEvent = {
+            id: activityExexution.id.toString(),
             start: new Date(activityExexution.starts_at),
             end: new Date(activityExexution.ends_at),
             allDay: false,
@@ -138,26 +157,35 @@ export class ActivityExecutionService {
                 field: activityExexution.field,
                 hasTransport: activityExexution.transport,
                 mixedLanguages: activityExexution.mixed_languages,
-                transportIds: activityExexution.transport_ids
+                transportIds: activityExexution.transport_ids,
+                fixedEvent: false,
             },
-            fixedEvent: false,
-            color: activityExexution.spot.color
+            backgroundColor: activityExexution.spot.color
         };
+        if (activityExexution.title) {
+            calendarEvent.title = activityExexution.title;
+        }
+        if (activityExexution.activity) {
+            calendarEvent.extendedProps.activity = activityExexution.activity;
+        }
+        return calendarEvent;
     }
 
     private convertFixedEventsToFullCalendarEvent(fixedEvent: FixedEvent): FullCalendarEvent {
         return {
-            id: fixedEvent.id,
+            id: fixedEvent.id.toString(),
             title: fixedEvent.title,
             start: new Date(fixedEvent.starts_at),
             allDay: false,
             end: new Date(fixedEvent.ends_at),
-            fixedEvent: true,
-            color: '#ffeb00'
+            extendedProps: {
+                fixedEvent: true,
+            },
+            backgroundColor: '#ffeb00'
         };
     }
 
-    public create(activityId: number, fullCalendarEvent: FullCalendarEvent): Promise<FullCalendarEvent> {
+    public create(activityId: number, fullCalendarEvent: NonFixedFullCalendarEvent): Promise<NonFixedFullCalendarEvent> {
         const requestOptions = {
             method: 'POST',
             headers: this.getHeaders(),
@@ -175,7 +203,7 @@ export class ActivityExecutionService {
             });
     }
 
-    private getActivityExecutionRequestBody(fullCalendarEvent: FullCalendarEvent) {
+    private getActivityExecutionRequestBody(fullCalendarEvent: NonFixedFullCalendarEvent) {
         const request: ActivityExecutionRequest = {
             activity_execution: {
                 starts_at: fullCalendarEvent.start,
@@ -191,7 +219,7 @@ export class ActivityExecutionService {
         return JSON.stringify(request);
     }
 
-    public update(activityId: number, activityExecution: FullCalendarEvent): Promise<FullCalendarEvent> {
+    public update(activityId: number, activityExecution: NonFixedFullCalendarEvent): Promise<NonFixedFullCalendarEvent> {
         const requestOptions = {
             method: 'PUT',
             headers: this.getHeaders(),
@@ -220,7 +248,7 @@ export class ActivityExecutionService {
     }
 
     private getHeaders(): { [key: string]: string } {
-        return {'Content-Type': 'application/json', 'X-CSRF-Token': this.getAuthenticityToken()};
+        return { 'Content-Type': 'application/json', 'X-CSRF-Token': this.getAuthenticityToken() };
     }
 
     private getAuthenticityToken(): string {

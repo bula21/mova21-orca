@@ -44,6 +44,10 @@ class UnitExporter
     al_town
     al_country
     coach_id
+    coach_last_name
+    coach_first_name
+    coach_scout_name
+    coach_email
   ].freeze
 
   def initialize(units)
@@ -83,7 +87,7 @@ class UnitExporter
       unit.al&.pbs_id, unit.al&.last_name, unit.al&.first_name, unit.al&.scout_name,
       unit.al&.birthdate, unit.al&.gender, unit.al&.email, unit.al&.phone_number, unit.al&.language,
       unit.al&.address, unit.al&.zip_code, unit.al&.town, unit.al&.country,
-      unit.coach_id
+      unit.coach_id, unit.coach&.last_name, unit.coach&.first_name, unit.coach&.scout_name, unit.coach&.email
     ] + unit.participant_role_counts.values
   end
   # rubocop: enable Metrics/MethodLength, Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_23_093143) do
+ActiveRecord::Schema.define(version: 2021_12_10_101918) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -275,8 +275,25 @@ ActiveRecord::Schema.define(version: 2021_11_23_093143) do
     t.integer "headcount"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.jsonb "additional_data"
     t.index ["activity_execution_id"], name: "index_unit_activity_executions_on_activity_execution_id"
     t.index ["unit_id"], name: "index_unit_activity_executions_on_unit_id"
+  end
+
+  create_table "unit_visitor_days", force: :cascade do |t|
+    t.bigint "unit_id", null: false
+    t.integer "u6_tickets", default: 0, null: false
+    t.integer "u16_tickets", default: 0, null: false
+    t.integer "u16_ga_tickets", default: 0, null: false
+    t.integer "ga_tickets", default: 0, null: false
+    t.integer "other_tickets", default: 0, null: false
+    t.text "responsible_contact"
+    t.string "responsible_email"
+    t.string "responsible_phone"
+    t.integer "phase", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["unit_id"], name: "index_unit_visitor_days_on_unit_id"
   end
 
   create_table "units", force: :cascade do |t|
@@ -338,6 +355,7 @@ ActiveRecord::Schema.define(version: 2021_11_23_093143) do
   add_foreign_key "unit_activities", "units"
   add_foreign_key "unit_activity_executions", "activity_executions"
   add_foreign_key "unit_activity_executions", "units"
+  add_foreign_key "unit_visitor_days", "units"
   add_foreign_key "units", "kvs", primary_key: "pbs_id"
   add_foreign_key "units", "leaders", column: "al_id"
   add_foreign_key "units", "leaders", column: "coach_id"

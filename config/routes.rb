@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :units, except: [:destroy] do
     resources :participants, except: %i[show]
+    resource :unit_visitor_day, except: %i[]
     resources :unit_activities, except: %i[new edit] do
       patch :priorize, to: 'unit_activities#priorize', on: :member
       get :stage_commit, to: 'unit_activities#stage_commit', on: :collection
@@ -20,7 +21,9 @@ Rails.application.routes.draw do
     delete 'document/:id', to: 'units#delete_document', as: :document
   end
   resources :leaders, except: [:destroy]
-  resources :unit_activity_executions
+  resources :unit_activity_executions do
+    post :import, on: :collection
+  end
   resources :activities do
     resources :delete_activity_executions, only: :index
     delete :delete_activity_executions, to: 'delete_activity_executions#destroy'

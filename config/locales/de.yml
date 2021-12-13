@@ -37,6 +37,8 @@ de:
         stufe_recommended: Stufen Empfohlen
         stufen: Stufen möglich
         transport_location: Transport-Ort
+      activity_exection:
+        utilization: Utilization
       activity_execution:
         amount_participants: Anzahl TN
         field: Feld
@@ -86,6 +88,7 @@ de:
         abteilung: Abteilung
         activity_booking_phase: Buchungsphase
         al: AL
+        coach: Coach
         district: Quartier
         ends_at: Ende am
         expected_guest_leaders: Definitive Anzahl Gäste (Leitung)
@@ -110,6 +113,17 @@ de:
       unit_activity_execution:
         activity_execution_id: Durchführung
         headcount: Anzahl Personen
+        unit_id: Einheit
+      unit_visitor_day:
+        at: Datum des Besuchstags
+        ga_tickets: Personen mit GA
+        other_tickets: Personen mit Halbax oder ohne Ermässigung
+        responsible_contact: Verantwortliche Kontaktperson auf der Reise
+        responsible_email: E-Mail der verantwortlichen Kontaktperson
+        responsible_phone: Telefonnummer der verantwortlichen Kontaktperson
+        u16_ga_tickets: Kinder unter 16 Jahren ohne Junior-/Mitfahrkarte oder GA
+        u16_tickets: Kinder unter 16 Jahren mit Junior-/Mitfahrkarte oder GA
+        u6_tickets: Kinder unter 6 Jahren
         unit_id: Einheit
     errors:
       messages:
@@ -157,6 +171,9 @@ de:
       unit_activity_execution:
         one: Zugewiesene Aktivitätsdurchführung
         other: Zugewiesene Aktivitätsdurchführungen
+      unit_visitor_day:
+        one: Besuchstag
+        other: Besuchstage
   activity:
     edit:
       title: Aktivität editieren
@@ -222,6 +239,7 @@ de:
       start_time: Startzeit
       title_copy: Kopieren
       title_edit: Editieren
+      title_new: Neu
     move:
       error: 'Fehler beim Verschieben der Durchführung:'
       success: Durchführung erfolgreich verschoben
@@ -233,6 +251,7 @@ de:
   buttons:
     back: zurück
     close: Schliessen
+    commit: Speichern und Abschliessen
     confirm_delete: Bist du dir sicher, dass du Löschen möchtest?
     create: Erstellen
     destroy: löschen
@@ -306,6 +325,7 @@ de:
     formats:
       default: "%d.%m.%Y"
       long: "%e. %B %Y"
+      long_with_weekday: "%A, %d.%m.%Y"
       short: "%e. %b"
     from_to: "%{from} bis %{to}"
     month_names:
@@ -484,6 +504,8 @@ de:
     deleted:
       error: Fehler beim löschen!
       success: Erfolgreich gelöscht!
+    import:
+      success: Success
     updated:
       error: Fehler beim speichern!
       success: Erfolgreich gespeichert!
@@ -577,6 +599,13 @@ de:
   simple_form:
     confirm_unsaved: 'Achtung: Alle nicht gespeicherten Änderungen gehen verloren.
       Sind Sie sicher?'
+    hints:
+      unit_visitor_day:
+        ga_tickets: CHF 50.- pro Person
+        other_tickets: CHF 85.- pro Person
+        u16_ga_tickets: CHF 50.- pro Person
+        u16_tickets: CHF 30.- pro Person
+        u6_tickets: gratis
     options:
       activity:
         activity_type:
@@ -706,6 +735,7 @@ de:
       activity_booking_preview: Buchungsvorschau offen
       activity_booking_text: Aktivitäten Buchen
       basic_infos: Allgemein
+      book_visitor_day_tickets: Tickets jetzt kaufen
       camp_id: Lager Id
       camp_link_midata: Lager auf MiData
       data_complete: Daten vollständig

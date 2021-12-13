@@ -42,6 +42,7 @@
 class Unit < ApplicationRecord
   belongs_to :al, class_name: 'Leader', inverse_of: :al_units, optional: true
   belongs_to :lagerleiter, class_name: 'Leader', inverse_of: :lagerleiter_units
+  belongs_to :coach, class_name: 'Leader', inverse_of: :coach_units, optional: true
   belongs_to :kv, inverse_of: :units, primary_key: :pbs_id
   belongs_to :kv, inverse_of: :units, primary_key: :pbs_id
 
@@ -52,6 +53,7 @@ class Unit < ApplicationRecord
   has_many :participants, -> { order(role: :asc, last_name: :asc, scout_name: :asc) },
            through: :participant_units, inverse_of: :units, dependent: :destroy
   has_many :unit_activity_executions, inverse_of: :unit, dependent: :destroy
+  has_one :unit_visitor_day, inverse_of: :unit, dependent: :destroy
 
   has_many_attached :documents
 

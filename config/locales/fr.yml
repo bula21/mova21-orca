@@ -37,6 +37,8 @@ fr:
         stufe_recommended: Branches recommandées
         stufen: Branches possibles
         transport_location: Lieu du transport
+      activity_exection:
+        utilization: Utilization
       activity_execution:
         amount_participants: Nombre de participant.e.s
         field: Terrain
@@ -86,6 +88,7 @@ fr:
         abteilung: Groupe
         activity_booking_phase: Phase de réservation
         al: RG
+        coach: Coach
         district: Quartier
         ends_at: Fin le
         expected_guest_leaders: Nombre définitif d’invité.e.s (resp.)
@@ -110,6 +113,17 @@ fr:
       unit_activity_execution:
         activity_execution_id: Durchführung
         headcount: Anzahl Personen
+        unit_id: Einheit
+      unit_visitor_day:
+        at: Datum des Besuchstags
+        ga_tickets: Personen mit GA
+        other_tickets: Personen mit Halbax oder ohne Ermässigung
+        responsible_contact: Verantwortliche Kontaktperson auf der Reise
+        responsible_email: E-Mail der verantwortlichen Kontaktperson
+        responsible_phone: Telefonnummer der verantwortlichen Kontaktperson
+        u16_ga_tickets: Kinder unter 16 Jahren ohne Junior-/Mitfahrkarte oder GA
+        u16_tickets: Kinder unter 16 Jahren mit Junior-/Mitfahrkarte oder GA
+        u6_tickets: Kinder unter 6 Jahren
         unit_id: Einheit
     errors:
       messages:
@@ -158,6 +172,9 @@ fr:
       unit_activity_execution:
         one: Zugewiesene Aktivitätsdurchführung
         other: Zugewiesene Aktivitätsdurchführungen
+      unit_visitor_day:
+        one: Besuchstag
+        other: Besuchstage
   activity:
     edit:
       title: Éditer l'activité
@@ -225,6 +242,7 @@ fr:
       start_time: Heure de début
       title_copy: Copier
       title_edit: Modifier
+      title_new: Nouveau
     move:
       error: 'Erreur lors du déplacement de l''événement:'
       success: L'événement a été déplacé avec succès
@@ -236,6 +254,7 @@ fr:
   buttons:
     back: retour
     close: Fermer
+    commit: Speichern und Abschliessen
     confirm_delete: Es-tu sûr.e de vouloir supprimer cela?
     create: créer
     destroy: supprimer
@@ -309,6 +328,7 @@ fr:
     formats:
       default: "%d.%m.%Y"
       long: "%e %B %Y"
+      long_with_weekday: "%A, %d.%m.%Y"
       short: "%e %b"
     from_to: "%{from} jusqu’au %{to}"
     month_names:
@@ -490,6 +510,8 @@ fr:
     deleted:
       error: Erreur lors de la suppression
       success: Supprimé avec succès
+    import:
+      success: Success
     updated:
       error: Fehler beim speichern!
       success: Enregistré avec succès
@@ -582,6 +604,13 @@ fr:
   simple_form:
     confirm_unsaved: 'Attention: toutes les modifications vont être perdue. Etes-vous
       sûr.e.s?'
+    hints:
+      unit_visitor_day:
+        ga_tickets: CHF 50.- pro Person
+        other_tickets: CHF 85.- pro Person
+        u16_ga_tickets: CHF 50.- pro Person
+        u16_tickets: CHF 30.- pro Person
+        u6_tickets: gratis
     options:
       activity:
         activity_type:
@@ -706,6 +735,7 @@ fr:
       activity_booking_preview: Ouvrir l’aperçu de la réservation
       activity_booking_text: Réserver des activités
       basic_infos: Général
+      book_visitor_day_tickets: Tickets jetzt kaufen
       camp_id: ID du camp
       camp_link_midata: Camp sur MiData
       data_complete: Inscription complète
