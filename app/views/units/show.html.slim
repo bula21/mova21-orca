@@ -202,7 +202,7 @@
       - elsif @unit.activity_booking.phase?(:open)
         = t('.activity_booking_open')
 
-- if @unit.unit_visitor_day.present?
+- if @unit.unit_visitor_day.present? && @unit.unit_visitor_day.at
   .card.mt-5
     .card-body
       h3.mb-4 = UnitVisitorDay.model_name.human
