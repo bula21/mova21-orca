@@ -3,7 +3,6 @@
 class LeaderBuilder
   def from_data(person_data, id: person_data['id'])
     return if person_data.blank?
-
     leader = Leader.find_or_initialize_by(pbs_id: id)
     leader.update!(last_name: person_data['last_name'],
                    first_name: person_data['first_name'], scout_name: person_data['nickname'],

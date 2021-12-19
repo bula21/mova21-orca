@@ -23,7 +23,6 @@ class CampUnitBuilder
 
   def from_data(camp_unit_data, id: camp_unit_data&.dig('events', 0, 'id'))
     return unless id.present? && id != @stufe.root_camp_unit_id
-
     camp_unit = Unit.find_or_initialize_by(pbs_id: id)
     camp_unit.update(assignable_attributes(camp_unit_data))
     camp_unit
