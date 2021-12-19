@@ -18,19 +18,25 @@ class MidataService
                               query: { page: page }, headers: auth_params).body)
   end
 
-  def fetch_camp_unit_data(id)
-    Rails.logger.debug { "Talking to Midata Event #{id}" }
-    Rails.logger.debug { "URL: #{"/events/#{id}.json"}" }
+  def fetch_camp_unit_data(root_url)
+    Rails.logger.debug { "Talking to Midata Event" }
+    Rails.logger.debug { "URL: #{root_url}" }
 
-    JSON.parse(self.class.get("/events/#{id}.json", headers: auth_params).body)
+    JSON.parse(self.class.get(root_url.sub(self.class.base_uri, ''), headers: auth_params).body)
   end
 
-  def fetch_camp_unit_data_hierarchy(root_id, root: true)
-    root_data = fetch_camp_unit_data(root_id)
+  def fetch_camp_unit_data_hierarchy(root_url, root: true)
+    # TODO Cleanup: Pass a url from the very top (now the top-event is fetched by id, then all the others by url)
+    root_data = fetch_camp_unit_data(root ? "/events/#{root_url}.json" : root_url)
     children_ids = root_data.dig('events', 0, 'links', 'sub_camps')
 
     return root_data if children_ids.nil? && !root
 
-    [root_data, children_ids.map { |child_id| fetch_camp_unit_data_hierarchy(child_id, root: false) }].flatten
+    events_data = root_data.dig('linked', 'events')
+    children_urls = children_ids.map do |subcamp_id |
+      events_data.find { |d| d['id'] == subcamp_id }['href']
+    end
+
+    [root_data, children_urls.map { |child_url| fetch_camp_unit_data_hierarchy(child_url, root: false) }].flatten
   end
 end
