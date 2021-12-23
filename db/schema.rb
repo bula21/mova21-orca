@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_10_101918) do
+ActiveRecord::Schema.define(version: 2021_12_17_150328) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -287,12 +287,13 @@ ActiveRecord::Schema.define(version: 2021_12_10_101918) do
     t.integer "u16_ga_tickets", default: 0, null: false
     t.integer "ga_tickets", default: 0, null: false
     t.integer "other_tickets", default: 0, null: false
-    t.text "responsible_contact"
+    t.text "responsible_address"
     t.string "responsible_email"
     t.string "responsible_phone"
     t.integer "phase", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "responsible_name"
     t.index ["unit_id"], name: "index_unit_visitor_days_on_unit_id"
   end
 

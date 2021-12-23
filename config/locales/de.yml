@@ -37,13 +37,12 @@ de:
         stufe_recommended: Stufen Empfohlen
         stufen: Stufen möglich
         transport_location: Transport-Ort
-      activity_exection:
-        utilization: Utilization
       activity_execution:
-        amount_participants: Anzahl TN
+        amount_participants: Anzahl Personen
         field: Feld
         language_flags: Sprachen
         spot: Programmspot
+        utilization: Auslastung
       field:
         name: Name
       fixed_event:
@@ -118,9 +117,10 @@ de:
         at: Datum des Besuchstags
         ga_tickets: Personen mit GA
         other_tickets: Personen mit Halbax oder ohne Ermässigung
-        responsible_contact: Verantwortliche Kontaktperson auf der Reise
-        responsible_email: E-Mail der verantwortlichen Kontaktperson
-        responsible_phone: Telefonnummer der verantwortlichen Kontaktperson
+        responsible_address: Addresse der Reiseleitung
+        responsible_email: E-Mail der Reiseleitung
+        responsible_name: Name der Reiseleitung
+        responsible_phone: Telefonnummer der Reiseleitung
         u16_ga_tickets: Kinder unter 16 Jahren ohne Junior-/Mitfahrkarte oder GA
         u16_tickets: Kinder unter 16 Jahren mit Junior-/Mitfahrkarte oder GA
         u6_tickets: Kinder unter 6 Jahren
@@ -144,6 +144,12 @@ de:
             lagerleiter:
               incomplete: ist unvollständig (Name, E-Mail, Adresse)
     models:
+      activity:
+        one: Aktivität
+        other: Aktivitäten
+      activity_category:
+        one: Kategorie
+        other: Kategorien
       activity_execution:
         one: Durchführung
         other: Durchführungen
@@ -220,20 +226,20 @@ de:
       error: 'Fehler beim Löschen der Durchführung:'
       success: Durchführung erfolgreich gelöscht
     editor:
-      amount_participants: Anzahl TN
+      amount_participants: Anzahl Personen
       cancel: Abbrechen
       copy: Kopieren
       date_invalid: Der Startzeitpunkt kann nicht vor dem Endzeitpunkt liegen
       delete: Löschen
       end_time: Endzeit
       field: Feld
-      has_transport: Mit Transport
+      has_transport: Personenanzahl inkl. Leitung
       languages: Sprachen
       manage_languages_hint: Sprache in welcher die Aktivität durchgeführt werden
         kann.
       manage_spot_hint: 'Falls du mehr Programmspots brauchst, klicke hier:'
       manage_spot_link_text: Programmspots verwalten
-      mixed_languages: Gemischte Durchführung
+      mixed_languages: Gemischtsprachig
       save: Speichern
       spot: Programmspot
       start_time: Startzeit
