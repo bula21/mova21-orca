@@ -6,11 +6,11 @@ class UnitActivityExecutionsController < ApplicationController
 
   def index
     @unit = Unit.find_by(id: params[:unit_id])
-    execution = ActivityExecution.find_by(id: params[:activity_execution_id])
-    @activity_execution = execution
+    @activity_execution = ActivityExecution.find_by(id: params[:activity_execution_id])
 
+    @unit_activity_executions = @activity_execution.unit_activity_executions if @activity_execution
     @unit_activity_executions = @unit_activity_executions.where(unit: @unit) if @unit
-    @unit_activity_executions = @unit_activity_executions.where(activity_execution: execution) if execution
+    @unit_activity_executions = UnitActivityExecution.none unless @activity_execution || @unit
   end
 
   def new
