@@ -21,6 +21,12 @@ hr
   .col-8
     - stufen = @activity.stufen.map(&:name) - @activity.stufe_recommended.map(&:name)
     = (@activity.stufe_recommended.map(&:name) + stufen.map { |s| "#{s} (#{t('activity.show.possible')})" }).to_sentence
+.row
+  .col-2.font-weight-bold
+    = ActivityExecution.model_name.human(count: 2)
+    ':
+  .col-8
+    = link_to @activity.activity_executions.count, activity_activity_executions_path(@activity)
 
 - if @activity.simo
   .alert.alert-info.mt-2
@@ -96,9 +102,6 @@ hr
         ul.list-group
           - @activity.language_documents_it.each do |document|
             li.list-group-item = link_to document.filename, rails_blob_path(document, disposition: 'attachment')
-
-  hr
-  = render 'activities/activity_executions'
 
 hr.mt-4
 => link_to t('buttons.back'), activities_path, class: 'btn btn-secondary'

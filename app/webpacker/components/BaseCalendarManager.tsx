@@ -201,6 +201,7 @@ export abstract class BaseCalendarManager<TProps extends BaseCalendarManagerProp
               eventDragStart={() => this.setState({ success: null, error: null })}
               select={this.handleDateSelect}
               contentHeight="auto"
+              slotMinTime="06:00:00"
             />
           )}
         </div>

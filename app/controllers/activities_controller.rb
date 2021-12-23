@@ -12,9 +12,7 @@ class ActivitiesController < ApplicationController
     end
   end
 
-  def show
-    @spots = SpotBlueprint.render_as_hash Spot.all.order(:name)
-  end
+  def show; end
 
   def new
     @activity = Activity.new

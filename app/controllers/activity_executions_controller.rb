@@ -5,7 +5,12 @@ class ActivityExecutionsController < ApplicationController
   load_and_authorize_resource through: :activity
 
   def index
-    render json: ActivityExecutionBlueprint.render(@activity_executions)
+    @spots = SpotBlueprint.render_as_hash Spot.all.order(:name)
+
+    respond_to do |format|
+      format.json { render json: ActivityExecutionBlueprint.render(@activity_executions) }
+      format.html
+    end
   end
 
   def create
