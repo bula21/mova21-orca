@@ -19,6 +19,7 @@ class UnitActivityExecutionsImport
       record && (record.valid? || @errors[index] = record.errors.full_messages.join(', '))
     end
     @errors.none? && on_success
+    # on_success
   end
 
   def parse(input = ARGF, **options)
@@ -37,7 +38,7 @@ class UnitActivityExecutionsImport
   private
 
   def on_success
-    @imported.compact.each(&:save!)
+    @imported.compact.each(&:save)
     true
   end
 
@@ -54,7 +55,7 @@ class UnitActivityExecutionsImport
     UnitActivityExecution.new(
       unit_id: row['einheit'] || row[0],
       activity_execution_id: row['aktivitätsdurchführung'] || row[1],
-      headcount: row['personen'] || row[4],
+      headcount: row['personen'] || row[8],
       additional_data: row.to_h
     )
   rescue StandardError => e

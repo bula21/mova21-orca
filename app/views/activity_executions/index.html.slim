@@ -3,6 +3,8 @@
   span.badge[class="badge-#{@activity.activity_category.css_code}" style='align-self: baseline']
     = @activity.activity_category&.label
 
+.mb-3= link_to t('buttons.back'), activity_path(@activity)
+
 = react_component("CalendarManager", { activityId: @activity.id,
         availableLanguages: available_languages_for_frontend(@activity),
         defaultAmountParticipants: @activity.participants_count_transport,
