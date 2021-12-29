@@ -27,21 +27,23 @@
 						= "#{@activity_execution.headcount}/#{@activity_execution.available_headcount} (#{@activity_execution.headcount_utilization * 100}%)"
 
 
-= react_component("ReadOnlyCalendarManager", { editable: false, events: ActivityExecutionBlueprint.render_as_hash(@unit_activity_executions.map(&:activity_execution), view: :with_activity) })
+- if @unit || @activity_execution
+	= react_component("ReadOnlyCalendarManager", { editable: false, events: ActivityExecutionBlueprint.render_as_hash(@unit_activity_executions.map(&:activity_execution), view: :with_activity) })
 
-.my-5
+	.my-5
 
-= render partial: 'table', locals: { unit_activity_executions: @unit_activity_executions, activity_execution_id: @activity_execution&.id, unit_id: @unit&.id }
+	= render partial: 'table', locals: { unit_activity_executions: @unit_activity_executions, activity_execution_id: @activity_execution&.id, unit_id: @unit&.id }
 
+- if can?(:manage, UnitActivityExecution)
+	.card.mt-5
+		.card-body
+			h4 = t('activity.show.excel_import.title')
+			- if @import_errors.present?
+				ul.alert.alert-danger
+					- @import_errors.values.each do |error|
+						li = error
 
-.card.d-none
-	.card-body
-		- if @import_errors.present?
-			ul.alert.alert-danger
-				- @import_errors.values.each do |error|
-					li = error
-
-		= simple_form_for :import, url: import_unit_activity_executions_path, method: :post do |f|
-			= f.input :file, as: :file
-			= f.submit t('buttons.upload'), class: 'btn btn-secondary'
+			= simple_form_for :import, url: import_unit_activity_executions_path, method: :post do |f|
+				= f.input :file, as: :file
+				= f.submit t('buttons.upload'), class: 'btn btn-secondary'
 
