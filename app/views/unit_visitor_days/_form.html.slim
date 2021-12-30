@@ -3,6 +3,7 @@
     fieldset.col-md-6[disabled=!@unit_visitor_day.phase_open?]
       .card 
         .card-body
+          h4= UnitVisitorDay.human_attribute_name(:tickets)
           = f.input :u6_tickets
           = f.input :u16_tickets
           = f.input :u16_ga_tickets
@@ -11,8 +12,15 @@
     fieldset.col-md-6
       .card 
         .card-body
-          = f.input :responsible_name
-          = f.input :responsible_address
+          h4= UnitVisitorDay.human_attribute_name(:responsible)
+          = f.input :responsible_salutation, collection: %i[mr ms other].map { |salutation| t(".salutations.#{salutation}") }
+          .row
+            .col= f.input :responsible_firstname
+            .col= f.input :responsible_lastname
+          = f.input :responsible_address, as: :text
+          .row
+            .col= f.input :responsible_postal_code
+            .col= f.input :responsible_place
           = f.input :responsible_email
           = f.input :responsible_phone
   .actions.mt-3
