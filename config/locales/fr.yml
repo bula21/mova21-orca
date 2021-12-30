@@ -117,10 +117,17 @@ fr:
         at: Datum des Besuchstags
         ga_tickets: Personen mit GA
         other_tickets: Personen mit Halbax oder ohne Ermässigung
+        responsible: Reiseleitung
         responsible_address: Addresse der Reiseleitung
         responsible_email: E-Mail der Reiseleitung
+        responsible_firstname: Vorname
+        responsible_lastname: Nachname
         responsible_name: Name der Reiseleitung
         responsible_phone: Telefonnummer der Reiseleitung
+        responsible_place: Ort
+        responsible_postal_code: PLZ
+        responsible_salutation: Anrede
+        tickets: Tickets
         u16_ga_tickets: Kinder unter 16 Jahren ohne Junior-/Mitfahrkarte oder GA
         u16_tickets: Kinder unter 16 Jahren mit Junior-/Mitfahrkarte oder GA
         u6_tickets: Kinder unter 6 Jahren
@@ -145,6 +152,12 @@ fr:
             lagerleiter:
               incomplete: est incomplète (nom, e-mail, adresse))
     models:
+      activity:
+        one: Aktivität
+        other: Aktivitäten
+      activity_category:
+        one: Kategorie
+        other: Kategorien
       activity_execution:
         one: Réalisation
         other: Réalisations
@@ -192,7 +205,6 @@ fr:
           ici :'
         template_download: Télécharger le modèle Excel
         title: Importer Excel
-      executions: Activités
       executions_delete:
         description: 'Attention : Vous pouvez supprimer les activités d''une journée
           entière. Cliquez sur le lien ci-dessous pour accéder à la sélection des
@@ -693,6 +705,12 @@ fr:
       button: Ouvrir les légendes des tags
       title: Légendes Tags
     video_src: https://www.youtube.com/embed/7XusNePwv_o
+  unit_visitor_days:
+    form:
+      salutations:
+        mr: Herr
+        ms: Frau
+        other: Neutral
   units:
     edit:
       title: Modifier un camp
