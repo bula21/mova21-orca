@@ -117,10 +117,17 @@ it:
         at: Datum des Besuchstags
         ga_tickets: Personen mit GA
         other_tickets: Personen mit Halbax oder ohne Ermässigung
+        responsible: Reiseleitung
         responsible_address: Addresse der Reiseleitung
         responsible_email: E-Mail der Reiseleitung
+        responsible_firstname: Vorname
+        responsible_lastname: Nachname
         responsible_name: Name der Reiseleitung
         responsible_phone: Telefonnummer der Reiseleitung
+        responsible_place: Ort
+        responsible_postal_code: PLZ
+        responsible_salutation: Anrede
+        tickets: Tickets
         u16_ga_tickets: Kinder unter 16 Jahren ohne Junior-/Mitfahrkarte oder GA
         u16_tickets: Kinder unter 16 Jahren mit Junior-/Mitfahrkarte oder GA
         u6_tickets: Kinder unter 6 Jahren
@@ -146,6 +153,12 @@ it:
             lagerleiter:
               incomplete: è incompleto (nome, e-mail, indirizzo)
     models:
+      activity:
+        one: Aktivität
+        other: Aktivitäten
+      activity_category:
+        one: Kategorie
+        other: Kategorien
       activity_execution:
         one: Realizzazione
         other: Realizzazioni
@@ -192,7 +205,6 @@ it:
         description: 'Puoi creare delle realizazzioni in Excel e c aricarle qui:'
         template_download: Scarica il modello in formato Excel
         title: Importazione Excel
-      executions: Realizzazioni
       executions_delete:
         description: 'Attenzione: è possibile cancellare le attività di un giorno
           intero. Clicca sul link qui sotto per accedere alla selezione dei giorni.'
@@ -692,6 +704,12 @@ it:
       button: Aprire la legenda dei tag
       title: Legenda dei tag
     video_src: https://www.youtube.com/embed/7XusNePwv_o
+  unit_visitor_days:
+    form:
+      salutations:
+        mr: Herr
+        ms: Frau
+        other: Neutral
   units:
     edit:
       title: Modificare il campo

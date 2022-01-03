@@ -117,10 +117,17 @@ de:
         at: Datum des Besuchstags
         ga_tickets: Personen mit GA
         other_tickets: Personen mit Halbax oder ohne Ermässigung
-        responsible_address: Addresse der Reiseleitung
-        responsible_email: E-Mail der Reiseleitung
+        responsible: Reiseleitung
+        responsible_address: Adresse
+        responsible_email: E-Mail
+        responsible_firstname: Vorname
+        responsible_lastname: Nachname
         responsible_name: Name der Reiseleitung
         responsible_phone: Telefonnummer der Reiseleitung
+        responsible_place: Ort
+        responsible_postal_code: PLZ
+        responsible_salutation: Anrede
+        tickets: Tickets
         u16_ga_tickets: Kinder unter 16 Jahren ohne Junior-/Mitfahrkarte oder GA
         u16_tickets: Kinder unter 16 Jahren mit Junior-/Mitfahrkarte oder GA
         u6_tickets: Kinder unter 6 Jahren
@@ -196,7 +203,6 @@ de:
         description: 'Du kannst Durchführungen im Excel erfassen und hier hochladen:'
         template_download: Excel-Vorlage herunterladen
         title: Excel-Import
-      executions: Durchführungen
       executions_delete:
         description: 'Achtung: Du kannst Durchführungen eines ganzen Tages löschen.
           Klicke dazu auf den untenstehenden Link um zur Tagesauswahl zu kommen.'
@@ -699,6 +705,12 @@ de:
       button: Tag Legende öffnen
       title: Legende Tags
     video_src: https://www.youtube.com/embed/TZQT-Zngcyc
+  unit_visitor_days:
+    form:
+      salutations:
+        mr: Herr
+        ms: Frau
+        other: Neutral
   units:
     edit:
       title: Lager editieren

@@ -26,6 +26,8 @@ class UnitVisitorDay < ApplicationRecord
   end
 
   def unit_activity_execution
-    unit.unit_activity_executions.joins(:activity_execution).find_by(activity_executions: { activity_id: 223 })
+    unit.unit_activity_executions.joins(:activity_execution).find_by(activity_executions: { activity_id: ENV.fetch(
+      'VISITOR_DAY_ACTIVITY_ID', 223
+    ) })
   end
 end
