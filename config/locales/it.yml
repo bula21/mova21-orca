@@ -107,31 +107,32 @@ it:
         starts_at: Inizio il
         stufe: Branca
         title: Titolo
-        visitor_day_tickets: Anzahl Tickets für den Besuchstag
+        visitor_day_tickets: Anzahl Tickets für den Giornata delle visite
         week: Settimana di campo
       unit_activity_execution:
         activity_execution_id: Durchführung
         headcount: Anzahl Personen
         unit_id: Einheit
       unit_visitor_day:
-        at: Datum des Besuchstags
-        ga_tickets: Personen mit GA
-        other_tickets: Personen mit Halbax oder ohne Ermässigung
-        responsible: Reiseleitung
-        responsible_address: Addresse der Reiseleitung
-        responsible_email: E-Mail der Reiseleitung
-        responsible_firstname: Vorname
-        responsible_lastname: Nachname
-        responsible_name: Name der Reiseleitung
-        responsible_phone: Telefonnummer der Reiseleitung
-        responsible_place: Ort
-        responsible_postal_code: PLZ
-        responsible_salutation: Anrede
-        tickets: Tickets
-        u16_ga_tickets: Kinder unter 16 Jahren ohne Junior-/Mitfahrkarte oder GA
-        u16_tickets: Kinder unter 16 Jahren mit Junior-/Mitfahrkarte oder GA
-        u6_tickets: Kinder unter 6 Jahren
-        unit_id: Einheit
+        at: Date della vostra giornata delle visite
+        ga_tickets: Persone con AG
+        other_tickets: Persone con metà-prezzo o senza riduzione
+        responsible: responsabile del viaggio
+        responsible_address: Indirizzo
+        responsible_email: E-mail
+        responsible_firstname: Nome
+        responsible_lastname: Cognome
+        responsible_phone: Numero di telefono
+        responsible_place: Località
+        responsible_postal_code: CAP
+        responsible_salutation: Appellativo
+        tickets: biglietti
+        u16_ga_tickets: Bambini sotto i 16 anni con carta Junior o carta Bimbi accompagnati
+          o AG
+        u16_tickets: Bambini sotto i 16 anni senza carta Junior o carta Bimbi accompagnati
+          o AG
+        u6_tickets: Bambini sotto i 6 anni
+        unit_id: Unità
     errors:
       messages:
         incomplete: è incompleto
@@ -187,8 +188,8 @@ it:
         one: Zugewiesene Aktivitätsdurchführung
         other: Zugewiesene Aktivitätsdurchführungen
       unit_visitor_day:
-        one: Besuchstag
-        other: Besuchstage
+        one: Giornata delle visite
+        other: Giornata delle visitee
   activity:
     edit:
       title: Modificare l'attività
@@ -611,10 +612,10 @@ it:
     confirm_unsaved: 'Attenzione: Tutte le modifiche andranno perse! Vuoi continuare?'
     hints:
       unit_visitor_day:
-        ga_tickets: CHF 50.- pro Person
-        other_tickets: CHF 85.- pro Person
-        u16_ga_tickets: CHF 50.- pro Person
-        u16_tickets: CHF 30.- pro Person
+        ga_tickets: CHF 50.- a persona
+        other_tickets: CHF 85.- a persona
+        u16_ga_tickets: CHF 50.- a persona
+        u16_tickets: CHF 30.- a persona
         u6_tickets: gratis
     options:
       activity:
@@ -752,7 +753,7 @@ it:
       activity_booking_preview: Aprire l'anteprima delle prenotazioni
       activity_booking_text: Prenotare un'attività
       basic_infos: Vario
-      book_visitor_day_tickets: Tickets jetzt kaufen
+      book_visitor_day_tickets: Compra i biglietti ora
       camp_id: Id Campo
       camp_link_midata: Campo su MiData
       data_complete: Dati completi

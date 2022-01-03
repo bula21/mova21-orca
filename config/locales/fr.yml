@@ -107,31 +107,32 @@ fr:
         starts_at: Début le
         stufe: Branche
         title: Titre
-        visitor_day_tickets: Anzahl Tickets für den Besuchstag
+        visitor_day_tickets: Anzahl Tickets für den Journée portes ouvertes
         week: Semaine de camp
       unit_activity_execution:
         activity_execution_id: Durchführung
         headcount: Anzahl Personen
         unit_id: Einheit
       unit_visitor_day:
-        at: Datum des Besuchstags
-        ga_tickets: Personen mit GA
-        other_tickets: Personen mit Halbax oder ohne Ermässigung
-        responsible: Reiseleitung
-        responsible_address: Addresse der Reiseleitung
-        responsible_email: E-Mail der Reiseleitung
-        responsible_firstname: Vorname
-        responsible_lastname: Nachname
-        responsible_name: Name der Reiseleitung
-        responsible_phone: Telefonnummer der Reiseleitung
-        responsible_place: Ort
-        responsible_postal_code: PLZ
-        responsible_salutation: Anrede
-        tickets: Tickets
-        u16_ga_tickets: Kinder unter 16 Jahren ohne Junior-/Mitfahrkarte oder GA
-        u16_tickets: Kinder unter 16 Jahren mit Junior-/Mitfahrkarte oder GA
-        u6_tickets: Kinder unter 6 Jahren
-        unit_id: Einheit
+        at: Date de votre journée portes ouvertes
+        ga_tickets: Personnes avec AG
+        other_tickets: Personnes avec demi-tarif ou sans réduction
+        responsible: Personne de contact
+        responsible_address: Adresse
+        responsible_email: E-Mail
+        responsible_firstname: Prénom
+        responsible_lastname: Nom
+        responsible_phone: Numéro de téléphone
+        responsible_place: Ville
+        responsible_postal_code: Code postal
+        responsible_salutation: Titre
+        tickets: Billets
+        u16_ga_tickets: Enfants de moins de 16 ans, avec carte Junior, carte Enfant
+          accompagné ou AG
+        u16_tickets: Enfants de moins de 16 ans, sans carte Junior, carte Enfant accompagné
+          ou AG
+        u6_tickets: Enfants de moins de 6 ans
+        unit_id: Unité
     errors:
       messages:
         incomplete: est incomplet
@@ -186,8 +187,8 @@ fr:
         one: Zugewiesene Aktivitätsdurchführung
         other: Zugewiesene Aktivitätsdurchführungen
       unit_visitor_day:
-        one: Besuchstag
-        other: Besuchstage
+        one: Journée portes ouvertes
+        other: Jours portes ouvertes
   activity:
     edit:
       title: Éditer l'activité
@@ -618,11 +619,11 @@ fr:
       sûr.e.s?'
     hints:
       unit_visitor_day:
-        ga_tickets: CHF 50.- pro Person
-        other_tickets: CHF 85.- pro Person
-        u16_ga_tickets: CHF 50.- pro Person
-        u16_tickets: CHF 30.- pro Person
-        u6_tickets: gratis
+        ga_tickets: CHF 50.- par personne
+        other_tickets: CHF 85.- par personne
+        u16_ga_tickets: CHF 50.- par personne
+        u16_tickets: CHF 30.- par personne
+        u6_tickets: gratuit
     options:
       activity:
         activity_type:
@@ -708,9 +709,9 @@ fr:
   unit_visitor_days:
     form:
       salutations:
-        mr: Herr
-        ms: Frau
-        other: Neutral
+        mr: Monsieur
+        ms: Madame
+        other: Neutre
   units:
     edit:
       title: Modifier un camp
@@ -753,7 +754,7 @@ fr:
       activity_booking_preview: Ouvrir l’aperçu de la réservation
       activity_booking_text: Réserver des activités
       basic_infos: Général
-      book_visitor_day_tickets: Tickets jetzt kaufen
+      book_visitor_day_tickets: Commander des billets maintenant
       camp_id: ID du camp
       camp_link_midata: Camp sur MiData
       data_complete: Inscription complète
