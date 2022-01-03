@@ -1,0 +1,17 @@
+ignore_unused:
+  - "{activerecord,activemodel}.*"
+  - "{authlogic,kaminari}.*"
+  - "{time,datetime,date,support,number,helpers}.*"
+  - "flash.*"
+  - "app.title"
+  - "titles.*"
+  - "faker.*"
+  - "units.*"
+  - "errors.*"
+  - "invoices.*"
+  - "simple_form.*"
+  - "unit_activity_booking.compliance_evaluators.*"
+  - "activity_execution_calendar.*"
+
+ignore_inconsistent_interpolations:
+  - "camp_unit_mailer.*"

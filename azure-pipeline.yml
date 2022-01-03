@@ -1,0 +1,22 @@
+trigger:
+- develop
+
+variables:
+  PORT: 80
+
+stages:
+- stage: Build
+  displayName: Build and push image
+  jobs:  
+  - job: BuildPush
+    displayName: Build and Push
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - task: Docker@2
+      inputs:
+        containerRegistry: 'CR'
+        repository: 'orca'
+        command: 'buildAndPush'
+        Dockerfile: '**/Dockerfile'
+        tags: 'dev'

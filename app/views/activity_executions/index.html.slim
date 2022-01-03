@@ -1,0 +1,41 @@
+.h1.pb-0.d-flex.justify-content-between
+  = "#{@activity.id} -  #{@activity.label}"
+  span.badge[class="badge-#{@activity.activity_category.css_code}" style='align-self: baseline']
+    = @activity.activity_category&.label
+
+.mb-3= link_to t('buttons.back'), activity_path(@activity)
+
+= react_component("CalendarManager", { activityId: @activity.id,
+        availableLanguages: available_languages_for_frontend(@activity),
+        defaultAmountParticipants: @activity.participants_count_transport,
+        spots: @spots, editable: true })
+
+.row.mt-3
+  .col-md-6
+    .card
+      .card-body
+        h4 = t('activity.show.excel_import.title')
+        p
+          = t('activity.show.excel_import.description')
+          =< link_to t('activity.show.excel_import.template_download'), '/activity_execution_upload_template.xlsx'
+
+        - if @import_errors.present?
+          ul.alert.alert-danger
+            - @import_errors.each do |error|
+              li = error
+
+        = simple_form_for :import, url: import_activity_activity_executions_path(@activity), method: :post do |f|
+          = f.input :file, as: :file
+          = f.submit t('buttons.upload'), class: 'btn btn-secondary'
+
+  .col-md-6
+    .card.alert.alert-danger
+      .card-body
+        h4 = t('delete_activity_executions.index.title')
+        p = t('activity.show.executions_delete.description')
+        = link_to t('activity.show.executions_delete.link'), activity_delete_activity_executions_path(@activity),
+                class: 'btn btn-danger'
+
+
+hr.mt-4
+=> link_to t('buttons.back'), activities_path, class: 'btn btn-secondary'

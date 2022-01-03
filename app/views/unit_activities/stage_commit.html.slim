@@ -1,0 +1,34 @@
+h1.h1.pb-0
+  = UnitActivity.model_name.human(count: 2)
+  small=< @unit.title
+
+.pb-5 = link_to t('buttons.back'), unit_unit_activities_path(@unit)
+
+- all_comply = @unit.activity_booking.all_comply?
+= simple_form_for @unit, url: commit_unit_unit_activities_path(@unit), method: :post do |f|
+  .mb-5.mt-4.alert[class=(all_comply ? 'alert-success' : 'alert-danger')]
+    .card-body
+      - if all_comply
+        - t('unit_activity_booking.all_comply').lines.each do |line|
+          p= line
+      - else 
+        - t('unit_activity_booking.not_all_comply').lines.each do |line|
+          p= line
+      ul.my-0
+        - @unit.activity_booking.compliance.each do |name, compliance|
+          - next if compliance.nil?
+          li 
+            span.mr-2= t(name, scope: %w[unit_activity_booking compliance_evaluators])
+            - if UnitActivityBooking::COMPLIANT_VALUES.include?(compliance)
+              .badge.badge-pill.badge-success 
+                i.fa.fa-check
+            - else 
+              .badge.badge-pill.badge-warning
+                - if compliance == false 
+                  i.fa.fa-times
+                - else  
+                  = compliance
+      
+  = f.submit t('unit_activity_booking.commit'), class: 'btn btn-primary btn-lg', disabled: !all_comply, data: { confirm: t('unit_activity_booking.confirm_commit') }
+  = link_to t('buttons.back'), unit_unit_activities_path(@unit), class: 'btn btn-default ml-3'
+

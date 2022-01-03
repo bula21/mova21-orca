@@ -1,0 +1,11 @@
+.container.py-3
+  .row
+    .col-lg-6
+      = link_to units_path, class: 'mova-block-btn mova-yellow' do
+        = image_pack_tag 'header_image.png', class: 'img-fluid'
+        div= t('units.index.title')
+
+    .col-lg-6
+      = link_to activities_path, class: 'mova-block-btn mova-orange' do
+        = image_pack_tag 'activities_header.jpg', class: 'img-fluid'
+        div= t('nav.activity')

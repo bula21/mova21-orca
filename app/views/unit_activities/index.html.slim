@@ -1,0 +1,84 @@
+h1.h1.pb-0
+  = UnitActivity.model_name.human(count: 2)
+  small=< @unit.title
+
+.pb-5 = link_to t('buttons.back'), unit_path(@unit)
+
+.row
+  .col-md-9
+    = render partial: 'activities/filter', locals: { submit_url: unit_unit_activities_path(@unit, locale: I18n.locale), reset_url: unit_unit_activities_path(@unit, activity_filter: { reset: true }) }
+
+  .col-md-3
+
+.row
+  .col-md-3.position-relative.mb-5.order-sm-2
+    .card.position-sticky[style="top: 2rem;"]
+      .card-header
+        .d-flex.justify-content-between.align-items-center
+          div
+            =<> UnitActivity.model_name.human(count: 2)
+            .badge.badge-primary
+              = @unit.unit_activities.count
+          div
+            - if @unit.activity_booking.all_comply? || @unit_activity_booking.phase?(:committed)
+              .badge.badge-pill.badge-success 
+                i.fa.fa-check
+            - else 
+              .badge.badge-pill.badge-warning[title=t('unit_activity_booking.not_all_comply')]
+                i.fa.fa-times
+
+      .card-body.p-0
+        ol.sortable-list.list-group.small
+          - @unit_activities.prioritized.each do |unit_activity|
+            li.list-group-item.p-1.pl-4[data-sort-callback-url=priorize_unit_unit_activity_path(@unit, unit_activity) class=(@unit_activity_booking.phase?(:preview, :open) && can?(:commit, @unit) && :draggable)]
+              h6.m-0= unit_activity.activity.label
+              span.badge class="badge-#{unit_activity.activity.activity_category&.css_code}"
+                = unit_activity.activity.activity_category&.label
+              
+              .d-flex.justify-content-end
+                = link_to unit_unit_activity_path(@unit, unit_activity.activity), class: 'btn btn-sm', title: t('buttons.show') 
+                  i.fa.fa-eye
+                - if @unit_activity_booking.phase?(:preview, :open) && can?(:commit, @unit)
+                  = link_to unit_unit_activity_path(@unit, unit_activity), data: { confirm: t('buttons.confirm_delete') }, method: :delete, class: 'btn btn-sm', title: t('buttons.destroy') 
+                    i.fa.fa-trash
+
+      - if @unit_activity_booking.phase?(:open) && can?(:commit, @unit)
+        .card-footer.text-right
+          = link_to t('unit_activity_booking.commit'), stage_commit_unit_unit_activities_path(@unit), class: 'btn btn-primary'
+
+  .col-sm-9.order-sm-1
+    - if @unit_activity_booking.phase?(:committed)
+      .card.mb-5[style='background-color: #bcecaa']
+        .card-body
+          = t('unit_activity_booking.committed_text')
+
+    - elsif @unit_activity_booking.phase?(:preview, :open)
+      .card.mb-5[style='background-color: #aae3ec']
+        .card-body
+          - t('unit_activity_booking.guide_text').lines.each do |line|
+            p= line
+
+          ul.my-0.mb-3
+            - @unit.activity_booking.compliance.each do |name, compliance|
+              - next if compliance.nil?
+              li 
+                span.mr-2= t(name, scope: %w[unit_activity_booking compliance_evaluators])
+                - if UnitActivityBooking::COMPLIANT_VALUES.include?(compliance)
+                  .badge.badge-pill.badge-success 
+                    i.fa.fa-check
+                - else 
+                  .badge.badge-pill.badge-warning
+                    - if compliance == false 
+                      i.fa.fa-times
+                    - else  
+                      = compliance
+
+          - if @unit_activity_booking.phase?(:open) && @unit.activity_booking.all_comply? && can?(:commit, @unit)
+            = link_to t('unit_activity_booking.commit'), stage_commit_unit_unit_activities_path(@unit), class: 'btn btn-primary'
+          - else
+            button.btn.btn-primary[disabled=true] = t('unit_activity_booking.commit')
+
+    = render partial: 'activity_listing', collection: @activities, as: :activity
+    = paginate @activities
+
+

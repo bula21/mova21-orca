@@ -1,0 +1,59 @@
+version: '3.7'
+services:
+
+  e2e_test:
+    build:
+      context: .
+      target: development
+      args:
+        UID: ${UID}
+        GID: ${GID}
+    entrypoint: [".docker/entrypoints/app.sh"]
+    command: ["bin/check"]
+    volumes:
+      - .:/app
+    environment:
+      APP_HOST: 'e2e_test'
+      E2E_APP_HOST: 'e2e_target:3002'
+      DATABASE_URL: postgresql://postgres:postgres@db/orca_e2e
+      DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL: 'true'
+      RAILS_ENV: test
+      SELENIUM_HOST: 'selenium:4444'
+      RUBYOPT: '-W:no-deprecated -W:no-experimental'
+    depends_on:
+      - db
+      - selenium
+      - e2e_target
+    networks:
+      default:
+      selenium:
+
+  e2e_target:
+    build: .
+    image: mova21-orca:latest
+    ports:
+      - '3002:3002'
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@db/orca_e2e
+      SECRET_KEY_BASE: 'test'
+      RAILS_SERVE_STATIC_FILES: 'true'
+      PORT: 3002
+      LOG_LEVEL: 'debug'
+      RUBYOPT: '-W:no-deprecated -W:no-experimental'
+      APP_BASE_URL: 'e2e_target:3002'
+      APP_HOST: 'e2e_target:3002'
+      RAILS_ENV: production
+      SMTP_HOST: ${SMTP_HOST}
+      SMTP_USER: ${SMTP_USER}
+      SMTP_PASSWORD: ${SMTP_PASSWORD}
+      SMTP_PORT: ${SMTP_PORT}
+      SMTP_AUTH: ${SMTP_AUTH:-plain}
+    depends_on:
+      - db
+      - mail
+    networks:
+      default:
+      selenium:
+
+networks:
+  selenium:

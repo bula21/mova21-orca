@@ -1,0 +1,16 @@
+= simple_form_for @leader do |f|
+  = f.input :scout_name
+  = f.input :first_name
+  = f.input :last_name, autofocus: true
+  = f.input :birthdate, wrapper: :inline_date, start_year: 1930, end_year: Date.today.year
+  = f.input :gender, collection: Leader.genders
+  = f.input :email
+  = f.input :address
+  = f.input :zip_code
+  = f.input :town
+  / = f.input :country # TODO: Which countries are possible?
+  = f.input :phone_number
+  = f.input :language, collection: Leader.languages
+  = f.input :pbs_id
+  .actions
+    = f.submit t('buttons.save'), class: 'btn btn-primary'

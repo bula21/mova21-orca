@@ -1,0 +1,22 @@
+.h1 Aktivitäts-Kategorien
+
+= link_to t('buttons.create'), new_admin_activity_category_path, class: 'btn btn-primary mb-3'
+
+.table-responsive
+  table.table
+    thead
+      tr
+        th Label
+        th parent
+        th Code
+        th
+        th
+
+    tbody
+      - @activity_categories.each do |cat|
+        tr
+          td = cat.label
+          td = cat.parent&.label
+          td = cat.code
+          td = link_to t('buttons.edit'), edit_admin_activity_category_path(cat), class: 'btn btn-primary' if can?(:edit, cat)
+          td = link_to t('buttons.destroy'), admin_activity_category_path(cat), data: { confirm: t('buttons.confirm_delete') }, method: :delete, class: 'btn btn-secondary' if can?(:delete, cat)

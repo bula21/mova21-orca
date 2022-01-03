@@ -1,0 +1,128 @@
+= simple_form_for(@activity) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+  .card
+    .card-body
+      .row
+        .col-6
+          = f.association :activity_category, collection: ActivityCategory.roots,
+                  as: :grouped_select,
+                  group_method: :children, group_label_method: :label,
+                  label_method: :full_label
+
+        .col-6
+          = f.input :block_type, collection: Activity.block_types.symbolize_keys.keys
+  .card.mt-3
+    .card-body
+      = render 'shared/translatable_fields' do |locale|
+        - I18n.available_locales.each do |locale|
+          - current_locale = locale == I18n.locale
+          .tab-pane[id="name-#{locale}-tab" class="#{'show active' if current_locale}"
+            aria-labelledby="name-#{locale}-tab" role='tabpanel']
+            = f.input "label_#{locale.to_s}", label: "#{t('activerecord.attributes.activity.label')} #{locale.upcase}"
+            = f.input "description_#{locale.to_s}", as: :text, input_html: { :rows => 10 },
+                label: "#{t('activerecord.attributes.activity.description')} #{locale.upcase}"
+  .card.mt-3
+    .card-body
+      .form-inputs
+      .row
+        .col-6
+          = f.association :goals, as: :check_boxes
+          = f.association :tags, as: :check_boxes
+        .col-6
+          = f.association :stufen, as: :check_boxes
+          = f.association :stufe_recommended, as: :check_boxes
+  .card.mt-3
+    .card-body
+      .row
+        .col-6
+          = f.input :duration_activity
+          / = f.input :location
+          / = f.association :transport_location
+        .col-6
+          = f.input :simo, collection: Activity.simos.symbolize_keys.keys
+          / = f.input :duration_journey
+          / = f.input :participants_count_transport
+  .card.mt-3
+    .card-body
+      .form-inputs
+        .row
+          .col-6
+            = f.label :languages
+            - @activity.languages.keys.each do |language|
+              = f.input language, as: :boolean
+          .col-6
+            = f.input :participants_count_activity
+            = f.input :min_participants
+
+
+  .card.mt-3
+    .card-body
+      .form-group
+        .alert.alert-warning = t('activity.edit.warning')
+        .row
+          .col-4
+            label.d-block{for='activity_activity_documents'} = t('activerecord.attributes.activity.activity_documents')
+            = f.file_field :activity_documents, multiple: true
+            ul.list-group.mt-3
+              - @activity.activity_documents.each do |document|
+                li.list-group-item
+                  = document.filename
+                  = link_to t('buttons.destroy'), attachment_activity_path(@activity, type: :activity_documents, id: document.id),
+                        method: :delete,
+                        class: 'btn btn-sm btn-secondary float-right',
+                        data: { confirm: t('simple_form.confirm_unsaved') }
+
+          .col-4
+            label.d-block{for='picture'} = t('activerecord.attributes.activity.picture')
+            = f.file_field :picture
+            - unless @activity.picture.blank?
+              = image_tag(@activity.picture, height: "100")
+              = link_to t('buttons.destroy'), attachment_activity_path(@activity, type: :picture, id: @activity.picture.id),
+                method: :delete,
+                class: 'btn btn-sm btn-secondary float-right',
+                data: { confirm: t('simple_form.confirm_unsaved') }
+
+        - if can?(:edit, Activity)
+          .row
+            .col-4
+              label.d-block{for='language_documents_de'} = t('activerecord.attributes.activity.language_documents_de')
+              = f.file_field :language_documents_de, multiple: true
+              ul.list-group.mt-3
+                - @activity.language_documents_de.each do |document|
+                  li.list-group-item
+                    = document.filename
+                    = link_to t('buttons.destroy'), attachment_activity_path(@activity, type: :language_documents_de, attachment_id: document.id),
+                            method: :delete,
+                            class: 'btn btn-sm btn-secondary float-right',
+                            data: { confirm: t('simple_form.confirm_unsaved') }
+
+            .col-4
+              label.d-block{for='language_documents_fr'} = t('activerecord.attributes.activity.language_documents_fr')
+              = f.file_field :language_documents_fr, multiple: true
+              ul.list-group.mt-3
+                - @activity.language_documents_fr.each do |document|
+                  li.list-group-item
+                    = document.filename
+                    = link_to t('buttons.destroy'), attachment_activity_path(@activity, type: :language_documents_fr, id: document.id),
+                            method: :delete,
+                            class: 'btn btn-sm btn-secondary float-right',
+                            data: { confirm: t('simple_form.confirm_unsaved') }
+
+            .col-4
+              label.d-block{for='language_documents_it'} = t('activerecord.attributes.activity.language_documents_it')
+              = f.file_field :language_documents_it, multiple: true
+              ul.list-group.mt-3
+                - @activity.language_documents_it.each do |document|
+                  li.list-group-item
+                    = document.filename
+                    = link_to t('buttons.destroy'), attachment_activity_path(@activity, type: :language_documents_it, id: document.id),
+                            method: :delete,
+                            class: 'btn btn-sm btn-secondary float-right',
+                            data: { confirm: t('simple_form.confirm_unsaved') }
+
+
+
+  .actions.mt-3
+    = f.submit t('buttons.save'), class: 'btn btn-primary'

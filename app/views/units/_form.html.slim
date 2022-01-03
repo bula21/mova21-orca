@@ -1,0 +1,44 @@
+= simple_form_for @unit do |f|
+  .row
+    .col-10
+      = f.input :title, autofocus: true
+    .col-2
+      = f.input :language, collection: Unit.languages
+  .row
+    .col-6
+      = f.input :abteilung
+    .col-6
+      = f.input :kv_id, collection: Kv.all, label_method: :name, value_method: :pbs_id
+
+  = f.input :stufe_id, collection: Stufe.all, label_method: :name 
+  .row
+    .col-6
+      = f.input :expected_participants_f
+      = f.input :expected_participants_m
+    .col-6
+      = f.input :expected_participants_leitung_f
+      = f.input :expected_participants_leitung_m
+  .row
+    .col-6
+      = f.input :visitor_day_tickets
+  = f.input :starts_at, wrapper: :inline_date, start_year: 2021, end_year: 2021
+  = f.input :ends_at, wrapper: :inline_date, start_year: 2021, end_year: 2021
+  .row
+    .col-6
+      = f.association :al, label_method: :full_name
+    .col-6
+      = f.association :lagerleiter, label_method: :full_name
+  
+  - if can?(:manage, @unit)
+    .card.border-danger
+      .card-header.bg-danger.text-white
+        = t('.danger_zone')
+      .card-body
+        .row
+          .col-6
+            = f.input :pbs_id
+          .col-6
+            = f.input :activity_booking_phase, collection: Unit.activity_booking_phases.keys
+            
+  .actions.mt-4
+    = f.submit t('buttons.save'), class: 'btn btn-primary'

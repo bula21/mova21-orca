@@ -1,0 +1,23 @@
+#!/bin/sh
+
+if ! bundle exec rubocop -D -c .rubocop.yml --fail-fast
+then
+  echo 'rubocop detected issues!'
+  bundle exec rubocop -a -D -c .rubocop.yml
+  echo 'Tried to auto correct the issues, but must be reviewed manually, commit aborted'
+  exit 1
+fi
+
+bundle exec rspec 
+if [ $? -ne 0 ]; then
+  echo 'RSpec did not run successfully, commit aborted'
+  exit 1
+fi
+
+if ! bundle exec i18n-tasks health
+then
+  echo 'i18n detected issues!'
+  exit 1
+fi
+
+

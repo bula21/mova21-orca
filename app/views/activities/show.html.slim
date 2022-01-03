@@ -1,0 +1,109 @@
+.h1.pb-0.d-flex.justify-content-between
+  = "#{@activity.id} -  #{@activity.label}"
+  span.badge[class="badge-#{@activity.activity_category.css_code}" style='align-self: baseline']
+    = @activity.activity_category&.label
+- @activity.tags.each do |tag|
+  i class="#{tag.icon} mr-2" title="#{tag.label}"
+
+div.mt-4
+  = image_tag(@activity.picture, height: "100") unless @activity.picture.blank?
+
+hr
+
+.row.mt-3
+  .col-2.font-weight-bold
+    = t('activity.show.duration')
+  .col-8
+    = "#{@activity.duration_activity}"
+.row
+  .col-2.font-weight-bold
+    = t('activity.show.stufe_recommended')
+  .col-8
+    - stufen = @activity.stufen.map(&:name) - @activity.stufe_recommended.map(&:name)
+    = (@activity.stufe_recommended.map(&:name) + stufen.map { |s| "#{s} (#{t('activity.show.possible')})" }).to_sentence
+.row
+  .col-2.font-weight-bold
+    = ActivityExecution.model_name.human(count: 2)
+    ':
+  .col-8
+    = link_to @activity.activity_executions.count, activity_activity_executions_path(@activity)
+
+- if @activity.simo
+  .alert.alert-info.mt-2
+    = "#{t('activity.show.simo_text')} #{t(@activity.simo, scope: 'simple_form.options.activity.simo')}"
+hr
+.mt-4
+  = markdown(@activity.description).html_safe
+
+hr
+
+.h4.mt-3 = t('activity.show.more_information')
+.row
+  .col-6
+    dt = t('activity.show.max_people')
+    dd = @activity.participants_count_transport
+
+    dt = t('activerecord.attributes.activity.languages')
+    dd
+      ul
+        - @activity.languages.select { |language, selected| selected }.keys.each do |language|
+          li= t("simple_form.options.activity.#{language}")
+
+    dt = t('activerecord.attributes.activity.block_type')
+    dd = t(@activity.block_type || 'none', scope: 'simple_form.options.activity.block_type')
+
+
+  .col-6
+    dt = t('activerecord.attributes.activity.goals')
+    dd
+      ul
+        - @activity.goals.each do |s|
+          li = s.name
+
+    dt = t('activerecord.attributes.activity.activity_type')
+    dd = @activity.activity_category&.full_label
+
+
+/ dt = t('activerecord.attributes.activity.location')
+/ dd = @activity.location
+
+/ dt = t('activerecord.attributes.activity.transport_location')
+/ dd = @activity.transport_location
+
+
+hr
+.h4.mt-3 = t('activity.show.downloads')
+.row
+  - if @activity.activity_documents.any?
+    .col-4
+      ul.list-group
+        - @activity.activity_documents.each do |document|
+          li.list-group-item = link_to document.filename, rails_blob_path(document, disposition: 'attachment')
+
+- if can?(:edit, @activity)
+  .row 
+    .col-4
+      - if @activity.language_documents_de.any?
+        =  t('activerecord.attributes.activity.language_documents_de')
+        ul.list-group
+          - @activity.language_documents_de.each do |document|
+            li.list-group-item = link_to document.filename, rails_blob_path(document, disposition: 'attachment')
+
+    .col-4
+      - if @activity.language_documents_fr.any?
+        =  t('activerecord.attributes.activity.language_documents_fr')
+        ul.list-group
+          - @activity.language_documents_fr.each do |document|
+            li.list-group-item = link_to document.filename, rails_blob_path(document, disposition: 'attachment')
+
+    .col-4
+      - if @activity.language_documents_it.any?
+        =  t('activerecord.attributes.activity.language_documents_it')
+        ul.list-group
+          - @activity.language_documents_it.each do |document|
+            li.list-group-item = link_to document.filename, rails_blob_path(document, disposition: 'attachment')
+
+hr.mt-4
+=> link_to t('buttons.back'), activities_path, class: 'btn btn-secondary'
+=< link_to t('buttons.edit'), edit_activity_path(@activity), class: 'btn btn-primary' if can?(:edit, @activity)
+=< link_to t('buttons.destroy'), activity_path(@activity), data: { confirm: t('buttons.confirm_delete') }, method: :delete, class: 'btn btn-secondary float-right' if can?(:delete, @activity)

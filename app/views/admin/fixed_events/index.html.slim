@@ -1,0 +1,24 @@
+h1 = FixedEvent.model_name.human
+
+.table-responsive
+  table.table
+    thead
+      tr
+        th = FixedEvent.human_attribute_name(:title)
+        th = FixedEvent.human_attribute_name(:starts_at)
+        th = FixedEvent.human_attribute_name(:ends_at)
+        th
+        th
+    tbody
+      - @fixed_events.each do |fixed_event|
+        tr
+          td = fixed_event.title
+          td = I18n.l(fixed_event.starts_at, format: :short)
+          td = I18n.l(fixed_event.ends_at)
+          td = link_to t('buttons.edit'), edit_admin_fixed_event_path(fixed_event)
+          td = link_to t('buttons.destroy'), admin_fixed_event_path(fixed_event), data: { confirm: t('buttons.confirm_delete') }, method: :delete
+
+br
+
+= link_to t('buttons.create'), new_admin_fixed_event_path, class: 'btn btn-primary mb-3'
+

@@ -1,0 +1,8 @@
+= link_to t('buttons.back'), activity_path(@activity)
+.card.alert.alert-danger.mt-3
+  .card-body
+    h4 = t('delete_activity_executions.index.title')
+    = simple_form_for :delete_executions, url: activity_delete_activity_executions_path(@activity), method: :delete do |f|
+      = f.input :days, label: I18n.t('datetime.prompts.day'), as: :check_boxes, collection: activity_executions_collection(@activity)
+      = f.submit t('buttons.destroy'), data: { confirm: t('buttons.confirm_delete') }, class: 'btn btn-secondary'
+

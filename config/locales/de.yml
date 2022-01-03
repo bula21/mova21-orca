@@ -1,0 +1,779 @@
+---
+de:
+  activemodel:
+    attributes:
+      activity_filter:
+        activity_category: Kategorie
+        languages: Sprachen
+        stufe_recommended: Empfohlene Stufe
+        tags: Tags
+        text: Text
+  activerecord:
+    attributes:
+      activity:
+        activity_category: Kategorie
+        activity_documents: Dokumente
+        activity_type: Art
+        block_type: Block Typ
+        description: Beschreibung
+        duration_activity: Dauer der Aktivität (HH:mm)
+        duration_journey: Dauer der Anreise (HH:mm)
+        goals: Leitziele
+        label: Bezeichnung
+        language_de: Deutsch
+        language_documents_de: Dokumente DE
+        language_documents_fr: Dokumente FR
+        language_documents_it: Dokumente IT
+        language_en: English
+        language_fr: Français
+        language_it: Italiano
+        languages: Sprachen
+        location: Ort (grob)
+        min_participants: Min. TNs
+        participants_count_activity: Max. Anz. Personen
+        participants_count_transport: Anz. Personen (inkl. Leitung)
+        picture: Bild
+        simo: Sicherheitsmodul / SLRG
+        stufe_recommended: Stufen Empfohlen
+        stufen: Stufen möglich
+        transport_location: Transport-Ort
+      activity_execution:
+        amount_participants: Anzahl Personen
+        field: Feld
+        language_flags: Sprachen
+        spot: Programmspot
+        utilization: Auslastung
+      field:
+        name: Name
+      fixed_event:
+        ends_at: Endet um
+        starts_at: Beginnt um
+        title: Titel
+      leader:
+        birthdate: Geburtsdatum
+        first_name: Vorname
+        full_name: Name
+        gender: Geschlecht
+        last_name: Nachname
+        pbs_id: PBS ID
+        scout_name: Pfadiname
+      participant:
+        birthdate: Geburtsdatum
+        email: E-Mail
+        first_name: Vorname
+        full_name: Name
+        gender: Geschlecht
+        genders:
+          female: Weiblich
+          male: Männlich
+        guest_troop: Gast Trupp
+        last_name: Nachname
+        pbs_id: PBS ID
+        phone_number: Telefonnummer
+        role: Rolle
+        roles:
+          assistant_leader: Leitung
+          helper: Küche / Helfer/-in
+          leader_mountain_security: Leiter-/in Sicherheitsaktivität Berg
+          leader_snow_security: Leiter-/in Sicherheitsaktivität Winter
+          leader_water_security: Leiter-/in Sicherheitsaktivität Wasser
+          participant: Teilnehmende/-r
+        scout_name: Pfadiname
+      spot:
+        color: Farbe für Erfassung der Durchführung
+        fields: Felder
+        name: Name
+      unit:
+        abteilung: Abteilung
+        activity_booking_phase: Buchungsphase
+        al: AL
+        coach: Coach
+        district: Quartier
+        ends_at: Ende am
+        expected_guest_leaders: Definitive Anzahl Gäste (Leitung)
+        expected_guest_participants: Definitive Anzahl Gäste (TN)
+        expected_participants: Definitive Anzahl TN
+        expected_participants_f: Definitive Anzahl TN (f)
+        expected_participants_leitung: Definitive Anzahl Leitende
+        expected_participants_leitung_f: Definitive Anzahl Leitende (f)
+        expected_participants_leitung_m: Definitive Anzahl Leitende (m)
+        expected_participants_m: Definitive Anzahl TN (m)
+        full_name: Vollständiger Name
+        kv_id: KV
+        lagerleiter: Lagerleiter
+        language: Sprache
+        on_site_at: Lagerdaten
+        pbs_id: Lager ID in der Midata
+        starts_at: Beginn am
+        stufe: Stufe
+        title: Titel
+        visitor_day_tickets: Anzahl Tickets für den Besuchstag
+        week: Lagerwoche
+      unit_activity_execution:
+        activity_execution_id: Durchführung
+        headcount: Anzahl Personen
+        unit_id: Einheit
+      unit_visitor_day:
+        at: Datum des Besuchstags
+        ga_tickets: Personen mit GA
+        other_tickets: Personen mit Halbax oder ohne Ermässigung
+        responsible: Reiseleitung
+        responsible_address: Adresse
+        responsible_email: E-Mail
+        responsible_firstname: Vorname
+        responsible_lastname: Nachname
+        responsible_phone: Telefonnummer
+        responsible_place: Ort
+        responsible_postal_code: PLZ
+        responsible_salutation: Anrede
+        tickets: Tickets
+        u16_ga_tickets: Kinder unter 16 Jahren mit Junior-/Mitfahrkarte oder GA
+        u16_tickets: Kinder unter 16 Jahren ohne Junior-/Mitfahrkarte oder GA
+        u6_tickets: Kinder unter 6 Jahren
+        unit_id: Einheit
+    errors:
+      messages:
+        incomplete: ist unvollständig
+        record_invalid: 'Gültigkeitsprüfung ist fehlgeschlagen: %{errors}'
+        restrict_dependent_destroy:
+          has_many: Datensatz kann nicht gelöscht werden, da abhängige %{record} existieren.
+          has_one: Datensatz kann nicht gelöscht werden, da ein abhängiger %{record}-Datensatz
+            existiert.
+        start_not_before_end: das Startdatum muss vor dem Enddatum liegen
+      models:
+        activity_execution:
+          attributes:
+            language_flags:
+              greater_than: Es muss mindestens eine Sprache gewählt werden.
+        unit:
+          attributes:
+            lagerleiter:
+              incomplete: ist unvollständig (Name, E-Mail, Adresse)
+    models:
+      activity:
+        one: Aktivität
+        other: Aktivitäten
+      activity_category:
+        one: Kategorie
+        other: Kategorien
+      activity_execution:
+        one: Durchführung
+        other: Durchführungen
+      field:
+        one: Feld
+        other: Felder
+      fixed_event:
+        one: Groprogramm-Punkt
+        other: Groprogramm-Punkte
+      leader:
+        one: Leitperson
+        other: Leitpersonen
+      participant:
+        one: Teilnehmende(r)
+        other: Teilnehmende
+      spot:
+        one: Programmspot
+        other: Programmspots
+      unit:
+        one: Lager
+        other: Lager
+      unit_activity:
+        one: Gebuchte Aktivität
+        other: Warenkorb
+      unit_activity_execution:
+        one: Zugewiesene Aktivitätsdurchführung
+        other: Zugewiesene Aktivitätsdurchführungen
+      unit_visitor_day:
+        one: Besuchstag
+        other: Besuchstage
+  activity:
+    edit:
+      title: Aktivität editieren
+      warning: 'Achtung: Forumlar zuerst speichern und danach Dokumente bearbeiten
+        (Änderungen gehen sonst verloren)'
+    index:
+      title: Aktivitäten
+    new:
+      title: Neue Aktivität erfassen
+    show:
+      downloads: Downloads
+      duration: 'Dauer:'
+      excel_import:
+        description: 'Du kannst Durchführungen im Excel erfassen und hier hochladen:'
+        template_download: Excel-Vorlage herunterladen
+        title: Excel-Import
+      executions_delete:
+        description: 'Achtung: Du kannst Durchführungen eines ganzen Tages löschen.
+          Klicke dazu auf den untenstehenden Link um zur Tagesauswahl zu kommen.'
+        link: Weiter zur Auswahl
+      max_people: Max. Gruppengrösse
+      more_information: Weitere Informationen
+      possible: möglich
+      simo_text: 'Benötigt Sicherheitsmodul:'
+      stufe_recommended: 'Geeignet für:'
+  activity_execution:
+    edit:
+      title: Programmpunkt editieren
+    import:
+      invalid_file_type: Ungültige Datei. Bitte lade die Excel-Vorlage hoch.
+      success: Erfolgreich %{count} Durchführungen importiert
+    new:
+      title: Neuen Programmpunkt erfassen
+  activity_execution_calendar:
+    copy:
+      error: 'Fehler beim Kopieren der Durchführung:'
+      success: Durchführung erfolgreich kopiert
+    create:
+      error: 'Fehler beim Erstellen der Durchführung:'
+      success: Durchführung erfolgreich erstellt
+    delete:
+      confirm: Bist du sicher, dass du die Durchführung löschen willst?
+      error: 'Fehler beim Löschen der Durchführung:'
+      success: Durchführung erfolgreich gelöscht
+    editor:
+      amount_participants: Anzahl Personen
+      cancel: Abbrechen
+      copy: Kopieren
+      date_invalid: Der Startzeitpunkt kann nicht vor dem Endzeitpunkt liegen
+      delete: Löschen
+      end_time: Endzeit
+      field: Feld
+      has_transport: Personenanzahl inkl. Leitung
+      languages: Sprachen
+      manage_languages_hint: Sprache in welcher die Aktivität durchgeführt werden
+        kann.
+      manage_spot_hint: 'Falls du mehr Programmspots brauchst, klicke hier:'
+      manage_spot_link_text: Programmspots verwalten
+      mixed_languages: Gemischtsprachig
+      save: Speichern
+      spot: Programmspot
+      start_time: Startzeit
+      title_copy: Kopieren
+      title_edit: Editieren
+      title_new: Neu
+    move:
+      error: 'Fehler beim Verschieben der Durchführung:'
+      success: Durchführung erfolgreich verschoben
+    update:
+      error: 'Fehler beim Ändern der Durchführung:'
+      success: Durchführung erfolgreich geändert
+  app:
+    title: Orca
+  buttons:
+    back: zurück
+    close: Schliessen
+    commit: Speichern und Abschliessen
+    confirm_delete: Bist du dir sicher, dass du Löschen möchtest?
+    create: Erstellen
+    destroy: löschen
+    edit: editieren
+    export_csv: Export als CSV
+    filter: Filtern
+    reset: Reset
+    save: Speichern
+    show: anzeigen
+    upload: Hochladen
+  camp_unit_mailer:
+    complete_notification:
+      body: |-
+        Hallo %{salutation_name}
+
+        Deine Lageranmeldung für das Bula ist jetzt vollständig. Siehe %{camp_unit_url}
+      subject: Lageranmeldung vollständig
+    incomplete_notification:
+      body: |-
+        Hallo %{salutation_name}
+
+        Deine MiData-Lageranmeldung für das BuLa-CaFé 2021 ist noch nicht vollständig. Du musst die Details in der MiData ergänzen oder korrigieren. Siehe %{camp_unit_url}
+
+        Bei Fragen schau in unserem wikimova vorbei unter https://avanti.bula21.ch/display/FAQ. Bei weiteren Unklarheiten steht dir unsere Geschäftsstelle via eMail (info@bula21.ch) oder per Telefon (027 521 20 21) zur Verfügung.
+
+        Viele Grüsse
+        Eure BuLa21-Crew
+
+        *******
+
+        Bonjour %{salutation_name}
+
+        Ta déclaration de camp sur MiData pour le CaFé 2021 n’est pas encore complète. Tu dois encore ajouter ou corriger certains détails sur MiData. Tu trouveras plus d’infos ici : %{camp_unit_url}
+
+        En cas de questions, tu peux tout d’abord aller faire un tour sur notre wikimova (avanti.bula21.ch/display/FAQ). Si après cela certains points restent peu clairs ou que certaines questions persistent, n’hésite pas à contacter notre secrétariat par mail (info@cafe21.ch) ou par téléphone (027 521 20 21).
+
+        Meilleures salutations,
+        Votre Team CaFé21
+      subject: Lageranmeldung mova unvollständig
+  date:
+    abbr_day_names:
+    - So
+    - Mo
+    - Di
+    - Mi
+    - Do
+    - Fr
+    - Sa
+    abbr_month_names:
+    -
+    - Jan
+    - Feb
+    - Mär
+    - Apr
+    - Mai
+    - Jun
+    - Jul
+    - Aug
+    - Sep
+    - Okt
+    - Nov
+    - Dez
+    day_names:
+    - Sonntag
+    - Montag
+    - Dienstag
+    - Mittwoch
+    - Donnerstag
+    - Freitag
+    - Samstag
+    formats:
+      default: "%d.%m.%Y"
+      long: "%e. %B %Y"
+      long_with_weekday: "%A, %d.%m.%Y"
+      short: "%e. %b"
+    from_to: "%{from} bis %{to}"
+    month_names:
+    -
+    - Januar
+    - Februar
+    - März
+    - April
+    - Mai
+    - Juni
+    - Juli
+    - August
+    - September
+    - Oktober
+    - November
+    - Dezember
+    order:
+    - :day
+    - :month
+    - :year
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: etwa eine Stunde
+        other: etwa %{count} Stunden
+      about_x_months:
+        one: etwa ein Monat
+        other: etwa %{count} Monate
+      about_x_years:
+        one: etwa ein Jahr
+        other: etwa %{count} Jahre
+      almost_x_years:
+        one: fast ein Jahr
+        other: fast %{count} Jahre
+      half_a_minute: eine halbe Minute
+      less_than_x_minutes:
+        one: weniger als eine Minute
+        other: weniger als %{count} Minuten
+        zero: weniger als eine Minute
+      less_than_x_seconds:
+        one: weniger als eine Sekunde
+        other: weniger als %{count} Sekunden
+      over_x_years:
+        one: mehr als ein Jahr
+        other: mehr als %{count} Jahre
+      x_days:
+        one: ein Tag
+        other: "%{count} Tage"
+      x_minutes:
+        one: eine Minute
+        other: "%{count} Minuten"
+      x_months:
+        one: ein Monat
+        other: "%{count} Monate"
+      x_seconds:
+        one: eine Sekunde
+        other: "%{count} Sekunden"
+      x_years:
+        one: 1 year
+        other: "%{count} years"
+    prompts:
+      day: Tag
+      hour: Stunde
+      minute: Minute
+      month: Monat
+      second: Sekunde
+      year: Jahr
+  delete_activity_executions:
+    destroy:
+      success: Erfolgreich %{count} Durchführungen gelöscht.
+    index:
+      activity_executions_count: "%{count} Durchführungen"
+      title: Durchführungen löschen
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      accepted: muss akzeptiert werden
+      blank: muss ausgefüllt werden
+      confirmation: stimmt nicht mit %{attribute} überein
+      empty: muss ausgefüllt werden
+      equal_to: muss genau %{count} sein
+      even: muss gerade sein
+      exclusion: ist nicht verfügbar
+      greater_than: muss grösser als %{count} sein
+      greater_than_or_equal_to: muss grösser oder gleich %{count} sein
+      inclusion: ist kein gültiger Wert
+      invalid: ist nicht gültig
+      less_than: muss kleiner als %{count} sein
+      less_than_or_equal_to: muss kleiner oder gleich %{count} sein
+      model_invalid: 'Gültigkeitsprüfung ist fehlgeschlagen: %{errors}'
+      not_a_number: ist keine Zahl
+      not_an_integer: muss ganzzahlig sein
+      odd: muss ungerade sein
+      other_than: darf nicht gleich %{count} sein
+      present: darf nicht ausgefüllt werden
+      required: muss ausgefüllt werden
+      taken: ist bereits vergeben
+      too_long:
+        one: ist zu lang (mehr als 1 Zeichen)
+        other: ist zu lang (mehr als %{count} Zeichen)
+      too_short:
+        one: ist zu kurz (weniger als 1 Zeichen)
+        other: ist zu kurz (weniger als %{count} Zeichen)
+      wrong_length:
+        one: hat die falsche Länge (muss genau 1 Zeichen haben)
+        other: hat die falsche Länge (muss genau %{count} Zeichen haben)
+    template:
+      body: 'Bitte überprüfen Sie die folgenden Felder:'
+      header:
+        one: 'Konnte %{model} nicht speichern: ein Fehler.'
+        other: 'Konnte %{model} nicht speichern: %{count} Fehler.'
+  fields:
+    edit:
+      title: Feld editieren
+    index:
+      title: "%{spot}: Felder verwalten"
+    new:
+      title: Neues Feld erfassen
+  helpers:
+    select:
+      prompt: Bitte wählen
+    submit:
+      create: "%{model} erstellen"
+      submit: "%{model} speichern"
+      update: "%{model} aktualisieren"
+  invoices:
+    payment_info:
+      amount_label: Betrag
+      issuer_account: 01-348230-2
+      issuer_account_label: Konto-Nummer
+      issuer_address: |-
+        Verein Bundeslager 2021
+        c/o Pfadibewegung Schweiz
+        Speichergasse 31
+        CH-3011 Bern
+        info@bula21.ch
+        +41 27 521 20 21
+
+        CHE-452.216.319 MWST
+      issuer_name: Verein BuLa 2021, 3011 Bern
+      issuer_name_label: Zugunsten von
+      ref_label: ESR-Referenznummer
+      total_label: Total
+    pre_registration_invoice:
+      invoice_parts:
+        breakdown: "%{participants} × %{price_per_participant}"
+        label:
+          leitung: Leitung
+          pfadi: TN Pfadistufe
+          pio: TN Piostufe
+          pta: TN PTA
+          wolf: TN Wolfsstufe
+      issued_at: Bern, %{issued_at}
+      post_text: |-
+        Die Voranmeldegebühr ist eine sogenannte Anzahlung und wird bei der Bezahlung des definitiven Lagerbeitrages in Abzug gebracht. Meldet sich eine Einheit nach der provisorischen Anmeldung wieder ab (nimmt also nicht am BuLa21 teil), wird die Voranmeldegebühr zurückerstattet.
+
+        Bei Fragen stehen wir gerne zur Verfügung: info@bula21.ch
+
+        Du kannst die unten stehenden Informationen nutzen, um mit Online-Banking zu bezahlen:
+      pre_text: "Hallo %{salutation_name}\n\nDu hast deine Einheit %{camp_unit_title}
+        erfolgreich für das mova im Goms vorangemeldet. Wir bitten dich, die Rechnung
+        bis 31. Juli 2020 zu begleichen. \nMova – on y va!"
+      ref: 'Rechnung: %{ref}'
+      title: Lagerbeitrag Abteilungen Bundeslager 2021
+  leaders:
+    edit:
+      title: Leitperson editieren
+    index:
+      title: Leitende verwalten
+    new:
+      title: Neue Leitperson erfassen
+  messages:
+    created:
+      error: Fehler beim erstellen!
+      success: Erfolgreich erstellt!
+    deleted:
+      error: Fehler beim löschen!
+      success: Erfolgreich gelöscht!
+    import:
+      success: Success
+    updated:
+      error: Fehler beim speichern!
+      success: Erfolgreich gespeichert!
+  nav:
+    activity: Katalog
+    activity_category: Kategorie
+    fixed_event: Grobprogramm
+    language:
+      de: DE
+      en: EN
+      fr: FR
+      it: IT
+    leader: Leitpersonen
+    login: Login
+    logout: Logout
+    spots: Programmspots & Felder
+    stufen: Stufen
+    tag: Tags
+    transport_location: Transport
+    unit: Lager
+  number:
+    currency:
+      format:
+        delimiter: "'"
+        format: "%u %n"
+        precision: 2
+        separator: "."
+        significant: false
+        strip_insignificant_zeros: false
+        unit: CHF
+    format:
+      delimiter: "'"
+      precision: 2
+      separator: "."
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: "%n %u"
+        units:
+          billion:
+            one: Milliarde
+            other: Milliarden
+          million:
+            one: Million
+            other: Millionen
+          quadrillion:
+            one: Billiarde
+            other: Billiarden
+          thousand: Tausend
+          trillion:
+            one: Billion
+            other: Billionen
+          unit: ''
+      format:
+        delimiter: ''
+        precision: 1
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one: Byte
+            other: Bytes
+          eb: EB
+          gb: GB
+          kb: KB
+          mb: MB
+          pb: PB
+          tb: TB
+    percentage:
+      format:
+        delimiter: ''
+        format: "%n%"
+    precision:
+      format:
+        delimiter: ''
+  participants:
+    edit:
+      title: Teilnehmenden bearbeiten
+    index:
+      complete_now: Jetzt vervollständigen
+      create_hint: Die Teilnehmenden sollten via MiData verwaltet werden. Solltest
+        gewisse Personen nicht dort hinterlegt haben, kannst du sie hier manuell hinzufügen.
+      data_incomplete: Es fehlen Angaben für eine vollständige Anmeldung
+      title: Teilnehmende
+    new:
+      title: Teilnehmende erstellen
+  pre_text: Pre text
+  simple_form:
+    confirm_unsaved: 'Achtung: Alle nicht gespeicherten Änderungen gehen verloren.
+      Sind Sie sicher?'
+    hints:
+      unit_visitor_day:
+        ga_tickets: CHF 50.- pro Person
+        other_tickets: CHF 85.- pro Person
+        u16_ga_tickets: CHF 50.- pro Person
+        u16_tickets: CHF 30.- pro Person
+        u6_tickets: gratis
+    options:
+      activity:
+        activity_type:
+          activity: Aktivität
+          excursion: Ausflug
+          frohnarbeit: Frohnarbeit
+          village_global: Village Global
+        block_type:
+          la: Lageraktivität
+          ls: Lagersport
+          voila: Voila Bula
+        language_de: Deutsch
+        language_en: English
+        language_fr: Français
+        language_it: Italiano
+        languages: Languages
+        simo:
+          berg: Berg
+          lake: Modul See
+          pool: Basis Pool
+          wasser: Wasser
+      participant:
+        gender:
+          female: Weiblich
+          male: Männlich
+      unit:
+        stufe:
+          pfadi: Pfadi
+          pio: Pio
+          pta: PTA
+          wolf: Wolf
+    participants_count_activity_hint: Max Anzahl Personen die an der Aktivität teilnehmen
+      können
+    participants_count_transport_hint: Max Kapazität der Aktivität (inkl. Leitung)
+  spots:
+    edit:
+      title: Programmspot editieren
+    index:
+      title: Programmspots verwalten
+    new:
+      title: Neuen Programmspot erfassen
+  support:
+    array:
+      last_word_connector: " und "
+      two_words_connector: " und "
+      words_connector: ", "
+  time:
+    am: vormittags
+    formats:
+      default: "%A, %d. %B %Y, %H:%M Uhr"
+      long: "%A, %d. %B %Y, %H:%M Uhr"
+      short: "%d. %B, %H:%M Uhr"
+    pm: nachmittags
+  unit_activity_booking:
+    all_comply: Super! Alle Bedingungen sind erfüllt. Du kannst die Buchung abschliessen.
+    book: zum Warenkorb hinzufügen
+    booked: zum Warenkorb hinzugefügt
+    commit: Buchung abschliessen
+    committed_text: Besten Dank, die Buchung ist abgeschlossen! Die entgültige Einteilung
+      wird Anfang 2022 bekanntgegeben.
+    compliance_evaluators:
+      excursions: Min. 6 mögliche Ausflüge oder weitere Wanderungen pro Lageroche
+      hiking: Min. 3 mögliche Wanderungen pro Lagerwoche
+      hiking_or_excursions: Min. 3 mögliche Ausflüge oder Wanderungen
+      mova_activities: Min. 4 mögliche mova Aktivitäten pro Lagerwoche
+      phase_open: Die Buchungsphase ist offen
+      village_global_workshops: Min. 3 Village Global Workshops
+      visitor_day: Min. 1 Auswahl für den Besuchstag
+    confirm_commit: Bist du sicher, dass du die Buchung unumkehrbar abschliessen willst?
+    guide_text: "Jede Einheit wird während der dauer des Lagers für ein oder mehrere
+      Aktivitäten eingeteilt. Für diese Einteilung werden die Wünsche eurer Einheit
+      so gut wie möglich berücksichtigt. Innerhalb der Wunschliste in Form des \"Warenkorbes\"
+      auf der rechten Seite kann eine Priorisierung mit Drag & Drop vorgenommen werden:
+      Aktivitäten die weiter oben im Warenkorb werden eher berücksichtigt als Aktivitäten
+      weiter unten. Es kann nicht garantiert werden, das eure Einheit für die Aktivitäten
+      auf der Wunschliste eingeteilt werden, aber wir versuchen unser bestes.\n\nBis
+      ihr die Buchung auf \"abgeschlossen\" setzt, dient der Warenkorb als Merkliste.
+      Alle Leiter der Einheit mit Zugriff auf orca können Aktivitäten hinzufügen,
+      entfernen oder neu priorisieren. \n\nDamit die Buchung abgeschlossen werden
+      kann, müssen folgende Regeln eingehalten werden:"
+    not_all_comply: 'Die Buchung kann nicht abgeschlossen werden: es werden noch nicht
+      alle Regeln eingehalten'
+    read_more: Details
+    tag_legend:
+      button: Tag Legende öffnen
+      title: Legende Tags
+    video_src: https://www.youtube.com/embed/TZQT-Zngcyc
+  unit_visitor_days:
+    form:
+      salutations:
+        mr: Herr
+        ms: Frau
+        other: Neutral
+  units:
+    edit:
+      title: Lager editieren
+    form:
+      danger_zone: Danger zone
+    index:
+      title: Deine Lager
+    kv_ids:
+      '1018': AS Genevois
+      '1145': Pfadi Zueri
+      '142': Pfadi Kanton Schwyz
+      '161': Pfadi Glarus
+      '166': Pfadi St. Gallen - Appenzell
+      '167': Battasendas Grischun
+      '179': Pfadi Luzern
+      '187': Pfadi Unterwalden
+      '237': Pfadi Kanton Zug
+      '238': Scoutismo Ticino
+      '299': Pfadi Region Basel
+      '3': Pfadi Kanton Solothurn
+      '4': Pfadi Kanton Bern
+      '4691': Pfadi Aargau
+      '513': Scouts Vaudois
+      '631': Pfadi Kanton Schaffhausen
+      '638': AS Fribourgeois
+      '85': Pfadi Uri
+      '880': Scouts Neuchatelois
+      '911': AS Jurassienne
+      '993': Pfadi Thurgau
+      '994': AS Valaisan
+    new:
+      title: Lager erstellen
+    show:
+      activity_booking: Aktivitäten buchen
+      activity_booking_commited: Buchung abgeschlossen
+      activity_booking_committed: Activity booking committed
+      activity_booking_complete: Activity booking complete
+      activity_booking_incomplete: Activity booking incomplete
+      activity_booking_open: Buchung offen
+      activity_booking_preview: Buchungsvorschau offen
+      activity_booking_text: Aktivitäten Buchen
+      basic_infos: Allgemein
+      book_visitor_day_tickets: Tickets jetzt kaufen
+      camp_id: Lager Id
+      camp_link_midata: Lager auf MiData
+      data_complete: Daten vollständig
+      data_incomplete: Daten nicht vollständig
+      documents: Dokumente
+      expected_participants: Definitive Anzahl Teilnehmende
+      expected_participants_explanation_html: Die definitive Anzahl Teilnehmende wird
+        aus dem Feld "Erwartete Anzahl Teilnehmende" <a href='%{link}' target='_blank'>MiData</a>
+        importiert.
+      imported: von MiData importiert
+      invoices: Rechnungen
+      other_infos: Weitere Informationen
+      paid:
+        'false': offen
+        'true': bezahlt
+      participants: Teilnehmende anzeigen
+      questionnaire: Fragebogen
+  views:
+    pagination:
+      first: !!str '<<'
+      last: ">>"
+      next: ">"
+      previous: "<"
+      truncate: "&hellip;"
