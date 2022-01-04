@@ -5,7 +5,10 @@ class ActivitiesController < ApplicationController
   load_and_authorize_resource except: [:create]
 
   def index
-    @activities = filter.apply(Activity.accessible_by(current_ability).distinct).order(sort_direction)
+    activity_includes = [:activity_category, :stufen, :stufe_recommended,
+                         { activity_executions: %i[field spot unit_activity_executions] }]
+    @activities = Activity.accessible_by(current_ability).includes(activity_includes)
+    @activities = filter.apply(@activities.distinct).order(sort_direction)
     respond_to do |format|
       format.html { @activities = @activities.page params[:page] }
       format.json { render json: ActivityBlueprint.render(@activities, view: :with_activity_executions) }
