@@ -9,7 +9,7 @@ class UnitVisitorDay < ApplicationRecord
             presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :responsible_email, format: { with: Devise.email_regexp }, allow_blank: true
   validates :responsible_firstname, :responsible_lastname, :responsible_address, :responsible_email,
-            :responsible_phone, :responsible_salutation, :responsible_postal_code, :responsible_place, 
+            :responsible_phone, :responsible_salutation, :responsible_postal_code, :responsible_place,
             presence: true, unless: -> { tickets.values.all?(&:zero?) }
 
   def tickets

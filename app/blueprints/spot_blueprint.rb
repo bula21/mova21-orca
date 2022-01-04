@@ -5,5 +5,7 @@ class SpotBlueprint < Blueprinter::Base
 
   fields :name, :color
 
-  association :fields, blueprint: FieldBlueprint
+  view :with_fields do
+    association :fields, blueprint: FieldBlueprint
+  end
 end

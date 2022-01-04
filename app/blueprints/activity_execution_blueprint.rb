@@ -22,4 +22,8 @@ class ActivityExecutionBlueprint < Blueprinter::Base
       activity_execution.activity.label
     end
   end
+
+  view :with_fields do
+    association :spot, blueprint: SpotBlueprint, view: :with_fields
+  end
 end
