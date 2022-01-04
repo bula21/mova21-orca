@@ -39,8 +39,8 @@ class Ability
     can :manage, UnitActivity, unit: { al: { email: user.email } }
     can :read, UnitActivityExecution, unit: { lagerleiter: { email: user.email } }
     can :read, UnitActivityExecution, unit: { al: { email: user.email } }
-    can %i[read edit], UnitVisitorDay, unit: { lagerleiter: { email: user.email } }
-    can %i[read edit], UnitVisitorDay, unit: { al: { email: user.email } }
+    can %i[read update], UnitVisitorDay, unit: { lagerleiter: { email: user.email } }
+    can %i[read update], UnitVisitorDay, unit: { al: { email: user.email } }
 
     assistant_leader_permission(user)
   end
@@ -109,6 +109,6 @@ class Ability
   end
 
   def editor_user_permissions(_user)
-    can :edit, Activity
+    can :update, Activity
   end
 end
