@@ -614,8 +614,8 @@ it:
       unit_visitor_day:
         ga_tickets: CHF 50.- a persona
         other_tickets: CHF 85.- a persona
-        u16_ga_tickets: CHF 50.- a persona
-        u16_tickets: CHF 30.- a persona
+        u16_ga_tickets: CHF 30.- a persona
+        u16_tickets: CHF 50.- a persona
         u6_tickets: gratis
     options:
       activity:
