@@ -1,4 +1,5 @@
 = simple_form_for [@unit, @unit_visitor_day] do |f|
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
   .row 
     fieldset.col-md-6[disabled=!@unit_visitor_day.phase_open?]
       .card 
@@ -13,6 +14,8 @@
       .card 
         .card-body
           h4= UnitVisitorDay.human_attribute_name(:responsible)
+          .d-none
+            = "#{@unit_visitor_day.tickets_sold}, #{@unit_visitor_day.tickets_free} free"
           = f.input :responsible_salutation, collection: %i[mr ms other].map { |salutation| t(".salutations.#{salutation}") }
           .row
             .col= f.input :responsible_firstname
