@@ -14,7 +14,8 @@
       .card 
         .card-body
           h4= UnitVisitorDay.human_attribute_name(:responsible)
-          = "#{@unit_visitor_day.tickets_sold}, #{@unit_visitor_day.tickets_free} free"
+          .d-none
+            = "#{@unit_visitor_day.tickets_sold}, #{@unit_visitor_day.tickets_free} free"
           = f.input :responsible_salutation, collection: %i[mr ms other].map { |salutation| t(".salutations.#{salutation}") }
           .row
             .col= f.input :responsible_firstname
