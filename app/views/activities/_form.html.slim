@@ -105,7 +105,7 @@
                 - @activity.language_documents_fr.each do |document|
                   li.list-group-item
                     = document.filename
-                    = link_to t('buttons.destroy'), attachment_activity_path(@activity, type: :language_documents_fr, id: document.id),
+                    = link_to t('buttons.destroy'), attachment_activity_path(@activity, type: :language_documents_fr, attachment_id: document.id),
                             method: :delete,
                             class: 'btn btn-sm btn-secondary float-right',
                             data: { confirm: t('simple_form.confirm_unsaved') }
@@ -117,7 +117,7 @@
                 - @activity.language_documents_it.each do |document|
                   li.list-group-item
                     = document.filename
-                    = link_to t('buttons.destroy'), attachment_activity_path(@activity, type: :language_documents_it, id: document.id),
+                    = link_to t('buttons.destroy'), attachment_activity_path(@activity, type: :language_documents_it, attachment_id: document.id),
                             method: :delete,
                             class: 'btn btn-sm btn-secondary float-right',
                             data: { confirm: t('simple_form.confirm_unsaved') }
