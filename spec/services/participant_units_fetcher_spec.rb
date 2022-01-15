@@ -2,16 +2,17 @@
 
 require 'rails_helper'
 
-RSpec.describe ParticipantsFetcher, vcr: true do
-  let(:service) { described_class.new(group_id, event_id) }
+RSpec.describe ParticipantUnitsFetcher, vcr: true do
+  let(:unit) { build(:unit, pbs_id: event_id)}
+  let(:service) { described_class.new(group_id, unit) }
 
-  let(:participants_size) { service.call.size }
+  let(:unit_participants_size) { service.call.size }
 
   let(:group_id) { 749 }
   let(:event_id) { 1328 }
 
   it 'returns the event parcitipation data' do
-    expect(participants_size).to eq 2
+    expect(unit_participants_size).to eq 2
   end
 
   context 'when there are no participations' do
@@ -19,7 +20,7 @@ RSpec.describe ParticipantsFetcher, vcr: true do
     let(:event_id) { 1257 }
 
     it 'returns an empty array' do
-      expect(participants_size).to eq(0)
+      expect(unit_participants_size).to eq(0)
     end
   end
 
@@ -28,7 +29,7 @@ RSpec.describe ParticipantsFetcher, vcr: true do
     let(:event_id) { 1322 }
 
     it 'merges the participants of all pages to the `event_participations`' do
-      expect(participants_size).to eq(51)
+      expect(unit_participants_size).to eq(51)
     end
   end
 end

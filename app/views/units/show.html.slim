@@ -133,8 +133,8 @@
       = t('.imported')
     p
       dl
-        - Participant.roles.keys.each do |role|
-          - role_participants = @unit.participants.with_role(role).count
+        - ParticipantUnit.roles.keys.each do |role|
+          - role_participants = @unit.participant_units.with_role(role).count
           - unless role_participants.zero?
             dt
               = translated_midata_role(role)

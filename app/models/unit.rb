@@ -113,7 +113,7 @@ class Unit < ApplicationRecord
   end
 
   def participant_role_counts
-    baseline = Participant::MIDATA_EVENT_CAMP_ROLES.transform_values { 0 }
+    baseline = ParticipantUnit::MIDATA_EVENT_CAMP_ROLES.transform_values { 0 }
     participants.group_by(&:role).transform_values(&:count).symbolize_keys.reverse_merge(baseline)
   end
 

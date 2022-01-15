@@ -1,22 +1,23 @@
 # frozen_string_literal: true
 
-class ParticipantsFetcher
-  def initialize(pbs_group_id, pbs_event_id)
+class ParticipantUnitsFetcher
+  def initialize(pbs_group_id, camp_unit)
     @pbs_group_id = pbs_group_id
-    @pbs_event_id = pbs_event_id
-    @participations_builder = ParticipantsBuilder.new
+    @camp_unit = camp_unit
+    @pbs_event_id = camp_unit.pbs_id
+    @participant_units_builder = ParticipantUnitsBuilder.new
     @midata_service = MidataService.new
   end
 
   def call
     collect_raw_event_participation_data
-    build_participation_objects
+    build_participant_units
   end
 
   private
 
-  def build_participation_objects
-    @participations_builder.from_data(@raw_event_participation_data)
+  def build_participant_units
+    @participant_units_builder.from_data(@raw_event_participation_data, @camp_unit)
   end
 
   def collect_raw_event_participation_data

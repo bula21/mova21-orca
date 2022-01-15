@@ -31,7 +31,7 @@ RSpec.describe ActivityExecutionsImport do
 
     it 'imports the data' do
       expect { import_service.call }.not_to change(ActivityExecution, :count)
-      expect(import_service.errors).to eq ['Row 2: Anzahl TN muss kleiner oder gleich 10 sein']
+      expect(import_service.errors).to eq ['Row 2: Anzahl Personen muss kleiner oder gleich 10 sein']
     end
   end
 
