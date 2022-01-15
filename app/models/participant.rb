@@ -33,8 +33,6 @@ class Participant < ApplicationRecord
 
   enum gender: { male: 'male', female: 'female' }
 
-  accepts_nested_attributes_for :participant_units, reject_if: :all_blank
-
   def full_name
     [first_and_last_name, scout_name.presence].compact.join(' v/o ')
   end

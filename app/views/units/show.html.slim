@@ -141,7 +141,7 @@
               ' :
             dd = @unit.participants.with_role(role).count
 
-    = link_to t('.participants'), unit_participants_path(@unit), class: 'stretched-link'
+    = link_to t('.participants'), unit_participant_units_path(@unit), class: 'stretched-link'
 
   - if @unit.participants.all?(&:complete?)
     .card-footer.bg-success.border-success.text-white

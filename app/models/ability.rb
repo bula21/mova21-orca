@@ -31,10 +31,10 @@ class Ability
     # can %i[read update], Unit, coach: { pbs_id: user.pbs_id }
     can :read, Leader, pbs_id: user.pbs_id
 
-    can %i[read create], Participant, units: { al: { email: user.email } }
-    can %i[read create], Participant, units: { lagerleiter: { email: user.email } }
-    can %i[edit update destroy], Participant, pbs_id: nil, units: { al: { email: user.email } }
-    can %i[edit update destroy], Participant, pbs_id: nil, units: { lagerleiter: { email: user.email } }
+    can %i[read create], ParticipantUnit, unit: { al: { email: user.email } }
+    can %i[read create], ParticipantUnit, unit: { lagerleiter: { email: user.email } }
+    can %i[edit update destroy], ParticipantUnit, pbs_id: nil, units: { al: { email: user.email } }
+    can %i[edit update destroy], ParticipantUnit, pbs_id: nil, units: { lagerleiter: { email: user.email } }
     can :manage, UnitActivity, unit: { lagerleiter: { email: user.email } }
     can :manage, UnitActivity, unit: { al: { email: user.email } }
     can :read, UnitActivityExecution, unit: { lagerleiter: { email: user.email } }
@@ -53,7 +53,7 @@ class Ability
 
     can :read, Unit, id: unit_ids
     can :read, UnitActivity, unit: { id: unit_ids }
-    can :read, Participant, units: { id: unit_ids }
+    can :read, ParticipantUnit, units: { id: unit_ids }
     can :read, UnitActivityExecution, unit: { id: unit_ids }
     can :read, UnitVisitorDay, unit: { id: unit_ids }
   rescue StandardError => e
@@ -66,8 +66,8 @@ class Ability
 
     can %i[read update], Unit, al: { email: user.email }
     can %i[read update], Unit, lagerleiter: { email: user.email }
-    can :manage, Participant, units: { lagerleiter: { email: user.email } }
-    can :manage, Participant, units: { al: { email: user.email } }
+    can :manage, ParticipantUnit, units: { lagerleiter: { email: user.email } }
+    can :manage, ParticipantUnit, units: { al: { email: user.email } }
 
     can :manage, UnitActivity, unit: { lagerleiter: { email: user.email } }
     can :read, UnitActivity, unit: { al: { email: user.email } }
@@ -80,7 +80,7 @@ class Ability
 
   def tn_administration_user_permissions(_user)
     can :manage, Unit
-    can :manage, Participant
+    can :manage, ParticipantUnit
     can :manage, Leader
     can :export, Unit
     can :manage, UnitActivity

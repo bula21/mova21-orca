@@ -13,6 +13,10 @@ class ParticipantUnit < ApplicationRecord
   belongs_to :participant, inverse_of: :participant_units
   belongs_to :unit, inverse_of: :participant_units
 
+  accepts_nested_attributes_for :participant, reject_if: :all_blank
+  validates_associated  :participant
+
+
   scope :with_role, ->(role) { where(role: role) }
 
   enum role: MIDATA_EVENT_CAMP_ROLES
