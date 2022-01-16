@@ -50,6 +50,7 @@ services:
       SMTP_PORT: 25
       SMTP_AUTH: ${SMTP_AUTH:-plain}
       FEATURES: "unit_activity_booking"
+      VISITOR_DAY_ACTIVITY_ID: 1
     depends_on:
       - db
       - mail

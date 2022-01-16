@@ -10,7 +10,7 @@ class UnitVisitorDay < ApplicationRecord
   validates :responsible_email, format: { with: Devise.email_regexp }, allow_blank: true
   validates :responsible_firstname, :responsible_lastname, :responsible_address, :responsible_email,
             :responsible_phone, :responsible_salutation, :responsible_postal_code, :responsible_place,
-            presence: true, unless: -> { tickets.values.all?(&:zero?) }
+            presence: true, unless: -> { ticket_count.zero? }
   validate do
     next if ticket_count.zero?
 
@@ -53,7 +53,7 @@ class UnitVisitorDay < ApplicationRecord
   end
 
   def ticket_count
-    tickets.values.sum
+    tickets.values.compact.sum
   end
 
   def tickets_sold
