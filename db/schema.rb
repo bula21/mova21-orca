@@ -223,7 +223,6 @@ ActiveRecord::Schema.define(version: 2022_01_13_194050) do
     t.integer "pbs_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "role"
     t.string "email", default: ""
     t.string "phone_number", default: ""
     t.string "guest_troop"

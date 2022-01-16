@@ -11,7 +11,7 @@ class ParticipantUnitsController < ApplicationController
   def edit; end
 
   def create
-    @participant_unit = @unit.participant_units.new(participant_params)
+    @participant_unit = @unit.participant_units.new(participant_unit_params)
     if @participant_unit.save
       redirect_to unit_participant_units_path(@unit), notice: I18n.t('messages.created.success')
     else
@@ -29,7 +29,7 @@ class ParticipantUnitsController < ApplicationController
   end
 
   def update
-    if @participant_unit.update(participant_params)
+    if @participant_unit.update(participant_unit_params)
       redirect_to unit_participant_units_path(@unit), notice: I18n.t('messages.updated.success')
     else
       render :edit
@@ -38,7 +38,7 @@ class ParticipantUnitsController < ApplicationController
 
   private
 
-  def participant_params
+  def participant_unit_params
     participant_attributes = %i[first_name last_name scout_name gender birthdate pbs_id email phone_number]
     params.require(:participant_unit).permit(:role, participant_attributes: participant_attributes)
   end

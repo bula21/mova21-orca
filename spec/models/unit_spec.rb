@@ -71,7 +71,10 @@ RSpec.describe Unit, type: :model do
     end
 
     before do
-      role_counts.each { |role, count| count.times { create(:participant, role: role, units: [unit]) } }
+      unit.save
+      role_counts.each do |role, count|
+        count.times { unit.participant_units.create!(participant: create(:participant), role: role) }
+      end
     end
 
     it 'has the correct counts' do
