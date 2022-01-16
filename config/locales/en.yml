@@ -264,7 +264,6 @@ en:
   buttons:
     back: Back
     close: Schliessen
-    commit: Speichern und Abschliessen
     confirm_delete: Bist du dir sicher, dass du Löschen möchtest?
     create: Create
     destroy: Delete
@@ -569,16 +568,6 @@ en:
     precision:
       format:
         delimiter: ''
-  participants:
-    edit:
-      title: Edit participants
-    index:
-      complete_now: Jetzt vervollständigen
-      create_hint: ''
-      data_incomplete: Es fehlen Angaben für eine vollständige Anmeldung
-      title: Participants
-    new:
-      title: Create participants
   pre_text: Pre text
   simple_form:
     confirm_unsaved: 'Achtung: Alle nicht gespeicherten Änderungen gehen verloren.

@@ -11,7 +11,6 @@ class ParticipantUnitsController < ApplicationController
   def edit; end
 
   def create
-    byebug
     @participant_unit = @unit.participant_units.new(participant_params)
     if @participant_unit.save
       redirect_to unit_participant_units_path(@unit), notice: I18n.t('messages.created.success')
@@ -40,7 +39,7 @@ class ParticipantUnitsController < ApplicationController
   private
 
   def participant_params
-    params.require(:participant_unit).permit(:role, participant_attributes: [:first_name, :last_name, :scout_name, :gender, :birthdate, :pbs_id,
-                                        :email, :phone_number])
+    participant_attributes = %i[first_name last_name scout_name gender birthdate pbs_id email phone_number]
+    params.require(:participant_unit).permit(:role, participant_attributes: participant_attributes)
   end
 end

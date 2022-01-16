@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe ParticipantUnitsFetcher, vcr: true do
-  let(:unit) { build(:unit, pbs_id: event_id)}
+  let(:unit) { build(:unit, pbs_id: event_id) }
   let(:service) { described_class.new(group_id, unit) }
 
   let(:unit_participants_size) { service.call.size }

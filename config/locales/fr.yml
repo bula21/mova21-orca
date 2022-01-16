@@ -270,7 +270,6 @@ fr:
   buttons:
     back: retour
     close: Fermer
-    commit: Speichern und Abschliessen
     confirm_delete: Es-tu sûr.e de vouloir supprimer cela?
     create: créer
     destroy: supprimer
@@ -606,16 +605,6 @@ fr:
     precision:
       format:
         delimiter: ''
-  participants:
-    edit:
-      title: Modifier participant.e.s
-    index:
-      complete_now: Terminer maintenant
-      create_hint: Create hint
-      data_incomplete: Des données sont manquantes pour finaliser l’inscription.
-      title: Participant.e.s
-    new:
-      title: Créer participants
   pre_text: Pre texte
   simple_form:
     confirm_unsaved: 'Attention: toutes les modifications vont être perdue. Etes-vous

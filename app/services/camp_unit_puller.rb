@@ -40,7 +40,9 @@ class CampUnitPuller
   private
 
   def fetch_unit_participants(camp_unit, pbs_group_id)
-    manual_non_midata_participants = camp_unit.participant_units.select { |participant_unit| participant_unit.participant.pbs_id.nil? }
+    manual_non_midata_participants = camp_unit.participant_units.select do |participant_unit|
+      participant_unit.participant.pbs_id.nil?
+    end
     midata_participants = ParticipantUnitsFetcher.new(pbs_group_id, camp_unit).call
     [*manual_non_midata_participants, *midata_participants]
   end

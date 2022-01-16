@@ -268,7 +268,6 @@ it:
   buttons:
     back: indietro
     close: Chiudere
-    commit: Speichern und Abschliessen
     confirm_delete: Sei sicuro/a di voler cancellare?
     create: Creare
     destroy: Eliminare
@@ -599,17 +598,6 @@ it:
     precision:
       format:
         delimiter: ''
-  participants:
-    edit:
-      title: Modificare partecipanti
-    index:
-      complete_now: Completare ora
-      create_hint: I/Le partecipanti dovrebbero essere gestiti/e tramite MiData. Se
-        non avete inserito delle persone, potete aggiungerle manualmente qui.
-      data_incomplete: Mancano dei dati per completare l'iscrizione
-      title: Partecipanti
-    new:
-      title: Creare partecipanti
   pre_text: Pre text
   simple_form:
     confirm_unsaved: 'Attenzione: Tutte le modifiche andranno perse! Vuoi continuare?'
