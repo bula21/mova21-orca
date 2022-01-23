@@ -57,7 +57,8 @@ class Unit < ApplicationRecord
 
   has_many_attached :documents
 
-  validates :title, :kv_id, :lagerleiter, presence: true, on: :complete
+  validates :title, presence: true, on: :complete
+  validates :kv_id, :lagerleiter, on: :complete
   validates :expected_participants, numericality: { greater_than_or_equal_to: 12 }, on: :complete
   validates :expected_participants_leitung, numericality: { greater_than_or_equal_to: 2 }, on: :complete
   validates :visitor_day_tickets, numericality: { greater_than_or_equal_to: 0 }, allow_nil: true
