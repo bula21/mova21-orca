@@ -44,7 +44,6 @@ class Unit < ApplicationRecord
   belongs_to :lagerleiter, class_name: 'Leader', inverse_of: :lagerleiter_units
   belongs_to :coach, class_name: 'Leader', inverse_of: :coach_units, optional: true
   belongs_to :kv, inverse_of: :units, primary_key: :pbs_id
-  belongs_to :kv, inverse_of: :units, primary_key: :pbs_id
 
   has_many :invoices, inverse_of: :unit, dependent: :destroy
   has_many :invoices, inverse_of: :unit, dependent: :destroy
@@ -58,7 +57,6 @@ class Unit < ApplicationRecord
   has_many_attached :documents
 
   validates :title, presence: true, on: :complete
-  validates :kv_id, :lagerleiter, on: :complete
   validates :expected_participants, numericality: { greater_than_or_equal_to: 12 }, on: :complete
   validates :expected_participants_leitung, numericality: { greater_than_or_equal_to: 2 }, on: :complete
   validates :visitor_day_tickets, numericality: { greater_than_or_equal_to: 0 }, allow_nil: true
