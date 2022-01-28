@@ -12,7 +12,7 @@ module DeleteActivityExecutionsHelper
   private
 
   def formatted_date(day)
-    I18n.l(day, format: '%a %W %d.%m.%Y')
+    I18n.l(day, format: '%a %d.%m.%Y KW%W')
   end
 
   def amount_of_executions_on_day(day, activity)
