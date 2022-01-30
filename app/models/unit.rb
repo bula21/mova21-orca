@@ -14,6 +14,7 @@
 #  expected_participants_m         :integer
 #  language                        :string
 #  limesurvey_token                :string
+#  calc_menu_token                 :string
 #  midata_data                     :jsonb
 #  starts_at                       :datetime
 #  stufe                           :string
