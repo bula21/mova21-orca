@@ -39,9 +39,11 @@ fr:
         transport_location: Lieu du transport
       activity_execution:
         amount_participants: Nombre de participant.e.s
+        ends_at: Se termine à
         field: Terrain
         language_flags: Langues
         spot: Zone de programme
+        starts_at: Commence à
         utilization: Utilisation
       field:
         name: Nom

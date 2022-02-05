@@ -5,6 +5,9 @@ class UnitActivityExecution < ApplicationRecord
   belongs_to :activity_execution, inverse_of: :unit_activity_executions
   has_one :activity, through: :activity_execution
 
+  scope :with_default_includes, -> { includes(:activity_execution, :unit) }
+  scope :ordered, -> { joins(:activity_execution).order(ActivityExecution.arel_table[:starts_at]) }
+
   before_validation :prefill_headcount
   validate do
     next if activity_execution.blank?

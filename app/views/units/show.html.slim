@@ -217,7 +217,7 @@
     /   - elsif @unit.activity_booking.phase?(:open)
     /     = t('.activity_booking_open')
 
-- if can? :manage, UnitActivityExecution
+- if can? :read, UnitActivityExecution
   .card.mt-5
     .card-body
       h3.mb-4= UnitActivityExecution.model_name.human
