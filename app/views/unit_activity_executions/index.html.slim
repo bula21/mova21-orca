@@ -1,19 +1,10 @@
 .h1 = UnitActivityExecution.model_name.human(count: :other)
 
-.row
-	- if @unit 
-		dl.col-md-6
-			dd = link_to @unit.title, unit_path(@unit)
-			dt = t('activerecord.attributes.unit.stufe')
-			dd = t("simple_form.options.unit.stufe.#{@unit.stufe}")
-			dt = t('activerecord.attributes.unit.language')
-			dd = t("simple_form.options.unit.language.#{@unit.language}")
-			dt = t('activerecord.attributes.unit.expected_participants')
-			dd 
-				= @unit.expected_participants
-				| +
-				= @unit.expected_participants_leitung
-	- if @activity_execution
+- if @unit 
+	= link_to @unit.title, unit_path(@unit)
+
+- if @activity_execution
+	.row
 		dl.col-md-6
 			dd = @activity_execution
 			dt = Activity.model_name.human 
@@ -24,7 +15,7 @@
 			dd 
 				.w-100[style="padding: 2px; border: 1px solid black;"]
 					div[style="min-width: fit-content; width: #{@activity_execution.headcount_utilization * 100}%; max-width: 100%; background-color: #{@activity_execution.headcount_utilization_color}; padding: 2px; color: white;"]
-						= "#{@activity_execution.headcount}/#{@activity_execution.available_headcount} (#{@activity_execution.headcount_utilization * 100}%)"
+						= "#{@activity_execution.headcount}/#{@activity_execution.amount_participants} (#{@activity_execution.headcount_utilization * 100}%)"
 
 
 - if @unit || @activity_execution
@@ -32,7 +23,11 @@
 
 	.my-5
 
-	= render partial: 'table', locals: { unit_activity_executions: @unit_activity_executions, activity_execution_id: @activity_execution&.id, unit_id: @unit&.id }
+- if @unit
+	= render partial: 'activity_executions_table', locals: { unit_activity_executions: @unit_activity_executions, unit_id: @unit.id }
+
+- if @activity_execution
+	= render partial: 'units_table', locals: { unit_activity_executions: @unit_activity_executions, activity_execution_id: @activity_execution.id }
 
 - if can?(:manage, UnitActivityExecution)
 	.card.mt-5

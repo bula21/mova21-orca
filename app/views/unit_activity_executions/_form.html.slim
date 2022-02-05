@@ -3,16 +3,8 @@
   = hidden_field_tag :activity_execution_id, params[:activity_execution_id]
   = f.error_notification
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
-  = f.input :unit_id, input_html: { list: :units_list }
-  datalist#units_list
-    - @units.each do |unit|
-      option[value=unit.id]
-        = unit.to_s
-  = f.input :activity_execution_id, input_html: { list: :activity_executions_list }
-  datalist#activity_executions_list
-    - @activity_executions.each do |activity_execution|
-      option[value=activity_execution.id]
-        = activity_execution.to_s
+  = f.input :unit_id
+  = f.input :activity_execution_id
 
   = f.input :headcount
   .actions

@@ -11,6 +11,7 @@ class UnitActivityExecutionsController < ApplicationController
     @unit_activity_executions = @activity_execution.unit_activity_executions if @activity_execution
     @unit_activity_executions = @unit_activity_executions.where(unit: @unit) if @unit
     @unit_activity_executions = UnitActivityExecution.none unless @activity_execution || @unit
+    @unit_activity_executions = @unit_activity_executions.ordered.with_default_includes
   end
 
   def new
