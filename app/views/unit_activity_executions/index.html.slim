@@ -1,10 +1,11 @@
 .h1 = UnitActivityExecution.model_name.human(count: :other)
 
 - if @unit 
-	= link_to @unit.title, unit_path(@unit)
+	.mb-4
+		= link_to @unit.title, unit_path(@unit)
 
 - if @activity_execution
-	.row
+	.row.mb-4
 		dl.col-md-6
 			dd = @activity_execution
 			dt = Activity.model_name.human 
@@ -19,9 +20,8 @@
 
 
 - if @unit || @activity_execution
-	= react_component("ReadOnlyCalendarManager", { editable: false, events: ActivityExecutionBlueprint.render_as_hash(@unit_activity_executions.map(&:activity_execution), view: :with_activity) })
-
 	.my-5
+		= react_component("ReadOnlyCalendarManager", { editable: false, events: ActivityExecutionBlueprint.render_as_hash(@unit_activity_executions.map(&:activity_execution), view: :with_activity) })
 
 - if @unit
 	= render partial: 'activity_executions_table', locals: { unit_activity_executions: @unit_activity_executions, unit_id: @unit.id }

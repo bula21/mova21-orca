@@ -26,6 +26,10 @@
             .col= f.input :responsible_place
           = f.input :responsible_email
           = f.input :responsible_phone
+  - if can?(:manage, UnitVisitorDay)
+    .card.border-danger.mt-4
+      .card-body
+        = f.input :phase, collection: UnitVisitorDay.phases.keys
   .actions.mt-3
 
     button.btn.btn-primary<[type="submit" name="save"] 
