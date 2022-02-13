@@ -17,7 +17,7 @@ gem 'httparty'
 gem 'kaminari'
 gem 'keycloak'
 gem 'mobility', '~> 0.8.9'
-gem 'omniauth_openid_connect'
+gem 'omniauth_openid_connect', '~> 0.3.5' #TODO upgrade
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'prawn', '~> 2.2'
 gem 'prawn-table'

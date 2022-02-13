@@ -44,7 +44,8 @@ class UnitActivityExecutionsController < ApplicationController
   end
 
   def import
-    @import_service = UnitActivityExecutionsImport.new(params.require(:import).permit(:file)[:file])
+    paramsx = params.require(:import).permit(:file, :delete_first).to_h.symbolize_keys
+    @import_service = UnitActivityExecutionsImport.new(**paramsx)
     if @import_service.call
       redirect_to unit_activity_executions_path(**linked_params), notice: I18n.t('messages.import.success')
     else

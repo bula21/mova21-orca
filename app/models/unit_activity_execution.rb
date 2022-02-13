@@ -9,13 +9,13 @@ class UnitActivityExecution < ApplicationRecord
   scope :ordered, -> { joins(:activity_execution).order(ActivityExecution.arel_table[:starts_at]) }
 
   before_validation :prefill_headcount
-  validate do
-    next if activity_execution.blank?
+  # validate do
+  #   next if activity_execution.blank?
 
-    available_headcount = activity_execution.available_headcount
-    available_headcount += headcount_was.presence || 0
-    errors.add(:headcount, :less_than, count: available_headcount) unless headcount <= available_headcount
-  end
+  #   available_headcount = activity_execution.available_headcount
+  #   available_headcount += headcount_was.presence || 0
+  #   errors.add(:headcount, :less_than, count: available_headcount) unless headcount <= available_headcount
+  # end
 
   def prefill_headcount
     return if unit.blank?
