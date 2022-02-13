@@ -112,6 +112,7 @@ reload!
 puts InvoiceExporter.new.export
 ```
 
+
 ```bash
 docker-compose run bin/rails r 'puts InvoiceExporter.new.export; STDOUT.flush' > tmp/export.csv
 ```
