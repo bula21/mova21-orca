@@ -39,6 +39,7 @@
 						li = error
 
 			= simple_form_for :import, url: import_unit_activity_executions_path, method: :post do |f|
+				= f.input :delete_first, as: :boolean
 				= f.input :file, as: :file
 				= f.submit t('buttons.upload'), class: 'btn btn-secondary'
 
