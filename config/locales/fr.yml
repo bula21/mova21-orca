@@ -138,7 +138,7 @@ fr:
     errors:
       messages:
         incomplete: est incomplet
-        record_invalid: "La validation a échoué : %{errors}"
+        record_invalid: 'La validation a échoué : %{errors}'
         restrict_dependent_destroy:
           has_many: Vous ne pouvez pas supprimer l'enregistrement parce que les %{record}
             dépendants existent
@@ -172,7 +172,7 @@ fr:
         other: Terrains
       fixed_event:
         one: Point du programme (picasso)
-        other: "Points du programme (picasso) "
+        other: 'Points du programme (picasso) '
       leader:
         one: Responsable
         other: Responsables
@@ -197,24 +197,24 @@ fr:
   activity:
     edit:
       title: Éditer l'activité
-      warning: "Attention : Sauvegardez d'abord le formulaire et modifiez ensuite
-        les documents (sinon les modifications seront perdues)."
+      warning: 'Attention : Sauvegardez d''abord le formulaire et modifiez ensuite
+        les documents (sinon les modifications seront perdues).'
     index:
       title: Activités
     new:
       title: Créer une nouvelle activité
     show:
       downloads: Téléchargements
-      duration: "Durée: "
+      duration: 'Durée: '
       excel_import:
-        description: "Vous pouvez enregistrer les activités dans Excel et les télécharger
-          ici :"
+        description: 'Vous pouvez enregistrer les activités dans Excel et les télécharger
+          ici :'
         template_download: Télécharger le modèle Excel
         title: Importer Excel
       executions_delete:
-        description: "Attention : Vous pouvez supprimer les activités d'une journée
+        description: 'Attention : Vous pouvez supprimer les activités d''une journée
           entière. Cliquez sur le lien ci-dessous pour accéder à la sélection des
-          jours."
+          jours.'
         link: Poursuivre la sélection
       max_people: Taille maximal du groupe
       more_information: Informations complémentaires
@@ -231,10 +231,10 @@ fr:
       title: Ajouter de nouvelles activités au programme
   activity_execution_calendar:
     copy:
-      error: "Erreur pendant la copie:"
+      error: 'Erreur pendant la copie:'
       success: L’activité a été copiée avec succès
     create:
-      error: "Erreur lors de la création:"
+      error: 'Erreur lors de la création:'
       success: L’activité a été créée avec succès
     delete:
       confirm: Êtes-vous sûr de vouloir supprimer l'activité ?
@@ -251,8 +251,8 @@ fr:
       has_transport: Avec le transport
       languages: Langues
       manage_languages_hint: Langue dans laquelle l'activité peut être exercée.
-      manage_spot_hint: "Si vous avez besoin de plus de places dans le programme,
-        cliquez ici :"
+      manage_spot_hint: 'Si vous avez besoin de plus de places dans le programme,
+        cliquez ici :'
       manage_spot_link_text: Gérer les zones de programme
       mixed_languages: Mise en œuvre mixte
       save: Enregistrer
@@ -262,10 +262,10 @@ fr:
       title_edit: Modifier
       title_new: Nouveau
     move:
-      error: "Erreur lors du déplacement de l'événement:"
+      error: 'Erreur lors du déplacement de l''événement:'
       success: L'événement a été déplacé avec succès
     update:
-      error: "Erreur lors de la mise à jour:"
+      error: 'Erreur lors de la mise à jour:'
       success: L’activité a été mise à jour avec succès
   app:
     title: Orca
@@ -314,35 +314,35 @@ fr:
       subject: L’inscription au mova n'est pas encore complète
   date:
     abbr_day_names:
-      - dim
-      - lun
-      - mar
-      - mer
-      - jeu
-      - ven
-      - sam
+    - dim
+    - lun
+    - mar
+    - mer
+    - jeu
+    - ven
+    - sam
     abbr_month_names:
-      -
-      - jan.
-      - fév.
-      - mar.
-      - avr.
-      - mai
-      - juin
-      - juil.
-      - août
-      - sept.
-      - oct.
-      - nov.
-      - déc.
+    -
+    - jan.
+    - fév.
+    - mar.
+    - avr.
+    - mai
+    - juin
+    - juil.
+    - août
+    - sept.
+    - oct.
+    - nov.
+    - déc.
     day_names:
-      - dimanche
-      - lundi
-      - mardi
-      - mercredi
-      - jeudi
-      - vendredi
-      - samedi
+    - dimanche
+    - lundi
+    - mardi
+    - mercredi
+    - jeudi
+    - vendredi
+    - samedi
     formats:
       default: "%d.%m.%Y"
       long: "%e %B %Y"
@@ -350,23 +350,23 @@ fr:
       short: "%e %b"
     from_to: "%{from} jusqu’au %{to}"
     month_names:
-      -
-      - janvier
-      - février
-      - mars
-      - avril
-      - mai
-      - juin
-      - juillet
-      - août
-      - septembre
-      - octobre
-      - novembre
-      - décembre
+    -
+    - janvier
+    - février
+    - mars
+    - avril
+    - mai
+    - juin
+    - juillet
+    - août
+    - septembre
+    - octobre
+    - novembre
+    - décembre
     order:
-      - :day
-      - :month
-      - :year
+    - :day
+    - :month
+    - :year
   datetime:
     distance_in_words:
       about_x_hours:
@@ -437,7 +437,7 @@ fr:
       invalid: n'est pas valide
       less_than: doit être inférieur à %{count}
       less_than_or_equal_to: doit être inférieur ou égal à %{count}
-      model_invalid: "Validation échouée : %{errors}"
+      model_invalid: 'Validation échouée : %{errors}'
       not_a_number: n'est pas un nombre
       not_an_integer: doit être un nombre entier
       odd: doit être impair
@@ -455,10 +455,10 @@ fr:
         one: ne fait pas la bonne longueur (doit comporter un seul caractère)
         other: ne fait pas la bonne longueur (doit comporter %{count} caractères)
     template:
-      body: "Veuillez vérifier les champs suivants : "
+      body: 'Veuillez vérifier les champs suivants : '
       header:
-        one: "Impossible d'enregistrer ce(tte) %{model} : 1 erreur"
-        other: "Impossible d'enregistrer ce(tte) %{model} : %{count} erreurs"
+        one: 'Impossible d''enregistrer ce(tte) %{model} : 1 erreur'
+        other: 'Impossible d''enregistrer ce(tte) %{model} : %{count} erreurs'
   fields:
     edit:
       title: Editer le champ
@@ -512,7 +512,7 @@ fr:
 
         Ton unité %{camp_unit_title} a été préinscrite avec succès pour le mova dans la vallée de Conches. Nous te prions te bien vouloir régler le montant jusqu'au 31 juillet 2020.
         Mova - on y va!
-      ref: "Montant: %{ref}"
+      ref: 'Montant: %{ref}'
       title: Frais du groupe pour le camp fédéral 2021
   leaders:
     edit:
@@ -583,9 +583,9 @@ fr:
           trillion:
             one: trillion
             other: trillions
-          unit: ""
+          unit: ''
       format:
-        delimiter: ""
+        delimiter: ''
         precision: 3
         significant: true
         strip_insignificant_zeros: true
@@ -603,11 +603,11 @@ fr:
           tb: To
     percentage:
       format:
-        delimiter: ""
+        delimiter: ''
         format: "%n%"
     precision:
       format:
-        delimiter: ""
+        delimiter: ''
   participants:
     edit:
       title: Modifier participant.e.s
@@ -620,8 +620,8 @@ fr:
       title: Créer participants
   pre_text: Pre texte
   simple_form:
-    confirm_unsaved: "Attention: toutes les modifications vont être perdue. Etes-vous
-      sûr.e.s?"
+    confirm_unsaved: 'Attention: toutes les modifications vont être perdue. Etes-vous
+      sûr.e.s?'
     hints:
       unit_visitor_day:
         ga_tickets: CHF 50.- par personne
@@ -704,8 +704,8 @@ fr:
       Tant que vous n'aurez pas terminer la réservation, la liste de souhaits servira de liste de favoris. Tou.te.s les responsables de l’unité ayant accès à orca peuvent supprimer ou redéfinir les activités.
 
       Pour que la réservation soit complète, les règles suivantes doivent être incluses:
-    not_all_comply: "La réservation ne peut pas être clôturée : toutes les règles
-      sont toujours respectées."
+    not_all_comply: 'La réservation ne peut pas être clôturée : toutes les règles
+      sont toujours respectées.'
     read_more: Détails
     tag_legend:
       button: Ouvrir les légendes des tags
@@ -725,28 +725,28 @@ fr:
     index:
       title: Ton camp
     kv_ids:
-      "1018": AS Genevois
-      "1145": Pfadi Zueri
-      "142": Pfadi Kanton Schwyz
-      "161": Pfadi Glarus
-      "166": Pfadi St. Gallen - Appenzell
-      "167": Battasendas Grischun
-      "179": Pfadi Luzern
-      "187": Pfadi Unterwalden
-      "237": Pfadi Kanton Zug
-      "238": Scoutismo Ticino
-      "299": Pfadi Region Basel
-      "3": Pfadi Kanton Solothurn
-      "4": Pfadi Kanton Bern
-      "4691": Pfadi Aargau
-      "513": Scouts Vaudois
-      "631": Pfadi Kanton Schaffhausen
-      "638": AS Fribourgeois
-      "85": Pfadi Uri
-      "880": Scouts Neuchatelois
-      "911": AS Jurassienne
-      "993": Pfadi Thurgau
-      "994": AS Valaisan
+      '1018': AS Genevois
+      '1145': Pfadi Zueri
+      '142': Pfadi Kanton Schwyz
+      '161': Pfadi Glarus
+      '166': Pfadi St. Gallen - Appenzell
+      '167': Battasendas Grischun
+      '179': Pfadi Luzern
+      '187': Pfadi Unterwalden
+      '237': Pfadi Kanton Zug
+      '238': Scoutismo Ticino
+      '299': Pfadi Region Basel
+      '3': Pfadi Kanton Solothurn
+      '4': Pfadi Kanton Bern
+      '4691': Pfadi Aargau
+      '513': Scouts Vaudois
+      '631': Pfadi Kanton Schaffhausen
+      '638': AS Fribourgeois
+      '85': Pfadi Uri
+      '880': Scouts Neuchatelois
+      '911': AS Jurassienne
+      '993': Pfadi Thurgau
+      '994': AS Valaisan
     new:
       title: Créer un camp
     show:
@@ -773,13 +773,13 @@ fr:
       invoices: Factures
       other_infos: Informations supplémentaires
       paid:
-        "false": ouvert
-        "true": payé
+        'false': ouvert
+        'true': payé
       participants: Participant.e.s
       questionnaire: Questionaire
   views:
     pagination:
-      first: !!str "<<"
+      first: !!str '<<'
       last: ">>"
       next: ">"
       previous: "<"
