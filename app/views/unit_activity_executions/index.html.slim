@@ -1,6 +1,6 @@
 .h1 = UnitActivityExecution.model_name.human(count: 2)
 
-- if @unit 
+- if @unit
 	.mb-4
 		= link_to @unit.title, unit_path(@unit)
 
@@ -8,12 +8,12 @@
 	.row.mb-4
 		dl.col-md-6
 			dd = @activity_execution
-			dt = Activity.model_name.human 
+			dt = Activity.model_name.human
 			dd = link_to @activity_execution.activity, activity_path(@activity_execution.activity)
 			dt = ActivityCategory.model_name.human
 			dd = @activity_execution.activity.activity_category
 			dt = t('activerecord.attributes.activity_execution.utilization')
-			dd 
+			dd
 				.w-100[style="padding: 2px; border: 1px solid black;"]
 					div[style="min-width: fit-content; width: #{@activity_execution.headcount_utilization * 100}%; max-width: 100%; background-color: #{@activity_execution.headcount_utilization_color}; padding: 2px; color: white;"]
 						= "#{@activity_execution.headcount}/#{@activity_execution.amount_participants} (#{@activity_execution.headcount_utilization * 100}%)"
@@ -21,7 +21,7 @@
 
 - if @unit || @activity_execution
 	.my-5
-		= react_component("ReadOnlyCalendarManager", { editable: false, events: ActivityExecutionBlueprint.render_as_hash(@unit_activity_executions.map(&:activity_execution), view: :with_activity) })
+		= react_component("ReadOnlyCalendarManager", { editable: false, stufe: @unit.stufe, events: ActivityExecutionBlueprint.render_as_hash(@unit_activity_executions.map(&:activity_execution), view: :with_activity) })
 
 - if @unit
 	= render partial: 'activity_executions_table', locals: { unit_activity_executions: @unit_activity_executions, unit_id: @unit.id }

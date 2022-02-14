@@ -12,6 +12,7 @@ import FullCalendar from '@fullcalendar/react';
 import React from 'react';
 interface ReadOnlyCalendarManagerProps extends BaseCalendarManagerProps {
   events: ActivityExecution[];
+  stufe: string;
   editable: false;
 }
 
@@ -37,7 +38,7 @@ class ReadOnlyCalendarManager extends BaseCalendarManager<ReadOnlyCalendarManage
   }
 
   protected async fetchData(): Promise<Partial<ReadOnlyCalendarManagerState>> {
-    return await this.activityExecutionService.fetchFixedEvents().then(events => (
+    return await this.activityExecutionService.fetchFixedEvents(this.props.stufe).then(events => (
       {
         events: [
           ...events,

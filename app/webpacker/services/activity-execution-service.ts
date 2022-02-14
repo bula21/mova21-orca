@@ -135,8 +135,8 @@ export class ActivityExecutionService {
                 activityExexutions.map(activityExexution => this.convertActivityExecutionToFullCalendarEvent(activityExexution)));
     }
 
-    public fetchFixedEvents(): Promise<Array<FullCalendarEvent>> {
-        return fetch('/admin/fixed_events', {
+    public fetchFixedEvents(stufe = 'all'): Promise<Array<FullCalendarEvent>> {
+        return fetch(`/admin/fixed_events?stufe=${stufe}`, {
             method: 'GET',
             headers: this.getHeaders()
         })
