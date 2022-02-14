@@ -86,6 +86,7 @@ class Ability
     can :export, Unit
     can :manage, UnitActivity
     can :manage, UnitVisitorDay
+    can :read, UnitActivityExecution
   end
 
   def programm_user_permissions(_user)
