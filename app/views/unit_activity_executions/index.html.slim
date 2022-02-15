@@ -21,7 +21,7 @@
 
 - if @unit || @activity_execution
 	.my-5
-		= react_component("ReadOnlyCalendarManager", { editable: false, stufe: @unit.stufe, events: ActivityExecutionBlueprint.render_as_hash(@unit_activity_executions.map(&:activity_execution), view: :with_activity) })
+		= react_component("ReadOnlyCalendarManager", { editable: false, stufe: @unit.present? ? @unit.stufe : 'all', events: ActivityExecutionBlueprint.render_as_hash(@unit_activity_executions.map(&:activity_execution), view: :with_activity) })
 
 - if @unit
 	= render partial: 'activity_executions_table', locals: { unit_activity_executions: @unit_activity_executions, unit_id: @unit.id }
