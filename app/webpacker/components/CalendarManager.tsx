@@ -47,6 +47,25 @@ interface CalendarManagerState {
   clickedEventId: string | null;
 }
 
+export const calculateContrastColor = (hexColor: string) => {
+  const hexToRgb = (hex: string): null | { r: number, g: number, b: number } => {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+      r: parseInt(result[1], 16),
+      g: parseInt(result[2], 16),
+      b: parseInt(result[3], 16)
+    } : null;
+  }
+  const rgb = hexToRgb(hexColor);
+  if(rgb) {
+    // http://www.w3.org/TR/AERT#color-contrast
+    const brightness = Math.round((rgb.r * 299) + (rgb.g * 587) + (rgb.b * 114) / 1000);
+    return (brightness > 125) ? '#000000b3' : '#ffffff';
+  } else {
+    return '#000000';
+  }
+}
+
 class CalendarManager extends BaseCalendarManager<CalendarManagerProps, CalendarManagerState> {
   constructor(props: Readonly<CalendarManagerProps>) {
     super(props);
@@ -204,7 +223,8 @@ class CalendarManager extends BaseCalendarManager<CalendarManagerProps, Calendar
         event.setExtendedProp("mixedLanguages", result.extendedProps.mixedLanguages)
 
         // set base attributes to event object
-        event.setProp("backgroundColor", result.backgroundColor)
+        event.setProp("backgroundColor", result.backgroundColor);
+        event.setProp("textColor", calculateContrastColor(result.backgroundColor));
         event.setDates(result.start, result.end)
         event.setProp("fixedEvent", result.extendedProps.fixedEvent)
 
@@ -254,7 +274,8 @@ class CalendarManager extends BaseCalendarManager<CalendarManagerProps, Calendar
       spot: selectedEvent.spot,
       fixedEvent: selectedEvent.fixedEvent,
     },
-    backgroundColor: selectedEvent.spot.color
+    backgroundColor: selectedEvent.spot.color,
+    textColor: calculateContrastColor(selectedEvent.spot.color)
   });
 
   writeErrorMessage = (orcaI18nText, err) => {
@@ -312,7 +333,8 @@ class CalendarManager extends BaseCalendarManager<CalendarManagerProps, Calendar
         transportIds: event.extendedProps.transportIds,
         fixedEvent: event.extendedProps.fixedEvent,
       },
-      backgroundColor: event.extendedProps.spot.color
+      backgroundColor: event.extendedProps.spot.color,
+      textColor: calculateContrastColor(event.extendedProps.spot.color)
     }
   }
 

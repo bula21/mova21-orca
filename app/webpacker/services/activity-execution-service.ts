@@ -1,3 +1,5 @@
+import { calculateContrastColor } from "../components/CalendarManager";
+
 export type Language = 'de' | 'fr' | 'it' | 'en';
 
 export interface Activity {
@@ -84,6 +86,7 @@ interface FixedFullCalendarEvent {
         fixedEvent: boolean;
     }
     backgroundColor: string;
+    textColor: string;
 }
 
 export interface NonFixedFullCalendarEvent {
@@ -105,6 +108,7 @@ export interface NonFixedFullCalendarEvent {
         activity?: Activity;
     }
     backgroundColor: string;
+    textColor: string;
 }
 
 export type FullCalendarEvent = FixedFullCalendarEvent | NonFixedFullCalendarEvent;
@@ -160,7 +164,8 @@ export class ActivityExecutionService {
                 transportIds: activityExexution.transport_ids,
                 fixedEvent: false,
             },
-            backgroundColor: activityExexution.spot.color
+            backgroundColor: activityExexution.spot.color,
+            textColor: calculateContrastColor(activityExexution.spot.color)
         };
         if (activityExexution.title) {
             calendarEvent.title = activityExexution.title;
@@ -181,7 +186,8 @@ export class ActivityExecutionService {
             extendedProps: {
                 fixedEvent: true,
             },
-            backgroundColor: '#ffeb00'
+            backgroundColor: '#ffeb00',
+            textColor: calculateContrastColor('#ffeb00')
         };
     }
 

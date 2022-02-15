@@ -7,7 +7,8 @@ module Admin
     def index
       respond_to do |format|
         format.json do
-          fixed_events = params['stufe'].eql?('all') ? FixedEvent.all : Stufe.find_by(code: params['stufe']).fixed_events
+          stufe = params['stufe']
+          fixed_events = stufe.eql?('all') ? FixedEvent.all : Stufe.find_by(code: stufe).fixed_events
           render json: FixedEventBlueprint.render(fixed_events)
         end
         format.html
