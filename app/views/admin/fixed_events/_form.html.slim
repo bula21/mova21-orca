@@ -13,6 +13,7 @@
               = f.input "title_#{locale.to_s}", label: "#{t('activerecord.attributes.fixed_event.title')} #{locale.upcase}"
     = f.input :starts_at
     = f.input :ends_at
+    = f.input :stufe_ids, label: Stufe.model_name.human.pluralize, as: :check_boxes, collection: Stufe.all
 
   .actions.mt-3.mb-3
     = f.submit t('buttons.save'), class: 'btn btn-primary'

@@ -7,7 +7,8 @@ module Admin
     def index
       respond_to do |format|
         format.json do
-          render json: FixedEventBlueprint.render(FixedEvent.all)
+          fixed_events = params['stufe'].eql?('all') ? FixedEvent.all : Stufe.find_by(code: params['stufe']).fixed_events
+          render json: FixedEventBlueprint.render(fixed_events)
         end
         format.html
       end
@@ -49,7 +50,9 @@ module Admin
     end
 
     def fixed_event_params
-      params.require(:fixed_event).permit(:starts_at, :ends_at, I18n.available_locales.map { |l| :"title_#{l}" })
+      params.require(:fixed_event).permit(:starts_at, :ends_at, I18n.available_locales.map do |l|
+                                                                  :"title_#{l}"
+                                                                end, stufe_ids: [])
     end
   end
 end
