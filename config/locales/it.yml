@@ -631,8 +631,9 @@ it:
           village_global: Village Global
         block_type:
           la: Attività da campo
+          lp: programma del campo
           ls: Sport da campo
-          voila: Voila CaFe
+          other: altro
         language_de: Tedesco
         language_en: Inglese
         language_fr: Francese

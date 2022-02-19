@@ -631,8 +631,9 @@ de:
           village_global: Village Global
         block_type:
           la: Lageraktivität
+          lp: Lagerprogramm
           ls: Lagersport
-          voila: Voila Bula
+          other: Sonstiges
         language_de: Deutsch
         language_en: English
         language_fr: Français
