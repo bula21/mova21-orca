@@ -638,8 +638,9 @@ fr:
           village_global: Village Global
         block_type:
           la: Activité de camp
+          lp: programme de camp
           ls: Sport de camp
-          voila: Voila CaFé
+          other: autres
         language_de: Deutsch
         language_en: English
         language_fr: Français
