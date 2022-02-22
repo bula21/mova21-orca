@@ -68,7 +68,7 @@ services:
         UID: ${UID}
         GID: ${GID}
     entrypoint: [".docker/entrypoints/webpack.sh"]
-    command: ["bin/webpack-dev-server"]
+    command: ["bin/webpacker-dev-server"]
     volumes:
       - .:/app
     environment:
