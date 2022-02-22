@@ -1,14 +1,14 @@
-@import "../src/stylesheets/variables";
+@import "./src/stylesheets/variables";
 @import "~bootstrap/scss/bootstrap";
 @import "~@fortawesome/fontawesome-free/scss/fontawesome";
 @import "~@fortawesome/fontawesome-free/scss/regular";
 @import "~@fortawesome/fontawesome-free/scss/solid";
 
 // additionally load fullcalendar CSS
-@import '~@fullcalendar/daygrid/main';
-@import '~@fullcalendar/timegrid/main';
-@import '~@fullcalendar/common/main';
-@import '~@fullcalendar/bootstrap/main';
+@import "~@fullcalendar/daygrid/main";
+@import "~@fullcalendar/timegrid/main";
+@import "~@fullcalendar/common/main";
+@import "~@fullcalendar/bootstrap/main";
 
 .container {
   margin-bottom: 20px;
@@ -66,7 +66,10 @@
   }
 }
 
-.badge-excursion, .badge-hiking, .badge-culture, .badge-water {
+.badge-excursion,
+.badge-hiking,
+.badge-culture,
+.badge-water {
   color: #fff;
   background-color: #e6500f;
 }
@@ -105,7 +108,7 @@
 }
 
 .draggable {
-  background-image: url(../images/drag-vertical.png);
+  background-image: url(./images/drag-vertical.png);
   cursor: grab;
   background-repeat: no-repeat;
   background-position: -0.5rem;
