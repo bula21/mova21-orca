@@ -270,7 +270,6 @@ it:
   buttons:
     back: indietro
     close: Chiudere
-    commit: Speichern und Abschliessen
     confirm_delete: Sei sicuro/a di voler cancellare?
     create: Creare
     destroy: Eliminare

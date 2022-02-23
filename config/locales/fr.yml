@@ -272,7 +272,6 @@ fr:
   buttons:
     back: retour
     close: Fermer
-    commit: Speichern und Abschliessen
     confirm_delete: Es-tu sûr.e de vouloir supprimer cela?
     create: créer
     destroy: supprimer

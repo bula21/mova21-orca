@@ -267,7 +267,6 @@ de:
   buttons:
     back: zurück
     close: Schliessen
-    commit: Speichern und Abschliessen
     confirm_delete: Bist du dir sicher, dass du Löschen möchtest?
     create: Erstellen
     destroy: löschen

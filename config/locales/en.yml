@@ -39,9 +39,11 @@ en:
         transport_location: Transport-Ort
       activity_execution:
         amount_participants: Nombre de participants
+        ends_at: Termina alle
         field: Terrain
         language_flags: Langues
         spot: spot du programme
+        starts_at: Inizia alle
         utilization: Utilization
       field:
         name: Nom
@@ -264,7 +266,6 @@ en:
   buttons:
     back: Back
     close: Schliessen
-    commit: Speichern und Abschliessen
     confirm_delete: Bist du dir sicher, dass du Löschen möchtest?
     create: Create
     destroy: Delete
