@@ -41,20 +41,14 @@ jobs:
           cache-to: type=gha,mode=max
 
       - name: migrate
-        run: docker compose --file docker-compose.ci.yml run e2e_target bin/rails db:drop db:create db:migrate
+        run: docker-compose --file docker-compose.ci.yml run e2e_target bin/rails db:drop db:create db:migrate
 
       - name: bin/check
-        run: docker compose --file docker-compose.ci.yml run e2e_test bin/check
-
-      - if: failure()
-        run: docker compose --file docker-compose.ci.yml logs e2e_test
-
-      - if: failure()
-        run: docker compose --file docker-compose.ci.yml logs e2e_target
+        run: docker-compose --file docker-compose.ci.yml run e2e_test bin/check
 
       - if: failure()
         name: dump log
-        run: docker compose --file docker-compose.ci.yml logs > ./artifacts/docker-compose.ci.log
+        run: docker-compose --file docker-compose.ci.yml logs > ./artifacts/docker-compose.ci.log
 
       - if: failure()
         name: dump screenshots
