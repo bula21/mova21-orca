@@ -600,7 +600,9 @@ en:
           village_global: Village Global
         block_type:
           la: Lageraktivität
+          lp: programma del campo
           ls: Lagersport
+          other: altro
           voila: Voila Bula
         language_de: Deutsch
         language_en: English
