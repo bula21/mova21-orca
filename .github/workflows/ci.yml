@@ -3,9 +3,9 @@ name: Continous Integration - CI
 
 on:
   push:
-    branches: [develop]
+    branches: [develop-ci]
   pull_request:
-    branches: [develop]
+    branches: [develop-ci]
 
 jobs:
   build:
