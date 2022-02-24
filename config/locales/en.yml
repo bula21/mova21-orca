@@ -4,6 +4,7 @@ en:
     attributes:
       activity_filter:
         activity_category: Kategorie
+        languages: Languages
         stufe_recommended: Empfohlene Stufe
         tags: Tags
         text: Text
@@ -20,6 +21,9 @@ en:
         goals: Leitziele
         label: Label
         language_de: Deutsch
+        language_documents_de: Dokumente DE
+        language_documents_fr: Dokumente FR
+        language_documents_it: Dokumente IT
         language_en: English
         language_fr: Français
         language_it: Italiano
@@ -35,9 +39,12 @@ en:
         transport_location: Transport-Ort
       activity_execution:
         amount_participants: Nombre de participants
+        ends_at: Termina alle
         field: Terrain
         language_flags: Langues
         spot: spot du programme
+        starts_at: Inizia alle
+        utilization: Utilization
       field:
         name: Nom
       fixed_event:
@@ -82,6 +89,7 @@ en:
         abteilung: Group
         activity_booking_phase: Buchungsphase
         al: Group leader
+        coach: Coach
         district: District
         ends_at: End on
         expected_guest_leaders: Erwartete Anzahl Gäste (Leitung)
@@ -103,6 +111,28 @@ en:
         title: Title
         visitor_day_tickets: Anzahl Tickets für den Besuchstag
         week: Week
+      unit_activity_execution:
+        activity_execution_id: Durchführung
+        headcount: Anzahl Personen
+        unit_id: Einheit
+      unit_visitor_day:
+        at: Datum des Besuchstags
+        ga_tickets: Personen mit GA
+        other_tickets: Personen mit Halbax oder ohne Ermässigung
+        responsible: Reiseleitung
+        responsible_address: Addresse der Reiseleitung
+        responsible_email: E-Mail der Reiseleitung
+        responsible_firstname: Vorname
+        responsible_lastname: Nachname
+        responsible_phone: Telefonnummer der Reiseleitung
+        responsible_place: Ort
+        responsible_postal_code: PLZ
+        responsible_salutation: Anrede
+        tickets: Tickets
+        u16_ga_tickets: Kinder unter 16 Jahren ohne Junior-/Mitfahrkarte oder GA
+        u16_tickets: Kinder unter 16 Jahren mit Junior-/Mitfahrkarte oder GA
+        u6_tickets: Kinder unter 6 Jahren
+        unit_id: Einheit
     errors:
       messages:
         incomplete: ist unvollständig
@@ -120,7 +150,16 @@ en:
           attributes:
             lagerleiter:
               incomplete: ist unvollständig (Name, E-Mail, Adresse)
+        unit_visitor_day:
+          not_enough_tickets_left: La quota di biglietti per questo giorno è stata
+            esaurita. Non è possibile acquistare altri biglietti.
     models:
+      activity:
+        one: Aktivität
+        other: Aktivitäten
+      activity_category:
+        one: Kategorie
+        other: Kategorien
       activity_execution:
         one: Durchführung
         other: Durchführungen
@@ -145,6 +184,12 @@ en:
       unit_activity:
         one: Buchbare Aktivität
         other: Buchbare Aktivitäten
+      unit_activity_execution:
+        one: Zugewiesene Aktivitätsdurchführung
+        other: Zugewiesene Aktivitätsdurchführungen
+      unit_visitor_day:
+        one: Besuchstag
+        other: Besuchstage
   activity:
     edit:
       title: Aktivität editieren
@@ -161,7 +206,6 @@ en:
         description: 'Du kannst Durchführungen im Excel erfassen und hier hochladen:'
         template_download: Scarica il modello in formato Excel
         title: Importazione Excel
-      executions: Executions
       executions_delete:
         description: 'Achtung: Du kannst Durchführungen eines ganzen Tages löschen.
           Klicke dazu auf den untenstehenden Link um zur Tagesauswahl zu kommen.'
@@ -200,13 +244,17 @@ en:
       field: Terrain
       has_transport: With transport
       languages: Languages
+      manage_languages_hint: Sprache in welcher die Aktivität durchgeführt werden
+        kann.
       manage_spot_hint: 'If you need more program spots, click here:'
       manage_spot_link_text: Manage program spots
+      mixed_languages: Mixed Execution
       save: Enregistrer
       spot: spot du programme
       start_time: Heure de début
       title_copy: Copy
       title_edit: Edit
+      title_new: New
     move:
       error: 'Error while moving activity execution:'
       success: Activity execution successfully moved
@@ -272,6 +320,7 @@ en:
     formats:
       default: "%Y-%m-%d"
       long: "%B %d, %Y"
+      long_with_weekday: "%A, %d.%m.%Y"
       short: "%b %d"
     from_to: "%{from} bis %{to}"
     month_names:
@@ -449,6 +498,8 @@ en:
     deleted:
       error: Fehler beim löschen.
       success: Erfolgreich gelöscht!
+    import:
+      success: Success
     updated:
       error: Fehler beim speichern!
       success: saved!
@@ -533,6 +584,13 @@ en:
   simple_form:
     confirm_unsaved: 'Achtung: Alle nicht gespeicherten Änderungen gehen verloren.
       Sind Sie sicher?'
+    hints:
+      unit_visitor_day:
+        ga_tickets: CHF 50.- pro Person
+        other_tickets: CHF 85.- pro Person
+        u16_ga_tickets: CHF 30.- pro Person
+        u16_tickets: CHF 50.- pro Person
+        u6_tickets: gratis
     options:
       activity:
         activity_type:
@@ -542,7 +600,9 @@ en:
           village_global: Village Global
         block_type:
           la: Lageraktivität
+          lp: programma del campo
           ls: Lagersport
+          other: altro
           voila: Voila Bula
         language_de: Deutsch
         language_en: English
@@ -594,7 +654,7 @@ en:
     committed_text: Besten Dank, die Buchung ist abgeschlossen! Die entgültige Einteilung
       wird Anfang 2022 bekanntgegeben.
     compliance_evaluators:
-      excursions: Min. 3 possible excursions
+      excursions: Min. 6 possible excursions
       hiking: Min. 3 possible hikes
       hiking_or_excursions: Min. 3 mögliche Ausflüge oder Wanderungen
       mova_activities: Min. 4 mova activities per camp week
@@ -620,6 +680,12 @@ en:
       button: Tag Legende öffnen
       title: Legende Tags
     video_src: https://www.youtube.com/embed/TZQT-Zngcyc
+  unit_visitor_days:
+    form:
+      salutations:
+        mr: Herr
+        ms: Frau
+        other: Neutral
   units:
     edit:
       title: Edit a camp
@@ -662,6 +728,7 @@ en:
       activity_booking_preview: Buchungsvorschau offen
       activity_booking_text: Aktivitäten Buchen
       basic_infos: Allgemein
+      book_visitor_day_tickets: Tickets jetzt kaufen
       camp_id: Camp id
       camp_link_midata: Camp on MiData
       data_complete: Registration complete

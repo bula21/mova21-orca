@@ -8,10 +8,24 @@
   table.table
     thead
       tr
-        th = Activity.human_attribute_name(:label)
+        th
+          => link_to activities_path(sort: params[:sort] === 'id' ? :id_desc : :id) do
+            | #
+            | &nbsp;
+            - if params[:sort] === 'id'
+              i.fas.fa-sort-up
+            - elsif params[:sort] === 'id_desc'
+              i.fas.fa-sort-down
+            - else
+          | &nbsp;&nbsp;&nbsp;&nbsp;
+          =< link_to activities_path(sort: params[:sort] === 'label' ? :label_desc : :label) do
+            => Activity.human_attribute_name(:label)
+            - if params[:sort] === 'label'
+              i.fas.fa-sort-up
+            - elsif params[:sort] === 'label_desc'
+              i.fas.fa-sort-down
+        th = Activity.human_attribute_name(:activity_category)
         th = Activity.human_attribute_name(:description)
-        th = ActivityCategory.model_name.human
-        th = Activity.human_attribute_name(:location)
         th = Activity.human_attribute_name(:tags)
         th
         th
@@ -21,14 +35,20 @@
       - @activities.each do |activity|
         tr
           td = activity.label
-          td = activity.description&.truncate(20)
           td = activity.activity_category.to_s
-          td = activity.location
+          td = activity.description&.truncate(20)
           td
             - activity.tags.each do |tag|
               i[class="#{tag.icon} mr-2" title=tag.label]
-          td = link_to t('buttons.show'), activity
-          td = link_to(t('buttons.edit'), edit_activity_path(activity)) if can?(:edit, activity)
-          td = link_to(t('buttons.destroy'), activity, data: { confirm: 'Are you sure?' }, method: :delete) if can?(:destroy, activity)
+          td = link_to activity do
+            i.fas.fa-eye title=t('buttons.show')
+          td
+            - if can?(:edit, activity)
+              = link_to edit_activity_path(activity) do
+                i.fas.fa-edit title=t('buttons.edit')
+          td
+            - if can?(:destroy, activity)
+              = link_to activity, data: { confirm: 'Are you sure?' }, method: :delete do
+                i.fas.fa-trash title=t('buttons.edit')
 
 = paginate @activities

@@ -30,7 +30,7 @@ class CampUnitPuller
   end
 
   def pull_new
-    root_data = @midata_service.fetch_camp_unit_data(@stufe.root_camp_unit_id)
+    root_data = @midata_service.fetch_camp_unit_data("/events/#{@stufe.root_camp_unit_id}.json")
     children_ids = root_data.dig('events', 0, 'links', 'sub_camps') || []
     existing_ids = Unit.all.pluck(:pbs_id) || []
 
@@ -46,7 +46,7 @@ class CampUnitPuller
   end
 
   def camp_unit_data(camp_unit_data, pbs_id)
-    camp_unit_data ||= @midata_service.fetch_camp_unit_data(pbs_id)
+    camp_unit_data ||= @midata_service.fetch_camp_unit_data("/events/#{pbs_id}.json")
 
     camp_unit_data = { 'events' => camp_unit_data.last } if camp_unit_data.is_a?(Array)
     camp_unit_data

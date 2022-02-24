@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_22_185706) do
+ActiveRecord::Schema.define(version: 2022_02_14_203715) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -100,6 +100,8 @@ ActiveRecord::Schema.define(version: 2021_09_22_185706) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "transport"
+    t.boolean "mixed_languages"
+    t.string "transport_ids"
     t.index ["activity_id"], name: "index_activity_executions_on_activity_id"
     t.index ["field_id"], name: "index_activity_executions_on_field_id"
   end
@@ -116,6 +118,13 @@ ActiveRecord::Schema.define(version: 2021_09_22_185706) do
     t.datetime "ends_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "fixed_events_stufen", force: :cascade do |t|
+    t.bigint "fixed_event_id", null: false
+    t.bigint "stufe_id", null: false
+    t.index ["fixed_event_id"], name: "index_fixed_events_stufen_on_fixed_event_id"
+    t.index ["stufe_id"], name: "index_fixed_events_stufen_on_stufe_id"
   end
 
   create_table "goals", force: :cascade do |t|
@@ -267,6 +276,38 @@ ActiveRecord::Schema.define(version: 2021_09_22_185706) do
     t.index ["unit_id"], name: "index_unit_activities_on_unit_id"
   end
 
+  create_table "unit_activity_executions", force: :cascade do |t|
+    t.bigint "unit_id", null: false
+    t.bigint "activity_execution_id", null: false
+    t.integer "headcount"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.jsonb "additional_data"
+    t.index ["activity_execution_id"], name: "index_unit_activity_executions_on_activity_execution_id"
+    t.index ["unit_id"], name: "index_unit_activity_executions_on_unit_id"
+  end
+
+  create_table "unit_visitor_days", force: :cascade do |t|
+    t.bigint "unit_id", null: false
+    t.integer "u6_tickets", default: 0, null: false
+    t.integer "u16_tickets", default: 0, null: false
+    t.integer "u16_ga_tickets", default: 0, null: false
+    t.integer "ga_tickets", default: 0, null: false
+    t.integer "other_tickets", default: 0, null: false
+    t.text "responsible_address"
+    t.string "responsible_email"
+    t.string "responsible_phone"
+    t.integer "phase", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "responsible_lastname"
+    t.string "responsible_firstname"
+    t.string "responsible_place"
+    t.string "responsible_postal_code"
+    t.string "responsible_salutation"
+    t.index ["unit_id"], name: "index_unit_visitor_days_on_unit_id"
+  end
+
   create_table "units", force: :cascade do |t|
     t.integer "pbs_id"
     t.string "title"
@@ -294,6 +335,7 @@ ActiveRecord::Schema.define(version: 2021_09_22_185706) do
     t.integer "expected_guest_participants"
     t.integer "expected_guest_leaders"
     t.integer "visitor_day_tickets", default: 0
+    t.string "calc_menu_token"
     t.index ["al_id"], name: "index_units_on_al_id"
     t.index ["coach_id"], name: "index_units_on_coach_id"
     t.index ["lagerleiter_id"], name: "index_units_on_lagerleiter_id"
@@ -318,12 +360,17 @@ ActiveRecord::Schema.define(version: 2021_09_22_185706) do
   add_foreign_key "activity_executions", "activities"
   add_foreign_key "activity_executions", "fields"
   add_foreign_key "fields", "spots"
+  add_foreign_key "fixed_events_stufen", "fixed_events"
+  add_foreign_key "fixed_events_stufen", "stufen"
   add_foreign_key "invoice_parts", "invoices"
   add_foreign_key "invoices", "units"
   add_foreign_key "participant_units", "participants"
   add_foreign_key "participant_units", "units"
   add_foreign_key "unit_activities", "activities"
   add_foreign_key "unit_activities", "units"
+  add_foreign_key "unit_activity_executions", "activity_executions"
+  add_foreign_key "unit_activity_executions", "units"
+  add_foreign_key "unit_visitor_days", "units"
   add_foreign_key "units", "kvs", primary_key: "pbs_id"
   add_foreign_key "units", "leaders", column: "al_id"
   add_foreign_key "units", "leaders", column: "coach_id"

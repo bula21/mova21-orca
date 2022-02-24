@@ -2,14 +2,14 @@
 
 require 'rails_helper'
 
-RSpec.describe CampUnitPuller do
+RSpec.describe CampUnitPuller, skip: true do
   subject(:puller) { described_class.new(stufe) }
 
   include_context 'with base data'
 
-  let(:stufe) { build(:stufe, code: :pfadi, root_camp_unit_id: 1328) }
+  let(:stufe) { build(:stufe, code: :pfadi, root_camp_unit_id: 1337) }
 
-  describe '#pull_all', vcr: true do
+  describe '#pull_all', vcr: true, record: :once do
     subject(:camp_units) { puller.pull_all }
 
     it do
@@ -50,7 +50,7 @@ RSpec.describe CampUnitPuller do
     end
   end
 
-  describe '#pull_new', vcr: true, record: :all do
+  describe '#pull_new', vcr: true, record: :once do
     subject(:new_camp_units) { puller.pull_new }
 
     it do

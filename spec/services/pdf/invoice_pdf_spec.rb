@@ -13,8 +13,6 @@ RSpec.describe Pdf::InvoicePdf do
   it { expect(inspector.strings.join(' ')).to include(invoice.unit.title, format('%.2f', invoice.amount)) }
 
   it do
-    File.open(Rails.root.join('tmp/invoice.pdf'), 'wb') do |file|
-      file.write(pdf.render)
-    end
+    File.binwrite(Rails.root.join('tmp/invoice.pdf'), pdf.render)
   end
 end

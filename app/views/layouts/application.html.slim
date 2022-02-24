@@ -20,9 +20,10 @@ html
           - if can?(:manage, Leader)
             li.nav-item
               = link_to t('nav.leader'), leaders_path, class: 'nav-link'
-          li.nav-item
-            = link_to t('nav.unit'), units_path, class: 'nav-link'
-          - if can?(:edit, Activity)
+          - if current_user.present?
+            li.nav-item
+              = link_to t('nav.unit'), units_path, class: 'nav-link'
+          - if can?(:read, Activity)
             li.nav-item
               = link_to t('nav.activity'), activities_path, class: 'nav-link'
           - if can?(:create, Tag)

@@ -2,7 +2,12 @@
   "name": "orca",
   "private": true,
   "dependencies": {
+    "@babel/core": "7",
+    "@babel/plugin-transform-runtime": "7",
+    "@babel/preset-env": "7",
     "@babel/preset-react": "^7.12.10",
+    "@babel/preset-typescript": "^7.12.7",
+    "@babel/runtime": "7",
     "@fortawesome/fontawesome-free": "^5.13.0",
     "@fullcalendar/bootstrap": "^5.7.0",
     "@fullcalendar/core": "^5.7.0",
@@ -12,16 +17,22 @@
     "@fullcalendar/timegrid": "^5.7.0",
     "@material-ui/core": "^4.11.4",
     "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.60",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.2-1",
-    "@rails/webpacker": "^4.2.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "babel-loader": "8",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
+    "babel-plugin-macros": "^3.1.0",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "bootstrap": "^4.3.1",
+    "compression-webpack-plugin": "9",
     "jquery": "^3.4.1",
+    "mini-css-extract-plugin": "^2.5.3",
     "moment": "^2.29.1",
     "moment-timezone": "^0.5.33",
+    "node-fetch": "^3.0.0",
     "popper.js": "^1.16.0",
     "prettier": "^2.2.1",
     "prop-types": "^15.7.2",
@@ -30,13 +41,37 @@
     "react-moment": "^1.1.1",
     "react-recompose": "^0.31.1",
     "react_ujs": "^2.6.1",
+    "shakapacker": "6.1.1",
     "sortablejs": "^1.13.0",
+    "postcss": "^8.4.6",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-import": "^14.0.2",
+    "postcss-loader": "^6.2.0",
+    "postcss-preset-env": "^7.3.0",
+    "css-loader": "^6.4.0",
+    "sass": "^1.49.4",
+    "sass-loader": "^12.2.0",
+    "terser-webpack-plugin": "5",
     "ts-loader": "^8.0.14",
     "turbolinks": "^5.2.0",
-    "typescript": "^4.1.3"
+    "typescript": "^4.1.3",
+    "webpack": "5",
+    "webpack-assets-manifest": "5",
+    "webpack-cli": "4",
+    "webpack-merge": "5"
   },
   "version": "0.1.0",
+  "babel": {
+    "presets": [
+      "./node_modules/shakapacker/package/babel/preset.js",
+      "@babel/preset-react",
+      "@babel/preset-typescript"
+    ]
+  },
+  "browserslist": [
+    "defaults"
+  ],
   "devDependencies": {
-    "webpack-dev-server": "^3.9.0"
+    "webpack-dev-server": "^4.7.4"
   }
 }

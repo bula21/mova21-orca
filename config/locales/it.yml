@@ -4,6 +4,7 @@ it:
     attributes:
       activity_filter:
         activity_category: Categoria
+        languages: lingua
         stufe_recommended: Branca raccomandata
         tags: Tags
         text: Testo
@@ -20,6 +21,9 @@ it:
         goals: Obiettivi generali
         label: Titolo dell'attività
         language_de: Tedesco
+        language_documents_de: Documenti DE
+        language_documents_fr: Documenti FR
+        language_documents_it: Documenti IT
         language_en: Inglese
         language_fr: Francese
         language_it: Italiano
@@ -35,9 +39,12 @@ it:
         transport_location: Luogo del trasporto
       activity_execution:
         amount_participants: Numero di partecipanti
+        ends_at: Termina alle
         field: Terreno
         language_flags: Lingue
         spot: Zona del programma
+        starts_at: Inizia alle
+        utilization: Utilization
       field:
         name: Nome
       fixed_event:
@@ -82,6 +89,7 @@ it:
         abteilung: Sezione
         activity_booking_phase: Fase di prenotazione
         al: CSZ
+        coach: Coach
         district: Quartiere
         ends_at: Fine il
         expected_guest_leaders: Numero definitivo di ospiti (animatori/trici)
@@ -101,8 +109,32 @@ it:
         starts_at: Inizio il
         stufe: Branca
         title: Titolo
-        visitor_day_tickets: Anzahl Tickets für den Besuchstag
+        visitor_day_tickets: Anzahl Tickets für den Giornata delle visite
         week: Settimana di campo
+      unit_activity_execution:
+        activity_execution_id: Attività
+        headcount: Numero di persone
+        unit_id: Unità
+      unit_visitor_day:
+        at: Date della vostra giornata delle visite
+        ga_tickets: Persone con AG
+        other_tickets: Persone con metà-prezzo o senza riduzione
+        responsible: responsabile del viaggio
+        responsible_address: Indirizzo
+        responsible_email: E-mail
+        responsible_firstname: Nome
+        responsible_lastname: Cognome
+        responsible_phone: Numero di telefono
+        responsible_place: Località
+        responsible_postal_code: CAP
+        responsible_salutation: Appellativo
+        tickets: biglietti
+        u16_ga_tickets: Bambini sotto i 16 anni con carta Junior o carta Bimbi accompagnati
+          o AG
+        u16_tickets: Bambini sotto i 16 anni senza carta Junior o carta Bimbi accompagnati
+          o AG
+        u6_tickets: Bambini sotto i 6 anni
+        unit_id: Unità
     errors:
       messages:
         incomplete: è incompleto
@@ -123,7 +155,16 @@ it:
           attributes:
             lagerleiter:
               incomplete: è incompleto (nome, e-mail, indirizzo)
+        unit_visitor_day:
+          not_enough_tickets_left: La quota di biglietti per questo giorno è stata
+            esaurita. Non è possibile acquistare altri biglietti.
     models:
+      activity:
+        one: Attività
+        other: Attività
+      activity_category:
+        one: Categorie
+        other: Categorie
       activity_execution:
         one: Realizzazione
         other: Realizzazioni
@@ -148,6 +189,12 @@ it:
       unit_activity:
         one: Attività prenotata
         other: Lista dei desideri
+      unit_activity_execution:
+        one: Attività assegnata
+        other: Attività assegnate
+      unit_visitor_day:
+        one: Giornata delle visite
+        other: Giornata delle visitee
   activity:
     edit:
       title: Modificare l'attività
@@ -164,7 +211,6 @@ it:
         description: 'Puoi creare delle realizazzioni in Excel e c aricarle qui:'
         template_download: Scarica il modello in formato Excel
         title: Importazione Excel
-      executions: Realizzazioni
       executions_delete:
         description: 'Attenzione: è possibile cancellare le attività di un giorno
           intero. Clicca sul link qui sotto per accedere alla selezione dei giorni.'
@@ -203,13 +249,16 @@ it:
       field: Terreno
       has_transport: Con trasporto
       languages: Lingue
+      manage_languages_hint: Lingua in cui si può svolgere l'attività.
       manage_spot_hint: Se hai bisogno di più zone del programma, clicca qui
       manage_spot_link_text: Gestisci le zone del programma
+      mixed_languages: Attuazione mista
       save: Salvare
       spot: Zona del programma
       start_time: Orario di inizio
       title_copy: Copiare
       title_edit: Modificare
+      title_new: New
     move:
       error: Errore durante la spostamento della realizzazione
       success: Realizazzione spostata correttamente
@@ -293,6 +342,7 @@ it:
     formats:
       default: "%d-%m-%Y"
       long: "%d %B %Y"
+      long_with_weekday: "%A, %d.%m.%Y"
       short: "%d %b"
     from_to: dal %{from} al %{to}
     month_names:
@@ -470,6 +520,8 @@ it:
     deleted:
       error: Errore nell'eliminazione
       success: Eliminato con successo
+    import:
+      success: Success
     updated:
       error: Errore nel salvataggio!
       success: Salvato con successo!
@@ -562,6 +614,13 @@ it:
   pre_text: Pre text
   simple_form:
     confirm_unsaved: 'Attenzione: Tutte le modifiche andranno perse! Vuoi continuare?'
+    hints:
+      unit_visitor_day:
+        ga_tickets: CHF 50.- a persona
+        other_tickets: CHF 85.- a persona
+        u16_ga_tickets: CHF 30.- a persona
+        u16_tickets: CHF 50.- a persona
+        u6_tickets: gratis
     options:
       activity:
         activity_type:
@@ -571,8 +630,10 @@ it:
           village_global: Village Global
         block_type:
           la: Attività da campo
+          lp: programma del campo
           ls: Sport da campo
-          voila: Voila CaFe
+          other: altro
+          voila: Voila Bula
         language_de: Tedesco
         language_en: Inglese
         language_fr: Francese
@@ -624,7 +685,7 @@ it:
       sarà annunciata ad inizio 2022.
     compliance_evaluators:
       excursions: Min. 3 gite per ogni settimana di campo
-      hiking: Min. 3 escursioni per ogni settimana di campo
+      hiking: Min. 6 gite o ulteriori escursioni per ogni settimana di campo
       hiking_or_excursions: Min. 3 gite o escursioni
       mova_activities: Min. 4 attività mova per ogni settimana di campo
       phase_open: La fase di prenotazione è aperta
@@ -650,6 +711,12 @@ it:
       button: Aprire la legenda dei tag
       title: Legenda dei tag
     video_src: https://www.youtube.com/embed/7XusNePwv_o
+  unit_visitor_days:
+    form:
+      salutations:
+        mr: signor
+        ms: signora
+        other: neutrale
   units:
     edit:
       title: Modificare il campo
@@ -692,6 +759,7 @@ it:
       activity_booking_preview: Aprire l'anteprima delle prenotazioni
       activity_booking_text: Prenotare un'attività
       basic_infos: Vario
+      book_visitor_day_tickets: Compra i biglietti ora
       camp_id: Id Campo
       camp_link_midata: Campo su MiData
       data_complete: Dati completi

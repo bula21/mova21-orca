@@ -4,6 +4,7 @@ de:
     attributes:
       activity_filter:
         activity_category: Kategorie
+        languages: Sprachen
         stufe_recommended: Empfohlene Stufe
         tags: Tags
         text: Text
@@ -20,6 +21,9 @@ de:
         goals: Leitziele
         label: Bezeichnung
         language_de: Deutsch
+        language_documents_de: Dokumente DE
+        language_documents_fr: Dokumente FR
+        language_documents_it: Dokumente IT
         language_en: English
         language_fr: Français
         language_it: Italiano
@@ -34,10 +38,13 @@ de:
         stufen: Stufen möglich
         transport_location: Transport-Ort
       activity_execution:
-        amount_participants: Anzahl TN
+        amount_participants: Anzahl Personen
+        ends_at: Endet um
         field: Feld
         language_flags: Sprachen
         spot: Programmspot
+        starts_at: Beginnt um
+        utilization: Auslastung
       field:
         name: Name
       fixed_event:
@@ -82,6 +89,7 @@ de:
         abteilung: Abteilung
         activity_booking_phase: Buchungsphase
         al: AL
+        coach: Coach
         district: Quartier
         ends_at: Ende am
         expected_guest_leaders: Definitive Anzahl Gäste (Leitung)
@@ -103,6 +111,28 @@ de:
         title: Titel
         visitor_day_tickets: Anzahl Tickets für den Besuchstag
         week: Lagerwoche
+      unit_activity_execution:
+        activity_execution_id: Durchführung
+        headcount: Anzahl Personen
+        unit_id: Einheit
+      unit_visitor_day:
+        at: Datum des Besuchstags
+        ga_tickets: Personen mit GA
+        other_tickets: Personen mit Halbax oder ohne Ermässigung
+        responsible: Reiseleitung
+        responsible_address: Adresse
+        responsible_email: E-Mail
+        responsible_firstname: Vorname
+        responsible_lastname: Nachname
+        responsible_phone: Telefonnummer
+        responsible_place: Ort
+        responsible_postal_code: PLZ
+        responsible_salutation: Anrede
+        tickets: Tickets
+        u16_ga_tickets: Kinder unter 16 Jahren mit Junior-/Mitfahrkarte oder GA
+        u16_tickets: Kinder unter 16 Jahren ohne Junior-/Mitfahrkarte oder GA
+        u6_tickets: Kinder unter 6 Jahren
+        unit_id: Einheit
     errors:
       messages:
         incomplete: ist unvollständig
@@ -121,7 +151,16 @@ de:
           attributes:
             lagerleiter:
               incomplete: ist unvollständig (Name, E-Mail, Adresse)
+        unit_visitor_day:
+          not_enough_tickets_left: Das Ticket-Kontingent für diesen Tag ist aufgebraucht.
+            Es können keine weiteren Ticktets gekauft werden.
     models:
+      activity:
+        one: Aktivität
+        other: Aktivitäten
+      activity_category:
+        one: Kategorie
+        other: Kategorien
       activity_execution:
         one: Durchführung
         other: Durchführungen
@@ -146,6 +185,12 @@ de:
       unit_activity:
         one: Gebuchte Aktivität
         other: Warenkorb
+      unit_activity_execution:
+        one: Zugewiesene Aktivitätsdurchführung
+        other: Zugewiesene Aktivitätsdurchführungen
+      unit_visitor_day:
+        one: Besuchstag
+        other: Besuchstage
   activity:
     edit:
       title: Aktivität editieren
@@ -162,7 +207,6 @@ de:
         description: 'Du kannst Durchführungen im Excel erfassen und hier hochladen:'
         template_download: Excel-Vorlage herunterladen
         title: Excel-Import
-      executions: Durchführungen
       executions_delete:
         description: 'Achtung: Du kannst Durchführungen eines ganzen Tages löschen.
           Klicke dazu auf den untenstehenden Link um zur Tagesauswahl zu kommen.'
@@ -192,22 +236,26 @@ de:
       error: 'Fehler beim Löschen der Durchführung:'
       success: Durchführung erfolgreich gelöscht
     editor:
-      amount_participants: Anzahl TN
+      amount_participants: Anzahl Personen
       cancel: Abbrechen
       copy: Kopieren
       date_invalid: Der Startzeitpunkt kann nicht vor dem Endzeitpunkt liegen
       delete: Löschen
       end_time: Endzeit
       field: Feld
-      has_transport: Mit Transport
+      has_transport: Personenanzahl inkl. Leitung
       languages: Sprachen
+      manage_languages_hint: Sprache in welcher die Aktivität durchgeführt werden
+        kann.
       manage_spot_hint: 'Falls du mehr Programmspots brauchst, klicke hier:'
       manage_spot_link_text: Programmspots verwalten
+      mixed_languages: Gemischtsprachig
       save: Speichern
       spot: Programmspot
       start_time: Startzeit
       title_copy: Kopieren
       title_edit: Editieren
+      title_new: Neu
     move:
       error: 'Fehler beim Verschieben der Durchführung:'
       success: Durchführung erfolgreich verschoben
@@ -292,6 +340,7 @@ de:
     formats:
       default: "%d.%m.%Y"
       long: "%e. %B %Y"
+      long_with_weekday: "%A, %d.%m.%Y"
       short: "%e. %b"
     from_to: "%{from} bis %{to}"
     month_names:
@@ -470,6 +519,8 @@ de:
     deleted:
       error: Fehler beim löschen!
       success: Erfolgreich gelöscht!
+    import:
+      success: Success
     updated:
       error: Fehler beim speichern!
       success: Erfolgreich gespeichert!
@@ -563,6 +614,13 @@ de:
   simple_form:
     confirm_unsaved: 'Achtung: Alle nicht gespeicherten Änderungen gehen verloren.
       Sind Sie sicher?'
+    hints:
+      unit_visitor_day:
+        ga_tickets: CHF 50.- pro Person
+        other_tickets: CHF 85.- pro Person
+        u16_ga_tickets: CHF 30.- pro Person
+        u16_tickets: CHF 50.- pro Person
+        u6_tickets: gratis
     options:
       activity:
         activity_type:
@@ -572,7 +630,9 @@ de:
           village_global: Village Global
         block_type:
           la: Lageraktivität
+          lp: Lagerprogramm
           ls: Lagersport
+          other: Sonstiges
           voila: Voila Bula
         language_de: Deutsch
         language_en: English
@@ -612,9 +672,9 @@ de:
   time:
     am: vormittags
     formats:
-      default: "%A, %d. %B %Y, %H:%M Uhr"
+      default: "%d.%m.%Y %H:%M"
       long: "%A, %d. %B %Y, %H:%M Uhr"
-      short: "%d. %B, %H:%M Uhr"
+      short: "%d.%m.%Y %H:%M"
     pm: nachmittags
   unit_activity_booking:
     all_comply: Super! Alle Bedingungen sind erfüllt. Du kannst die Buchung abschliessen.
@@ -624,7 +684,7 @@ de:
     committed_text: Besten Dank, die Buchung ist abgeschlossen! Die entgültige Einteilung
       wird Anfang 2022 bekanntgegeben.
     compliance_evaluators:
-      excursions: Min. 3 mögliche Ausflüge pro Lageroche
+      excursions: Min. 6 mögliche Ausflüge oder weitere Wanderungen pro Lageroche
       hiking: Min. 3 mögliche Wanderungen pro Lagerwoche
       hiking_or_excursions: Min. 3 mögliche Ausflüge oder Wanderungen
       mova_activities: Min. 4 mögliche mova Aktivitäten pro Lagerwoche
@@ -650,6 +710,12 @@ de:
       button: Tag Legende öffnen
       title: Legende Tags
     video_src: https://www.youtube.com/embed/TZQT-Zngcyc
+  unit_visitor_days:
+    form:
+      salutations:
+        mr: Herr
+        ms: Frau
+        other: Neutral
   units:
     edit:
       title: Lager editieren
@@ -692,6 +758,7 @@ de:
       activity_booking_preview: Buchungsvorschau offen
       activity_booking_text: Aktivitäten Buchen
       basic_infos: Allgemein
+      book_visitor_day_tickets: Tickets jetzt kaufen
       camp_id: Lager Id
       camp_link_midata: Lager auf MiData
       data_complete: Daten vollständig

@@ -26,6 +26,9 @@ class Leader < ApplicationRecord
   has_many :lagerleiter_units, inverse_of: :lagerleiter, class_name: 'Unit', foreign_key: 'lagerleiter_id',
                                dependent: :destroy
 
+  has_many :coach_units, inverse_of: :coach, class_name: 'Unit', foreign_key: 'coach_id',
+                         dependent: :destroy
+
   validates :email, presence: true
   validates :pbs_id, uniqueness: { allow_blank: true }
   validates :last_name, :first_name, :address, :zip_code, :town, presence: true, on: :complete

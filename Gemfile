@@ -17,7 +17,7 @@ gem 'httparty'
 gem 'kaminari'
 gem 'keycloak'
 gem 'mobility', '~> 0.8.9'
-gem 'omniauth_openid_connect'
+gem 'omniauth_openid_connect', '~> 0.3.5' # TODO: upgrade
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'prawn', '~> 2.2'
 gem 'prawn-table'
@@ -29,12 +29,12 @@ gem 'react-rails'
 gem 'redcarpet'
 gem 'rollbar'
 gem 'roo'
+gem 'shakapacker', '= 6.1'
 gem 'simple_form'
 gem 'slim-rails'
 gem 'turbolinks', '~> 5'
 gem 'vcr'
 gem 'webmock', '~> 3.8'
-gem 'webpacker'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

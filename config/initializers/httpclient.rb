@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
-# https://github.com/nahi/httpclient/issues/445
+# See https://github.com/nahi/httpclient/issues/445
 require 'httpclient'
+
 class HTTPClient
   alias original_initialize initialize
 

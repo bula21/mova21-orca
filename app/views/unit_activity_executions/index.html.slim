@@ -1,0 +1,45 @@
+.h1 = UnitActivityExecution.model_name.human(count: 2)
+
+- if @unit
+	.mb-4
+		= link_to @unit.title, unit_path(@unit)
+
+- if @activity_execution
+	.row.mb-4
+		dl.col-md-6
+			dd = @activity_execution
+			dt = Activity.model_name.human
+			dd = link_to @activity_execution.activity, activity_path(@activity_execution.activity)
+			dt = ActivityCategory.model_name.human
+			dd = @activity_execution.activity.activity_category
+			dt = t('activerecord.attributes.activity_execution.utilization')
+			dd
+				.w-100[style="padding: 2px; border: 1px solid black;"]
+					div[style="min-width: fit-content; width: #{@activity_execution.headcount_utilization * 100}%; max-width: 100%; background-color: #{@activity_execution.headcount_utilization_color}; padding: 2px; color: white;"]
+						= "#{@activity_execution.headcount}/#{@activity_execution.amount_participants} (#{(@activity_execution.headcount_utilization * 100).to_i}%)"
+
+
+- if @unit || @activity_execution
+	.my-5
+		= react_component("ReadOnlyCalendarManager", { editable: false, stufe: @unit.present? ? @unit.stufe : 'all', events: ActivityExecutionBlueprint.render_as_hash(@unit_activity_executions.map(&:activity_execution), view: :with_activity) })
+
+- if @unit
+	= render partial: 'activity_executions_table', locals: { unit_activity_executions: @unit_activity_executions, unit_id: @unit.id }
+
+- if @activity_execution
+	= render partial: 'units_table', locals: { unit_activity_executions: @unit_activity_executions, activity_execution_id: @activity_execution.id }
+
+- if can?(:manage, UnitActivityExecution)
+	.card.mt-5
+		.card-body
+			h4 = t('activity.show.excel_import.title')
+			- if @import_errors.present?
+				ul.alert.alert-danger
+					- @import_errors.values.each do |error|
+						li = error
+
+			= simple_form_for :import, url: import_unit_activity_executions_path, method: :post do |f|
+				= f.input :delete_first, as: :boolean
+				= f.input :file, as: :file
+				= f.submit t('buttons.upload'), class: 'btn btn-secondary'
+

@@ -26,9 +26,9 @@ class AddTranslatedNameToGoals < ActiveRecord::Migration[6.0]
                          }]
 
     goal_translations.each do |goal_translation|
-      Goal.find_by(old_name_de: goal_translation['de']).update(name_it: goal_translation['it'],
-                                                           name_fr: goal_translation['fr'],
-                                                           name_de: goal_translation['de'])
+      Goal.find_by(old_name_de: goal_translation['de'])&.update(name_it: goal_translation['it'],
+                                                                name_fr: goal_translation['fr'],
+                                                                name_de: goal_translation['de'])
     end
     remove_column :goals, :old_name_de, :string
   end

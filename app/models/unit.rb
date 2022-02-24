@@ -14,6 +14,7 @@
 #  expected_participants_m         :integer
 #  language                        :string
 #  limesurvey_token                :string
+#  calc_menu_token                 :string
 #  midata_data                     :jsonb
 #  starts_at                       :datetime
 #  stufe                           :string
@@ -42,19 +43,21 @@
 class Unit < ApplicationRecord
   belongs_to :al, class_name: 'Leader', inverse_of: :al_units, optional: true
   belongs_to :lagerleiter, class_name: 'Leader', inverse_of: :lagerleiter_units
-  belongs_to :kv, inverse_of: :units, primary_key: :pbs_id
+  belongs_to :coach, class_name: 'Leader', inverse_of: :coach_units, optional: true
   belongs_to :kv, inverse_of: :units, primary_key: :pbs_id
 
   has_many :invoices, inverse_of: :unit, dependent: :destroy
   has_many :invoices, inverse_of: :unit, dependent: :destroy
-  has_many :unit_activities, inverse_of: :unit, dependent: :destroy
+  has_many :unit_activities, -> { rank(:priority) }, inverse_of: :unit, dependent: :destroy
   has_many :participant_units, inverse_of: :unit, dependent: :destroy
   has_many :participants, -> { order(role: :asc, last_name: :asc, scout_name: :asc) },
            through: :participant_units, inverse_of: :units, dependent: :destroy
+  has_many :unit_activity_executions, inverse_of: :unit, dependent: :destroy
+  has_one :unit_visitor_day, inverse_of: :unit, dependent: :destroy
 
   has_many_attached :documents
 
-  validates :title, :kv_id, :lagerleiter, presence: true, on: :complete
+  validates :title, presence: true, on: :complete
   validates :expected_participants, numericality: { greater_than_or_equal_to: 12 }, on: :complete
   validates :expected_participants_leitung, numericality: { greater_than_or_equal_to: 2 }, on: :complete
   validates :visitor_day_tickets, numericality: { greater_than_or_equal_to: 0 }, allow_nil: true
@@ -107,5 +110,14 @@ class Unit < ApplicationRecord
 
   def activity_booking
     @activity_booking ||= UnitActivityBooking.new(self)
+  end
+
+  def participant_role_counts
+    baseline = Participant::MIDATA_EVENT_CAMP_ROLES.transform_values { 0 }
+    participants.group_by(&:role).transform_values(&:count).symbolize_keys.reverse_merge(baseline)
+  end
+
+  def to_s
+    "#{id}: #{title}"
   end
 end

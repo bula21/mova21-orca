@@ -24,6 +24,12 @@ ActivityCategory.create([
                           { label_de: 'Berg', ancestry: activity_1 }
                         ])
 
+Goal.create(name: 'Pfadi (er) leben')
+Goal.create(name: 'Diversität und Inklusion')
+Goal.create(name: 'Umwelt')
+Goal.create(name: 'Prävention')
+Goal.create(name: 'Dimension und Austausch')
+
 activities = FactoryBot.create_list(:activity, 20)
 
 spots = Spot.create([{ name: "Lagerplatz" }, { name: "Flugplatz" }])
@@ -38,7 +44,7 @@ BULA_START  = Time.new(2022, 7, 23, 9, 0)
 BULA_END  = Time.new(2022, 8, 6, 12, 0)
 activities.each do |activity|
   4.times do
-    FactoryBot.create(:activity_execution, amount_participants: activity.participants_count_transport,
+    FactoryBot.create(:activity_execution, amount_participants: activity.participants_count_activity,
                       starts_at:  Faker::Time.between(from: BULA_START, to: BULA_END), activity: activity, field: Field.all.sample)
   end
 end

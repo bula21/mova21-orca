@@ -7,26 +7,36 @@ class MidataService
   base_uri ENV.fetch('MIDATA_BASE_URL', 'https://pbs.puzzle.ch')
 
   def initialize(user_email = ENV['MIDATA_USER_EMAIL'], user_token = ENV['MIDATA_USER_TOKEN'], _locale = 'de')
-    @auth_params = { user_token: user_token, user_email: user_email }
+    @auth_params = { 'X-User-Token': user_token, 'X-User-Email': user_email }
   end
 
   def fetch_participations(group_id, event_id, page = 1)
+    Rails.logger.debug do
+      "URL: #{"/groups/#{group_id}/events/#{event_id}/participations.json"}, QUERY: #{{ page: page }}"
+    end
     JSON.parse(self.class.get("/groups/#{group_id}/events/#{event_id}/participations.json",
-                              query: auth_params.merge(page: page)).body)
+                              query: { page: page }, headers: auth_params).body)
   end
 
-  def fetch_camp_unit_data(id)
-    Rails.logger.debug { "Talking to Midata Event #{id}" }
+  def fetch_camp_unit_data(root_url)
+    Rails.logger.debug { 'Talking to Midata Event' }
+    Rails.logger.debug { "URL: #{root_url}" }
 
-    JSON.parse(self.class.get("/events/#{id}.json", query: auth_params).body)
+    JSON.parse(self.class.get(root_url.sub(self.class.base_uri, ''), headers: auth_params).body)
   end
 
-  def fetch_camp_unit_data_hierarchy(root_id)
-    root_data = fetch_camp_unit_data(root_id)
+  def fetch_camp_unit_data_hierarchy(root_url, root: true)
+    # TODO: Cleanup: Pass a url from the very top (now the top-event is fetched by id, then all the others by url)
+    root_data = fetch_camp_unit_data(root ? "/events/#{root_url}.json" : root_url)
     children_ids = root_data.dig('events', 0, 'links', 'sub_camps')
 
-    return root_data if children_ids.nil?
+    return root_data if children_ids.nil? && !root
 
-    [root_data, children_ids.map { |child_id| fetch_camp_unit_data_hierarchy(child_id) }].flatten
+    events_data = root_data.dig('linked', 'events')
+    children_urls = children_ids.map do |subcamp_id|
+      events_data.find { |d| d['id'] == subcamp_id }['href']
+    end
+
+    [root_data, children_urls.map { |child_url| fetch_camp_unit_data_hierarchy(child_url, root: false) }].flatten
   end
 end

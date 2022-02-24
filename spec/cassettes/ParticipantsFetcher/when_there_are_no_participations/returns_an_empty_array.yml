@@ -2,11 +2,15 @@
 http_interactions:
 - request:
     method: get
-    uri: https://pbs.puzzle.ch/groups/3/events/1257/participations.json?page=1&user_email=hussein_kohlmann@hitobito.example.com&user_token=Tu7aVJWyLYYMyCnZv2bz
+    uri: https://pbs.puzzle.ch/groups/3/events/1257/participations.json?page=1
     body:
       encoding: US-ASCII
       string: ''
     headers:
+      X-User-Token:
+      - Tu7aVJWyLYYMyCnZv2bz
+      X-User-Email:
+      - hussein_kohlmann@hitobito.example.com
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -19,12 +23,12 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 28 Dec 2020 14:43:48 GMT
+      - Thu, 23 Dec 2021 20:53:05 GMT
       Server:
       - nginx/1.12.1
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains
-      - max-age=31536000; includeSubDomains
+      - max-age=63072000; includeSubDomains
       X-Frame-Options:
       - SAMEORIGIN
       - SAMEORIGIN
@@ -44,7 +48,7 @@ http_interactions:
       X-Permitted-Cross-Domain-Policies:
       - none
       Cache-Control:
-      - no-cache, no-store
+      - no-store
       Pragma:
       - no-cache
       Expires:
@@ -52,20 +56,20 @@ http_interactions:
       Etag:
       - W/"8ad2cc2456906dc5ecc761ffda04af7f"
       Vary:
-      - Accept-Encoding
+      - Accept-Encoding,Origin,Authorization
       X-Request-Id:
-      - 65267c2b-0aa3-4d41-9ab2-04702d793615
+      - 60b9c95f-bfac-4b77-8db3-a661ec21372c
       X-Runtime:
-      - '0.393102'
+      - '0.328753'
       Set-Cookie:
-      - _session_id=af988a2efc033d869324a86394bc1af2; path=/; secure; HttpOnly
-      - afcc3ba8de9b9b04950e14e130f0b228=513f9410ae70f8b31a9a6d09bf322046; path=/;
-        HttpOnly; Secure
-      - locale=de; path=/; expires=Tue, 28 Dec 2021 14:43:47 GMT; secure
+      - _session_id=58de253d7d5d2d6d4e79563e802fde35; path=/; secure; HttpOnly
+      - afcc3ba8de9b9b04950e14e130f0b228=815c3d2e7b0b60feea627f0884f20d2d; path=/;
+        HttpOnly; Secure; SameSite=None
+      - locale=de; path=/; expires=Fri, 23 Dec 2022 20:53:04 GMT; secure
       Transfer-Encoding:
       - chunked
     body:
       encoding: ASCII-8BIT
       string: '{"current_page":1,"total_pages":0,"next_page_link":null,"prev_page_link":null,"event_participations":[]}'
-  recorded_at: Mon, 28 Dec 2020 14:43:48 GMT
+  recorded_at: Thu, 23 Dec 2021 20:53:05 GMT
 recorded_with: VCR 6.0.0

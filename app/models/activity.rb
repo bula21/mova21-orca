@@ -35,13 +35,19 @@ class Activity < ApplicationRecord
   paginates_per 15
 
   LANGUAGES = %i[language_de language_fr language_it language_en].freeze
+  ATTACHMENTS = %i[attachment picture language_documents_de language_documents_fr language_documents_it].freeze
 
   has_many_attached :activity_documents
   has_one_attached :picture
+  has_many_attached :language_documents_de
+  has_many_attached :language_documents_fr
+  has_many_attached :language_documents_it
   has_and_belongs_to_many :tags, optional: true
   has_many :activity_executions, inverse_of: :activity, dependent: :destroy
   belongs_to :transport_location, optional: true
   belongs_to :activity_category, optional: true
+  has_many :unit_activities, inverse_of: :activity, dependent: :destroy
+  has_many :unit_activity_executions, through: :activity_executions
 
   has_and_belongs_to_many :goals
   has_and_belongs_to_many :stufen
@@ -50,7 +56,7 @@ class Activity < ApplicationRecord
 
   bitfield :language_flags, *LANGUAGES
 
-  enum block_type: { la: 'la', ls: 'ls' }
+  enum block_type: { la: 'la', ls: 'ls', lp: 'lp', other: 'other' }
   enum simo: { berg: 'berg', wasser: 'wasser', pool: 'pool', lake: 'lake' }
   enum activity_type: { excursion: 'excursion', activity: 'activity',
                         village_global: 'village_global', frohnarbeit: 'frohnarbeit' }
@@ -77,5 +83,9 @@ class Activity < ApplicationRecord
 
   def languages
     bitfield_values(:language_flags)
+  end
+
+  def to_s
+    label
   end
 end

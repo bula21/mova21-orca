@@ -27,7 +27,7 @@ class User < ApplicationRecord
   validates :uid, presence: true
   validates :pbs_id, presence: true, allow_blank: true
 
-  bitfield :role_flags, :role_user, :role_admin, :role_programm, :role_tn_administration, :role_editor
+  bitfield :role_flags, :role_user, :role_admin, :role_programm, :role_tn_administration, :role_editor, :role_allocation
 
   def self.from_omniauth(auth)
     email = auth.info.email

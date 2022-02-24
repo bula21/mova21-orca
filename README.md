@@ -21,6 +21,12 @@ If you have started the containers, you can access a bash CLI from the running d
 docker-compose exec app ash
 ```
 
+To speed up the development the webpacker dev server can be launched using the following command
+
+```
+ docker-compose exec app /app/bin/webpacker-dev-serve
+```
+
 ### Roles
 
 ### Tests
@@ -35,9 +41,9 @@ or much faster (if you already have started a container)
 docker-compose exec app bin/rspec
 ```
 
-### Production
+## Production
 
-Build
+### Build
 
 ```
 docker-compose -f docker-compose.production.yml build production
@@ -70,10 +76,6 @@ We use ActiveStorage to store files. To set it up in production use these ENV-Va
 - STORAGE_ACCESS_KEY=
 - STORAGE_CONTAINER=
 
-## Tests
-
-docker-compose exec app bin/rspec
-
 ## Database structure
 
 ### User roles
@@ -87,7 +89,7 @@ docker-compose exec app bin/rspec
 - Editor (`role_editor`)
   - Activity
 
-### Code snippets to modify a user:
+### Code snippets to modify a user
 
 ```
 # Get the first user
@@ -95,38 +97,40 @@ bin/rails c
 user = User.first
 ```
 
-# Give a user admin role
+### Give a user admin role
 
+```
 user.role_admin = true
 user.save
 
 # or
-
 user.update(role_admin: true)
+```
 
-# to remove a role
+### to remove a role
 
+```
 user.update(role_programm: false)
+```
 
-# Fetch new CampUnits from MiData
+### Fetch new CampUnits from MiData
 
+```
 bin/rails r "PullNewCampUnitsJob.perform_now"
 
 # Fetch all CampUnits from MiData
-
 bin/rails r "PullAllCampUnitsJob.perform_now"
 
 reload!
+```
 
-````
+## Tasks
 
-### Tasks
-
-#### Export Invoices
+### Export Invoices
 
 ```ruby
 puts InvoiceExporter.new.export
-````
+```
 
 ```bash
 docker-compose run bin/rails r 'puts InvoiceExporter.new.export; STDOUT.flush' > tmp/export.csv

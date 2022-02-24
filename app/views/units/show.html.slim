@@ -22,6 +22,9 @@
         .col-6
           dt = t('activerecord.attributes.unit.al')
           dd = @unit.al&.full_name
+          - if @unit.coach
+            dt = t('activerecord.attributes.unit.coach')
+            dd = @unit.coach&.full_name
 
       .row
         .col-6
@@ -198,5 +201,27 @@
         = t('.activity_booking_preview')
       - elsif @unit.activity_booking.phase?(:open)
         = t('.activity_booking_open')
+
+- if @unit.unit_visitor_day.present? && @unit.unit_visitor_day.at
+  .card.mt-5
+    .card-body
+      h3.mb-4 = UnitVisitorDay.model_name.human
+      h3.display-4.text-center.mb-5.mt-5 = l(@unit.unit_visitor_day.at, format: :long_with_weekday)
+      = link_to unit_unit_visitor_day_path(@unit), class: 'btn btn-primary'
+        = t('units.show.book_visitor_day_tickets')
+    / .card-footer.bg-success.border-success.text-white
+    /   - if @unit.activity_booking.phase?(:committed)
+    /     = t('.activity_booking_committed')
+    /   - elsif @unit.activity_booking.phase?(:preview)
+    /     = t('.activity_booking_preview')
+    /   - elsif @unit.activity_booking.phase?(:open)
+    /     = t('.activity_booking_open')
+
+- if can? :read, UnitActivityExecution
+  .card.mt-5
+    .card-body
+      h3.mb-4= UnitActivityExecution.model_name.human
+      = link_to unit_activity_executions_path(unit_id: @unit.to_param), class: 'btn btn-primary'
+        = t('buttons.show')
 
 = link_to t('buttons.back'), units_path, class: 'btn btn-secondary mt-4'

@@ -49,6 +49,8 @@ services:
       SMTP_PASSWORD: ""
       SMTP_PORT: 25
       SMTP_AUTH: ${SMTP_AUTH:-plain}
+      FEATURES: "unit_activity_booking"
+      VISITOR_DAY_ACTIVITY_ID: 1
     depends_on:
       - db
       - mail
@@ -66,7 +68,7 @@ services:
         UID: ${UID}
         GID: ${GID}
     entrypoint: [".docker/entrypoints/webpack.sh"]
-    command: ["bin/webpack-dev-server"]
+    command: ["bin/webpacker-dev-server"]
     volumes:
       - .:/app
     environment:

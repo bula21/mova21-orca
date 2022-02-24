@@ -52,11 +52,23 @@ RSpec.describe CampUnitBuilder do
       end
     end
 
+    describe 'coach' do
+      subject(:al) { camp_unit.coach }
+
+      it 'has the coach' do
+        expect(al).to be_a(Leader)
+        expect(al).to be_valid
+        expect(al).to have_attributes(pbs_id: 33, last_name: 'Pusch', first_name: 'Maike', scout_name: 'Quae',
+                                      email: 'maike_pusch@hitobito.example.com', address: 'Moosweg 15b',
+                                      zip_code: '6742', town: 'Rosslerscheid', country: nil)
+      end
+    end
+
     context 'when al is the same as the lagerleiter' do
       let(:camp_unit_json_path) { 'spec/fixtures/unit_same_leader_and_abteilungsleitung.json' }
 
-      it 'creates only one leader and uses it for both' do
-        expect { camp_unit }.to change(Leader, :count).by(1)
+      it 'creates only one leader and uses it for both (plus the coach)' do
+        expect { camp_unit }.to change(Leader, :count).by(2) # instead of 3
       end
     end
 

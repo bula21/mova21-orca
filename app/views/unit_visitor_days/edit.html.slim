@@ -1,0 +1,6 @@
+h1 
+  = UnitVisitorDay.model_name.human
+  small=< @unit.title
+
+h3.display-4.text-center.mb-5.mt-5 = l(@unit.unit_visitor_day.at, format: :long_with_weekday)
+= render 'form'
