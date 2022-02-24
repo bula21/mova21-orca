@@ -16,7 +16,7 @@
 			dd
 				.w-100[style="padding: 2px; border: 1px solid black;"]
 					div[style="min-width: fit-content; width: #{@activity_execution.headcount_utilization * 100}%; max-width: 100%; background-color: #{@activity_execution.headcount_utilization_color}; padding: 2px; color: white;"]
-						= "#{@activity_execution.headcount}/#{@activity_execution.amount_participants} (#{@activity_execution.headcount_utilization * 100}%)"
+						= "#{@activity_execution.headcount}/#{@activity_execution.amount_participants} (#{(@activity_execution.headcount_utilization * 100).to_i}%)"
 
 
 - if @unit || @activity_execution

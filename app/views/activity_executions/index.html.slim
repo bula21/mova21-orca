@@ -32,7 +32,7 @@
           td 
             = activity_execution.field
           td 
-            = activity_execution.amount_participants
+						= "#{activity_execution.headcount}/#{activity_execution.amount_participants} (#{(activity_execution.headcount_utilization * 100).to_i}%)"
           td.p-1
             = link_to(UnitActivityExecution.model_name.human(count: 2), unit_activity_executions_path(activity_execution_id: activity_execution.id), class: 'btn btn-primary') if can?(:read, UnitActivityExecution)
             / = link_to(t('buttons.edit'), edit_unit_activity_execution_path(activity_execution), class: 'btn btn-primary') if can?(:edit, unit_activity_execution)
