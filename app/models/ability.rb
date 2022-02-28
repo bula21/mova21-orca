@@ -22,6 +22,7 @@ class Ability
 
   def anonymous_permissions(_user)
     can :read, Activity
+    can :read, FixedEvent
   end
 
   # rubocop:disable Metrics/MethodLength
@@ -84,6 +85,8 @@ class Ability
     can :manage, Leader
     can :export, Unit
     can :manage, UnitActivity
+    can :manage, UnitVisitorDay
+    can :read, UnitActivityExecution
   end
 
   def programm_user_permissions(_user)

@@ -11,7 +11,7 @@ import 'jquery'
 import 'popper.js'
 import 'bootstrap'
 
-require.context('../images', true);
+require.context('./images', true);
 
 Rails.start();
 Turbolinks.start();

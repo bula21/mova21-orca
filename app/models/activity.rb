@@ -56,7 +56,7 @@ class Activity < ApplicationRecord
 
   bitfield :language_flags, *LANGUAGES
 
-  enum block_type: { la: 'la', ls: 'ls' }
+  enum block_type: { la: 'la', ls: 'ls', lp: 'lp', other: 'other' }
   enum simo: { berg: 'berg', wasser: 'wasser', pool: 'pool', lake: 'lake' }
   enum activity_type: { excursion: 'excursion', activity: 'activity',
                         village_global: 'village_global', frohnarbeit: 'frohnarbeit' }

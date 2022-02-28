@@ -39,9 +39,11 @@ fr:
         transport_location: Lieu du transport
       activity_execution:
         amount_participants: Nombre de participant.e.s
+        ends_at: Se termine à
         field: Terrain
         language_flags: Langues
         spot: Zone de programme
+        starts_at: Commence à
         utilization: Utilisation
       field:
         name: Nom
@@ -110,9 +112,9 @@ fr:
         visitor_day_tickets: Anzahl Tickets für den Journée portes ouvertes
         week: Semaine de camp
       unit_activity_execution:
-        activity_execution_id: Durchführung
-        headcount: Anzahl Personen
-        unit_id: Einheit
+        activity_execution_id: Activité
+        headcount: Nb. personnes
+        unit_id: Unité
       unit_visitor_day:
         at: Date de votre journée portes ouvertes
         ga_tickets: Personnes avec AG
@@ -160,8 +162,8 @@ fr:
         one: Aktivität
         other: Aktivitäten
       activity_category:
-        one: Kategorie
-        other: Kategorien
+        one: Catégorie
+        other: Catégories
       activity_execution:
         one: Réalisation
         other: Réalisations
@@ -187,8 +189,8 @@ fr:
         one: Activité réservée
         other: Liste de souhaits
       unit_activity_execution:
-        one: Zugewiesene Aktivitätsdurchführung
-        other: Zugewiesene Aktivitätsdurchführungen
+        one: Attribution de l'activité
+        other: Attribution d'activités
       unit_visitor_day:
         one: Journée portes ouvertes
         other: Jours portes ouvertes
@@ -625,8 +627,10 @@ fr:
           village_global: Village Global
         block_type:
           la: Activité de camp
+          lp: programme de camp
           ls: Sport de camp
-          voila: Voila CaFé
+          other: autres
+          voila: Voila Bula
         language_de: Deutsch
         language_en: English
         language_fr: Français

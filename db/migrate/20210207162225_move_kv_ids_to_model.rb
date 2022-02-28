@@ -74,6 +74,6 @@ class MoveKvIdsToModel < ActiveRecord::Migration[6.0]
   end
 
   def midata_test_environment?
-    ENV['MIDATA_BASE_URL'].include? 'pbs.puzzle.ch'
+    ENV['MIDATA_BASE_URL']&.include?('pbs.puzzle.ch')
   end
 end

@@ -40,7 +40,7 @@ RUN bundle config without test:development && bundle config cache true \
   bundle install && bundle cache
 RUN yarn install
 
-RUN bin/webpack
+RUN bin/webpacker
 RUN rm -rf /app/node_modules/*
 
 ### === production === ###

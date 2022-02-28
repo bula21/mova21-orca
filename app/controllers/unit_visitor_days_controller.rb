@@ -44,6 +44,7 @@ class UnitVisitorDaysController < ApplicationController
       permitted << %i[u6_tickets u16_tickets u16_ga_tickets
                       ga_tickets other_tickets]
     end
+    permitted << %i[phase] if can?(:manage, UnitVisitorDay)
 
     params[:unit_visitor_day].permit(*permitted)
   end

@@ -18,7 +18,16 @@ class ActivityFilter < ApplicationFilter
   filter :tags do |activities|
     next if tags.blank?
 
-    activities.joins(:tags).where(tags: { id: tags }).group(:id).having("count('activities.id') = ?", tags.count)
+    group_statements = if stufe_recommended.blank?
+                         []
+                       else
+                         ['activity_categories.id', 'stufen_activities.id', 'stufen.id',
+                          'activity_executions.id', 'fields.id', 'spots.id',
+                          'unit_activity_executions.id']
+                       end
+    activities.joins(:tags).where(tags: { id: tags }).group(:id, *group_statements).having(
+      "count('activities.id') = ?", tags.count
+    )
   end
 
   filter :text do |activities|

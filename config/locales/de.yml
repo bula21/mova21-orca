@@ -39,9 +39,11 @@ de:
         transport_location: Transport-Ort
       activity_execution:
         amount_participants: Anzahl Personen
+        ends_at: Endet um
         field: Feld
         language_flags: Sprachen
         spot: Programmspot
+        starts_at: Beginnt um
         utilization: Auslastung
       field:
         name: Name
@@ -629,7 +631,9 @@ de:
           village_global: Village Global
         block_type:
           la: Lageraktivität
+          lp: Lagerprogramm
           ls: Lagersport
+          other: Sonstiges
           voila: Voila Bula
         language_de: Deutsch
         language_en: English
@@ -669,9 +673,9 @@ de:
   time:
     am: vormittags
     formats:
-      default: "%A, %d. %B %Y, %H:%M Uhr"
+      default: "%d.%m.%Y %H:%M"
       long: "%A, %d. %B %Y, %H:%M Uhr"
-      short: "%d. %B, %H:%M Uhr"
+      short: "%d.%m.%Y %H:%M"
     pm: nachmittags
   unit_activity_booking:
     all_comply: Super! Alle Bedingungen sind erfüllt. Du kannst die Buchung abschliessen.

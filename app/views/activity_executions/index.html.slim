@@ -10,7 +10,35 @@
         defaultAmountParticipants: @activity.participants_count_transport,
         spots: SpotBlueprint.render_as_hash(@spots, view: :with_fields), editable: true })
 
-.row.mt-3
+.table-responsive.mt-4
+  table.table
+    thead
+      tr
+        th = ActivityExecution.human_attribute_name(:id)
+        th = ActivityExecution.human_attribute_name(:starts_at)
+        th = ActivityExecution.human_attribute_name(:ends_at)
+        th = ActivityExecution.human_attribute_name(:field)
+        th = ActivityExecution.human_attribute_name(:amount_participants)
+        th
+    tbody
+      - @activity_executions.each do |activity_execution|
+        tr
+          td 
+            = activity_execution.id
+          td
+            = l(activity_execution.starts_at, format: :short)
+          td 
+            = l(activity_execution.ends_at, format: :short)
+          td 
+            = activity_execution.field
+          td 
+						= "#{activity_execution.headcount}/#{activity_execution.amount_participants} (#{(activity_execution.headcount_utilization * 100).to_i}%)"
+          td.p-1
+            = link_to(UnitActivityExecution.model_name.human(count: 2), unit_activity_executions_path(activity_execution_id: activity_execution.id), class: 'btn btn-primary') if can?(:read, UnitActivityExecution)
+            / = link_to(t('buttons.edit'), edit_unit_activity_execution_path(activity_execution), class: 'btn btn-primary') if can?(:edit, unit_activity_execution)
+            / = link_to t('buttons.destroy'), unit_activity_execution_path(activity_execution), data: { confirm: t('buttons.confirm_delete'), params: { unit_id: params[:unit_id], activity_execution_id: params[:activity_execution_id]} }, method: :delete, class: 'btn btn-secondary' if can?(:delete, unit_activity_execution)
+
+.row.mt-4
   .col-md-6
     .card
       .card-body

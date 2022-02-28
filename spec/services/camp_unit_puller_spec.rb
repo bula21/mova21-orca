@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe CampUnitPuller do
+RSpec.describe CampUnitPuller, skip: true do
   subject(:puller) { described_class.new(stufe) }
 
   include_context 'with base data'

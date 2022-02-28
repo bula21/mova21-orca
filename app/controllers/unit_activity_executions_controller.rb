@@ -11,6 +11,7 @@ class UnitActivityExecutionsController < ApplicationController
     @unit_activity_executions = @activity_execution.unit_activity_executions if @activity_execution
     @unit_activity_executions = @unit_activity_executions.where(unit: @unit) if @unit
     @unit_activity_executions = UnitActivityExecution.none unless @activity_execution || @unit
+    @unit_activity_executions = @unit_activity_executions.ordered.with_default_includes
   end
 
   def new
@@ -43,7 +44,8 @@ class UnitActivityExecutionsController < ApplicationController
   end
 
   def import
-    @import_service = UnitActivityExecutionsImport.new(params.require(:import).permit(:file)[:file])
+    paramsx = params.require(:import).permit(:file, :delete_first).to_h.symbolize_keys
+    @import_service = UnitActivityExecutionsImport.new(**paramsx)
     if @import_service.call
       redirect_to unit_activity_executions_path(**linked_params), notice: I18n.t('messages.import.success')
     else

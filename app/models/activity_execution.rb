@@ -33,9 +33,9 @@ class ActivityExecution < ApplicationRecord
   end
 
   def headcount_utilization
-    return 1 if available_headcount.zero?
+    return 1 if amount_participants.zero?
 
-    headcount / available_headcount
+    headcount.to_d / amount_participants
   end
 
   def headcount_utilization_color

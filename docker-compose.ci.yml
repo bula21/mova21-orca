@@ -54,6 +54,28 @@ services:
     networks:
       default:
       selenium:
+  
+  selenium:
+    image: selenium/standalone-chrome-debug
+    logging:
+      driver: none
+    networks:
+      selenium:
+
+  db:
+    image: postgres:11-alpine
+    environment:
+      POSTGRES_DB: orca_e2e
+      POSTGRES_PASSWORD: postgres
+
+  mail:
+    image: tophfr/mailcatcher
+    ports:
+      - "1080:80"
+
+  memcached:
+    image: memcached:1.5-alpine
+    command: [memcached, -l, "0.0.0.0", -p, "11211"]
 
 networks:
   selenium:

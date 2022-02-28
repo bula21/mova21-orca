@@ -39,9 +39,11 @@ en:
         transport_location: Transport-Ort
       activity_execution:
         amount_participants: Nombre de participants
+        ends_at: Termina alle
         field: Terrain
         language_flags: Langues
         spot: spot du programme
+        starts_at: Inizia alle
         utilization: Utilization
       field:
         name: Nom
@@ -588,7 +590,9 @@ en:
           village_global: Village Global
         block_type:
           la: Lageraktivität
+          lp: programma del campo
           ls: Lagersport
+          other: altro
           voila: Voila Bula
         language_de: Deutsch
         language_en: English
