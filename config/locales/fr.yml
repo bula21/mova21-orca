@@ -89,7 +89,11 @@ fr:
         abteilung: Groupe
         activity_booking_phase: Phase de réservation
         al: RG
+        amount_of_rovers: Nombre de Rovers d'unité autorisé
+        arrival_slot: Créneau voyage aller
         coach: Coach
+        definite_max_number_of_persons: Nombre maximum définitif de personnes
+        departure_slot: Créneau voyage retour
         district: Quartier
         ends_at: Fin le
         expected_guest_leaders: Nombre définitif d’invité.e.s (resp.)
@@ -100,12 +104,8 @@ fr:
         expected_participants_leitung_f: Nombre définitif de responsables (f)
         expected_participants_leitung_m: Nombre définitif de responsables (m)
         expected_participants_m: Nombre définitif de participants (m)
-        definite_max_number_of_persons: Nombre maximum définitif de personnes
-        amount_of_rovers: Nombre de Rovers d'unité autorisé
-        arrival_slot: Créneau voyage aller
-        departure_slot: Créneau voyage retour
-        hand_over_camp_at: Remise du terrain de camp
         full_name: Nom complet
+        hand_over_camp_at: Remise du terrain de camp
         kv_id: Association cantonale AC
         lagerleiter: Maîtrise de camp
         language: Langue

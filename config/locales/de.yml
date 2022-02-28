@@ -89,7 +89,11 @@ de:
         abteilung: Abteilung
         activity_booking_phase: Buchungsphase
         al: AL
+        amount_of_rovers: Anzahl zugelassene Einheits-Rover
+        arrival_slot: Anreise Slot
         coach: Coach
+        definite_max_number_of_persons: Definitve maximale Personenanzahl
+        departure_slot: Abreise Slot
         district: Quartier
         ends_at: Ende am
         expected_guest_leaders: Definitive Anzahl Gäste (Leitung)
@@ -100,12 +104,8 @@ de:
         expected_participants_leitung_f: Definitive Anzahl Leitende (f)
         expected_participants_leitung_m: Definitive Anzahl Leitende (m)
         expected_participants_m: Definitive Anzahl TN (m)
-        definite_max_number_of_persons: Definitve maximale Personenanzahl
-        amount_of_rovers: Anzahl zugelassene Einheits-Rover
-        arrival_slot: Anreise Slot
-        departure_slot: Abreise Slot
-        hand_over_camp_at: Abgabe Lagerplatz
         full_name: Vollständiger Name
+        hand_over_camp_at: Abgabe Lagerplatz
         kv_id: KV
         lagerleiter: Lagerleiter
         language: Sprache
