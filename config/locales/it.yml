@@ -769,6 +769,13 @@ it:
       expected_participants_explanation_html: Il numero definitivo di partecipanti
         sarà importato dal campo "Numero di partecipanti stimato" da <a href='%{link}'
         target='_blank'>MiData</a>.
+      food:
+        description: Tramite la panoramica potete visualizzare le opzioni di menù
+          delle diverse giornate. Le vostre scelte vengono salvate automaticamente.
+          Quando avete finito con la vostra ordinazione, confermatelo con il tasto
+          apposito. Fino al 20 marzo sarà possibile apportare modifiche, se necessario.
+        link_title: Login per il tool di ordinazione esterno ("Calc Menu")
+        title: Ordine di cibo
       imported: importati da MiData
       invoices: Fatture
       other_infos: Informazioni supplementari
