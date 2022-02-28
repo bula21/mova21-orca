@@ -224,7 +224,7 @@
       = link_to unit_activity_executions_path(unit_id: @unit.to_param), class: 'btn btn-primary'
         = t('buttons.show')
 
-- if can?(:edit, @unit) && ENV['FEATURE_FOOD_ENABLED'].to_s === 'true'
+- if ENV['FEATURE_FOOD_ENABLED'].to_s === 'true'
   .card.mt-5
     .card-body
       h3.mb-2 = t('units.show.food.title')
