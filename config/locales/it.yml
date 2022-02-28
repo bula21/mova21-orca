@@ -100,6 +100,11 @@ it:
         expected_participants_leitung_f: Numero definitivo delle animatrici (f)
         expected_participants_leitung_m: Numero definitivo di animatori (m)
         expected_participants_m: Numero definitivo di partecipanti (m)
+        definite_max_number_of_persons: Numero massimo di persone definitivo
+        amount_of_rovers: Numero di rover dell'unità ammessi
+        arrival_slot: Slot viaggio di andata
+        departure_slot: Slot viaggio di ritorno
+        hand_over_camp_at: Consegna terreno del campo
         full_name: Nome completo
         kv_id: Associazione cantonale
         lagerleiter: Direzione del campo

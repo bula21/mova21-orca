@@ -100,6 +100,11 @@ de:
         expected_participants_leitung_f: Definitive Anzahl Leitende (f)
         expected_participants_leitung_m: Definitive Anzahl Leitende (m)
         expected_participants_m: Definitive Anzahl TN (m)
+        definite_max_number_of_persons: Definitve maximale Personenanzahl
+        amount_of_rovers: Anzahl zugelassene Einheits-Rover
+        arrival_slot: Anreise Slot
+        departure_slot: Abreise Slot
+        hand_over_camp_at: Abgabe Lagerplatz
         full_name: Vollständiger Name
         kv_id: KV
         lagerleiter: Lagerleiter

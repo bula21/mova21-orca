@@ -100,6 +100,11 @@ en:
         expected_participants_leitung_f: Expected number of leaders (w)
         expected_participants_leitung_m: Expected number of leaders (m)
         expected_participants_m: Expected number of participants (m)
+        definite_max_number_of_persons: Definite max number of persons
+        amount_of_rovers: Amount of rovers
+        arrival_slot: Arrival Slot
+        departure_slot: Departure Slot
+        hand_over_camp_at: Hand over Camp at
         full_name: Full Name
         kv_id: Cantonal association
         lagerleiter: Main unit leader
