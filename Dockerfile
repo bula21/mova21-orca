@@ -27,9 +27,9 @@ RUN mkdir -p /home/develop/app
 WORKDIR /home/develop/app
 
 ### === build === ### 
-FROM development AS build                                                      
+FROM development AS build
 
-ENV RAILS_ENV=production               
+ENV RAILS_ENV=production
 
 COPY --chown=develop . /home/develop/app
 RUN mkdir -p /home/develop/app/vendor/cache && \
