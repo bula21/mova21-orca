@@ -737,6 +737,13 @@ en:
       expected_participants: Expected number of participants
       expected_participants_explanation_html: The expected amount of participants
         is imported from your entered numbers in <a href='%{link}' target='_blank'>MiData</a>
+      food:
+        description: Via the overview you can choose the menu options for the different
+          days. Your choices are saved automatically. When you have finished your
+          order, confirm it with the "Confirm order" button. Until 20 March you can
+          make changes if necessary.
+        link_title: Login for the external ordering tool ("Calc Menu")
+        title: Meal order
       imported: imported from MiData
       invoices: Invoices
       other_infos: Other Information

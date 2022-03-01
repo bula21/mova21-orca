@@ -770,6 +770,14 @@ fr:
       expected_participants_explanation_html: Le nombre définitif de participant.e.s
         est de importé du champ "Nombre attendu de participant.e.s" <a href='%{link}'
         target='_blank'>MiData</a>.
+      food:
+        description: Depuis la vue d'ensemble des menus, vous pouvez voir les options
+          de menus pour chaque journée. Vos choix seront sauvegardés automatiquement.
+          Quand vous aurez terminé votre commande, validez-la en cliquant sur le bouton
+          de confirmation. Vous pourrez encore effectuer des modifications si besoin
+          jusqu'au 20 mars.
+        link_title: Login pour le logiciel externe de commande (Calc Menu)
+        title: Commande de repas
       imported: imported from MiData
       invoices: Factures
       other_infos: Informations supplémentaires

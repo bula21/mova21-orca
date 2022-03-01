@@ -768,6 +768,13 @@ de:
       expected_participants_explanation_html: Die definitive Anzahl Teilnehmende wird
         aus dem Feld "Erwartete Anzahl Teilnehmende" <a href='%{link}' target='_blank'>MiData</a>
         importiert.
+      food:
+        description: Via Menüübersicht könnt ihr euch tageweise durch das Tool klicken.
+          Eure Auswahl wird direkt zwischengespeichert. Seid ihr fertig mit der Bestellung,
+          bestätigt dies per Klick auf den Button "Bestellung bestätigen". Ihr könnt
+          danach falls nötig bis zum 20.3. immer noch Änderungen vornehmen.
+        link_title: Login externes Bestelltool ("Calc Menu")
+        title: Essensbestellung
       imported: von MiData importiert
       invoices: Rechnungen
       other_infos: Weitere Informationen
