@@ -15,5 +15,5 @@ class Goal < ApplicationRecord
   has_and_belongs_to_many :activities
 
   validates :name, presence: true
-  translates :name, type: :string, locale_accessors: true, fallbacks: true
+  translates :name, locale_accessors: true, fallbacks: true
 end

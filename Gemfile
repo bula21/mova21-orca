@@ -16,7 +16,7 @@ gem 'grape-entity'
 gem 'httparty'
 gem 'kaminari'
 gem 'keycloak'
-gem 'mobility', '~> 0.8.9'
+gem 'mobility', '~> 1.2.5'
 gem 'net-imap', require: false
 gem 'net-pop', require: false
 gem 'net-smtp', require: false

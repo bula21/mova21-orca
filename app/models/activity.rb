@@ -56,7 +56,7 @@ class Activity < ApplicationRecord
 
   bitfield :language_flags, *LANGUAGES
 
-  enum block_type: { la: 'la', ls: 'ls', lp: 'lp', other: 'other' }
+  enum block_type: { la: 'la', ls: 'ls', lp: 'lp', other: 'other' }, _prefix: true
   enum simo: { berg: 'berg', wasser: 'wasser', pool: 'pool', lake: 'lake' }
   enum activity_type: { excursion: 'excursion', activity: 'activity',
                         village_global: 'village_global', frohnarbeit: 'frohnarbeit' }
@@ -78,8 +78,8 @@ class Activity < ApplicationRecord
   validates :duration_activity, format: { with: /\A\d{2}:\d{2}\z/ }, allow_nil: true
   validates :language_flags, numericality: { greater_than: 0 }, allow_nil: false
 
-  translates :label, type: :string, locale_accessors: true, fallbacks: true
-  translates :description, type: :text, locale_accessors: true, fallbacks: true
+  translates :label, locale_accessors: true, fallbacks: true
+  translates :description, locale_accessors: true, fallbacks: true
 
   def languages
     bitfield_values(:language_flags)
