@@ -507,6 +507,7 @@ DEPENDENCIES
   keycloak
   listen (>= 3.0.5)
   locales_export_import
+  matrix
   mobility (~> 1.2.5)
   net-imap
   net-pop
