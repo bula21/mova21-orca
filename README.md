@@ -24,7 +24,7 @@ docker-compose exec app ash
 To speed up the development the webpacker dev server can be launched using the following command
 
 ```
- docker-compose exec app /app/bin/webpacker-dev-serve
+ docker-compose exec app /app/bin/webpacker-dev-server
 ```
 
 ### Roles

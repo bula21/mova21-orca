@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-ruby '3.0.2' # See Dockerfile
+ruby '3.1.1' # See Dockerfile
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -17,12 +17,15 @@ gem 'httparty'
 gem 'kaminari'
 gem 'keycloak'
 gem 'mobility', '~> 0.8.9'
+gem 'net-imap', require: false
+gem 'net-pop', require: false
+gem 'net-smtp', require: false
 gem 'omniauth_openid_connect', '~> 0.3.5' # TODO: upgrade
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'prawn', '~> 2.2'
 gem 'prawn-table'
 gem 'puma', '~> 4.3'
-gem 'rails', '~> 6.0.1'
+gem 'rails', '~> 6.1.0'
 gem 'rails-i18n'
 gem 'ranked-model'
 gem 'react-rails'
