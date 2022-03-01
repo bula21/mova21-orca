@@ -58,7 +58,7 @@ RSpec.describe User, type: :model do
         let(:keycloak_user) { build(:user, pbs_id: nil) }
 
         it do
-          expect(authenticated_user.pbs_id).to eq(nil)
+          expect(authenticated_user.pbs_id).to be_nil
         end
       end
 
@@ -66,7 +66,7 @@ RSpec.describe User, type: :model do
         let(:keycloak_user) { build(:user, pbs_id: 0) }
 
         it do
-          expect(authenticated_user.pbs_id).to eq(nil)
+          expect(authenticated_user.pbs_id).to be_nil
         end
       end
     end
