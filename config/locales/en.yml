@@ -89,7 +89,11 @@ en:
         abteilung: Group
         activity_booking_phase: Buchungsphase
         al: Group leader
+        amount_of_rovers: Amount of rovers
+        arrival_slot: Arrival Slot
         coach: Coach
+        definite_max_number_of_persons: Definite max number of persons
+        departure_slot: Departure Slot
         district: District
         ends_at: End on
         expected_guest_leaders: Erwartete Anzahl Gäste (Leitung)
@@ -101,6 +105,7 @@ en:
         expected_participants_leitung_m: Expected number of leaders (m)
         expected_participants_m: Expected number of participants (m)
         full_name: Full Name
+        hand_over_camp_at: Hand over Camp at
         kv_id: Cantonal association
         lagerleiter: Main unit leader
         language: Language

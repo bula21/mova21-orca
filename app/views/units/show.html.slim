@@ -75,14 +75,32 @@
   .card-body
     h3.mb-4 = t('units.show.other_infos')
 
-    dt = t('activerecord.attributes.unit.district')
-    dd = @unit.district
+    .row
+      .col-6
+        dt = t('activerecord.attributes.unit.district')
+        dd = @unit.district
 
-    dt = t('activerecord.attributes.unit.week')
-    dd = @unit.week
+        dt = t('activerecord.attributes.unit.week')
+        dd = @unit.week
 
-    dt = t('activerecord.attributes.unit.language')
-    dd = @unit.language
+        dt = t('activerecord.attributes.unit.language')
+        dd = @unit.language
+
+        dt = t('activerecord.attributes.unit.definite_max_number_of_persons')
+        dd = @unit.definite_max_number_of_persons
+
+      .col-6
+        dt = t('activerecord.attributes.unit.amount_of_rovers')
+        dd = @unit.amount_of_rovers
+
+        dt = t('activerecord.attributes.unit.arrival_slot')
+        dd = @unit.arrival_slot
+
+        dt = t('activerecord.attributes.unit.departure_slot')
+        dd = @unit.departure_slot
+
+        dt = t('activerecord.attributes.unit.hand_over_camp_at')
+        dd = I18n.l(@unit.hand_over_camp_at) if @unit.hand_over_camp_at
 
 .card.mt-5
   .card-body
