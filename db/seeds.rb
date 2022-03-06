@@ -24,6 +24,12 @@ ActivityCategory.create([
                           { label_de: 'Berg', ancestry: activity_1 }
                         ])
 
+Goal.create(name: 'Pfadi (er) leben')
+Goal.create(name: 'Diversität und Inklusion')
+Goal.create(name: 'Umwelt')
+Goal.create(name: 'Prävention')
+Goal.create(name: 'Dimension und Austausch')
+
 activities = FactoryBot.create_list(:activity, 20)
 
 spots = Spot.create([{ name: "Lagerplatz" }, { name: "Flugplatz" }])

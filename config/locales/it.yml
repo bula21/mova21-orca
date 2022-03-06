@@ -89,7 +89,11 @@ it:
         abteilung: Sezione
         activity_booking_phase: Fase di prenotazione
         al: CSZ
+        amount_of_rovers: Numero di rover dell'unità ammessi
+        arrival_slot: Slot viaggio di andata
         coach: Coach
+        definite_max_number_of_persons: Numero massimo di persone definitivo
+        departure_slot: Slot viaggio di ritorno
         district: Quartiere
         ends_at: Fine il
         expected_guest_leaders: Numero definitivo di ospiti (animatori/trici)
@@ -101,6 +105,7 @@ it:
         expected_participants_leitung_m: Numero definitivo di animatori (m)
         expected_participants_m: Numero definitivo di partecipanti (m)
         full_name: Nome completo
+        hand_over_camp_at: Consegna terreno del campo
         kv_id: Associazione cantonale
         lagerleiter: Direzione del campo
         language: Lingua
@@ -270,7 +275,6 @@ it:
   buttons:
     back: indietro
     close: Chiudere
-    commit: Speichern und Abschliessen
     confirm_delete: Sei sicuro/a di voler cancellare?
     create: Creare
     destroy: Eliminare
@@ -631,8 +635,10 @@ it:
           village_global: Village Global
         block_type:
           la: Attività da campo
+          lp: programma del campo
           ls: Sport da campo
-          voila: Voila CaFe
+          other: altro
+          voila: Voila Bula
         language_de: Tedesco
         language_en: Inglese
         language_fr: Francese
@@ -768,6 +774,13 @@ it:
       expected_participants_explanation_html: Il numero definitivo di partecipanti
         sarà importato dal campo "Numero di partecipanti stimato" da <a href='%{link}'
         target='_blank'>MiData</a>.
+      food:
+        description: Tramite la panoramica potete visualizzare le opzioni di menù
+          delle diverse giornate. Le vostre scelte vengono salvate automaticamente.
+          Quando avete finito con la vostra ordinazione, confermatelo con il tasto
+          apposito. Fino al 20 marzo sarà possibile apportare modifiche, se necessario.
+        link_title: Login per il tool di ordinazione esterno ("Calc Menu")
+        title: Ordine di cibo
       imported: importati da MiData
       invoices: Fatture
       other_infos: Informazioni supplementari

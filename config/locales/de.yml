@@ -89,7 +89,11 @@ de:
         abteilung: Abteilung
         activity_booking_phase: Buchungsphase
         al: AL
+        amount_of_rovers: Anzahl zugelassene Einheits-Rover
+        arrival_slot: Anreise Slot
         coach: Coach
+        definite_max_number_of_persons: Definitve maximale Personenanzahl
+        departure_slot: Abreise Slot
         district: Quartier
         ends_at: Ende am
         expected_guest_leaders: Definitive Anzahl Gäste (Leitung)
@@ -101,6 +105,7 @@ de:
         expected_participants_leitung_m: Definitive Anzahl Leitende (m)
         expected_participants_m: Definitive Anzahl TN (m)
         full_name: Vollständiger Name
+        hand_over_camp_at: Abgabe Lagerplatz
         kv_id: KV
         lagerleiter: Lagerleiter
         language: Sprache
@@ -267,7 +272,6 @@ de:
   buttons:
     back: zurück
     close: Schliessen
-    commit: Speichern und Abschliessen
     confirm_delete: Bist du dir sicher, dass du Löschen möchtest?
     create: Erstellen
     destroy: löschen
@@ -631,7 +635,9 @@ de:
           village_global: Village Global
         block_type:
           la: Lageraktivität
+          lp: Lagerprogramm
           ls: Lagersport
+          other: Sonstiges
           voila: Voila Bula
         language_de: Deutsch
         language_en: English
@@ -767,6 +773,13 @@ de:
       expected_participants_explanation_html: Die definitive Anzahl Teilnehmende wird
         aus dem Feld "Erwartete Anzahl Teilnehmende" <a href='%{link}' target='_blank'>MiData</a>
         importiert.
+      food:
+        description: Via Menüübersicht könnt ihr euch tageweise durch das Tool klicken.
+          Eure Auswahl wird direkt zwischengespeichert. Seid ihr fertig mit der Bestellung,
+          bestätigt dies per Klick auf den Button "Bestellung bestätigen". Ihr könnt
+          danach falls nötig bis zum 20.3. immer noch Änderungen vornehmen.
+        link_title: Login externes Bestelltool ("Calc Menu")
+        title: Essensbestellung
       imported: von MiData importiert
       invoices: Rechnungen
       other_infos: Weitere Informationen
