@@ -242,19 +242,14 @@
       = link_to unit_activity_executions_path(unit_id: @unit.to_param), class: 'btn btn-primary'
         = t('buttons.show')
 
-- if ENV['FEATURE_FOOD_ENABLED'].to_s === 'true'
-  .card.mt-5
-    .card-body
-      h3.mb-2 = t('units.show.food.title')
+.card.mt-5
+  .card-body
+    h3.mb-2 = t('units.show.food.title')
 
-      = link_to @unit.calc_menu_token, target: :blank do
-        i.fas.fa-external-link-alt
-        =< t('units.show.food.link_title')
+    = link_to @unit.calc_menu_token, target: :blank do
+      i.fas.fa-external-link-alt
+      =< t('units.show.food.link_title')
 
-      p.mt-4.mb-4 = t('units.show.food.description')
-
-      iframe[allow=("accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture")
-        allowfullscreen= "" frameborder = "0" height = "315" width = "560"
-        src='https://www.youtube.com/embed/9xvSsiVLWcc']
+    p.mt-4.mb-4 = t('units.show.food.description')
 
 = link_to t('buttons.back'), units_path, class: 'btn btn-secondary mt-4'
