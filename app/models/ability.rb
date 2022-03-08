@@ -48,7 +48,7 @@ class Ability
   # rubocop:enable Metrics/MethodLength
 
   def assistant_leader_permission(user)
-    participants = Participant.assistant_leader.where(email: user.email)
+    participants = Participant.where(role: %i[assistant_leader helper], email: user.email)
     unit_ids = participants.map(&:unit_ids).flatten
     return if unit_ids.empty?
 
