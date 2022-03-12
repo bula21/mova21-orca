@@ -6,7 +6,7 @@ module Admin
 
     # GET /spots
     def index
-      @spots = Spot.all
+      @spots = Spot.all.order(Arel.sql("LOWER(spots.name->>'de')"))
     end
 
     # GET /spots/1
@@ -49,7 +49,7 @@ module Admin
     private
 
     def spot_params
-      params.require(:spot).permit(:name, :color)
+      params.require(:spot).permit(:color, *I18n.available_locales.map { |l| :"name_#{l}" })
     end
   end
 end

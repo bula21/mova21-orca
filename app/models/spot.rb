@@ -1,7 +1,12 @@
 # frozen_string_literal: true
 
 class Spot < ApplicationRecord
-  has_many :fields, -> { order('LOWER(fields.name), fields.name') }, inverse_of: :spot, dependent: :destroy
+  extend Mobility
+
+  has_many :fields, lambda {
+                      order(Arel.sql("LOWER(fields.name->>'de'), fields.name->>'de'"))
+                    }, inverse_of: :spot, dependent: :destroy
+  translates :name, type: :string, locale_accessors: true, fallbacks: true
 
   def to_s
     name

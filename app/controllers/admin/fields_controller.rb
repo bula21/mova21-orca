@@ -50,7 +50,7 @@ module Admin
     private
 
     def field_params
-      params.require(:field).permit(:name)
+      params.require(:field).permit(*I18n.available_locales.map { |l| :"name_#{l}" })
     end
   end
 end
