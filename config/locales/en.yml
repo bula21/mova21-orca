@@ -72,6 +72,8 @@ en:
         last_name: Lastname
         pbs_id: PBS ID
         phone_number: Phone number
+        scout_name: Scoutname
+      participant_unit:
         role: Rolle
         roles:
           assistant_leader: Leader
@@ -80,7 +82,6 @@ en:
           leader_snow_security: Leader Snow Security
           leader_water_security: Leader Water Security
           participant: Participant
-        scout_name: Scoutname
       spot:
         color: Farbe für Erfassung der Durchführung
         fields: Felder
@@ -575,6 +576,17 @@ en:
     precision:
       format:
         delimiter: ''
+  participant_units:
+    edit:
+      title: Teilnehmenden bearbeiten
+    index:
+      complete_now: Jetzt vervollständigen
+      create_hint: Die Teilnehmenden sollten via MiData verwaltet werden. Solltest
+        gewisse Personen nicht dort hinterlegt haben, kannst du sie hier manuell hinzufügen.
+      data_incomplete: Es fehlen Angaben für eine vollständige Anmeldung
+      title: Teilnehmende
+    new:
+      title: Teilnehmende erstellen
   pre_text: Pre text
   simple_form:
     confirm_unsaved: 'Achtung: Alle nicht gespeicherten Änderungen gehen verloren.

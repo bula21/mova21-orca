@@ -72,6 +72,8 @@ it:
         last_name: Cognome
         pbs_id: ID MSS
         phone_number: Numero di telefono
+        scout_name: Totem
+      participant_unit:
         role: Ruolo
         roles:
           assistant_leader: Responsabile
@@ -80,7 +82,6 @@ it:
           leader_snow_security: Animatore/trice ambito di sicurezza Inverno
           leader_water_security: Animatore/trice ambito di sicurezza Acqua
           participant: Partecipante
-        scout_name: Totem
       spot:
         color: Colore per segnare lo svolgimento
         fields: Campi
@@ -605,6 +606,17 @@ it:
     precision:
       format:
         delimiter: ''
+  participant_units:
+    edit:
+      title: Modifica partecipante
+    index:
+      complete_now: Completa ora
+      create_hint: I partecipanti dovrebbero essere gestiti tramite MiData. Se non
+        avete certe persone memorizzate lì, potete aggiungerle manualmente qui.
+      data_incomplete: Mancano informazioni per una registrazione completa
+      title: Partecipanti
+    new:
+      title: Creare partecipanti
   pre_text: Pre text
   simple_form:
     confirm_unsaved: 'Attenzione: Tutte le modifiche andranno perse! Vuoi continuare?'
