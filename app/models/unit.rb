@@ -47,7 +47,6 @@ class Unit < ApplicationRecord
   belongs_to :kv, inverse_of: :units, primary_key: :pbs_id
 
   has_many :invoices, inverse_of: :unit, dependent: :destroy
-  has_many :invoices, inverse_of: :unit, dependent: :destroy
   has_many :unit_activities, -> { rank(:priority) }, inverse_of: :unit, dependent: :destroy
   has_many :participant_units, inverse_of: :unit, dependent: :destroy
   has_many :participants, -> { order(role: :asc, last_name: :asc, scout_name: :asc) },
