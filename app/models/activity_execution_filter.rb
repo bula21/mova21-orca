@@ -18,7 +18,7 @@ class ActivityExecutionFilter < ApplicationFilter
   end
 
   filter :activity do |activity_executions|
-    next if spot.blank?
+    next if activity.blank?
 
     activity_executions.where(activity_id: activity)
   end
