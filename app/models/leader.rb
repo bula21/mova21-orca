@@ -57,4 +57,12 @@ class Leader < ApplicationRecord
       country
     ].flatten.compact.join("\n")
   end
+
+  def unit_ids
+    {
+      lagerleiter: lagerleiter_unit_ids,
+      al: al_unit_ids,
+      coach: coach_unit_ids
+    }
+  end
 end

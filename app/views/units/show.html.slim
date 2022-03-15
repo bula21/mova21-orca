@@ -158,7 +158,7 @@
             dt
               = translated_midata_role(role)
               ' :
-            dd = @unit.participants.with_role(role).count
+            dd = @unit.participant_units.with_role(role).count
 
     = link_to t('.participants'), unit_participant_units_path(@unit), class: 'stretched-link'
 

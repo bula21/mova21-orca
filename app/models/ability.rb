@@ -25,27 +25,22 @@ class Ability
     can :read, FixedEvent
   end
 
-  # rubocop:disable Metrics/MethodLength
   def midata_user_permissions(user)
-    can %i[read commit], Unit, al: { email: user.email }
-    can %i[read commit], Unit, lagerleiter: { email: user.email }
-    # can %i[read update], Unit, coach: { pbs_id: user.pbs_id }
+    unit_ids = Leader.where(email: user.email).map { |leader| leader.unit_ids.values }.flatten
     can :read, Leader, pbs_id: user.pbs_id
 
-    can %i[read create], ParticipantUnit, unit: { al: { email: user.email } }
-    can %i[read create], ParticipantUnit, unit: { lagerleiter: { email: user.email } }
-    can %i[edit update destroy], ParticipantUnit, pbs_id: nil, units: { al: { email: user.email } }
-    can %i[edit update destroy], ParticipantUnit, pbs_id: nil, units: { lagerleiter: { email: user.email } }
-    can :manage, UnitActivity, unit: { lagerleiter: { email: user.email } }
-    can :manage, UnitActivity, unit: { al: { email: user.email } }
-    can :read, UnitActivityExecution, unit: { lagerleiter: { email: user.email } }
-    can :read, UnitActivityExecution, unit: { al: { email: user.email } }
-    can %i[read update], UnitVisitorDay, unit: { lagerleiter: { email: user.email } }
-    can %i[read update], UnitVisitorDay, unit: { al: { email: user.email } }
+    can %i[read commit], Unit, id: unit_ids
+    can %i[read create], ParticipantUnit, unit_id: unit_ids
+    can %i[edit update destroy], ParticipantUnit, unit_id: unit_ids, participant: { pbs_id: nil }
+    # can %i[read create], Participant, participant_units: { unit_id: unit_ids }
+    # can %i[edit update destroy], Participant, participant_units: { unit_id: unit_ids }, pbs_id: nil
+
+    can :manage, UnitActivity, unit_id: unit_ids
+    can :read, UnitActivityExecution, unit_id: unit_ids
+    can %i[read update], UnitVisitorDay, unit_id: unit_ids
 
     assistant_leader_permission(user)
   end
-  # rubocop:enable Metrics/MethodLength
 
   def assistant_leader_permission(user)
     participants = Participant.assistant_leader.where(email: user.email)
@@ -82,6 +77,7 @@ class Ability
   def tn_administration_user_permissions(_user)
     can :manage, Unit
     can :manage, ParticipantUnit
+    can :manage, Participant
     can :manage, Leader
     can :export, Unit
     can :manage, UnitActivity

@@ -3,7 +3,7 @@
 .alert.alert-info
   i.fas.fa-info-circle
   p =< t('participant_units.index.create_hint')
-  = link_to(t('buttons.create'), new_unit_participant_unit_path, class: 'btn btn-info mb-3') if can?(:create, Participant)
+  = link_to(t('buttons.create'), new_unit_participant_unit_path, class: 'btn btn-info mb-3') if can?(:create, ParticipantUnit, unit_id: @unit.id )
 
 .table-responsive
   table.table
@@ -41,14 +41,14 @@
             - if participant.guest_troop.present?
               = participant.guest_troop
           td.p-1.text-right
-            - if can?(:edit, participant)
+            - if can?(:edit, participant_unit)
               - if participant.pbs_id.present?
                 = link_to midata_link_to_participant(participant), target: '_blank', class: 'btn'
                   i.fa.fa-edit
               - else
                 = link_to edit_unit_participant_unit_path(@unit, participant_unit), class: 'btn btn-primary'
                   i.fa.fa-edit
-                = link_to unit_participant_units_path(@unit, participant_unit), class: 'btn ml-1 btn-primary',
+                = link_to unit_participant_unit_path(@unit, participant_unit), class: 'btn ml-1 btn-primary',
                         data: { confirm: t('buttons.confirm_delete') }, method: :delete
                   i.fa.fa-trash
         - if incomplete
