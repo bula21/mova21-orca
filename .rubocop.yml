@@ -33,6 +33,10 @@ Metrics/BlockLength:
     - "config/environments/**/*.rb"
     - "config/initializers/**/*.rb"
 
+Metrics/MethodLength:
+  Exclude:
+    - "app/models/ability.rb"
+
 RSpec/MultipleExpectations:
   Enabled: false
 
