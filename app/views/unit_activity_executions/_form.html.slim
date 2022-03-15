@@ -3,7 +3,7 @@
   = hidden_field_tag :activity_execution_id, params[:activity_execution_id]
   = f.error_notification
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
-  = f.input :unit_id
+  = f.input :unit_id, disabled: !@unit_activity_execution.new_record?
   = f.input :activity_execution_id
 
   = f.input :headcount
