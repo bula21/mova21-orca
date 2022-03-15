@@ -11,6 +11,7 @@ class Ability
     admin_user_permissions(user) if user.role_admin?
     tn_administration_user_permissions(user) if user.role_tn_administration?
     programm_user_permissions(user) if user.role_programm?
+    read_unit_user_permissions(user) if user.role_read_unit?
     allocation_user_permissions(user) if user.role_allocation?
     editor_user_permissions(user) if user.role_editor?
     midata_user_permissions(user) if user.midata_user?
@@ -25,7 +26,6 @@ class Ability
     can :read, FixedEvent
   end
 
-  # rubocop:disable Metrics/MethodLength
   def midata_user_permissions(user)
     can %i[read commit], Unit, al: { email: user.email }
     can %i[read commit], Unit, lagerleiter: { email: user.email }
@@ -45,7 +45,6 @@ class Ability
 
     assistant_leader_permission(user)
   end
-  # rubocop:enable Metrics/MethodLength
 
   def assistant_leader_permission(user)
     participants = Participant.where(role: %i[assistant_leader helper], email: user.email)
@@ -99,6 +98,7 @@ class Ability
     can :manage, ActivityCategory
     can :manage, Spot
     can :manage, Field
+    can :read, UnitActivityExecution
     cannot :delete, ActivityCategory, parent_id: nil
   end
 
@@ -106,9 +106,14 @@ class Ability
     programm_user_permissions(user)
 
     can :manage, UnitActivity
-    can :manage, Unit
     can :manage, UnitActivityExecution
-    can :manage, UnitVisitorDay
+  end
+
+  def read_unit_user_permissions(_user)
+    can :read, Unit
+    can :read, UnitActivity
+    can :read, UnitActivityExecution
+    can :read, UnitVisitorDay
   end
 
   def editor_user_permissions(_user)
