@@ -69,8 +69,6 @@ export const calculateContrastColor = (hexColor: string) => {
 class CalendarManager extends BaseCalendarManager<CalendarManagerProps, CalendarManagerState> {
   constructor(props: Readonly<CalendarManagerProps>) {
     super(props);
-    console.log(this.props);
-
     this.state = {
       activityId: 0,                                // activity ID
       activityExecutionService: new ActivityExecutionService(),

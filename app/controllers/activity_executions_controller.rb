@@ -5,8 +5,7 @@ class ActivityExecutionsController < ApplicationController
   load_and_authorize_resource through: :activity
 
   def index
-    @spots = Spot.all.order(:name)
-
+    @spots = Spot.all.includes(:fields).order(Arel.sql("LOWER(spots.name->>'de')"))
     respond_to do |format|
       format.json { render json: ActivityExecutionBlueprint.render(@activity_executions, view: :with_fields) }
       format.html
