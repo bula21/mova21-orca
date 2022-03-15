@@ -75,51 +75,70 @@
   .card-body
     h3.mb-4 = t('units.show.other_infos')
 
-    dt = t('activerecord.attributes.unit.district')
-    dd = @unit.district
+    .row
+      .col-6
+        dt = t('activerecord.attributes.unit.district')
+        dd = @unit.district
 
-    dt = t('activerecord.attributes.unit.week')
-    dd = @unit.week
+        dt = t('activerecord.attributes.unit.week')
+        dd = @unit.week
 
-    dt = t('activerecord.attributes.unit.language')
-    dd = @unit.language
+        dt = t('activerecord.attributes.unit.language')
+        dd = @unit.language
 
-.card.mt-5
-  .card-body
-    h3.mb-4 = t('units.show.expected_participants')
-    dl
-      .row
-        .col-6
-          dt = t('activerecord.attributes.unit.expected_participants_leitung_f')
-          dd = @unit.expected_participants_leitung_f
+        dt = t('activerecord.attributes.unit.definite_max_number_of_persons')
+        dd = @unit.definite_max_number_of_persons
 
-        .col-6
-          dt = t('activerecord.attributes.unit.expected_participants_leitung_m')
-          dd = @unit.expected_participants_leitung_m
+      .col-6
+        dt = t('activerecord.attributes.unit.amount_of_rovers')
+        dd = @unit.amount_of_rovers
 
-      .row
-        .col-6
-          dt = t('activerecord.attributes.unit.expected_participants_f')
-          dd = @unit.expected_participants_f
+        dt = t('activerecord.attributes.unit.arrival_slot')
+        dd = @unit.arrival_slot
 
-        .col-6
-          dt = t('activerecord.attributes.unit.expected_participants_m')
-          dd = @unit.expected_participants_m
+        dt = t('activerecord.attributes.unit.departure_slot')
+        dd = @unit.departure_slot
 
-      - if @unit.expected_guest_participants
-        .row
-          .col-6
-            dt = t('activerecord.attributes.unit.expected_guest_participants')
-            dd = @unit.expected_guest_participants
+        dt = t('activerecord.attributes.unit.hand_over_camp_at')
+        dd = I18n.l(@unit.hand_over_camp_at) if @unit.hand_over_camp_at
 
-          .col-6
-            dt = t('activerecord.attributes.unit.expected_guest_leaders')
-            dd = @unit.expected_guest_leaders
+/ Hidden temporarily to avoid confusion
+/ .card.mt-5
+/   .card-body
+/     h3.mb-4 = t('units.show.expected_participants')
+/     dl
+/       .row
+/         .col-6
+/           dt = t('activerecord.attributes.unit.expected_participants_leitung_f')
+/           dd = @unit.expected_participants_leitung_f
 
-  - if @unit.pbs_id.present?
-    .card-footer.bg-info.text-white
-      i.fas.fa-info-circle
-      =< t('units.show.expected_participants_explanation_html', link: [ENV['MIDATA_BASE_URL'], 'events', @unit.pbs_id].join('/'))
+/         .col-6
+/           dt = t('activerecord.attributes.unit.expected_participants_leitung_m')
+/           dd = @unit.expected_participants_leitung_m
+
+/       .row
+/         .col-6
+/           dt = t('activerecord.attributes.unit.expected_participants_f')
+/           dd = @unit.expected_participants_f
+
+/         .col-6
+/           dt = t('activerecord.attributes.unit.expected_participants_m')
+/           dd = @unit.expected_participants_m
+
+/       - if @unit.expected_guest_participants
+/         .row
+/           .col-6
+/             dt = t('activerecord.attributes.unit.expected_guest_participants')
+/             dd = @unit.expected_guest_participants
+
+/           .col-6
+/             dt = t('activerecord.attributes.unit.expected_guest_leaders')
+/             dd = @unit.expected_guest_leaders
+
+/   - if @unit.pbs_id.present?
+/     .card-footer.bg-info.text-white
+/       i.fas.fa-info-circle
+/       =< t('units.show.expected_participants_explanation_html', link: [ENV['MIDATA_BASE_URL'], 'events', @unit.pbs_id].join('/'))
 
 
 .card.mt-5[class=(@unit.participants.all?(&:complete?) ? 'border-success' : 'border-danger')]
@@ -223,5 +242,15 @@
       h3.mb-4= UnitActivityExecution.model_name.human
       = link_to unit_activity_executions_path(unit_id: @unit.to_param), class: 'btn btn-primary'
         = t('buttons.show')
+
+.card.mt-5
+  .card-body
+    h3.mb-2 = t('units.show.food.title')
+
+    = link_to @unit.calc_menu_token, target: :blank do
+      i.fas.fa-external-link-alt
+      =< t('units.show.food.link_title')
+
+    p.mt-4.mb-4 = t('units.show.food.description')
 
 = link_to t('buttons.back'), units_path, class: 'btn btn-secondary mt-4'

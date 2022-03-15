@@ -89,7 +89,11 @@ en:
         abteilung: Group
         activity_booking_phase: Buchungsphase
         al: Group leader
+        amount_of_rovers: Amount of rovers
+        arrival_slot: Arrival Slot
         coach: Coach
+        definite_max_number_of_persons: Definite max number of persons
+        departure_slot: Departure Slot
         district: District
         ends_at: End on
         expected_guest_leaders: Erwartete Anzahl Gäste (Leitung)
@@ -101,6 +105,7 @@ en:
         expected_participants_leitung_m: Expected number of leaders (m)
         expected_participants_m: Expected number of participants (m)
         full_name: Full Name
+        hand_over_camp_at: Hand over Camp at
         kv_id: Cantonal association
         lagerleiter: Main unit leader
         language: Language
@@ -727,6 +732,13 @@ en:
       expected_participants: Expected number of participants
       expected_participants_explanation_html: The expected amount of participants
         is imported from your entered numbers in <a href='%{link}' target='_blank'>MiData</a>
+      food:
+        description: Via the overview you can choose the menu options for the different
+          days. Your choices are saved automatically. When you have finished your
+          order, confirm it with the "Confirm order" button. Until 20 March you can
+          make changes if necessary.
+        link_title: Login for the external ordering tool ("Calc Menu")
+        title: Meal order
       imported: imported from MiData
       invoices: Invoices
       other_infos: Other Information
