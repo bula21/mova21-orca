@@ -140,7 +140,7 @@ export class ActivityExecutionService {
     }
 
     public fetchFixedEvents(stufe = 'all'): Promise<Array<FullCalendarEvent>> {
-        return fetch(`/admin/fixed_events?stufe=${stufe}`, {
+        return fetch(`/admin/fixed_events?stufe=${stufe}&locale=${Orca.shortLocale}`, {
             method: 'GET',
             headers: this.getHeaders()
         })

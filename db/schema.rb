@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_01_130053) do
+ActiveRecord::Schema.define(version: 2022_03_12_085754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -114,8 +114,9 @@ ActiveRecord::Schema.define(version: 2022_03_01_130053) do
   end
 
   create_table "fields", force: :cascade do |t|
-    t.string "name"
+    t.string "name_untranslated"
     t.bigint "spot_id", null: false
+    t.jsonb "name", default: {}
     t.index ["spot_id"], name: "index_fields_on_spot_id"
   end
 
@@ -243,8 +244,9 @@ ActiveRecord::Schema.define(version: 2022_03_01_130053) do
   end
 
   create_table "spots", force: :cascade do |t|
-    t.string "name"
+    t.string "name_untranslated"
     t.string "color"
+    t.jsonb "name", default: {}
   end
 
   create_table "stufen", force: :cascade do |t|
@@ -343,6 +345,11 @@ ActiveRecord::Schema.define(version: 2022_03_01_130053) do
     t.integer "expected_guest_leaders"
     t.integer "visitor_day_tickets", default: 0
     t.string "calc_menu_token"
+    t.integer "definite_max_number_of_persons"
+    t.integer "amount_of_rovers"
+    t.string "arrival_slot"
+    t.string "departure_slot"
+    t.datetime "hand_over_camp_at"
     t.index ["al_id"], name: "index_units_on_al_id"
     t.index ["coach_id"], name: "index_units_on_coach_id"
     t.index ["lagerleiter_id"], name: "index_units_on_lagerleiter_id"

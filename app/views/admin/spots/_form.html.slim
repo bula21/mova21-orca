@@ -3,7 +3,14 @@
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
   .form-inputs
-    = f.input :name
+    .card.mt-3
+      .card-body
+        = render 'shared/translatable_fields' do |locale|
+          - I18n.available_locales.each do |locale|
+            - current_locale = locale == I18n.locale
+            .tab-pane[id="name-#{locale}-tab" class="#{'show active' if current_locale}"
+              aria-labelledby="name-#{locale}-tab" role='tabpanel']
+              = f.input "name_#{locale.to_s}", label: "#{t('activerecord.attributes.spot.name')} #{locale.upcase}"
     = f.input :color, as: :color
 
   .form-actions
