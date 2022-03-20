@@ -29,8 +29,14 @@ class Ability
   def midata_user_permissions(user)
     can %i[read commit], Unit, al: { email: user.email }
     can %i[read commit], Unit, lagerleiter: { email: user.email }
-    # can %i[read update], Unit, coach: { pbs_id: user.pbs_id }
     can :read, Leader, pbs_id: user.pbs_id
+
+    # coach
+    can :read, Unit, coach: { email: user.email }
+    can :read, Participant,  units: { coach: { email: user.email } }
+    can :read, UnitActivity, unit: { coach: { email: user.email } }
+    can :read, UnitActivityExecution, unit: { coach: { email: user.email } }
+    can :read, UnitVisitorDay, unit: { coach: { email: user.email } }
 
     can %i[read create], Participant, units: { al: { email: user.email } }
     can %i[read create], Participant, units: { lagerleiter: { email: user.email } }
