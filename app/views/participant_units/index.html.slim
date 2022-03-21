@@ -1,9 +1,9 @@
-.h1 = t('participants.index.title')
+.h1 = t('participant_units.index.title')
 
 .alert.alert-info
   i.fas.fa-info-circle
-  p =< t('participants.index.create_hint')
-  = link_to(t('buttons.create'), new_unit_participant_path, class: 'btn btn-info mb-3') if can?(:create, Participant)
+  p =< t('participant_units.index.create_hint')
+  = link_to(t('buttons.create'), new_unit_participant_unit_path, class: 'btn btn-info mb-3') if can?(:create, ParticipantUnit, unit_id: @unit.id )
 
 .table-responsive
   table.table
@@ -16,11 +16,12 @@
         th = Participant.human_attribute_name(:gender)
         / th = Participant.human_attribute_name(:email)
         / th = Participant.human_attribute_name(:phone_number)
-        th = Participant.human_attribute_name(:role)
+        th = ParticipantUnit.human_attribute_name(:role)
         th = Participant.human_attribute_name(:guest_troop)
         th
     tbody
-      - @participants.each do |participant|
+      - @participant_units.each do |participant_unit|
+        - participant = participant_unit.participant
         - incomplete = !participant.complete?
         tr class="#{incomplete ? 'incomplete' : 'complete'}"
           td
@@ -34,20 +35,20 @@
           / td = participant.email
           / td = participant.phone_number
           td
-            - if participant.role.present?
-              = translated_midata_role(participant.role)
+            - if participant_unit.role.present?
+              = translated_midata_role(participant_unit.role)
           td
             - if participant.guest_troop.present?
               = participant.guest_troop
           td.p-1.text-right
-            - if can?(:edit, participant)
+            - if can?(:edit, participant_unit)
               - if participant.pbs_id.present?
                 = link_to midata_link_to_participant(participant), target: '_blank', class: 'btn'
                   i.fa.fa-edit
               - else
-                = link_to edit_unit_participant_path(@unit, participant), class: 'btn btn-primary'
+                = link_to edit_unit_participant_unit_path(@unit, participant_unit), class: 'btn btn-primary'
                   i.fa.fa-edit
-                = link_to unit_participant_path(@unit, participant), class: 'btn ml-1 btn-primary',
+                = link_to unit_participant_unit_path(@unit, participant_unit), class: 'btn ml-1 btn-primary',
                         data: { confirm: t('buttons.confirm_delete') }, method: :delete
                   i.fa.fa-trash
         - if incomplete
@@ -55,11 +56,11 @@
             td.border-top-0
             td.border-top-0 colspan=7
               .alert.alert-danger
-                = "#{t('participants.index.data_incomplete')}:"
+                = "#{t('participant_units.index.data_incomplete')}:"
                 ul.pb-0.mb-0
                   - participant.errors.full_messages.each do |message|
                     li = message
                 - if participant.pbs_id.present?
-                  = link_to t('participants.index.complete_now'), midata_link_to_participant(participant), target: '_blank', class: 'btn btn-secondary mt-2'
+                  = link_to t('participant_units.index.complete_now'), midata_link_to_participant(participant), target: '_blank', class: 'btn btn-secondary mt-2'
                 - else
-                  = link_to t('participants.index.complete_now'), edit_unit_participant_path(@unit, participant), class: 'btn btn-secondary mt-2'
+                  = link_to t('participant_units.index.complete_now'), edit_unit_participant_unit_path(@unit, participant_unit), class: 'btn btn-secondary mt-2'

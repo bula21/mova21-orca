@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :units, except: [:destroy] do
-    resources :participants, except: %i[show]
+    resources :participant_units, except: %i[show]
     resource :unit_visitor_day, except: %i[]
     resources :unit_activities, except: %i[new edit] do
       patch :priorize, to: 'unit_activities#priorize', on: :member
