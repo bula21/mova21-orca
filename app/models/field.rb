@@ -4,7 +4,7 @@ class Field < ApplicationRecord
   extend Mobility
 
   belongs_to :spot, inverse_of: :fields
-  has_many :activity_executions, dependent: :nullify
+  has_many :activity_executions, dependent: :nullify, inverse_of: :field
   translates :name, locale_accessors: true, fallbacks: true
 
   def to_s
