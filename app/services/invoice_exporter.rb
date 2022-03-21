@@ -11,7 +11,7 @@ class InvoiceExporter
   end
 
   def export(options = {})
-    CSV.generate(csv_options.merge(options)) do |csv|
+    CSV.generate(**csv_options.merge(options)) do |csv|
       csv << HEADERS
       @invoices.each { |invoice| csv << invoice_attributes(invoice) }
     end

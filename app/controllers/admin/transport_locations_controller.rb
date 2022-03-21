@@ -16,7 +16,7 @@ module Admin
       @transport_location = TransportLocation.new(transport_location_params)
 
       if @transport_location.save
-        redirect_to admin_transport_locations_path, notice: 'Transport location was successfully created.'
+        redirect_to admin_transport_locations_path, notice: I18n.t('messages.created.success')
       else
         render :new
       end
@@ -24,7 +24,7 @@ module Admin
 
     def update
       if @transport_location.update(transport_location_params)
-        redirect_to admin_transport_locations_path, notice: 'Transport location was successfully updated.'
+        redirect_to admin_transport_locations_path, notice: I18n.t('messages.updated.success')
       else
         render :edit
       end
@@ -32,7 +32,7 @@ module Admin
 
     def destroy
       @transport_location.destroy
-      redirect_to admin_transport_locations_url, notice: 'Transport location was successfully destroyed.'
+      redirect_to admin_transport_locations_url, notice: I18n.t('messages.deleted.success')
     end
 
     private

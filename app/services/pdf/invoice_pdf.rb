@@ -60,7 +60,7 @@ module Pdf
         salutation_name: @invoice.unit.lagerleiter&.salutation_name,
         camp_unit_title: @invoice.unit.title
       }
-      I18n.t('pre_text', interpolation_data.merge(scope: i18n_scope)).lines.each { |line| text(line) }
+      I18n.t('pre_text', **interpolation_data.merge(scope: i18n_scope)).lines.each { |line| text(line) }
     end
 
     renderable :invoice_parts do

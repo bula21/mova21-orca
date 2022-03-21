@@ -1,4 +1,4 @@
-docker: &docker
+default: &base
   adapter: postgresql
   encoding: unicode
   pool: 5
@@ -7,9 +7,9 @@ docker: &docker
   host: db
 
 development:
-  <<: *docker
+  <<: *base
   database: orca_development
 
 test:
-  <<: *docker
+  <<: *base
   database: orca_test
