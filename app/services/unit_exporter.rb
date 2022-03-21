@@ -56,7 +56,7 @@ class UnitExporter
 
   def export
     CSV.generate(headers: true) do |csv|
-      csv << (HEADERS + Participant::MIDATA_EVENT_CAMP_ROLES.keys)
+      csv << (HEADERS + ParticipantUnit::MIDATA_EVENT_CAMP_ROLES.keys)
       @units.each { |unit| csv << unit_attributes(unit) }
     end
   end

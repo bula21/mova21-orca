@@ -1,0 +1,75 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://pbs.puzzle.ch/groups/3/events/1257/participations.json?page=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-User-Token:
+      - Tu7aVJWyLYYMyCnZv2bz
+      X-User-Email:
+      - hussein_kohlmann@hitobito.example.com
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 15 Jan 2022 13:26:50 GMT
+      Server:
+      - nginx/1.12.1
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      - max-age=63072000; includeSubDomains
+      X-Frame-Options:
+      - SAMEORIGIN
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      - 1; mode=block
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      - strict-origin-when-cross-origin
+      X-Content-Type-Options:
+      - nosniff
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Cache-Control:
+      - no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - Mon, 01 Jan 1990 00:00:00 GMT
+      Etag:
+      - W/"8ad2cc2456906dc5ecc761ffda04af7f"
+      Vary:
+      - Accept-Encoding,Origin,Authorization
+      X-Request-Id:
+      - ac29bfeb-a992-4115-90e6-f5fdd022626f
+      X-Runtime:
+      - '0.444093'
+      Set-Cookie:
+      - _session_id=d7e6ba7acf304408e17c3cc71efcd1c1; path=/; secure; HttpOnly
+      - afcc3ba8de9b9b04950e14e130f0b228=815c3d2e7b0b60feea627f0884f20d2d; path=/;
+        HttpOnly; Secure; SameSite=None
+      - locale=de; path=/; expires=Sun, 15 Jan 2023 13:26:49 GMT; secure
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: '{"current_page":1,"total_pages":0,"next_page_link":null,"prev_page_link":null,"event_participations":[]}'
+  recorded_at: Sat, 15 Jan 2022 13:26:50 GMT
+recorded_with: VCR 6.0.0

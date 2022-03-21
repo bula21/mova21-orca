@@ -224,6 +224,7 @@ ActiveRecord::Schema.define(version: 2022_03_12_085754) do
   create_table "participant_units", force: :cascade do |t|
     t.bigint "unit_id", null: false
     t.bigint "participant_id", null: false
+    t.string "role"
     t.index ["participant_id"], name: "index_participant_units_on_participant_id"
     t.index ["unit_id"], name: "index_participant_units_on_unit_id"
   end
@@ -237,7 +238,6 @@ ActiveRecord::Schema.define(version: 2022_03_12_085754) do
     t.integer "pbs_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "role"
     t.string "email", default: ""
     t.string "phone_number", default: ""
     t.string "guest_troop"
