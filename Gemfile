@@ -42,6 +42,7 @@ gem 'webmock', '~> 3.8'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'database_cleaner-active_record'
   gem 'factory_bot_rails', '~> 4.11'
   gem 'faker'
   gem 'i18n-tasks'

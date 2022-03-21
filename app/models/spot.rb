@@ -10,7 +10,6 @@ class Spot < ApplicationRecord
   has_many :activity_executions, through: :fields
   translates :name, locale_accessors: true, fallbacks: true
 
-
   def to_s
     name
   end
