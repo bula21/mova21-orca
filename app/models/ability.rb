@@ -11,6 +11,7 @@ class Ability
     admin_user_permissions(user) if user.role_admin?
     tn_administration_user_permissions(user) if user.role_tn_administration?
     programm_user_permissions(user) if user.role_programm?
+    read_unit_user_permissions(user) if user.role_read_unit?
     allocation_user_permissions(user) if user.role_allocation?
     editor_user_permissions(user) if user.role_editor?
     midata_user_permissions(user) if user.midata_user?
@@ -43,7 +44,7 @@ class Ability
   end
 
   def assistant_leader_permission(user)
-    participants = Participant.assistant_leader.where(email: user.email)
+    participants = Participant.where(role: %i[assistant_leader helper], email: user.email)
     unit_ids = participants.map(&:unit_ids).flatten
     return if unit_ids.empty?
 
@@ -95,6 +96,7 @@ class Ability
     can :manage, ActivityCategory
     can :manage, Spot
     can :manage, Field
+    can :read, UnitActivityExecution
     cannot :delete, ActivityCategory, parent_id: nil
   end
 
@@ -102,9 +104,14 @@ class Ability
     programm_user_permissions(user)
 
     can :manage, UnitActivity
-    can :manage, Unit
     can :manage, UnitActivityExecution
-    can :manage, UnitVisitorDay
+  end
+
+  def read_unit_user_permissions(_user)
+    can :read, Unit
+    can :read, UnitActivity
+    can :read, UnitActivityExecution
+    can :read, UnitVisitorDay
   end
 
   def editor_user_permissions(_user)
