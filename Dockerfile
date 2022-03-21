@@ -46,6 +46,21 @@ RUN yarn install && \
 ### === production === ###
 FROM base AS production
 
+# Install OpenSSH and set the password for root to "Docker!". In this example, "apk add" is the install instruction for an Alpine Linux-based image.
+ # See here for details: https://docs.microsoft.com/en-us/azure/app-service/configure-linux-open-ssh-session#use-ssh-support-with-custom-docker-images
+ RUN apk add --no-cache openssh su-exec \
+   && echo "root:Docker!" | chpasswd 
+
+ # Copy the sshd_config file to the /etc/ssh/ directory
+ COPY .docker/sshd_config /etc/ssh/
+ COPY .docker/entrypoints/azure-entrypoint.sh /azure-entrypoint
+
+ # Copy and configure the ssh_setup file
+ RUN mkdir -p /tmp
+ COPY .docker/ssh_setup.sh /tmp
+ RUN chmod +x /tmp/ssh_setup.sh \
+   && (sleep 1;/tmp/ssh_setup.sh 2>&1 > /dev/null)
+
 RUN adduser -D app && mkdir -p /app && chown -R app /app
 USER app    
 WORKDIR /app
@@ -58,8 +73,11 @@ ENV NODE_ENV=production
 ENV RAILS_LOG_TO_STDOUT="true"  
 ENV PORT=3000
 
-CMD ["bin/rails", "s", "-b", "0.0.0.0"] 
-
 COPY --chown=app --from=build /home/develop/app /app                              
 RUN bundle install --local
 RUN rm -rf /app/node_modules/* 
+
+USER root
+EXPOSE $PORT 2222
+ENTRYPOINT ["/azure-entrypoint"]
+CMD ["bin/rails", "s", "-b", "0.0.0.0"] 
