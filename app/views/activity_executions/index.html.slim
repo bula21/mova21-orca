@@ -30,7 +30,7 @@
           td 
             = l(activity_execution.ends_at, format: :short)
           td 
-            = activity_execution.field
+            = link_to activity_execution.field, activity_activity_executions_path(@activity, field_id: activity_execution.field.id)
           td 
 						= "#{activity_execution.headcount}/#{activity_execution.amount_participants} (#{(activity_execution.headcount_utilization * 100).to_i}%)"
           td.p-1

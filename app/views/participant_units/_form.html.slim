@@ -1,0 +1,28 @@
+= simple_form_for([@unit, @participant_unit]) do |pf|
+  = pf.error_notification
+  = pf.error_notification message: pf.object.errors[:base].to_sentence if pf.object.errors[:base].present?
+
+  = pf.simple_fields_for :participant do |f|
+    .row
+      .col-6
+        = f.input :first_name
+      .col-6
+        = f.input :last_name
+
+    .row
+      .col-6
+        = f.input :scout_name
+      .col-6
+        = f.input :email
+      .col-6
+        = f.input :phone_number
+      .col-6
+        = f.input :gender, collection: Participant.genders.symbolize_keys.keys
+      .col-12
+        = f.input :birthdate, wrapper: :inline_date, start_year: 1930, end_year: Date.today.year
+  .row.mt-2
+    .col-6
+      = pf.input :role, collection: ParticipantUnit.roles.keys.map { |key| [translated_midata_role(key), key] }
+  .row
+    br
+    = pf.submit t('buttons.save'), class: 'btn btn-primary'

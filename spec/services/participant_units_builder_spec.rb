@@ -2,24 +2,25 @@
 
 require 'rails_helper'
 
-RSpec.describe ParticipantsBuilder do
+RSpec.describe ParticipantUnitsBuilder do
   subject(:builder) { described_class.new }
 
   # `participants_json_path` is the result of `MidataService#fetch_all_participations_data`
   let(:participants_json_path) { 'spec/fixtures/extracted_participations.json' }
+  let(:unit) { build(:unit) }
   let(:participants_data) { JSON.parse(File.read(Rails.root.join(participants_json_path))) }
 
   describe '#from_data' do
-    subject(:participants) { builder.from_data(participants_data) }
+    subject(:unit_participants) { builder.from_data(participants_data, unit) }
 
     before do
       allow(Rollbar).to receive(:warning)
     end
 
-    it { is_expected.to all(be_a(Participant)) }
+    it { is_expected.to all(be_a(ParticipantUnit)) }
 
     it 'has attributes' do
-      expect(participants.first).to have_attributes(
+      expect(unit_participants.first.participant).to have_attributes(
         pbs_id: 1866,
         first_name: 'Hans',
         last_name: 'Muster',
@@ -29,10 +30,11 @@ RSpec.describe ParticipantsBuilder do
         gender: Participant.genders['male'],
         birthdate: Date.new(1984, 8, 14)
       )
+      expect(unit_participants.first.role).to eq 'participant'
     end
 
     it 'does not create a warning' do
-      participants
+      unit_participants
       expect(Rollbar).not_to have_received(:warning)
     end
 
@@ -46,7 +48,7 @@ RSpec.describe ParticipantsBuilder do
       let(:participants_json_path) { 'spec/fixtures/extracted_participations_with_multiple_roles.json' }
 
       it 'does not create a warning' do
-        participants
+        unit_participants
         expect(Rollbar).not_to have_received(:warning)
       end
 
@@ -56,7 +58,7 @@ RSpec.describe ParticipantsBuilder do
         end
 
         it 'creates a warning' do
-          participants
+          unit_participants
           expect(Rollbar).to have_received(:warning)
             .with('User with pbs_id 11629 has multiple roles in participation: '\
                   '["Event::Camp::Role::Participant", "Event::Camp::Role::AssistantLeader"]')
@@ -65,7 +67,7 @@ RSpec.describe ParticipantsBuilder do
     end
 
     describe 'phone_number' do
-      subject(:participants) { builder.from_data(partial_participants_data).first.phone_number }
+      subject(:participant) { builder.from_data(partial_participants_data, unit).first.participant.phone_number }
 
       let(:phone_numbers) { [] }
       let(:partial_participants_data) do

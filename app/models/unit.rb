@@ -47,7 +47,6 @@ class Unit < ApplicationRecord
   belongs_to :kv, inverse_of: :units, primary_key: :pbs_id
 
   has_many :invoices, inverse_of: :unit, dependent: :destroy
-  has_many :invoices, inverse_of: :unit, dependent: :destroy
   has_many :unit_activities, -> { rank(:priority) }, inverse_of: :unit, dependent: :destroy
   has_many :participant_units, inverse_of: :unit, dependent: :destroy
   has_many :participants, -> { order(role: :asc, last_name: :asc, scout_name: :asc) },
@@ -113,8 +112,8 @@ class Unit < ApplicationRecord
   end
 
   def participant_role_counts
-    baseline = Participant::MIDATA_EVENT_CAMP_ROLES.transform_values { 0 }
-    participants.group_by(&:role).transform_values(&:count).symbolize_keys.reverse_merge(baseline)
+    baseline = ParticipantUnit::MIDATA_EVENT_CAMP_ROLES.transform_values { 0 }
+    participant_units.group_by(&:role).transform_values(&:count).symbolize_keys.reverse_merge(baseline)
   end
 
   def to_s

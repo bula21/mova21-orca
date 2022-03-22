@@ -20,5 +20,5 @@ class Stufe < ApplicationRecord
   validates :name, presence: true
   delegate :to_s, :to_sym, to: :code
 
-  translates :name, type: :string, locale_accessors: true, fallbacks: true
+  translates :name, locale_accessors: true, fallbacks: true
 end

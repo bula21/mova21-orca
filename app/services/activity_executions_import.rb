@@ -65,7 +65,7 @@ class ActivityExecutionsImport
       amount_participants: row[2],
       transport: row[6] == 'ja',
       mixed_languages: row[7] == 'ja',
-      field: Field.includes(:spot).find_by(name: row[4], spots: { name: row[3] }),
+      field: Field.joins(:spot).i18n.where("spots.name->>'de' = ?", row[3]).find_by(name: row[4]),
       transport_ids: row[8],
       **language_flags(row[5].split(',').map(&:strip))
     )

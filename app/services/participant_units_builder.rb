@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ParticipantsBuilder
+class ParticipantUnitsBuilder
   def assignable_attributes(participation_data)
     {
       first_name: participation_data['first_name'],
@@ -8,16 +8,15 @@ class ParticipantsBuilder
       scout_name: participation_data['nickname'],
       email: participation_data['email'],
       phone_number: mobile_phone(participation_data),
-      role: role(participation_data),
       gender: convert_gender(participation_data),
       birthdate: participation_data['birthday']
     }
   end
 
-  def from_data(participations_data)
+  def from_data(participations_data, camp_unit)
     return [] if participations_data.empty?
 
-    participations_data.map { |d| participant_from_data(d) }
+    participations_data.map { |d| participant_unit_from_data(d, camp_unit) }
   end
 
   private
@@ -51,9 +50,11 @@ class ParticipantsBuilder
     { 'w' => Participant.genders['female'], 'm' => Participant.genders['male'] }[gender]
   end
 
-  def participant_from_data(participation_data)
+  def participant_unit_from_data(participation_data, camp_unit)
     participant = Participant.find_or_initialize_by(pbs_id: participation_data.dig('links', 'person'))
     participant.assign_attributes(assignable_attributes(participation_data))
-    participant
+    participant_unit = ParticipantUnit.find_or_initialize_by(participant: participant, unit: camp_unit)
+    participant_unit.role = role(participation_data)
+    participant_unit
   end
 end
