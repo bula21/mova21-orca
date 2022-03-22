@@ -144,7 +144,7 @@ it:
     errors:
       messages:
         incomplete: è incompleto
-        record_invalid: "Verifica fallita: %{errors}"
+        record_invalid: 'Verifica fallita: %{errors}'
         restrict_dependent_destroy:
           has_many: Impossibile cancellare i dati in quanto il seguente valore  %{record}
             esiste ancora
@@ -204,28 +204,28 @@ it:
   activity:
     edit:
       title: Modificare l'attività
-      warning: "Attenzione: Occorre salvare il formulario prima di modificare i documenti,
-        altrimenti le modifiche andranno perse."
+      warning: 'Attenzione: Occorre salvare il formulario prima di modificare i documenti,
+        altrimenti le modifiche andranno perse.'
     index:
       title: Attività
     new:
       title: Creare una nuova attività
     show:
       downloads: Downloads
-      duration: "Durata:"
+      duration: 'Durata:'
       excel_import:
-        description: "Puoi creare delle realizazzioni in Excel e c aricarle qui:"
+        description: 'Puoi creare delle realizazzioni in Excel e c aricarle qui:'
         template_download: Scarica il modello in formato Excel
         title: Importazione Excel
       executions_delete:
-        description: "Attenzione: è possibile cancellare le attività di un giorno
-          intero. Clicca sul link qui sotto per accedere alla selezione dei giorni."
+        description: 'Attenzione: è possibile cancellare le attività di un giorno
+          intero. Clicca sul link qui sotto per accedere alla selezione dei giorni.'
         link: Vai alla selezione
       max_people: Grandezza massima del gruppo
       more_information: Informazioni supplementari
       possible: possibile
-      simo_text: "Necessita un modulo di sicurezza:"
-      stufe_recommended: "Adatto per:"
+      simo_text: 'Necessita un modulo di sicurezza:'
+      stufe_recommended: 'Adatto per:'
   activity_execution:
     edit:
       title: Modificare il programma
@@ -316,35 +316,35 @@ it:
       subject: L'iscrizione al campo non è ancora completa
   date:
     abbr_day_names:
-      - Dom
-      - Lun
-      - Mar
-      - Mer
-      - Gio
-      - Ven
-      - Sab
+    - Dom
+    - Lun
+    - Mar
+    - Mer
+    - Gio
+    - Ven
+    - Sab
     abbr_month_names:
-      -
-      - Gen
-      - Feb
-      - Mar
-      - Apr
-      - Mag
-      - Giu
-      - Lug
-      - Ago
-      - Set
-      - Ott
-      - Nov
-      - Dic
+    -
+    - Gen
+    - Feb
+    - Mar
+    - Apr
+    - Mag
+    - Giu
+    - Lug
+    - Ago
+    - Set
+    - Ott
+    - Nov
+    - Dic
     day_names:
-      - Domenica
-      - Lunedì
-      - Martedì
-      - Mercoledì
-      - Giovedì
-      - Venerdì
-      - Sabato
+    - Domenica
+    - Lunedì
+    - Martedì
+    - Mercoledì
+    - Giovedì
+    - Venerdì
+    - Sabato
     formats:
       default: "%d-%m-%Y"
       long: "%d %B %Y"
@@ -352,23 +352,23 @@ it:
       short: "%d %b"
     from_to: dal %{from} al %{to}
     month_names:
-      -
-      - Gennaio
-      - Febbraio
-      - Marzo
-      - Aprile
-      - Maggio
-      - Giugno
-      - Luglio
-      - Agosto
-      - Settembre
-      - Ottobre
-      - Novembre
-      - Dicembre
+    -
+    - Gennaio
+    - Febbraio
+    - Marzo
+    - Aprile
+    - Maggio
+    - Giugno
+    - Luglio
+    - Agosto
+    - Settembre
+    - Ottobre
+    - Novembre
+    - Dicembre
     order:
-      - :day
-      - :month
-      - :year
+    - :day
+    - :month
+    - :year
   datetime:
     distance_in_words:
       about_x_hours:
@@ -439,7 +439,7 @@ it:
       invalid: non è valido
       less_than: deve essere meno di %{count}
       less_than_or_equal_to: deve essere meno o uguale a %{count}
-      model_invalid: "Verifica fallita: %{errors}"
+      model_invalid: 'Verifica fallita: %{errors}'
       not_a_number: non è un numero
       not_an_integer: deve essere un numero intero
       odd: deve essere dispari
@@ -457,10 +457,10 @@ it:
         one: è della lunghezza sbagliata (deve essere di 1 carattere)
         other: è della lunghezza sbagliata (deve essere di %{count} caratteri)
     template:
-      body: "Per favore ricontrolla i seguenti campi:"
+      body: 'Per favore ricontrolla i seguenti campi:'
       header:
-        one: "Non posso salvare questo/a %{model}: 1 errore"
-        other: "Non posso salvare questo/a %{model}: %{count} errori."
+        one: 'Non posso salvare questo/a %{model}: 1 errore'
+        other: 'Non posso salvare questo/a %{model}: %{count} errori.'
   fields:
     edit:
       title: Modifica campo
@@ -510,7 +510,7 @@ it:
       pre_text: |-
         Ciao %{salutation_name}
         La tua unità %{camp_unit_title} è stata pre-iscritta con successo per il mova nella valle di Goms. Ti preghiamo ti saldare l'importo entro il 31 luglio 2020. Mova - on y va!
-      ref: "Fattura: %{ref}"
+      ref: 'Fattura: %{ref}'
       title: Tassa di iscrizione sezionale al campo federale 2021
   leaders:
     edit:
@@ -581,9 +581,9 @@ it:
           trillion:
             one: bilione
             other: bilioni
-          unit: ""
+          unit: ''
       format:
-        delimiter: ""
+        delimiter: ''
         precision: 1
         significant: true
         strip_insignificant_zeros: true
@@ -601,7 +601,7 @@ it:
           tb: TB
     percentage:
       format:
-        delimiter: ""
+        delimiter: ''
         format: "%n%"
     precision:
       format:
@@ -619,7 +619,7 @@ it:
       title: Creare partecipanti
   pre_text: Pre text
   simple_form:
-    confirm_unsaved: "Attenzione: Tutte le modifiche andranno perse! Vuoi continuare?"
+    confirm_unsaved: 'Attenzione: Tutte le modifiche andranno perse! Vuoi continuare?'
     hints:
       unit_visitor_day:
         ga_tickets: CHF 50.- a persona
@@ -632,7 +632,7 @@ it:
         activity_type:
           activity: Attività
           excursion: Gita
-          frohnarbeit: "BA "
+          frohnarbeit: 'BA '
           village_global: Village Global
         block_type:
           la: Attività da campo
@@ -710,8 +710,8 @@ it:
       i/le capi unità con accesso a Orca possono aggiungere, rimuovere o modificare
       le priorità delle attività.\nPer poter completare la prenotazione, si devono
       osservare le seguenti regole: "
-    not_all_comply: "La prenotazione non può essere completata: non sono ancora state
-      rispettate tutte le regole."
+    not_all_comply: 'La prenotazione non può essere completata: non sono ancora state
+      rispettate tutte le regole.'
     read_more: Dettagli
     tag_legend:
       button: Aprire la legenda dei tag
@@ -731,28 +731,28 @@ it:
     index:
       title: Il tuo campo
     kv_ids:
-      "1018": AS Genevois
-      "1145": Pfadi Zueri
-      "142": Pfadi Kanton Schwyz
-      "161": Pfadi Glarus
-      "166": Pfadi St. Gallen - Appenzell
-      "167": Battasendas Grischun
-      "179": Pfadi Luzern
-      "187": Pfadi Unterwalden
-      "237": Pfadi Kanton Zug
-      "238": Scoutismo Ticino
-      "299": Pfadi Region Basel
-      "3": Pfadi Kanton Solothurn
-      "4": Pfadi Kanton Bern
-      "4691": Pfadi Aargau
-      "513": Scouts Vaudois
-      "631": Pfadi Kanton Schaffhausen
-      "638": AS Fribourgeois
-      "85": Pfadi Uri
-      "880": Scouts Neuchatelois
-      "911": AS Jurassienne
-      "993": Pfadi Thurgau
-      "994": AS Valaisan
+      '1018': AS Genevois
+      '1145': Pfadi Zueri
+      '142': Pfadi Kanton Schwyz
+      '161': Pfadi Glarus
+      '166': Pfadi St. Gallen - Appenzell
+      '167': Battasendas Grischun
+      '179': Pfadi Luzern
+      '187': Pfadi Unterwalden
+      '237': Pfadi Kanton Zug
+      '238': Scoutismo Ticino
+      '299': Pfadi Region Basel
+      '3': Pfadi Kanton Solothurn
+      '4': Pfadi Kanton Bern
+      '4691': Pfadi Aargau
+      '513': Scouts Vaudois
+      '631': Pfadi Kanton Schaffhausen
+      '638': AS Fribourgeois
+      '85': Pfadi Uri
+      '880': Scouts Neuchatelois
+      '911': AS Jurassienne
+      '993': Pfadi Thurgau
+      '994': AS Valaisan
     new:
       title: Creare un campo
     show:
@@ -786,13 +786,13 @@ it:
       invoices: Fatture
       other_infos: Informazioni supplementari
       paid:
-        "false": aperto
-        "true": pagato
+        'false': aperto
+        'true': pagato
       participants: Visualizzare i partecipanti
       questionnaire: Questionario
   views:
     pagination:
-      first: !!str "<<"
+      first: !!str '<<'
       last: ">>"
       next: ">"
       previous: "<"
