@@ -29,11 +29,11 @@
       .row
         .col-6
           dt = t('.camp_id')
-          dd 
+          dd
             #
             = @unit.id
           - if @unit.pbs_id.present?
-            = link_to midata_link_to_unit(@unit), class: 'mb-3' do 
+            = link_to midata_link_to_unit(@unit), class: 'mb-3' do
               i.fas.fa-link
               =< t('.camp_link_midata')
 
@@ -89,6 +89,13 @@
         dt = t('activerecord.attributes.unit.definite_max_number_of_persons')
         dd = @unit.definite_max_number_of_persons
 
+        - if @unit.expected_guest_participants
+          dt = t('activerecord.attributes.unit.expected_guest_participants')
+          dd = @unit.expected_guest_participants
+
+          dt = t('activerecord.attributes.unit.expected_guest_leaders')
+          dd = @unit.expected_guest_leaders
+          
       .col-6
         dt = t('activerecord.attributes.unit.amount_of_rovers')
         dd = @unit.amount_of_rovers
@@ -124,16 +131,6 @@
 /         .col-6
 /           dt = t('activerecord.attributes.unit.expected_participants_m')
 /           dd = @unit.expected_participants_m
-
-/       - if @unit.expected_guest_participants
-/         .row
-/           .col-6
-/             dt = t('activerecord.attributes.unit.expected_guest_participants')
-/             dd = @unit.expected_guest_participants
-
-/           .col-6
-/             dt = t('activerecord.attributes.unit.expected_guest_leaders')
-/             dd = @unit.expected_guest_leaders
 
 /   - if @unit.pbs_id.present?
 /     .card-footer.bg-info.text-white
@@ -201,13 +198,13 @@
   .card.mt-5
     .card-body
       h3.mb-4 = t('units.show.activity_booking')
-      
+
       - if @unit.activity_booking.phase?(:open, :preview)
-        iframe[allow=("accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture") 
-               allowfullscreen="" frameborder="0" height="315" width="560" 
+        iframe[allow=("accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture")
+               allowfullscreen="" frameborder="0" height="315" width="560"
                src=t('unit_activity_booking.video_src')]
-               
-              
+
+
         hr
 
         = link_to unit_unit_activities_path(@unit), class: 'btn btn-primary'
