@@ -72,6 +72,8 @@ de:
         last_name: Nachname
         pbs_id: PBS ID
         phone_number: Telefonnummer
+        scout_name: Pfadiname
+      participant_unit:
         role: Rolle
         roles:
           assistant_leader: Leitung
@@ -80,7 +82,6 @@ de:
           leader_snow_security: Leiter-/in Sicherheitsaktivität Winter
           leader_water_security: Leiter-/in Sicherheitsaktivität Wasser
           participant: Teilnehmende/-r
-        scout_name: Pfadiname
       spot:
         color: Farbe für Erfassung der Durchführung
         fields: Felder
@@ -604,7 +605,7 @@ de:
     precision:
       format:
         delimiter: ''
-  participants:
+  participant_units:
     edit:
       title: Teilnehmenden bearbeiten
     index:

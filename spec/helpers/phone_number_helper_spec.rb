@@ -8,32 +8,32 @@ RSpec.describe PhoneNumberHelper, type: :helper do
 
     let(:phone_number) { nil }
 
-    it { is_expected.to eq false }
+    it { is_expected.to be false }
 
     (5..9).each do |digit|
       context "when starts with 07#{digit}" do
         let(:phone_number) { "07#{digit}1232345" }
 
-        it { is_expected.to eq true }
+        it { is_expected.to be true }
       end
     end
 
     context 'when has +41' do
       let(:phone_number) { '+41751232345' }
 
-      it { is_expected.to eq true }
+      it { is_expected.to be true }
     end
 
     context 'when has 0041' do
       let(:phone_number) { '0041761232345' }
 
-      it { is_expected.to eq true }
+      it { is_expected.to be true }
     end
 
     context 'when has spaces 0041 78' do
       let(:phone_number) { '0041 78 123 23 45' }
 
-      it { is_expected.to eq true }
+      it { is_expected.to be true }
     end
   end
 end

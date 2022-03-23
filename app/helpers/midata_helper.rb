@@ -10,7 +10,7 @@ module MidataHelper
   end
 
   def translated_midata_role(role)
-    I18n.t(role.underscore.tr('/', '_'), scope: 'activerecord.attributes.participant.roles')
+    I18n.t(role.underscore.tr('/', '_'), scope: 'activerecord.attributes.participant_unit.roles')
   end
 
   def midata_link_to_participant(participant)

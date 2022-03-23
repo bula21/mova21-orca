@@ -2,15 +2,15 @@
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
-# This file is the source Rails uses to define your schema when running `rails
-# db:schema:load`. When creating a new database, `rails db:schema:load` tends to
+# This file is the source Rails uses to define your schema when running `bin/rails
+# db:schema:load`. When creating a new database, `bin/rails db:schema:load` tends to
 # be faster and is potentially less error prone than running all of your
 # migrations from scratch. Old migrations may fail to apply correctly if those
 # migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_25_102548) do
+ActiveRecord::Schema.define(version: 2022_03_12_085754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,7 +33,14 @@ ActiveRecord::Schema.define(version: 2022_02_25_102548) do
     t.bigint "byte_size", null: false
     t.string "checksum", null: false
     t.datetime "created_at", null: false
+    t.string "service_name", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "active_storage_variant_records", force: :cascade do |t|
+    t.bigint "blob_id", null: false
+    t.string "variation_digest", null: false
+    t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
   create_table "activities", force: :cascade do |t|
@@ -107,8 +114,9 @@ ActiveRecord::Schema.define(version: 2022_02_25_102548) do
   end
 
   create_table "fields", force: :cascade do |t|
-    t.string "name"
+    t.string "name_untranslated"
     t.bigint "spot_id", null: false
+    t.jsonb "name", default: {}
     t.index ["spot_id"], name: "index_fields_on_spot_id"
   end
 
@@ -216,6 +224,7 @@ ActiveRecord::Schema.define(version: 2022_02_25_102548) do
   create_table "participant_units", force: :cascade do |t|
     t.bigint "unit_id", null: false
     t.bigint "participant_id", null: false
+    t.string "role"
     t.index ["participant_id"], name: "index_participant_units_on_participant_id"
     t.index ["unit_id"], name: "index_participant_units_on_unit_id"
   end
@@ -229,15 +238,15 @@ ActiveRecord::Schema.define(version: 2022_02_25_102548) do
     t.integer "pbs_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "role"
     t.string "email", default: ""
     t.string "phone_number", default: ""
     t.string "guest_troop"
   end
 
   create_table "spots", force: :cascade do |t|
-    t.string "name"
+    t.string "name_untranslated"
     t.string "color"
+    t.jsonb "name", default: {}
   end
 
   create_table "stufen", force: :cascade do |t|
@@ -360,6 +369,7 @@ ActiveRecord::Schema.define(version: 2022_02_25_102548) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "activities", "activity_categories"
   add_foreign_key "activities", "transport_locations"
   add_foreign_key "activity_executions", "activities"

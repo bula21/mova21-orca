@@ -19,7 +19,7 @@ class Tag < ApplicationRecord
   validates :code, :icon, :label, presence: true
   validates :code, uniqueness: true
 
-  translates :label, type: :string, locale_accessors: true, fallbacks: true
+  translates :label, locale_accessors: true, fallbacks: true
 
   def to_s
     label

@@ -3,10 +3,10 @@
 class ActivityExecutionsController < ApplicationController
   load_and_authorize_resource :activity
   load_and_authorize_resource through: :activity
+  before_action :set_spots, only: :index
 
   def index
-    @spots = Spot.all.order(:name)
-
+    @activity_executions = filter.apply(@activity_executions).ordered
     respond_to do |format|
       format.json { render json: ActivityExecutionBlueprint.render(@activity_executions, view: :with_fields) }
       format.html
@@ -52,6 +52,15 @@ class ActivityExecutionsController < ApplicationController
   end
 
   private
+
+  def filter
+    @filter ||= ActivityExecutionFilter.new(spot: params[:spot_id].presence,
+                                            field: params[:field_id].presence)
+  end
+
+  def set_spots
+    @spots = Spot.all.includes(:fields).order(Arel.sql("LOWER(spots.name->>'de')"))
+  end
 
   def activity_execution_params
     params.require(:activity_execution).permit(:starts_at, :ends_at, :field_id, :spot_id,

@@ -20,6 +20,8 @@ class ActivityExecution < ApplicationRecord
 
   bitfield :language_flags, *Activity::LANGUAGES
 
+  scope :ordered, -> { order(:starts_at) }
+
   def max_amount_participants
     activity&.participants_count_activity || 0
   end

@@ -14,7 +14,7 @@ RSpec.describe MidataService, skip: true do
   # end
 
   describe '#fetch_camp_unit_data', vcr: true do
-    subject(:camp_unit_data) { service.fetch_camp_unit_data(pbs_camp_unit_id) }
+    subject(:camp_unit_data) { service.fetch_camp_unit_data("/events/#{pbs_camp_unit_id}.json") }
 
     it { expect(camp_unit_data.dig('events', 0, 'id')).to eq(pbs_camp_unit_id) }
     it { expect(camp_unit_data.dig('events', 0, 'links', 'sub_camps')).to eq([1322, 1329]) }

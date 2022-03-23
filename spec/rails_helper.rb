@@ -21,7 +21,7 @@ end
 
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
-  config.use_transactional_fixtures = true
+  config.use_transactional_fixtures = false
   config.infer_spec_type_from_file_location!
 
   config.before(:each, type: :system) do
