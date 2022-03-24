@@ -97,8 +97,8 @@ de:
         departure_slot: Abreise Slot
         district: Quartier
         ends_at: Ende am
-        expected_guest_leaders: Definitive Anzahl Gäste (Leitung)
-        expected_guest_participants: Definitive Anzahl Gäste (TN)
+        expected_guest_leaders: Definitive Anzahl Internationale (Leitung)
+        expected_guest_participants: Definitive Anzahl Internationale (TN)
         expected_participants: Definitive Anzahl TN
         expected_participants_f: Definitive Anzahl TN (f)
         expected_participants_leitung: Definitive Anzahl Leitende
