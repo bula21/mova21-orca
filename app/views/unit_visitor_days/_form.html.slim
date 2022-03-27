@@ -1,15 +1,16 @@
 = simple_form_for @unit_visitor_day, url: unit_unit_visitor_day_path(@unit) do |f|
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
   .row 
-    fieldset.col-md-6[disabled=!@unit_visitor_day.phase_open?]
+    fieldset.col-md-6
       .card 
         .card-body
           h4= UnitVisitorDay.human_attribute_name(:tickets)
-          = f.input :u6_tickets
-          = f.input :u16_tickets
-          = f.input :u16_ga_tickets
-          = f.input :ga_tickets
-          = f.input :other_tickets
+          = f.input :u6_tickets, disabled: !@unit_visitor_day.phase_open?
+          = f.input :u16_tickets, disabled: !@unit_visitor_day.phase_open?
+          = f.input :u16_ga_tickets, disabled: !@unit_visitor_day.phase_open?
+          = f.input :ga_tickets, disabled: !@unit_visitor_day.phase_open?
+          = f.input :other_tickets, disabled: !@unit_visitor_day.phase_open?
+          = f.input :ltb_accepted, as: :boolean
     fieldset.col-md-6
       .card 
         .card-body
