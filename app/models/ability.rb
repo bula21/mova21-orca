@@ -62,8 +62,8 @@ class Ability
 
     can %i[read update], Unit, al: { email: user.email }
     can %i[read update], Unit, lagerleiter: { email: user.email }
-    can :manage, ParticipantUnit, units: { lagerleiter: { email: user.email } }
-    can :manage, ParticipantUnit, units: { al: { email: user.email } }
+    can :manage, ParticipantUnit, unit: { lagerleiter: { email: user.email } }
+    can :manage, ParticipantUnit, unit: { al: { email: user.email } }
 
     can :manage, UnitActivity, unit: { lagerleiter: { email: user.email } }
     can :read, UnitActivity, unit: { al: { email: user.email } }
