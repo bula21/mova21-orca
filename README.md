@@ -6,16 +6,16 @@ Orca manages people and activity subscriptions.
 
 ### Launch
 
-To launch the development environment there are two options. One by
+To launch the development environment there are two options.
+
+#### docker-compose
 
 ```
 cd project-dir
 docker-compose up
 ```
 
-or directly with the VisualStudio Code Dev Container extension.
-
-If you have started the containers, you can access a bash CLI from the running docker containers by executing the following command
+Once you have started the containers, you can access a CLI inside the running docker containers by executing the following command:
 
 ```
 docker-compose exec app ash
@@ -27,7 +27,22 @@ To speed up the development the webpacker dev server can be launched using the f
  docker-compose exec app /app/bin/webpacker-dev-server
 ```
 
-### Roles
+#### Visual Studio Code Dev Containers
+
+Open the folder in VS Code and click on "open in Devcontainer". Once up start the development servers with those commands:
+
+```
+bin/rails-dev-server
+bin/rails-webpacker-dev-server
+```
+
+### Setup
+
+You'll need to initialize the database. This can be accomplished by running:
+
+```
+bin/rails db:create db:migrate db:seed
+```
 
 ### Tests
 
