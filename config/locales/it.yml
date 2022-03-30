@@ -97,8 +97,8 @@ it:
         departure_slot: Slot viaggio di ritorno
         district: Quartiere
         ends_at: Fine il
-        expected_guest_leaders: Numero definitivo di internazionali (animatori/trici)
-        expected_guest_participants: Numero definitivo di internazionali (partecipanti)
+        expected_guest_leaders: Numero definitivo di animatori/trici internazionali
+        expected_guest_participants: Numero definitivo di partecipanti internazionali
         expected_participants: Numero definitivo di partecipanti
         expected_participants_f: Numero definitivo delle partecipanti (f)
         expected_participants_leitung: Numero definitivo di animatori/trici

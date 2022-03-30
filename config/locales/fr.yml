@@ -97,8 +97,8 @@ fr:
         departure_slot: Créneau voyage retour
         district: Quartier
         ends_at: Fin le
-        expected_guest_leaders: Nombre définitif d'internationaux (resp.)
-        expected_guest_participants: Nombre définitif d'internationaux (part.)
+        expected_guest_leaders: Nombre définitif de responsables internationaux-ales
+        expected_guest_participants: Nombre définitif de participant-es internationaux-ales
         expected_participants: Nombre définitif de participant.e.s
         expected_participants_f: Nombre définitif de participantes (f)
         expected_participants_leitung: Nombre définitif de responsables
