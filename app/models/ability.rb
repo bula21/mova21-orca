@@ -44,17 +44,16 @@ class Ability
   end
 
   def assistant_leader_permission(user)
-    participants = Participant.where(role: %i[assistant_leader helper], email: user.email)
-    unit_ids = participants.map(&:unit_ids).flatten
+    roles = %i[assistant_leader helper]
+    participant_units = ParticipantUnit.joins(:participant).where(participant: { email: user.email }, role: roles)
+    unit_ids = participant_units.map(&:unit_id).flatten
     return if unit_ids.empty?
 
     can :read, Unit, id: unit_ids
     can :read, UnitActivity, unit: { id: unit_ids }
-    can :read, ParticipantUnit, units: { id: unit_ids }
+    can :read, ParticipantUnit, unit: { id: unit_ids }
     can :read, UnitActivityExecution, unit: { id: unit_ids }
     can :read, UnitVisitorDay, unit: { id: unit_ids }
-  rescue StandardError => e
-    Rollbar.warning e if Rollbar.configuration.enabled
   end
 
   def external_user_permissions(user)
@@ -63,8 +62,8 @@ class Ability
 
     can %i[read update], Unit, al: { email: user.email }
     can %i[read update], Unit, lagerleiter: { email: user.email }
-    can :manage, ParticipantUnit, units: { lagerleiter: { email: user.email } }
-    can :manage, ParticipantUnit, units: { al: { email: user.email } }
+    can :manage, ParticipantUnit, unit: { lagerleiter: { email: user.email } }
+    can :manage, ParticipantUnit, unit: { al: { email: user.email } }
 
     can :manage, UnitActivity, unit: { lagerleiter: { email: user.email } }
     can :read, UnitActivity, unit: { al: { email: user.email } }
