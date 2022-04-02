@@ -124,6 +124,8 @@ fr:
       unit_visitor_day:
         at: Date de votre journée portes ouvertes
         ga_tickets: Personnes avec AG
+        ltb_accepted: Je confirme que toutes les personnes qui rendent visite à mon
+          unité ont accepté les CGC.
         other_tickets: Personnes avec demi-tarif ou sans réduction
         responsible: Personne de contact
         responsible_address: Adresse

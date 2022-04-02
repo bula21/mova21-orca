@@ -39,7 +39,7 @@ class UnitVisitorDaysController < ApplicationController
 
   def unit_visitor_day_params
     permitted = %i[responsible_firstname responsible_lastname responsible_address responsible_postal_code
-                   responsible_place responsible_salutation responsible_email responsible_phone]
+                   responsible_place responsible_salutation responsible_email responsible_phone ltb_accepted]
     if @unit_visitor_day.phase_open?
       permitted << %i[u6_tickets u16_tickets u16_ga_tickets
                       ga_tickets other_tickets]

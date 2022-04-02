@@ -124,6 +124,8 @@ de:
       unit_visitor_day:
         at: Datum des Besuchstags
         ga_tickets: Personen mit GA
+        ltb_accepted: Ich bestätige, dass alle Besucher*innen meiner Einheit die LTB
+          akzeptiert haben.
         other_tickets: Personen mit Halbax oder ohne Ermässigung
         responsible: Reiseleitung
         responsible_address: Adresse

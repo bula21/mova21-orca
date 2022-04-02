@@ -8,6 +8,7 @@ FactoryBot.define do
     u16_ga_tickets { 0 }
     ga_tickets { 0 }
     other_tickets { 0 }
+    ltb_accepted { true }
     responsible_firstname { 'Peter' }
     responsible_lastname { 'Muster' }
     responsible_salutation { 'Herr' }
