@@ -36,6 +36,7 @@ FactoryBot.define do
     payable_until { 3.months.from_now }
     text { Faker::Lorem.sentences }
     category { :pre_registration_invoice }
+    generated { true }
   end
 
   trait :with_invoice_parts do
