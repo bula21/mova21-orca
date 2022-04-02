@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_02_091832) do
+ActiveRecord::Schema.define(version: 2022_04_02_115156) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,26 +67,27 @@ ActiveRecord::Schema.define(version: 2022_04_02_091832) do
   create_table "activities_goals", id: false, force: :cascade do |t|
     t.bigint "activity_id", null: false
     t.bigint "goal_id", null: false
-    t.index ["activity_id", "goal_id"], name: "index_activities_goals_on_activity_id_and_goal_id"
+    t.index ["activity_id", "goal_id"], name: "index_activities_goals_on_activity_id_and_goal_id", unique: true
     t.index ["goal_id", "activity_id"], name: "index_activities_goals_on_goal_id_and_activity_id"
   end
 
   create_table "activities_stufen", id: false, force: :cascade do |t|
     t.bigint "activity_id", null: false
     t.bigint "stufe_id", null: false
-    t.index ["activity_id", "stufe_id"], name: "index_activities_stufen_on_activity_id_and_stufe_id"
+    t.index ["activity_id", "stufe_id"], name: "index_activities_stufen_on_activity_id_and_stufe_id", unique: true
     t.index ["stufe_id", "activity_id"], name: "index_activities_stufen_on_stufe_id_and_activity_id"
   end
 
   create_table "activities_stufen_recommended", id: false, force: :cascade do |t|
     t.bigint "activity_id", null: false
     t.bigint "stufe_id", null: false
+    t.index ["activity_id", "stufe_id"], name: "unique_activities_stufen_recommended_index", unique: true
   end
 
   create_table "activities_tags", id: false, force: :cascade do |t|
     t.bigint "activity_id", null: false
     t.bigint "tag_id", null: false
-    t.index ["activity_id", "tag_id"], name: "index_activities_tags_on_activity_id_and_tag_id"
+    t.index ["activity_id", "tag_id"], name: "index_activities_tags_on_activity_id_and_tag_id", unique: true
     t.index ["tag_id", "activity_id"], name: "index_activities_tags_on_tag_id_and_activity_id"
   end
 
@@ -316,6 +317,7 @@ ActiveRecord::Schema.define(version: 2022_04_02_091832) do
     t.string "responsible_place"
     t.string "responsible_postal_code"
     t.string "responsible_salutation"
+    t.boolean "ltb_accepted"
     t.index ["unit_id"], name: "index_unit_visitor_days_on_unit_id"
   end
 

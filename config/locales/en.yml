@@ -124,6 +124,8 @@ en:
       unit_visitor_day:
         at: Datum des Besuchstags
         ga_tickets: Personen mit GA
+        ltb_accepted: I confirm that all visitors of my unit have accepted the terms
+          of the camp.
         other_tickets: Personen mit Halbax oder ohne Ermässigung
         responsible: Reiseleitung
         responsible_address: Addresse der Reiseleitung
