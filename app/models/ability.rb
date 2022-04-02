@@ -96,6 +96,7 @@ class Ability
     can :manage, Spot
     can :manage, Field
     can :read, UnitActivityExecution
+    can :read, UnitActivity
     cannot :delete, ActivityCategory, parent_id: nil
   end
 
