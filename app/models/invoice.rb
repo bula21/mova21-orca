@@ -36,11 +36,12 @@ class Invoice < ApplicationRecord
   enum category: { invoice: 0, pre_registration_invoice: 1 }
 
   validates :category, presence: true
+  validates :pdf, presence: true, unless: :generated
 
-  before_save :recalculate_amount
-  before_update :generate_pdf
-  after_save :set_ref
-  after_create do
+  before_save :recalculate_amount, if: :generated
+  before_update :generate_pdf, if: :generated
+  after_save :set_ref, if: :generated
+  after_create if: :generated do
     set_ref
     generate_pdf && save
   end
