@@ -124,8 +124,9 @@ it:
       unit_visitor_day:
         at: Date della vostra giornata delle visite
         ga_tickets: Persone con AG
+        ltb_accepted: Confermo che tutti i visitatori e le visitatrici della mia unità
+          hanno accettato le CGC.
         other_tickets: Persone con metà-prezzo o senza riduzione
-        ltb_accepted: Confermo che tutti i visitatori e le visitatrici della mia unità hanno accettato le CGC.
         responsible: responsabile del viaggio
         responsible_address: Indirizzo
         responsible_email: E-mail
