@@ -52,7 +52,6 @@ services:
       - db
       - mail
       - memcached
-      - webpack
     tty: true
     stdin_open: true
 

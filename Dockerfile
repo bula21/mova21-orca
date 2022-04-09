@@ -13,6 +13,7 @@ RUN apk add --update build-base \
     linux-headers \
     git \
     yarn \
+    gcompat \
     less \
     curl \
     gnupg \
