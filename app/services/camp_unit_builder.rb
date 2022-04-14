@@ -25,7 +25,9 @@ class CampUnitBuilder
     return unless id.present? && id != @stufe.root_camp_unit_id
 
     camp_unit = Unit.find_or_initialize_by(pbs_id: id)
-    camp_unit.update(assignable_attributes(camp_unit_data))
+    if !camp_unit.update(assignable_attributes(camp_unit_data)) && Rollbar.configuration.enabled
+      Rollbar.error("Update failed for unit with pbs_id #{id}", errors: camp_unit.errors)
+    end
     camp_unit
   end
 
