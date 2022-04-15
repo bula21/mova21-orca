@@ -26,7 +26,7 @@ class CampUnitBuilder
 
     camp_unit = Unit.find_or_initialize_by(pbs_id: id)
     if !camp_unit.update(assignable_attributes(camp_unit_data)) && Rollbar.configuration.enabled
-      Rollbar.error("Update failed for unit with pbs_id #{id}", errors: camp_unit.errors)
+      Rollbar.error("MiData sync failed for unit with pbs_id #{id}", errors: camp_unit.errors.inspect)
     end
     camp_unit
   end
@@ -52,7 +52,7 @@ class CampUnitBuilder
   def extract_people(camp_unit_data)
     mapping = { al: 'abteilungsleitung', lagerleiter: 'leader', coach: 'coach' }
     mapping.transform_values do |data_key|
-      person_id   = camp_unit_data.dig('events', 0, 'links', data_key)
+      person_id = camp_unit_data.dig('events', 0, 'links', data_key)
       person_data = camp_unit_data.dig('linked', 'people')&.find { |person| person['id'] == person_id }
 
       @leader_builder.from_data(person_data, id: person_id) if person_id && person_data
