@@ -2,12 +2,15 @@
 
 require 'rails_helper'
 
-RSpec.describe CampUnitPuller, skip: true do
+RSpec.describe CampUnitPuller do
+  # If you have to update the VCR cassettes you can follow these steps:
+  #  * use Postman to create a OAUTH-Token and add the infos from https://pbs.puzzle.ch/de/oauth/applications/36
+  #  * generate an access-token and copy it to MIDATA_OAUTH_ACCESS_TOKEN
   subject(:puller) { described_class.new(stufe) }
 
   include_context 'with base data'
 
-  let(:stufe) { build(:stufe, code: :pfadi, root_camp_unit_id: 1337) }
+  let(:stufe) { build(:stufe, code: :pfadi, root_camp_unit_id: 1328) }
 
   describe '#pull_all', vcr: true, record: :once do
     subject(:camp_units) { puller.pull_all }
@@ -15,9 +18,10 @@ RSpec.describe CampUnitPuller, skip: true do
     it do
       expect(camp_units.count).to be 2
       expect(camp_units).to all(be_valid)
+      expect(Leader.count).to be 6
     end
 
-    it 'imports the participants correctly', skip: true do
+    it 'imports the participants correctly' do
       expect(camp_units.first.participants.count).to be 51
       expect(camp_units.second.participants.count).to be 2
     end
@@ -34,9 +38,21 @@ RSpec.describe CampUnitPuller, skip: true do
       context 'when some participants have been deleted' do
         let!(:only_local_participant) { create(:participant, units: [Unit.second]) }
 
-        it 'removes the participants that are no longer on MiData from the unit, but keeps them', skip: true do
+        it 'removes the participants that are no longer on MiData from the unit, but keeps them' do
           expect { puller.pull_all }.to change { Unit.second.participants.reload.size }.from(3).to(2)
           expect(Participant.find(only_local_participant.id)).to eq(only_local_participant)
+        end
+      end
+
+      context 'when some participants have been changed in midata' do
+        let(:updated_participant) { camp_units.first.participants.first }
+
+        before do
+          updated_participant.update(first_name: 'Barbaraa')
+        end
+
+        it 'updates them locally to the status of the midata' do
+          expect { puller.pull_all }.to change { updated_participant.reload.first_name }.from('Barbaraa').to('Barbara')
         end
       end
 
@@ -53,7 +69,7 @@ RSpec.describe CampUnitPuller, skip: true do
   describe '#pull_new', vcr: true, record: :once do
     subject(:new_camp_units) { puller.pull_new }
 
-    skip do
+    it do
       expect(new_camp_units.count).to be 2
       expect(new_camp_units).to all(be_valid)
     end

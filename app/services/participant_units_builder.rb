@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ParticipantUnitsBuilder
+  include ImportHelper
+
   def assignable_attributes(participation_data)
     {
       first_name: participation_data['first_name'],
@@ -53,9 +55,11 @@ class ParticipantUnitsBuilder
   def participant_unit_from_data(participation_data, camp_unit)
     participant = Participant.find_or_initialize_by(pbs_id: participation_data.dig('links', 'person'))
     participant.assign_attributes(assignable_attributes(participation_data))
+    save_or_log_if_persisted_and_changed(participant)
     participant_unit = ParticipantUnit.find_or_initialize_by(participant: participant, unit: camp_unit)
     participant_unit.participant = participant
     participant_unit.role = role(participation_data)
+    save_or_log_if_persisted_and_changed(participant_unit)
     participant_unit
   end
 end
