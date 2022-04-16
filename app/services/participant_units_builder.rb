@@ -38,7 +38,7 @@ class ParticipantUnitsBuilder
   def role(participation_data)
     role_types = participation_data['roles'].map { |r| r['type'] }.uniq
     warn_if_multiple_roles(participation_data['id'], role_types)
-    role_types.first
+    role_types.min_by { |role| ParticipantUnit::MIDATA_EVENT_CAMP_ROLES.values.index(role) }
   end
 
   def warn_if_multiple_roles(pbs_id, role_types)
