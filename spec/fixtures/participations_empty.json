@@ -1,0 +1,14 @@
+{
+  "current_page": 1,
+  "total_pages": 1,
+  "next_page_link": null,
+  "prev_page_link": null,
+  "event_participations": [],
+  "linked": {},
+  "links": {
+    "event_participations.person": {
+      "href": "https://db.scout.ch/de/people/{event_participations.person}.json",
+      "type": "people"
+    }
+  }
+}
