@@ -79,4 +79,42 @@ RSpec.describe CampUnitPuller do
       expect(puller.pull_new.compact).to eq([])
     end
   end
+
+  describe '#pull', vcr: false do
+    subject(:pull) { puller.pull(pbs_id: 223) }
+
+    let(:unit_data) { JSON.parse(File.read(Rails.root.join('spec/fixtures/unit.json'))) }
+    let(:unit_data_updated) { JSON.parse(File.read(Rails.root.join('spec/fixtures/unit_updated.json'))) }
+    let(:participants) { JSON.parse(File.read(Rails.root.join('spec/fixtures/participations_empty.json'))) }
+    let(:mock_midata_service) { instance_double(MidataService) }
+
+    before do
+      allow(MidataService).to receive(:new).and_return(mock_midata_service)
+      allow(mock_midata_service).to receive(:fetch_camp_unit_data)
+        .with('/events/223.json')
+        .and_return(unit_data, unit_data_updated)
+      allow(mock_midata_service).to receive(:fetch_participations).with('2', 223).and_return(participants)
+      puller.pull(pbs_id: 223)
+    end
+
+    it 'updates the lagerleiter' do
+      expect { pull }.to change { Unit.find_by(pbs_id: 223).lagerleiter.pbs_id }.from(10).to(15)
+    end
+
+    context 'when the new data is invalid' do
+      let(:unit_data_updated) do
+        JSON.parse(File.read(Rails.root.join('spec/fixtures/unit_updated.json'))).tap do |data|
+          data['linked']['people'][1]['email'] = ''
+        end
+      end
+
+      it 'shows a proper error' do
+        allow(Rails.logger).to receive(:error)
+        pull
+        expect(Rails.logger).to have_received(:error)
+          .with(a_string_matching('Lagerleiter email muss ausgefüllt werden'))
+          .at_least(:once)
+      end
+    end
+  end
 end
