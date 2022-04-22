@@ -27,11 +27,14 @@ class Ability
   end
 
   def midata_user_permissions(user)
-    unit_ids = Leader.where(email: user.email).map { |leader| leader.unit_ids.values }.flatten
     can :read, Leader, pbs_id: user.pbs_id
 
+    unit_ids = Leader.where(email: user.email).map { |leader| leader.unit_ids.values }.flatten.compact
     can %i[read commit], Unit, id: unit_ids
+    return if unit_ids.empty?
+
     can %i[read create], ParticipantUnit, unit_id: unit_ids
+    can :read_documents, Unit, id: unit_ids
     can %i[edit update destroy], ParticipantUnit, unit_id: unit_ids, participant: { pbs_id: nil }
     # can %i[read create], Participant, participant_units: { unit_id: unit_ids }
     # can %i[edit update destroy], Participant, participant_units: { unit_id: unit_ids }, pbs_id: nil
@@ -47,7 +50,7 @@ class Ability
     roles = %i[assistant_leader helper]
     participant_units = ParticipantUnit.joins(:participant).where(participant: { email: user.email }, role: roles)
     unit_ids = participant_units.map(&:unit_id).flatten
-    return if unit_ids.empty?
+    return if unit_ids.blank?
 
     can :read, Unit, id: unit_ids
     can :read, UnitActivity, unit: { id: unit_ids }
@@ -95,6 +98,7 @@ class Ability
     can :manage, ActivityCategory
     can :manage, Spot
     can :manage, Field
+    can :read, Unit
     can :read, UnitActivityExecution
     can :read, UnitActivity
     cannot :delete, ActivityCategory, parent_id: nil
