@@ -68,7 +68,7 @@ RSpec.describe CampUnitBuilder do
       let(:camp_unit_json_path) { 'spec/fixtures/unit_same_leader_and_abteilungsleitung.json' }
 
       it 'creates only one leader and uses it for both (plus the coach)' do
-        expect { camp_unit }.to change(Leader, :count).by(2) # instead of 3
+        expect { camp_unit.save }.to change(Leader, :count).by(2) # instead of 3
       end
     end
 

@@ -2,6 +2,7 @@
 
 class CampUnitPuller
   include MidataHelper
+  include ImportHelper
 
   def initialize(stufe)
     @stufe = stufe
@@ -15,13 +16,9 @@ class CampUnitPuller
     return unless camp_unit
 
     pbs_group_id = group_of_camp(camp_unit_data)&.[]('id')
-
     camp_unit.participant_units = fetch_unit_participants(camp_unit, pbs_group_id)
-    camp_unit.save!
+    save_or_log(camp_unit)
     camp_unit
-  rescue ActiveRecord::RecordInvalid => e
-    Rails.logger.error e.message
-    nil
   end
 
   def pull_all

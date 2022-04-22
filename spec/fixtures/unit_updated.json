@@ -47,7 +47,7 @@
       "hidden_contact_attrs": [],
       "links": {
         "abteilungsleitung": "526",
-        "leader": "526",
+        "leader": "15",
         "coach": "33",
         "dates": [
           "456"
@@ -129,6 +129,19 @@
         "address": "Alt Steinbücheler Weg 4",
         "zip_code": "2233",
         "town": "Oppongburg",
+        "country": null
+      },
+      {
+        "id": "15",
+        "first_name": "Peter",
+        "last_name": "Muster",
+        "nickname": "Musti",
+        "company_name": null,
+        "company": false,
+        "email": "peter.muster@hitobito.example.com",
+        "address": "Sauerbruchstr. 43c",
+        "zip_code": "1125",
+        "town": "Jaridorf",
         "country": null
       },
       {
