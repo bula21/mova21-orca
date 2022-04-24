@@ -1,0 +1,44 @@
+= simple_form_for(@filter, url: submit_url, method: :GET, scope: '') do |f|
+  = hidden_field_tag :locale, I18n.locale
+
+  .row.mb-4
+    .col
+      ul.nav
+        li.nav-item.mr-2.mb-2
+          a.btn.btn-outline-secondary[data-toggle="pill" href="#filter-activity" role="pill"]
+            = ActivityExecutionFilter.human_attribute_name(:activity)
+        li.nav-item.mr-2.mb-2
+          a.btn.btn-outline-secondary[data-toggle="pill" href="#filter-location" role="pill"]
+            = ActivityExecutionFilter.human_attribute_name(:field)
+        li.nav-item.mr-2.mb-2
+          a.btn.btn-outline-secondary[data-toggle="pill" href="#filter-usage" role="pill"]
+            = ActivityExecutionFilter.human_attribute_name(:availability)
+        li.nav-item.mr-2.mb-2
+          a.btn.btn-outline-secondary[data-toggle="pill" href="#filter-time" role="pill"]
+            = ActivityExecutionFilter.human_attribute_name(:at)
+        li.nav-item.mr-2.mb-2
+          = link_to reset_url, class: 'btn btn-outline-secondary', role: :pill, title: t('buttons.reset')
+            i.fa.fa-undo
+
+    .col-12.order-sm-3
+      .tab-content
+        #filter-activity.py-3.tab-pane.show[role="tabpanel"]
+          = f.input :activity, as: :integer
+
+        #filter-location.py-3.tab-pane[role="tabpanel"]
+        	.row
+            .col= f.input :spot, as: :integer
+            .col= f.input :field, as: :integer
+
+        #filter-usage.py-3.tab-pane[role="tabpanel"]
+          .row
+            .col= f.input :max_units, as: :integer
+            .col= f.input :min_available_headcount, as: :integer
+
+        #filter-time.py-3.tab-pane[role="tabpanel"]
+          .row
+            .col= f.input :starts_at_after, as: :datetime, html5: true
+            .col= f.input :ends_at_before, as: :datetime, html5: true
+
+    .col-sm-3.order-sm-2
+      = f.submit t('buttons.filter'), class: 'btn w-100 btn-secondary'

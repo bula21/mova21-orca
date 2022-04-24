@@ -2,7 +2,7 @@
 
 class ActivityExecutionsController < ApplicationController
   load_and_authorize_resource :activity
-  load_and_authorize_resource through: :activity
+  load_and_authorize_resource through: :activity, shallow: true
   before_action :set_spots, only: :index
 
   def index
@@ -54,8 +54,9 @@ class ActivityExecutionsController < ApplicationController
   private
 
   def filter
-    @filter ||= ActivityExecutionFilter.new(spot: params[:spot_id].presence,
-                                            field: params[:field_id].presence)
+    @filter ||= ActivityExecutionFilter.new(filter_params).tap do |filter|
+      filter.activity = @activity.id if @activity
+    end
   end
 
   def set_spots
@@ -68,6 +69,11 @@ class ActivityExecutionsController < ApplicationController
                                                :mixed_languages, languages: []).tap do |params|
       convert_language_array_to_flags(params) if params[:languages]
     end
+  end
+
+  def filter_params
+    params[:activity_execution_filter]&.permit(%i[spot field starts_at_after ends_at_before activity
+                                                  min_available_headcount max_units])
   end
 
   def convert_language_array_to_flags(params)

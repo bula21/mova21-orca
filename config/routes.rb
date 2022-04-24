@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   resources :unit_activity_executions do
     post :import, on: :collection
   end
+  resources :activity_executions
   resources :activities do
     resources :delete_activity_executions, only: :index
     delete :delete_activity_executions, to: 'delete_activity_executions#destroy'

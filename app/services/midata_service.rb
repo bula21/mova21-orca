@@ -6,10 +6,11 @@ class MidataService
 
   base_uri ENV.fetch('MIDATA_BASE_URL', 'https://pbs.puzzle.ch')
 
-  def initialize(user_email = ENV['MIDATA_USER_EMAIL'], user_token = ENV['MIDATA_USER_TOKEN'], _locale = 'de')
+  def initialize(user_email = ENV.fetch('MIDATA_USER_EMAIL',
+                                        nil), user_token = ENV.fetch('MIDATA_USER_TOKEN', nil), _locale = 'de')
     # Hitobito deprecated user tokens. But this will not be deployed before BuLa
     @auth_params = if self.class.base_uri.include?('pbs.puzzle.ch')
-                     { Authorization: "Bearer #{ENV['MIDATA_OAUTH_ACCESS_TOKEN']}" }
+                     { Authorization: "Bearer #{ENV.fetch('MIDATA_OAUTH_ACCESS_TOKEN', nil)}" }
                    else
                      { 'X-User-Token': user_token, 'X-User-Email': user_email }
                    end
