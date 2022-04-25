@@ -2,6 +2,16 @@
 it:
   activemodel:
     attributes:
+      activity_execution_filter:
+        activity: Aktivität
+        at: Datum / Zeit
+        availability: Verfügbarkeit
+        ends_at_before: Ended vor
+        field: Feld
+        max_units: max. Anzahl zugeteilter Einheiten
+        min_available_headcount: min. verfügbare Plätze
+        spot: Spot
+        starts_at_after: Beginnt nach
       activity_filter:
         activity_category: Categoria
         languages: lingua
@@ -536,6 +546,7 @@ it:
   nav:
     activity: Catalogo
     activity_category: Categoria
+    activity_execution: Activity execution
     fixed_event: Picasso
     language:
       de: DE
@@ -792,6 +803,7 @@ it:
         'true': pagato
       participants: Visualizzare i partecipanti
       questionnaire: Questionario
+  use_filter: Use filter
   views:
     pagination:
       first: !!str '<<'
