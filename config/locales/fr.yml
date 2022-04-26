@@ -129,6 +129,8 @@ fr:
         week: Semaine de camp
       unit_activity_execution:
         activity_execution_id: Activité
+        change_notification: Änderungsbenachrichtigung an Einheit verschicken
+        change_remarks: Bemerkung zur Änderung
         headcount: Nb. personnes
         unit_id: Unité
       unit_visitor_day:
@@ -330,6 +332,14 @@ fr:
         Viele Grüsse
         Eure BuLa21-Crew
       subject: L’inscription au mova n'est pas encore complète
+    program_change_notification:
+      body: |-
+        Hallo %{salutation_name}
+
+        Euer Lagerprogramm hat sich geändert. Begründung: %{remarks}.
+
+        Siehe %{url}
+      subject: Programmänderung
   date:
     abbr_day_names:
     - dim

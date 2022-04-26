@@ -33,5 +33,10 @@
           | /
           = @unit_activity_execution.unit&.participant_role_counts&.values&.sum
 
+    .row 
+      .col-md-4
+        = f.input :change_remarks, as: :text
+        = f.input :change_notification, as: :boolean
+
   .actions
     = f.submit t('buttons.save'), class: 'btn btn-primary'

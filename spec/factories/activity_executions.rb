@@ -11,5 +11,6 @@ FactoryBot.define do
     language_flags { activity.language_flags }
     add_attribute(:field) { create(:field) }
     ends_at { starts_at + (1..14).to_a.sample.hours }
+    track_changes_enabled { false }
   end
 end

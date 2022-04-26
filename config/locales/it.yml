@@ -129,6 +129,8 @@ it:
         week: Settimana di campo
       unit_activity_execution:
         activity_execution_id: Attività
+        change_notification: Änderungsbenachrichtigung an Einheit verschicken
+        change_remarks: Bemerkung zur Änderung
         headcount: Numero di persone
         unit_id: Unità
       unit_visitor_day:
@@ -327,6 +329,14 @@ it:
         Viele Grüsse
         Eure BuLa21-Crew
       subject: L'iscrizione al campo non è ancora completa
+    program_change_notification:
+      body: |-
+        Hallo %{salutation_name}
+
+        Euer Lagerprogramm hat sich geändert. Begründung: %{remarks}.
+
+        Siehe %{url}
+      subject: Programmänderung
   date:
     abbr_day_names:
     - Dom

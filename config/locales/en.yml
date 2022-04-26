@@ -129,6 +129,8 @@ en:
         week: Week
       unit_activity_execution:
         activity_execution_id: Durchführung
+        change_notification: Änderungsbenachrichtigung an Einheit verschicken
+        change_remarks: Bemerkung zur Änderung
         headcount: Anzahl Personen
         unit_id: Einheit
       unit_visitor_day:
@@ -305,6 +307,14 @@ en:
     incomplete_notification:
       body: Body
       subject: Subject
+    program_change_notification:
+      body: |-
+        Hallo %{salutation_name}
+
+        Euer Lagerprogramm hat sich geändert. Begründung: %{remarks}.
+
+        Siehe %{url}
+      subject: Programmänderung
   date:
     abbr_day_names:
     - Sun
