@@ -85,6 +85,10 @@ class Unit < ApplicationRecord
     (expected_participants_leitung_f || 0) + (expected_participants_leitung_m || 0) + (expected_guest_leaders || 0)
   end
 
+  def actual_participants
+    participant_role_counts[:participant]
+  end
+
   def complete?
     valid?(:complete)
   end

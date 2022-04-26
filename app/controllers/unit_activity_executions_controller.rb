@@ -27,7 +27,9 @@ class UnitActivityExecutionsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    @unit_activity_execution.assign_attributes(unit_activity_execution_params)
+  end
 
   def update
     @unit_activity_execution.prefill_headcount
@@ -54,6 +56,13 @@ class UnitActivityExecutionsController < ApplicationController
     end
   end
 
+  def reassign
+    filter_defaults = { activity: @unit_activity_execution.activity&.id,
+                        min_available_headcount: @unit_activity_execution.unit&.actual_participants }
+    @filter ||= ActivityExecutionFilter.new(filter_params.reverse_merge(filter_defaults))
+    @activity_executions = @filter.apply(ActivityExecution.accessible_by(current_ability)).ordered
+  end
+
   private
 
   def set_units_and_activity_executions
@@ -62,10 +71,16 @@ class UnitActivityExecutionsController < ApplicationController
   end
 
   def linked_params
-    { unit_id: params[:unit_id], activity_execution_id: params[:activity_execution_id] }
+    { unit_id: params[:unit_id].presence || @unit_activity_execution.unit_id,
+      activity_execution_id: params[:activity_execution_id].presence }
+  end
+
+  def filter_params
+    params[:activity_execution_filter]&.permit(%i[spot field starts_at_after ends_at_before activity
+                                                  min_available_headcount max_units]) || {}
   end
 
   def unit_activity_execution_params
-    params[:unit_activity_execution].permit(:unit_id, :activity_execution_id, :headcount)
+    params[:unit_activity_execution]&.permit(:unit_id, :activity_execution_id, :headcount) || {}
   end
 end

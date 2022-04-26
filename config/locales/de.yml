@@ -3,14 +3,14 @@ de:
   activemodel:
     attributes:
       activity_execution_filter:
-        activity: Aktivität
+        activity: Aktivitäts ID
         at: Datum / Zeit
         availability: Verfügbarkeit
         ends_at_before: Ended vor
-        field: Feld
+        field: Feld ID
         max_units: max. Anzahl zugeteilter Einheiten
         min_available_headcount: min. verfügbare Plätze
-        spot: Spot
+        spot: Spot ID
         starts_at_after: Beginnt nach
       activity_filter:
         activity_category: Kategorie
@@ -282,6 +282,7 @@ de:
       success: Durchführung erfolgreich geändert
   app:
     title: Orca
+  apply: Übernehmen
   buttons:
     back: zurück
     close: Schliessen
@@ -545,7 +546,7 @@ de:
   nav:
     activity: Katalog
     activity_category: Kategorie
-    activity_execution: Activity execution
+    activity_execution: Programm
     fixed_event: Grobprogramm
     language:
       de: DE
@@ -729,6 +730,9 @@ de:
       button: Tag Legende öffnen
       title: Legende Tags
     video_src: https://www.youtube.com/embed/TZQT-Zngcyc
+  unit_activity_executions:
+    form:
+      reassign: Neue Durchführung finden
   unit_visitor_days:
     form:
       salutations:
@@ -802,7 +806,7 @@ de:
         'true': bezahlt
       participants: Teilnehmende anzeigen
       questionnaire: Fragebogen
-  use_filter: Use filter
+  use_filter: Zu viele Datensätze. Bitte Filter verwenden
   views:
     pagination:
       first: !!str '<<'

@@ -281,6 +281,7 @@ en:
       success: Activity execution successfully updated
   app:
     title: Orca
+  apply: Übernehmen
   buttons:
     back: Back
     close: Schliessen
@@ -700,6 +701,9 @@ en:
       button: Tag Legende öffnen
       title: Legende Tags
     video_src: https://www.youtube.com/embed/TZQT-Zngcyc
+  unit_activity_executions:
+    form:
+      reassign: Neue Durchführung finden
   unit_visitor_days:
     form:
       salutations:

@@ -15,9 +15,8 @@
   h1.h1= ActivityExecution.model_name.human(count: :other)
   == render partial: 'filter', locals: { submit_url: activity_executions_path, reset_url: activity_executions_path }
 
-  - if (1..100).include?(@activity_executions.to_a.count)
-    = react_component("ReadOnlyCalendarManager", { editable: false, stufe: 'all', events: ActivityExecutionBlueprint.render_as_hash(@activity_executions, view: :with_activity) })
-
+  / - if (1..100).include?(@activity_executions.to_a.count)
+  /   = react_component("ReadOnlyCalendarManager", { editable: false, stufe: 'all', events: ActivityExecutionBlueprint.render_as_hash(@activity_executions, view: :with_activity) })
 
 - unless @filter.active?
   .alert.alert-dismissible.alert-warning
@@ -31,6 +30,7 @@
       thead
         tr
           th = ActivityExecution.human_attribute_name(:id)
+          th = Activity.model_name.human
           th = ActivityExecution.human_attribute_name(:starts_at)
           th = ActivityExecution.human_attribute_name(:ends_at)
           th = ActivityExecution.human_attribute_name(:field)
@@ -41,6 +41,8 @@
           tr
             td 
               = activity_execution.id
+            td 
+              = link_to activity_execution.activity, activity_path(activity_execution.activity)
             td
               = l(activity_execution.starts_at, format: :short)
             td 

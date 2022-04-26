@@ -285,6 +285,7 @@ it:
       success: Realizzazione modificata con successo
   app:
     title: Orca
+  apply: Übernehmen
   buttons:
     back: indietro
     close: Chiudere
@@ -730,6 +731,9 @@ it:
       button: Aprire la legenda dei tag
       title: Legenda dei tag
     video_src: https://www.youtube.com/embed/7XusNePwv_o
+  unit_activity_executions:
+    form:
+      reassign: Neue Durchführung finden
   unit_visitor_days:
     form:
       salutations:

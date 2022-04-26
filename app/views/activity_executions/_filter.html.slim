@@ -7,15 +7,26 @@
         li.nav-item.mr-2.mb-2
           a.btn.btn-outline-secondary[data-toggle="pill" href="#filter-activity" role="pill"]
             = ActivityExecutionFilter.human_attribute_name(:activity)
+            - if @filter.activity.present?
+              .badge.badge-pill.badge-info.ml-2= 1
         li.nav-item.mr-2.mb-2
           a.btn.btn-outline-secondary[data-toggle="pill" href="#filter-location" role="pill"]
             = ActivityExecutionFilter.human_attribute_name(:field)
+            - location_filter = [@filter.spot.presence, @filter.field.presence].compact
+            - if location_filter.count > 0
+              .badge.badge-pill.badge-info.ml-2= location_filter.count
         li.nav-item.mr-2.mb-2
           a.btn.btn-outline-secondary[data-toggle="pill" href="#filter-usage" role="pill"]
             = ActivityExecutionFilter.human_attribute_name(:availability)
+            - availability_filter = [@filter.max_units.presence, @filter.min_available_headcount.presence].compact
+            - if availability_filter.count > 0
+              .badge.badge-pill.badge-info.ml-2= availability_filter.count
         li.nav-item.mr-2.mb-2
           a.btn.btn-outline-secondary[data-toggle="pill" href="#filter-time" role="pill"]
             = ActivityExecutionFilter.human_attribute_name(:at)
+            - at_filter = [@filter.starts_at_after.presence, @filter.ends_at_before.presence].compact
+            - if at_filter.count > 0
+              .badge.badge-pill.badge-info.ml-2= at_filter.count
         li.nav-item.mr-2.mb-2
           = link_to reset_url, class: 'btn btn-outline-secondary', role: :pill, title: t('buttons.reset')
             i.fa.fa-undo

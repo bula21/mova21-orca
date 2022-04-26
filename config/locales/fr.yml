@@ -287,6 +287,7 @@ fr:
       success: L’activité a été mise à jour avec succès
   app:
     title: Orca
+  apply: Übernehmen
   buttons:
     back: retour
     close: Fermer
@@ -732,6 +733,9 @@ fr:
       button: Ouvrir les légendes des tags
       title: Légendes Tags
     video_src: https://www.youtube.com/embed/7XusNePwv_o
+  unit_activity_executions:
+    form:
+      reassign: Neue Durchführung finden
   unit_visitor_days:
     form:
       salutations:
