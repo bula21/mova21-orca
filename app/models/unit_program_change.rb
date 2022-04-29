@@ -10,7 +10,7 @@ class UnitProgramChange < ApplicationRecord
   after_save :send_notification
 
   def send_notification
-    send_notification! if notify && notified_at.blank?
+    send_notification! if notify && notified_at.blank? && ENV['SEND_PROGRAM_CHANGE_LOG_NOTIFICATIONS'].present?
   end
 
   def send_notification!
