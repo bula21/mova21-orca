@@ -2,6 +2,17 @@
 it:
   activemodel:
     attributes:
+      activity_execution_filter:
+        activity_id: attività
+        at: data / ora
+        availability: Disponibilità
+        date: data
+        ends_at_before: termina prima
+        field_id: terreni
+        max_units: numero massimo di unità assegnate
+        min_available_headcount: numero minimo di posti disponibili
+        spot_id: zone del programma
+        starts_at_after: inizia dopo
       activity_filter:
         activity_category: Categoria
         languages: lingua
@@ -119,6 +130,8 @@ it:
         week: Settimana di campo
       unit_activity_execution:
         activity_execution_id: Attività
+        change_notification: Änderungsbenachrichtigung an Einheit verschicken
+        change_remarks: Bemerkung zur Änderung
         headcount: Numero di persone
         unit_id: Unità
       unit_visitor_day:
@@ -275,6 +288,7 @@ it:
       success: Realizzazione modificata con successo
   app:
     title: Orca
+  apply: Übernehmen
   buttons:
     back: indietro
     close: Chiudere
@@ -316,6 +330,14 @@ it:
         Viele Grüsse
         Eure BuLa21-Crew
       subject: L'iscrizione al campo non è ancora completa
+    program_change_notification:
+      body: |-
+        Hallo %{salutation_name}
+
+        Euer Lagerprogramm hat sich geändert. Begründung: %{remarks}.
+
+        Siehe %{url}
+      subject: Programmänderung
   date:
     abbr_day_names:
     - Dom
@@ -536,6 +558,7 @@ it:
   nav:
     activity: Catalogo
     activity_category: Categoria
+    activity_execution: Activity execution
     fixed_event: Picasso
     language:
       de: DE
@@ -719,6 +742,9 @@ it:
       button: Aprire la legenda dei tag
       title: Legenda dei tag
     video_src: https://www.youtube.com/embed/7XusNePwv_o
+  unit_activity_executions:
+    form:
+      reassign: Neue Durchführung finden
   unit_visitor_days:
     form:
       salutations:
@@ -792,6 +818,7 @@ it:
         'true': pagato
       participants: Visualizzare i partecipanti
       questionnaire: Questionario
+  use_filter: Use filter
   views:
     pagination:
       first: !!str '<<'

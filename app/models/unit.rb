@@ -53,6 +53,7 @@ class Unit < ApplicationRecord
            through: :participant_units, inverse_of: :units, dependent: :destroy
   has_many :unit_activity_executions, inverse_of: :unit, dependent: :destroy
   has_one :unit_visitor_day, inverse_of: :unit, dependent: :destroy
+  has_many :unit_program_changes, inverse_of: :unit, dependent: :destroy
 
   has_many_attached :documents
 
@@ -83,6 +84,10 @@ class Unit < ApplicationRecord
 
   def expected_participants_leitung
     (expected_participants_leitung_f || 0) + (expected_participants_leitung_m || 0) + (expected_guest_leaders || 0)
+  end
+
+  def actual_participants
+    participant_role_counts[:participant]
   end
 
   def complete?

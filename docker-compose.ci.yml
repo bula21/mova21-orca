@@ -11,6 +11,7 @@ services:
       E2E_APP_HOST: "e2e_target:3002"
       DATABASE_URL: postgresql://postgres:postgres@db/orca_e2e
       DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL: "true"
+      SEND_PROGRAM_CHANGE_LOG_NOTIFICATIONS: "true"
       DISABLE_DATABASE_ENVIRONMENT_CHECK: "true"
       RAILS_ENV: test
       SELENIUM_HOST: "selenium:4444"

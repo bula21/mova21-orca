@@ -5,9 +5,9 @@ class LimesurveyService
   ADMIN_REMOTECONTROL_URL = URI.parse("#{BASEURL}/admin/remotecontrol")
   STUFEN = { wolf: 1, pfadi: 2, pio: 3, pta: 5 }.freeze
 
-  def initialize(username = ENV['LIMESURVEY_USERNAME'],
-                 password = ENV['LIMESURVEY_PASSWORD'],
-                 survey_id = ENV['LIMESURVEY_SURVEY_ID'])
+  def initialize(username = ENV.fetch('LIMESURVEY_USERNAME', nil),
+                 password = ENV.fetch('LIMESURVEY_PASSWORD', nil),
+                 survey_id = ENV.fetch('LIMESURVEY_SURVEY_ID', nil))
     @username = username
     @password = password
     @survey_id = survey_id

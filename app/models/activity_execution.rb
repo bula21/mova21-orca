@@ -8,6 +8,7 @@ class ActivityExecution < ApplicationRecord
   belongs_to :field, inverse_of: :activity_executions
   has_one :spot, through: :field
   has_many :unit_activity_executions, inverse_of: :activity_execution, dependent: :destroy
+  has_many :unit_program_changes, inverse_of: :activity_execution, dependent: :nullify
 
   validates :starts_at, :ends_at, presence: true
   validates :transport, inclusion: { in: [true, false] }
@@ -19,8 +20,21 @@ class ActivityExecution < ApplicationRecord
                                                   less_than_or_equal_to: :max_amount_participants }, allow_nil: false
 
   bitfield :language_flags, *Activity::LANGUAGES
+  attribute :change_notification, :boolean, default: false
+  attribute :track_changes_enabled, :boolean, default: true
+  attribute :change_remarks, :string
 
   scope :ordered, -> { order(:starts_at) }
+
+  after_save :track_changes
+
+  def track_changes
+    return unless track_changes_enabled?
+
+    unit_activity_executions.each do |unit_activity_execution|
+      unit_activity_execution.unit_program_changes.create(notify: change_notification, remarks: change_remarks)
+    end
+  end
 
   def max_amount_participants
     activity&.participants_count_activity || 0
