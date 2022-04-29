@@ -6,7 +6,7 @@ de:
         activity: Aktivitäts ID
         at: Datum / Zeit
         availability: Verfügbarkeit
-        ends_at_before: Ended vor
+        ends_at_before: Endet vor
         field: Feld ID
         max_units: max. Anzahl zugeteilter Einheiten
         min_available_headcount: min. verfügbare Plätze
