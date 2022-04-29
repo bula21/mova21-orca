@@ -3,15 +3,16 @@ en:
   activemodel:
     attributes:
       activity_execution_filter:
-        activity: Aktivität
-        at: Datum / Zeit
-        availability: Verfügbarkeit
-        ends_at_before: Ended vor
-        field: Feld
-        max_units: max. Anzahl zugeteilter Einheiten
-        min_available_headcount: min. verfügbare Plätze
-        spot: Spot
-        starts_at_after: Beginnt nach
+        activity_id: Activity
+        at: Date / Time
+        availability: Availability
+        date: Date
+        ends_at_before: Ends before
+        field_id: Field
+        max_units: max. units
+        min_available_headcount: min. available headcount
+        spot_id: Spot
+        starts_at_after: Starts after
       activity_filter:
         activity_category: Kategorie
         languages: Languages

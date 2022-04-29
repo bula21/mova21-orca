@@ -57,7 +57,7 @@ class UnitActivityExecutionsController < ApplicationController
   end
 
   def reassign
-    filter_defaults = { activity: @unit_activity_execution.activity&.id,
+    filter_defaults = { activity_id: @unit_activity_execution.activity&.id,
                         min_available_headcount: @unit_activity_execution.unit&.actual_participants }
     @filter ||= ActivityExecutionFilter.new(filter_params.reverse_merge(filter_defaults))
     @activity_executions = @filter.apply(ActivityExecution.accessible_by(current_ability)).ordered
@@ -76,8 +76,8 @@ class UnitActivityExecutionsController < ApplicationController
   end
 
   def filter_params
-    params[:activity_execution_filter]&.permit(%i[spot field starts_at_after ends_at_before activity
-                                                  min_available_headcount max_units]) || {}
+    params[:activity_execution_filter]&.permit(%i[spot_id field_id starts_at_after ends_at_before activity_id
+                                                  min_available_headcount max_units date]) || {}
   end
 
   def unit_activity_execution_params

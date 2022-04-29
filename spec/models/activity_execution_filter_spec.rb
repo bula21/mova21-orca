@@ -21,7 +21,7 @@ RSpec.describe ActivityExecutionFilter, type: :model do
 
     context 'with field' do
       let(:field) { create(:field) }
-      let(:params) { { field: field.id } }
+      let(:params) { { field_id: field.id } }
       let!(:activity_executions_on_field) { create_list(:activity_execution, 2, activity: activity, field: field) }
 
       it { is_expected.to include(*activity_executions_on_field) }

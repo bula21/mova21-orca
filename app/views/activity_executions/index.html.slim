@@ -12,7 +12,7 @@
           defaultAmountParticipants: @activity.participants_count_transport,
           spots: SpotBlueprint.render_as_hash(@spots, view: :with_fields), editable: true })
 - else
-  h1.h1= ActivityExecution.model_name.human(count: :other)
+  h1.h1= ActivityExecution.model_name.human(count: 2)
   == render partial: 'filter', locals: { submit_url: activity_executions_path, reset_url: activity_executions_path }
 
   / - if (1..100).include?(@activity_executions.to_a.count)

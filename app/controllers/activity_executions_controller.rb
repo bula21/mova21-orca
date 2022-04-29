@@ -55,7 +55,7 @@ class ActivityExecutionsController < ApplicationController
 
   def filter
     @filter ||= ActivityExecutionFilter.new(filter_params).tap do |filter|
-      filter.activity = @activity.id if @activity
+      filter.activity_id = @activity.id if @activity
     end
   end
 
@@ -72,8 +72,8 @@ class ActivityExecutionsController < ApplicationController
   end
 
   def filter_params
-    params[:activity_execution_filter]&.permit(%i[spot field starts_at_after ends_at_before activity
-                                                  min_available_headcount max_units])
+    params[:activity_execution_filter]&.permit(%i[spot_id field_id starts_at_after ends_at_before activity_id
+                                                  min_available_headcount max_units date])
   end
 
   def convert_language_array_to_flags(params)

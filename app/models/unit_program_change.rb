@@ -16,7 +16,7 @@ class UnitProgramChange < ApplicationRecord
   def send_notification!
     return unless valid?
 
-    CampUnitMailer.with(unit_program_change_id: id).program_change_notification.deliver_now &&
+    CampUnitMailer.with(unit_program_change_id: id).program_change_notification.deliver_later &&
       update!(notified_at: Time.zone.now)
   end
 

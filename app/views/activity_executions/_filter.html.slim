@@ -6,13 +6,13 @@
       ul.nav
         li.nav-item.mr-2.mb-2
           a.btn.btn-outline-secondary[data-toggle="pill" href="#filter-activity" role="pill"]
-            = ActivityExecutionFilter.human_attribute_name(:activity)
-            - if @filter.activity.present?
+            = ActivityExecutionFilter.human_attribute_name(:activity_id)
+            - if @filter.activity_id.present?
               .badge.badge-pill.badge-info.ml-2= 1
         li.nav-item.mr-2.mb-2
           a.btn.btn-outline-secondary[data-toggle="pill" href="#filter-location" role="pill"]
-            = ActivityExecutionFilter.human_attribute_name(:field)
-            - location_filter = [@filter.spot.presence, @filter.field.presence].compact
+            = ActivityExecutionFilter.human_attribute_name(:field_id)
+            - location_filter = [@filter.spot_id.presence, @filter.field_id.presence].compact
             - if location_filter.count > 0
               .badge.badge-pill.badge-info.ml-2= location_filter.count
         li.nav-item.mr-2.mb-2
@@ -24,7 +24,7 @@
         li.nav-item.mr-2.mb-2
           a.btn.btn-outline-secondary[data-toggle="pill" href="#filter-time" role="pill"]
             = ActivityExecutionFilter.human_attribute_name(:at)
-            - at_filter = [@filter.starts_at_after.presence, @filter.ends_at_before.presence].compact
+            - at_filter = [@filter.date.presence, @filter.starts_at_after.presence, @filter.ends_at_before.presence].compact
             - if at_filter.count > 0
               .badge.badge-pill.badge-info.ml-2= at_filter.count
         li.nav-item.mr-2.mb-2
@@ -34,12 +34,15 @@
     .col-12.order-sm-3
       .tab-content
         #filter-activity.py-3.tab-pane.show[role="tabpanel"]
-          = f.input :activity, as: :integer
+          = f.input :activity_id, as: :string, input_html: { list: :activity_ids }
+          datalist#activity_ids
+            - Activity.accessible_by(current_ability).order(:id).each do |activity|
+              option[value=activity.id]= activity
 
         #filter-location.py-3.tab-pane[role="tabpanel"]
         	.row
-            .col= f.input :spot, as: :integer
-            .col= f.input :field, as: :integer
+            .col= f.input :spot_id, collection: Spot.accessible_by(current_ability)
+            .col= f.input :field_id, collection: Spot.accessible_by(current_ability), as: :grouped_select, group_method: :fields
 
         #filter-usage.py-3.tab-pane[role="tabpanel"]
           .row
@@ -48,6 +51,7 @@
 
         #filter-time.py-3.tab-pane[role="tabpanel"]
           .row
+            .col= f.input :date, as: :date, html5: true
             .col= f.input :starts_at_after, as: :datetime, html5: true
             .col= f.input :ends_at_before, as: :datetime, html5: true
 
