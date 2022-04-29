@@ -6,8 +6,14 @@ class MidataService
 
   base_uri ENV.fetch('MIDATA_BASE_URL', 'https://pbs.puzzle.ch')
 
-  def initialize(user_email = ENV['MIDATA_USER_EMAIL'], user_token = ENV['MIDATA_USER_TOKEN'], _locale = 'de')
-    @auth_params = { 'X-User-Token': user_token, 'X-User-Email': user_email }
+  def initialize(user_email = ENV.fetch('MIDATA_USER_EMAIL',
+                                        nil), user_token = ENV.fetch('MIDATA_USER_TOKEN', nil), _locale = 'de')
+    # Hitobito deprecated user tokens. But this will not be deployed before BuLa
+    @auth_params = if self.class.base_uri.include?('pbs.puzzle.ch')
+                     { Authorization: "Bearer #{ENV.fetch('MIDATA_OAUTH_ACCESS_TOKEN', nil)}" }
+                   else
+                     { 'X-User-Token': user_token, 'X-User-Email': user_email }
+                   end
   end
 
   def fetch_participations(group_id, event_id, page = 1)
@@ -32,11 +38,21 @@ class MidataService
 
     return root_data if children_ids.nil? && !root
 
+    [root ? nil : root_data, children_data(children_urls(children_ids, root_data))].flatten.compact
+  end
+
+  private
+
+  def children_data(children_urls)
+    children_urls.map do |child_url|
+      fetch_camp_unit_data_hierarchy(child_url, root: false)
+    end
+  end
+
+  def children_urls(children_ids, root_data)
     events_data = root_data.dig('linked', 'events')
-    children_urls = children_ids.map do |subcamp_id|
+    children_ids.map do |subcamp_id|
       events_data.find { |d| d['id'] == subcamp_id }['href']
     end
-
-    [root_data, children_urls.map { |child_url| fetch_camp_unit_data_hierarchy(child_url, root: false) }].flatten
   end
 end

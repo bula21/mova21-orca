@@ -2,6 +2,7 @@
 
 class CampUnitBuilder
   include MidataHelper
+  include ImportHelper
 
   def initialize(stufe)
     @stufe = stufe
@@ -25,9 +26,8 @@ class CampUnitBuilder
     return unless id.present? && id != @stufe.root_camp_unit_id
 
     camp_unit = Unit.find_or_initialize_by(pbs_id: id)
-    if !camp_unit.update(assignable_attributes(camp_unit_data)) && Rollbar.configuration.enabled
-      Rollbar.error("MiData sync failed for unit with pbs_id #{id}", errors: camp_unit.errors.inspect)
-    end
+    camp_unit.assign_attributes(assignable_attributes(camp_unit_data))
+    save_or_log_if_persisted_and_changed(camp_unit)
     camp_unit
   end
 
@@ -51,12 +51,20 @@ class CampUnitBuilder
 
   def extract_people(camp_unit_data)
     mapping = { al: 'abteilungsleitung', lagerleiter: 'leader', coach: 'coach' }
-    mapping.transform_values do |data_key|
-      person_id = camp_unit_data.dig('events', 0, 'links', data_key)
-      person_data = camp_unit_data.dig('linked', 'people')&.find { |person| person['id'] == person_id }
+    leader_collection = {}
+    mapping.transform_values { |data_key| extract_person(camp_unit_data, data_key, leader_collection) }
+  end
 
-      @leader_builder.from_data(person_data, id: person_id) if person_id && person_data
-    end
+  def extract_person(camp_unit_data, data_key, leader_collection)
+    person_id = camp_unit_data.dig('events', 0, 'links', data_key)
+    person_data = camp_unit_data.dig('linked', 'people')&.find { |person| person['id'] == person_id }
+
+    return unless person_id && person_data
+
+    leader = leader_collection.fetch(person_id, @leader_builder.from_data(person_data, id: person_id))
+    leader_collection[person_id] = leader
+    save_or_log_if_persisted_and_changed(leader)
+    leader
   end
 
   def extract_groups(camp_unit_data)

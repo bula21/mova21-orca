@@ -14,10 +14,10 @@ module MidataHelper
   end
 
   def midata_link_to_participant(participant)
-    [ENV['MIDATA_BASE_URL'], I18n.locale, 'people', participant.pbs_id].join('/')
+    [ENV.fetch('MIDATA_BASE_URL', nil), I18n.locale, 'people', participant.pbs_id].join('/')
   end
 
   def midata_link_to_unit(unit)
-    [ENV['MIDATA_BASE_URL'], 'events', unit.pbs_id].join('/')
+    [ENV.fetch('MIDATA_BASE_URL', nil), 'events', unit.pbs_id].join('/')
   end
 end

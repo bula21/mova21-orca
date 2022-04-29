@@ -2,6 +2,17 @@
 fr:
   activemodel:
     attributes:
+      activity_execution_filter:
+        activity_id: activité
+        at: date / heure
+        availability: disponibilité
+        date: date
+        ends_at_before: se termine avant
+        field_id: terrain
+        max_units: nombre max. d'unités
+        min_available_headcount: places min. disponibles
+        spot_id: zone de programme
+        starts_at_after: commence après
       activity_filter:
         activity_category: Catégorie
         languages: Langues
@@ -119,6 +130,8 @@ fr:
         week: Semaine de camp
       unit_activity_execution:
         activity_execution_id: Activité
+        change_notification: Änderungsbenachrichtigung an Einheit verschicken
+        change_remarks: Bemerkung zur Änderung
         headcount: Nb. personnes
         unit_id: Unité
       unit_visitor_day:
@@ -277,6 +290,7 @@ fr:
       success: L’activité a été mise à jour avec succès
   app:
     title: Orca
+  apply: Übernehmen
   buttons:
     back: retour
     close: Fermer
@@ -319,6 +333,14 @@ fr:
         Viele Grüsse
         Eure BuLa21-Crew
       subject: L’inscription au mova n'est pas encore complète
+    program_change_notification:
+      body: |-
+        Hallo %{salutation_name}
+
+        Euer Lagerprogramm hat sich geändert. Begründung: %{remarks}.
+
+        Siehe %{url}
+      subject: Programmänderung
   date:
     abbr_day_names:
     - dim
@@ -543,6 +565,7 @@ fr:
   nav:
     activity: Catalogue
     activity_category: Categorie
+    activity_execution: Activity execution
     fixed_event: Picasso
     language:
       de: DE
@@ -721,6 +744,9 @@ fr:
       button: Ouvrir les légendes des tags
       title: Légendes Tags
     video_src: https://www.youtube.com/embed/7XusNePwv_o
+  unit_activity_executions:
+    form:
+      reassign: Neue Durchführung finden
   unit_visitor_days:
     form:
       salutations:
@@ -795,6 +821,7 @@ fr:
         'true': payé
       participants: Participant.e.s
       questionnaire: Questionaire
+  use_filter: Use filter
   views:
     pagination:
       first: !!str '<<'

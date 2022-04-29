@@ -53,6 +53,7 @@ class Unit < ApplicationRecord
            through: :participant_units, inverse_of: :units, dependent: :destroy
   has_many :unit_activity_executions, inverse_of: :unit, dependent: :destroy
   has_one :unit_visitor_day, inverse_of: :unit, dependent: :destroy
+  has_many :unit_program_changes, inverse_of: :unit, dependent: :destroy
 
   has_many_attached :documents
 
@@ -67,6 +68,10 @@ class Unit < ApplicationRecord
   before_save :set_limesurvey_token
   after_create :notify_incomplete
   accepts_nested_attributes_for :participants
+  accepts_nested_attributes_for :participant_units
+  accepts_nested_attributes_for :lagerleiter
+  accepts_nested_attributes_for :coach
+  accepts_nested_attributes_for :al
 
   enum language: { de: 'de', fr: 'fr', it: 'it', en: 'en' }
   enum activity_booking_phase: { closed: 0, preview: 1, open: 2, committed: 3 }, _prefix: true
@@ -79,6 +84,10 @@ class Unit < ApplicationRecord
 
   def expected_participants_leitung
     (expected_participants_leitung_f || 0) + (expected_participants_leitung_m || 0) + (expected_guest_leaders || 0)
+  end
+
+  def actual_participants
+    participant_role_counts[:participant]
   end
 
   def complete?

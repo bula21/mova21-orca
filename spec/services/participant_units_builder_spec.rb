@@ -52,6 +52,60 @@ RSpec.describe ParticipantUnitsBuilder do
         expect(Rollbar).not_to have_received(:warning)
       end
 
+      describe 'prioritizes the right roles' do
+        shared_examples 'choosing the right role' do |given_roles, expected_role|
+          subject(:role) { unit_participants.first.role }
+
+          let(:participants_data) do
+            # Attention: this is a very simplified representation of the actual export with the fields needed
+            [
+              {
+                roles: roles.map { |r| { type: r } },
+                links: { person: '3186' }
+              }
+            ].as_json
+          end
+
+          let(:expected_role) { expected_role }
+
+          context "when given as #{given_roles.join(',')}" do
+            let(:roles) { given_roles }
+
+            it { is_expected.to eq expected_role }
+          end
+
+          context "when given reversed as #{given_roles.reverse.join(',')}" do
+            let(:roles) { given_roles.reverse }
+
+            it { is_expected.to eq expected_role }
+          end
+        end
+
+        it_behaves_like 'choosing the right role',
+                        ['Event::Camp::Role::AssistantLeader', 'Event::Camp::Role::Participant'],
+                        'assistant_leader'
+
+        it_behaves_like 'choosing the right role',
+                        ['Event::Camp::Role::AssistantLeader', 'Event::Camp::Role::Helper'],
+                        'assistant_leader'
+
+        it_behaves_like 'choosing the right role',
+                        ['Event::Camp::Role::LeaderMountainSecurity', 'Event::Camp::Role::Participant'],
+                        'leader_mountain_security'
+
+        it_behaves_like 'choosing the right role',
+                        ['Event::Camp::Role::LeaderSnowSecurity', 'Event::Camp::Role::Participant'],
+                        'leader_snow_security'
+
+        it_behaves_like 'choosing the right role',
+                        ['Event::Camp::Role::LeaderWaterSecurity', 'Event::Camp::Role::Participant'],
+                        'leader_water_security'
+
+        it_behaves_like 'choosing the right role',
+                        ['Event::Camp::Role::LeaderWaterSecurity', 'Event::Camp::Role::AssistantLeader'],
+                        'assistant_leader'
+      end
+
       context 'with Rollbar configured' do
         before do
           allow(Rollbar.configuration).to receive(:enabled).and_return(true)
