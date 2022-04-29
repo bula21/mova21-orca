@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_02_115156) do
+ActiveRecord::Schema.define(version: 2022_04_29_091116) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -299,6 +299,19 @@ ActiveRecord::Schema.define(version: 2022_04_02_115156) do
     t.index ["unit_id"], name: "index_unit_activity_executions_on_unit_id"
   end
 
+  create_table "unit_program_changes", force: :cascade do |t|
+    t.bigint "unit_id", null: false
+    t.bigint "activity_execution_id", null: false
+    t.bigint "unit_activity_execution_id", null: false
+    t.boolean "notified_at"
+    t.text "remarks"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["activity_execution_id"], name: "index_unit_program_changes_on_activity_execution_id"
+    t.index ["unit_activity_execution_id"], name: "index_unit_program_changes_on_unit_activity_execution_id"
+    t.index ["unit_id"], name: "index_unit_program_changes_on_unit_id"
+  end
+
   create_table "unit_visitor_days", force: :cascade do |t|
     t.integer "unit_id", null: false
     t.integer "u6_tickets", default: 0, null: false
@@ -354,6 +367,7 @@ ActiveRecord::Schema.define(version: 2022_04_02_115156) do
     t.string "arrival_slot"
     t.string "departure_slot"
     t.datetime "hand_over_camp_at"
+    t.string "transport_mode"
     t.index ["al_id"], name: "index_units_on_al_id"
     t.index ["coach_id"], name: "index_units_on_coach_id"
     t.index ["lagerleiter_id"], name: "index_units_on_lagerleiter_id"
@@ -389,6 +403,9 @@ ActiveRecord::Schema.define(version: 2022_04_02_115156) do
   add_foreign_key "unit_activities", "units"
   add_foreign_key "unit_activity_executions", "activity_executions"
   add_foreign_key "unit_activity_executions", "units"
+  add_foreign_key "unit_program_changes", "activity_executions"
+  add_foreign_key "unit_program_changes", "unit_activity_executions"
+  add_foreign_key "unit_program_changes", "units"
   add_foreign_key "unit_visitor_days", "units"
   add_foreign_key "units", "kvs", primary_key: "pbs_id"
   add_foreign_key "units", "leaders", column: "al_id"

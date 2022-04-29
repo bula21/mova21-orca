@@ -2,6 +2,17 @@
 de:
   activemodel:
     attributes:
+      activity_execution_filter:
+        activity_id: Aktivitäts ID
+        at: Datum / Zeit
+        availability: Verfügbarkeit
+        date: Datum
+        ends_at_before: Endet vor
+        field_id: Feld
+        max_units: max. Anzahl zugeteilter Einheiten
+        min_available_headcount: min. verfügbare Plätze
+        spot_id: Spot
+        starts_at_after: Beginnt nach
       activity_filter:
         activity_category: Kategorie
         languages: Sprachen
@@ -91,10 +102,10 @@ de:
         activity_booking_phase: Buchungsphase
         al: AL
         amount_of_rovers: Anzahl zugelassene Einheits-Rover
-        arrival_slot: Anreise Slot
+        arrival_slot: Anlieferung Material
         coach: Coach
         definite_max_number_of_persons: Definitve maximale Personenanzahl
-        departure_slot: Abreise Slot
+        departure_slot: Abholung Material
         district: Quartier
         ends_at: Ende am
         expected_guest_leaders: Definitive Anzahl Internationale (Leitung)
@@ -115,10 +126,13 @@ de:
         starts_at: Beginn am
         stufe: Stufe
         title: Titel
+        transport_mode: Transportart
         visitor_day_tickets: Anzahl Tickets für den Besuchstag
         week: Lagerwoche
       unit_activity_execution:
         activity_execution_id: Durchführung
+        change_notification: Änderungsbenachrichtigung an Einheit verschicken
+        change_remarks: Bemerkung zur Änderung
         headcount: Anzahl Personen
         unit_id: Einheit
       unit_visitor_day:
@@ -194,8 +208,8 @@ de:
         one: Gebuchte Aktivität
         other: Warenkorb
       unit_activity_execution:
-        one: Zugewiesene Aktivitätsdurchführung
-        other: Zugewiesene Aktivitätsdurchführungen
+        one: Zuweisung
+        other: Zuweisungen
       unit_visitor_day:
         one: Besuchstag
         other: Besuchstage
@@ -272,6 +286,7 @@ de:
       success: Durchführung erfolgreich geändert
   app:
     title: Orca
+  apply: Übernehmen
   buttons:
     back: zurück
     close: Schliessen
@@ -314,6 +329,14 @@ de:
         Meilleures salutations,
         Votre Team CaFé21
       subject: Lageranmeldung mova unvollständig
+    program_change_notification:
+      body: |-
+        Hallo %{salutation_name}
+
+        Euer Lagerprogramm hat sich geändert. Begründung: %{remarks}.
+
+        Siehe %{url}
+      subject: Programmänderung
   date:
     abbr_day_names:
     - So
@@ -535,6 +558,7 @@ de:
   nav:
     activity: Katalog
     activity_category: Kategorie
+    activity_execution: Programm
     fixed_event: Grobprogramm
     language:
       de: DE
@@ -718,6 +742,9 @@ de:
       button: Tag Legende öffnen
       title: Legende Tags
     video_src: https://www.youtube.com/embed/TZQT-Zngcyc
+  unit_activity_executions:
+    form:
+      reassign: Neue Durchführung finden
   unit_visitor_days:
     form:
       salutations:
@@ -791,6 +818,7 @@ de:
         'true': bezahlt
       participants: Teilnehmende anzeigen
       questionnaire: Fragebogen
+  use_filter: Zu viele Datensätze. Bitte Filter verwenden
   views:
     pagination:
       first: !!str '<<'

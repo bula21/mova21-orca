@@ -21,6 +21,7 @@ services:
       CAMP_START: ${CAMP_START}
       CAMP_END: ${CAMP_END}
       DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL: "true"
+      SEND_PROGRAM_CHANGE_LOG_NOTIFICATIONS: "true"
       RUBYOPT: "-W:no-deprecated -W:no-experimental"
       APP_BASE_URL: http://orca.localhost:3000
       MEMCACHE_SERVERS: memcached
@@ -53,7 +54,6 @@ services:
       - db
       - mail
       - memcached
-      - webpack
     tty: true
     stdin_open: true
 

@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 Devise.setup do |config|
-  config.secret_key = ENV['DEVISE_SECRET_KEY']
-  config.mailer_sender = ENV['MAIL_SENDER']
-  config.pepper = ENV['DEVISE_PEPPER']
+  config.secret_key = ENV.fetch('DEVISE_SECRET_KEY', nil)
+  config.mailer_sender = ENV.fetch('MAIL_SENDER', nil)
+  config.pepper = ENV.fetch('DEVISE_PEPPER', nil)
 
   require 'devise/orm/active_record'
 
@@ -27,12 +27,12 @@ Devise.setup do |config|
                   scope: [:openid],
                   response_type: :code,
                   discovery: true,
-                  issuer: ENV['OIDC_ISSUER'],
+                  issuer: ENV.fetch('OIDC_ISSUER', nil),
                   uid_field: 'preferred_username',
                   client_options: {
-                    identifier: ENV['OIDC_CLIENT_ID'],
-                    secret: ENV['OIDC_CLIENT_SECRET_KEY'],
-                    redirect_uri: "#{ENV['APP_BASE_URL']}/users/auth/openid_connect/callback"
+                    identifier: ENV.fetch('OIDC_CLIENT_ID', nil),
+                    secret: ENV.fetch('OIDC_CLIENT_SECRET_KEY', nil),
+                    redirect_uri: "#{ENV.fetch('APP_BASE_URL', nil)}/users/auth/openid_connect/callback"
                   }
 
   config.omniauth :developer, fields: %w[email pbs_id]

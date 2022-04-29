@@ -26,6 +26,9 @@ html
           - if can?(:read, Activity)
             li.nav-item
               = link_to t('nav.activity'), activities_path, class: 'nav-link'
+          - if can?(:manage, ActivityExecution)
+            li.nav-item
+              = link_to t('nav.activity_execution'), activity_executions_path, class: 'nav-link'
           - if can?(:create, Tag)
             li.nav-item.dropdown
               .nav-link.dropdown-toggle[href='#' role="button" data-toggle="dropdown"]= "Admin"

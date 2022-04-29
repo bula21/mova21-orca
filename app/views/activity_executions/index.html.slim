@@ -1,69 +1,87 @@
-.h1.pb-0.d-flex.justify-content-between
-  = "#{@activity.id} -  #{@activity.label}"
-  span.badge[class="badge-#{@activity.activity_category.css_code}" style='align-self: baseline']
-    = @activity.activity_category&.label
+- if @activity
+  h1.h1.pb-0.d-flex.justify-content-between
+    = "#{@activity.id} -  #{@activity.label}"
+    span.badge[class="badge-#{@activity.activity_category.css_code}" style='align-self: baseline']
+      = @activity.activity_category&.label
 
-.mb-3= link_to t('buttons.back'), activity_path(@activity)
+  .mb-3= link_to t('buttons.back'), activity_path(@activity)
+  == render partial: 'filter', locals: { submit_url: activity_executions_path, reset_url: activity_executions_path }
 
-= react_component("CalendarManager", { activityId: @activity.id,
-        availableLanguages: available_languages_for_frontend(@activity),
-        defaultAmountParticipants: @activity.participants_count_transport,
-        spots: SpotBlueprint.render_as_hash(@spots, view: :with_fields), editable: true })
+  = react_component("CalendarManager", { activityId: @activity.id,
+          availableLanguages: available_languages_for_frontend(@activity),
+          defaultAmountParticipants: @activity.participants_count_transport,
+          spots: SpotBlueprint.render_as_hash(@spots, view: :with_fields), editable: true })
+- else
+  h1.h1= ActivityExecution.model_name.human(count: 2)
+  == render partial: 'filter', locals: { submit_url: activity_executions_path, reset_url: activity_executions_path }
 
-.table-responsive.mt-4
-  table.table
-    thead
-      tr
-        th = ActivityExecution.human_attribute_name(:id)
-        th = ActivityExecution.human_attribute_name(:starts_at)
-        th = ActivityExecution.human_attribute_name(:ends_at)
-        th = ActivityExecution.human_attribute_name(:field)
-        th = ActivityExecution.human_attribute_name(:amount_participants)
-        th
-    tbody
-      - @activity_executions.each do |activity_execution|
+  / - if (1..100).include?(@activity_executions.to_a.count)
+  /   = react_component("ReadOnlyCalendarManager", { editable: false, stufe: 'all', events: ActivityExecutionBlueprint.render_as_hash(@activity_executions, view: :with_activity) })
+
+- unless @filter.active?
+  .alert.alert-dismissible.alert-warning
+    button class='close' data-dismiss='alert' aria-label=t('buttons.close')
+      span aria-hidden="true" &times;
+    =t('use_filter')
+
+- else
+  .table-responsive.mt-4
+    table.table
+      thead
         tr
-          td 
-            = activity_execution.id
-          td
-            = l(activity_execution.starts_at, format: :short)
-          td 
-            = l(activity_execution.ends_at, format: :short)
-          td 
-            = link_to activity_execution.field, activity_activity_executions_path(@activity, field_id: activity_execution.field.id)
-          td 
-						= "#{activity_execution.headcount}/#{activity_execution.amount_participants} (#{(activity_execution.headcount_utilization * 100).to_i}%)"
-          td.p-1
-            = link_to(UnitActivityExecution.model_name.human(count: 2), unit_activity_executions_path(activity_execution_id: activity_execution.id), class: 'btn btn-primary') if can?(:read, UnitActivityExecution)
-            / = link_to(t('buttons.edit'), edit_unit_activity_execution_path(activity_execution), class: 'btn btn-primary') if can?(:edit, unit_activity_execution)
-            / = link_to t('buttons.destroy'), unit_activity_execution_path(activity_execution), data: { confirm: t('buttons.confirm_delete'), params: { unit_id: params[:unit_id], activity_execution_id: params[:activity_execution_id]} }, method: :delete, class: 'btn btn-secondary' if can?(:delete, unit_activity_execution)
+          th = ActivityExecution.human_attribute_name(:id)
+          th = Activity.model_name.human
+          th = ActivityExecution.human_attribute_name(:starts_at)
+          th = ActivityExecution.human_attribute_name(:ends_at)
+          th = ActivityExecution.human_attribute_name(:field)
+          th = ActivityExecution.human_attribute_name(:amount_participants)
+          th
+      tbody
+        - @activity_executions.each do |activity_execution|
+          tr
+            td 
+              = activity_execution.id
+            td 
+              = link_to activity_execution.activity, activity_path(activity_execution.activity)
+            td
+              = l(activity_execution.starts_at, format: :short)
+            td 
+              = l(activity_execution.ends_at, format: :short)
+            td 
+              = link_to activity_execution.field, activity_activity_executions_path(activity_execution.activity, field_id: activity_execution.field.id)
+            td 
+              = "#{activity_execution.headcount}/#{activity_execution.amount_participants} (#{(activity_execution.headcount_utilization * 100).to_i}%)"
+            td.p-1
+              = link_to(UnitActivityExecution.model_name.human(count: 2), unit_activity_executions_path(activity_execution_id: activity_execution.id), class: 'btn btn-primary') if can?(:read, UnitActivityExecution)
+              / = link_to(t('buttons.edit'), edit_unit_activity_execution_path(activity_execution), class: 'btn btn-primary') if can?(:edit, unit_activity_execution)
+              / = link_to t('buttons.destroy'), unit_activity_execution_path(activity_execution), data: { confirm: t('buttons.confirm_delete'), params: { unit_id: params[:unit_id], activity_execution_id: params[:activity_execution_id]} }, method: :delete, class: 'btn btn-secondary' if can?(:delete, unit_activity_execution)
 
-.row.mt-4
-  .col-md-6
-    .card
-      .card-body
-        h4 = t('activity.show.excel_import.title')
-        p
-          = t('activity.show.excel_import.description')
-          =< link_to t('activity.show.excel_import.template_download'), '/activity_execution_upload_template.xlsx'
+- if @activity
+  .row.mt-4
+    .col-md-6
+      .card
+        .card-body
+          h4 = t('activity.show.excel_import.title')
+          p
+            = t('activity.show.excel_import.description')
+            =< link_to t('activity.show.excel_import.template_download'), '/activity_execution_upload_template.xlsx'
 
-        - if @import_errors.present?
-          ul.alert.alert-danger
-            - @import_errors.each do |error|
-              li = error
+          - if @import_errors.present?
+            ul.alert.alert-danger
+              - @import_errors.each do |error|
+                li = error
 
-        = simple_form_for :import, url: import_activity_activity_executions_path(@activity), method: :post do |f|
-          = f.input :file, as: :file
-          = f.submit t('buttons.upload'), class: 'btn btn-secondary'
+          = simple_form_for :import, url: import_activity_activity_executions_path(@activity), method: :post do |f|
+            = f.input :file, as: :file
+            = f.submit t('buttons.upload'), class: 'btn btn-secondary'
 
-  .col-md-6
-    .card.alert.alert-danger
-      .card-body
-        h4 = t('delete_activity_executions.index.title')
-        p = t('activity.show.executions_delete.description')
-        = link_to t('activity.show.executions_delete.link'), activity_delete_activity_executions_path(@activity),
-                class: 'btn btn-danger'
+    .col-md-6
+      .card.alert.alert-danger
+        .card-body
+          h4 = t('delete_activity_executions.index.title')
+          p = t('activity.show.executions_delete.description')
+          = link_to t('activity.show.executions_delete.link'), activity_delete_activity_executions_path(@activity),
+                  class: 'btn btn-danger'
 
-
-hr.mt-4
-=> link_to t('buttons.back'), activities_path, class: 'btn btn-secondary'
+  hr.mt-4
+  => link_to t('buttons.back'), activities_path, class: 'btn btn-secondary'
