@@ -102,10 +102,10 @@ en:
         activity_booking_phase: Buchungsphase
         al: Group leader
         amount_of_rovers: Amount of rovers
-        arrival_slot: Arrival Slot
+        arrival_slot: Material Delivery
         coach: Coach
         definite_max_number_of_persons: Definite max number of persons
-        departure_slot: Departure Slot
+        departure_slot: Material pick up
         district: District
         ends_at: End on
         expected_guest_leaders: Erwartete Anzahl Gäste (Leitung)
@@ -126,6 +126,7 @@ en:
         starts_at: Start on
         stufe: Stufe
         title: Title
+        transport_mode: Type of Transport
         visitor_day_tickets: Anzahl Tickets für den Besuchstag
         week: Week
       unit_activity_execution:

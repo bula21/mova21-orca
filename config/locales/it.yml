@@ -102,10 +102,10 @@ it:
         activity_booking_phase: Fase di prenotazione
         al: CSZ
         amount_of_rovers: Numero di rover dell'unità ammessi
-        arrival_slot: Slot viaggio di andata
+        arrival_slot: Consegna materiale
         coach: Coach
         definite_max_number_of_persons: Numero massimo di persone definitivo
-        departure_slot: Slot viaggio di ritorno
+        departure_slot: Ritiro materiale
         district: Quartiere
         ends_at: Fine il
         expected_guest_leaders: Numero definitivo di animatori/trici internazionali
@@ -126,6 +126,7 @@ it:
         starts_at: Inizio il
         stufe: Branca
         title: Titolo
+        transport_mode: Tipo di trasporto
         visitor_day_tickets: Anzahl Tickets für den Giornata delle visite
         week: Settimana di campo
       unit_activity_execution:

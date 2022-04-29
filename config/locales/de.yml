@@ -102,10 +102,10 @@ de:
         activity_booking_phase: Buchungsphase
         al: AL
         amount_of_rovers: Anzahl zugelassene Einheits-Rover
-        arrival_slot: Anreise Slot
+        arrival_slot: Anlieferung Material
         coach: Coach
         definite_max_number_of_persons: Definitve maximale Personenanzahl
-        departure_slot: Abreise Slot
+        departure_slot: Abholung Material
         district: Quartier
         ends_at: Ende am
         expected_guest_leaders: Definitive Anzahl Internationale (Leitung)
@@ -126,6 +126,7 @@ de:
         starts_at: Beginn am
         stufe: Stufe
         title: Titel
+        transport_mode: Transportart
         visitor_day_tickets: Anzahl Tickets für den Besuchstag
         week: Lagerwoche
       unit_activity_execution:
