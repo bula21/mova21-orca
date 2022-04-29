@@ -128,6 +128,7 @@ de:
         title: Titel
         visitor_day_tickets: Anzahl Tickets für den Besuchstag
         week: Lagerwoche
+        transport_mode: Transportart
       unit_activity_execution:
         activity_execution_id: Durchführung
         change_notification: Änderungsbenachrichtigung an Einheit verschicken
