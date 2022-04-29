@@ -5,5 +5,6 @@ FactoryBot.define do
     unit
     activity_execution
     headcount { nil }
+    track_changes_enabled { false }
   end
 end

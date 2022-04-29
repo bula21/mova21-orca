@@ -1,172 +1,175 @@
 .h1.pb-5 = @unit.title
-
-.card.mt-3.position-relative[class=(@unit.complete? ? 'border-success' : 'border-danger')]
-  .card-body
-    h3.mb-4 = t('units.show.basic_infos')
-    dl
-      .row
-        .col-6
-          dt = t('activerecord.attributes.unit.abteilung')
-          dd = "#{@unit.abteilung} - #{@unit.kv.name}"
-
-        .col-6
-          dt = t('activerecord.attributes.unit.stufe')
-          dd = t("simple_form.options.unit.stufe.#{@unit.stufe}")
-
-
-      .row
-        .col-6
-          dt = t('activerecord.attributes.unit.on_site_at')
-          dd = t('date.from_to', from: l(@unit.starts_at.to_date), to: l(@unit.ends_at.to_date))
-
-        .col-6
-          dt = t('activerecord.attributes.unit.al')
-          dd = @unit.al&.full_name
-          - if @unit.coach
-            dt = t('activerecord.attributes.unit.coach')
-            dd = @unit.coach&.full_name
-
-      .row
-        .col-6
-          dt = t('.camp_id')
-          dd
-            #
-            = @unit.id
-          - if @unit.pbs_id.present?
-            = link_to midata_link_to_unit(@unit), class: 'mb-3' do
-              i.fas.fa-link
-              =< t('.camp_link_midata')
-
-        .col-6
-          dt = t('activerecord.attributes.unit.lagerleiter')
-          dd
-            address
-              = @unit.lagerleiter.full_name
-              br
-              = @unit.lagerleiter.address
-              br
-              = @unit.lagerleiter.zip_code
-              =< @unit.lagerleiter.town
-              =< @unit.lagerleiter.country
-            = link_to_if @unit.lagerleiter.phone_number, @unit.lagerleiter.phone_number,
-                    "tel:#{@unit.lagerleiter.phone_number}"
-            - if @unit.lagerleiter.phone_number.present?
-              br
-            = mail_to @unit.lagerleiter.email, @unit.lagerleiter.email
-
-
-    - if can?(:edit, @unit)
-      = link_to(edit_unit_path(@unit))
-        i.fa.fa-edit
-        =< t('buttons.edit')
-
-  - if @unit.complete?
-    .card-footer.bg-success.border-success.text-white
-      = t('.data_complete')
-  - else
-    .card-footer.bg-danger.border-danger.text-white
-      = t('.data_incomplete')
-
-      ul.pt-3.pb-1
-        - @unit.errors.full_messages.each do |error|
-          li= error
-
-.card.mt-5
-  .card-body
-    h3.mb-4 = t('units.show.other_infos')
-
-    .row
-      .col-6
-        dt = t('activerecord.attributes.unit.district')
-        dd = @unit.district
-
-        dt = t('activerecord.attributes.unit.week')
-        dd = @unit.week
-
-        dt = t('activerecord.attributes.unit.language')
-        dd = @unit.language
-
-        dt = t('activerecord.attributes.unit.definite_max_number_of_persons')
-        dd = @unit.definite_max_number_of_persons
-
-        - if @unit.expected_guest_participants
-          dt = t('activerecord.attributes.unit.expected_guest_participants')
-          dd = @unit.expected_guest_participants
-
-          dt = t('activerecord.attributes.unit.expected_guest_leaders')
-          dd = @unit.expected_guest_leaders
-          
-      .col-6
-        dt = t('activerecord.attributes.unit.amount_of_rovers')
-        dd = @unit.amount_of_rovers
-
-        dt = t('activerecord.attributes.unit.arrival_slot')
-        dd = @unit.arrival_slot
-
-        dt = t('activerecord.attributes.unit.departure_slot')
-        dd = @unit.departure_slot
-
-        dt = t('activerecord.attributes.unit.hand_over_camp_at')
-        dd = I18n.l(@unit.hand_over_camp_at) if @unit.hand_over_camp_at
-
-/ Hidden temporarily to avoid confusion
-/ .card.mt-5
-/   .card-body
-/     h3.mb-4 = t('units.show.expected_participants')
-/     dl
-/       .row
-/         .col-6
-/           dt = t('activerecord.attributes.unit.expected_participants_leitung_f')
-/           dd = @unit.expected_participants_leitung_f
-
-/         .col-6
-/           dt = t('activerecord.attributes.unit.expected_participants_leitung_m')
-/           dd = @unit.expected_participants_leitung_m
-
-/       .row
-/         .col-6
-/           dt = t('activerecord.attributes.unit.expected_participants_f')
-/           dd = @unit.expected_participants_f
-
-/         .col-6
-/           dt = t('activerecord.attributes.unit.expected_participants_m')
-/           dd = @unit.expected_participants_m
-
-/   - if @unit.pbs_id.present?
-/     .card-footer.bg-info.text-white
-/       i.fas.fa-info-circle
-/       =< t('units.show.expected_participants_explanation_html', link: [ENV['MIDATA_BASE_URL'], 'events', @unit.pbs_id].join('/'))
-
-
-.card.mt-5[class=(@unit.participants.all?(&:complete?) ? 'border-success' : 'border-danger')]
-  .card-body
-    h3.mb-4 = t('units.show.participants')
-
-    p
-      - participants_count = @unit.participants.count
-      => participants_count
-      =>  Participant.model_name.human(count: participants_count)
-      = t('.imported')
-    p
+- if can?(:read, @unit)
+  .card.mt-3.position-relative[class=(@unit.complete? ? 'border-success' : 'border-danger')]
+    .card-body
+      h3.mb-4 = t('units.show.basic_infos')
       dl
-        - ParticipantUnit.roles.keys.each do |role|
-          - role_participants = @unit.participant_units.with_role(role).count
-          - unless role_participants.zero?
-            dt
-              = translated_midata_role(role)
-              ' :
-            dd = @unit.participant_units.with_role(role).count
+        .row
+          .col-6
+            dt = t('activerecord.attributes.unit.abteilung')
+            dd = "#{@unit.abteilung} - #{@unit.kv.name}"
 
-    = link_to t('.participants'), unit_participant_units_path(@unit), class: 'stretched-link'
+          .col-6
+            dt = t('activerecord.attributes.unit.stufe')
+            dd = t("simple_form.options.unit.stufe.#{@unit.stufe}")
 
-  - if @unit.participants.all?(&:complete?)
-    .card-footer.bg-success.border-success.text-white
-      = t('.data_complete')
-  - else
-    .card-footer.bg-danger.border-danger.text-white
-      = t('.data_incomplete')
 
-- if @unit.invoices.any? || @unit.documents.any?
+        .row
+          .col-6
+            dt = t('activerecord.attributes.unit.on_site_at')
+            dd = t('date.from_to', from: l(@unit.starts_at.to_date), to: l(@unit.ends_at.to_date))
+
+          .col-6
+            dt = t('activerecord.attributes.unit.al')
+            dd = @unit.al&.full_name
+            - if @unit.coach
+              dt = t('activerecord.attributes.unit.coach')
+              dd = @unit.coach&.full_name
+
+        .row
+          .col-6
+            dt = t('.camp_id')
+            dd
+              #
+              = @unit.id
+            - if @unit.pbs_id.present?
+              = link_to midata_link_to_unit(@unit), class: 'mb-3' do
+                i.fas.fa-link
+                =< t('.camp_link_midata')
+
+          .col-6
+            dt = t('activerecord.attributes.unit.lagerleiter')
+            dd
+              address
+                = @unit.lagerleiter.full_name
+                br
+                = @unit.lagerleiter.address
+                br
+                = @unit.lagerleiter.zip_code
+                =< @unit.lagerleiter.town
+                =< @unit.lagerleiter.country
+              = link_to_if @unit.lagerleiter.phone_number, @unit.lagerleiter.phone_number,
+                      "tel:#{@unit.lagerleiter.phone_number}"
+              - if @unit.lagerleiter.phone_number.present?
+                br
+              = mail_to @unit.lagerleiter.email, @unit.lagerleiter.email
+
+
+      - if can?(:edit, @unit)
+        = link_to(edit_unit_path(@unit))
+          i.fa.fa-edit
+          =< t('buttons.edit')
+
+    - if @unit.complete?
+      .card-footer.bg-success.border-success.text-white
+        = t('.data_complete')
+    - else
+      .card-footer.bg-danger.border-danger.text-white
+        = t('.data_incomplete')
+
+        ul.pt-3.pb-1
+          - @unit.errors.full_messages.each do |error|
+            li= error
+
+  .card.mt-5
+    .card-body
+      h3.mb-4 = t('units.show.other_infos')
+
+      .row
+        .col-6
+          dt = t('activerecord.attributes.unit.district')
+          dd = @unit.district
+
+          dt = t('activerecord.attributes.unit.week')
+          dd = @unit.week
+
+          dt = t('activerecord.attributes.unit.language')
+          dd = @unit.language
+
+          dt = t('activerecord.attributes.unit.definite_max_number_of_persons')
+          dd = @unit.definite_max_number_of_persons
+
+          - if @unit.expected_guest_participants
+            dt = t('activerecord.attributes.unit.expected_guest_participants')
+            dd = @unit.expected_guest_participants
+
+            dt = t('activerecord.attributes.unit.expected_guest_leaders')
+            dd = @unit.expected_guest_leaders
+            
+        .col-6
+          dt = t('activerecord.attributes.unit.amount_of_rovers')
+          dd = @unit.amount_of_rovers
+
+          dt = t('activerecord.attributes.unit.arrival_slot')
+          dd = @unit.arrival_slot
+
+          dt = t('activerecord.attributes.unit.departure_slot')
+          dd = @unit.departure_slot
+
+          dt = t('activerecord.attributes.unit.transport_mode')
+          dd = @unit.transport_mode
+
+          dt = t('activerecord.attributes.unit.hand_over_camp_at')
+          dd = I18n.l(@unit.hand_over_camp_at) if @unit.hand_over_camp_at
+
+  / Hidden temporarily to avoid confusion
+  / .card.mt-5
+  /   .card-body
+  /     h3.mb-4 = t('units.show.expected_participants')
+  /     dl
+  /       .row
+  /         .col-6
+  /           dt = t('activerecord.attributes.unit.expected_participants_leitung_f')
+  /           dd = @unit.expected_participants_leitung_f
+
+  /         .col-6
+  /           dt = t('activerecord.attributes.unit.expected_participants_leitung_m')
+  /           dd = @unit.expected_participants_leitung_m
+
+  /       .row
+  /         .col-6
+  /           dt = t('activerecord.attributes.unit.expected_participants_f')
+  /           dd = @unit.expected_participants_f
+
+  /         .col-6
+  /           dt = t('activerecord.attributes.unit.expected_participants_m')
+  /           dd = @unit.expected_participants_m
+
+  /   - if @unit.pbs_id.present?
+  /     .card-footer.bg-info.text-white
+  /       i.fas.fa-info-circle
+  /       =< t('units.show.expected_participants_explanation_html', link: [ENV['MIDATA_BASE_URL'], 'events', @unit.pbs_id].join('/'))
+
+- if can?(:read, ParticipantUnit, unit: @unit)
+  .card.mt-5[class=(@unit.participants.all?(&:complete?) ? 'border-success' : 'border-danger')]
+    .card-body
+      h3.mb-4 = t('units.show.participants')
+
+      p
+        - participants_count = @unit.participants.count
+        => participants_count
+        =>  Participant.model_name.human(count: participants_count)
+        = t('.imported')
+      p
+        dl
+          - ParticipantUnit.roles.keys.each do |role|
+            - role_participants = @unit.participant_units.with_role(role).count
+            - unless role_participants.zero?
+              dt
+                = translated_midata_role(role)
+                ' :
+              dd = @unit.participant_units.with_role(role).count
+
+      = link_to t('.participants'), unit_participant_units_path(@unit), class: 'stretched-link'
+
+    - if @unit.participants.all?(&:complete?)
+      .card-footer.bg-success.border-success.text-white
+        = t('.data_complete')
+    - else
+      .card-footer.bg-danger.border-danger.text-white
+        = t('.data_incomplete')
+
+- if can?(:read_documents, @unit) && (@unit.invoices.any? || @unit.documents.any?)
   .card.mt-5
     .card-body
       .row
@@ -194,7 +197,7 @@
                 small.text-muted = I18n.l(document.created_at)
 
 
-- if @unit.activity_booking_phase_preview? || @unit.activity_booking_phase_open?
+- if can?(:read, UnitActivity, unit: @unit) && (@unit.activity_booking_phase_preview? || @unit.activity_booking_phase_open?)
   .card.mt-5
     .card-body
       h3.mb-4 = t('units.show.activity_booking')
@@ -218,7 +221,7 @@
       - elsif @unit.activity_booking.phase?(:open)
         = t('.activity_booking_open')
 
-- if @unit.unit_visitor_day.present? && @unit.unit_visitor_day.at
+- if can?(:read, UnitVisitorDay, unit: @unit) && @unit.unit_visitor_day.present? && @unit.unit_visitor_day.at
   .card.mt-5
     .card-body
       h3.mb-4 = UnitVisitorDay.model_name.human
@@ -233,7 +236,7 @@
     /   - elsif @unit.activity_booking.phase?(:open)
     /     = t('.activity_booking_open')
 
-- if can? :read, UnitActivityExecution
+- if can?(:read, UnitActivityExecution, unit: @unit)
   .card.mt-5
     .card-body
       h3.mb-4= UnitActivityExecution.model_name.human

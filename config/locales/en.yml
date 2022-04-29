@@ -2,6 +2,17 @@
 en:
   activemodel:
     attributes:
+      activity_execution_filter:
+        activity_id: Activity
+        at: Date / Time
+        availability: Availability
+        date: Date
+        ends_at_before: Ends before
+        field_id: Field
+        max_units: max. units
+        min_available_headcount: min. available headcount
+        spot_id: Spot
+        starts_at_after: Starts after
       activity_filter:
         activity_category: Kategorie
         languages: Languages
@@ -91,10 +102,10 @@ en:
         activity_booking_phase: Buchungsphase
         al: Group leader
         amount_of_rovers: Amount of rovers
-        arrival_slot: Arrival Slot
+        arrival_slot: Material Delivery
         coach: Coach
         definite_max_number_of_persons: Definite max number of persons
-        departure_slot: Departure Slot
+        departure_slot: Material pick up
         district: District
         ends_at: End on
         expected_guest_leaders: Erwartete Anzahl Gäste (Leitung)
@@ -115,10 +126,13 @@ en:
         starts_at: Start on
         stufe: Stufe
         title: Title
+        transport_mode: Type of Transport
         visitor_day_tickets: Anzahl Tickets für den Besuchstag
         week: Week
       unit_activity_execution:
         activity_execution_id: Durchführung
+        change_notification: Änderungsbenachrichtigung an Einheit verschicken
+        change_remarks: Bemerkung zur Änderung
         headcount: Anzahl Personen
         unit_id: Einheit
       unit_visitor_day:
@@ -271,6 +285,7 @@ en:
       success: Activity execution successfully updated
   app:
     title: Orca
+  apply: Übernehmen
   buttons:
     back: Back
     close: Schliessen
@@ -294,6 +309,14 @@ en:
     incomplete_notification:
       body: Body
       subject: Subject
+    program_change_notification:
+      body: |-
+        Hallo %{salutation_name}
+
+        Euer Lagerprogramm hat sich geändert. Begründung: %{remarks}.
+
+        Siehe %{url}
+      subject: Programmänderung
   date:
     abbr_day_names:
     - Sun
@@ -514,6 +537,7 @@ en:
   nav:
     activity: Activity
     activity_category: Kategory
+    activity_execution: Activity execution
     fixed_event: Fixed events
     language:
       de: DE
@@ -689,6 +713,9 @@ en:
       button: Tag Legende öffnen
       title: Legende Tags
     video_src: https://www.youtube.com/embed/TZQT-Zngcyc
+  unit_activity_executions:
+    form:
+      reassign: Neue Durchführung finden
   unit_visitor_days:
     form:
       salutations:
@@ -761,6 +788,7 @@ en:
         'true': payed
       participants: Participants
       questionnaire: Form
+  use_filter: Use filter
   views:
     pagination:
       first: !!str '<<'

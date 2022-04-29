@@ -3,9 +3,40 @@
   = hidden_field_tag :activity_execution_id, params[:activity_execution_id]
   = f.error_notification
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
-  = f.input :unit_id, disabled: !@unit_activity_execution.new_record?
-  = f.input :activity_execution_id
 
-  = f.input :headcount
+  fieldset
+    .row 
+      .col-md-4
+        = f.input :unit_id, disabled: !@unit_activity_execution.new_record?
+        p.small.muted.mb-4= @unit_activity_execution.unit
+
+    = f.label :activity_execution_id
+    .row
+      .col-md-4
+        = f.input :activity_execution_id, label: false
+        p.small.muted.mb-4
+          - if (@unit_activity_execution.activity_execution_id_changed? && @unit_activity_execution.activity_execution_id_was.present?)
+            s= ActivityExecution.find(@unit_activity_execution.activity_execution_id_was)
+            br
+          = @unit_activity_execution.activity_execution
+
+
+      .col-md-4
+        - unless @unit_activity_execution.new_record?
+          = link_to t('.reassign'), reassign_unit_activity_execution_path(@unit_activity_execution), class: 'btn btn-primary'
+
+    .row 
+      .col-md-4
+        = f.input :headcount
+        p.small.muted.mb-4
+          = @unit_activity_execution.unit&.participant_role_counts[:participant]
+          | /
+          = @unit_activity_execution.unit&.participant_role_counts&.values&.sum
+
+    .row 
+      .col-md-4
+        = f.input :change_remarks, as: :text
+        = f.input :change_notification, as: :boolean
+
   .actions
     = f.submit t('buttons.save'), class: 'btn btn-primary'
