@@ -50,6 +50,7 @@ it:
         transport_location: Luogo del trasporto
       activity_execution:
         amount_participants: Numero di partecipanti
+        at: inizia alle/termina alle
         ends_at: Termina alle
         field: Terreno
         language_flags: Lingue
@@ -119,7 +120,7 @@ it:
         full_name: Nome completo
         hand_over_camp_at: Consegna terreno del campo
         kv_id: Associazione cantonale
-        lagerleiter: Direzione del campo
+        lagerleiter: Capo unità
         language: Lingua
         on_site_at: Date del campo
         pbs_id: ID del campo su Midata

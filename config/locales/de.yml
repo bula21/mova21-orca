@@ -50,6 +50,7 @@ de:
         transport_location: Transport-Ort
       activity_execution:
         amount_participants: Anzahl Personen
+        at: von/bis
         ends_at: Endet um
         field: Feld
         language_flags: Sprachen
@@ -119,7 +120,7 @@ de:
         full_name: Vollständiger Name
         hand_over_camp_at: Abgabe Lagerplatz
         kv_id: KV
-        lagerleiter: Lagerleiter
+        lagerleiter: Einheitsleiter*in
         language: Sprache
         on_site_at: Lagerdaten
         pbs_id: Lager ID in der Midata

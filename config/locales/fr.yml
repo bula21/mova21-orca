@@ -50,6 +50,7 @@ fr:
         transport_location: Lieu du transport
       activity_execution:
         amount_participants: Nombre de participant.e.s
+        at: commence à/termine à
         ends_at: Se termine à
         field: Terrain
         language_flags: Langues
@@ -119,7 +120,7 @@ fr:
         full_name: Nom complet
         hand_over_camp_at: Remise du terrain de camp
         kv_id: Association cantonale AC
-        lagerleiter: Maîtrise de camp
+        lagerleiter: Responsable d'unité
         language: Langue
         on_site_at: Donnée du camp
         pbs_id: ID du camp sur MiData

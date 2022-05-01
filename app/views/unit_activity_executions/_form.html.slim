@@ -29,7 +29,7 @@
       .col-md-4
         = f.input :headcount
         p.small.muted.mb-4
-          = @unit_activity_execution.unit&.participant_role_counts[:participant]
+          = @unit_activity_execution.unit&.participant_role_counts&.fetch(:participant)
           | /
           = @unit_activity_execution.unit&.participant_role_counts&.values&.sum
 

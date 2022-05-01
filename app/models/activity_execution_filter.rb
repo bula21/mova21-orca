@@ -9,6 +9,7 @@ class ActivityExecutionFilter < ApplicationFilter
   attribute :date, :date
   attribute :min_available_headcount, :integer
   attribute :max_units, :integer
+  attribute :language, :string
 
   filter :field do |activity_executions|
     next if field_id.blank?
@@ -38,6 +39,13 @@ class ActivityExecutionFilter < ApplicationFilter
     next if ends_at_before.blank?
 
     activity_executions.where(arel_table[:ends_at].lt(ends_at_before))
+  end
+
+  filter :language do |activity_executions|
+    next if language.blank?
+
+    flag = "language_#{language}"
+    activity_executions.where(ActivityExecution.bitfield_sql({ flag => true }))
   end
 
   filter :date do |activity_executions|
