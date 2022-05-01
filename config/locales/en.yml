@@ -49,13 +49,14 @@ en:
         stufen: Age
         transport_location: Transport-Ort
       activity_execution:
-        amount_participants: Nombre de participants
-        ends_at: Termina alle
-        field: Terrain
-        language_flags: Langues
-        spot: spot du programme
-        starts_at: Inizia alle
-        utilization: Utilization
+        amount_participants: Participants
+        at: at
+        ends_at: Ends at
+        field: Field
+        language_flags: Languages
+        spot: Spot
+        starts_at: Starts at
+        utilization: Usage
       field:
         name: Nom
       fixed_event:

@@ -50,6 +50,7 @@ fr:
         transport_location: Lieu du transport
       activity_execution:
         amount_participants: Nombre de participant.e.s
+        at: commence à/termine à
         ends_at: Se termine à
         field: Terrain
         language_flags: Langues

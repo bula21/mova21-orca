@@ -31,9 +31,9 @@
         tr
           th = ActivityExecution.human_attribute_name(:id)
           th = Activity.model_name.human
-          th = ActivityExecution.human_attribute_name(:starts_at)
-          th = ActivityExecution.human_attribute_name(:ends_at)
+          th = ActivityExecution.human_attribute_name(:at)
           th = ActivityExecution.human_attribute_name(:field)
+          th = ActivityExecution.human_attribute_name(:language_flags)
           th = ActivityExecution.human_attribute_name(:amount_participants)
           th
       tbody
@@ -44,11 +44,13 @@
             td 
               = link_to activity_execution.activity, activity_path(activity_execution.activity)
             td
-              = l(activity_execution.starts_at, format: :short)
-            td 
+              strong= l(activity_execution.starts_at, format: :short)
+              br
               = l(activity_execution.ends_at, format: :short)
             td 
               = link_to activity_execution.field, activity_activity_executions_path(activity_execution.activity, field_id: activity_execution.field.id)
+            td 
+              = activity_execution.languages.map { |key, value| Activity.human_attribute_name(key) if value }.compact.join(', ')
             td 
               = "#{activity_execution.headcount}/#{activity_execution.amount_participants} (#{(activity_execution.headcount_utilization * 100).to_i}%)"
             td.p-1

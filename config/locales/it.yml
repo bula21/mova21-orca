@@ -50,6 +50,7 @@ it:
         transport_location: Luogo del trasporto
       activity_execution:
         amount_participants: Numero di partecipanti
+        at: inizia alle/termina alle
         ends_at: Termina alle
         field: Terreno
         language_flags: Lingue

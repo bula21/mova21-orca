@@ -34,10 +34,14 @@
     .col-12.order-sm-3
       .tab-content
         #filter-activity.py-3.tab-pane.show[role="tabpanel"]
-          = f.input :activity_id, as: :string, input_html: { list: :activity_ids }
-          datalist#activity_ids
-            - Activity.accessible_by(current_ability).order(:id).each do |activity|
-              option[value=activity.id]= activity
+        	.row
+            .col
+              = f.input :activity_id, as: :string, input_html: { list: :activity_ids }
+              datalist#activity_ids
+                - Activity.accessible_by(current_ability).order(:id).each do |activity|
+                  option[value=activity.id]
+                    = "##{activity.id}: "
+                    = activity
 
         #filter-location.py-3.tab-pane[role="tabpanel"]
         	.row
