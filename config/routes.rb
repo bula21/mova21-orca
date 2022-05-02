@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       post :commit, to: 'unit_activities#commit', on: :collection
     end
     post :documents, to: 'units#add_document', as: :documents
+    post :accept_security_concept, to: 'units#accept_security_concept'
     delete 'document/:id', to: 'units#delete_document', as: :document
   end
   resources :leaders, except: [:destroy]
