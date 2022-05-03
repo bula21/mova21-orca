@@ -77,11 +77,10 @@
       p = t('units.show.security_concepts.description')
 
       ul
-        / Link is still missing
-        / li
-        /   =< link_to t('units.show.security_concepts.general_pdf_link'), target: '_blank'
-        /     i.fa.fa-file-pdf
-        /     =< t('units.show.security_concepts.general_pdf_text')
+        li
+          =< link_to t('units.show.security_concepts.general_pdf_link'), target: '_blank'
+            i.fa.fa-file-pdf
+            =< t('units.show.security_concepts.general_pdf_text')
         li
           =< link_to t('units.show.security_concepts.hikes_pdf_link'), target: '_blank'
             i.fa.fa-file-pdf
@@ -91,7 +90,6 @@
         = button_to t('units.show.security_concepts.accept_button_text'), unit_accept_security_concept_path(@unit), method: :post, class: 'btn btn-primary', data: { confirm: t('units.show.security_concepts.confirm')}
       - else
         .alert.alert-info =< t('units.show.security_concepts.accepted_at', accepted_at: l(@unit.accept_security_concept_at))
-
 
   .card.mt-5
     .card-body
@@ -117,7 +115,7 @@
 
             dt = t('activerecord.attributes.unit.expected_guest_leaders')
             dd = @unit.expected_guest_leaders
-            
+
         .col-6
           dt = t('activerecord.attributes.unit.amount_of_rovers')
           dd = @unit.amount_of_rovers

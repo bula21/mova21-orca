@@ -823,14 +823,14 @@ it:
       security_concepts:
         accept_button_text: accettare i concetti di sicurezza
         accepted_at: Hai accettato il concetto di sicurezza su %{accepted_at}.
-        confermare: Confermo di aver letto i concetti di sicurezza.
-        descrizione: 'Affinché la tua registrazione sia completa, devi confermare
+        confirm: Confermo di aver letto i concetti di sicurezza.
+        description: 'Affinché la tua registrazione sia completa, devi confermare
           che hai avete letto e preso nota dei seguenti concetti di sicurezza:'
-        general_pdf_link: missing
+        general_pdf_link: https://bula21.sharepoint.com/:b:/s/share-externe/EamttNHR35tLjnT0_Ox0eGwBmX_Px_FUlO-OpUqPTtNdqg?e=elNSQL
         general_pdf_text: Concetto generale di sicurezza
-        hikes_pdf_link: https://bula21.sharepoint.com/:b:/s/share-externe/EUvLj2QMHLdMo90iYrx5JJkB0fFSA_gqKP4ANRtY5YyWCQ?e=UvdVNt
+        hikes_pdf_link: https://bula21.sharepoint.com/:b:/s/share-externe/EavfrEgg-GxBqIeFZeD_jRMB_r9dtqw8jPvC7kBGPj9BUw?e=8Nr2lU
         hikes_pdf_text: Concetto di sicurezza per le escursioni a piedi
-        titolo: Concetto di sicurezza
+        title: Concetto di sicurezza
   use_filter: Use filter
   views:
     pagination:
