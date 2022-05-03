@@ -789,6 +789,17 @@ en:
         'true': payed
       participants: Participants
       questionnaire: Form
+      security_concepts:
+        accept_button_text: Sicherheitskonzepte akzeptieren
+        accepted_at: Du hast das Sicherheitskonzept am %{accepted_at} akzeptiert.
+        confirm: Ich bestätige, dass ich die Sicherheitskonzepte gelesen habe.
+        description: 'Damit deine Anmeldung komplett ist, musst du bestätigen, dass
+          du die folgenden Sicherheitskonzepte gelesen und zur Kenntnis genommen hast:'
+        general_pdf_link: https://bula21.sharepoint.com/:b:/s/share-externe/EYbLINC8x2hChbT8kMlmMmAB_rkPNhoLWSKgYeh7EgZd-Q?e=bk7T2G
+        general_pdf_text: Allgemeines Sicherheitskonzept
+        hikes_pdf_link: https://bula21.sharepoint.com/:b:/s/share-externe/EbKkp47Z7elKoGVA_xo3ACIBjmCsWFzLKMGFBJg-yvpV5A?e=Y7wmVa
+        hikes_pdf_text: Sicherheitskonzept für Wanderungen
+        title: Sicherheitskonzept
   use_filter: Use filter
   views:
     pagination:

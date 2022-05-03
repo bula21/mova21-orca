@@ -47,6 +47,12 @@ class UnitsController < ApplicationController
     end
   end
 
+  def accept_security_concept
+    @unit = Unit.find(params[:unit_id])
+    @unit.update!(accept_security_concept_at: Time.zone.now) if @unit.accept_security_concept_at.blank?
+    redirect_to unit_path(@unit)
+  end
+
   def add_document
     @unit = Unit.find(params[:unit_id])
     authorize! :manage, @unit

@@ -35,6 +35,7 @@ class Ability
 
     can %i[read create], ParticipantUnit, unit_id: unit_ids
     can :read_documents, Unit, id: unit_ids
+    can :accept_security_concept, Unit, id: unit_ids
     can %i[edit update destroy], ParticipantUnit, unit_id: unit_ids, participant: { pbs_id: nil }
     # can %i[read create], Participant, participant_units: { unit_id: unit_ids }
     # can %i[edit update destroy], Participant, participant_units: { unit_id: unit_ids }, pbs_id: nil
