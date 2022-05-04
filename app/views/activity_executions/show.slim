@@ -1,0 +1,6 @@
+h1.h1= ActivityExecution.model_name.human
+
+= react_component("CalendarManager", { activityId: @activity_execution.activity.id,
+  availableLanguages: available_languages_for_frontend(@activity_execution.activity),
+  defaultAmountParticipants: @activity_execution.activity.participants_count_transport,
+  spots: SpotBlueprint.render_as_hash(@spots, view: :with_fields), editable: true })
