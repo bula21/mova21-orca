@@ -55,6 +55,7 @@ FROM base AS production
  # Copy the sshd_config file to the /etc/ssh/ directory
  COPY .docker/sshd_config /etc/ssh/
  COPY .docker/entrypoints/azure-entrypoint.sh /azure-entrypoint
+ COPY .docker/entrypoints/entrypoint.sh /entrypoint
 
  # Copy and configure the ssh_setup file
  RUN mkdir -p /tmp
@@ -81,4 +82,4 @@ RUN rm -rf /app/node_modules/*
 USER root
 EXPOSE $PORT 2222
 ENTRYPOINT ["/azure-entrypoint"]
-CMD [".docker/entrypoints/app.sh", "bin/rails", "s", "-b", "0.0.0.0"] 
+CMD ["bin/rails", "s", "-b", "0.0.0.0"] 
