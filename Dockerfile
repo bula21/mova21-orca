@@ -81,4 +81,4 @@ RUN rm -rf /app/node_modules/*
 USER root
 EXPOSE $PORT 2222
 ENTRYPOINT ["/azure-entrypoint"]
-CMD ["bin/rails", "s", "-b", "0.0.0.0"] 
+CMD [".docker/entrypoints/app.sh", "bin/rails", "s", "-b", "0.0.0.0"] 
