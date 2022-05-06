@@ -1,26 +1,19 @@
-version: '3.7'
+version: "3.7"
 services:
-
-  db:
-    image: postgres
-    container_name: orca_postgres
-    restart: always
-    volumes:
-      - ./postgres_data:/var/lib/postgresql/data
-    networks:
-      - orca_db
-
   app:
+    image: mova21-orca:latest
+    container_name: orca
     build:
       context: .
       target: production
-    image: mova21-orca:latest
+    user: "0:0"
     environment:
+      CAMP_START: ${CAMP_START}
+      CAMP_END: ${CAMP_END}
+      SEND_PROGRAM_CHANGE_LOG_NOTIFICATIONS: "true"
       APP_BASE_URL: ${APP_BASE_URL}
       DATABASE_URL: ${DATABASE_URL}
       RAILS_ENV: production
-      CAMP_START: ${CAMP_START}
-      CAMP_END: ${CAMP_END}
       MEMCACHE_SERVERS: memcached
       SECRET_KEY_BASE: ${SECRET_KEY_BASE}
       ROLLBAR_ACCESS_TOKEN: ${ROLLBAR_ACCESS_TOKEN}
@@ -36,28 +29,26 @@ services:
       MIDATA_BASE_URL: ${MIDATA_BASE_URL}
       MIDATA_USER_EMAIL: ${MIDATA_USER_EMAIL}
       MIDATA_USER_TOKEN: ${MIDATA_USER_TOKEN}
-      ROOT_CAMP_UNIT_ID_WOLF: ${ROOT_CAMP_UNIT_ID_WOLF}
-      ROOT_CAMP_UNIT_ID_PFADI: ${ROOT_CAMP_UNIT_ID_PFADI}
-      ROOT_CAMP_UNIT_ID_PIO: ${ROOT_CAMP_UNIT_ID_PIO}
-      ROOT_CAMP_UNIT_ID_PTA: ${ROOT_CAMP_UNIT_ID_PIO}
+      MIDATA_OAUTH_ACCESS_TOKEN: ${MIDATA_OAUTH_ACCESS_TOKEN}
+      LIMESURVEY_USERNAME: ${LIMESURVEY_USERNAME}
+      LIMESURVEY_PASSWORD: ${LIMESURVEY_PASSWORD}
+      LIMESURVEY_SURVEY_ID: ${LIMESURVEY_SURVEY_ID}
+      ROOT_CAMP_UNIT_ID_WOLF: 11402
+      ROOT_CAMP_UNIT_ID_PFADI: 11405
+      ROOT_CAMP_UNIT_ID_PIO: 11404
+      ROOT_CAMP_UNIT_ID_PTA: 11406
       SMTP_HOST: ${SMTP_HOST}
       SMTP_USER: ${SMTP_USER}
       SMTP_PASSWORD: ${SMTP_PASSWORD}
       SMTP_PORT: ${SMTP_PORT}
-      SMTP_AUTH: ${SMTP_AUTH:-plain}
-    depends_on:
-      - db
-      - memcached
-    networks:
-      - orca_db
-      - proxy_net
-
-  memcached:
-    image: memcached:1.5-alpine
-    command: [ memcached, -l, '0.0.0.0', -p, '11211' ]
-
-networks:
-  orca_db:
-  proxy_net:
-    external:
-      name: proxy_net
+      SMTP_AUTH: "login"
+      RAILS_SERVE_STATIC_FILES: "on"
+      STORAGE_SERVICE: ${STORAGE_SERVICE}
+      STORAGE_ACCOUNT_NAME: ${STORAGE_ACCOUNT_NAME}
+      STORAGE_ACCESS_KEY: ${STORAGE_ACCESS_KEY}
+      STORAGE_CONTAINER: ${STORAGE_CONTAINER}
+      FEATURES: "unit_activity_booking"
+      VISITOR_DAY_ACTIVITY_ID: ${VISITOR_DAY_ACTIVITY_ID:-223}
+    tty: true
+    stdin_open: true
+    entrypoint: ["/entrypoint"]
