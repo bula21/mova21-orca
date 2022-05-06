@@ -48,7 +48,7 @@ services:
       STORAGE_ACCESS_KEY: ${STORAGE_ACCESS_KEY}
       STORAGE_CONTAINER: ${STORAGE_CONTAINER}
       FEATURES: "unit_activity_booking"
-      VISITOR_DAY_ACTIVITY_ID: 1
+      VISITOR_DAY_ACTIVITY_ID: ${VISITOR_DAY_ACTIVITY_ID:-223}
     tty: true
     stdin_open: true
     entrypoint: ["/entrypoint"]
