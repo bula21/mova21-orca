@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_02_195947) do
+ActiveRecord::Schema.define(version: 2022_05_06_065654) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -301,8 +301,8 @@ ActiveRecord::Schema.define(version: 2022_05_02_195947) do
 
   create_table "unit_program_changes", force: :cascade do |t|
     t.bigint "unit_id", null: false
-    t.bigint "activity_execution_id", null: false
-    t.bigint "unit_activity_execution_id", null: false
+    t.bigint "activity_execution_id"
+    t.bigint "unit_activity_execution_id"
     t.boolean "notified_at"
     t.text "remarks"
     t.datetime "created_at", precision: 6, null: false
