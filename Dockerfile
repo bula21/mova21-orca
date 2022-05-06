@@ -55,6 +55,7 @@ FROM base AS production
  # Copy the sshd_config file to the /etc/ssh/ directory
  COPY .docker/sshd_config /etc/ssh/
  COPY .docker/entrypoints/azure-entrypoint.sh /azure-entrypoint
+ COPY .docker/entrypoints/entrypoint.sh /entrypoint
 
  # Copy and configure the ssh_setup file
  RUN mkdir -p /tmp

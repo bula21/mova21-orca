@@ -41,13 +41,6 @@ class ActivityExecutionFilter < ApplicationFilter
     activity_executions.where(arel_table[:ends_at].lt(ends_at_before))
   end
 
-  filter :language do |activity_executions|
-    next if language.blank?
-
-    flag = "language_#{language}"
-    activity_executions.where(ActivityExecution.bitfield_sql({ flag => true }))
-  end
-
   filter :date do |activity_executions|
     next unless date.is_a?(Date)
 

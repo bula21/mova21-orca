@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_29_091116) do
+ActiveRecord::Schema.define(version: 2022_05_06_065654) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -301,8 +301,8 @@ ActiveRecord::Schema.define(version: 2022_04_29_091116) do
 
   create_table "unit_program_changes", force: :cascade do |t|
     t.bigint "unit_id", null: false
-    t.bigint "activity_execution_id", null: false
-    t.bigint "unit_activity_execution_id", null: false
+    t.bigint "activity_execution_id"
+    t.bigint "unit_activity_execution_id"
     t.boolean "notified_at"
     t.text "remarks"
     t.datetime "created_at", precision: 6, null: false
@@ -368,6 +368,7 @@ ActiveRecord::Schema.define(version: 2022_04_29_091116) do
     t.string "departure_slot"
     t.datetime "hand_over_camp_at"
     t.string "transport_mode"
+    t.datetime "accept_security_concept_at"
     t.index ["al_id"], name: "index_units_on_al_id"
     t.index ["coach_id"], name: "index_units_on_coach_id"
     t.index ["lagerleiter_id"], name: "index_units_on_lagerleiter_id"

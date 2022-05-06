@@ -8,4 +8,6 @@ set -e
 export > /root/.profile
 /usr/sbin/sshd
 
-su-exec app "$@"
+/app/bin/rails db:migrate
+
+/entrypoint "$@"

@@ -3,13 +3,17 @@
 class ActivityExecutionsController < ApplicationController
   load_and_authorize_resource :activity
   load_and_authorize_resource through: :activity, shallow: true
-  before_action :set_spots, only: :index
+  before_action :set_spots, only: %i[index show]
 
   def index
     @activity_executions = filter.apply(@activity_executions).ordered
     respond_to do |format|
       format.json { render json: ActivityExecutionBlueprint.render(@activity_executions, view: :with_fields) }
       format.html
+      format.csv do
+        exporter = ActivityExecutionExporter.new(@activity_executions)
+        send_data exporter.export, filename: exporter.filename
+      end
     end
   end
 
@@ -21,6 +25,8 @@ class ActivityExecutionsController < ApplicationController
       render status: :bad_request, json: { success: false, errors: @activity_execution.errors.full_messages }
     end
   end
+
+  def show; end
 
   def update
     if @activity_execution.update(activity_execution_params)

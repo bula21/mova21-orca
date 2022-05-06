@@ -11,6 +11,7 @@
           availableLanguages: available_languages_for_frontend(@activity),
           defaultAmountParticipants: @activity.participants_count_transport,
           spots: SpotBlueprint.render_as_hash(@spots, view: :with_fields), editable: true })
+
 - else
   h1.h1= ActivityExecution.model_name.human(count: 2)
   == render partial: 'filter', locals: { submit_url: activity_executions_path, reset_url: activity_executions_path }
@@ -33,14 +34,13 @@
           th = Activity.model_name.human
           th = ActivityExecution.human_attribute_name(:at)
           th = ActivityExecution.human_attribute_name(:field)
-          th = ActivityExecution.human_attribute_name(:language_flags)
           th = ActivityExecution.human_attribute_name(:amount_participants)
           th
       tbody
         - @activity_executions.each do |activity_execution|
           tr
             td 
-              = activity_execution.id
+              = link_to activity_execution.id, activity_execution_path(activity_execution)
             td 
               = link_to activity_execution.activity, activity_path(activity_execution.activity)
             td
@@ -49,14 +49,16 @@
               = l(activity_execution.ends_at, format: :short)
             td 
               = link_to activity_execution.field, activity_activity_executions_path(activity_execution.activity, field_id: activity_execution.field.id)
-            td 
-              = activity_execution.languages.map { |key, value| Activity.human_attribute_name(key) if value }.compact.join(', ')
+              br
+              - activity_execution.languages.each do |key, value| 
+                - if value
+                  .badge.badge-secondary>= Activity.human_attribute_name(key)
             td 
               = "#{activity_execution.headcount}/#{activity_execution.amount_participants} (#{(activity_execution.headcount_utilization * 100).to_i}%)"
             td.p-1
               = link_to(UnitActivityExecution.model_name.human(count: 2), unit_activity_executions_path(activity_execution_id: activity_execution.id), class: 'btn btn-primary') if can?(:read, UnitActivityExecution)
-              / = link_to(t('buttons.edit'), edit_unit_activity_execution_path(activity_execution), class: 'btn btn-primary') if can?(:edit, unit_activity_execution)
-              / = link_to t('buttons.destroy'), unit_activity_execution_path(activity_execution), data: { confirm: t('buttons.confirm_delete'), params: { unit_id: params[:unit_id], activity_execution_id: params[:activity_execution_id]} }, method: :delete, class: 'btn btn-secondary' if can?(:delete, unit_activity_execution)
+              
+= link_to t('buttons.export_csv'), url_for(format: :csv), class: 'btn btn-secondary'
 
 - if @activity
   .row.mt-4
