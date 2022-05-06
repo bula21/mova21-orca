@@ -50,6 +50,7 @@ services:
     networks:
       default:
       selenium:
+    entrypoint: ["/entrypoint"]
 
   selenium:
     image: selenium/standalone-chrome-debug
