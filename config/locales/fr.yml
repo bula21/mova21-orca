@@ -3,7 +3,7 @@ fr:
   activemodel:
     attributes:
       activity_execution_filter:
-        activity_id: activité
+        activity_id: ID d'activité
         at: date / heure
         availability: disponibilité
         date: date
@@ -567,7 +567,7 @@ fr:
   nav:
     activity: Catalogue
     activity_category: Categorie
-    activity_execution: Activity execution
+    activity_execution: Programme
     fixed_event: Picasso
     language:
       de: DE
@@ -834,7 +834,7 @@ fr:
         hikes_pdf_link: https://bula21.sharepoint.com/:b:/s/share-externe/EdQsnKlGZjdJkN6UmR_gaWsBMVRDERjN-0FRf6jXh3Eqhw
         hikes_pdf_text: Concept de sécurité pour les randonnées pédestres
         title: Concept de sécurité
-  use_filter: Use filter
+  use_filter: Use filtre
   views:
     pagination:
       first: !!str '<<'
