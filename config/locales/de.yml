@@ -53,9 +53,17 @@ de:
         at: von/bis
         ends_at: Endet um
         field: Feld
+        language_de: Deutsch
+        language_en: English
         language_flags: Sprachen
+        language_fr: Français
+        language_it: Italiano
+        languages: Sprachen
+        mixed_languages: Gemischtsprachig
         spot: Programmspot
         starts_at: Beginnt um
+        transport: Personenanzahl inkl. Leitung
+        transport_ids: Transport IDs
         utilization: Auslastung
       field:
         name: Name

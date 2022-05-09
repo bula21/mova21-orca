@@ -53,9 +53,17 @@ en:
         at: at
         ends_at: Ends at
         field: Field
+        language_de: Deutsch
+        language_en: English
         language_flags: Languages
+        language_fr: Français
+        language_it: Italiano
+        languages: Languages
+        mixed_languages: Mixed languages
         spot: Spot
         starts_at: Starts at
+        transport: Amount of people incl. leaders
+        transport_ids: Transport IDs
         utilization: Usage
       field:
         name: Nom

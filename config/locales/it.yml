@@ -53,9 +53,17 @@ it:
         at: inizia alle/termina alle
         ends_at: Termina alle
         field: Terreno
+        language_de: Deutsch
+        language_en: English
         language_flags: Lingue
+        language_fr: Français
+        language_it: Italiano
+        languages: Lingue
+        mixed_languages: Lingue miste
         spot: Zona del programma
         starts_at: Inizia alle
+        transport: Numero di persone inclusa la gestione
+        transport_ids: ID di trasporto
         utilization: Utilization
       field:
         name: Nome
