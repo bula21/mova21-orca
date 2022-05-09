@@ -1,6 +1,9 @@
 {
   "name": "orca",
   "private": true,
+  "resolutions": {
+    "autoprefixer": "10.4.5"
+  },
   "dependencies": {
     "@babel/core": "7",
     "@babel/plugin-transform-runtime": "7",

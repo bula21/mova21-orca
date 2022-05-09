@@ -123,7 +123,7 @@ export class ActivityExecutionService {
     }
 
     private fetchActivityExecutions(activityId: number): Promise<Array<FullCalendarEvent>> {
-        return fetch(`/activities/${activityId}/activity_executions?locale=${Orca.shortLocale}`, {
+        return fetch(`/activities/${activityId}/activity_executions.json?locale=${Orca.shortLocale}`, {
             method: 'GET',
             headers: this.getHeaders()
         })
@@ -198,7 +198,7 @@ export class ActivityExecutionService {
             body: this.getActivityExecutionRequestBody(fullCalendarEvent)
         };
 
-        return fetch(`/activities/${activityId}/activity_executions?locale=${Orca.shortLocale}`, requestOptions)
+        return fetch(`/activities/${activityId}/activity_executions.json?locale=${Orca.shortLocale}`, requestOptions)
             .then(response => response.json())
             .then((response: BackendResponse<ActivityExecution>) => {
                 if (isSuccessfulBackendResponse(response)) {
@@ -232,7 +232,7 @@ export class ActivityExecutionService {
             body: this.getActivityExecutionRequestBody(activityExecution)
         };
 
-        return fetch(`/activities/${activityId}/activity_executions/${activityExecution.id}?locale=${Orca.shortLocale}`, requestOptions)
+        return fetch(`/activities/${activityId}/activity_executions/${activityExecution.id}.json?locale=${Orca.shortLocale}`, requestOptions)
             .then(response => response.json())
             .then((response: BackendResponse<ActivityExecution>) => {
                 if (isSuccessfulBackendResponse(response)) {
@@ -249,7 +249,7 @@ export class ActivityExecutionService {
             headers: this.getHeaders()
         };
 
-        return fetch(`/activities/${activityId}/activity_executions/${activityExecutionId}?locale=${Orca.shortLocale}`, requestOptions)
+        return fetch(`/activities/${activityId}/activity_executions/${activityExecutionId}.json?locale=${Orca.shortLocale}`, requestOptions)
             .then(response => response.status === 200)
     }
 

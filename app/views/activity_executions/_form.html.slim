@@ -1,0 +1,20 @@
+= simple_form_for @activity_execution do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+  fieldset
+    .row 
+      .col-md-4
+        = f.input :starts_at, html5: true
+        = f.input :ends_at, html5: true
+        = f.input :amount_participants
+        = f.input :field_id, collection: Spot.accessible_by(current_ability), as: :grouped_select, group_method: :fields
+        = f.input :transport, as: :boolean
+        = f.input :transport_ids
+        / = f.input :languages, as: :check_boxes, collection: Activity::LANGUAGES.map { |language| [language, Activity.human_attribute_name(language)] }
+        = f.input :mixed_languages, as: :boolean
+        - Activity::LANGUAGES.each do |language_flag|
+          = f.input language_flag, as: :boolean
+
+  .actions
+    = f.submit t('buttons.save'), class: 'btn btn-primary'

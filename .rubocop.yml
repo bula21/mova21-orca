@@ -88,3 +88,8 @@ Rails/UniqueValidationWithoutIndex:
 
 Style/OpenStructUse:
   Enabled: false
+
+Naming/MethodParameterName:
+  AllowedNames:
+    - ok
+    - id

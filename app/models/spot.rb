@@ -8,6 +8,9 @@ class Spot < ApplicationRecord
                     }, inverse_of: :spot, dependent: :destroy
 
   has_many :activity_executions, through: :fields
+
+  scope :ordered, -> { order(Arel.sql("LOWER(spots.name->>'de')")) }
+
   translates :name, locale_accessors: true, fallbacks: true
 
   def to_s
