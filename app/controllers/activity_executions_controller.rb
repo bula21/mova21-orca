@@ -8,13 +8,12 @@ class ActivityExecutionsController < ApplicationController
   def index
     @activity_executions = filter.cached(@activity_executions.includes(:activity, :unit_activity_executions,
                                                                        field: :spot).ordered)
+    @activity_executions = ActivityExecution.none unless filter.active?
+
     respond_to do |format|
-      format.json { render json: ActivityExecutionBlueprint.render(@activity_executions, view: :with_fields) }
       format.html
-      format.csv do
-        exporter = ActivityExecutionExporter.new(@activity_executions)
-        send_data exporter.export, filename: exporter.filename
-      end
+      format.csv { send_exported_data(@activity_executions) }
+      format.json { render json: ActivityExecutionBlueprint.render(@activity_executions, view: :with_fields) }
     end
   end
 
@@ -103,6 +102,11 @@ class ActivityExecutionsController < ApplicationController
   def filter_params
     params[:activity_execution_filter]&.permit(%i[spot_id field_id starts_at_after ends_at_before activity_id
                                                   min_available_headcount max_units date language])
+  end
+
+  def send_exported_data(activity_executions)
+    exporter = ActivityExecutionExporter.new(activity_executions)
+    send_data exporter.export, filename: exporter.filename
   end
 
   def convert_language_array_to_flags(params)

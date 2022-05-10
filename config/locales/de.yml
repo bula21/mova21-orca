@@ -717,6 +717,7 @@ de:
       long: "%A, %d. %B %Y, %H:%M Uhr"
       short: "%d.%m.%Y %H:%M"
     pm: nachmittags
+  too_many_records: Zu viele Datensätze. Bitte Filter verwenden
   unit_activity_booking:
     all_comply: Super! Alle Bedingungen sind erfüllt. Du kannst die Buchung abschliessen.
     book: zum Warenkorb hinzufügen
@@ -838,7 +839,6 @@ de:
         hikes_pdf_link: https://bula21.sharepoint.com/:b:/s/share-externe/EbKkp47Z7elKoGVA_xo3ACIBjmCsWFzLKMGFBJg-yvpV5A
         hikes_pdf_text: Sicherheitskonzept für Wanderungen
         title: Sicherheitskonzept
-  use_filter: Zu viele Datensätze. Bitte Filter verwenden
   views:
     pagination:
       first: !!str '<<'
