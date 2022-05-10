@@ -370,6 +370,7 @@ GEM
       railties (>= 3.2)
       tilt
     redcarpet (3.5.1)
+    redis (4.6.0)
     regexp_parser (2.3.1)
     request_store (1.5.1)
       rack (>= 1.4)
@@ -561,6 +562,7 @@ DEPENDENCIES
   ranked-model
   react-rails
   redcarpet
+  redis
   rollbar
   roo
   rspec-rails
