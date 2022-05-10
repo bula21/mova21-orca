@@ -44,8 +44,8 @@ class ActivityExecutionFilter < ApplicationFilter
   filter :date do |activity_executions|
     next unless date.is_a?(Date)
 
-    activity_executions.where(arel_table[:starts_at].gt(date.beginning_of_day),
-                              arel_table[:ends_at].lt(date.end_of_day))
+    activity_executions.where(arel_table[:starts_at].gt(date.beginning_of_day))
+                       .where(arel_table[:ends_at].lt(date.end_of_day))
   end
 
   filter :min_available_headcount do |activity_executions|

@@ -16,6 +16,7 @@ services:
       RAILS_ENV: test
       SELENIUM_HOST: "selenium:4444"
       RUBYOPT: "-W:no-deprecated -W:no-experimental"
+      REDIS_URL: "redis://redis/0"
     depends_on:
       - db
       - selenium
@@ -70,9 +71,8 @@ services:
     ports:
       - "1080:80"
 
-  memcached:
-    image: memcached:1.5-alpine
-    command: [memcached, -l, "0.0.0.0", -p, "11211"]
+  redis:
+    image: redis:6
 
 networks:
   selenium:

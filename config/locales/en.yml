@@ -688,6 +688,7 @@ en:
       long: "%B %d, %Y %H:%M"
       short: "%d %b %H:%M"
     pm: pm
+  too_many_records: Use filter
   unit_activity_booking:
     all_comply: All comply
     book: zum Warenkorb hinzufügen
@@ -808,7 +809,6 @@ en:
         hikes_pdf_link: https://bula21.sharepoint.com/:b:/s/share-externe/EbKkp47Z7elKoGVA_xo3ACIBjmCsWFzLKMGFBJg-yvpV5A?e=Y7wmVa
         hikes_pdf_text: Sicherheitskonzept für Wanderungen
         title: Sicherheitskonzept
-  use_filter: Use filter
   views:
     pagination:
       first: !!str '<<'

@@ -16,14 +16,11 @@
   h1.h1= ActivityExecution.model_name.human(count: 2)
   == render partial: 'filter', locals: { submit_url: activity_executions_path, reset_url: activity_executions_path }
 
-  / - if (1..100).include?(@activity_executions.to_a.count)
-  /   = react_component("ReadOnlyCalendarManager", { editable: false, stufe: 'all', events: ActivityExecutionBlueprint.render_as_hash(@activity_executions, view: :with_activity) })
-
 - unless @filter.active?
   .alert.alert-dismissible.alert-warning
     button class='close' data-dismiss='alert' aria-label=t('buttons.close')
       span aria-hidden="true" &times;
-    =t('use_filter')
+    =t('too_many_records')
 
 - else
   .table-responsive.mt-4
@@ -55,11 +52,12 @@
                   .badge.badge-secondary>= Activity.human_attribute_name(key)
             td 
               = "#{activity_execution.headcount}/#{activity_execution.amount_participants} (#{(activity_execution.headcount_utilization * 100).to_i}%)"
-            td.p-1
+            td.text-right
+              =<> link_to activity_execution_path(activity_execution), class: 'btn' do 
+                i.fas.fa-edit
               =<> link_to(UnitActivityExecution.model_name.human(count: 2), unit_activity_executions_path(activity_execution_id: activity_execution.id), class: 'btn btn-primary') if can?(:read, UnitActivityExecution)
-              =<> link_to t('buttons.edit'), activity_execution_path(activity_execution), class: 'btn btn-primary'
               
-= link_to t('buttons.export_csv'), url_for(format: :csv), class: 'btn btn-secondary'
+= link_to t('buttons.export_csv'), activity_executions_path(format: :csv, activity_execution_filter: @filter.attributes), class: 'btn btn-secondary'
 
 - if @activity
   .row.mt-4

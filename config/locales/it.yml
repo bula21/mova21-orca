@@ -717,6 +717,7 @@ it:
       long: "%d %B %Y %H:%M"
       short: "%d %b %H:%M"
     pm: pm
+  too_many_records: Use filter
   unit_activity_booking:
     all_comply: All comply
     book: Inserire nel lista dei desideri
@@ -839,7 +840,6 @@ it:
         hikes_pdf_link: https://bula21.sharepoint.com/:b:/s/share-externe/EavfrEgg-GxBqIeFZeD_jRMB_r9dtqw8jPvC7kBGPj9BUw
         hikes_pdf_text: Concetto di sicurezza per le escursioni a piedi
         title: Concetto di sicurezza
-  use_filter: Use filter
   views:
     pagination:
       first: !!str '<<'

@@ -48,8 +48,8 @@ services:
       SMTP_PASSWORD: ""
       SMTP_PORT: 25
       SMTP_AUTH: ${SMTP_AUTH:-plain}
-      FEATURES: "unit_activity_booking"
       VISITOR_DAY_ACTIVITY_ID: 1
+      REDIS_URL: "redis://redis/0"
     depends_on:
       - db
       - mail
@@ -77,9 +77,8 @@ services:
     ports:
       - "1080:80"
 
-  memcached:
-    image: memcached:1.5-alpine
-    command: [memcached, -l, "0.0.0.0", -p, "11211"]
+  redis:
+    image: redis:6
 
 volumes:
   db_data:
