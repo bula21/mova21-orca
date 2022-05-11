@@ -1,2 +1,9 @@
 h1 = ActivityExecution.model_name.human
 = render 'form'
+
+- if can?(:destroy, @activity_execution)
+	br
+	= link_to t('buttons.destroy'), activity_execution_path(@activity_execution), \
+				method: :delete, \
+				class: 'btn btn-secondary', \
+				data: { confirm: t('simple_form.confirm_unsaved') }
