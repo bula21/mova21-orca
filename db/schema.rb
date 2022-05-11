@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_06_065654) do
+ActiveRecord::Schema.define(version: 2022_05_11_072525) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -369,6 +369,7 @@ ActiveRecord::Schema.define(version: 2022_05_06_065654) do
     t.datetime "hand_over_camp_at"
     t.string "transport_mode"
     t.datetime "accept_security_concept_at"
+    t.integer "district_number"
     t.index ["al_id"], name: "index_units_on_al_id"
     t.index ["coach_id"], name: "index_units_on_coach_id"
     t.index ["lagerleiter_id"], name: "index_units_on_lagerleiter_id"

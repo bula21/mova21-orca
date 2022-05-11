@@ -53,8 +53,9 @@
             td 
               = "#{activity_execution.headcount}/#{activity_execution.amount_participants} (#{(activity_execution.headcount_utilization * 100).to_i}%)"
             td.text-right
-              =<> link_to activity_execution_path(activity_execution), class: 'btn' do 
+              =<> link_to edit_activity_execution_path(activity_execution), class: 'btn' do 
                 i.fas.fa-edit
+                
               =<> link_to(UnitActivityExecution.model_name.human(count: 2), unit_activity_executions_path(activity_execution_id: activity_execution.id), class: 'btn btn-primary') if can?(:read, UnitActivityExecution)
               
 = link_to t('buttons.export_csv'), activity_executions_path(format: :csv, activity_execution_filter: @filter.attributes), class: 'btn btn-secondary'
