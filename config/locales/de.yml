@@ -252,6 +252,7 @@ de:
       title: Programmpunkt editieren
     import:
       invalid_file_type: Ungültige Datei. Bitte lade die Excel-Vorlage hoch.
+      no_file_selected: Keine Import-Datei ausgewählt
       success: Erfolgreich %{count} Durchführungen importiert
     new:
       title: Neuen Programmpunkt erfassen

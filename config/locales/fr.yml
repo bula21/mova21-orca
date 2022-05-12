@@ -257,6 +257,7 @@ fr:
       title: Modifier le programme
     import:
       invalid_file_type: Fichier non valide. Veuillez télécharger le modèle Excel.
+      no_file_selected: Aucun fichier d'importation sélectionné
       success: "%{count} réalisation(s) importées avec succès"
     new:
       title: Ajouter de nouvelles activités au programme

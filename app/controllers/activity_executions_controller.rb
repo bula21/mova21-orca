@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/ClassLength
 class ActivityExecutionsController < ApplicationController
   load_and_authorize_resource :activity
   load_and_authorize_resource through: :activity, shallow: true
@@ -58,19 +59,36 @@ class ActivityExecutionsController < ApplicationController
   end
 
   def import
-    import_service = ActivityExecutionsImport.new(params.require(:import).permit(:file)[:file], @activity)
-    if import_service.call
-      redirect_to @activity, flash: { success: I18n.t('activity_execution.import.success',
-                                                      count: import_service.imported_items_count) }
-    else
-      @import_errors = import_service.errors
-      render 'activities/show'
+    if params[:import].nil?
+      redirect_to activity_activity_executions_path(@activity),
+                  flash: { error: I18n.t('activity_execution.import.no_file_selected') }
+      return
     end
+    handle_import
   rescue TypeError
-    redirect_to @activity, flash: { error: I18n.t('activity_execution.import.invalid_file_type') }
+    redirect_to activity_activity_executions_path(@activity),
+                flash: { error: I18n.t('activity_execution.import.invalid_file_type') }
   end
 
   private
+
+  def handle_import
+    import_service = ActivityExecutionsImport.new(params.require(:import).permit(:file)[:file], @activity)
+    if import_service.call
+      redirect_to activity_activity_executions_path(@activity),
+                  flash: { success: I18n.t('activity_execution.import.success',
+                                           count: import_service.imported_items_count) }
+    else
+      @import_errors = import_service.errors
+      render 'import'
+    end
+  end
+
+  def set_activity_executions
+    @activity_executions = filter.cached(@activity_executions.includes(:activity, :unit_activity_executions,
+                                                                       field: :spot).ordered)
+    @activity_executions = ActivityExecution.none unless filter.active?
+  end
 
   def json_response(activity_execution, ok:)
     if ok
@@ -116,3 +134,4 @@ class ActivityExecutionsController < ApplicationController
     params.delete('languages')
   end
 end
+# rubocop:enable Metrics/ClassLength
