@@ -3,6 +3,8 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { sessions: 'sessions', omniauth_callbacks: 'omniauth_callbacks' }
 
+  get 'health/check'
+
   devise_scope :user do
     get 'login', to: 'sessions#new', as: :new_user_session
     get 'logout', to: 'sessions#destroy', as: :destroy_user_session
