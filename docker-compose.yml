@@ -53,7 +53,7 @@ services:
     depends_on:
       - db
       - mail
-      - memcached
+      - redis
     tty: true
     stdin_open: true
 
