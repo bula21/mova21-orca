@@ -256,6 +256,7 @@ it:
       title: Modificare il programma
     import:
       invalid_file_type: Documento non valido. Utilizza il modello Excel
+      no_file_selected: Non è stato selezionato alcun file di importazione
       success: "%{count} realizazioni importate correttamente"
     new:
       title: Creare un nuovo spazio del programma

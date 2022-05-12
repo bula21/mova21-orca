@@ -251,6 +251,7 @@ en:
       title: Programmpunkt editieren
     import:
       invalid_file_type: Documento non valido. Utilizza il modello Excel
+      no_file_selected: No file selected
       success: Erfolgreich %{count} Durchführungen importiert
     new:
       title: Neuen Programmpunkt erfassen
