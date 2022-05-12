@@ -24,8 +24,16 @@ docker-compose exec app ash
 To speed up the development the webpacker dev server can be launched using the following command
 
 ```
- docker-compose exec app /app/bin/webpacker-dev-server
+docker-compose exec app /app/bin/webpacker-dev-server
 ```
+
+To run the migrations run:
+
+
+```
+docker-compose exec app bin/rails db:migrate
+```
+
 
 #### Visual Studio Code Dev Containers
 
@@ -150,6 +158,13 @@ puts InvoiceExporter.new.export
 ```bash
 docker-compose run bin/rails r 'puts InvoiceExporter.new.export; STDOUT.flush' > tmp/export.csv
 ```
+
+## Translations
+
+Translations are sanitized with i18n-tasks. Some important commands:
+
+* `bin/bundle exec i18n-tasks normalize` or `docker-compose exec app bin/bundle exec i18n-tasks normalize`
+* `bin/bundle exec i18n-tasks health` or `docker-compose exec app bin/bundle exec i18n-tasks health`
 
 ## Issues
 
