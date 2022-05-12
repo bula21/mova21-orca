@@ -188,6 +188,8 @@ export abstract class BaseCalendarManager<TProps extends BaseCalendarManagerProp
               themeSystem='bootstrap'
               allDaySlot={false}                                  // don't allow full day event
               firstDay={6}                                        // set first day of week to saturday 6
+              slotMinTime={'05:00:00'}
+              slotMaxTime={'28:00:00'}
               validRange={{ start: START_DATE, end: END_DATE }}   // calendar is only available in given period
               initialView='timeGridWeek'
               editable={this.props.editable}
@@ -201,7 +203,6 @@ export abstract class BaseCalendarManager<TProps extends BaseCalendarManagerProp
               eventDragStart={() => this.setState({ success: null, error: null })}
               select={this.handleDateSelect}
               contentHeight="auto"
-              slotMinTime="06:00:00"
             />
           )}
         </div>
