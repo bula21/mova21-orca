@@ -51,7 +51,7 @@ class ActivitiesController < ApplicationController
   def delete_attachment
     type = params[:type]&.to_sym
     if Activity::ATTACHMENTS.include?(type)
-      attachment = @activity.send(type)
+      attachment = @activity.public_send(type)
       attachment = attachment.find_by(id: params[:attachment_id]) if params[:attachment_id].present?
       attachment.purge if attachment.respond_to?(:purge)
     end
@@ -71,7 +71,7 @@ class ActivitiesController < ApplicationController
     %i[language_documents_de language_documents_fr language_documents_it activity_documents].each do |attachment|
       next if params[:activity][attachment].blank?
 
-      @activity.send(attachment).attach(params[:activity][attachment])
+      @activity.public_send(attachment).attach(params[:activity][attachment])
     end
   end
 

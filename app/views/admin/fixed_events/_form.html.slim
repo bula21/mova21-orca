@@ -15,5 +15,19 @@
     = f.input :ends_at
     = f.input :stufe_ids, label: Stufe.model_name.human.pluralize, as: :check_boxes, collection: Stufe.all
 
+    .row
+      - [:language_documents_de, :language_documents_fr, :language_documents_it].each do |document_attr_name|
+        .col-md-4
+          label.d-block[for="fixed_event_#{document_attr_name}"] = t(document_attr_name, scope: 'activerecord.attributes.activity')
+          = f.file_field document_attr_name, multiple: true
+          ul.list-group.mt-3
+            - @fixed_event.public_send(document_attr_name).each do |document|
+              li.list-group-item
+                = document.filename
+                = link_to t('buttons.destroy'), attachment_admin_fixed_event_path(@fixed_event, type: document_attr_name, attachment_id: document.id),
+                        method: :delete,
+                        class: 'btn btn-sm btn-secondary float-right',
+                        data: { confirm: t('simple_form.confirm_unsaved') }
+
   .actions.mt-3.mb-3
     = f.submit t('buttons.save'), class: 'btn btn-primary'
