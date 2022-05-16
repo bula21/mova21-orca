@@ -45,7 +45,9 @@ Rails.application.routes.draw do
     end
     resources :transport_locations
     resources :activity_categories
-    resources :fixed_events, except: %i[show]
+    resources :fixed_events, except: %i[show] do
+      delete :attachment, to: 'fixed_events#delete_attachment', on: :member
+    end
     resources :tags
     resources :stufen
   end

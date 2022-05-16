@@ -84,45 +84,19 @@
                 class: 'btn btn-sm btn-secondary float-right',
                 data: { confirm: t('simple_form.confirm_unsaved') }
 
-        - if can?(:edit, Activity)
-          .row
-            .col-4
-              label.d-block{for='language_documents_de'} = t('activerecord.attributes.activity.language_documents_de')
-              = f.file_field :language_documents_de, multiple: true
-              ul.list-group.mt-3
-                - @activity.language_documents_de.each do |document|
-                  li.list-group-item
-                    = document.filename
-                    = link_to t('buttons.destroy'), attachment_activity_path(@activity, type: :language_documents_de, attachment_id: document.id),
-                            method: :delete,
-                            class: 'btn btn-sm btn-secondary float-right',
-                            data: { confirm: t('simple_form.confirm_unsaved') }
-
-            .col-4
-              label.d-block{for='language_documents_fr'} = t('activerecord.attributes.activity.language_documents_fr')
-              = f.file_field :language_documents_fr, multiple: true
-              ul.list-group.mt-3
-                - @activity.language_documents_fr.each do |document|
-                  li.list-group-item
-                    = document.filename
-                    = link_to t('buttons.destroy'), attachment_activity_path(@activity, type: :language_documents_fr, attachment_id: document.id),
-                            method: :delete,
-                            class: 'btn btn-sm btn-secondary float-right',
-                            data: { confirm: t('simple_form.confirm_unsaved') }
-
-            .col-4
-              label.d-block{for='language_documents_it'} = t('activerecord.attributes.activity.language_documents_it')
-              = f.file_field :language_documents_it, multiple: true
-              ul.list-group.mt-3
-                - @activity.language_documents_it.each do |document|
-                  li.list-group-item
-                    = document.filename
-                    = link_to t('buttons.destroy'), attachment_activity_path(@activity, type: :language_documents_it, attachment_id: document.id),
-                            method: :delete,
-                            class: 'btn btn-sm btn-secondary float-right',
-                            data: { confirm: t('simple_form.confirm_unsaved') }
-
-
-
+        - if can?(:edit, Activity
+          - [:language_documents_de, :language_documents_fr, :language_documents_it].each do |document_attr_name|
+            .row
+              .col-md-4
+                label.d-block[for="activity_#{document_attr_name}"] = t('activerecord.attributes.activity.language_documents_de')
+                = f.file_field document_attr_name, multiple: true
+                ul.list-group.mt-3
+                  - @activity.public_send(document_attr_name).each do |document|
+                    li.list-group-item
+                      = document.filename
+                      = link_to t('buttons.destroy'), attachment_activity_path(@activity, type: document_attr_name, attachment_id: document.id),
+                              method: :delete,
+                              class: 'btn btn-sm btn-secondary float-right',
+                              data: { confirm: t('simple_form.confirm_unsaved') }
   .actions.mt-3
     = f.submit t('buttons.save'), class: 'btn btn-primary'

@@ -23,6 +23,7 @@ module Admin
 
     def create
       @fixed_event = FixedEvent.new(fixed_event_params)
+      attach_attachments
 
       if @fixed_event.save
         redirect_to admin_fixed_events_path, notice: I18n.t('messages.created.success')
@@ -32,8 +33,9 @@ module Admin
     end
 
     def update
+      attach_attachments
       if @fixed_event.update(fixed_event_params)
-        redirect_to admin_fixed_events_path, notice: I18n.t('messages.updated.success')
+        redirect_to edit_admin_fixed_event_path(@fixed_event), notice: I18n.t('messages.updated.success')
       else
         render :edit
       end
@@ -44,7 +46,25 @@ module Admin
       redirect_to admin_fixed_events_path, notice: I18n.t('messages.deleted.success')
     end
 
+    def delete_attachment
+      type = params[:type]&.to_sym
+      if FixedEvent::ATTACHMENTS.include?(type)
+        attachment = @fixed_event.public_send(type)
+        attachment = attachment.find_by(id: params[:attachment_id]) if params[:attachment_id].present?
+        attachment.purge if attachment.respond_to?(:purge)
+      end
+      redirect_to edit_admin_fixed_event_path(@fixed_event)
+    end
+
     private
+
+    def attach_attachments
+      %i[language_documents_de language_documents_fr language_documents_it].each do |attachment|
+        next if params[:fixed_event][attachment].blank?
+
+        @fixed_event.public_send(attachment).attach(params[:fixed_event][attachment])
+      end
+    end
 
     def set_fixed_event
       @fixed_event = FixedEvent.find(params[:id])
