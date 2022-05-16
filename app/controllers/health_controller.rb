@@ -28,7 +28,7 @@ class HealthController < ApplicationController
   end
 
   def check_redis_cache
-    return 'OK' if Rails.cache&.redis&.info.present?
+    return 'OK' if Rails.cache&.redis&.ping.eql? 'PONG'
 
     'NOK'
   rescue StandardError
