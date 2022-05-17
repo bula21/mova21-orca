@@ -84,7 +84,7 @@
                 class: 'btn btn-sm btn-secondary float-right',
                 data: { confirm: t('simple_form.confirm_unsaved') }
 
-        - if can?(:edit, Activity
+        - if can?(:edit, Activity)
           - [:language_documents_de, :language_documents_fr, :language_documents_it].each do |document_attr_name|
             .row
               .col-md-4
