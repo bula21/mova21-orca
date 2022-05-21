@@ -88,6 +88,7 @@ class UnitActivityExecutionsController < ApplicationController
   end
 
   def unit_activity_execution_params
-    params[:unit_activity_execution]&.permit(:unit_id, :activity_execution_id, :headcount) || {}
+    params[:unit_activity_execution]&.permit(:unit_id, :activity_execution_id, :headcount,
+                                             :change_remarks, :change_notification) || {}
   end
 end
