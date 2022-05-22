@@ -341,12 +341,15 @@ de:
       subject: Lageranmeldung mova unvollständig
     program_change_notification:
       body: |-
-        Hallo %{salutation_name}
+        Liebe Einheit
 
-        Euer Lagerprogramm hat sich geändert. Begründung: %{remarks}.
+        An eurem Programm musste eine Anpassung vorgenommen werden. %{remarks}
 
-        Siehe %{url}
-      subject: Programmänderung
+        Euer aktuelles Programm findet ihr wie immer auf Orca: %{url}. Wir entschuldigen uns für die Umstände und danken euch für euer Verständnis.
+
+        Viele liebe Pfadi-Grüsse
+        eure mova-Crew
+      subject: Anpassung am mova-Programm
   date:
     abbr_day_names:
     - So
