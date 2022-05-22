@@ -73,11 +73,14 @@ RSpec.describe CampUnitBuilder do
     end
 
     context 'when is pta' do
+      let(:stufe) { build(:stufe, code: :pta, root_camp_unit_id: 1328) }
+
       let(:camp_unit_json_path) { 'spec/fixtures/unit_pta.json' }
 
-      it 'imports the right attributes for the unit', skip: true do
-        expect(camp_unit).to have_attributes(title: 'Sommerlager PTA', abteilung: 'H2O', kv_id: 1145, stufe: 'pta',
-                                             expected_participants_f: 3, expected_participants_m: 5,
+      it 'imports the right attributes for the unit' do
+        expect(camp_unit).to have_attributes(title: 'Sommerlager PTA', abteilung: 'H2O', kv_id: 3, stufe: 'pta',
+                                             # sums up participants of wolf, pfadi, pio and rover
+                                             expected_participants_f: 11, expected_participants_m: 14,
                                              expected_participants_leitung_m: 4, expected_participants_leitung_f: 6)
       end
     end

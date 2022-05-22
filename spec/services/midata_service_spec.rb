@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe MidataService, skip: true do
+RSpec.describe MidataService do
   let(:service) { described_class.new }
   let(:pbs_camp_unit_id) { '1328' }
 
