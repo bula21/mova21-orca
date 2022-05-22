@@ -343,12 +343,15 @@ it:
       subject: L'iscrizione al campo non è ancora completa
     program_change_notification:
       body: |-
-        Hallo %{salutation_name}
+        Cara unità,
 
-        Euer Lagerprogramm hat sich geändert. Begründung: %{remarks}.
+        Purtroppo è stato necessario modificare il vostro programma.  %{remarks}
 
-        Siehe %{url}
-      subject: Programmänderung
+        Come sempre, potete consultare il vostro programma aggiornato su Orca: %{url}. Ci scusiamo per questo cambiamento e vi ringraziamo per la comprensione.
+
+        Cari saluti scout,
+        La vostra mova-Crew
+      subject: Modifica del programma
   date:
     abbr_day_names:
     - Dom

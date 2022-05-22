@@ -346,12 +346,15 @@ fr:
       subject: L’inscription au mova n'est pas encore complète
     program_change_notification:
       body: |-
-        Hallo %{salutation_name}
+        Chères unités,
 
-        Euer Lagerprogramm hat sich geändert. Begründung: %{remarks}.
+        Une modification a dû être apportée à votre programme. %{remarks}
 
-        Siehe %{url}
-      subject: Programmänderung
+        Votre programme mis à jour se trouve comme d’habitude sur Orca: %{url}. Toutes nos excuses pour ce changement et les perturbations qui en découlent et merci pour votre compréhension.
+
+        Nos meilleures salutations scoutes,
+        Votre mova-Crew
+      subject: modification au programme
   date:
     abbr_day_names:
     - dim
