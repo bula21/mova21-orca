@@ -8,12 +8,9 @@ class MidataService
 
   def initialize(user_email = ENV.fetch('MIDATA_USER_EMAIL',
                                         nil), user_token = ENV.fetch('MIDATA_USER_TOKEN', nil), _locale = 'de')
-    # Hitobito deprecated user tokens. But this will not be deployed before BuLa
-    @auth_params = if self.class.base_uri.include?('pbs.puzzle.ch')
-                     { Authorization: "Bearer #{ENV.fetch('MIDATA_OAUTH_ACCESS_TOKEN', nil)}" }
-                   else
-                     { 'X-User-Token': user_token, 'X-User-Email': user_email }
-                   end
+
+    # Hitobito will deprecate user tokens. But this will not be deployed before BuLa.
+    @auth_params = { 'X-User-Token': user_token, 'X-User-Email': user_email }
   end
 
   def fetch_participations(group_id, event_id, page = 1)
