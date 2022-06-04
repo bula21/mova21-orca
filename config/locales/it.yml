@@ -773,6 +773,7 @@ it:
       danger_zone: Zona di pericolo
     index:
       title: Il tuo campo
+      no_camp_info: "Non è stato possibile trovare campi in cui sei registrato come responsabile, cucina o aiuto. Per vedere i campi è necessario utilizzare lo stesso indirizzo e-mail (in alto a destra) di MiData"
     kv_ids:
       '1018': AS Genevois
       '1145': Pfadi Zueri

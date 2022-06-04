@@ -775,6 +775,7 @@ fr:
       danger_zone: Zone de danger
     index:
       title: Ton camp
+      no_camp_info_html: "Aucun camp n'a pu être trouvé dans lequel tu es inscrit en tant que responsable cuisine ou aide. Pour voir les camps, il faut utiliser la même adresse e-mail (visible en haut à droite) que dans MiData"
     kv_ids:
       '1018': AS Genevois
       '1145': Pfadi Zueri

@@ -10,12 +10,18 @@ import Sortable from 'sortablejs';
 import 'jquery'
 import 'popper.js'
 import 'bootstrap'
+import { Application } from "@hotwired/stimulus"
+import { definitionsFromContext } from "@hotwired/stimulus-webpack-helpers"
 
 require.context('./images', true);
 
 Rails.start();
 Turbolinks.start();
 window.$ = jQuery;
+
+window.Stimulus = Application.start()
+const context = require.context("./controllers", true, /\.js$/)
+Stimulus.load(definitionsFromContext(context))
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)

@@ -743,6 +743,7 @@ en:
       danger_zone: Danger zone
     index:
       title: Your camps
+      no_camp_info_html: "https://avanti.bula21.ch/pages/viewpage.action?spaceKey=07SUP&title=ORCA-FAQs"
     kv_ids:
       '1018': AS Genevois
       '1145': Pfadi Zueri
