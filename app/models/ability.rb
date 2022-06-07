@@ -27,6 +27,11 @@ class Ability
   end
 
   def midata_user_permissions(user)
+    leader_permissions(user)
+    assistant_leader_permission(user)
+  end
+
+  def leader_permissions(user)
     can :read, Leader, pbs_id: user.pbs_id
 
     unit_ids = Leader.where(email: user.email).map { |leader| leader.unit_ids.values }.flatten.compact
@@ -43,8 +48,6 @@ class Ability
     can :manage, UnitActivity, unit_id: unit_ids
     can :read, UnitActivityExecution, unit_id: unit_ids
     can %i[read update], UnitVisitorDay, unit_id: unit_ids
-
-    assistant_leader_permission(user)
   end
 
   def assistant_leader_permission(user)
