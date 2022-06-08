@@ -8,9 +8,9 @@ http_interactions:
       string: ''
     headers:
       X-User-Token:
-      - Tu7aVJWyLYYMyCnZv2bz
+      - "<MIDATA_USER_TOKEN>"
       X-User-Email:
-      - hussein_kohlmann@hitobito.example.com
+      - "<MIDATA_USER_EMAIL>"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -23,7 +23,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 15 Jan 2022 13:26:49 GMT
+      - Sun, 22 May 2022 16:02:15 GMT
       Server:
       - nginx/1.12.1
       Strict-Transport-Security:
@@ -58,18 +58,18 @@ http_interactions:
       Vary:
       - Accept-Encoding,Origin,Authorization
       X-Request-Id:
-      - b67d7e47-8664-4637-a75b-90f9830a97c8
+      - 0f1e33ce-288a-4ad4-a286-c3bb33206e04
       X-Runtime:
-      - '0.566199'
+      - '0.441087'
       Set-Cookie:
-      - _session_id=bb3d230d7da654406d970f51bd2f950d; path=/; secure; HttpOnly
-      - afcc3ba8de9b9b04950e14e130f0b228=815c3d2e7b0b60feea627f0884f20d2d; path=/;
+      - _session_id=9de9f74bba8094e13fd075fc34a7da61; path=/; secure; HttpOnly
+      - afcc3ba8de9b9b04950e14e130f0b228=00f3073165a1cb679394e7f45b25fec4; path=/;
         HttpOnly; Secure; SameSite=None
-      - locale=de; path=/; expires=Sun, 15 Jan 2023 13:26:48 GMT; secure
+      - locale=de; path=/; expires=Mon, 22 May 2023 16:02:15 GMT; secure
       Transfer-Encoding:
       - chunked
     body:
       encoding: ASCII-8BIT
       string: '{"current_page":1,"total_pages":1,"next_page_link":null,"prev_page_link":null,"event_participations":[{"id":"11986","type":"event_participations","first_name":"Andreas","last_name":null,"nickname":null,"company_name":"Gross","company":false,"email":null,"address":null,"zip_code":"3576","town":"Herisau","country":null,"gender":"m","birthday":"1990-05-29","picture":{"url":"/packs/media/images/profil-d4d04543c5d265981cecf6ce059f2c5d.png","thumb":{"url":"/packs/media/images/profil_thumb-20ef1de0fa7801546669f4df3411dc1b.png"}},"primary_group_id":56,"title":null,"salutation":null,"correspondence_language":null,"prefers_digital_correspondence":false,"kantonalverband_id":2,"roles":[{"type":"Event::Camp::Role::Participant","role_class":"Event::Camp::Role::Participant","name":"Teilnehmer*in"}],"links":{"person":"1896","event_answers":["1313"]},"additional_information":"","active":true,"qualified":null,"phone_numbers":[]},{"id":"11985","type":"event_participations","first_name":"Norbert","last_name":null,"nickname":null,"company_name":"Hochreutener","company":false,"email":null,"address":null,"zip_code":"3884","town":"Vernier","country":null,"gender":"m","birthday":"1948-04-17","picture":{"url":"/packs/media/images/profil-d4d04543c5d265981cecf6ce059f2c5d.png","thumb":{"url":"/packs/media/images/profil_thumb-20ef1de0fa7801546669f4df3411dc1b.png"}},"primary_group_id":56,"title":null,"salutation":null,"correspondence_language":null,"prefers_digital_correspondence":false,"kantonalverband_id":2,"roles":[{"type":"Event::Camp::Role::Participant","role_class":"Event::Camp::Role::Participant","name":"Teilnehmer*in"}],"links":{"person":"1907","event_answers":["1312"]},"additional_information":"","active":true,"qualified":null,"phone_numbers":[]}],"linked":{"event_answers":[{"id":"1313","question":"Vegi?","answer":"Ja"},{"id":"1312","question":"Vegi?","answer":"Nein"}]},"links":{"event_participations.person":{"href":"https://pbs.puzzle.ch/de/people/{event_participations.person}.json","type":"people"}}}'
-  recorded_at: Sat, 15 Jan 2022 13:26:49 GMT
-recorded_with: VCR 6.0.0
+  recorded_at: Sun, 22 May 2022 16:02:15 GMT
+recorded_with: VCR 6.1.0

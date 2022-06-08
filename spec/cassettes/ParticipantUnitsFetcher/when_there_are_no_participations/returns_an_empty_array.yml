@@ -8,9 +8,9 @@ http_interactions:
       string: ''
     headers:
       X-User-Token:
-      - Tu7aVJWyLYYMyCnZv2bz
+      - "<MIDATA_USER_TOKEN>"
       X-User-Email:
-      - hussein_kohlmann@hitobito.example.com
+      - "<MIDATA_USER_EMAIL>"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -23,7 +23,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 15 Jan 2022 13:26:50 GMT
+      - Sun, 22 May 2022 16:02:16 GMT
       Server:
       - nginx/1.12.1
       Strict-Transport-Security:
@@ -58,18 +58,18 @@ http_interactions:
       Vary:
       - Accept-Encoding,Origin,Authorization
       X-Request-Id:
-      - ac29bfeb-a992-4115-90e6-f5fdd022626f
+      - 83e42e72-6711-4559-9467-2842d6c43285
       X-Runtime:
-      - '0.444093'
+      - '0.472574'
       Set-Cookie:
-      - _session_id=d7e6ba7acf304408e17c3cc71efcd1c1; path=/; secure; HttpOnly
-      - afcc3ba8de9b9b04950e14e130f0b228=815c3d2e7b0b60feea627f0884f20d2d; path=/;
+      - _session_id=0232a010719bf6740642deb17eb08809; path=/; secure; HttpOnly
+      - afcc3ba8de9b9b04950e14e130f0b228=00f3073165a1cb679394e7f45b25fec4; path=/;
         HttpOnly; Secure; SameSite=None
-      - locale=de; path=/; expires=Sun, 15 Jan 2023 13:26:49 GMT; secure
+      - locale=de; path=/; expires=Mon, 22 May 2023 16:02:15 GMT; secure
       Transfer-Encoding:
       - chunked
     body:
       encoding: ASCII-8BIT
       string: '{"current_page":1,"total_pages":0,"next_page_link":null,"prev_page_link":null,"event_participations":[]}'
-  recorded_at: Sat, 15 Jan 2022 13:26:50 GMT
-recorded_with: VCR 6.0.0
+  recorded_at: Sun, 22 May 2022 16:02:16 GMT
+recorded_with: VCR 6.1.0
