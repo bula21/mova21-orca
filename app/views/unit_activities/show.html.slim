@@ -3,7 +3,7 @@
   span.badge[class="badge-#{@activity.activity_category.css_code}" style='align-self: baseline']
     = @activity.activity_category&.label
 - @activity.tags.each do |tag|
-  i class="#{tag.icon} mr-2" title="#{tag.label}"
+  i class="#{tag.icon} me-2" title="#{tag.label}"
 
 div.mt-4
   = image_tag(@activity.picture, height: "100") unless @activity.picture.blank?
@@ -38,10 +38,10 @@ hr
     dd = @activity.participants_count_transport
 
     dt = t('activerecord.attributes.activity.languages')
-    dd 
+    dd
       ul
         - @activity.languages.select { |language, selected| selected }.keys.each do |language|
-          li= t("simple_form.options.activity.#{language}") 
+          li= t("simple_form.options.activity.#{language}")
 
     dt = t('activerecord.attributes.activity.block_type')
     dd = t(@activity.block_type || 'none', scope: 'simple_form.options.activity.block_type')

@@ -13,9 +13,8 @@ dl.mb-5
 == render partial: 'activity_executions/filter', locals: { submit_url: reassign_unit_activity_execution_path(@unit_activity_execution), reset_url: activity_executions_path }
 
 - unless @filter.active?
-  .alert.alert-dismissible.alert-warning
-    button class='close' data-dismiss='alert' aria-label=t('buttons.close')
-      span aria-hidden="true" &times;
+  .alert.alert-dismissible.alert-warning.modal
+    button class='btn-close' data-bs-dismiss='alert' aria-label=t('buttons.close')
     =t('too_many_records')
 
 - else
@@ -32,15 +31,15 @@ dl.mb-5
       tbody
         - @activity_executions.each do |activity_execution|
           tr
-            td 
+            td
               = activity_execution.id
             td
               = l(activity_execution.starts_at, format: :short)
-            td 
+            td
               = l(activity_execution.ends_at, format: :short)
-            td 
+            td
               = link_to activity_execution.field, activity_activity_executions_path(activity_execution.activity, field_id: activity_execution.field.id)
-            td 
+            td
               = "#{activity_execution.headcount}/#{activity_execution.amount_participants} (#{(activity_execution.headcount_utilization * 100).to_i}%)"
             td.p-1
               = link_to(t('apply'), edit_unit_activity_execution_path(@unit_activity_execution, unit_activity_execution: { activity_execution_id: activity_execution.id }), class: 'btn btn-primary')

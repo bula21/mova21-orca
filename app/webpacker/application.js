@@ -7,9 +7,7 @@ import jQuery from 'jquery';
 import Turbolinks from 'turbolinks';
 import Rails from '@rails/ujs'
 import Sortable from 'sortablejs';
-import 'jquery'
-import 'popper.js'
-import 'bootstrap'
+import { Tooltip } from 'bootstrap';
 import { Application } from "@hotwired/stimulus"
 import { definitionsFromContext } from "@hotwired/stimulus-webpack-helpers"
 
@@ -42,6 +40,10 @@ document.addEventListener("turbolinks:load", () => {
   for (const el of document.querySelectorAll('[data-onchange-submit]')) {
     el.addEventListener('change', (ev) => ev.currentTarget.form.submit());
   }
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new Tooltip(tooltipTriggerEl)
+  })
 });
 
 function setupDragSort(el) {

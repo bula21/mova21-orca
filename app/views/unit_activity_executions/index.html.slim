@@ -2,7 +2,7 @@
 
 - if @unit
 	.mb-4
-		= link_to @unit.title, unit_path(@unit)
+		= link_to @unit.shortened_title, unit_path(@unit)
 
 - if @activity_execution
 	.row.mb-4

@@ -2,22 +2,22 @@
 
 = link_to(t('buttons.create'), new_unit_path, class: 'btn btn-primary mb-3 shadow-sm') if can?(:create, Unit)
 - if can?(:export, Unit)
-  = link_to units_path(format: :csv), class: 'btn btn-primary mb-3 ml-2 shadow-sm' do
+  = link_to units_path(format: :csv), class: 'btn btn-primary mb-3 ms-2 shadow-sm' do
     i.fas.fa-file-export
     =< t('buttons.export_csv')
 
-- if @units.size > 10
-  div[data-controller="filter"]
-    = search_field_tag :filter, nil, class: "form-control shadow-sm", placeholder: t('buttons.filter'), data: { target:"filter.source", action: "input->filter#filter" }
+div[data-controller=(@units.size > 10 ? "filter" : "")]
+  - if @units.size > 10
+    = search_field_tag :filter, nil, class: "form-control shadow-sm", placeholder: t('buttons.filter'), data: { action: "input->filter#filter", 'filter-target' => "source" }
 
-- if @units.any?
-  .row
-    - @units.each do |unit|
-      .col-md-6
-        .card.m-2.shadow-sm[data-target="filter.filterable"]
-          .card-body
-            h5.card-title = unit.title
-            p.card-text = unit.abteilung
-            a.stretched-link[href=unit_path(unit)]
-- else
-  .alert.alert-info = t('units.index.no_camp_info_html')
+  - if @units.any?
+    .row.g-3.mt-1
+      - @units.each do |unit|
+        .col-md-6[data-filter-target="filterable" data-unit-id=unit.id]
+          .card.shadow-sm
+            .card-body
+              h5.card-title = unit.shortened_title
+              p.card-text = unit.abteilung
+              a.stretched-link[href=unit_path(unit)]
+  - else
+    .alert.alert-info = t('units.index.no_camp_info_html')

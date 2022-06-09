@@ -1,7 +1,7 @@
 const { webpackConfig, merge, isDevelopment } = require('shakapacker')
 const customConfig = {
 	resolve: {
-		extensions: ['.ts', '.tsx', '.jsx', '.css', '.scss']
+		extensions: ['.ts', '.tsx', '.jsx', '.css', '.scss'],
 	},
 	module: {
 		rules: [

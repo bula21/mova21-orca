@@ -756,7 +756,6 @@ it:
     tag_legend:
       button: Aprire la legenda dei tag
       title: Legenda dei tag
-    video_src: https://www.youtube.com/embed/7XusNePwv_o
   unit_activity_executions:
     form:
       reassign: Neue Durchführung finden
@@ -772,8 +771,10 @@ it:
     form:
       danger_zone: Zona di pericolo
     index:
+      no_camp_info_html: Non sono stato trovato nessun campo in cui sei iscritto/a
+        come animatore/trice o aiuto. Per visualizzare un campo devi utilizzare lo
+        stesso indirizzo e-mail (in alto a destra) utilizzato su MiData.
       title: Il tuo campo
-      no_camp_info: "Non è stato possibile trovare campi in cui sei registrato come responsabile, cucina o aiuto. Per vedere i campi è necessario utilizzare lo stesso indirizzo e-mail (in alto a destra) di MiData"
     kv_ids:
       '1018': AS Genevois
       '1145': Pfadi Zueri
@@ -808,8 +809,32 @@ it:
       activity_booking_open: Prenotazione aperta
       activity_booking_preview: Aprire l'anteprima delle prenotazioni
       activity_booking_text: Prenotare un'attività
+      amount_people:
+        after_camp: Smontaggio
+        before_camp: Montaggio
+        internationals: Internazionali
+        main_camp: Campo principale
+        persons: Persone
+        persons_tooltip: Totale di tutti gli animatori/trici, cucina & partecipanti
+          delle unità svizzere
+        places_available: Avete inserito un numero di persone inferiore a quello indicato
+          nell'iscrizione. Le quote del campo saranno fatturate in base alle %{count}
+          persone iscritte (esclusi gli/le internazionali). Puoi ancora inserire altre
+          persone.
+        places_ok: Avete inserito il numero esatto di persone rispetto al numero di
+          persone iscritte. Potete cambiare una persona in qualsiasi momento (ad esempio
+          in caso di malattia)
+        places_overbooked_html: Avete inserito più persone di quelle indicate al momento
+          dell'iscrizione. Partiamo dal principio che ci siano sempre solo %{count}
+          persone presenti (secondo <a href='https://www.mova.ch/it/partecipi/presenze-parziali-e-cambi-di-ruolo'
+          target='_blank'>wikimova</a> è possibile sostituire le persone. Pertanto,
+          in questo caso il numero può essere superiore al numero di persone iscritte).
+        rover: Rover di unità
+        title: Numero definitivo di persone iscritte
+        total: Totale
       basic_infos: Vario
       book_visitor_day_tickets: Compra i biglietti ora
+      camp_details: Dettagli del campo
       camp_id: Id Campo
       camp_link_midata: Campo su MiData
       data_complete: Dati completi
@@ -826,13 +851,23 @@ it:
           informazioni relative al ritiro del cibo presenti su <a href='https://www.mova.ch/it/kochen'
           target='_blank'>wikimova</a>
         title: Ristorazione
-      imported: importati da MiData
+      imported: 'Inserite: Sono state aggiunte %{total_count} di %{max_count} persone
+        delle unità svizzere. Di cui %{midata_count} persone sono state importate
+        automaticamente da MiData.'
       invoices: Fatture
       other_infos: Informazioni supplementari
       paid:
         'false': aperto
         'true': pagato
       participants: Visualizzare i partecipanti
+      progressbar:
+        accepted_security_concept_html: Il concetto di sicurezza non è ancora stato
+          approvato.
+        complete: Dati completi
+        correct_participant_amount_html: Il numero di partecipanti non sono stati
+          inseriti correttamente
+        incomplete: Azioni da svolgere
+        unit_incomplete_html: I dati dei/delle partecipanti non sono completi
       questionnaire: Questionario
       security_concepts:
         accept_button_text: accettare i concetti di sicurezza
@@ -845,6 +880,7 @@ it:
         hikes_pdf_link: https://bula21.sharepoint.com/:b:/s/share-externe/EavfrEgg-GxBqIeFZeD_jRMB_r9dtqw8jPvC7kBGPj9BUw
         hikes_pdf_text: Concetto di sicurezza per le escursioni a piedi
         title: Concetto di sicurezza
+      show_unit_activity_executions: Link diretto al programma
   views:
     pagination:
       first: !!str '<<'

@@ -71,7 +71,7 @@
                   = document.filename
                   = link_to t('buttons.destroy'), attachment_activity_path(@activity, type: :activity_documents, id: document.id),
                         method: :delete,
-                        class: 'btn btn-sm btn-secondary float-right',
+                        class: 'btn btn-sm btn-secondary float-end',
                         data: { confirm: t('simple_form.confirm_unsaved') }
 
           .col-4
@@ -81,7 +81,7 @@
               = image_tag(@activity.picture, height: "100")
               = link_to t('buttons.destroy'), attachment_activity_path(@activity, type: :picture, id: @activity.picture.id),
                 method: :delete,
-                class: 'btn btn-sm btn-secondary float-right',
+                class: 'btn btn-sm btn-secondary float-end',
                 data: { confirm: t('simple_form.confirm_unsaved') }
 
         - if can?(:edit, Activity)
@@ -96,7 +96,7 @@
                       = document.filename
                       = link_to t('buttons.destroy'), attachment_activity_path(@activity, type: document_attr_name, attachment_id: document.id),
                               method: :delete,
-                              class: 'btn btn-sm btn-secondary float-right',
+                              class: 'btn btn-sm btn-secondary float-end',
                               data: { confirm: t('simple_form.confirm_unsaved') }
   .actions.mt-3
     = f.submit t('buttons.save'), class: 'btn btn-primary'
