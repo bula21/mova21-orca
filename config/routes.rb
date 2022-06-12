@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     delete 'document/:id', to: 'units#delete_document', as: :document
   end
   resources :leaders, except: [:destroy]
+  resources :unit_communications
   resources :unit_activity_executions do
     post :import, on: :collection
     get :reassign, on: :member, as: :reassign

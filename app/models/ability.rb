@@ -15,6 +15,7 @@ class Ability
     allocation_user_permissions(user) if user.role_allocation?
     editor_user_permissions(user) if user.role_editor?
     midata_user_permissions(user) if user.midata_user?
+    role_unit_communication_permissions(user) if user.role_unit_communication?
     external_user_permissions(user) unless user.midata_user?
   end
   # rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
@@ -124,5 +125,10 @@ class Ability
 
   def editor_user_permissions(_user)
     can :update, Activity
+  end
+
+  def role_unit_communication_permissions(_user)
+    can :read, Unit
+    can :read, Leader
   end
 end

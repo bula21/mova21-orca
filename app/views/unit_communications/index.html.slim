@@ -1,0 +1,20 @@
+h1 = t('unit_communications.title')
+p = t('unit_communications.description')
+br
+= simple_form_for(:unit_filter, url: unit_communications_path, method: :GET) do |f|
+  = f.input :unit_ids, label: t('unit_communications.unit_ids')
+
+  = f.submit t('buttons.search'), class: 'btn btn-secondary'
+br
+
+- if @unit_ids
+  - if !@units.empty?
+    h3 = t('unit_communications.result')
+    ul
+    - @units.each do |unit|
+      li = "#{unit.id}: #{unit.title}"
+
+    hr
+    p = @emails
+  - else
+    p = t('unit_communications.no_results')

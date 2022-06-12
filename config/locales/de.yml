@@ -306,6 +306,7 @@ de:
     edit: editieren
     export_csv: Export als CSV
     filter: Filtern
+    search: Suchen
     reset: Reset
     save: Speichern
     show: anzeigen
@@ -573,6 +574,7 @@ de:
     activity_category: Kategorie
     activity_execution: Programm
     fixed_event: Grobprogramm
+    unit_communications: Einheits-Kommunikation
     language:
       de: DE
       en: EN
@@ -722,6 +724,13 @@ de:
       short: "%d.%m.%Y %H:%M"
     pm: nachmittags
   too_many_records: Zu viele Datensätze. Bitte Filter verwenden
+  unit_communications:
+    title: Kommunikation Einheiten
+    description: "Gibt für die eingegebenen Einheits-IDs die Mailadressen der zugehörigen Lagerleitenden aus.
+      Diese können dann in ein Mailprogramm kopiert werden. Beispiel: 444,321,222"
+    unit_ids: Einheits-IDs kommasepariert
+    result: Resultate
+    no_results: Keine Einheiten gefunden
   unit_activity_booking:
     all_comply: Super! Alle Bedingungen sind erfüllt. Du kannst die Buchung abschliessen.
     book: zum Warenkorb hinzufügen
