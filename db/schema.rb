@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_11_072525) do
+ActiveRecord::Schema.define(version: 2022_06_10_142200) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -361,7 +361,7 @@ ActiveRecord::Schema.define(version: 2022_05_11_072525) do
     t.integer "expected_guest_participants"
     t.integer "expected_guest_leaders"
     t.integer "visitor_day_tickets", default: 0
-    t.string "calc_menu_token"
+    t.string "food_pickup_slot"
     t.integer "definite_max_number_of_persons"
     t.integer "amount_of_rovers"
     t.string "arrival_slot"
@@ -370,6 +370,7 @@ ActiveRecord::Schema.define(version: 2022_05_11_072525) do
     t.string "transport_mode"
     t.datetime "accept_security_concept_at"
     t.integer "district_number"
+    t.string "kitchen_id"
     t.index ["al_id"], name: "index_units_on_al_id"
     t.index ["coach_id"], name: "index_units_on_coach_id"
     t.index ["lagerleiter_id"], name: "index_units_on_lagerleiter_id"
