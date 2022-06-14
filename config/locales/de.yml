@@ -305,7 +305,7 @@ de:
     destroy: löschen
     edit: editieren
     export_csv: Export als CSV
-    filter: Filtern (Name / Lager-ID)
+    filter: Filtern
     reset: Reset
     save: Speichern
     show: anzeigen
@@ -770,6 +770,7 @@ de:
     form:
       danger_zone: Danger zone
     index:
+      filter: Filtern (Name / Lager-ID)
       no_camp_info_html: Es konnten keine Lager gefunden werden, in welchen du als
         Leitperson oder Helfer*in eingetragen bist. Um Lager zu sehen muss dieselbe
         Mailadresse (oben rechts ersichtlich) wie in MiData verwendet werden.

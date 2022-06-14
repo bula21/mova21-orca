@@ -771,6 +771,7 @@ it:
     form:
       danger_zone: Zona di pericolo
     index:
+      filter: Filtrare (Unità / Id Campo)
       no_camp_info_html: Non sono stato trovato nessun campo in cui sei iscritto/a
         come animatore/trice o aiuto. Per visualizzare un campo devi utilizzare lo
         stesso indirizzo e-mail (in alto a destra) utilizzato su MiData.

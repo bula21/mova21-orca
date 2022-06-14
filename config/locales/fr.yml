@@ -774,6 +774,7 @@ fr:
     form:
       danger_zone: Zone de danger
     index:
+      filter: Filtrer (unité / ID du camp)
       no_camp_info_html: Aucun camp n'a été trouvé dans lequel tu es inscrit-e en
         tant que responsable ou bénévole. Pour voir les camps, il faut utiliser la
         même adresse e-mail (visible en haut à droite) que dans MiData.
