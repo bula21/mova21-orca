@@ -10,7 +10,7 @@ require 'super_diff/rspec-rails'
 
 ActiveRecord::Migration.maintain_test_schema!
 
-Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+Dir[Rails.root.join('spec/support/**/*.rb')].sort.each { |f| require f }
 
 VCR.configure do |config|
   config.cassette_library_dir = 'spec/cassettes'

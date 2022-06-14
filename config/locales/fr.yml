@@ -758,7 +758,6 @@ fr:
     tag_legend:
       button: Ouvrir les légendes des tags
       title: Légendes Tags
-    video_src: https://www.youtube.com/embed/7XusNePwv_o
   unit_activity_executions:
     form:
       reassign: Neue Durchführung finden
