@@ -21,7 +21,9 @@ class ApplicationController < ActionController::Base
   def requested_locale
     requested_locales = [params[:locale],
                          request.env['HTTP_ACCEPT_LANGUAGE'].try(:scan, /^[a-z]{2}/).try(:first)].compact
-    requested_locales.find { |locale| I18n.locale_available?(locale) } || I18n.default_locale
+    requested_locales.find do |locale|
+      I18n.available_locales.without(:en).include?(locale&.to_sym)
+    end || I18n.default_locale
   end
 
   def new_session_path(_scope)

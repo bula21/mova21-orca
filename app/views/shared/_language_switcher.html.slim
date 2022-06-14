@@ -1,5 +1,5 @@
 li.nav-item.dropdown.position-relative
   .nav-link.dropdown-toggle[href='#' role="button" data-bs-toggle="dropdown"]= locale.upcase
   .dropdown-menu.dropdown-menu-end.position-absolute
-    - I18n.available_locales.each do |locale|
+    - I18n.available_locales.without(:en).each do |locale|
       = link_to t(locale, scope: 'nav.language'), { locale: locale }, class: 'dropdown-item d-inline-block'
