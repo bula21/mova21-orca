@@ -758,7 +758,6 @@ fr:
     tag_legend:
       button: Ouvrir les légendes des tags
       title: Légendes Tags
-    video_src: https://www.youtube.com/embed/7XusNePwv_o
   unit_activity_executions:
     form:
       reassign: Neue Durchführung finden
@@ -774,6 +773,10 @@ fr:
     form:
       danger_zone: Zone de danger
     index:
+      filter: Filtrer (unité / ID du camp)
+      no_camp_info_html: Aucun camp n'a été trouvé dans lequel tu es inscrit-e en
+        tant que responsable ou bénévole. Pour voir les camps, il faut utiliser la
+        même adresse e-mail (visible en haut à droite) que dans MiData.
       title: Ton camp
     kv_ids:
       '1018': AS Genevois
@@ -809,8 +812,33 @@ fr:
       activity_booking_open: Ouvrir réservation
       activity_booking_preview: Ouvrir l’aperçu de la réservation
       activity_booking_text: Réserver des activités
+      amount_people:
+        after_camp: Démontage
+        before_camp: Structure
+        internationals: Internationaux-ales
+        main_camp: Camp principal
+        persons: Personnes
+        persons_tooltip: Total de tous les responsables, de la cuisine et des participant-e-s
+          des unités nationales
+        places_available: Vous avez saisi moins de personnes que ce que vous avez
+          indiqué dans l'inscription. Nous vous facturons les montants du camp sur
+          la base des %{count} de personnes indiquées (sans international). Vous pouvez
+          encore compléter les places.
+        places_ok: Vous avez ajouté le nombre exact de personnes pour le nombre de
+          personnes inscrites. Vous pouvez à tout moment remplacer une personne (par
+          ex. en cas de maladie).
+        places_overbooked_html: Vous avez saisi plus de personnes que vous n'en avez
+          indiqué dans l'inscription. Nous partons du principe que vous n'êtes toujours
+          que %{count} personnes sur place (selon <a href='https://www.mova.ch/fr/participer/presence-partielle-et-changement-de-role'
+          target='_blank'>wikimova</a>, vous pouvez remplacer des personnes. C'est
+          pourquoi, dans ce cas, le nombre peut être plus élevé que le nombre de personnes
+          inscrites).
+        rover: Rover d'unité
+        title: Nombre définitif de personnes inscrites
+        total: Total
       basic_infos: Général
       book_visitor_day_tickets: Commander des billets maintenant
+      camp_details: Détails du camp
       camp_id: ID du camp
       camp_link_midata: Camp sur MiData
       data_complete: Inscription complète
@@ -827,13 +855,23 @@ fr:
           de toutes les informations sur ce processus disponibles sur le <a href='https://www.mova.ch/fr/kochen'
           target='_blank'>wikimova</a>.
         title: Restauration
-      imported: imported from MiData
+      imported: 'Saisie des données: %{total_count} de %{max_count} personnes des
+        unités nationales ont été ajoutées. Dont %{midata_count} personnes ont été
+        importées automatiquement de MiData.'
       invoices: Factures
       other_infos: Informations supplémentaires
       paid:
         'false': ouvert
         'true': payé
-      participants: Participant.e.s
+      participants: Montrer Participant.e.s
+      progressbar:
+        accepted_security_concept_html: Le concept de sécurité n'a pas encore été
+          accepté
+        complete: Données complètes
+        correct_participant_amount_html: Le nombre de participant-e-s n'est pas correctement
+          saisi.
+        incomplete: Tâches ouvertes
+        unit_incomplete_html: Les données des participant-e-s sont incomplètes.
       questionnaire: Questionaire
       security_concepts:
         accept_button_text: Accepter les concepts de sécurité
@@ -846,6 +884,7 @@ fr:
         hikes_pdf_link: https://bula21.sharepoint.com/:b:/s/share-externe/EdQsnKlGZjdJkN6UmR_gaWsBMVRDERjN-0FRf6jXh3Eqhw
         hikes_pdf_text: Concept de sécurité pour les randonnées pédestres
         title: Concept de sécurité
+      show_unit_activity_executions: Lien direct vers le programme
   views:
     pagination:
       first: !!str '<<'

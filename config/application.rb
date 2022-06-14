@@ -26,7 +26,7 @@ module Orca
     config.load_defaults 6.0
     config.time_zone = 'Zurich'
     config.i18n.default_locale = :de
-    config.i18n.available_locales = %i[en de it fr]
-    config.i18n.fallbacks = [:de, { en: :de, de: :fr, fr: :en }]
+    config.i18n.available_locales = %i[de it fr en]
+    config.i18n.fallbacks = [:de, { it: :de, de: :fr, fr: :it }]
   end
 end

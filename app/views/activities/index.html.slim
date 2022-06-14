@@ -39,7 +39,7 @@
           td = activity.description&.truncate(20)
           td
             - activity.tags.each do |tag|
-              i[class="#{tag.icon} mr-2" title=tag.label]
+              i[class="#{tag.icon} me-2" title=tag.label]
           td = link_to activity do
             i.fas.fa-eye title=t('buttons.show')
           td

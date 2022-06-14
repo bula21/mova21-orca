@@ -10,48 +10,49 @@ html
     = stylesheet_pack_tag 'styles', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    nav.navbar.navbar-expand-lg.navbar-light.bg-light
-      = link_to root_path, class: 'navbar-brand'
-        = image_pack_tag 'mova_logo.svg', style: 'height: 30px;'
-      button.navbar-toggler[type= 'button' data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"]
-        span class="navbar-toggler-icon"
-      .collapse.navbar-collapse#navbarNav
-        ul.navbar-nav
-          - if can?(:manage, Leader)
-            li.nav-item
-              = link_to t('nav.leader'), leaders_path, class: 'nav-link'
-          - if current_user.present?
-            li.nav-item
-              = link_to t('nav.unit'), units_path, class: 'nav-link'
-          - if can?(:read, Activity)
-            li.nav-item
-              = link_to t('nav.activity'), activities_path, class: 'nav-link'
-          - if can?(:manage, ActivityExecution)
-            li.nav-item
-              = link_to t('nav.activity_execution'), activity_executions_path, class: 'nav-link'
-          - if can?(:create, Tag)
-            li.nav-item.dropdown
-              .nav-link.dropdown-toggle[href='#' role="button" data-toggle="dropdown"]= "Admin"
-              .dropdown-menu
-                = link_to t('nav.tag'), admin_tags_path, class: 'dropdown-item'
-                = link_to t('nav.activity_category'), admin_activity_categories_path, class: 'dropdown-item'
-                = link_to t('nav.stufen'), admin_stufen_path, class: 'dropdown-item'
-                = link_to t('nav.fixed_event'), admin_fixed_events_path, class: 'dropdown-item'
-                = link_to t('nav.spots'), admin_spots_path, class: 'dropdown-item'
-        ul.navbar-nav.ml-auto
-          li.nav-item.dropdown
-            .nav-link.dropdown-toggle[href='#' role="button" data-toggle="dropdown"]= locale.upcase
-            .dropdown-menu
-              - I18n.available_locales.each do |locale|
-                = link_to t(locale, scope: 'nav.language'), { locale: locale }, class: 'dropdown-item'
-          - if current_user.present?
-            li.nav-item.dropdown
-              a.nav-link.dropdown-toggle[href='#' role="button" data-toggle="dropdown"]= current_user.email
-              .dropdown-menu
-                = link_to t('nav.logout'), destroy_user_session_path, class: 'dropdown-item'
-          - else
-            li.nav-item
-              = link_to t('nav.login'), new_user_session_path, class: 'nav-link'
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light.shadow-sm-xs-only
+      .container-fluid
+        = link_to root_path, class: 'navbar-brand'
+          = image_pack_tag 'mova_logo.svg', style: 'height: 30px;'
+
+        ul.navbar-nav.ms-auto.d-lg-none
+          = render 'shared/language_switcher'
+        button.navbar-toggler.border-0[type='button' data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"]
+          i.fas.fa-bars.fa-lg.text-black
+        .collapse.navbar-collapse#navbarNav
+          ul.navbar-nav
+            - if can?(:manage, Leader)
+              li.nav-item
+                = link_to t('nav.leader'), leaders_path, class: 'nav-link'
+            - if current_user.present?
+              li.nav-item
+                = link_to t('nav.unit'), units_path, class: 'nav-link'
+            - if can?(:read, Activity)
+              li.nav-item
+                = link_to t('nav.activity'), activities_path, class: 'nav-link'
+            - if can?(:manage, ActivityExecution)
+              li.nav-item
+                = link_to t('nav.activity_execution'), activity_executions_path, class: 'nav-link'
+            - if can?(:create, Tag)
+              li.nav-item.dropdown
+                .nav-link.dropdown-toggle[href='#' role="button" data-bs-toggle="dropdown"]= "Admin"
+                .dropdown-menu
+                  = link_to t('nav.tag'), admin_tags_path, class: 'dropdown-item'
+                  = link_to t('nav.activity_category'), admin_activity_categories_path, class: 'dropdown-item'
+                  = link_to t('nav.stufen'), admin_stufen_path, class: 'dropdown-item'
+                  = link_to t('nav.fixed_event'), admin_fixed_events_path, class: 'dropdown-item'
+                  = link_to t('nav.spots'), admin_spots_path, class: 'dropdown-item'
+          ul.navbar-nav.ms-auto
+            .d-none.d-lg-block
+              = render 'shared/language_switcher'
+            - if current_user.present?
+              li.nav-item.dropdown
+                a.nav-link.dropdown-toggle[href='#' role="button" data-bs-toggle="dropdown"]= current_user.email
+                .dropdown-menu
+                  = link_to t('nav.logout'), destroy_user_session_path, class: 'dropdown-item'
+            - else
+              li.nav-item
+                = link_to t('nav.login'), new_user_session_path, class: 'nav-link'
     .container
       = render 'flash_messages'
       = yield

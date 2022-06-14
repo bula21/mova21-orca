@@ -1,6 +1,6 @@
 h1.h1.pb-0
   = UnitActivity.model_name.human(count: 2)
-  small=< @unit.title
+  small=< @unit.shortened_title
 
 .pb-5 = link_to t('buttons.back'), unit_path(@unit)
 
@@ -17,33 +17,33 @@ h1.h1.pb-0
         .d-flex.justify-content-between.align-items-center
           div
             =<> UnitActivity.model_name.human(count: 2)
-            .badge.badge-primary
+            .badge.bg-primary
               = @unit.unit_activities.count
           div
             - if @unit.activity_booking.all_comply? || @unit_activity_booking.phase?(:committed)
-              .badge.badge-pill.badge-success 
+              .badge.rounded-pill.badge-success
                 i.fa.fa-check
-            - else 
-              .badge.badge-pill.badge-warning[title=t('unit_activity_booking.not_all_comply')]
+            - else
+              .badge.rounded-pill.badge-warning[title=t('unit_activity_booking.not_all_comply')]
                 i.fa.fa-times
 
       .card-body.p-0
         ol.sortable-list.list-group.small
           - @unit_activities.prioritized.each do |unit_activity|
-            li.list-group-item.p-1.pl-4[data-sort-callback-url=priorize_unit_unit_activity_path(@unit, unit_activity) class=(@unit_activity_booking.phase?(:preview, :open) && can?(:commit, @unit) && :draggable)]
+            li.list-group-item.p-1.ps-4[data-sort-callback-url=priorize_unit_unit_activity_path(@unit, unit_activity) class=(@unit_activity_booking.phase?(:preview, :open) && can?(:commit, @unit) && :draggable)]
               h6.m-0= unit_activity.activity.label
               span.badge class="badge-#{unit_activity.activity.activity_category&.css_code}"
                 = unit_activity.activity.activity_category&.label
-              
+
               .d-flex.justify-content-end
-                = link_to unit_unit_activity_path(@unit, unit_activity.activity), class: 'btn btn-sm', title: t('buttons.show') 
+                = link_to unit_unit_activity_path(@unit, unit_activity.activity), class: 'btn btn-sm', title: t('buttons.show')
                   i.fa.fa-eye
                 - if @unit_activity_booking.phase?(:preview, :open) && can?(:commit, @unit)
-                  = link_to unit_unit_activity_path(@unit, unit_activity), data: { confirm: t('buttons.confirm_delete') }, method: :delete, class: 'btn btn-sm', title: t('buttons.destroy') 
+                  = link_to unit_unit_activity_path(@unit, unit_activity), data: { confirm: t('buttons.confirm_delete') }, method: :delete, class: 'btn btn-sm', title: t('buttons.destroy')
                     i.fa.fa-trash
 
       - if @unit_activity_booking.phase?(:open) && can?(:commit, @unit)
-        .card-footer.text-right
+        .card-footer.text-end
           = link_to t('unit_activity_booking.commit'), stage_commit_unit_unit_activities_path(@unit), class: 'btn btn-primary'
 
   .col-sm-9.order-sm-1
@@ -61,16 +61,16 @@ h1.h1.pb-0
           ul.my-0.mb-3
             - @unit.activity_booking.compliance.each do |name, compliance|
               - next if compliance.nil?
-              li 
-                span.mr-2= t(name, scope: %w[unit_activity_booking compliance_evaluators])
+              li
+                span.me-2= t(name, scope: %w[unit_activity_booking compliance_evaluators])
                 - if UnitActivityBooking::COMPLIANT_VALUES.include?(compliance)
-                  .badge.badge-pill.badge-success 
+                  .badge.rounded-pill.badge-success
                     i.fa.fa-check
-                - else 
-                  .badge.badge-pill.badge-warning
-                    - if compliance == false 
+                - else
+                  .badge.rounded-pill.badge-warning
+                    - if compliance == false
                       i.fa.fa-times
-                    - else  
+                    - else
                       = compliance
 
           - if @unit_activity_booking.phase?(:open) && @unit.activity_booking.all_comply? && can?(:commit, @unit)

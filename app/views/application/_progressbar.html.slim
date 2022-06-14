@@ -1,0 +1,37 @@
+- is_unit_complete = @unit.complete?
+- correct_participant_amount = @unit.difference_in_total_to_allowed == 0
+- accepted_security_concept = @unit.accept_security_concept_at.present?
+
+- conditions = [is_unit_complete, correct_participant_amount, accepted_security_concept]
+- completed_conditions = conditions.select { |d| d }.count
+- conditions_count = conditions.count
+- percentage = (completed_conditions / conditions_count.to_f * 100).round
+
+.mt-3.text-muted
+  .d-flex.flex-row.align-items-center
+    .flex-grow-1
+      .progress[data-bs-toggle="collapse" data-bs-target="#open-tasks" style="height: 1.2rem"]
+        .progress-bar[class=(percentage===100 ? 'bg-success' : 'bg-danger') role="progressbar"  style="width: #{percentage}%" aria-valuenow=completed_conditions aria-valuemin="0" aria-valuemax=conditions.count]
+          span
+            - if percentage.eql? 100
+              i.fas.fa-check-circle
+              =< t('units.show.progressbar.incomplete')
+            - else
+              i.fas.fa-exclamation-circle
+              =>< t('units.show.progressbar.incomplete')
+              i.fas.fa-chevron-down
+
+    span.ps-2
+      = completed_conditions
+      | /
+      = conditions_count
+
+- if percentage != 100
+  .alert.alert-danger.collapse#open-tasks
+    ul.mb-0
+      - if !is_unit_complete
+        li = t('units.show.progressbar.unit_incomplete_html')
+      - if !correct_participant_amount
+        li = t('units.show.progressbar.correct_participant_amount_html')
+      - if !accepted_security_concept
+        li = t('units.show.progressbar.accepted_security_concept_html')

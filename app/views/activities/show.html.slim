@@ -3,7 +3,7 @@
   span.badge[class="badge-#{@activity.activity_category.css_code}" style='align-self: baseline']
     = @activity.activity_category&.label
 - @activity.tags.each do |tag|
-  i class="#{tag.icon} mr-2" title="#{tag.label}"
+  i class="#{tag.icon} me-2" title="#{tag.label}"
 
 div.mt-4
   = image_tag(@activity.picture, height: "100") unless @activity.picture.blank?
@@ -81,7 +81,7 @@ hr
           li.list-group-item = link_to document.filename, rails_blob_path(document, disposition: 'attachment')
 
 - if can?(:edit, @activity)
-  .row 
+  .row
     .col-4
       - if @activity.language_documents_de.any?
         =  t('activerecord.attributes.activity.language_documents_de')
@@ -106,4 +106,4 @@ hr
 hr.mt-4
 => link_to t('buttons.back'), activities_path, class: 'btn btn-secondary'
 =< link_to t('buttons.edit'), edit_activity_path(@activity), class: 'btn btn-primary' if can?(:edit, @activity)
-=< link_to t('buttons.destroy'), activity_path(@activity), data: { confirm: t('buttons.confirm_delete') }, method: :delete, class: 'btn btn-secondary float-right' if can?(:delete, @activity)
+=< link_to t('buttons.destroy'), activity_path(@activity), data: { confirm: t('buttons.confirm_delete') }, method: :delete, class: 'btn btn-secondary float-end' if can?(:delete, @activity)

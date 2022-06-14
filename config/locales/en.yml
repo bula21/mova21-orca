@@ -726,7 +726,6 @@ en:
     tag_legend:
       button: Tag Legende öffnen
       title: Legende Tags
-    video_src: https://www.youtube.com/embed/TZQT-Zngcyc
   unit_activity_executions:
     form:
       reassign: Neue Durchführung finden
@@ -793,7 +792,9 @@ en:
           frame and pay attention to all pick-up information in <a href='https://www.mova.ch/kochen'
           target='_blank'>wikimova</a>.
         title: Catering
-      imported: imported from MiData
+      imported: 'Imported: %{total_count} of %{max_count} persons of national units
+        were created. Of these, %{midata_count} persons were automatically imported
+        from MiData.'
       invoices: Invoices
       other_infos: Other Information
       paid:
