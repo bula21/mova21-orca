@@ -30,6 +30,10 @@
 
 }
 
+.form-group {
+  @extend .mb-3;
+}
+
 .bg-primary-light {
   background: #3490df;
 }
