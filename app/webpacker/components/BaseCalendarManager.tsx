@@ -177,6 +177,7 @@ export abstract class BaseCalendarManager<TProps extends BaseCalendarManagerProp
 
           {this.state.calendarRef && (
             <FullCalendar
+              timeZone='Europe/Zurich'
               ref={this.state.calendarRef}
               plugins={[bootstrapPlugin, dayGridPlugin, timeGridPlugin, interactionPlugin]}
               headerToolbar={{
