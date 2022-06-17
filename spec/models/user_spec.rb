@@ -96,6 +96,15 @@ RSpec.describe User, type: :model do
         expect(user.role_flags).to eq(0b0101)
       end
     end
+
+    it do
+      user.update(role_admin: true)
+      user.roles = %i[user allocation nonexisting]
+      user.save!
+      expect(user.roles).to eq(%i[user allocation])
+      expect(user).to be_role_user
+      expect(user).not_to be_role_admin
+    end
   end
 
   describe 'midata_user?' do

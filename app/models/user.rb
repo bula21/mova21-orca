@@ -19,27 +19,42 @@
 #  index_users_on_uid    (uid) UNIQUE
 #
 class User < ApplicationRecord
+  ROLES = %i[user admin programm tn_administration editor allocation read_unit].freeze
+
   include Bitfields
   devise :omniauthable, omniauth_providers: %i[openid_connect developer]
 
   has_one :leader, foreign_key: :email, primary_key: :email, inverse_of: :user, dependent: nil
+
   validates :email, presence: true, format: { with: Devise.email_regexp }
   validates :uid, presence: true
   validates :pbs_id, presence: true, allow_blank: true
 
-  bitfield :role_flags, :role_user, :role_admin, :role_programm, :role_tn_administration, :role_editor,
-           :role_allocation, :role_read_unit
+  bitfield :role_flags, *ROLES.map { "role_#{_1}".to_sym }
 
   def self.from_omniauth(auth)
-    email = auth.info.email
-    # locale = auth.info.locale || auth.to_hash.dig('extra', 'raw_info', 'locale')
-    pbs_id = auth.info.pbs_id || auth.to_h.dig('extra', 'raw_info', 'pbs_id')
-
     find_or_create_by(uid: auth.uid, provider: auth.provider).tap do |user|
-      user.email = email
-      user.pbs_id = pbs_id unless pbs_id.to_i.zero?
-      user.save!
+      user.populate_info_from_omniauth!(auth)
     end
+  end
+
+  def populate_info_from_omniauth!(auth)
+    pbs_id = auth.info.pbs_id || auth.to_h&.dig('extra', 'raw_info', 'pbs_id')
+
+    self.email = auth.info.email
+    # self.locale = auth.info.locale || auth.to_hash.dig('extra', 'raw_info', 'locale')
+    self.pbs_id = pbs_id unless pbs_id.to_i.zero?
+    self.roles = auth.to_hash&.dig('extra', 'raw_info', 'orca', 'roles')
+    save!
+  end
+
+  def roles=(*value)
+    value = Array.wrap(value).flatten.compact.map(&:to_sym)
+    ROLES.each { |role| try("role_#{role}=", value.include?(role.to_sym)) }
+  end
+
+  def roles
+    ROLES.filter { |role| try("role_#{role}?") }
   end
 
   def midata_user?

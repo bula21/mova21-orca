@@ -1,0 +1,11 @@
+.fc {
+  .fc-toolbar-title {
+    font-size: 1em;
+    padding: 0 0.5em;
+
+    @include media-breakpoint-up(sm) {
+      font-size: 2.5em;
+      padding: 0;
+    }
+  }
+}

@@ -4,32 +4,32 @@
   .row.mb-4
     .col
       ul.nav
-        li.nav-item.mr-2.mb-2
-          a.btn.btn-outline-secondary[data-toggle="pill" href="#filter-stufe" role="pill"]
+        li.nav-item.me-2.mb-2
+          a.btn.btn-outline-secondary[data-bs-toggle="pill" href="#filter-stufe" role="pill"]
             = ActivityFilter.human_attribute_name(:stufe_recommended)
             - if @filter.stufe_recommended.present?
-              .badge.badge-pill.badge-info.ml-2= 1
-        li.nav-item.mr-2.mb-2
-          a.btn.btn-outline-secondary[data-toggle="pill" href="#filter-category" role="pill"]
+              .badge.rounded-pill.bg-info.ms-2= 1
+        li.nav-item.me-2.mb-2
+          a.btn.btn-outline-secondary[data-bs-toggle="pill" href="#filter-category" role="pill"]
             = ActivityFilter.human_attribute_name(:activity_category)
-            - if @filter.activity_category.present? 
-              .badge.badge-pill.badge-info.ml-2= 1
-        li.nav-item.mr-2.mb-2
-          a.btn.btn-outline-secondary[data-toggle="pill" href="#filter-tags" role="pill"]
+            - if @filter.activity_category.present?
+              .badge.rounded-pill.bg-info.ms-2= 1
+        li.nav-item.me-2.mb-2
+          a.btn.btn-outline-secondary[data-bs-toggle="pill" href="#filter-tags" role="pill"]
             = ActivityFilter.human_attribute_name(:tags)
             - if @filter.tags.present?
-              .badge.badge-pill.badge-info.ml-2= @filter.tags&.count
-        li.nav-item.mr-2.mb-2
-          a.btn.btn-outline-secondary[data-toggle="pill" href="#filter-languages" role="pill"]
+              .badge.rounded-pill.bg-info.ms-2= @filter.tags&.count
+        li.nav-item.me-2.mb-2
+          a.btn.btn-outline-secondary[data-bs-toggle="pill" href="#filter-languages" role="pill"]
             = ActivityFilter.human_attribute_name(:languages)
             - if @filter.languages.present?
-              .badge.badge-pill.badge-info.ml-2= @filter.languages&.count
-        li.nav-item.mr-2.mb-2
-          a.btn.btn-outline-secondary[data-toggle="pill" href="#filter-text" role="pill"]
+              .badge.rounded-pill.bg-info.ms-2= @filter.languages&.count
+        li.nav-item.me-2.mb-2
+          a.btn.btn-outline-secondary[data-bs-toggle="pill" href="#filter-text" role="pill"]
             = ActivityFilter.human_attribute_name(:text)
             - if @filter.text&.size&.>(2)
-              .badge.badge-pill.badge-info.ml-2= 1
-        li.nav-item.mr-2.mb-2
+              .badge.rounded-pill.bg-info.ms-2= 1
+        li.nav-item.me-2.mb-2
           = link_to reset_url, class: 'btn btn-outline-secondary', role: :pill, title: t('buttons.reset')
             i.fa.fa-undo
 
@@ -40,7 +40,7 @@
 
         #filter-category.py-3.tab-pane[role="tabpanel"]
           = f.input :activity_category, collection: ActivityCategory.roots, as: :grouped_select,  group_method: :children, group_label_method: :label, label_method: :full_label, input_html: { onchange: 'this.form.submit()' }
-        
+
         #filter-languages.py-3.tab-pane[role="tabpanel"]
           = f.input_field :languages, as: :check_boxes, collection: I18n.available_locales.without(:en).map { |lang| [I18n.t("activerecord.attributes.activity.language_#{lang}"), lang.to_s] },
                                  include_hidden: false, class: 'form-check-input', input_html: { onchange: 'this.form.submit()' }
@@ -49,22 +49,22 @@
           = f.input_field :tags, as: :check_boxes, collection: Tag.all.map { |t| [t.label, t.id.to_s] },
                                  include_hidden: false, class: 'form-check-input', input_html: { onchange: 'this.form.submit()' }
 
-          a.mt-3.btn.btn-outline-secondary[data-toggle="modal" data-target="#tagModal"] = t('unit_activity_booking.tag_legend.button')
+          a.mt-3.btn.btn-outline-secondary[data-bs-toggle="modal" data-bs-dismiss="#tagModal"] = t('unit_activity_booking.tag_legend.button')
 
           #tagModal.modal[tabindex="-1" role="dialog"]
             .modal-dialog[role="document"]
               .modal-content
                 .modal-header
                   h5 = t('unit_activity_booking.tag_legend.title')
-                  button[type="button" class="close" data-dismiss="modal" aria-label="Close"]
+                  button[type="button" class="close" data-bs-dismiss="modal" aria-label="Close"]
                 .modal-body
                   ul
                     - Tag.all.each do |tag|
                       li
-                        i[class="#{tag.icon} mr-2"]
+                        i[class="#{tag.icon} me-2"]
                         = tag.label
 
-                  button.btn.btn-primary[type="button" data-dismiss="modal"] = t('buttons.close')
+                  button.btn.btn-primary[type="button" data-bs-dismiss="modal"] = t('buttons.close')
 
         #filter-text.py-3.tab-pane[role="tabpanel"]
           = f.input :text, label_method: :full_label

@@ -1,79 +1,151 @@
-.h1.pb-5 = @unit.title
+.row.mt-3.mt-sm-3
+  .col-6
+    i.fas.fa-circle[class=(@unit.currently_present? ? 'text-success' : 'text-danger')]
+    =< t("simple_form.options.unit.stufe.#{@unit.stufe}")
+  .col-6
+    .text-end
+      = t('.camp_id')
+      =< "##{@unit.id}"
+.h1.pb-0.pt-1.font-weight-bold[title=@unit.title] = @unit.shortened_title
+.row
+  .col-md-6
+    .subtitle.text-muted
+      = @unit.abteilung
+      |  -
+      =< @unit.kv.name
+  - if can?(:read, UnitActivityExecution, unit: @unit)
+    .col-md-6.text-md-end.mt-3.mt-md-0
+      = link_to unit_activity_executions_path(unit_id: @unit.to_param), class: 'mb-3' do
+        i.fas.fa-calendar-alt
+        =< t('.show_unit_activity_executions')
+= render 'progressbar', unit: @unit
 - if can?(:read, @unit)
-  .card.mt-3.position-relative[class=(@unit.complete? ? 'border-success' : 'border-danger')]
-    .card-body
-      h3.mb-4 = t('units.show.basic_infos')
-      dl
-        .row
-          .col-6
-            dt = t('activerecord.attributes.unit.abteilung')
-            dd = "#{@unit.abteilung} - #{@unit.kv.name}"
+  .card.shadow-sm.mt-3.position-relative.p-2.pt-3.pb-3.p-md-4
+    h3.mb-4.font-weight-bold = t('units.show.basic_infos')
 
-          .col-6
-            dt = t('activerecord.attributes.unit.stufe')
-            dd = t("simple_form.options.unit.stufe.#{@unit.stufe}")
+    .row
+      .col-md-6
+        dt = t('activerecord.attributes.unit.al')
+        dd = @unit.al&.full_name
+        - if @unit.coach
+          dt = t('activerecord.attributes.unit.coach')
+          dd = @unit.coach&.full_name
+      .col-md-6
+        dt = t('activerecord.attributes.unit.lagerleiter')
+        dd
+          address
+            = @unit.lagerleiter.full_name
+            br
+            = @unit.lagerleiter.address
+            br
+            = @unit.lagerleiter.zip_code
+            =< @unit.lagerleiter.town
+            =< @unit.lagerleiter.country
+          = link_to_if @unit.lagerleiter.phone_number, @unit.lagerleiter.phone_number,
+                  "tel:#{@unit.lagerleiter.phone_number}"
+          - if @unit.lagerleiter.phone_number.present?
+            br
+          = mail_to @unit.lagerleiter.email, @unit.lagerleiter.email
 
+        - if @unit.pbs_id.present?
+          dd = link_to midata_link_to_unit(@unit), class: 'mb-3' do
+            i.fas.fa-link
+            =< t('.camp_link_midata')
+        - if can?(:edit, @unit)
+          dd = link_to(edit_unit_path(@unit))
+            i.fa.fa-edit
+            =< t('buttons.edit')
+  .card.shadow-sm.mt-3.position-relative.p-2.pt-3.pb-3.p-md-4
+    h3.mb-4.font-weight-bold = t('units.show.camp_details')
+    .row
+      .col-md-6
+        dl
+          dt = t('activerecord.attributes.unit.district')
+          dd = @unit.district || '-'
 
-        .row
-          .col-6
-            dt = t('activerecord.attributes.unit.on_site_at')
-            dd = t('date.from_to', from: l(@unit.starts_at.to_date), to: l(@unit.ends_at.to_date))
+          dt = t('activerecord.attributes.unit.week')
+          dd
+            => l(@unit.starts_at)
+            | -
+            =< l(@unit.ends_at)
 
-          .col-6
-            dt = t('activerecord.attributes.unit.al')
-            dd = @unit.al&.full_name
-            - if @unit.coach
-              dt = t('activerecord.attributes.unit.coach')
-              dd = @unit.coach&.full_name
+          dt = t('activerecord.attributes.unit.language')
+          dd = @unit.language&.upcase || '-'
 
-        .row
-          .col-6
-            dt = t('.camp_id')
-            dd
-              #
-              = @unit.id
-            - if @unit.pbs_id.present?
-              = link_to midata_link_to_unit(@unit), class: 'mb-3' do
-                i.fas.fa-link
-                =< t('.camp_link_midata')
+          dt = t('activerecord.attributes.unit.transport_mode')
+          dd = @unit.transport_mode || '-'
 
-          .col-6
-            dt = t('activerecord.attributes.unit.lagerleiter')
-            dd
-              address
-                = @unit.lagerleiter.full_name
-                br
-                = @unit.lagerleiter.address
-                br
-                = @unit.lagerleiter.zip_code
-                =< @unit.lagerleiter.town
-                =< @unit.lagerleiter.country
-              = link_to_if @unit.lagerleiter.phone_number, @unit.lagerleiter.phone_number,
-                      "tel:#{@unit.lagerleiter.phone_number}"
-              - if @unit.lagerleiter.phone_number.present?
-                br
-              = mail_to @unit.lagerleiter.email, @unit.lagerleiter.email
+      .col-md-6
+        dl
+          dt = t('activerecord.attributes.unit.arrival_slot')
+          dd = @unit.arrival_slot || '-'
 
+          dt = t('activerecord.attributes.unit.departure_slot')
+          dd = @unit.departure_slot || '-'
 
-      - if can?(:edit, @unit)
-        = link_to(edit_unit_path(@unit))
-          i.fa.fa-edit
-          =< t('buttons.edit')
+          dt = t('activerecord.attributes.unit.hand_over_camp_at')
+          dd
+            - if @unit.hand_over_camp_at
+              = I18n.l(@unit.hand_over_camp_at)
+            - else
+              = '-'
+          - if can?(:read, UnitVisitorDay, unit: @unit) && @unit.unit_visitor_day.present? && @unit.unit_visitor_day.at
+            dt = UnitVisitorDay.model_name.human
+            dd = l(@unit.unit_visitor_day.at, format: :long_with_weekday)
 
-    - if @unit.complete?
-      .card-footer.bg-success.border-success.text-white
-        = t('.data_complete')
-    - else
-      .card-footer.bg-danger.border-danger.text-white
-        = t('.data_incomplete')
+  .card.shadow-sm.mt-3.position-relative.p-2.pt-3.pb-3.p-md-4
+    .card-body.p-3.p-md-4
+      h3.mb-4.font-weight-bold = t('units.show.amount_people.title')
 
-        ul.pt-3.pb-1
-          - @unit.errors.full_messages.each do |error|
-            li= error
+      .row
+        .col-md-4.mb-3.mb-md-1
+          h4 = t('units.show.amount_people.before_camp')
 
-  .card.mt-5
-    .card-body
-      h3.mb-4 = t('units.show.security_concepts.title')
+          .d-flex.align-items-center.flex-row
+            span.h5.m-0.number-field => @unit.amount_of_rovers || 0
+            span = t('units.show.amount_people.rover')
+        .col-md-4.mb-3.mb-md-1
+          h4 = t('units.show.amount_people.main_camp')
+
+          .d-flex.align-items-center.flex-row
+            span.h5.m-0.number-field=> @unit.total_max_number_of_persons
+            span.fw-bold = t('units.show.amount_people.total')
+          .d-flex.align-items-center.flex-row
+            span.h5.m-0.number-field => @unit.definite_max_number_of_persons || 0
+            span => t('units.show.amount_people.persons')
+            = render 'shared/tooltip'
+              = t('units.show.amount_people.persons_tooltip')
+          .d-flex.align-items-center.flex-row
+            span.h5.m-0.number-field => @unit.expected_guests_total
+            span = t('units.show.amount_people.internationals')
+        .col-md-4.mb-3.mb-md-1
+          h4 = t('units.show.amount_people.after_camp')
+          .d-flex.align-items-center.flex-row
+            span.h5.m-0.number-field => @unit.amount_of_rovers || 0
+            span = t('units.show.amount_people.rover')
+      .text-muted.font-italic
+        - participants_count = @unit.participants.count
+        span => t('.imported', total_count: @unit.participants.national.count, max_count: (@unit.definite_max_number_of_persons || 0), midata_count: @unit.participants.national.from_midata.count)
+
+      - if @unit.difference_in_total_to_allowed > 0
+        .alert.alert-warning.mt-2
+          i.fas.fa-exclamation-circle.fa-lg
+          =< t('units.show.amount_people.places_available', count: @unit.definite_max_number_of_persons)
+      - elsif @unit.difference_in_total_to_allowed < 0
+        .alert.alert-warning.mt-2
+          i.fas.fa-exclamation-circle.fa-lg
+          =< t('units.show.amount_people.places_overbooked_html', count: @unit.total_max_number_of_persons)
+      - else
+        .alert.alert-success.mt-2
+          i.fas.fa-check-circle.fa-lg
+          =< t('units.show.amount_people.places_ok')
+
+      - if can?(:read, ParticipantUnit, unit: @unit)
+        = link_to t('.participants'), unit_participant_units_path(@unit), class: 'btn btn-info'
+
+  .card.shadow-sm.mt-3.position-relative.p-2.pt-3.pb-3.p-md-4
+    .card-body.p-3.p-md-4
+      h3.mb-4.font-weight-bold = t('units.show.security_concepts.title')
       p = t('units.show.security_concepts.description')
 
       ul
@@ -87,120 +159,22 @@
             =< t('units.show.security_concepts.hikes_pdf_text')
 
       - if @unit.accept_security_concept_at.blank?
-        = button_to t('units.show.security_concepts.accept_button_text'), unit_accept_security_concept_path(@unit), method: :post, class: 'btn btn-primary', data: { confirm: t('units.show.security_concepts.confirm')}
+        = button_to t('units.show.security_concepts.accept_button_text'), unit_accept_security_concept_path(@unit), method: :post, class: 'btn btn-info', data: { confirm: t('units.show.security_concepts.confirm')}
       - else
         .alert.alert-info =< t('units.show.security_concepts.accepted_at', accepted_at: l(@unit.accept_security_concept_at))
 
-  .card.mt-5
-    .card-body
-      h3.mb-4 = t('units.show.other_infos')
-
-      .row
-        .col-6
-          dt = t('activerecord.attributes.unit.district')
-          dd = @unit.district
-
-          dt = t('activerecord.attributes.unit.week')
-          dd = @unit.week
-
-          dt = t('activerecord.attributes.unit.language')
-          dd = @unit.language
-
-          dt = t('activerecord.attributes.unit.definite_max_number_of_persons')
-          dd = @unit.definite_max_number_of_persons
-
-          - if @unit.expected_guest_participants
-            dt = t('activerecord.attributes.unit.expected_guest_participants')
-            dd = @unit.expected_guest_participants
-
-            dt = t('activerecord.attributes.unit.expected_guest_leaders')
-            dd = @unit.expected_guest_leaders
-
-        .col-6
-          dt = t('activerecord.attributes.unit.amount_of_rovers')
-          dd = @unit.amount_of_rovers
-
-          dt = t('activerecord.attributes.unit.arrival_slot')
-          dd = @unit.arrival_slot
-
-          dt = t('activerecord.attributes.unit.departure_slot')
-          dd = @unit.departure_slot
-
-          dt = t('activerecord.attributes.unit.transport_mode')
-          dd = @unit.transport_mode
-
-          dt = t('activerecord.attributes.unit.hand_over_camp_at')
-          dd = I18n.l(@unit.hand_over_camp_at) if @unit.hand_over_camp_at
-
-  / Hidden temporarily to avoid confusion
-  / .card.mt-5
-  /   .card-body
-  /     h3.mb-4 = t('units.show.expected_participants')
-  /     dl
-  /       .row
-  /         .col-6
-  /           dt = t('activerecord.attributes.unit.expected_participants_leitung_f')
-  /           dd = @unit.expected_participants_leitung_f
-
-  /         .col-6
-  /           dt = t('activerecord.attributes.unit.expected_participants_leitung_m')
-  /           dd = @unit.expected_participants_leitung_m
-
-  /       .row
-  /         .col-6
-  /           dt = t('activerecord.attributes.unit.expected_participants_f')
-  /           dd = @unit.expected_participants_f
-
-  /         .col-6
-  /           dt = t('activerecord.attributes.unit.expected_participants_m')
-  /           dd = @unit.expected_participants_m
-
-  /   - if @unit.pbs_id.present?
-  /     .card-footer.bg-info.text-white
-  /       i.fas.fa-info-circle
-  /       =< t('units.show.expected_participants_explanation_html', link: [ENV['MIDATA_BASE_URL'], 'events', @unit.pbs_id].join('/'))
-
-- if can?(:read, ParticipantUnit, unit: @unit)
-  .card.mt-5[class=(@unit.participants.all?(&:complete?) ? 'border-success' : 'border-danger')]
-    .card-body
-      h3.mb-4 = t('units.show.participants')
-
-      p
-        - participants_count = @unit.participants.count
-        => participants_count
-        =>  Participant.model_name.human(count: participants_count)
-        = t('.imported')
-      p
-        dl
-          - ParticipantUnit.roles.keys.each do |role|
-            - role_participants = @unit.participant_units.with_role(role).count
-            - unless role_participants.zero?
-              dt
-                = translated_midata_role(role)
-                ' :
-              dd = @unit.participant_units.with_role(role).count
-
-      = link_to t('.participants'), unit_participant_units_path(@unit), class: 'stretched-link'
-
-    - if @unit.participants.all?(&:complete?)
-      .card-footer.bg-success.border-success.text-white
-        = t('.data_complete')
-    - else
-      .card-footer.bg-danger.border-danger.text-white
-        = t('.data_incomplete')
-
 - if can?(:read_documents, @unit) && (@unit.invoices.any? || @unit.documents.any?)
-  .card.mt-5
-    .card-body
+  .card.shadow-sm.mt-3.position-relative.p-2.pt-3.pb-3.p-md-4
+    .card-body.p-3.p-md-4
       .row
         .col-md-6
-          h3.mb-4 = t('units.show.invoices')
+          h3.mb-4.font-weight-bold = t('units.show.invoices')
 
           ul
             - @unit.invoices.each do |invoice|
               li
                 = link_to invoice.filename, url_for(invoice.pdf)
-                span.badge.badge-warning.ml-3 = t("units.show.paid.#{invoice.paid}")
+                span.badge.badge-warning.ms-3 = t("units.show.paid.#{invoice.paid}")
 
         .col-md-6
           h3.mb-4 = t('units.show.documents')
@@ -210,68 +184,24 @@
               li
                 = link_to document.filename, url_for(document)
                 - if can?(:manage, @unit)
-                  = link_to unit_document_url(@unit, document), class: 'btn ml-1 btn-danger float-right',
+                  = link_to unit_document_url(@unit, document), class: 'btn ms-1 btn-danger float-end',
                           data: { confirm: t('buttons.confirm_delete') }, method: :delete
                     i.fa.fa-trash
                 br
                 small.text-muted = I18n.l(document.created_at)
 
 
-- if can?(:read, UnitActivity, unit: @unit) && (@unit.activity_booking_phase_preview? || @unit.activity_booking_phase_open?)
-  .card.mt-5
-    .card-body
-      h3.mb-4 = t('units.show.activity_booking')
-
-      - if @unit.activity_booking.phase?(:open, :preview)
-        iframe[allow=("accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture")
-               allowfullscreen="" frameborder="0" height="315" width="560"
-               src=t('unit_activity_booking.video_src')]
-
-
-        hr
-
-        = link_to unit_unit_activities_path(@unit), class: 'btn btn-primary'
-          = t('units.show.activity_booking')
-
-    .card-footer.bg-success.border-success.text-white
-      - if @unit.activity_booking.phase?(:committed)
-        = t('.activity_booking_committed')
-      - elsif @unit.activity_booking.phase?(:preview)
-        = t('.activity_booking_preview')
-      - elsif @unit.activity_booking.phase?(:open)
-        = t('.activity_booking_open')
-
 - if can?(:read, UnitVisitorDay, unit: @unit) && @unit.unit_visitor_day.present? && @unit.unit_visitor_day.at
-  .card.mt-5
-    .card-body
-      h3.mb-4 = UnitVisitorDay.model_name.human
-      h3.display-4.text-center.mb-5.mt-5 = l(@unit.unit_visitor_day.at, format: :long_with_weekday)
-      = link_to unit_unit_visitor_day_path(@unit), class: 'btn btn-primary'
+  .card.shadow-sm.mt-3.position-relative.p-2.pt-3.pb-3.p-md-4
+    .card-body.p-3.p-md-4
+      h3.mb-4.font-weight-bold = UnitVisitorDay.model_name.human
+      h5.mb-5.mt-4 = l(@unit.unit_visitor_day.at, format: :long_with_weekday)
+      = link_to unit_unit_visitor_day_path(@unit), class: 'btn btn-info'
         = t('units.show.book_visitor_day_tickets')
-    / .card-footer.bg-success.border-success.text-white
-    /   - if @unit.activity_booking.phase?(:committed)
-    /     = t('.activity_booking_committed')
-    /   - elsif @unit.activity_booking.phase?(:preview)
-    /     = t('.activity_booking_preview')
-    /   - elsif @unit.activity_booking.phase?(:open)
-    /     = t('.activity_booking_open')
 
-- if can?(:read, UnitActivityExecution, unit: @unit)
-  .card.mt-5
-    .card-body
-      h3.mb-4= UnitActivityExecution.model_name.human
-      = link_to unit_activity_executions_path(unit_id: @unit.to_param), class: 'btn btn-primary'
-        = t('buttons.show')
+.card.shadow-sm.mt-3.position-relative.p-2.pt-3.pb-3.p-md-4
+  .card-body.p-3.p-md-4
+    h3.mb-4.font-weight-bold = t('units.show.food.title')
+    p.mt-4.mb-4 = t('units.show.food.description_html', kitchen_id: @unit.kitchen_id, food_pickup_slot: @unit.food_pickup_slot)
 
-/ Currently disabled, should be replaced with a link later
-/ .card.mt-5
-/   .card-body
-/     h3.mb-2 = t('units.show.food.title')
-
-/     = link_to @unit.calc_menu_token, target: :blank do
-/       i.fas.fa-external-link-alt
-/       =< t('units.show.food.link_title')
-
-/     p.mt-4.mb-4 = t('units.show.food.description')
-
-= link_to t('buttons.back'), units_path, class: 'btn btn-secondary mt-4'
+= link_to t('buttons.back'), units_path, class: 'btn btn-primary mt-4'

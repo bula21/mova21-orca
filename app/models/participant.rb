@@ -29,7 +29,9 @@ class Participant < ApplicationRecord
 
   validates :pbs_id, uniqueness: { allow_blank: true }
   validates :full_name, :birthdate, :gender, presence: true, on: :complete
+  scope :from_midata, -> { where.not(pbs_id: nil) }
   scope :non_midata, -> { where(pbs_id: nil) }
+  scope :national, -> { where(guest_troop: nil) }
 
   enum gender: { male: 'male', female: 'female' }
 

@@ -18,8 +18,7 @@
 
 - unless @filter.active?
   .alert.alert-dismissible.alert-warning
-    button class='close' data-dismiss='alert' aria-label=t('buttons.close')
-      span aria-hidden="true" &times;
+    button class='btn-close' data-bs-dismiss='alert' aria-label=t('buttons.close')
     =t('too_many_records')
 
 - else
@@ -36,28 +35,28 @@
       tbody
         - @activity_executions.each do |activity_execution|
           tr
-            td 
+            td
               = link_to activity_execution.id, activity_execution_path(activity_execution)
-            td 
+            td
               = link_to activity_execution.activity, activity_path(activity_execution.activity)
             td
               strong= l(activity_execution.starts_at, format: :short)
               br
               = l(activity_execution.ends_at, format: :short)
-            td 
+            td
               = link_to activity_execution.field, activity_activity_executions_path(activity_execution.activity, field_id: activity_execution.field.id)
               br
-              - activity_execution.languages.each do |key, value| 
+              - activity_execution.languages.each do |key, value|
                 - if value
                   .badge.badge-secondary>= Activity.human_attribute_name(key)
-            td 
+            td
               = "#{activity_execution.headcount}/#{activity_execution.amount_participants} (#{(activity_execution.headcount_utilization * 100).to_i}%)"
-            td.text-right
-              =<> link_to edit_activity_execution_path(activity_execution), class: 'btn' do 
+            td.text-end
+              =<> link_to edit_activity_execution_path(activity_execution), class: 'btn' do
                 i.fas.fa-edit
-                
+
               =<> link_to(UnitActivityExecution.model_name.human(count: 2), unit_activity_executions_path(activity_execution_id: activity_execution.id), class: 'btn btn-primary') if can?(:read, UnitActivityExecution)
-              
+
 = link_to t('buttons.export_csv'), activity_executions_path(format: :csv, activity_execution_filter: @filter.attributes), class: 'btn btn-secondary'
 
 - if @activity

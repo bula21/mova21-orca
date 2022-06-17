@@ -10,13 +10,28 @@
 @import "~@fullcalendar/common/main";
 @import "~@fullcalendar/bootstrap/main";
 
+@import "src/stylesheets/unit";
+@import "src/stylesheets/fullcalendar_overrides";
+
 .container {
   margin-bottom: 20px;
 }
 
 .h1,
 .title {
-  padding: 4rem 0 2rem 0;
+  padding: 1rem 0 2rem 0;
+  font-size: 1.5rem;
+
+  @include media-breakpoint-up(sm) {
+
+    font-size: 2.5rem;
+    padding-top: 2rem;
+  }
+
+}
+
+.form-group {
+  @extend .mb-3;
 }
 
 .bg-primary-light {
@@ -118,4 +133,16 @@
 .z-100 {
   position: relative;
   z-index: 100;
+}
+
+.shadow-sm-xs-only {
+  box-shadow: $box-shadow-sm;
+
+  @include media-breakpoint-up(lg) {
+    box-shadow: none;
+  }
+}
+
+.btn-info {
+  color: #fff;
 }

@@ -1,17 +1,27 @@
 $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
 
+
 $_yellow: #FFEB00;
 $_orange: #E6500F;
 $_blue: #55BEFF;
+$_cyan: #55c0ff;
 
 $primary:       $_yellow;
 $secondary:     $_orange;
 $link-color:    $_blue;
+$info: $_cyan;
 $body-bg: #f8f9fa;
-
-//$success:       $green;
+$border-radius:    4px;
+$border-radius-lg: 4px;
+$border-radius-sm: 4px;
+$tooltip-bg: $_cyan;
+$tooltip-opacity: 1;
+$input-bg: white;
+$link-decoration: none;
+  //$success:       $green;
 //$info:          $cyan;
 //$warning:       $yellow;
 //$danger:        $red;
 //$light:         $gray-100;
 //$dark:          $gray-800;
+

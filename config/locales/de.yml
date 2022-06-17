@@ -755,7 +755,6 @@ de:
     tag_legend:
       button: Tag Legende öffnen
       title: Legende Tags
-    video_src: https://www.youtube.com/embed/TZQT-Zngcyc
   unit_activity_executions:
     form:
       reassign: Neue Durchführung finden
@@ -771,6 +770,10 @@ de:
     form:
       danger_zone: Danger zone
     index:
+      filter: Filtern (Name / Lager-ID)
+      no_camp_info_html: Es konnten keine Lager gefunden werden, in welchen du als
+        Leitperson oder Helfer*in eingetragen bist. Um Lager zu sehen muss dieselbe
+        Mailadresse (oben rechts ersichtlich) wie in MiData verwendet werden.
       title: Deine Lager
     kv_ids:
       '1018': AS Genevois
@@ -806,9 +809,33 @@ de:
       activity_booking_open: Buchung offen
       activity_booking_preview: Buchungsvorschau offen
       activity_booking_text: Aktivitäten Buchen
+      amount_people:
+        after_camp: Abbau
+        before_camp: Aufbau
+        internationals: Internationale
+        main_camp: Hauptlager
+        persons: Personen
+        persons_tooltip: Total aller Leitenden, Küche & Teilnehmende aus nationalen
+          Einheiten
+        places_available: Ihr habt weniger Personen erfasst als ihr in der Anmeldung
+          angegeben habt. Wir stellen euch die Lagerbeträge anhand der angegebenen
+          %{count} Personen (ohne Internationale) in Rechnung. Ihr könnt die Plätze
+          noch auffüllen.
+        places_ok: Ihr habt für die angemeldete Personenzahl die genau richtige Anzahl
+          Personen hinzugefügt. Ihr könnt jederzeit eine Person austauschen (z.B.
+          in Krankheitsfall)
+        places_overbooked_html: Ihr habt mehr Personen erfasst als ihr in der Anmeldung
+          angegeben habt. Wir gehen davon aus, dass ihr auf Platz immer nur %{count}
+          Personen seid (gemäss <a href='https://www.mova.ch/teilnehmen/teilanwesenheitrollenwechsel'
+          target='_blank'>wikimova</a> könnt ihr Personen ersetzen. Deshalb kann die
+          Anzahl in diesem Fall höher als die angemeldete Personenzahl sein)
+        rover: Einheitsrover
+        title: Definitive Anzahl angemeldete Personen
+        total: Total
       basic_infos: Allgemein
       book_visitor_day_tickets: Tickets jetzt kaufen
-      camp_id: Lager Id
+      camp_details: Lagerdetails
+      camp_id: Lager-ID
       camp_link_midata: Lager auf MiData
       data_complete: Daten vollständig
       data_incomplete: Daten nicht vollständig
@@ -818,19 +845,27 @@ de:
         aus dem Feld "Erwartete Anzahl Teilnehmende" <a href='%{link}' target='_blank'>MiData</a>
         importiert.
       food:
-        description: Via Menüübersicht könnt ihr euch tageweise durch das Tool klicken.
-          Eure Auswahl wird direkt zwischengespeichert. Seid ihr fertig mit der Bestellung,
-          bestätigt dies per Klick auf den Button "Bestellung bestätigen". Ihr könnt
-          danach falls nötig bis zum 20.3. immer noch Änderungen vornehmen.
-        link_title: Login externes Bestelltool ("Calc Menu")
-        title: Essensbestellung
-      imported: von MiData importiert
+        description_html: Euer Zeitfenster (%{kitchen_id}) für die tägliche Essensabholung
+          ist %{food_pickup_slot}! Bitte erscheint innerhalb dieses Zeitraums bei
+          der Abholstation und beachtet alle Informationen zur Abholung im <a href='https://www.mova.ch/kochen'
+          target='_blank'>wikimova</a>.
+        title: Verpflegung
+      imported: 'Erfasst: Es wurden %{total_count} von %{max_count} Personen von nationalen
+        Einheiten erfasst. Davon wurden %{midata_count} Personen automatisch von MiData
+        importiert.'
       invoices: Rechnungen
       other_infos: Weitere Informationen
       paid:
         'false': offen
         'true': bezahlt
       participants: Teilnehmende anzeigen
+      progressbar:
+        accepted_security_concept_html: Das Sicherheitskonzept wurde noch nicht akzeptiert
+        complete: Angaben vollständig
+        correct_participant_amount_html: Die Anzahl Teilnehmende ist nicht korrekt
+          erfasst.
+        incomplete: Offene Aufgaben
+        unit_incomplete_html: Die Teilnehmendendaten sind unvollständig.
       questionnaire: Fragebogen
       security_concepts:
         accept_button_text: Sicherheitskonzepte akzeptieren
@@ -843,6 +878,7 @@ de:
         hikes_pdf_link: https://bula21.sharepoint.com/:b:/s/share-externe/EbKkp47Z7elKoGVA_xo3ACIBjmCsWFzLKMGFBJg-yvpV5A
         hikes_pdf_text: Sicherheitskonzept für Wanderungen
         title: Sicherheitskonzept
+      show_unit_activity_executions: Direktlink zum Programm
   views:
     pagination:
       first: !!str '<<'

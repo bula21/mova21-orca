@@ -39,7 +39,8 @@
 #  fk_rails_...  (al_id => leaders.id)
 #  fk_rails_...  (coach_id => leaders.id)
 #  fk_rails_...  (lagerleiter_id => leaders.id)
-#
+
+# rubocop:disable Metrics/ClassLength
 class Unit < ApplicationRecord
   belongs_to :al, class_name: 'Leader', inverse_of: :al_units, optional: true
   belongs_to :lagerleiter, class_name: 'Leader', inverse_of: :lagerleiter_units
@@ -65,6 +66,22 @@ class Unit < ApplicationRecord
     errors.add(:lagerleiter, :incomplete) unless lagerleiter.valid?(:complete)
   end
 
+  def starts_at
+    # Pfadis und Pios
+    return self[:starts_at] if week_nr.blank?
+
+    # PTA und Wölfe
+    week_nr == 1 ? 1.day.after(Orca::CAMP_START) : 8.days.after(Orca::CAMP_START)
+  end
+
+  def ends_at
+    # Pfadis und Pios
+    return self[:ends_at] if week_nr.blank?
+
+    # PTA und Wölfe
+    week_nr == 1 ? 6.days.after(Orca::CAMP_START) : 1.day.ago(Orca::CAMP_END)
+  end
+
   before_save :set_limesurvey_token
   after_create :notify_incomplete
   accepts_nested_attributes_for :participants
@@ -86,12 +103,53 @@ class Unit < ApplicationRecord
     (expected_participants_leitung_f || 0) + (expected_participants_leitung_m || 0) + (expected_guest_leaders || 0)
   end
 
+  def expected_guests_total
+    (expected_guest_participants || 0) + (expected_guest_leaders || 0)
+  end
+
   def actual_participants
     participant_role_counts[:participant]
   end
 
+  def currently_present?
+    Time.zone.today.between?(starts_at, ends_at)
+  end
+
+  def week_nr
+    # since this was hardcoded
+    case week
+    when /Erste|Première|Prima/
+      1
+    when /Zweite|Deuxième|Seconda/
+      2
+    end
+  end
+
+  def district_nr
+    district&.scan(/\d*/)&.join('')&.to_i
+  end
+
+  def total_max_number_of_persons
+    (definite_max_number_of_persons || 0) + total_internationals
+  end
+
+  def difference_in_total_to_allowed
+    total_max_number_of_persons - participants.count
+  end
+
+  def total_internationals
+    (expected_guest_participants || 0) + (expected_guest_leaders || 0)
+  end
+
   def complete?
     valid?(:complete)
+  end
+
+  def shortened_title
+    shortened = title.split(':').last.strip
+    return shortened if shortened.length > 2
+
+    title
   end
 
   def set_limesurvey_token
@@ -129,3 +187,4 @@ class Unit < ApplicationRecord
     "#{id}: #{title}"
   end
 end
+# rubocop:enable Metrics/ClassLength

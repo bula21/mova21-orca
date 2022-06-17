@@ -17,17 +17,7 @@ class UnitBlueprint < Blueprinter::Base
     association :unit_activity_executions, blueprint: UnitActivityExecutionBlueprint
   end
 
-  field :week_nr do |unit|
-    # since this was hardcoded
-    case unit.week
-    when /Erste|Première|Prima/
-      1
-    when /Zweite|Deuxième|Seconda/
-      2
-    end
-  end
+  field :week_nr, &:week_nr
 
-  field :district_nr do |unit|
-    unit.district&.scan(/\d*/)&.join('')&.to_i
-  end
+  field :district_nr, &:district_nr
 end

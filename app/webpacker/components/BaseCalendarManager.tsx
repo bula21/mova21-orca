@@ -177,6 +177,7 @@ export abstract class BaseCalendarManager<TProps extends BaseCalendarManagerProp
 
           {this.state.calendarRef && (
             <FullCalendar
+              timeZone='Europe/Zurich'
               ref={this.state.calendarRef}
               plugins={[bootstrapPlugin, dayGridPlugin, timeGridPlugin, interactionPlugin]}
               headerToolbar={{
@@ -185,13 +186,14 @@ export abstract class BaseCalendarManager<TProps extends BaseCalendarManagerProp
                 right: 'timeGridWeek,timeGridDay'
               }}
               locale={Orca.shortLocale}
-              themeSystem='bootstrap'
+              themeSystem='bootstrap5'
               allDaySlot={false}                                  // don't allow full day event
-              firstDay={6}                                        // set first day of week to saturday 6
+              firstDay={6}
+              // set first day of week to saturday 6
               slotMinTime={'05:00:00'}
               slotMaxTime={'28:00:00'}
               validRange={{ start: START_DATE, end: END_DATE }}   // calendar is only available in given period
-              initialView='timeGridWeek'
+              initialView={window.innerWidth > 800 ? 'timeGridWeek' : 'timeGridDay' }
               editable={this.props.editable}
               events={this.state.events}
               selectable={this.props.editable}
