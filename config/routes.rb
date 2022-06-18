@@ -22,9 +22,9 @@ Rails.application.routes.draw do
     post :documents, to: 'units#add_document', as: :documents
     post :accept_security_concept, to: 'units#accept_security_concept'
     delete 'document/:id', to: 'units#delete_document', as: :document
+    get :emails, to: 'units#emails', as: :emails, on: :collection
   end
   resources :leaders, except: [:destroy]
-  resources :unit_communications
   resources :unit_activity_executions do
     post :import, on: :collection
     get :reassign, on: :member, as: :reassign

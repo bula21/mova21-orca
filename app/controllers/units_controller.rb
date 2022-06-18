@@ -68,6 +68,11 @@ class UnitsController < ApplicationController
     redirect_to unit_path(@unit), notice: I18n.t('messages.deleted.success')
   end
 
+  def emails
+    @units = @units.where(id: params[:unit_ids]&.split(','))
+    @emails = @units.map { |unit| unit.lagerleiter.email }
+  end
+
   private
 
   def unit_params
