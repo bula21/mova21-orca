@@ -69,7 +69,7 @@
               - @activity.activity_documents.each do |document|
                 li.list-group-item
                   = document.filename
-                  = link_to t('buttons.destroy'), attachment_activity_path(@activity, type: :activity_documents, id: document.id),
+                  = link_to t('buttons.destroy'), attachment_activity_path(@activity, type: :activity_documents, attachment_id: document.id),
                         method: :delete,
                         class: 'btn btn-sm btn-secondary float-end',
                         data: { confirm: t('simple_form.confirm_unsaved') }
