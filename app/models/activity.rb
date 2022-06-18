@@ -35,7 +35,7 @@ class Activity < ApplicationRecord
   paginates_per 15
 
   LANGUAGES = %i[language_de language_fr language_it language_en].freeze
-  ATTACHMENTS = %i[attachment picture language_documents_de language_documents_fr language_documents_it].freeze
+  ATTACHMENTS = %i[attachment picture language_documents_de language_documents_fr language_documents_it activity_documents].freeze
 
   has_many_attached :activity_documents
   has_one_attached :picture
