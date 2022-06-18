@@ -11,8 +11,8 @@ export interface Activity {
 // backend definition of an activity execution
 interface ActivityExecutionRequest {
     activity_execution: {
-        starts_at: Date;
-        ends_at: Date;
+        starts_at: string;
+        ends_at: string;
         field_id: number;
         amount_participants: number;
         languages: Array<Language>;
@@ -25,8 +25,8 @@ interface ActivityExecutionRequest {
 export interface ActivityExecution {
     id: number;
     title: string;
-    starts_at: Date;
-    ends_at: Date;
+    starts_at: string;
+    ends_at: string;
     spot: Spot;
     field: Field;
     amount_participants: number;
@@ -40,8 +40,8 @@ export interface ActivityExecution {
 interface FixedEvent {
     id: number;
     title: string;
-    starts_at: Date;
-    ends_at: Date;
+    starts_at: string;
+    ends_at: string;
     fixedEvent: true;
 }
 
@@ -77,8 +77,8 @@ export type BackendResponse<T> = SuccessfulBackendResponse<T> | UnsuccessfulBack
 
 interface FixedFullCalendarEvent {
     id: string;
-    start: Date;
-    end: Date;
+    start: string;
+    end: string;
     title: string;
     allDay: boolean;
     editable: boolean;
@@ -91,9 +91,9 @@ interface FixedFullCalendarEvent {
 
 export interface NonFixedFullCalendarEvent {
     id: string;
-    start: Date;
+    start: string;
     title?: string;
-    end: Date;
+    end: string;
     allDay: boolean;
     editable?: boolean;
     extendedProps?: {
@@ -151,8 +151,8 @@ export class ActivityExecutionService {
     public convertActivityExecutionToFullCalendarEvent(activityExexution: ActivityExecution): NonFixedFullCalendarEvent {
         const calendarEvent: NonFixedFullCalendarEvent = {
             id: activityExexution.id.toString(),
-            start: new Date(activityExexution.starts_at),
-            end: new Date(activityExexution.ends_at),
+            start: activityExexution.starts_at,
+            end: activityExexution.ends_at,
             allDay: false,
             extendedProps: {
                 languages: activityExexution.languages,
@@ -180,9 +180,9 @@ export class ActivityExecutionService {
         return {
             id: fixedEvent.id.toString(),
             title: fixedEvent.title,
-            start: new Date(fixedEvent.starts_at),
+            start: fixedEvent.starts_at,
             allDay: false,
-            end: new Date(fixedEvent.ends_at),
+            end: fixedEvent.ends_at,
             extendedProps: {
                 fixedEvent: true,
             },
