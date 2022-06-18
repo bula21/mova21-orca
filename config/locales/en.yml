@@ -787,7 +787,7 @@ en:
       expected_participants_explanation_html: The expected amount of participants
         is imported from your entered numbers in <a href='%{link}' target='_blank'>MiData</a>
       food:
-        description_html: Your time slot (%{kitchen_id}) for daily meal pickup is
+        description_html: Your time slot (K_%{kitchen_id}) for daily meal pickup is
           %{food_pickup_slot}! Please show up at the pick-up station within this time
           frame and pay attention to all pick-up information in <a href='https://www.mova.ch/kochen'
           target='_blank'>wikimova</a>.
