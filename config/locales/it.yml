@@ -846,10 +846,10 @@ it:
         sarà importato dal campo "Numero di partecipanti stimato" da <a href='%{link}'
         target='_blank'>MiData</a>.
       food:
-        description_html: La vostra fascia oraria (%{kitchen_id}) per il ritiro giornaliero
-          del cibo è dalle %{food_pickup_slot}! Vi chiediamo di presentarvi al punto
-          di ritiro entro questo lasso di tempo e di prestare attenzione a tutte le
-          informazioni relative al ritiro del cibo presenti su <a href='https://www.mova.ch/it/kochen'
+        description_html: La vostra fascia oraria (K_%{kitchen_id}) per il ritiro
+          giornaliero del cibo è dalle %{food_pickup_slot}! Vi chiediamo di presentarvi
+          al punto di ritiro entro questo lasso di tempo e di prestare attenzione
+          a tutte le informazioni relative al ritiro del cibo presenti su <a href='https://www.mova.ch/it/kochen'
           target='_blank'>wikimova</a>
         title: Ristorazione
       imported: 'Inserite: Sono state aggiunte %{total_count} di %{max_count} persone
