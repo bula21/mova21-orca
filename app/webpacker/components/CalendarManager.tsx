@@ -105,8 +105,8 @@ class CalendarManager extends BaseCalendarManager<CalendarManagerProps, Calendar
 
   protected handleDateSelect = (selectInfo: DateSelectArg): void => {
     let event: Partial<NonFixedFullCalendarEvent> = {
-      start: selectInfo.start,
-      end: selectInfo.end,
+      start: selectInfo.startStr,
+      end: selectInfo.endStr,
       allDay: false
     }
 
@@ -260,8 +260,8 @@ class CalendarManager extends BaseCalendarManager<CalendarManagerProps, Calendar
 
   convertFormEventToFullCalendarEvent = (selectedEvent: FlattenedFullcalendarEvent): NonFixedFullCalendarEvent => ({
     id: selectedEvent.id,
-    start: new Date(selectedEvent.start),
-    end: new Date(selectedEvent.end),
+    start: selectedEvent.start,
+    end: selectedEvent.end,
     allDay: selectedEvent.allDay,
     extendedProps: {
       languages: selectedEvent.languages,
@@ -317,9 +317,9 @@ class CalendarManager extends BaseCalendarManager<CalendarManagerProps, Calendar
   private convertEventApiToNonFixedFullCalendarEvent(event: EventApi): FullCalendarEvent {
     return {
       id: event.id,
-      start: event.start,
+      start: event.startStr,
       title: event.title,
-      end: event.end,
+      end: event.endStr,
       allDay: event.allDay,
       extendedProps: {
         languages: event.extendedProps.languages,
