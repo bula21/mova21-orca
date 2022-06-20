@@ -311,9 +311,9 @@ fr:
     edit: éditer
     export_csv: Exporter en csv
     filter: Filtrer
-    search: Chercher
     reset: Réinitialiser
     save: Sauvegarder
+    search: Chercher
     show: Montrer
     upload: Charger
   camp_unit_mailer:
@@ -581,7 +581,6 @@ fr:
     activity: Catalogue
     activity_category: Categorie
     activity_execution: Programme
-    unit_communications: Communication untié
     fixed_event: Picasso
     language:
       de: DE
@@ -596,6 +595,7 @@ fr:
     tag: Tags
     transport_location: Transport
     unit: Camp
+    unit_communications: Communication untié
   number:
     currency:
       format:
@@ -731,13 +731,6 @@ fr:
       short: "%d %b %H h %M"
     pm: après-midi
   too_many_records: Use filtre
-  unit_communications:
-    title: Communication unité
-    description: "Donne, pour les ID d'unité saisis, les adresses e-mail des responsables de magasin correspondants.
-      Celles-ci peuvent ensuite être copiées dans un programme de messagerie. Exemple : 444,321,222"
-    unit_ids: ID d'unité (séparé par une virgule)
-    result: Résultat
-    no_results: Aucune unité trouvée
   unit_activity_booking:
     all_comply: All comply
     book: ajouter à la liste de souhaits
@@ -770,6 +763,14 @@ fr:
   unit_activity_executions:
     form:
       reassign: Neue Durchführung finden
+  unit_communications:
+    description: 'Donne, pour les ID d''unité saisis, les adresses e-mail des responsables
+      de magasin correspondants. Celles-ci peuvent ensuite être copiées dans un programme
+      de messagerie. Exemple : 444,321,222'
+    no_results: Aucune unité trouvée
+    result: Résultat
+    title: Communication unité
+    unit_ids: ID d'unité (séparé par une virgule)
   unit_visitor_days:
     form:
       salutations:
