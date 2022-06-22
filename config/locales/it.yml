@@ -307,6 +307,8 @@ it:
     create: Creare
     destroy: Eliminare
     edit: Modificare
+    export_activity_csv: Esportazione di attività senza unità come CSV
+    export_activity_unit_csv: Esportazione di attività con unità come CSV
     export_csv: Esportare come CSV
     filter: Filtrare
     reset: Reset

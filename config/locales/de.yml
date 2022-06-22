@@ -304,6 +304,8 @@ de:
     create: Erstellen
     destroy: löschen
     edit: editieren
+    export_activity_csv: Aktivitäten ohne Einheiten als CSV exportieren
+    export_activity_unit_csv: Aktivitäten mit Einheiten als CSV exportieren
     export_csv: Export als CSV
     filter: Filtern
     reset: Reset
