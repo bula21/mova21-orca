@@ -305,6 +305,7 @@ en:
     edit: Edit
     export_csv: Export as CSV
     filter: Filtern
+    search: Suchen
     reset: Reset
     save: Save
     show: Show
@@ -552,6 +553,7 @@ en:
     activity_category: Kategory
     activity_execution: Activity execution
     fixed_event: Fixed events
+    unit_communications: Einheits-Kommunikation
     language:
       de: DE
       en: EN
@@ -693,6 +695,13 @@ en:
       short: "%d %b %H:%M"
     pm: pm
   too_many_records: Use filter
+  unit_communications:
+    title: Kommunikation Einheiten
+    description: "Gibt für die eingegebenen Einheits-IDs die Mailadressen der zugehörigen Lagerleitenden aus.
+      Diese können dann in ein Mailprogramm kopiert werden. Beispiel: 444,321,222"
+    unit_ids: Einheits-IDs kommasepariert
+    result: Resultate
+    no_results: Keine Einheiten gefunden
   unit_activity_booking:
     all_comply: All comply
     book: zum Warenkorb hinzufügen

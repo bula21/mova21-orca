@@ -311,6 +311,7 @@ it:
     filter: Filtrare
     reset: Reset
     save: Salvare
+    search: Ricerca
     show: Visualizzare
     upload: Caricare
   camp_unit_mailer:
@@ -587,6 +588,7 @@ it:
     tag: Tags
     transport_location: Trasporti
     unit: Unità
+    unit_communications: Comunicazione untia
   number:
     currency:
       format:
@@ -759,6 +761,14 @@ it:
   unit_activity_executions:
     form:
       reassign: Neue Durchführung finden
+  unit_communications:
+    description: 'Visualizza gli indirizzi di posta elettronica dei gestori di magazzino
+      associati per gli ID unità inseriti. Questi possono essere copiati in un programma
+      di posta elettronica. Esempio: 444.321.222'
+    no_results: Nessuna unità trovata
+    result: Risultato
+    title: Comunicazione unità
+    unit_ids: ID unità (separati da una virgola)
   unit_visitor_days:
     form:
       salutations:

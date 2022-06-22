@@ -33,6 +33,9 @@ html
             - if can?(:manage, ActivityExecution)
               li.nav-item
                 = link_to t('nav.activity_execution'), activity_executions_path, class: 'nav-link'
+            - if current_user.role_unit_communication?
+              li.nav-item
+                = link_to t('nav.unit_communications'), unit_communications_path, class: 'nav-link'
             - if can?(:create, Tag)
               li.nav-item.dropdown
                 .nav-link.dropdown-toggle[href='#' role="button" data-bs-toggle="dropdown"]= "Admin"
