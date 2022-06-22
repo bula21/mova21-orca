@@ -71,7 +71,7 @@ class ActivityExecutionsImport
     )
   rescue StandardError => e
     @errors.push "Row #{index + 2}: Invalid values in row"
-    Rollbar.warning e if Rollbar.configuration.enabled
+    ErrorLogger.capture_exception(e, level: 'warning')
   end
 
   def time_in_swiss_timezone(date_time)
