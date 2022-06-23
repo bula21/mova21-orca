@@ -39,11 +39,10 @@ module Admin
     end
 
     def create_depending_checkpoint_units
-      if @checkpoint_unit.dependant_checkpoints.each do |dc|
+      @checkpoint_unit.dependant_checkpoints.each do |dc|
         @checkpoint_unit.dup.tap do |duplicate|
           duplicate.checkpoint = dc
         end.save!
-      end
       end
     end
   end

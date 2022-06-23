@@ -21,17 +21,6 @@ de:
         text: Text
   activerecord:
     attributes:
-      checkpoint_unit:
-        notes_check_in: Notizen Check-In
-        notes_check_out: Notizen Check-Out
-        cost_in_chf: Kosten
-        check_in_by: Check-In durchgeführt von
-        confirmed_check_in_by: Check-Out bestätigt durch
-        check_out_by: Check-In durchgeführt von
-        confirmed_check_out_by: Check-Out bestätigt durch
-        checked_in_on_paper: Bestätigung Check-In ist auf Papier erfolgt
-        checked_out_on_paper: Bestätigung Check-Out ist auf Papier erfolgt
-        check_out_ok: Alles perfekt
       activity:
         activity_category: Kategorie
         activity_documents: Dokumente
@@ -76,6 +65,17 @@ de:
         transport: Personenanzahl inkl. Leitung
         transport_ids: Transport IDs
         utilization: Auslastung
+      checkpoint_unit:
+        check_in_by: Check-In durchgeführt von
+        check_out_by: Check-In durchgeführt von
+        check_out_ok: Alles perfekt
+        checked_in_on_paper: Bestätigung Check-In ist auf Papier erfolgt
+        checked_out_on_paper: Bestätigung Check-Out ist auf Papier erfolgt
+        confirmed_check_in_by: Check-In bestätigt durch
+        confirmed_check_out_by: Check-Out bestätigt durch
+        cost_in_chf: Kosten
+        notes_check_in: Notizen Check-In
+        notes_check_out: Notizen Check-Out
       field:
         name: Name
       fixed_event:
@@ -311,7 +311,9 @@ de:
   buttons:
     back: zurück
     close: Schliessen
+    confirm: Bestätigen
     confirm_delete: Bist du dir sicher, dass du Löschen möchtest?
+    continue: Weiter
     create: Erstellen
     destroy: löschen
     edit: editieren
@@ -322,8 +324,6 @@ de:
     search: Suchen
     show: anzeigen
     upload: Hochladen
-    confirm: "Bestätigen"
-    continue: "Weiter"
   camp_unit_mailer:
     complete_notification:
       body: |-
@@ -364,6 +364,20 @@ de:
         Viele liebe Pfadi-Grüsse
         eure mova-Crew
       subject: Anpassung am mova-Programm
+  checkpoints:
+    already_checked_in: Diese Einheit hat bereits einen Check-In an diesem Checkpoint
+    back_to_unit: Zurück zur Einheit
+    check_in_is_confirmed: Check-In von %{checkpoint_name} ist bestätigt.
+    check_in_successfully_created: Check-In erfolgreich erstellt
+    check_out_blocked_by_dependency: Zuerst muss der Checkout von %{checkpoint_name}
+      erfolgen
+    check_out_is_confirmed: Check-Out von %{checkpoint_name} ist bestätigt.
+    check_out_successful: Check-Out erfolgreich erstellt
+    depends_on: Dieser Check-Out kann erst nach dem Checkout von %{checkpoint_name}
+      erfolgen.
+    next_unit: Nächste Einheit
+    not_returned: Noch nicht zurückgegeben
+    waiting_for_confirmation: Warte auf Bestätigung
   date:
     abbr_day_names:
     - So
@@ -860,6 +874,8 @@ de:
       camp_details: Lagerdetails
       camp_id: Lager-ID
       camp_link_midata: Lager auf MiData
+      check_in: Check-In
+      check_out: Check-Out
       data_complete: Daten vollständig
       data_incomplete: Daten nicht vollständig
       documents: Dokumente
@@ -902,8 +918,6 @@ de:
         hikes_pdf_text: Sicherheitskonzept für Wanderungen
         title: Sicherheitskonzept
       show_unit_activity_executions: Direktlink zum Programm
-      check_in: "Check-In"
-      check_out: "Check-Out"
   views:
     pagination:
       first: !!str '<<'
@@ -911,16 +925,3 @@ de:
       next: ">"
       previous: "<"
       truncate: "&hellip;"
-  checkpoints:
-    waiting_for_confirmation: "Warte auf Bestätigung"
-    check_in_is_confirmed: "Check-In von %{checkpoint_name} ist bestätigt."
-    check_out_is_confirmed: "Check-Out von %{checkpoint_name} ist bestätigt."
-    back_to_unit: "Zurück zur Einheit"
-    next_unit: "Nächste Einheit"
-    not_returned: "Noch nicht zurückgegeben"
-    return_not_confirmed: ""
-    depends_on: "Dieser Check-Out kann erst nach dem Checkout von %{checkpoint_name} erfolgen."
-    check_in_successfully_created: "Check-In erfolgreich erstellt"
-    already_checked_in: "Diese Einheit hat bereits einen Check-In an diesem Checkpoint"
-    check_out_successful: "Check-Out erfolgreich erstellt"
-    check_out_blocked_by_dependency: "Zuerst muss der Checkout von %{checkpoint_name} erfolgen"

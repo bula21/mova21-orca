@@ -48,7 +48,7 @@ class Unit < ApplicationRecord
   belongs_to :kv, inverse_of: :units, primary_key: :pbs_id
 
   has_many :invoices, inverse_of: :unit, dependent: :destroy
-  has_many :checkpoint_units
+  has_many :checkpoint_units, dependent: :destroy
   has_many :checkpoints, through: :checkpoint_units
   has_many :unit_activities, -> { rank(:priority) }, inverse_of: :unit, dependent: :destroy
   has_many :participant_units, inverse_of: :unit, dependent: :destroy

@@ -19,7 +19,8 @@
 #  index_users_on_uid    (uid) UNIQUE
 #
 class User < ApplicationRecord
-  ROLES = %i[user admin programm tn_administration editor allocation read_unit checkin_checkout unit_communication].freeze
+  ROLES = %i[user admin programm tn_administration editor allocation read_unit checkin_checkout
+             unit_communication].freeze
 
   include Bitfields
   devise :omniauthable, omniauth_providers: %i[openid_connect developer]

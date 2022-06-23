@@ -65,6 +65,17 @@ it:
         transport: Numero di persone inclusa la gestione
         transport_ids: ID di trasporto
         utilization: Utilization
+      checkpoint_unit:
+        check_in_by: Check-In effettuato da
+        check_out_by: Check-in effettuato da
+        check_out_ok: Tutto perfetto
+        checked_in_on_paper: check-in confermato su carta
+        checked_out_on_paper: conferma che il check-out è stato effettuato su carta
+        confirmed_check_in_by: check-in confermato da
+        confirmed_check_out_by: check-out confermato da
+        cost_in_chf: costi
+        notes_check_in: note check-in
+        notes_check_out: check-out delle note
       field:
         name: Nome
       fixed_event:
@@ -303,7 +314,9 @@ it:
   buttons:
     back: indietro
     close: Chiudere
+    confirm: Confermare
     confirm_delete: Sei sicuro/a di voler cancellare?
+    continue: Continua
     create: Creare
     destroy: Eliminare
     edit: Modificare
@@ -353,6 +366,19 @@ it:
         Cari saluti scout,
         La vostra mova-Crew
       subject: Modifica del programma
+  checkpoints:
+    already_checked_in: Questa unità ha già un check-in in questo checkpoint
+    back_to_unit: Torna all'unità
+    check_in_is_confirmed: Il check-in da %{checkpoint_name} è confermato
+    check_in_successfully_created: Check-in creato con successo
+    check_out_blocked_by_dependency: Prima deve avvenire il check-out di %{checkpoint_name}
+    check_out_is_confirmed: Il check-out da %{checkpoint_name} è confermato
+    check_out_successful: Check-out creato con successo
+    depends_on: Questo check-out può essere fatto solo dopo che %{checkpoint_name}
+      è stato check-out
+    next_unit: Unità successiva
+    not_returned: Non ancora restituito
+    waiting_for_confirmation: In attesa di conferma
   date:
     abbr_day_names:
     - Dom
@@ -848,6 +874,8 @@ it:
       camp_details: Dettagli del campo
       camp_id: Id Campo
       camp_link_midata: Campo su MiData
+      check_in: Check-In
+      check_out: Check-Out
       data_complete: Dati completi
       data_incomplete: Dati incompleti
       documents: Documenti

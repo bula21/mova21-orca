@@ -22,6 +22,7 @@ module Admin
       render layout: false, partial: 'unit_autocomplete', locals: { units: units }
     end
 
+    # rubocop:disable Metrics/MethodLength
     def redirect_to_check
       unit_id = params[:unit_id]
       if unit_id.present?
@@ -36,5 +37,6 @@ module Admin
         redirect_to admin_check_in_path(@checkpoint)
       end
     end
+    # rubocop:enable Metrics/MethodLength
   end
 end

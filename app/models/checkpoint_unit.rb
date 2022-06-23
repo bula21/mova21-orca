@@ -27,6 +27,7 @@ class CheckpointUnit < ApplicationRecord
   end
 
   def blocked_by_dependency?
-    depends_on_checkpoint.present? && CheckpointUnit.find_by(unit: unit, checkpoint: depends_on_checkpoint).confirmed_check_in?
+    depends_on_checkpoint.present? && CheckpointUnit.find_by(unit: unit,
+                                                             checkpoint: depends_on_checkpoint).confirmed_check_in?
   end
 end

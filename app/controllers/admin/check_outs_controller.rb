@@ -11,14 +11,11 @@ module Admin
 
     def checkpoint_unit_autocomplete
       checkpoint_units = CheckpointUnit.joins(:unit).where(checkpoint_id: @checkpoint.id)
-      checkpoint_units = if params[:q].to_i.to_s.eql?(params[:q])
-                           checkpoint_units.where(unit: { id: params[:q] })
-                         else
-                           checkpoint_units.where('units.title LIKE ?', "%#{params[:q]}%")
-                         end
+      checkpoint_units = checkpoints_filtered_by_query(checkpoint_units)
       render layout: false, partial: 'checkpoint_unit_autocomplete', locals: { checkpoint_units: checkpoint_units }
     end
 
+    # rubocop:disable Metrics/MethodLength
     def redirect_to_check
       checkpoint_unit_id = params[:checkpoint_unit_id]
       checkpoint_unit = CheckpointUnit.where(id: checkpoint_unit_id).first
@@ -30,6 +27,17 @@ module Admin
         end
       else
         redirect_to admin_check_out_path(@checkpoint)
+      end
+    end
+    # rubocop:enable Metrics/MethodLength
+
+    private
+
+    def checkpoints_filtered_by_query(checkpoint_units)
+      if params[:q].to_i.to_s.eql?(params[:q])
+        checkpoint_units.where(unit: { id: params[:q] })
+      else
+        checkpoint_units.where('units.title LIKE ?', "%#{params[:q]}%")
       end
     end
   end

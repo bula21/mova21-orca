@@ -6,9 +6,14 @@ module Admin
     load_and_authorize_resource :check_out, class: Checkpoint, instance_name: :checkpoint
 
     def edit
+      # false positive because of cancancan
+      # rubocop:disable Style/GuardClause
       if @checkpoint_unit.blocked_by_dependency?
-        redirect_to admin_check_out_path(@checkpoint), notice: t('checkpoints.check_out_blocked_by_dependency', checkpoint_name: @checkpoint_unit.depends_on_checkpoint.title)
+        redirect_to admin_check_out_path(@checkpoint),
+                    notice: t('checkpoints.check_out_blocked_by_dependency',
+                              checkpoint_name: @checkpoint_unit.depends_on_checkpoint.title)
       end
+      # rubocop:enable Style/GuardClause
     end
 
     def update
