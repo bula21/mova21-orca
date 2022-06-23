@@ -13,7 +13,7 @@ class ActivityExecutionsController < ApplicationController
 
     respond_to do |format|
       format.html
-      if params[:export] == "units"
+      if params[:export] == 'units'
         format.csv { send_exported_data_with_units(@activity_executions) }
       else
         format.csv { send_exported_data_without_units(@activity_executions) }
