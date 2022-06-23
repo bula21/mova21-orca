@@ -19,7 +19,7 @@
 #  index_users_on_uid    (uid) UNIQUE
 #
 class User < ApplicationRecord
-  ROLES = %i[user admin programm tn_administration editor allocation read_unit unit_communication].freeze
+  ROLES = %i[user admin programm tn_administration editor allocation read_unit checkin_checkout unit_communication].freeze
 
   include Bitfields
   devise :omniauthable, omniauth_providers: %i[openid_connect developer]
@@ -35,6 +35,14 @@ class User < ApplicationRecord
   def self.from_omniauth(auth)
     find_or_create_by(uid: auth.uid, provider: auth.provider).tap do |user|
       user.populate_info_from_omniauth!(auth)
+    end
+  end
+
+  def full_name
+    if leader.present?
+      leader.full_name
+    else
+      email
     end
   end
 

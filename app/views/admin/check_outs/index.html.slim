@@ -1,0 +1,5 @@
+h1 = t('units.show.check_out')
+
+ul
+  - Checkpoint.all.each do |checkpoint|
+    li = link_to checkpoint.title, admin_check_out_path(checkpoint)

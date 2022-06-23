@@ -5,4 +5,5 @@
 import { application } from "./application"
 
 import CampFilterController from "./filter_controller.js"
+
 application.register("camp-filter", CampFilterController)

@@ -1,0 +1,26 @@
+h1 = t('units.show.check_out')
+h3.text-muted = @unit.shortened_title
+p = link_to unit_path(@unit.to_param), class: 'mb-4' do
+  i.fas.fa-arrow-left
+  =< t('checkpoints.back_to_unit')
+- @checkpoint_units.as_array_where_checked_in.each do |checkpoint_unit|
+  .card.mb-3
+    .card-body
+      h3 = checkpoint_unit.checkpoint.title
+      p == checkpoint_unit.checkpoint.description_check_out
+      = render 'shared/checkpoints/checkpoint_attributes', checkpoint_unit: checkpoint_unit
+      - if checkpoint_unit.blocked_by_dependency?
+        .alert.bg-warning-light.text-center.col-md-6
+          p = t('checkpoints.depends_on', checkpoint_name: checkpoint_unit.depends_on.checkpoint.title)
+          i.fas.fa-exclamation-triangle.fa-3x
+      - elsif checkpoint_unit.checked_out_at.blank?
+        .alert.bg-warning-light.text-center.col-md-6
+          h3 = t('checkpoints.not_returned')
+          i.fas.fa-exclamation-triangle.fa-3x
+      - elsif !checkpoint_unit.confirmed_check_out?
+        .alert.bg-warning-light.text-center.col-md-6
+          h3 = t('checkpoints.waiting_for_confirmation')
+          i.fas.fa-sync.fa-3x.fa-spin
+        = link_to t('buttons.confirm'), confirm_unit_check_out_path(@unit, checkpoint_unit), method: :put, class: 'btn btn-info'
+      - else
+        = render 'shared/checkpoints/check_in_confirmed', checkpoint_unit: checkpoint_unit

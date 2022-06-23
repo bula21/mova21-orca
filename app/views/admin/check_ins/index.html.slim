@@ -1,0 +1,5 @@
+h1 = t('units.show.check_in')
+
+ul
+  - Checkpoint.without_dependencies.each do |checkpoint|
+    li = link_to checkpoint.title, admin_check_in_path(checkpoint)

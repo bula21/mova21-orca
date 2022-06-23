@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_10_142200) do
+ActiveRecord::Schema.define(version: 2022_06_22_105910) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -112,6 +112,45 @@ ActiveRecord::Schema.define(version: 2022_06_10_142200) do
     t.string "transport_ids"
     t.index ["activity_id"], name: "index_activity_executions_on_activity_id"
     t.index ["field_id"], name: "index_activity_executions_on_field_id"
+  end
+
+
+  create_table "checkpoint_units", force: :cascade do |t|
+    t.bigint "checkpoint_id", null: false
+    t.bigint "unit_id", null: false
+    t.text "notes_check_in"
+    t.boolean "checked_in_on_paper", default: false
+    t.bigint "check_in_by_id"
+    t.datetime "confirmed_checked_in_at"
+    t.bigint "confirmed_check_in_by_id"
+    t.text "notes_check_out"
+    t.boolean "check_out_ok"
+    t.float "cost_in_chf"
+    t.datetime "checked_out_at"
+    t.bigint "check_out_by_id"
+    t.boolean "checked_out_on_paper", default: false
+    t.datetime "confirmed_checked_out_at"
+    t.bigint "confirmed_check_out_by_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["check_in_by_id"], name: "index_checkpoint_units_on_check_in_by_id"
+    t.index ["check_out_by_id"], name: "index_checkpoint_units_on_check_out_by_id"
+    t.index ["checkpoint_id", "unit_id"], name: "index_checkpoint_units_on_checkpoint_id_and_unit_id", unique: true
+    t.index ["checkpoint_id"], name: "index_checkpoint_units_on_checkpoint_id"
+    t.index ["confirmed_check_in_by_id"], name: "index_checkpoint_units_on_confirmed_check_in_by_id"
+    t.index ["confirmed_check_out_by_id"], name: "index_checkpoint_units_on_confirmed_check_out_by_id"
+    t.index ["unit_id"], name: "index_checkpoint_units_on_unit_id"
+  end
+
+  create_table "checkpoints", force: :cascade do |t|
+    t.string "slug", null: false
+    t.json "title", default: {}
+    t.json "description_check_in", default: {}
+    t.json "description_check_out", default: {}
+    t.bigint "depends_on_checkpoint_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["depends_on_checkpoint_id"], name: "index_checkpoints_on_depends_on_checkpoint_id"
   end
 
   create_table "fields", force: :cascade do |t|
@@ -389,12 +428,29 @@ ActiveRecord::Schema.define(version: 2022_06_10_142200) do
     t.index ["uid"], name: "index_users_on_uid", unique: true
   end
 
+  create_table "versions", force: :cascade do |t|
+    t.string "item_type", null: false
+    t.bigint "item_id", null: false
+    t.string "event", null: false
+    t.string "whodunnit"
+    t.text "object"
+    t.datetime "created_at"
+    t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "activities", "activity_categories"
   add_foreign_key "activities", "transport_locations"
   add_foreign_key "activity_executions", "activities"
   add_foreign_key "activity_executions", "fields"
+  add_foreign_key "checkpoint_units", "checkpoints"
+  add_foreign_key "checkpoint_units", "units"
+  add_foreign_key "checkpoint_units", "users", column: "check_in_by_id"
+  add_foreign_key "checkpoint_units", "users", column: "check_out_by_id"
+  add_foreign_key "checkpoint_units", "users", column: "confirmed_check_in_by_id"
+  add_foreign_key "checkpoint_units", "users", column: "confirmed_check_out_by_id"
+  add_foreign_key "checkpoints", "checkpoints", column: "depends_on_checkpoint_id"
   add_foreign_key "fields", "spots"
   add_foreign_key "fixed_events_stufen", "fixed_events"
   add_foreign_key "fixed_events_stufen", "stufen"

@@ -22,6 +22,12 @@ Rails.application.routes.draw do
     post :documents, to: 'units#add_document', as: :documents
     post :accept_security_concept, to: 'units#accept_security_concept'
     delete 'document/:id', to: 'units#delete_document', as: :document
+    resources :check_ins, only: [:index] do
+      put :confirm, on: :member
+    end
+    resources :check_outs, only: [:index] do
+      put :confirm, on: :member
+    end
     get :emails, to: 'units#emails', as: :emails, on: :collection
   end
   resources :leaders, except: [:destroy]
@@ -51,6 +57,19 @@ Rails.application.routes.draw do
     end
     resources :tags
     resources :stufen
+
+    resources :check_ins, only: %i[index show] do
+      get :unit_autocomplete, on: :collection
+      post :redirect_to_check, on: :member
+
+      resources :check_in_checkpoint_units, only: %i[new create show]
+    end
+
+    resources :check_outs, only: %i[index show] do
+      get :checkpoint_unit_autocomplete, on: :member
+      post :redirect_to_check, on: :member
+      resources :check_out_checkpoint_units, only: %i[show edit update]
+    end
   end
 
   root 'units#index'

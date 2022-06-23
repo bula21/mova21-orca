@@ -1,0 +1,3 @@
+- checkpoint_units.each do |checkpoint_unit|
+  li.list-group-item[role="option" data-autocomplete-value=(checkpoint_unit.id)]
+    = checkpoint_unit.unit.shortened_title

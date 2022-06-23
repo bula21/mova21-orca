@@ -46,6 +46,12 @@ html
                   = link_to t('nav.stufen'), admin_stufen_path, class: 'dropdown-item'
                   = link_to t('nav.fixed_event'), admin_fixed_events_path, class: 'dropdown-item'
                   = link_to t('nav.spots'), admin_spots_path, class: 'dropdown-item'
+            - if can?(:create, CheckpointUnit)
+              li.nav-item
+                = link_to t('units.show.check_in'), admin_check_ins_path, class: 'nav-link'
+            - if can?(:update, CheckpointUnit)
+              li.nav-item
+                = link_to t('units.show.check_out'), admin_check_outs_path, class: 'nav-link'
           ul.navbar-nav.ms-auto
             .d-none.d-lg-block
               = render 'shared/language_switcher'

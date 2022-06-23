@@ -22,6 +22,7 @@ gem 'net-imap', require: false
 gem 'net-pop', require: false
 gem 'net-smtp', require: false
 gem 'omniauth_openid_connect', '~> 0.3.5' # TODO: upgrade
+gem 'paper_trail'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'prawn', '~> 2.2'
 gem 'prawn-table'
