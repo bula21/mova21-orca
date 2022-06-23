@@ -35,6 +35,7 @@ gem 'redcarpet'
 gem 'redis'
 gem 'roo'
 gem 'sentry-ruby'
+gem "sentry-rails"
 gem 'shakapacker', '= 6.1'
 gem 'simple_form'
 gem 'slim-rails'
