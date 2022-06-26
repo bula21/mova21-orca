@@ -25,7 +25,6 @@ class UnitActivityExecutionsExporter
   ].freeze
 
   def initialize(unit_activity_executions)
-    puts unit_activity_executions.inspect
     @unit_activity_executions = unit_activity_executions
   end
 
@@ -44,7 +43,6 @@ class UnitActivityExecutionsExporter
 
   # rubocop: disable Metrics/MethodLength, Metrics/AbcSize
   def attributes(unit_activity_execution)
-    puts unit_activity_execution.inspect 
     [
       unit_activity_execution.id,
 
@@ -66,7 +64,7 @@ class UnitActivityExecutionsExporter
       unit_activity_execution.activity_execution.amount_participants,
       unit_activity_execution.activity_execution.headcount,
       unit_activity_execution.activity_execution.transport,
-      unit_activity_execution.activity_execution.transport_ids,
+      unit_activity_execution.activity_execution.transport_ids
     ]
   end
   # rubocop: enable Metrics/MethodLength, Metrics/AbcSize
