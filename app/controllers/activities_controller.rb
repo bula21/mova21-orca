@@ -88,6 +88,6 @@ class ActivitiesController < ApplicationController
                   :duration_activity, :duration_journey, :location, :transport_location_id, :min_participants,
                   :activity_type, :activity_category_id, :picture,
                   I18n.available_locales.map { |l| ["label_#{l}", "description_#{l}", "language_#{l}"] }.flatten,
-                  stufe_ids: [], stufe_recommended_ids: [], goal_ids: [], tag_ids: [], activity_documents: [])
+                  stufe_ids: [], stufe_recommended_ids: [], goal_ids: [], tag_ids: [])
   end
 end
