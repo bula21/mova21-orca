@@ -2,16 +2,27 @@
 
 class UnitActivityExecutionsController < ApplicationController
   load_and_authorize_resource :unit_activity_execution
+  load_and_authorize_resource through: :unit_activity_execution, shallow: true
+
   before_action :set_units_and_activity_executions, except: %i[index destroy]
 
   def index
-    @unit = Unit.find_by(id: params[:unit_id])
-    @activity_execution = ActivityExecution.find_by(id: params[:activity_execution_id])
+    if params[:activity_execution_id]
+      @unit = Unit.find_by(id: params[:unit_id])
+      @activity_execution = ActivityExecution.find_by(id: params[:activity_execution_id])
 
-    @unit_activity_executions = @activity_execution.unit_activity_executions if @activity_execution
-    @unit_activity_executions = @unit_activity_executions.where(unit: @unit) if @unit
-    @unit_activity_executions = UnitActivityExecution.none unless @activity_execution || @unit
-    @unit_activity_executions = @unit_activity_executions.ordered.with_default_includes
+      @unit_activity_executions = @activity_execution.unit_activity_executions if @activity_execution
+      @unit_activity_executions = @unit_activity_executions.where(unit: @unit) if @unit
+      @unit_activity_executions = UnitActivityExecution.none unless @activity_execution || @unit
+      @unit_activity_executions = @unit_activity_executions.ordered.with_default_includes
+    else
+      @unit_activity_executions = UnitActivityExecution.order(id: :asc)
+    end
+
+    respond_to do |format|
+      format.html
+      format.csv { send_exported_data(@unit_activity_executions) }
+    end
   end
 
   def new
@@ -90,5 +101,10 @@ class UnitActivityExecutionsController < ApplicationController
   def unit_activity_execution_params
     params[:unit_activity_execution]&.permit(:unit_id, :activity_execution_id, :headcount,
                                              :change_remarks, :change_notification) || {}
+  end
+
+  def send_exported_data(unit_activity_executions)
+    exporter = UnitActivityExecutionsExporter.new(unit_activity_executions)
+    send_data exporter.export, filename: exporter.filename
   end
 end

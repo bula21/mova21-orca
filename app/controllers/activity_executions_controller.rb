@@ -13,11 +13,7 @@ class ActivityExecutionsController < ApplicationController
 
     respond_to do |format|
       format.html
-      if params[:export] == 'units'
-        format.csv { send_exported_data_with_units(@activity_executions) }
-      else
-        format.csv { send_exported_data_without_units(@activity_executions) }
-      end
+      format.csv { send_exported_data(@activity_executions) }
       format.json { render json: ActivityExecutionBlueprint.render(@activity_executions, view: :with_fields) }
     end
   end
@@ -126,13 +122,8 @@ class ActivityExecutionsController < ApplicationController
                                                   min_available_headcount max_units date language])
   end
 
-  def send_exported_data_without_units(activity_executions)
+  def send_exported_data(activity_executions)
     exporter = ActivityExecutionExporter.new(activity_executions)
-    send_data exporter.export, filename: exporter.filename
-  end
-
-  def send_exported_data_with_units(activity_executions)
-    exporter = UnitActivityExecutionsExporter.new(activity_executions)
     send_data exporter.export, filename: exporter.filename
   end
 
