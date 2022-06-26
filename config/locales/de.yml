@@ -845,10 +845,10 @@ de:
         aus dem Feld "Erwartete Anzahl Teilnehmende" <a href='%{link}' target='_blank'>MiData</a>
         importiert.
       food:
-        description_html: Euer Zeitfenster (K_%{kitchen_id}) für die tägliche Essensabholung
-          ist %{food_pickup_slot}! Bitte erscheint innerhalb dieses Zeitraums bei
-          der Abholstation und beachtet alle Informationen zur Abholung im <a href='https://www.mova.ch/kochen'
-          target='_blank'>wikimova</a>.
+        description_html: "Eure Zeitfenster (K_%{kitchen_id}) für die tägliche Essensabholung sind: <br>
+        vormittags: %{food_pickup_slot_frozen} Uhr (Heikle Produkte für das Mittagessen) <br>
+        nachmittags: %{food_pickup_slot} Uhr (Trockenprodukte für den kommenden Tag und die heiklen Produkte für das Abendessen) <br><br>
+        Bitte erscheint innerhalb dieser Zeiträume bei der Abholstation und beachtet alle Informationen zur Abholung im <a href='https://www.mova.ch/kochen' target='_blank'>wikimova</a>."
         title: Verpflegung
       imported: 'Erfasst: Es wurden %{total_count} von %{max_count} Personen von nationalen
         Einheiten erfasst. Davon wurden %{midata_count} Personen automatisch von MiData
