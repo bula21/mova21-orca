@@ -853,6 +853,7 @@ fr:
           - Le matin, de <b>%{food_pickup_slot_frozen}</b> (produits frais pour le repas de midi) <br>
           - L’après-midi de <b>%{food_pickup_slot}</b> (produits secs qui se conservent pour le jour suivant et produits frais pour le souper). <br><br>
           Nous vous remercions de vous présenter durant ces créneaux au point de retrait et de tenir compte de toutes les informations sur ce processus disponibles sur le <a href='https://www.mova.ch/fr/kochen' target='_blank'>wikimova</a>."
+        parsing_error: Il n'a pas été possible de charger ton heure de collecte, contacte info@bula21.ch
         title: Restauration
       imported: 'Saisie des données: %{total_count} de %{max_count} personnes des
         unités nationales ont été ajoutées. Dont %{midata_count} personnes ont été

@@ -1,22 +1,13 @@
 # frozen_string_literal: true
 
 module FrozenFoodTimeslotHelper
-    require "time"
+  def frozen_food_timeslot(timeslot)
+    matches = timeslot.squish.match(/((\d?\d).(\d?\d))-((\d?\d).(\d?\d))/)
 
-    def frozen_food_timeslot_frontend(timeslot)
-        timeslot.squish!
-        matches = timeslot.match(/((\d?\d).(\d?\d))-((\d?\d).(\d?\d))/)
+    return I18n.t('units.show.food.parsing_error') unless matches
 
-        if matches
-            timeslot_1 = (Time.parse(matches[1].gsub(".", ":")) - 5.hours).strftime("%H.%M") 
-            timeslot_2 = (Time.parse(matches[4].gsub(".", ":")) - 5.hours).strftime("%H.%M") 
-            
-            timeslot = timeslot_1 + "-" + timeslot_2
-        else
-            timeslot = "not possible to calculate time"
-        end
-
-        timeslot
-    end
+    [matches[1], matches[4]].map do |time|
+      (Time.current.parse(time.tr('.', ':')) - 5.hours).strftime('%H.%M')
+    end.join('-')
   end
-  
+end

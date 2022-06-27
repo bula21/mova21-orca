@@ -791,6 +791,7 @@ en:
         - mornings: <b>%{food_pickup_slot_frozen}</b> o'clock (Delicate products for lunch) <br>
         - afternoons: <b>%{food_pickup_slot}</b> o'clock (Dry products for the coming day and the delicate products for dinner) <br><br>
         Please show up at the pickup station within these time frames and note all pickup information in the <a href='https://www.mova.ch/kochen' target='_blank'>wikimova</a>."
+        parsing_error: It was not possible to load your collection time, please contact info@bula21.ch
         title: Catering
       imported: 'Imported: %{total_count} of %{max_count} persons of national units
         were created. Of these, %{midata_count} persons were automatically imported

@@ -850,6 +850,7 @@ de:
         - Nachmittags: <b>%{food_pickup_slot}</b> Uhr (Trockenprodukte für den kommenden Tag und die heiklen Produkte für das Abendessen) <br><br>
         Bitte erscheint innerhalb dieser Zeiträume bei der Abholstation und beachtet alle Informationen zur Abholung im <a href='https://www.mova.ch/kochen' target='_blank'>wikimova</a>."
         title: Verpflegung
+        parsing_error: Es war nicht möglich deine Abholzeit zu laden, bitte kontaktiere info@bula21.ch
       imported: 'Erfasst: Es wurden %{total_count} von %{max_count} Personen von nationalen
         Einheiten erfasst. Davon wurden %{midata_count} Personen automatisch von MiData
         importiert.'
