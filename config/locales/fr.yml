@@ -850,8 +850,8 @@ fr:
         target='_blank'>MiData</a>.
       food:
         description_html: "Vos créneaux horaire (K_%{kitchen_id}) pour aller chercher la nourriture chaque jour sont : <br>
-          Le matin, de %{food_pickup_slot_frozen} (produits frais pour le repas de midi) <br>
-          L’après-midi de %{food_pickup_slot} (produits secs qui se conservent pour le jour suivant et produits frais pour le souper). <br><br>
+          - Le matin, de <b>%{food_pickup_slot_frozen}</b> (produits frais pour le repas de midi) <br>
+          - L’après-midi de <b>%{food_pickup_slot}</b> (produits secs qui se conservent pour le jour suivant et produits frais pour le souper). <br><br>
           Nous vous remercions de vous présenter durant ces créneaux au point de retrait et de tenir compte de toutes les informations sur ce processus disponibles sur le <a href='https://www.mova.ch/fr/kochen' target='_blank'>wikimova</a>."
         title: Restauration
       imported: 'Saisie des données: %{total_count} de %{max_count} personnes des

@@ -788,8 +788,8 @@ en:
         is imported from your entered numbers in <a href='%{link}' target='_blank'>MiData</a>
       food:
         description_html: "Your time slots (K_%{kitchen_id}) for daily food collection are: <br>
-        mornings: %{food_pickup_slot_frozen} o'clock (Delicate products for lunch) <br>
-        afternoons: %{food_pickup_slot} o'clock (Dry products for the coming day and the delicate products for dinner) <br><br>
+        - mornings: <b>%{food_pickup_slot_frozen}</b> o'clock (Delicate products for lunch) <br>
+        - afternoons: <b>%{food_pickup_slot}</b> o'clock (Dry products for the coming day and the delicate products for dinner) <br><br>
         Please show up at the pickup station within these time frames and note all pickup information in the <a href='https://www.mova.ch/kochen' target='_blank'>wikimova</a>."
         title: Catering
       imported: 'Imported: %{total_count} of %{max_count} persons of national units
