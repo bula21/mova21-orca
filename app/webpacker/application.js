@@ -11,7 +11,10 @@ import { Tooltip } from 'bootstrap';
 import { Application } from "@hotwired/stimulus"
 import { definitionsFromContext } from "@hotwired/stimulus-webpack-helpers"
 
+import * as Sentry from "@sentry/browser";
+Sentry.init(window.sentryConfig);
 require.context('./images', true);
+window.Sentry = Sentry;
 
 Rails.start();
 Turbolinks.start();

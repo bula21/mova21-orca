@@ -88,7 +88,7 @@
           - [:language_documents_de, :language_documents_fr, :language_documents_it].each do |document_attr_name|
             .row
               .col-md-4
-                label.d-block[for="activity_#{document_attr_name}"] = t('activerecord.attributes.activity.language_documents_de')
+                label.d-block[for="activity_#{document_attr_name}"] = t(document_attr_name, scope: "activerecord.attributes.activity")
                 = f.file_field document_attr_name, multiple: true
                 ul.list-group.mt-3
                   - @activity.public_send(document_attr_name).each do |document|

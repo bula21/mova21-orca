@@ -1,0 +1,5 @@
+<% if ENV['SENTRY_DSN'].present? %>
+  <%= javascript_tag nonce: true do -%>
+    window.sentryConfig = {dsn: '<%= ENV['SENTRY_DSN']%>', environment: '<%= ENV['SENTRY_ENVIRONMENT']%>'};
+  <% end -%>
+<% end %>

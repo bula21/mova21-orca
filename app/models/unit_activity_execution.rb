@@ -28,4 +28,13 @@ class UnitActivityExecution < ApplicationRecord
     default_headcount += role_counts[:assistant_leader] if activity_execution&.transport
     self.headcount = headcount.presence || default_headcount
   end
+
+  def cache_key
+    [
+      self.class,
+      id, updated_at,
+      unit&.cache_key,
+      activity_execution&.cache_key
+    ].join('-')
+  end
 end
