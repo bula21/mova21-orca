@@ -2,7 +2,7 @@
 
 module FrozenFoodTimeslotHelper
   def frozen_food_timeslot(timeslot)
-    matches = timeslot.squish.match(/((\d?\d).(\d?\d))-((\d?\d).(\d?\d))/)
+    matches = timeslot&.squish&.match(/((\d?\d).(\d?\d))-((\d?\d).(\d?\d))/)
 
     return I18n.t('units.show.food.parsing_error') unless matches
 
