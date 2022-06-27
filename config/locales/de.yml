@@ -304,10 +304,13 @@ de:
     create: Erstellen
     destroy: löschen
     edit: editieren
+    export_activity_csv: Aktivitäten ohne Einheiten als CSV exportieren
+    export_activity_unit_csv: Aktivitäten mit Einheiten als CSV exportieren
     export_csv: Export als CSV
     filter: Filtern
     reset: Reset
     save: Speichern
+    search: Suchen
     show: anzeigen
     upload: Hochladen
   camp_unit_mailer:
@@ -586,6 +589,7 @@ de:
     tag: Tags
     transport_location: Transport
     unit: Lager
+    unit_communications: Einheits-Kommunikation
   number:
     currency:
       format:
@@ -758,6 +762,14 @@ de:
   unit_activity_executions:
     form:
       reassign: Neue Durchführung finden
+  unit_communications:
+    description: 'Gibt für die eingegebenen Einheits-IDs die Mailadressen der zugehörigen
+      Lagerleitenden aus. Diese können dann in ein Mailprogramm kopiert werden. Beispiel:
+      444,321,222'
+    no_results: Keine Einheiten gefunden
+    result: Resultate
+    title: Kommunikation Einheiten
+    unit_ids: Einheits-IDs kommasepariert
   unit_visitor_days:
     form:
       salutations:

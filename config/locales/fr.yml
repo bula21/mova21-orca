@@ -309,10 +309,13 @@ fr:
     create: créer
     destroy: supprimer
     edit: éditer
+    export_activity_csv: Exportation des activités sans unités en CSV
+    export_activity_unit_csv: Exporter les activités avec les unités en CSV
     export_csv: Exporter en csv
     filter: Filtrer
     reset: Réinitialiser
     save: Sauvegarder
+    search: Chercher
     show: Montrer
     upload: Charger
   camp_unit_mailer:
@@ -594,6 +597,7 @@ fr:
     tag: Tags
     transport_location: Transport
     unit: Camp
+    unit_communications: Communication untié
   number:
     currency:
       format:
@@ -761,6 +765,14 @@ fr:
   unit_activity_executions:
     form:
       reassign: Neue Durchführung finden
+  unit_communications:
+    description: 'Donne, pour les ID d''unité saisis, les adresses e-mail des responsables
+      de magasin correspondants. Celles-ci peuvent ensuite être copiées dans un programme
+      de messagerie. Exemple : 444,321,222'
+    no_results: Aucune unité trouvée
+    result: Résultat
+    title: Communication unité
+    unit_ids: ID d'unité (séparé par une virgule)
   unit_visitor_days:
     form:
       salutations:
