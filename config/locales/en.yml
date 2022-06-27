@@ -304,6 +304,8 @@ en:
     destroy: Delete
     edit: Edit
     export_csv: Export as CSV
+    export_activity_csv: Export Activities without Units as CSV
+    export_activity_unit_csv: Export Activities with Units as CSV
     filter: Filtern
     search: Suchen
     reset: Reset
