@@ -858,11 +858,15 @@ it:
         sarà importato dal campo "Numero di partecipanti stimato" da <a href='%{link}'
         target='_blank'>MiData</a>.
       food:
-        description_html: "Le vostre fasce orarie (K_%{kitchen_id}) per il ritiro giornaliero del cibo sono:<br>
-          - Mattina: <b>%{food_pickup_slot_frozen}</b> (Prodotti delicati per il pranzo)<br>
-          - Pomeriggio: <b>%{food_pickup_slot}</b> (Prodotti secchi per il giorno successivo e prodotti delicati per la cena).<br><br>
-          Vi chiediamo di presentarvi al punto di ritiro entro questi lassi di tempo e di prestare attenzione a tutte le informazioni relative al ritiro del cibo presenti su <a href='https://www.mova.ch/it/kochen' target='_blank'>wikimova</a>."
-        parsing_error: Non è stato possibile caricare l'orario di raccolta, contattare info@bula21.ch.
+        description_html: 'Le vostre fasce orarie (K_%{kitchen_id}) per il ritiro
+          giornaliero del cibo sono:<br> - Mattina: <b>%{food_pickup_slot_frozen}</b>
+          (Prodotti delicati per il pranzo)<br> - Pomeriggio: <b>%{food_pickup_slot}</b>
+          (Prodotti secchi per il giorno successivo e prodotti delicati per la cena).<br><br>
+          Vi chiediamo di presentarvi al punto di ritiro entro questi lassi di tempo
+          e di prestare attenzione a tutte le informazioni relative al ritiro del
+          cibo presenti su <a href=''https://www.mova.ch/it/kochen'' target=''_blank''>wikimova</a>.'
+        parsing_error: Non è stato possibile caricare l'orario di raccolta, contattare
+          info@bula21.ch.
         title: Ristorazione
       imported: 'Inserite: Sono state aggiunte %{total_count} di %{max_count} persone
         delle unità svizzere. Di cui %{midata_count} persone sono state importate
