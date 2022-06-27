@@ -16,8 +16,6 @@ class ActivityExecutionExporter
     field_name
     languages
     max_headcount
-    headcount
-    units
     transport
     transport_ids
   ].freeze
@@ -42,24 +40,24 @@ class ActivityExecutionExporter
   # rubocop: disable Metrics/MethodLength, Metrics/AbcSize
   def attributes(activity_execution)
     activity_execution.instance_eval do
-      [
-        id,
-        activity_id,
-        activity.to_s,
-        activity.activity_category.to_s,
-        starts_at.iso8601,
-        ends_at.iso8601,
-        spot.id,
-        spot.name,
-        field_id,
-        field.name,
-        languages.filter_map { |key, value| key if value }.join(','),
-        amount_participants,
-        headcount,
-        unit_activity_executions.count,
-        transport,
-        transport_ids
-      ]
+      Rails.cache.fetch(cache_key) do
+        [
+          id,
+          activity_id,
+          activity.to_s,
+          activity.activity_category.to_s,
+          starts_at.iso8601,
+          ends_at.iso8601,
+          spot.id,
+          spot.name,
+          field_id,
+          field.name,
+          languages.filter_map { |key, value| key if value }.join(','),
+          amount_participants,
+          transport,
+          transport_ids
+        ]
+      end
     end
   end
   # rubocop: enable Metrics/MethodLength, Metrics/AbcSize

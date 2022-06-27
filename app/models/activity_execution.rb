@@ -73,4 +73,11 @@ class ActivityExecution < ApplicationRecord
     super unless activity && starts_at.present?
     "#{activity.label}, #{I18n.l(starts_at)}"
   end
+
+  def cache_key
+    [
+      self.class,
+      id, updated_at
+    ].join('-')
+  end
 end

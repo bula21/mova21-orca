@@ -2,22 +2,12 @@
 
 class UnitActivityExecutionsController < ApplicationController
   load_and_authorize_resource :unit_activity_execution
-  load_and_authorize_resource through: :unit_activity_execution, shallow: true
 
   before_action :set_units_and_activity_executions, except: %i[index destroy]
 
   def index
-    if params[:activity_execution_id]
-      @unit = Unit.find_by(id: params[:unit_id])
-      @activity_execution = ActivityExecution.find_by(id: params[:activity_execution_id])
-
-      @unit_activity_executions = @activity_execution.unit_activity_executions if @activity_execution
-      @unit_activity_executions = @unit_activity_executions.where(unit: @unit) if @unit
-      @unit_activity_executions = UnitActivityExecution.none unless @activity_execution || @unit
-      @unit_activity_executions = @unit_activity_executions.ordered.with_default_includes
-    else
-      @unit_activity_executions = UnitActivityExecution.order(id: :asc)
-    end
+    @unit_activity_executions = prepare_filter.apply(@unit_activity_executions.ordered.with_default_includes)
+    @unit_activity_executions = UnitActivityExecution.none unless @activity_execution || @unit || @activity
 
     respond_to do |format|
       format.html
@@ -81,6 +71,14 @@ class UnitActivityExecutionsController < ApplicationController
       min_available_headcount: @unit_activity_execution.unit&.actual_participants,
       language: @unit_activity_execution.unit&.language
     }
+  end
+
+  def prepare_filter
+    @unit = Unit.find_by(id: params[:unit_id])
+    @activity_execution = ActivityExecution.find_by(id: params[:activity_execution_id])
+    @activity = Activity.find_by(id: params[:activity_id])
+
+    UnitActivityExecutionFilter.new(unit: @unit, activity_execution: @activity_execution, activity: @activity)
   end
 
   def set_units_and_activity_executions

@@ -5,12 +5,16 @@ class UnitActivityExecutionsExporter
 
   HEADERS = %w[
     unit_activity_id
-    unit_id
-    unit_name
     activity_id
+    activity_execution_id
+    unit_id
+    headcount
+    unit_name
+    unit_stufe
+    unit_language
+    unit_abteilung
     activity_name
     activity_category
-    activity_execution_id
     activity_starts_at
     activity_ends_at
     activity_spot_id
@@ -19,7 +23,6 @@ class UnitActivityExecutionsExporter
     activity_field_name
     activity_languages
     activity_max_headcount
-    activity_headcount
     activity_transport
     activity_transport_ids
   ].freeze
@@ -41,31 +44,43 @@ class UnitActivityExecutionsExporter
 
   private
 
-  # rubocop: disable Metrics/MethodLength, Metrics/AbcSize
+  # rubocop: disable Metrics/MethodLength, Metrics/AbcSize, Metrics/BlockLength
   def attributes(unit_activity_execution)
-    [
-      unit_activity_execution.id,
-
-      unit_activity_execution.unit_id,
-      unit_activity_execution.unit.title,
-
-      unit_activity_execution.activity_execution.activity_id,
-      unit_activity_execution.activity_execution.activity.to_s,
-      unit_activity_execution.activity_execution.activity.activity_category.to_s,
-
-      unit_activity_execution.activity_execution_id,
-      unit_activity_execution.activity_execution.starts_at.iso8601,
-      unit_activity_execution.activity_execution.ends_at.iso8601,
-      unit_activity_execution.activity_execution.spot.id,
-      unit_activity_execution.activity_execution.spot.name,
-      unit_activity_execution.activity_execution.field_id,
-      unit_activity_execution.activity_execution.field.name,
-      unit_activity_execution.activity_execution.languages.filter_map { |key, value| key if value }.join(','),
-      unit_activity_execution.activity_execution.amount_participants,
-      unit_activity_execution.activity_execution.headcount,
-      unit_activity_execution.activity_execution.transport,
-      unit_activity_execution.activity_execution.transport_ids
-    ]
+    unit_activity_execution.instance_eval do
+      Rails.cache.fetch(cache_key) do
+        [
+          id,
+          activity_execution.activity_id,
+          activity_execution_id,
+          unit_id,
+          headcount,
+          unit.instance_eval do
+            [
+              title,
+              stufe,
+              language,
+              abteilung
+            ]
+          end,
+          activity_execution.instance_eval do
+            [
+              activity.to_s,
+              activity.activity_category.to_s,
+              starts_at.iso8601,
+              ends_at.iso8601,
+              spot.id,
+              spot.name,
+              field_id,
+              field.name,
+              languages.filter_map { |key, value| key if value }.join(','),
+              amount_participants,
+              transport,
+              transport_ids
+            ]
+          end
+        ].flatten
+      end
+    end
   end
-  # rubocop: enable Metrics/MethodLength, Metrics/AbcSize
+  # rubocop: enable Metrics/MethodLength, Metrics/AbcSize, Metrics/BlockLength
 end
