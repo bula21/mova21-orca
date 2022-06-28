@@ -14,7 +14,9 @@ RSpec.describe ParticipantUnitsBuilder do
     subject(:unit_participants) { builder.from_data(participants_data, unit) }
 
     before do
-      allow(Rollbar).to receive(:warning)
+      allow(Sentry).to receive(:capture_message)
+      allow(Rails.logger).to receive(:error)
+      allow(ErrorLogger).to receive(:capture_message).and_call_original
     end
 
     it { is_expected.to all(be_a(ParticipantUnit)) }
@@ -33,9 +35,9 @@ RSpec.describe ParticipantUnitsBuilder do
       expect(unit_participants.first.role).to eq 'participant'
     end
 
-    it 'does not create a warning' do
+    it 'does not create a warning on sentry' do
       unit_participants
-      expect(Rollbar).not_to have_received(:warning)
+      expect(ErrorLogger).not_to have_received(:capture_message)
     end
 
     context 'when there are no data' do
@@ -47,9 +49,9 @@ RSpec.describe ParticipantUnitsBuilder do
     context 'when a user would have multiple roles' do
       let(:participants_json_path) { 'spec/fixtures/extracted_participations_with_multiple_roles.json' }
 
-      it 'does not create a warning' do
+      it 'creates a warning' do
         unit_participants
-        expect(Rollbar).not_to have_received(:warning)
+        expect(ErrorLogger).to have_received(:capture_message)
       end
 
       describe 'prioritizes the right roles' do
@@ -106,16 +108,16 @@ RSpec.describe ParticipantUnitsBuilder do
                         'assistant_leader'
       end
 
-      context 'with Rollbar configured' do
+      context 'with Sentry configured' do
         before do
-          allow(Rollbar.configuration).to receive(:enabled).and_return(true)
+          allow(Sentry).to receive(:initialized?).and_return(true)
         end
 
         it 'creates a warning' do
           unit_participants
-          expect(Rollbar).to have_received(:warning)
+          expect(Sentry).to have_received(:capture_message)
             .with('User with pbs_id 11629 has multiple roles in participation: '\
-                  '["Event::Camp::Role::Participant", "Event::Camp::Role::AssistantLeader"]')
+                  '["Event::Camp::Role::Participant", "Event::Camp::Role::AssistantLeader"]', level: 'warning')
         end
       end
     end

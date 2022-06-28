@@ -383,7 +383,6 @@ GEM
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
     rexml (3.2.5)
-    rollbar (3.3.0)
     roo (2.9.0)
       nokogiri (~> 1)
       rubyzip (>= 1.3.0, < 3.0.0)
@@ -434,6 +433,11 @@ GEM
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
     semantic_range (3.0.0)
+    sentry-ruby (5.3.1)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      sentry-ruby-core (= 5.3.1)
+    sentry-ruby-core (5.3.1)
+      concurrent-ruby
     shakapacker (6.1.0)
       activesupport (>= 5.2)
       rack-proxy (>= 0.6.1)
@@ -567,7 +571,6 @@ DEPENDENCIES
   react-rails
   redcarpet
   redis
-  rollbar
   roo
   rspec-rails
   rubocop
@@ -575,6 +578,7 @@ DEPENDENCIES
   rubocop-rails
   rubocop-rspec
   selenium-webdriver
+  sentry-ruby
   shakapacker (= 6.1)
   shoulda-matchers
   simple_form

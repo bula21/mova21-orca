@@ -1,0 +1,18 @@
+h1 = t('unit_communications.title')
+p = t('unit_communications.description')
+br
+= form_with(local: true, url: emails_units_path, method: :GET) do |f|
+  = f.text_field :unit_ids, label: t('unit_communications.unit_ids'), class: 'form-control'
+  = f.submit t('buttons.search'), class: 'btn btn-secondary mt-2'
+br
+
+- if !@units.empty?
+  h3 = t('unit_communications.result')
+  ul
+  - @units.each do |unit|
+    li = "#{unit.id}: #{unit.title}"
+
+  hr
+  p = @emails.join(',')
+- else
+  p = t('unit_communications.no_results')

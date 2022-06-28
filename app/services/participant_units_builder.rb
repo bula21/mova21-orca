@@ -42,9 +42,10 @@ class ParticipantUnitsBuilder
   end
 
   def warn_if_multiple_roles(pbs_id, role_types)
-    return unless Rollbar.configuration.enabled && role_types.size > 1
+    return unless role_types.size > 1
 
-    Rollbar.warning "User with pbs_id #{pbs_id} has multiple roles in participation: #{role_types}"
+    ErrorLogger.capture_message("User with pbs_id #{pbs_id} has multiple roles in participation: #{role_types}",
+                                level: 'warning')
   end
 
   def convert_gender(participation_data)
