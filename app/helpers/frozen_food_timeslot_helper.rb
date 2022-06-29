@@ -10,5 +10,7 @@ module FrozenFoodTimeslotHelper
       Time.zone = 'Europe/Zurich'
       (Time.zone.parse(time.tr('.', ':')) - 5.hours).strftime('%H.%M')
     end.join('-')
+  rescue StandardError
+    return ''
   end
 end
