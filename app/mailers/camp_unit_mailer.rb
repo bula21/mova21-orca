@@ -23,10 +23,10 @@ class CampUnitMailer < ApplicationMailer
     @program_change = UnitProgramChange.find params[:unit_program_change_id]
     @unit = @program_change.unit
     @lagerleiter = @unit.lagerleiter
-    cc = ENV.fetch('PROGRAM_CHANGE_MAIL_CC', nil)
+    bcc = ENV.fetch('PROGRAM_CHANGE_MAIL_BCC', nil)
 
     I18n.with_locale(@unit.language || @lagerleiter.language || I18n.default_locale) do
-      mail(to: @lagerleiter.email, cc: cc, subject: I18n.t('camp_unit_mailer.program_change_notification.subject'))
+      mail(to: @lagerleiter.email, bcc: bcc, subject: I18n.t('camp_unit_mailer.program_change_notification.subject'))
     end
   end
 end
