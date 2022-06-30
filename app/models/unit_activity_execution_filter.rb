@@ -4,6 +4,14 @@ class UnitActivityExecutionFilter < ApplicationFilter
   attribute :activity
   attribute :unit
   attribute :activity_execution
+  attribute :ids
+
+  filter :id do |unit_activity_executions|
+    ids = Array.wrap(ids).join(',').split(',')
+    next if ids.blank?
+
+    unit_activity_executions.where(id: ids)
+  end
 
   filter :unit do |unit_activity_executions|
     next if unit.blank?

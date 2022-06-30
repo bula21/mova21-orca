@@ -58,7 +58,7 @@
               =<> link_to(UnitActivityExecution.model_name.human(count: 2), unit_activity_executions_path(activity_execution_id: activity_execution.id), class: 'btn btn-primary') if can?(:read, UnitActivityExecution)
 
 = link_to t('buttons.export_activity_csv'), activity_executions_path(format: :csv, activity_execution_filter: @filter.attributes), class: 'btn btn-secondary'
-=< link_to t('buttons.export_activity_unit_csv'), unit_activity_executions_path(format: :csv, activity_execution_id: @activity_executions.map(&:id)), class: 'btn btn-secondary'
+=< link_to t('buttons.export_activity_unit_csv'), unit_activity_executions_path(format: :csv, id: @activity_executions.map(&:unit_activity_execution_ids).flatten.join(',')), class: 'btn btn-secondary'
 
 - if @activity
   = render 'import'

@@ -7,10 +7,11 @@ class ActivityExecutionsController < ApplicationController
   before_action :set_spots, only: %i[index show]
 
   def index
-    @activity_executions = filter.cached(@activity_executions.includes(:activity, :unit_activity_executions,
-                                                                       field: :spot).ordered)
-    @activity_executions = ActivityExecution.none unless filter.active?
-
+    @activity_executions = ActivityExecution.none
+    if filter.active?
+      @activity_executions = filter.cached(@activity_executions.includes(:activity, :unit_activity_executions,
+                                                                         field: :spot).ordered)
+    end
     respond_to do |format|
       format.html
       format.csv { send_exported_data(@activity_executions) }
