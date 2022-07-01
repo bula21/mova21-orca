@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   resources :leaders, except: [:destroy]
   resources :unit_activity_executions do
     post :import, on: :collection
-    get :reassign, on: :member, as: :reassign
+    get :reassign, on: :collection, as: :reassign
   end
   resources :activity_executions
   resources :activities do
