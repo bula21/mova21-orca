@@ -28,7 +28,8 @@ class UnitActivityExecutionsExporter
   ].freeze
 
   def initialize(unit_activity_executions)
-    @unit_activity_executions = unit_activity_executions
+    @unit_activity_executions = unit_activity_executions.includes(:unit, activity_execution:
+                                                                  [:spot, :field, { activity: [:activity_category] }])
   end
 
   def export
