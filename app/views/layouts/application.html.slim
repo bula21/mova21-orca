@@ -34,7 +34,7 @@ html
             - if can?(:manage, ActivityExecution)
               li.nav-item
                 = link_to t('nav.activity_execution'), activity_executions_path, class: 'nav-link'
-            - if can?(:read, Unit)
+            - if can?(:emails, Unit)
               li.nav-item
                 = link_to t('nav.unit_communications'), emails_units_path, class: 'nav-link'
             - if can?(:create, Tag)

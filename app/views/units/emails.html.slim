@@ -1,4 +1,4 @@
-h1 = t('unit_communications.title')
+h1.h1 = t('unit_communications.title')
 p = t('unit_communications.description')
 br
 = form_with(local: true, url: emails_units_path, method: :GET) do |f|
@@ -9,10 +9,10 @@ br
 - if !@units.empty?
   h3 = t('unit_communications.result')
   ul
-  - @units.each do |unit|
-    li = "#{unit.id}: #{unit.title}"
+    - @units.each do |unit|
+      li = "#{unit.id}: #{unit.title}"
 
   hr
-  p = @emails.join(',')
+  p = @emails.join(', ')
 - else
   p = t('unit_communications.no_results')

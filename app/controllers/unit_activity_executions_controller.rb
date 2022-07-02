@@ -6,8 +6,9 @@ class UnitActivityExecutionsController < ApplicationController
   before_action :set_units_and_activity_executions, except: %i[index destroy]
 
   def index
-    @unit_activity_executions = prepare_filter.apply(@unit_activity_executions.ordered.with_default_includes)
-    @unit_activity_executions = UnitActivityExecution.none unless @activity_execution || @unit || @activity
+    filter = prepare_filter
+    @unit_activity_executions = filter.apply(@unit_activity_executions.ordered.with_default_includes)
+    @unit_activity_executions = UnitActivityExecution.none unless filter.active?
 
     respond_to do |format|
       format.html
@@ -16,13 +17,13 @@ class UnitActivityExecutionsController < ApplicationController
   end
 
   def new
-    @unit_activity_execution.assign_attributes(**linked_params)
+    @unit_activity_execution.assign_attributes(linked_params.merge(unit_activity_execution_params))
     @unit_activity_execution.prefill_headcount
   end
 
   def create
     if @unit_activity_execution.save
-      redirect_to unit_activity_executions_path(**linked_params), notice: I18n.t('messages.created.success')
+      redirect_to unit_activity_executions_path(linked_params), notice: I18n.t('messages.created.success')
     else
       render :new
     end
@@ -65,6 +66,8 @@ class UnitActivityExecutionsController < ApplicationController
   private
 
   def reassign_filter_defaults
+    return {} if @unit_activity_execution.blank?
+
     {
       activity_id: @unit_activity_execution.activity&.id,
       date: @unit_activity_execution.activity_execution&.starts_at&.to_date,
