@@ -81,7 +81,7 @@ class UnitActivityExecutionsController < ApplicationController
     @activity_execution = ActivityExecution.find_by(id: params[:activity_execution_id])
     @activity = Activity.find_by(id: params[:activity_id])
 
-    UnitActivityExecutionFilter.new(unit: @unit, activity_execution: @activity_executions,
+    UnitActivityExecutionFilter.new(unit: @unit, activity_execution: @activity_execution,
                                     activity: @activity, id: params[:id])
   end
 
