@@ -78,7 +78,7 @@ class UnitActivityExecutionsController < ApplicationController
 
   def prepare_filter
     @unit = Unit.find_by(id: params[:unit_id])
-    @activity_executions = ActivityExecution.find_by(id: params[:activity_execution_id])
+    @activity_execution = ActivityExecution.find_by(id: params[:activity_execution_id])
     @activity = Activity.find_by(id: params[:activity_id])
 
     UnitActivityExecutionFilter.new(unit: @unit, activity_execution: @activity_executions,

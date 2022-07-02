@@ -4,10 +4,10 @@ class UnitActivityExecutionFilter < ApplicationFilter
   attribute :activity
   attribute :unit
   attribute :activity_execution
-  attribute :ids
+  attribute :id
 
   filter :id do |unit_activity_executions|
-    ids = Array.wrap(ids).join(',').split(',')
+    ids = Array.wrap(id).join(',').split(',')
     next if ids.blank?
 
     unit_activity_executions.where(id: ids)
