@@ -10,7 +10,7 @@ dl.mb-5
   dt= UnitActivityExecution.human_attribute_name(:headcount)
   dd= @unit_activity_execution&.headcount
 
-== render partial: 'activity_executions/filter', locals: { submit_url: reassign_unit_activity_executions_path(@unit_activity_execution), reset_url: activity_executions_path }
+== render partial: 'activity_executions/filter', locals: { submit_url: reassign_unit_activity_execution_path(@unit_activity_execution), reset_url: activity_executions_path }
 
 - unless @filter.active?
   .alert.alert-dismissible.alert-warning.modal
