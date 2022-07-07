@@ -2,13 +2,13 @@ h1.h1= ActivityExecution.model_name.human
 
 dl.mb-5
   dt= Unit.model_name.human
-  dd= @unit_activity_execution.unit
+  dd= @unit_activity_execution&.unit
 
   dt= ActivityExecution.model_name.human
-  dd= @unit_activity_execution.activity_execution
+  dd= @unit_activity_execution&.activity_execution
 
   dt= UnitActivityExecution.human_attribute_name(:headcount)
-  dd= @unit_activity_execution.headcount
+  dd= @unit_activity_execution&.headcount
 
 == render partial: 'activity_executions/filter', locals: { submit_url: reassign_unit_activity_execution_path(@unit_activity_execution), reset_url: activity_executions_path }
 
@@ -42,7 +42,13 @@ dl.mb-5
             td
               = "#{activity_execution.headcount}/#{activity_execution.amount_participants} (#{(activity_execution.headcount_utilization * 100).to_i}%)"
             td.p-1
-              = link_to(t('apply'), edit_unit_activity_execution_path(@unit_activity_execution, unit_activity_execution: { activity_execution_id: activity_execution.id }), class: 'btn btn-primary')
+              - if @unit_activity_execution.present?
+                = link_to(t('apply'), edit_unit_activity_execution_path(@unit_activity_execution, unit_activity_execution: { activity_execution_id: activity_execution.id }), class: 'btn btn-primary')
+              - else
+                = link_to(t('apply'), new_unit_activity_execution_path(unit_activity_execution: { activity_execution_id: activity_execution.id }), class: 'btn btn-primary')
 
   hr.mt-4
-  => link_to t('buttons.back'), unit_activity_execution_path(@unit_activity_execution), class: 'btn btn-secondary'
+  - if @unit_activity_execution.present?
+    => link_to t('buttons.back'), unit_activity_execution_path(@unit_activity_execution), class: 'btn btn-secondary'
+  - else
+    => link_to t('buttons.back'), new_unit_activity_execution_path, class: 'btn btn-secondary'

@@ -2,7 +2,10 @@
   table.table
     thead
       tr
-        th = Activity.model_name.human
+        - unless defined?(unit) && unit.present?
+          th = Unit.model_name.human
+        - unless defined?(activity) && activity.present?
+          th = Activity.model_name.human
         th = ActivityExecution.human_attribute_name(:id)
         th = ActivityExecution.human_attribute_name(:starts_at)
         th = ActivityExecution.human_attribute_name(:ends_at)
@@ -12,8 +15,12 @@
     tbody
       - unit_activity_executions.each do |unit_activity_execution|
         tr
-          td
-            = link_to unit_activity_execution.activity, activity_path(unit_activity_execution.activity)
+          - unless defined?(unit) && unit
+            td 
+              = link_to unit_activity_execution.unit, unit_activity_executions_path(unit_id: unit_activity_execution.unit.id)
+          - unless defined?(activity) && activity
+            td
+              = link_to unit_activity_execution.activity, activity_path(unit_activity_execution.activity)
           td
             = link_to unit_activity_execution.activity_execution_id, unit_activity_executions_path(activity_execution_id: unit_activity_execution.activity_execution.id)
           td
@@ -29,4 +36,4 @@
             =< link_to(t('buttons.destroy'), unit_activity_execution_path(unit_activity_execution), data: { confirm: t('buttons.confirm_delete'), params: { unit_id: params[:unit_id], activity_execution_id: params[:activity_execution_id]} }, method: :delete, class: 'btn btn-secondary') if can?(:delete, unit_activity_execution)
 
 - if can?(:manage, UnitActivityExecution)
-  = link_to t('buttons.create'), new_unit_activity_execution_path(unit_id: unit_id), class: 'btn btn-secondary mt-4'
+  = link_to t('buttons.create'), new_unit_activity_execution_path(unit_id: defined?(unit) && unit&.id), class: 'btn btn-secondary mt-4'

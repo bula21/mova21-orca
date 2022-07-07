@@ -138,7 +138,6 @@ class Ability # rubocop:disable Metrics/ClassLength
   end
 
   def role_unit_communication_permissions(_user)
-    can :read, Unit
-    can :read, Leader
+    can %i[read emails], Unit
   end
 end

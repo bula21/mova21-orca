@@ -80,28 +80,27 @@ hr
         - @activity.activity_documents.each do |document|
           li.list-group-item = link_to document.filename, rails_blob_path(document, disposition: 'attachment')
 
-- if can?(:edit, @activity)
-  .row
-    .col-4
-      - if @activity.language_documents_de.any?
-        =  t('activerecord.attributes.activity.language_documents_de')
-        ul.list-group
-          - @activity.language_documents_de.each do |document|
-            li.list-group-item = link_to document.filename, rails_blob_path(document, disposition: 'attachment')
+.row
+  .col-4
+    - if @activity.language_documents_de.any?
+      =  t('activerecord.attributes.activity.language_documents_de')
+      ul.list-group
+        - @activity.language_documents_de.each do |document|
+          li.list-group-item = link_to document.filename, rails_blob_path(document, disposition: 'attachment')
 
-    .col-4
-      - if @activity.language_documents_fr.any?
-        =  t('activerecord.attributes.activity.language_documents_fr')
-        ul.list-group
-          - @activity.language_documents_fr.each do |document|
-            li.list-group-item = link_to document.filename, rails_blob_path(document, disposition: 'attachment')
+  .col-4
+    - if @activity.language_documents_fr.any?
+      =  t('activerecord.attributes.activity.language_documents_fr')
+      ul.list-group
+        - @activity.language_documents_fr.each do |document|
+          li.list-group-item = link_to document.filename, rails_blob_path(document, disposition: 'attachment')
 
-    .col-4
-      - if @activity.language_documents_it.any?
-        =  t('activerecord.attributes.activity.language_documents_it')
-        ul.list-group
-          - @activity.language_documents_it.each do |document|
-            li.list-group-item = link_to document.filename, rails_blob_path(document, disposition: 'attachment')
+  .col-4
+    - if @activity.language_documents_it.any?
+      =  t('activerecord.attributes.activity.language_documents_it')
+      ul.list-group
+        - @activity.language_documents_it.each do |document|
+          li.list-group-item = link_to document.filename, rails_blob_path(document, disposition: 'attachment')
 
 hr.mt-4
 => link_to t('buttons.back'), activities_path, class: 'btn btn-secondary'

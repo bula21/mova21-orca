@@ -2,26 +2,28 @@
 
 class UnitActivityExecutionsController < ApplicationController
   load_and_authorize_resource :unit_activity_execution
+
   before_action :set_units_and_activity_executions, except: %i[index destroy]
 
   def index
-    @unit = Unit.find_by(id: params[:unit_id])
-    @activity_execution = ActivityExecution.find_by(id: params[:activity_execution_id])
+    filter = prepare_filter
+    @unit_activity_executions = filter.apply(@unit_activity_executions.ordered.with_default_includes)
+    @unit_activity_executions = UnitActivityExecution.none unless filter.active?
 
-    @unit_activity_executions = @activity_execution.unit_activity_executions if @activity_execution
-    @unit_activity_executions = @unit_activity_executions.where(unit: @unit) if @unit
-    @unit_activity_executions = UnitActivityExecution.none unless @activity_execution || @unit
-    @unit_activity_executions = @unit_activity_executions.ordered.with_default_includes
+    respond_to do |format|
+      format.html
+      format.csv { send_exported_data(@unit_activity_executions) }
+    end
   end
 
   def new
-    @unit_activity_execution.assign_attributes(**linked_params)
+    @unit_activity_execution.assign_attributes(linked_params.merge(unit_activity_execution_params))
     @unit_activity_execution.prefill_headcount
   end
 
   def create
     if @unit_activity_execution.save
-      redirect_to unit_activity_executions_path(**linked_params), notice: I18n.t('messages.created.success')
+      redirect_to unit_activity_executions_path(linked_params), notice: I18n.t('messages.created.success')
     else
       render :new
     end
@@ -64,12 +66,23 @@ class UnitActivityExecutionsController < ApplicationController
   private
 
   def reassign_filter_defaults
+    return {} if @unit_activity_execution.blank?
+
     {
       activity_id: @unit_activity_execution.activity&.id,
       date: @unit_activity_execution.activity_execution&.starts_at&.to_date,
       min_available_headcount: @unit_activity_execution.unit&.actual_participants,
       language: @unit_activity_execution.unit&.language
     }
+  end
+
+  def prepare_filter
+    @unit = Unit.find_by(id: params[:unit_id])
+    @activity_execution = ActivityExecution.find_by(id: params[:activity_execution_id])
+    @activity = Activity.find_by(id: params[:activity_id])
+
+    UnitActivityExecutionFilter.new(unit: @unit, activity_execution: @activity_execution,
+                                    activity: @activity, id: params[:id])
   end
 
   def set_units_and_activity_executions
@@ -90,5 +103,10 @@ class UnitActivityExecutionsController < ApplicationController
   def unit_activity_execution_params
     params[:unit_activity_execution]&.permit(:unit_id, :activity_execution_id, :headcount,
                                              :change_remarks, :change_notification) || {}
+  end
+
+  def send_exported_data(unit_activity_executions)
+    exporter = UnitActivityExecutionsExporter.new(unit_activity_executions)
+    send_data exporter.export, filename: exporter.filename
   end
 end

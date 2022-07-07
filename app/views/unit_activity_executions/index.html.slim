@@ -23,11 +23,7 @@
 	.my-5
 		= react_component("ReadOnlyCalendarManager", { editable: false, stufe: @unit.present? ? @unit.stufe : 'all', events: ActivityExecutionBlueprint.render_as_hash(@unit_activity_executions.map(&:activity_execution), view: :with_activity) })
 
-- if @unit
-	= render partial: 'activity_executions_table', locals: { unit_activity_executions: @unit_activity_executions, unit_id: @unit.id }
-
-- if @activity_execution
-	= render partial: 'units_table', locals: { unit_activity_executions: @unit_activity_executions, activity_execution_id: @activity_execution.id }
+= render partial: 'table', locals: { unit_activity_executions: @unit_activity_executions, unit: @unit, activity: @activity }
 
 - if can?(:manage, UnitActivityExecution)
 	.card.mt-5

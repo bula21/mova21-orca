@@ -188,5 +188,12 @@ class Unit < ApplicationRecord
   def to_s
     "#{id}: #{title}"
   end
+
+  def cache_key
+    [
+      self.class,
+      id, updated_at
+    ].join('-')
+  end
 end
 # rubocop:enable Metrics/ClassLength
