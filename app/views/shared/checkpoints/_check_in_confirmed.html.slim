@@ -1,0 +1,15 @@
+.alert.bg-success-light.col-md-6
+  .d-flex
+    i.fas.fa-check-circle.fa-3x.text-white
+    .text-white.mb-0.ps-3
+      p.mb-0 = t('checkpoints.check_in_is_confirmed', checkpoint_name: checkpoint_unit.checkpoint.title)
+      i.small.text-white
+        - if checkpoint_unit.checked_in_on_paper?
+          = CheckpointUnit.human_attribute_name(:checked_in_on_paper)
+        - else
+          - if checkpoint_unit.confirmed_checked_in_at.present?
+            = checkpoint_unit.confirmed_check_in_by.full_name
+            br
+            | (
+            = l(checkpoint_unit.confirmed_checked_in_at)
+            | )

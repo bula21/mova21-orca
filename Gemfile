@@ -22,6 +22,7 @@ gem 'net-imap', require: false
 gem 'net-pop', require: false
 gem 'net-smtp', require: false
 gem 'omniauth_openid_connect', '~> 0.3.5' # TODO: upgrade
+gem 'paper_trail'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'prawn', '~> 2.2'
 gem 'prawn-table'
@@ -33,6 +34,7 @@ gem 'react-rails'
 gem 'redcarpet'
 gem 'redis'
 gem 'roo'
+gem 'sentry-rails'
 gem 'sentry-ruby'
 gem 'shakapacker', '= 6.1'
 gem 'simple_form'

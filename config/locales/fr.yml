@@ -65,6 +65,17 @@ fr:
         transport: nombre de personnes, direction comprise
         transport_ids: ID de transport
         utilization: Utilisation
+      checkpoint_unit:
+        check_in_by: Check-in effectué par
+        check_out_by: Check-in effectué par
+        check_out_ok: Tout est parfait
+        checked_in_on_paper: confirmation check-in effectué sur papier
+        checked_out_on_paper: La confirmation du check-out a été faite sur papier.
+        confirmed_check_in_by: Check-in confirmé par
+        confirmed_check_out_by: Check-out confirmé par
+        cost_in_chf: coût
+        notes_check_in: Notes Check-In
+        notes_check_out: notes check-out
       field:
         name: Nom
       fixed_event:
@@ -305,7 +316,9 @@ fr:
   buttons:
     back: retour
     close: Fermer
+    confirm: confirmer
     confirm_delete: Es-tu sûr.e de vouloir supprimer cela?
+    continue: continuer
     create: créer
     destroy: supprimer
     edit: éditer
@@ -358,6 +371,19 @@ fr:
         Nos meilleures salutations scoutes,
         Votre mova-Crew
       subject: modification au programme
+  checkpoints:
+    already_checked_in: Cette unité a déjà un check-in à ce point de contrôle
+    back_to_unit: Retour à l'unité
+    check_in_is_confirmed: Le check-in de %{checkpoint_name} est confirmé
+    check_in_successfully_created: Check-out créé avec succès
+    check_out_blocked_by_dependency: Le check-out de %{checkpoint_name} doit d'abord
+      être effectué
+    check_out_is_confirmed: Le check-out de %{checkpoint_name} est confirmé
+    check_out_successful: Check-out créé avec succès
+    depends_on: Ce check-out ne peut être effectué qu'après le check-out de %{checkpoint_name}
+    next_unit: Unité suivante
+    not_returned: Pas encore retourné
+    waiting_for_confirmation: En attente de confirmation
   date:
     abbr_day_names:
     - dim
@@ -853,6 +879,8 @@ fr:
       camp_details: Détails du camp
       camp_id: ID du camp
       camp_link_midata: Camp sur MiData
+      check_in: Check-In
+      check_out: Check-Out
       data_complete: Inscription complète
       data_incomplete: Inscription pas complète
       documents: Documents
