@@ -2,8 +2,8 @@
 
 class ActivityFilter < ApplicationFilter
   attribute :activity_category
-  attribute :languages, default: []
-  attribute :tags, default: []
+  attribute :languages, default: -> { [] }
+  attribute :tags, default: -> { [] }
   attribute :text
   attribute :stufe_recommended
   attribute :unit

@@ -31,7 +31,7 @@ module Pdf
 
     renderable :issuer_address do
       bounding_box [bounds.left, bounds.top], width: 200, height: 115 do
-        I18n.t('issuer_address', scope: %i[invoices payment_info]).lines.each { |line| text(line) }
+        I18n.t('invoices.payment_info.issuer_address').lines.each { |line| text(line) }
       end
       stroke { horizontal_rule }
     end
@@ -106,7 +106,7 @@ module Pdf
       data = @invoice.invoice_parts.map do |invoice_part|
         [invoice_part.label, invoice_part.breakdown, number_to_currency(invoice_part.amount, unit: 'CHF')]
       end
-      data << [I18n.t('total_label', scope: %i[invoices payment_info]), '', total]
+      data << [I18n.t('invoices.payment_info.total_label'), '', total]
     end
 
     def payment_info_table_data
