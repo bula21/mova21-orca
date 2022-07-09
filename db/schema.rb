@@ -114,7 +114,6 @@ ActiveRecord::Schema.define(version: 2022_06_22_105910) do
     t.index ["field_id"], name: "index_activity_executions_on_field_id"
   end
 
-
   create_table "checkpoint_units", force: :cascade do |t|
     t.bigint "checkpoint_id", null: false
     t.bigint "unit_id", null: false

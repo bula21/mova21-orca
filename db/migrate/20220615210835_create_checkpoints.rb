@@ -11,9 +11,10 @@ class CreateCheckpoints < ActiveRecord::Migration[6.1]
     end
     reversible do |dir|
       dir.up do
-        Checkpoint.create(slug: 'material', title: 'Material')
-        lagerplatz_1 = Checkpoint.create(slug: 'lagerplatz_1', title: 'Lagerplatz  Kontrolle #1')
-        Checkpoint.create(slug: 'lagerplatz_2', title: 'Lagerplatz Kontrolle #2', depends_on_checkpoint: lagerplatz_1)
+        Checkpoint.create(slug: 'tents', title_de: 'Zelte')
+        Checkpoint.create(slug: 'timber', title_de: 'Rundholz')
+        lagerplatz_1 = Checkpoint.create(slug: 'lagerplatz_1', title_de: 'Lagerplatz  Kontrolle #1')
+        Checkpoint.create(slug: 'lagerplatz_2', title_de: 'Lagerplatz Kontrolle #2', depends_on_checkpoint: lagerplatz_1)
       end
     end
   end
