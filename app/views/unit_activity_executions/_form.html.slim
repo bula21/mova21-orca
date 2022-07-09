@@ -22,7 +22,8 @@
 
 
       .col-md-4
-        = link_to t('.reassign'), reassign_unit_activity_execution_path(@unit_activity_execution), class: 'btn btn-primary'
+        - unless @unit_activity_execution.new_record?
+          = link_to t('.reassign'), reassign_unit_activity_execution_path(@unit_activity_execution), class: 'btn btn-primary' 
 
     .row 
       .col-md-4
