@@ -1,0 +1,7 @@
+h1
+  = t('units.show.check_in')
+  =< checkpoint.title
+- if checkpoint_unit.present?
+  h3.text-muted = checkpoint_unit.unit.shortened_title
+
+  p == checkpoint_unit.checkpoint.description_check_in

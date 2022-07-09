@@ -9,6 +9,7 @@ class Ability # rubocop:disable Metrics/ClassLength
     return if user.blank?
 
     admin_user_permissions(user) if user.role_admin?
+    checkin_checkout_user_permissions(user) if user.role_checkin_checkout?
     tn_administration_user_permissions(user) if user.role_tn_administration?
     programm_user_permissions(user) if user.role_programm?
     read_unit_user_permissions(user) if user.role_read_unit?
@@ -25,6 +26,12 @@ class Ability # rubocop:disable Metrics/ClassLength
   def anonymous_permissions(_user)
     can :read, Activity
     can :read, FixedEvent
+    can :read, Checkpoint
+  end
+
+  def checkin_checkout_user_permissions(_user)
+    can %i[list read redirect_to_check checkpoint_unit_autocomplete unit_autocomplete], Checkpoint
+    can %i[create update read], CheckpointUnit
   end
 
   def midata_user_permissions(user)
@@ -45,6 +52,7 @@ class Ability # rubocop:disable Metrics/ClassLength
     can %i[edit update destroy], ParticipantUnit, unit_id: unit_ids, participant: { pbs_id: nil }
     # can %i[read create], Participant, participant_units: { unit_id: unit_ids }
     # can %i[edit update destroy], Participant, participant_units: { unit_id: unit_ids }, pbs_id: nil
+    can %i[confirm read], CheckpointUnit
 
     can :manage, UnitActivity, unit_id: unit_ids
     can :read, UnitActivityExecution, unit_id: unit_ids
@@ -90,6 +98,8 @@ class Ability # rubocop:disable Metrics/ClassLength
     can :export, Unit
     can :manage, UnitActivity
     can :manage, UnitVisitorDay
+    can :manage, Checkpoint
+    can :manage, CheckpointUnit
     can :read, UnitActivityExecution
   end
 

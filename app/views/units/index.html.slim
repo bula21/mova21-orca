@@ -6,9 +6,8 @@
     i.fas.fa-file-export
     =< t('buttons.export_csv')
 
-div[data-controller=(@units.size > 10 ? "filter" : "")]
-  - if @units.size > 10
-    = search_field_tag :filter, nil, class: "form-control shadow-sm", placeholder: t('units.index.filter'), data: { action: "input->filter#filter", 'filter-target' => "source" }
+div[data-controller="filter"]
+  = search_field_tag :filter, nil, class: "form-control shadow-sm", placeholder: t('units.index.filter'), data: { action: "input->filter#filter", 'filter-target' => "source" }
 
   - if @units.any?
     .row.g-3.mt-1

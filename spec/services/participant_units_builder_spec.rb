@@ -116,7 +116,7 @@ RSpec.describe ParticipantUnitsBuilder do
         it 'creates a warning' do
           unit_participants
           expect(Sentry).to have_received(:capture_message)
-            .with('User with pbs_id 11629 has multiple roles in participation: '\
+            .with('User with pbs_id 11629 has multiple roles in participation: ' \
                   '["Event::Camp::Role::Participant", "Event::Camp::Role::AssistantLeader"]', level: 'warning')
         end
       end

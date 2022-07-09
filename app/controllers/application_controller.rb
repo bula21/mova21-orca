@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!, :set_locale
 
   rescue_from CanCan::AccessDenied do |exception|
+    Rails.logger.debug { "Access denied on #{exception.action} #{exception.subject.inspect}" }
     respond_to do |format|
       format.json { head :forbidden }
       format.html { redirect_to root_path, alert: exception.message }
