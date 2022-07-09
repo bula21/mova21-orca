@@ -6,10 +6,11 @@
     i.fas.fa-sync.fa-3x.fa-spin
 - else
   .alert.bg-success-light.text-center.col-md-6
-    p.text-white.d-flex.align-items-center
+    p.text-white.d-flex.align-items-center.mb-0
       i.fas.fa-check-circle.fa-3x
       span.ps-3 = t('checkpoints.check_in_is_confirmed', checkpoint_name: @checkpoint.title)
-  = link_to t('checkpoints.next_unit'), admin_check_in_path(@checkpoint), class: 'btn btn-info'
+
+  = link_to t('checkpoints.next_unit'), admin_check_in_path(@checkpoint), class: 'btn btn-info mb-3'
 
 = render 'shared/checkpoints/checkpoint_attributes', checkpoint_unit: @checkpoint_unit
 
