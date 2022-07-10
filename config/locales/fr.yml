@@ -381,7 +381,8 @@ fr:
     check_out_is_confirmed: Le check-out de %{checkpoint_name} est confirmé
     check_out_successful: Check-out créé avec succès
     depends_on: Ce check-out ne peut être effectué qu'après le check-out de %{checkpoint_name}
-    edit_hint: Cette unité a déjà confirmé. L'enregistrement réinitialise le statut et l'unité doit confirmer à nouveau.
+    edit_hint: Cette unité a déjà confirmé. L'enregistrement réinitialise le statut
+      et l'unité doit confirmer à nouveau.
     next_unit: Unité suivante
     not_checked_in: Le check-out ne peut avoir lieu qu'après confirmation de l'enregistrement.
     not_returned: Pas encore retourné
