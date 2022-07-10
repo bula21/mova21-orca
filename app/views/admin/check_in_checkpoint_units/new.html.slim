@@ -1,9 +1,5 @@
-= render 'admin/check_ins/header', checkpoint_unit: @checkpoint_unit, checkpoint: @checkpoint
-
-= simple_form_for @checkpoint_unit, url: admin_check_in_check_in_checkpoint_units_path(@checkpoint, @checkpoint_unit) do |f|
-  = f.input :checkpoint_id, as: :hidden
-  = f.input :unit_id, as: :hidden
-  = f.input :notes_check_in
-  = f.input :checked_in_on_paper
-
-  = f.submit t('buttons.create'), class: 'btn w-100 btn-secondary'
+= render 'admin/check_in_checkpoint_units/form',
+        checkpoint_unit: @checkpoint_unit,
+        checkpoint: @checkpoint,
+        form_url: admin_check_in_check_in_checkpoint_units_path(@checkpoint, @checkpoint_unit),
+        submit_text: t('buttons.create')

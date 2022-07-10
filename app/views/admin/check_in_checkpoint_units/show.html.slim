@@ -1,5 +1,7 @@
 = render 'admin/check_ins/header', checkpoint_unit: @checkpoint_unit, checkpoint: @checkpoint
 
+= link_to t('buttons.edit'), edit_admin_check_in_check_in_checkpoint_unit_path(@checkpoint, @checkpoint_unit), class: 'btn btn-info mb-3'
+
 - if !@checkpoint_unit.confirmed_check_in?
   .alert.bg-warning-light.text-center.col-md-6
     h3 = t('checkpoints.waiting_for_confirmation')

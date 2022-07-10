@@ -3,7 +3,7 @@
 = simple_form_for '', url: redirect_to_check_admin_check_in_path(@checkpoint) do |f|
   = f.label Unit.model_name.human
   .mb-3[data-controller="autocomplete" data-autocomplete-url-value="/admin/check_ins/unit_autocomplete"]
-    input.form-control[data-autocomplete-target="input" placeholder=t('units.index.filter')]
+    input.form-control[data-autocomplete-target="input" autofocus placeholder=t('units.index.filter')]
     input[name="unit_id" type="hidden" data-autocomplete-target="hidden"]
     ul.list-group[data-autocomplete-target="results"]
   = f.submit t('buttons.continue'), class: 'btn w-100 btn-info'

@@ -1,0 +1,12 @@
+= render 'admin/check_outs/header', checkpoint_unit: checkpoint_unit, checkpoint: checkpoint
+
+= render 'shared/checkpoints/checkpoint_attributes', checkpoint_unit: checkpoint_unit
+
+= simple_form_for checkpoint_unit, url: form_url do |f|
+  = f.input :check_out_ok
+  = f.input :notes_check_out
+  = f.input :cost_in_chf
+  = f.input :checked_out_on_paper
+
+  = f.submit t('buttons.confirm'), class: 'btn w-100 btn-secondary'
+

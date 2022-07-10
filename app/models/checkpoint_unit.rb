@@ -26,8 +26,8 @@ class CheckpointUnit < ApplicationRecord
     confirmed_checked_out_at.present? || checked_out_on_paper
   end
 
-  def blocked_by_dependency?
-    depends_on_checkpoint.present? && CheckpointUnit.find_by(unit: unit,
-                                                             checkpoint: depends_on_checkpoint).confirmed_check_in?
+  def check_out_blocked_by_dependency?
+    depends_on_checkpoint.present? &&
+      !CheckpointUnit.find_by(unit: unit, checkpoint: depends_on_checkpoint).confirmed_check_out?
   end
 end
