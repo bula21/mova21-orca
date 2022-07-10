@@ -47,15 +47,17 @@ class User < ApplicationRecord
     end
   end
 
+  # rubocop:disable Metrics/AbcSize
   def populate_info_from_omniauth!(auth)
     pbs_id = auth.info.pbs_id || auth.to_h&.dig('extra', 'raw_info', 'pbs_id')
 
     self.email = auth.info.email
     # self.locale = auth.info.locale || auth.to_hash.dig('extra', 'raw_info', 'locale')
     self.pbs_id = pbs_id unless pbs_id.to_i.zero?
-    self.roles = auth.to_hash&.dig('extra', 'raw_info', 'orca', 'roles')
+    self.roles = auth.to_hash&.dig('extra', 'raw_info', 'orca', 'roles') if ENV['OIDC_ISSUER'].present?
     save!
   end
+  # rubocop:enable Metrics/AbcSize
 
   def roles=(*value)
     value = Array.wrap(value).flatten.compact.map(&:to_sym)
