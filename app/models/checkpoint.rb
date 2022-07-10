@@ -7,8 +7,6 @@ class Checkpoint < ApplicationRecord
   has_many :dependant_checkpoints, class_name: 'Checkpoint', foreign_key: :depends_on_checkpoint_id,
                                    inverse_of: :depends_on_checkpoint, dependent: :destroy
 
-  validates :price, numericality: { greater_than: 0 }, allow_nil: false
-
   scope :without_dependencies, -> { where(depends_on_checkpoint_id: nil) }
 
   extend Mobility

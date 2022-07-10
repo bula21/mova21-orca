@@ -13,7 +13,7 @@ class CheckpointUnit < ApplicationRecord
   has_many :dependant_checkpoints, through: :checkpoint
 
   validates :checkpoint, uniqueness: { scope: :unit, message: I18n.t('checkpoints.already_checked_in') }
-
+  validates :cost_in_chf, numericality: { greater_than: 0 }, allow_nil: false
   scope :without_dependencies, -> { joins(:checkpoint).where(checkpoint: { depends_on_checkpoint_id: nil }) }
 
   scope :as_array_where_checked_in, -> { filter(&:confirmed_check_in?) }

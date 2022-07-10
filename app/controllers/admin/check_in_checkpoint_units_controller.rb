@@ -44,6 +44,8 @@ module Admin
       end
     end
 
+    private
+
     def update_check_in_checkpoint_unit_params
       check_in_checkpoint_unit_params.tap do |p|
         p[:confirmed_checked_in_at] = nil
@@ -52,8 +54,6 @@ module Admin
         p[:confirmed_check_out_by_id] = nil
       end
     end
-
-    private
 
     def update_depending_checkpoint_units
       @checkpoint_unit.unit.checkpoint_units.where(checkpoint: @checkpoint_unit.dependant_checkpoints)
