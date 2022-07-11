@@ -10,7 +10,7 @@ module Admin
     def show; end
 
     def checkpoint_unit_autocomplete
-      checkpoint_units = CheckpointUnit.joins(:unit).where(checkpoint_id: @checkpoint.id)
+      checkpoint_units = CheckpointUnit.joins(:checkpoint).joins(:unit).where(checkpoint_id: @checkpoint.id)
       checkpoint_units = checkpoints_filtered_by_query(checkpoint_units)
       render layout: false, partial: 'checkpoint_unit_autocomplete', locals: { checkpoint_units: checkpoint_units }
     end

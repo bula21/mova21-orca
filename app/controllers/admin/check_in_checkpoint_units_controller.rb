@@ -21,6 +21,18 @@ module Admin
       end
     end
 
+    def edit; end
+
+    def update
+      if @checkpoint_unit.update(update_check_in_checkpoint_unit_params)
+        update_depending_checkpoint_units
+        redirect_to admin_check_in_check_in_checkpoint_unit_path(@checkpoint, @checkpoint_unit),
+                    notice: t('checkpoints.check_in_successfully_created')
+      else
+        render :edit
+      end
+    end
+
     def show
       authorize!(:create, CheckpointUnit)
     end
@@ -34,8 +46,20 @@ module Admin
 
     private
 
-    def ensure_not_existent
-      @checkpoint_unit
+    def update_check_in_checkpoint_unit_params
+      check_in_checkpoint_unit_params.tap do |p|
+        p[:confirmed_checked_in_at] = nil
+        p[:confirmed_check_in_by_id] = nil
+        p[:confirmed_checked_out_at] = nil
+        p[:confirmed_check_out_by_id] = nil
+      end
+    end
+
+    def update_depending_checkpoint_units
+      @checkpoint_unit.unit.checkpoint_units.where(checkpoint: @checkpoint_unit.dependant_checkpoints)
+                      .each do |dependent_checkpoint_unit|
+        dependent_checkpoint_unit.update!(update_check_in_checkpoint_unit_params.to_h.without(:checkpoint_id))
+      end
     end
 
     def create_depending_checkpoint_units

@@ -378,7 +378,10 @@ it:
     check_out_successful: Check-out creato con successo
     depends_on: Questo check-out può essere fatto solo dopo che %{checkpoint_name}
       è stato check-out
+    edit_hint: Questa unità ha già confermato. Il salvataggio ripristina lo stato
+      e l'unità deve confermare nuovamente.
     next_unit: Unità successiva
+    not_checked_in: Il check-out può essere effettuato solo dopo la conferma del check-in.
     not_returned: Non ancora restituito
     waiting_for_confirmation: In attesa di conferma
   date:

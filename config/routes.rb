@@ -62,7 +62,7 @@ Rails.application.routes.draw do
       get :unit_autocomplete, on: :collection
       post :redirect_to_check, on: :member
 
-      resources :check_in_checkpoint_units, only: %i[new create show]
+      resources :check_in_checkpoint_units, only: %i[new create show edit update]
     end
 
     resources :check_outs, only: %i[index show] do
