@@ -1,0 +1,6 @@
+- if checkpoint_unit.errors.any?
+  .alert.alert-danger
+    = t('errors.template.body')
+    ul
+      - checkpoint_unit.errors.full_messages.each do |msg|
+        li = msg

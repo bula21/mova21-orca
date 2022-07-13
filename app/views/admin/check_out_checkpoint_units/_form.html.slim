@@ -2,6 +2,8 @@
 
 = render 'shared/checkpoints/checkpoint_attributes', checkpoint_unit: checkpoint_unit
 
+= render 'shared/checkpoints/checkpoint_unit_errors', checkpoint_unit: checkpoint_unit
+
 = simple_form_for checkpoint_unit, url: form_url do |f|
   = f.input :check_out_ok
   = f.input :notes_check_out
