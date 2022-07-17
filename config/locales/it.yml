@@ -386,6 +386,7 @@ it:
       e l'unità deve confermare nuovamente.
     next_unit: Unità successiva
     not_checked_in: Il check-out può essere effettuato solo dopo la conferma del check-in.
+    not_picked_up: Non ancora raccolto
     not_returned: Non ancora restituito
     waiting_for_confirmation: In attesa di conferma
   date:

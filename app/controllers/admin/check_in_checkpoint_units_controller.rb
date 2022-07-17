@@ -34,6 +34,9 @@ module Admin
     end
 
     def show
+      if @checkpoint_unit.checked_in_at.blank?
+        redirect_to edit_admin_check_in_check_in_checkpoint_unit_path(@checkpoint, @checkpoint_unit)
+      end
       authorize!(:create, CheckpointUnit)
     end
 
@@ -48,6 +51,10 @@ module Admin
 
     def update_check_in_checkpoint_unit_params
       check_in_checkpoint_unit_params.tap do |p|
+        if @checkpoint_unit.checked_in_at.blank?
+          p[:checked_in_at] = Time.zone.now
+          p[:check_in_by_id] = current_user.id
+        end
         p[:confirmed_checked_in_at] = nil
         p[:confirmed_check_in_by_id] = nil
         p[:confirmed_checked_out_at] = nil

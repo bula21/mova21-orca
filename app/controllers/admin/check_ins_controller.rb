@@ -22,14 +22,18 @@ module Admin
       render layout: false, partial: 'unit_autocomplete', locals: { units: units }
     end
 
-    # rubocop:disable Metrics/MethodLength
+    # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
     def redirect_to_check
       unit_id = params[:unit_id]
       if unit_id.present?
         checkpoint_unit = CheckpointUnit.where(unit_id: unit_id, checkpoint: @checkpoint).first
 
         if checkpoint_unit.present?
-          redirect_to admin_check_in_check_in_checkpoint_unit_path(@checkpoint, checkpoint_unit)
+          if checkpoint_unit.checked_in_at.present?
+            redirect_to admin_check_in_check_in_checkpoint_unit_path(@checkpoint, checkpoint_unit)
+          else
+            redirect_to edit_admin_check_in_check_in_checkpoint_unit_path(@checkpoint, checkpoint_unit)
+          end
         else
           redirect_to new_admin_check_in_check_in_checkpoint_unit_path(@checkpoint, unit_id: unit_id)
         end
@@ -37,6 +41,6 @@ module Admin
         redirect_to admin_check_in_path(@checkpoint)
       end
     end
-    # rubocop:enable Metrics/MethodLength
+    # rubocop:enable Metrics/MethodLength, Metrics/AbcSize
   end
 end

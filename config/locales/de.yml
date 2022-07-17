@@ -385,6 +385,7 @@ de:
       zurückgesetzt und die Einheit muss nochmals bestätigen.
     next_unit: Nächste Einheit
     not_checked_in: Der Check-Out kann erst nach bestätigtem Check-In erfolgen.
+    not_picked_up: Noch nicht abgeholt
     not_returned: Noch nicht zurückgegeben
     waiting_for_confirmation: Warte auf Bestätigung
   date:
