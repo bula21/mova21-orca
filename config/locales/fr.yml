@@ -65,6 +65,10 @@ fr:
         transport: nombre de personnes, direction comprise
         transport_ids: ID de transport
         utilization: Utilisation
+      checkpoint:
+        description_check_in: Description Check-In
+        description_check_out: Description Check-Out
+        title: Nom
       checkpoint_unit:
         check_in_by: Check-in effectué par
         check_out_by: Check-in effectué par
@@ -612,6 +616,7 @@ fr:
     activity: Catalogue
     activity_category: Categorie
     activity_execution: Programme
+    checkpoint: Check-In / Check-Out
     fixed_event: Picasso
     language:
       de: DE

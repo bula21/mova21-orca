@@ -37,15 +37,20 @@ html
             - if can?(:emails, Unit)
               li.nav-item
                 = link_to t('nav.unit_communications'), emails_units_path, class: 'nav-link'
-            - if can?(:create, Tag)
+            - if can?(:create, Tag) || can?(:manage, Checkpoint)
               li.nav-item.dropdown
                 .nav-link.dropdown-toggle[href='#' role="button" data-bs-toggle="dropdown"]= "Admin"
                 .dropdown-menu
-                  = link_to t('nav.tag'), admin_tags_path, class: 'dropdown-item'
-                  = link_to t('nav.activity_category'), admin_activity_categories_path, class: 'dropdown-item'
-                  = link_to t('nav.stufen'), admin_stufen_path, class: 'dropdown-item'
-                  = link_to t('nav.fixed_event'), admin_fixed_events_path, class: 'dropdown-item'
-                  = link_to t('nav.spots'), admin_spots_path, class: 'dropdown-item'
+                  - if can?(:create, Tag)
+                    = link_to t('nav.tag'), admin_tags_path, class: 'dropdown-item'
+                    = link_to t('nav.activity_category'), admin_activity_categories_path, class: 'dropdown-item'
+                    = link_to t('nav.stufen'), admin_stufen_path, class: 'dropdown-item'
+                    = link_to t('nav.fixed_event'), admin_fixed_events_path, class: 'dropdown-item'
+                    = link_to t('nav.spots'), admin_spots_path, class: 'dropdown-item'
+                  - if can?(:create, Checkpoint)
+                    = link_to t('nav.checkpoint'), admin_checkpoints_path, class: 'dropdown-item'
+
+
             - if can?(:create, CheckpointUnit)
               li.nav-item
                 = link_to t('units.show.check_in'), admin_check_ins_path, class: 'nav-link'

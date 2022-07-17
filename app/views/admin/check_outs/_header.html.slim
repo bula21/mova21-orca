@@ -3,4 +3,4 @@ h1
   =< checkpoint.title
 - if checkpoint_unit.present?
   h3.text-muted = checkpoint_unit.unit.shortened_title
-  p == checkpoint_unit.checkpoint.description_check_out
+  p.pre-wrap = checkpoint_unit.checkpoint.description_check_out

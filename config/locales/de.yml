@@ -65,6 +65,10 @@ de:
         transport: Personenanzahl inkl. Leitung
         transport_ids: Transport IDs
         utilization: Auslastung
+      checkpoint:
+        description_check_in: Beschreibung Check-In
+        description_check_out: Beschreibung Check-Out
+        title: Name
       checkpoint_unit:
         check_in_by: Check-In durchgeführt von
         check_out_by: Check-In durchgeführt von
@@ -605,6 +609,7 @@ de:
     activity: Katalog
     activity_category: Kategorie
     activity_execution: Programm
+    checkpoint: Check-In / Check-Out
     fixed_event: Grobprogramm
     language:
       de: DE
