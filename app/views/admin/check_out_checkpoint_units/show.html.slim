@@ -1,4 +1,9 @@
-= render 'admin/check_outs/header', checkpoint_unit: @checkpoint_unit, checkpoint: @checkpoint
+.d-flex
+  .header
+    = render 'admin/check_outs/header', checkpoint_unit: @checkpoint_unit, checkpoint: @checkpoint
+  .mx-auto
+    button.btn.btn-default[onclick='javascript:location.reload(true)']
+      i.fas.fa-sync.fa-2x
 
 = link_to t('buttons.edit'), edit_admin_check_out_check_out_checkpoint_unit_path(@checkpoint, @checkpoint_unit), class: 'btn btn-info mb-3'
 
