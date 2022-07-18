@@ -78,7 +78,6 @@ fr:
         confirmed_check_in_by: Check-in confirmé par
         confirmed_check_out_by: Check-out confirmé par
         cost_in_chf: coût
-        not_picked_up: Pas encore retiré
         notes_check_in: Notes Check-In
         notes_check_out: notes check-out
       field:
@@ -390,6 +389,7 @@ fr:
       et l'unité doit confirmer à nouveau.
     next_unit: Unité suivante
     not_checked_in: Le check-out ne peut avoir lieu qu'après confirmation de l'enregistrement.
+    not_picked_up: Pas encore retiré
     not_returned: Pas encore retourné
     waiting_for_confirmation: En attente de confirmation
   date:
