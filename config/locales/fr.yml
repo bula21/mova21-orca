@@ -78,7 +78,7 @@ fr:
         confirmed_check_in_by: Check-in confirmé par
         confirmed_check_out_by: Check-out confirmé par
         cost_in_chf: coût
-        not_picked_up: Pas encore collecté
+        not_picked_up: Pas encore retiré
         notes_check_in: Notes Check-In
         notes_check_out: notes check-out
       field:
