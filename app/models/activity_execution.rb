@@ -9,6 +9,8 @@ class ActivityExecution < ApplicationRecord
   has_one :spot, through: :field
   has_many :unit_activity_executions, inverse_of: :activity_execution, dependent: :destroy
   has_many :unit_program_changes, inverse_of: :activity_execution, dependent: :nullify
+	has_many :activity_execution_rover_shifts, dependent: :destroy
+	has_many :rover_shifts, through: :activity_execution_rover_shifts
 
   validates :starts_at, :ends_at, presence: true
   validates :transport, inclusion: { in: [true, false] }
@@ -34,6 +36,10 @@ class ActivityExecution < ApplicationRecord
     unit_activity_executions.each do |unit_activity_execution|
       unit_activity_execution.unit_program_changes.create(notify: change_notification, remarks: change_remarks)
     end
+  end
+
+  def at 
+    starts_at..ends_at 
   end
 
   def max_amount_participants

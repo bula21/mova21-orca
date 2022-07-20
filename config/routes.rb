@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     get :emails, to: 'units#emails', as: :emails, on: :collection
   end
   resources :leaders, except: [:destroy]
+  resources :rover_shifts, only: %i[new create index]
   resources :unit_activity_executions do
     post :import, on: :collection
     get :reassign, on: :member, as: :reassign

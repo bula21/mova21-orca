@@ -1,0 +1,26 @@
+.h1 = t('rover_shifts.index.title')
+
+= link_to(t('buttons.create'), new_rover_shift_path, class: 'btn btn-primary mb-3') if can?(:create, RoverShift)
+
+.table-responsive
+  table.table
+    thead
+      tr
+        th = RoverShift.human_attribute_name(:id)
+        th = RoverShift.human_attribute_name(:at)
+        th = RoverShift.human_attribute_name(:rover_count)
+        th = RoverShift.human_attribute_name(:activity_executions)
+        th
+    tbody
+      - @rover_shifts&.each do |rover_shift|
+        tr
+          td = rover_shift.id
+          td
+            = rover_shift.starts_at && l(rover_shift.starts_at)
+            br
+            = rover_shift.ends_at && l(rover_shift.ends_at)
+          td = rover_shift.rover_count
+          td 
+            ul
+              - rover_shift.activity_executions.each do |ae|
+                li= link_to ae.id, activity_execution_path(ae)

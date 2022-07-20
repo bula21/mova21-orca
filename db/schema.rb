@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_17_081832) do
+ActiveRecord::Schema.define(version: 2022_07_19_212048) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,8 @@ ActiveRecord::Schema.define(version: 2022_07_17_081832) do
     t.bigint "transport_location_id"
     t.integer "language_flags"
     t.bigint "activity_category_id"
+    t.integer "rover_shift_prio"
+    t.integer "rover_job_id"
     t.index ["activity_category_id"], name: "index_activities_on_activity_category_id"
     t.index ["transport_location_id"], name: "index_activities_on_transport_location_id"
   end
@@ -96,6 +98,11 @@ ActiveRecord::Schema.define(version: 2022_07_17_081832) do
     t.string "ancestry"
     t.string "code"
     t.index ["ancestry"], name: "index_activity_categories_on_ancestry"
+  end
+
+  create_table "activity_execution_rover_shifts", id: false, force: :cascade do |t|
+    t.bigint "activity_execution_id", null: false
+    t.bigint "rover_shift_id", null: false
   end
 
   create_table "activity_executions", force: :cascade do |t|
@@ -283,6 +290,16 @@ ActiveRecord::Schema.define(version: 2022_07_17_081832) do
     t.string "email", default: ""
     t.string "phone_number", default: ""
     t.string "guest_troop"
+  end
+
+  create_table "rover_shifts", force: :cascade do |t|
+    t.datetime "starts_at"
+    t.datetime "ends_at"
+    t.string "place"
+    t.integer "job_id"
+    t.jsonb "rovers"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "spots", force: :cascade do |t|
