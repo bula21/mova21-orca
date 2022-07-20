@@ -25,7 +25,7 @@ class ImportService
   def lagerplatz_import
     Unit.all.each do |unit|
       CheckpointUnit.create!(unit: unit, checkpoint: 'lagerplatz_1',
-                            check_in_by: User.find_by(email: 'aron.riegger@bula21.ch'), check_in_at: Time.zone.now)
+                             check_in_by: User.find_by(email: 'aron.riegger@bula21.ch'), check_in_at: Time.zone.now)
     end
   end
 
