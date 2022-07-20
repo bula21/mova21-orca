@@ -4,23 +4,25 @@
     - if checkpoint_unit.notes_check_in.present?
       .p-2.bg-light.rounded-3
         label = CheckpointUnit.human_attribute_name(:notes_check_in)
-        p.mb-0.fw-lighter = checkpoint_unit.notes_check_in
-    .small.text-muted
-      => checkpoint_unit.check_in_by.full_name
-      | (
-      = l(checkpoint_unit.created_at)
-      | )
-    .small.text-muted
-      - if checkpoint_unit.checked_in_on_paper?
-        i.fas.fa-check-circle
-        =< CheckpointUnit.human_attribute_name(:checked_in_on_paper)
-      - else
-        - if checkpoint_unit.confirmed_checked_in_at.present?
+        p.mb-0.fw-lighter.pre-wrap = checkpoint_unit.notes_check_in
+    - if checkpoint_unit.checked_in_at.present?
+      .small.text-muted
+        => checkpoint_unit.check_in_by.full_name
+        | (
+        - if checkpoint_unit.checked_in_at.present?
+          = l(checkpoint_unit.checked_in_at)
+        | )
+      .small.text-muted
+        - if checkpoint_unit.checked_in_on_paper?
           i.fas.fa-check-circle
-          =<> checkpoint_unit.confirmed_check_in_by.full_name
-          | (
-          = l(checkpoint_unit.confirmed_checked_in_at)
-          | )
+          =< CheckpointUnit.human_attribute_name(:checked_in_on_paper)
+        - else
+          - if checkpoint_unit.confirmed_checked_in_at.present?
+            i.fas.fa-check-circle
+            =<> checkpoint_unit.confirmed_check_in_by.full_name
+            | (
+            = l(checkpoint_unit.confirmed_checked_in_at)
+            | )
 - if checkpoint_unit.checked_out_at.present?
   .card.col-lg-6.mb-4
     .card-body
@@ -31,7 +33,7 @@
       - if checkpoint_unit.notes_check_out.present?
         .p-2.bg-light.rounded-3
           label = CheckpointUnit.human_attribute_name(:notes_check_out)
-          p.mb-0.fw-lighter = checkpoint_unit.notes_check_out
+          p.mb-0.fw-lighter.pre-wrap = checkpoint_unit.notes_check_out
       - if checkpoint_unit.cost_in_chf.present?
         h6.mt-3 = CheckpointUnit.human_attribute_name(:cost_in_chf)
         => number_to_currency checkpoint_unit.cost_in_chf

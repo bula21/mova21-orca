@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_22_105910) do
+ActiveRecord::Schema.define(version: 2022_07_17_081832) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -132,6 +132,7 @@ ActiveRecord::Schema.define(version: 2022_06_22_105910) do
     t.bigint "confirmed_check_out_by_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "checked_in_at"
     t.index ["check_in_by_id"], name: "index_checkpoint_units_on_check_in_by_id"
     t.index ["check_out_by_id"], name: "index_checkpoint_units_on_check_out_by_id"
     t.index ["checkpoint_id", "unit_id"], name: "index_checkpoint_units_on_checkpoint_id_and_unit_id", unique: true

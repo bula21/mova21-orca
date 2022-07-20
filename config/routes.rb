@@ -56,6 +56,7 @@ Rails.application.routes.draw do
       delete :attachment, to: 'fixed_events#delete_attachment', on: :member
     end
     resources :tags
+    resources :checkpoints, only: %i[index edit update]
     resources :stufen
 
     resources :check_ins, only: %i[index show] do
