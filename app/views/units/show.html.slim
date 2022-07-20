@@ -191,26 +191,28 @@
                 small.text-muted = I18n.l(document.created_at)
 
 
-.card.shadow-sm.mt-3.position-relative.p-2.pt-3.pb-3.p-md-4
-  .card-body.p-3.p-md-4
-    h3.mb-4.font-weight-bold = t('units.show.check_in')
-    ul
-      - @unit.checkpoint_units.without_dependencies.each do |checkpoint_unit|
-        li
-          = link_to unit_check_ins_path(@unit)
-            i.fas.fa-square[class=(checkpoint_unit.confirmed_checked_in_at.present? ? 'text-success' : 'text-warning') title=(checkpoint_unit.checkpoint.title)]
-            =< checkpoint_unit.checkpoint.title
+- if @unit.checkpoint_units.without_dependencies.any?
+  .card.shadow-sm.mt-3.position-relative.p-2.pt-3.pb-3.p-md-4
+    .card-body.p-3.p-md-4
+      h3.mb-4.font-weight-bold = t('units.show.check_in')
+      ul
+        - @unit.checkpoint_units.without_dependencies.each do |checkpoint_unit|
+          li
+            = link_to unit_check_ins_path(@unit)
+              i.fas.fa-square[class=(checkpoint_unit.confirmed_check_in? ? 'text-success' : 'text-warning') title=(checkpoint_unit.checkpoint.title)]
+              =< checkpoint_unit.checkpoint.title
 
-.card.shadow-sm.mt-3.position-relative.p-2.pt-3.pb-3.p-md-4
-  .card-body.p-3.p-md-4
-    h3.mb-4.font-weight-bold = t('units.show.check_out')
+- @unit.checkpoint_units.as_array_where_checked_in.any?
+  .card.shadow-sm.mt-3.position-relative.p-2.pt-3.pb-3.p-md-4
+    .card-body.p-3.p-md-4
+      h3.mb-4.font-weight-bold = t('units.show.check_out')
 
-    ul
-      - @unit.checkpoint_units.as_array_where_checked_in.each do |checkpoint_unit|
-        li
-          = link_to unit_check_outs_path(@unit, anchor: checkpoint_unit.checkpoint.title)
-            i.fas.fa-square[class=(checkpoint_unit.confirmed_checked_out_at.present? ? 'text-success' : 'text-warning') title=(checkpoint_unit.checkpoint.title)]
-            =< checkpoint_unit.checkpoint.title
+      ul
+        - @unit.checkpoint_units.as_array_where_checked_in.each do |checkpoint_unit|
+          li
+            = link_to unit_check_outs_path(@unit, anchor: checkpoint_unit.checkpoint.title)
+              i.fas.fa-square[class=(checkpoint_unit.confirmed_check_out? ? 'text-success' : 'text-warning') title=(checkpoint_unit.checkpoint.title)]
+              =< checkpoint_unit.checkpoint.title
 
 - if can?(:read, UnitVisitorDay, unit: @unit) && @unit.unit_visitor_day.present? && @unit.unit_visitor_day.at
   .card.shadow-sm.mt-3.position-relative.p-2.pt-3.pb-3.p-md-4

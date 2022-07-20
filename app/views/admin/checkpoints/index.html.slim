@@ -1,0 +1,13 @@
+h1.h1 = t('nav.checkpoint')
+
+.table-responsive
+  table.table
+    thead
+      tr
+        th = Checkpoint.human_attribute_name(:title)
+        th
+    tbody
+      - @checkpoints.each do |checkpoint|
+        tr
+          td = link_to checkpoint.title, edit_admin_checkpoint_path(checkpoint)
+

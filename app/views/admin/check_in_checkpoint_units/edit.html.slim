@@ -1,0 +1,8 @@
+= render 'admin/check_in_checkpoint_units/form',
+        checkpoint_unit: @checkpoint_unit,
+        checkpoint: @checkpoint,
+        form_url: admin_check_in_check_in_checkpoint_unit_path(@checkpoint, @checkpoint_unit),
+        submit_text: t('buttons.save')
+
+- if @checkpoint_unit.confirmed_check_in?
+  .mt-3.alert.alert-danger = t('checkpoints.edit_hint')

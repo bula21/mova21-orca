@@ -52,6 +52,7 @@ services:
       SMTP_AUTH: ${SMTP_AUTH:-plain}
       VISITOR_DAY_ACTIVITY_ID: 1
       REDIS_URL: "redis://redis/0"
+      STAFF_TOKEN: "1234"
     depends_on:
       - db
       - mail

@@ -1,6 +1,16 @@
-= render 'admin/check_ins/header', checkpoint_unit: @checkpoint_unit, checkpoint: @checkpoint
+.d-flex
+  .header
+    = render 'admin/check_ins/header', checkpoint_unit: @checkpoint_unit, checkpoint: @checkpoint
+  .mx-auto
+    button.btn.btn-default[onclick='javascript:location.reload(true)']
+      i.fas.fa-sync.fa-2x
+= link_to t('buttons.edit'), edit_admin_check_in_check_in_checkpoint_unit_path(@checkpoint, @checkpoint_unit), class: 'btn btn-info mb-3'
 
-- if !@checkpoint_unit.confirmed_check_in?
+- if !@checkpoint_unit.checked_in_at.present?
+  .alert.bg-warning-light.text-center.col-md-6
+    h3 = t('checkpoints.not_picked_up')
+    i.fas.fa-sync.fa-3x.fa-spin
+- elsif !@checkpoint_unit.confirmed_check_in?
   .alert.bg-warning-light.text-center.col-md-6
     h3 = t('checkpoints.waiting_for_confirmation')
     i.fas.fa-sync.fa-3x.fa-spin

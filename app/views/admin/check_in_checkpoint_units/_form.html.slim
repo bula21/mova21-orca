@@ -1,0 +1,11 @@
+= render 'admin/check_ins/header', checkpoint_unit: checkpoint_unit, checkpoint: checkpoint
+
+= render 'shared/checkpoints/checkpoint_unit_errors', checkpoint_unit: checkpoint_unit
+
+= simple_form_for checkpoint_unit, url: form_url do |f|
+  = f.input :checkpoint_id, as: :hidden
+  = f.input :unit_id, as: :hidden
+  = f.input :notes_check_in, input_html: { rows: 5 }
+  = f.input :checked_in_on_paper
+
+  = f.submit submit_text, class: 'btn w-100 btn-secondary'
