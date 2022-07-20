@@ -1,0 +1,795 @@
+﻿id,title,stufe,expected_participants_f_m,rundholz 4m,rundholz 6m,rundholz 8m,schwartenbund,rundholz 10m,rundholz 11m,kommentar
+1,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Pfadicorps Patria Shir Khan und Raschka,wolf,29,4,4,1,,,,
+2,"mova - Wolfsstufe / branche Louveteaux / branca lupetti: Pfadicorps Patria Rikki Tikki, Tschil und Baghira",wolf,24,4,4,1,,,,
+3,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadicorps Patria Gürbe Trupp,pfadi,19,4,4,1,,,,
+4,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadicorps Patria Lapislazuli Trupp,pfadi,24,4,4,1,,,,
+5,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadicorps Patria Obsidian Trupp,pfadi,25,4,4,1,,,,
+6,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadicorps Patria Turmalin Trupp,pfadi,31,8,8,2,,,,
+7,mova - Pfadistufe / branche Eclais / branca esploratori: Liestal,pfadi,43,8,8,2,,,,
+9,mova - Wolfsstufe / branche Louveteaux / branca lupetti: HTG,wolf,20,0,0,1,0,0,0,individuelle Bestellung
+10,mova - Wolfsstufe / branche Louveteaux / branca lupetti: SMN,wolf,45,4,4,1,,,,
+11,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Pfadi St. Justus,wolf,20,0,0,0,,,,kein Bauholz
+12,mova - Meute Pierre-Pertuis,wolf,12,4,4,1,,,,
+14,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Pfadi Neumöischter (Wölfli),wolf,17,4,4,1,,,,
+15,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Wölfe Pfadi Reuss,wolf,33,0,0,0,,,,kein Bauholz
+16,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Wolfsstufe,wolf,15,8,4,4,3,0,0,individuelle Bestellung
+17,mova - Pfadistufe / branche Eclais / branca esploratori: HTG,pfadi,12,4,1,1,0,0,0,individuelle Bestellung
+18,mova - Pfadistufe / branche Eclais / branca esploratori: SMN,pfadi,50,8,8,3,1,0,0,individuelle Bestellung
+19,mova - Pfadistufe / branche Eclais / branca esploratori: Giubiasco,pfadi,21,4,4,1,,,,
+20,mova - Pfadistufe / branche Eclais / branca esploratori: Reparto Esploratori Balerna,pfadi,29,10,10,2,2,1,0,individuelle Bestellung
+21,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi St. Justus,pfadi,33,2,2,1,1,0,0,individuelle Bestellung
+22,mova - Troupe Pierre-Pertuis,pfadi,13,4,11,11,0,0,0,individuelle Bestellung
+23,mova - Pfadistufe,pfadi,25,4,4,1,,,,
+24,mova - Pfadistufe: Pfadi Attila,pfadi,18,4,4,1,,,,
+25,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Neumöischter (Pfadi),pfadi,22,4,4,1,,,,
+26,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi,pfadi,40,8,8,2,,,,
+27,mova - Pfadistufe / branche Eclais / branca esploratori: 3 Tannen,pfadi,15,0,4,1,1,0,0,individuelle Bestellung
+28,mova - Pfadistufe / branche Eclais / branca esploratori: Rinau,pfadi,13,4,4,1,,,,
+29,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadistufe,pfadi,21,18,4,8,1,0,0,individuelle Bestellung
+30,mova - Piostufe: Raurica,pio,27,8,8,2,,,,
+34,mova - PTA / SMT / SOC: PTA Bern,pta,20,4,4,1,1,0,0,individuelle Bestellung
+36,mova - Pfadistufe / branche Eclais / branca esploratori: Ital Reding,pfadi,20,4,4,4,,,,Anzahl TN + 3 x 8m
+37,mova - Eclais : Bouquetin Troupe,pfadi,28,8,8,2,,,,
+38,mova - Louveteaux : Bouquetin Meute,wolf,20,4,4,1,,,,
+39,mova - Wolfsstufe Pfadi Rheinfelden,wolf,12,4,4,1,,,,
+40,mova - Pfadistufe Pfadi Rheinfelden,pfadi,49,8,8,2,,,,
+41,mova - Piostufe Pfadi Rheinfelden,pio,16,4,4,1,,,,Anzahl TN
+42,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Winkelried Stans- Ennetmoos,pfadi,43,8,8,2,,,,
+43,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Bi-Pi,wolf,16,4,4,1,,,,
+44,mova - Pfadistufe / branche Eclais / branca esploratori: Bi-Pi,pfadi,16,4,4,1,,,,
+45,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Pfadi Bipp-Wiedlisbach & Oensingen,wolf,23,4,4,1,,,,
+46,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Bipp-Wiedlisbach & Oensingen,pfadi,25,4,4,1,,,,
+47,mova - Piostufe / branche Picos / branca pionieri: HTG/T&R,pio,15,12,10,4,0,0,0,individuelle Bestellung
+48,mova - Pfadistufe / branche Eclais / branca esploratori: Troupe/Section Pécolat,pfadi,39,8,8,2,,,,
+49,mova - Pfadistufe / branche Eclais / branca esploratori: Farnsburg,pfadi,20,4,4,0,1,0,0,individuelle Bestellung
+50,mova - Pfadistufe: Pfadi Frisco,pfadi,20,4,4,1,,,,
+52,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Seesturm Neukirch-Egnach,wolf,13,4,4,1,,,,
+53,mova - Pfadistufe / branche Eclais / branca esploratori: Seesturm Neukirch-Egnach,pfadi,21,4,4,1,,,,
+54,mova - Pfadistufe / branche Eclais / branca esploratori: St. M-U,pfadi,18,4,4,1,,,,
+56,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Wolfstufe Brig,wolf,17,4,4,1,,,,
+57,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadistufe Brig,pfadi,34,4,4,2,3,0,0,individuelle Bestellung
+58,mova - PTA / SMT / SOC: PTA Pfannenstil,pta,8,4,4,1,,,,
+59,mova - Louveteaux : St-Maurélémy,wolf,29,4,4,1,,,,
+61,mova - Piostufe / branche Picos / branca pionieri: Brigata Scout La Fenice,pio,12,4,4,1,,,,
+62,mova - Pfadistufe / Pfadi Helveter,pfadi,52,12,12,3,0,0,1,individuelle Bestellung
+63,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Manegg,wolf,14,2,2,0,1,0,0,individuelle Bestellung
+64,mova - Pfadistufe / branche Eclais / branca esploratori: Manegg,pfadi,38,8,8,2,,,,
+65,mova - Wolfsstufe: Arbor Felix,wolf,16,4,4,1,,,,
+66,mova - Pfadistufe: Arbor Felix,pfadi,20,4,4,1,,,,Anzahl TN
+67,mova - Pfadistufe / branche Eclais / branca esploratori: Brigata Scout La Fenice,pfadi,23,4,4,1,0,0,1,individuelle Bestellung
+68,mova - Wolfsstufe: Pfadi Thierstein,wolf,12,4,4,1,,,,
+69,mova - Wolfsstufe Pfadi Sempach,wolf,28,4,4,1,,,,
+70,mova - Pfadistufe Pfadi Sempach,pfadi,24,4,4,1,,,,
+71,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Pfadi Gofers Lenzburg,wolf,23,4,4,1,,,,
+72,mova - Pfadistufe / branche Eclais / branca esploratori: 2. Stufe PHOG,pfadi,18,4,4,1,2,0,1,individuelle Bestellung
+73,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Grandsonay de travers,wolf,41,4,4,1,,,,
+74,"mova - Pfadistufe / branche Eclais / branca esploratori: Flambeaux Grandson, ValTra, Cossonay",pfadi,59,12,12,5,0,0,0,individuelle Bestellung
+76,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Andelfingen,pfadi,35,0,23,2,1,2,9,individuelle Bestellung
+77,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadistufe,pfadi,16,0,0,0,2,0,0,individuelle Bestellung
+79,mova - Wolfsstufe: Pfadi Speicher,wolf,26,4,4,1,,,,
+80,mova - Pfadistufe: Pfadi Speicher,pfadi,22,4,4,1,,,,
+81,mova - Wolfsstufe: Pfadi Morgestärn & Maitlipfadi Zollikon,wolf,14,4,4,1,,,,
+82,mova - Pfadistufe: Pfadi Morgestärn & Maitlipfadi Zollikon,pfadi,41,8,8,2,,,,
+83,mova - Wolfsstufe: Wald-Bauma,wolf,14,4,4,1,,,,
+84,mova - Pfadistufe: Wald-Bauma,pfadi,17,4,4,1,,,,
+86,mova - Wolfsstufe / branche Louveteaux / branca lupetti: lulou Vétroz,wolf,14,4,4,1,,,,
+87,mova - Pfadistufe / branche Eclais / branca esploratori: éclais St-Maurélémy,pfadi,27,8,8,2,,,,
+88,mova - Wolfsstufe: Pfadi vis-à-vis,wolf,20,4,4,1,,,,
+89,mova - Pfadistufe: Pfadi vis-à-vis,pfadi,30,32,14,0,1,0,0,individuelle Bestellung
+90,mova - Piostufe: Pfadi vis-à-vis,pio,18,4,4,1,,,,
+91,mova - Wolfsstufe / branche Louveteaux / branca lupetti: PAL,wolf,13,4,4,1,,,,
+92,mova - Pfadistufe / branche Eclais / branca esploratori: PAL,pfadi,14,4,4,1,,,,
+93,mova - Pfadistufe / branche Eclais / branca esploratori: Eclaireurs Veveyse-Bulle,pfadi,63,8,4,2,0,0,0,individuelle Bestellung
+94,mova - Pfadistufe / branche Eclais / branca esploratori: Reparto Esploratori,pfadi,30,8,8,2,,,,
+96,mova - Pfadistufe / Pfadi Hasenburg,pfadi,12,5,5,2,0,0,0,individuelle Bestellung
+97,mova - Wolfsstufe: Pfadi Hasenburg,wolf,12,4,4,1,,,,
+99,mova - Pfadistufe: Pfader Pfadi Phoenix Niederamt,pfadi,14,20,0,22,0,0,0,individuelle Bestellung
+100,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadistufe Rudolf Brun Zürich,pfadi,19,4,4,1,0,0,1,individuelle Bestellung
+101,mova - Pfadistufe / branche Eclais / branca esploratori: St. Christophorus,pfadi,20,14,2,5,2,0,0,individuelle Bestellung
+102,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Rinau,wolf,20,0,0,0,,,,kein Bauholz
+105,mova - Piostufe PRAG,pio,31,6,8,6,1,0,2,individuelle Bestellung
+106,mova - Wolfsstufe: Baregg Baden und HWB,wolf,48,2,0,0,0,1,0,individuelle Bestellung
+107,mova - Pfadistufe: Baregg Baden,pfadi,18,5,5,1,1,0,0,individuelle Bestellung
+108,mova - Piostufe: Baregg Baden und HWB,pio,28,1,6,4,1,0,0,individuelle Bestellung
+109,"mova - branche Eclais : Lac-Bleu, Plantour & Pierre de Griuns",pfadi,62,12,12,3,,,,
+110,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Wolfsstufe Pfadi Kuonolf,wolf,24,4,4,1,,,,
+111,"mova - Wolfsstufe mit Schekka, Siwa und Lubra",wolf,18,4,4,1,,,,
+114,mova - Pfadistufe Nölliturm,pfadi,12,4,4,1,,,,
+115,mova - Wolfsstufe Meute Rama,wolf,16,0,0,0,,,,kein Bauholz
+120,mova - Wolfsstufe / branche Louveteaux / branca lupetti: La Venoge,wolf,24,4,4,1,,,,
+121,mova - Pfadistufe / branche Eclais / branca esploratori: La Venoge,pfadi,24,4,4,1,,,,
+122,mova - Pfadistufe / branche Eclais / branca esploratori: Schalberg,pfadi,16,4,4,1,,,,
+123,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Liestal,wolf,21,4,4,1,,,,
+124,mova - branche: Troupe Carouderco,pfadi,26,8,8,2,,,,
+125,mova - Wolfsstufe: Pfadi Aquila Aarberg,wolf,15,0,0,1,0,0,0,individuelle Bestellung
+126,mova - PTA / SMT / SOC: PTA Tannenberg Luzern,pta,7,4,4,1,,,,
+127,mova - branche Eclais : Troupe-Section Michel Roset,pfadi,25,4,4,1,,,,Anzahl TN
+128,mova - branche Louveteaux : Meute Michel Roset,wolf,25,0,0,0,,,,kein Bauholz
+129,mova - Piostufe: Pios Schaffhausen,pio,34,8,8,2,,,,
+130,mova - Pfadistufe: Pfadi Blaustein Gränichen,pfadi,14,4,4,1,,,,
+131,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Schenkenberg,pfadi,30,4,2,3,2,0,0,individuelle Bestellung
+133,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Angenstein,pfadi,42,0,6,4,1,0,0,individuelle Bestellung
+134,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Meute DaVinci,wolf,35,4,4,1,,,,
+135,mova - Wolfsstufe / Pfadi Arth-Goldau,wolf,24,4,4,1,,,,
+136,mova - Pfadistufe / Pfadi Arth-Goldau,pfadi,39,8,8,2,,,,
+137,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Regulastein,pfadi,17,4,4,1,,,,
+139,mova - Wolfsstufe / branche Louveteaux / branca lupetti: 2 Wolfstufe,wolf,42,4,4,1,0,0,1,individuelle Bestellung
+140,mova - Pfadistufe: Pfadis der Pfadi Allschwil,pfadi,92,4,12,6,1,0,1,individuelle Bestellung
+141,mova - Piostufe: Pios der Pfadi Allschwil,pio,23,14,9,1,0,0,0,individuelle Bestellung
+142,mova - Pfadistufe / branche Eclais / branca esploratori: 3 Pfadistufe,pfadi,53,10,10,5,3,0,0,individuelle Bestellung
+143,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Pfadi WRA,wolf,22,4,4,1,,,,
+144,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Pfadi Regulastein,wolf,13,4,4,1,,,,
+145,mova - Pfadistufe / branche Eclais / branca esploratori: Ritter Berchtold,pfadi,27,8,8,2,,,,
+146,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Ritter Berchtold,wolf,14,0,1,1,1,0,0,individuelle Bestellung
+148,mova - Pfadistufe / branche Eclais / branca esploratori: Reparto Esploratori,pfadi,40,8,8,2,,,,
+149,"mova - Wolfsstufe: Pfadi Andelfingen, Meute Nautilus",wolf,13,4,4,1,,,,
+150,mova - Pfadistufe / branche Eclais / branca esploratori: St. Hedwig Sursee,pfadi,40,0,0,0,1,0,0,individuelle Bestellung
+151,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadistufe Uster-Greifensee,pfadi,58,12,12,3,,,,Anzahl TN
+152,mova - Wolfsstufe / Pfadi Uster-Greifensee,wolf,24,4,4,1,,,,
+153,mova - Piostufe / branche Picos / branca pionieri: Piostufe,pio,12,4,4,1,,,,
+154,mova - Pfadistufe,pfadi,20,6,6,1,1,0,0,individuelle Bestellung
+155,mova - PTA / SMT / SOC: PTA Baden Baregg,pta,9,4,4,1,,,,
+156,mova - Wolfsstufe / branche Louveteaux / branca lupetti: St-Félix (Saxon),wolf,18,4,4,1,,,,
+158,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadistufe,pfadi,16,4,4,1,,,,
+159,mova - Pfadistufe / branche Eclais / branca esploratori: St. Jakob Eschenbach,pfadi,40,0,6,0,2,0,0,individuelle Bestellung
+160,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Wölfe St.Luzi (Zürich),wolf,32,4,4,1,,,,
+161,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadis St.Luzi (Zürich),pfadi,26,8,8,2,,,,
+164,mova - Pfadistufe / branche Eclais / branca esploratori: Fontana,pfadi,22,4,4,1,1,0,1,individuelle Bestellung
+165,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi St. Alban,pfadi,22,0,5,1,0,0,0,individuelle Bestellung
+166,mova - Pfadistufe / branche Eclais / branca esploratori: Frienisstatt,pfadi,36,12,11,1,2,0,0,individuelle Bestellung
+167,mova - Pfadistufe / branche Eclais / branca esploratori: 2 Pfadistufe,pfadi,17,15,10,10,2,0,0,individuelle Bestellung
+168,mova - Piostufe / branche Picos / branca pionieri: Pfadi Glarus,pio,13,4,4,1,,,,
+169,mova - Wolfsstufe Pfadi Gottstatt,wolf,12,4,4,1,,,,
+172,mova - Pfadistufe / branche Eclais / branca esploratori: Troupe Savièse,pfadi,17,4,4,1,,,,
+173,mova - Wolfsstufe / Pfadi Helveter,wolf,28,4,4,1,0,0,1,individuelle Bestellung
+174,Pfadi H2O - 1. Stufe - Bula,wolf,17,4,4,1,,,,
+175,Pfadi H2O - 2. Stufe - Bula,pfadi,16,4,4,1,,,,
+176,mova - Pfadistufe / branche Eclais / branca esploratori: Virus,pfadi,18,4,4,1,,,,
+178,mova - Wolfsstufe / branche Louveteaux / branca lupetti: 1. Wölflistufe,wolf,18,0,0,0,,,,kein Bauholz
+179,mova - Pfadistufe: Pfadi St. Georg Gossau-Niederwi,pfadi,32,8,8,2,,,,
+180,mova - Pfadistufe / branche Eclais / branca esploratori: St-Hippolyte (Vouvry),pfadi,29,8,8,2,,,,
+181,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Wolfsstufe,wolf,13,4,4,1,,,,
+182,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadistufe,pfadi,41,20,0,0,1,4,0,individuelle Bestellung
+183,mova - Wolfsstufe / branche Louveteaux / branca lupetti: St-Hippolyte (Vouvry),wolf,35,0,0,0,,,,kein Bauholz
+184,mova - Piostufe / branche Picos / branca pionieri: St-Hippolyte (Vouvry),pio,13,4,4,1,,,,
+185,mova - Piostufe / branche Picos / branca pionieri: St. M-U,pio,12,4,4,1,,,,
+186,mova - Piostufe / branche Picos / branca pionieri: Poste It,pio,30,8,8,2,,,,
+187,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Meute Atlantis et Meute Avalon,wolf,60,4,4,1,,,,
+188,mova - Pfadistufe / branche Eclais / branca esploratori: Troupe St-Exupéry,pfadi,55,12,12,9,0,0,4,individuelle Bestellung
+189,mova - Pfadistufe / branche Eclais / branca esploratori: Brigata Locarno,pfadi,30,30,6,4,3,0,1,individuelle Bestellung
+190,mova - Piostufe / branche Picos / branca pionieri: Brigata Locarno,pio,15,0,0,0,,,,kein Bauholz
+191,mova - Wolfsstufe / branche Louveteaux / branca lupetti: 1_Meute Gemsberg,wolf,19,4,5,1,2,0,0,individuelle Bestellung
+192,mova - Pfadistufe / branche Eclais / branca esploratori: 2_Stamm Homberg,pfadi,22,20,9,4,1,0,0,individuelle Bestellung
+193,mova - Piostufe / branche Picos / branca pionieri: Pfadi Winkelried Stans- Ennetmoos,pio,22,0,0,0,,,,kein Bauholz
+195,mova - Wolfsstufe / branche Louveteaux / branca lupetti: St. Peter & Paul Willisau,wolf,12,0,0,0,,,,kein Bauholz
+196,mova - Pfadistufe Pfadi Schnitzturm Stansstad,pfadi,38,8,8,2,,,,
+197,mova - Pfadistufe / branche Eclais / branca esploratori: St. Peter & Paul Willisau,pfadi,17,0,0,0,,,,kein Bauholz
+198,mova - Pfadistufe / branche Eclais / branca esploratori: Flamberg,pfadi,34,8,8,2,,,,
+199,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Jungflamberg,wolf,24,4,4,1,,,,
+200,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Pfadi Hochwacht Langnau,wolf,20,0,0,0,,,,kein Bauholz
+201,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Hochwacht Langnau & Pfadi Kuonolf,pfadi,50,6,8,0,3,0,0,individuelle Bestellung
+203,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Meggen,pfadi,47,10,4,4,1,0,0,individuelle Bestellung
+204,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Pfadi Löwenburg,wolf,20,4,4,1,,,,
+205,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Löwenburg,pfadi,27,8,8,2,1,0,0,individuelle Bestellung
+206,"mova - branche Louveteaux : Lac-Bleu, Plantour & Pierre de Griuns",wolf,38,4,4,1,,,,
+207,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Zytturm 207,pfadi,30,10,14,8,2,0,0,individuelle Bestellung
+208,mova - Wolfsstufe Pfadi Kreuzlingen,wolf,21,4,4,1,,,,
+209,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Zytturm Meute Sioni,wolf,24,6,12,0,1,0,0,individuelle Bestellung
+210,mova - Piostufe / branche Picos / branca pionieri: Piostufe Zytturm,pio,14,13,12,0,1,0,0,individuelle Bestellung
+211,"mova - Pfadistufe, Pfadi Kreuzlingen",pfadi,19,4,4,1,,,,
+212,mova - Piostufe / branche Picos / branca pionieri: Helveter,pio,28,8,8,2,0,0,1,individuelle Bestellung
+213,mova - Pfadistufe Hünenberg (ZG),pfadi,40,8,8,2,,,,
+217,"mova - branche Picos : Lac-Bleu, Plantour & Pierre de Griuns",pio,23,4,4,1,,,,
+218,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Juvalta,wolf,18,4,4,1,,,,
+219,mova - Wolfsstufe / branche Louveteaux / branca lupetti: 1 Wolfsstufe AF,wolf,15,4,4,1,,,,
+220,mova - Pfadistufe / branche Eclais / branca esploratori: 2 Pfadistufe AF,pfadi,30,8,8,2,,,,
+221,mova - Pfadistufe / branche Eclais / branca esploratori: Juvalta,pfadi,26,8,8,2,,,,
+222,mova - Pfadistufe / branche Eclais / branca esploratori: Trupp Wildegg,pfadi,31,8,8,2,0,1,0,individuelle Bestellung
+223,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Bischofberg,pfadi,33,60,40,5,1,0,0,individuelle Bestellung
+224,mova - Pfadistufe Winkelried(Wallisellen) / branche Eclais / branca esploratori: Pfadis,pfadi,22,4,4,1,,,,
+225,mova - Wolfsstufe / branche Louveteaux / branca lupetti: PP,wolf,13,0,0,0,,,,kein Bauholz
+226,mova - Pfadistufe / branche Eclais / branca esploratori: PP,pfadi,32,4,4,4,1,0,0,individuelle Bestellung
+227,mova - Pfadistufe / branche Eclais / branca esploratori: Tre Pini Massagno,pfadi,46,8,8,2,,,,
+228,mova - Wolfsstufe: Pfadi Jura Biel,wolf,15,4,4,1,,,,
+230,mova - Pfadistufe Pfadi Jura-Biel & Aquila,pfadi,54,12,12,3,,,,
+231,mova - Piostufe Pfadi Jura-Biel & Aquila,pio,13,4,4,1,,,,
+232,mova - Wolfsstufe / branche Louveteaux / branca lupetti: 1. Stufe,wolf,15,4,4,1,,,,
+233,mova - Piostufe / branche Picos / branca pionieri: Posto Tre Pini Massagno,pio,14,4,4,1,,,,
+234,mova - branca pionieri: Bei Posti Arogno e Castello,pio,21,6,6,6,1,0,0,individuelle Bestellung
+235,mova - branca esploratori: Reparto Esploratori,pfadi,33,4,8,10,1,0,0,individuelle Bestellung
+236,mova - Wolfsstufe / branche Louveteaux / branca lupetti: St. Leodegar,wolf,12,4,4,1,,,,
+237,mova - Pfadistufe / branche Eclais / branca esploratori: Koinos,pfadi,15,4,4,1,,,,
+239,mova - Pfadistufe / branche Eclais / branca esploratori: Rancate,pfadi,16,1,4,4,2,0,0,individuelle Bestellung
+240,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Wölfli St. Martin Buochs,wolf,27,0,0,0,,,,kein Bauholz
+241,mova - Pfadistufe: Pfadi Buochs,pfadi,28,8,8,2,,,,
+242,mova - Wolfsstufe: Pfadi Buchsi Wolfsstufe,wolf,14,4,4,1,,,,
+243,mova - Pios Buochs,pio,12,4,0,1,0,0,0,individuelle Bestellung
+244,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi WRA,pfadi,40,8,8,2,,,,
+245,mova - Piostufe / branche Picos / branca pionieri: Pfadi WRA,pio,21,4,4,1,,,,
+246,mova - branca Esploratori: Scout Medio Vedeggio,pfadi,40,18,14,2,0,0,2,individuelle Bestellung
+248,mova - louveteaux : meute St-Michel et ronde NDLR,wolf,18,0,0,0,,,,kein Bauholz
+250,mova - Pfadistufe / branche Eclais / branca esploratori: 3 Pfadi,pfadi,44,0,0,0,1,4,0,individuelle Bestellung
+251,mova - Wolfsstufe / branche Louveteaux / branca lupetti: 2 Wölfe,wolf,42,4,4,1,,,,
+252,mova - Wolfsstufe / branche Louveteaux / branca lupetti: St-André/St-Amédée,wolf,16,4,4,1,0,1,0,individuelle Bestellung
+253,mova - Pfadistufe / branche Eclais / branca esploratori: Bellinzona,pfadi,28,8,8,2,0,1,1,individuelle Bestellung
+254,MOVA pionieri Bellinzonese1,pio,12,4,4,1,,,,
+255,mova - Pfadistufe / branche Eclais / branca esploratori: Scouts de l'Ouest,pfadi,29,8,8,2,,,,
+256,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Don Bosco Hergiswil,pfadi,36,4,4,1,1,0,0,individuelle Bestellung
+257,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Pfadi Don Bosco Hergiswil,wolf,21,0,0,0,,,,kein Bauholz
+258,MOVA lupetti Claro-Daro & Tenero-Gordola,wolf,23,4,4,1,,,,
+259,mova - Pfadistufe Pfadi Oberrhi,pfadi,22,6,6,1,1,0,0,individuelle Bestellung
+260,mova - Wolfsstufe Pfadi Oberrhi,wolf,14,4,4,1,,,,
+261,MOVA esploratori Claro-Daro & Biasca,pfadi,20,4,4,1,,,,
+262,mova - Pfadistufe: Hochwacht Baden,pfadi,20,6,2,1,1,0,0,individuelle Bestellung
+263,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Luegisland,pfadi,29,50,20,0,1,0,0,individuelle Bestellung
+264,mova - Piostufe / branche Picos / branca pionieri: St. Hedwig Sursee,pio,16,0,0,0,1,0,0,individuelle Bestellung
+265,mova - Wolfsstufe / branche Louveteaux / branca lupetti: St. Hedwig Sursee,wolf,30,0,0,0,1,0,0,individuelle Bestellung
+267,mova - Wolfsstufe: Pfadi Möhlin,wolf,19,0,0,0,,,,kein Bauholz
+268,mova - Pfadistufe: Pfadi Möhlin,pfadi,22,4,4,1,,,,
+269,mova - Pfadistufe: Pfadistufe Pfadi Buchsi Stämme Bärenried & Burgstein,pfadi,21,4,4,1,,,,
+270,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Wartensee Neuenkirch,wolf,20,4,4,1,,,,
+271,mova - Pfadistufe / branche Eclais / branca esploratori: Wartensee Neuenkirch,pfadi,75,12,12,3,2,0,0,individuelle Bestellung
+272,mova - Pfadistufe: Dracheburg,pfadi,26,4,4,1,2,0,0,individuelle Bestellung
+274,mova - Pfadistufe / branche Eclais / branca esploratori: Troupes du Mondisé & de la Main Blanche,pfadi,48,8,8,2,,,,
+275,mova - branche Eclais : Troupe du Lac Vert & Vieux Castel,pfadi,18,4,4,1,,,,
+276,mova - branche Picos : Poste Orbe-Union,pio,12,4,4,1,,,,
+277,mova - Pfadistufe / Pfadi Gryfenberg,pfadi,25,4,4,1,0,2,0,individuelle Bestellung
+278,mova - Wolfsstufe Sodales und Heitersberg Rohrdorf,wolf,32,4,4,1,,,,
+279,Pfadistufe: Sodales und Heitersberg Rohrdorf,pfadi,37,8,8,2,,,,
+280,mova - Piostufe / branche Picos / branca pionieri: Sodales und Heitersberg Rohrdorf,pio,23,4,4,1,,,,
+281,mova - Wolfsstufe: Pfadi Gryfenberg,wolf,18,4,4,1,,,,
+282,Piostufe: Pfadi Sins Orion / Pfadi Wohlen,pio,19,4,4,1,,,,
+283,mova - branche Eclais : Section Jean-Bart 283,pfadi,24,4,4,1,,,,
+284,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadistufe,pfadi,40,8,8,2,,,,
+285,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Wolfsstufe,wolf,30,4,4,1,,,,
+286,mova - Louveteaux Veyras & Savièse,wolf,36,0,0,0,,,,kein Bauholz
+287,mova - Wolfsstufe: Olymp & Leuefels,wolf,12,4,4,1,,,,
+288,mova - Pfadistufe: Leuefels und Olymp,pfadi,41,22,4,4,2,0,0,individuelle Bestellung
+289,Pfadistufe - Pfadi Sins Orion,pfadi,15,4,10,1,0,0,0,individuelle Bestellung
+290,Wolfsstufe - Pfadi Sins Orion,wolf,12,4,8,1,0,0,0,individuelle Bestellung
+291,mova - Pfadistufe / branche Eclais / branca esploratori: St. Michael,pfadi,67,42,15,10,6,0,0,individuelle Bestellung
+293,mova - Wolfsstufe / branche Louveteaux / branca lupetti: St. Michael,wolf,41,16,0,3,1,0,0,individuelle Bestellung
+294,mova - Pfadistufe: Pfadi Ramstein,pfadi,56,4,5,4,4,0,0,individuelle Bestellung
+296,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Louveteaux,wolf,35,4,4,1,,,,
+297,mova - Pfadistufe / branche Eclais / branca esploratori: Eclaireurs,pfadi,27,14,14,12,0,0,0,individuelle Bestellung
+299,mova - Pfadistufe: Pfadi Rymenzburg Kulm,pfadi,13,4,4,1,,,,
+301,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Abteilung Luegisland-Schirmerturm,wolf,17,0,18,0,1,0,0,individuelle Bestellung
+302,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Scout Bullois,wolf,30,0,0,0,,,,kein Bauholz
+303,mova - Wolfsstufe / branche Louveteaux / branca lupetti: ZB,wolf,36,4,4,1,,,,
+304,mova - Pfadistufe / branche Eclais / branca esploratori: ZB,pfadi,34,8,8,2,,,,
+305,mova - Piostufe: Pio Seebuebe,pio,12,3,4,4,1,0,0,individuelle Bestellung
+306,"mova - Pfadistufe: Pfadi Rüdberg SG, Pfadi Riko Spreitenbach AG",pfadi,17,27,9,9,1,0,0,individuelle Bestellung
+307,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Wölfli Baar,wolf,24,4,4,1,,,,
+308,mova - Pfadistufe: Unspunne,pfadi,29,8,8,2,,,,
+309,mova - Pfadistufe / branche Eclais / branca esploratori: Trupp Lummerland,pfadi,27,8,8,2,,,,
+310,mova (BuLa) Waldmann Wolfsstufe,wolf,28,4,4,1,,,,
+311,mova - Wolfsstufe: Wulp Wolfsstufe,wolf,31,19,10,1,2,0,0,individuelle Bestellung
+312,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Meute Orbe-Union,wolf,23,4,4,1,,,,
+313,mova - Pfadistufe: Wulp Pfadistufe,pfadi,34,22,10,1,2,0,0,individuelle Bestellung
+314,mova - Branche Eclais: Fully et Collombey,pfadi,24,4,4,1,,,,
+315,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi St. Rochus Büren- Oberdorf,pfadi,52,8,8,2,0,0,0,individuelle Bestellung
+316,mova - Piostufe: Equipe Fromage & Piostufe: Landskron Werdegg,pio,19,4,4,1,1,0,0,individuelle Bestellung
+317,mova - Piostufe / branche Picos / branca pionieri: Piostufe Berner Oberland,pio,37,0,4,1,1,0,0,individuelle Bestellung
+318,mova - Pfadistufe / branche Eclais / branca esploratori: Troupe Warabasega,pfadi,14,4,4,1,,,,
+319,mova - Pfadistufe: Rhenania,pfadi,20,0,0,1,1,0,0,individuelle Bestellung
+321,mova - Piostufe / branche Picos / branca pionieri: Laufen,pio,13,5,1,0,1,0,0,individuelle Bestellung
+322,mova - Piostufe: Arbor Felix und Seesturm,pio,19,4,4,1,,,,
+323,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Rothenthurm,pfadi,14,0,0,0,1,1,0,individuelle Bestellung
+326,mova - Wolfsstufe Angenstein/ branche Louveteaux / branca lupetti: Wolfsstufe,wolf,29,0,0,0,,,,kein Bauholz
+327,mova - Pfadistufe / branche Eclais / branca esploratori: Laufen,pfadi,23,4,4,3,2,0,0,individuelle Bestellung
+328,mova - Wolfsstufe / branche Louveteaux / branca lupetti: 1 Wolfsstufe Altberg,wolf,23,4,4,1,,,,
+329,mova - Pfadistufe: St. Johannes,pfadi,25,4,4,1,,,,
+330,mova - Wolfsstufe: St. Johannes,wolf,14,4,4,1,,,,
+331,mova - Pfadistufe / branche Eclais / branca esploratori: Ragnis,pfadi,41,7,4,2,1,0,0,individuelle Bestellung
+332,mova - Piostufe: St. Johannes,pio,14,4,4,1,,,,
+333,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Rüdberg - Riko Spreitenbach,wolf,13,0,0,0,,,,kein Bauholz
+334,mova - Wolfsstufe: Wölfe Pfadi Lindenburg,wolf,12,4,4,1,,,,
+335,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Sarnen,pfadi,14,4,4,1,,,,
+336,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Wölfe Sarnen,wolf,20,4,4,1,,,,
+337,"mova - Wolfsstufe / branche Louveteaux / branca lupetti: Wolfsstufe Thayngen, Seewadel und Neunkirch",wolf,34,4,4,1,,,,
+338,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Pfadi Olten,wolf,13,14,4,1,0,0,0,individuelle Bestellung
+339,"mova - Pfadistufe / branche Eclais / branca esploratori: Pfadistufe Thayngen, Seewadel und Neunkirch",pfadi,46,8,8,2,,,,
+340,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi St. Benno,pfadi,32,8,8,2,,,,
+341,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Olten,pfadi,17,14,4,2,1,0,0,individuelle Bestellung
+343,mova - Pfadistufe: Big Horn Lengnau,pfadi,18,10,10,0,1,8,0,individuelle Bestellung
+344,mova - Piostufe: Big Horn Lengnau,pio,27,7,2,5,2,1,0,individuelle Bestellung
+345,"mova - Piostufe / branche Picos / branca pionieri: Pio Arth-Goldau, Schwyz, Brunnen, Einsiedeln",pio,34,4,10,4,1,0,0,individuelle Bestellung
+346,mova - Wolfsstufe: Big Horn Lengnau,wolf,20,4,4,1,,,,
+347,mova - Wolfsstufe: Rymenzburg Wyna,wolf,16,2,0,1,0,0,0,individuelle Bestellung
+349,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi St.Martin Laupersdorf,pfadi,25,0,70,0,3,9,3,individuelle Bestellung
+352,mova - Piostufe / branche Picos / branca pionieri: S. Antonino,pio,14,4,4,1,,,,
+357,mova - Pfadistufe / branche Eclais / branca esploratori: 2 Pfadis,pfadi,13,4,4,1,0,1,0,individuelle Bestellung
+358,mova - PTA / SMT / SOC: PTA Summervogel Kreuzlingen,pta,14,4,4,1,,,,
+359,mova - Piostufe / branche Picos / branca pionieri: Pios SGARAI,pio,53,0,0,3,1,0,0,individuelle Bestellung
+361,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Pfadi Einsiedeln,wolf,18,4,4,1,,,,
+362,mova - Louveteaux: Meute Pierre Viret,wolf,25,0,0,0,,,,kein Bauholz
+363,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Einsiedeln,pfadi,40,4,6,6,4,0,4,individuelle Bestellung
+364,"mova - Wolfsstufe / branche Louveteaux / branca lupetti: Groupe de la Harpe, Scouts de Rolle-Aubonne",wolf,19,4,4,1,,,,
+365,"mova - Pfadistufe / branche Eclais / branca esploratori: Groupe de la Harpe, Scouts de Rolle-Aubonne",pfadi,30,8,8,2,,,,
+366,mova - Pfadistufe / branche Eclais / branca esploratori: Hadlaub,pfadi,32,8,8,2,,,,
+367,mova - Wolfsstufe; Pfadi Frisco,wolf,13,4,4,1,,,,
+368,Wolfsstufe Feuerthalen & Stein am Rhein,wolf,15,4,4,1,0,0,3,individuelle Bestellung
+369,"BuLa, Pfadistufe, Feuerthalen & Stein am Rhein",pfadi,25,4,4,1,,,,
+370,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Wolfsstufe Chopfholz,wolf,24,4,4,1,,,,
+371,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadistufe Chopfholz,pfadi,29,4,5,1,1,0,0,individuelle Bestellung
+373,mova - Pfadistufe / branche Eclais / branca esploratori: Quivelda Weinfelden,pfadi,25,4,4,1,,,,
+374,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadistufe Orion Biel,pfadi,40,8,8,2,,,,
+375,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Wolfstufe Orion Biel,wolf,39,4,4,1,,,,
+378,mova - Pfadistufe / branche Eclais / branca esploratori: Faido,pfadi,14,4,4,1,,,,
+379,mova - Pfadistufe / branche Eclais / branca esploratori: Pulacha,pfadi,21,4,4,1,,,,
+381,mova - Pfadistufe / branche Eclais / branca esploratori: Stamm Artus Pfadistufe Pfadi Trogen,pfadi,36,8,8,2,,,,
+382,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Kriens,pfadi,47,8,8,2,,,,
+383,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Pfadi Kriens,wolf,30,4,4,1,,,,
+384,mova - Pfadistufe / branche Eclais / branca esploratori: Corps Schwyzerstärn,pfadi,89,16,16,4,,,,
+385,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Pfadi Wil,wolf,21,4,4,1,,,,
+386,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Lachen,pfadi,32,6,3,4,1,0,0,individuelle Bestellung
+387,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Wil,pfadi,21,4,4,5,3,0,0,individuelle Bestellung
+388,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Laufen,wolf,13,4,4,1,,,,
+389,mova - Wolfsstufe: St. Felix,wolf,14,4,4,1,,,,
+390,mova - Pfadistufe : St. Felix,pfadi,22,4,4,4,3,0,0,individuelle Bestellung
+391,mova - branca esploratori: Esploratori Caslano e Canobbio,pfadi,19,4,4,1,,,,
+392,mova - Wolfsstufe: Seuzach und Hallau-Wilchingen,wolf,16,4,4,1,,,,
+393,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Meute Similia,wolf,24,0,0,0,,,,kein Bauholz
+394,mova - Pfadistufe / branche Eclais / branca esploratori: Seuzach und Hallau-Wilchingen,pfadi,27,8,8,2,,,,
+395,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Meute Sanfan,wolf,17,4,4,1,,,,
+396,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Pfadi Zytturm,wolf,70,4,4,1,,,,
+397,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Zytturm 397,pfadi,110,12,12,3,3,0,4,individuelle Bestellung
+398,mova - Pfadistufe / branche Eclais / branca esploratori: Stamm Holzwurm,pfadi,25,25,12,0,2,0,2,individuelle Bestellung
+399,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Pfadi Lachen,wolf,16,0,0,0,,,,kein Bauholz
+400,mova - Pfadistufe: Windegg/ Glärnisch,pfadi,13,4,4,1,,,,
+401,mova - Pfadistufe / branche Eclais / branca esploratori: Erdmändli Wallbach und Thierstein Stein,pfadi,15,10,6,4,1,0,0,individuelle Bestellung
+402,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Erdmändli Wallbach und Thierstein Stein,wolf,14,8,4,1,1,0,0,individuelle Bestellung
+403,mova - Piostufe / branche Picos / branca pionieri: Pfadi Lachen & Höfe,pio,14,4,4,1,,,,
+404,mova - Wolfsstufe: Milambani,wolf,12,2,0,1,0,0,0,individuelle Bestellung
+406,"mova - Wolfsstufe / branche Louveteaux / branca lupetti: Wildmannli, Yberg, Eschenbach",wolf,12,4,4,1,,,,
+407,"mova - Pfadistufe / branche Eclais / branca esploratori: Wildmannli, Yberg, Eschenbach",pfadi,23,4,4,1,,,,
+409,BuLa 22,pfadi,37,8,8,2,,,,
+410,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Ragnis,wolf,28,4,4,1,,,,
+411,mova - Pfadistufe / branche Eclais / branca esploratori: Bruder Klaus Root,pfadi,46,8,8,2,,,,
+413,mova - Pfadistufe / branche Eclais / branca esploratori: Laupen + Murten,pfadi,39,8,8,3,0,0,0,individuelle Bestellung
+414,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Murten + Laupen,wolf,18,4,4,2,0,0,0,individuelle Bestellung
+415,mova - Piostufe / branche Picos / branca pionieri: Pio,pio,14,4,4,1,,,,
+416,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi,pfadi,16,4,4,1,,,,
+417,mova - Wolfsstufe: Wolfsstufe Pfadi St. Peter Nussbaumen,wolf,12,4,0,1,0,0,0,individuelle Bestellung
+418,mova - Pfadistufe: Pfadistufe Pfadi St. Peter Nussbaumen,pfadi,24,0,11,1,1,0,0,individuelle Bestellung
+419,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Wölfe St. Alban,wolf,16,4,4,1,,,,
+420,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Wölfe St. Benno,wolf,14,4,4,1,,,,
+421,mova - Pfadistufe / branche Eclais / branca esploratori: Troupe Orbe-Union,pfadi,21,4,4,1,,,,
+422,mova - Pfadistufe / branche Eclais / branca esploratori: Meitlipfadi Säuliamt,pfadi,45,8,8,5,1,0,0,individuelle Bestellung
+423,mova - Wolfsstufe: Pfadi Alvier Buchs,wolf,22,0,1,0,0,0,0,individuelle Bestellung
+424,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Meitlipfadi Säuliamt,wolf,26,0,0,0,,,,kein Bauholz
+425,mova - Piostufe: Pfadi Ramstein,pio,17,0,0,0,,,,kein Bauholz
+426,mova - pfadistufe / branche Eclais / branca esploratori: Reparto Esploratori scout Mendrisio,pfadi,33,12,10,3,2,0,0,individuelle Bestellung
+427,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Muta Lupetti Mendrisio,wolf,16,4,4,1,,,,
+428,"mova - Piostufe / Afi, Dunant, Effretikon",pio,25,4,4,1,,,,
+429,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Louveteaux d'Octodure,wolf,20,0,0,0,,,,kein Bauholz
+430,mova - Pfadistufe / branche Eclais / branca esploratori: Eclais d'Octodure,pfadi,31,0,0,0,,,,kein Bauholz
+432,Hochwacht - 3. Stufe - Bula,pio,27,8,8,2,,,,
+433,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Wolfsstufe Pfadi Ratatouille (Surrli & Schiwa),wolf,14,4,4,1,,,,
+434,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadistufe Pfadi Ratatouille (Kolibri & Habicht-Dohle),pfadi,24,4,4,1,,,,
+435,mova - Pfadistufe / branche Eclais / branca esploratori: St-Christophe (Sierre),pfadi,14,4,4,1,,,,
+436,mova - Pfadistufe: Pfader*innen Pfadi Lindenburg,pfadi,12,4,4,1,,,,
+437,"mova - Wolfsstufe: Pfadi Delta (Ettiswil, Alberswil, Kottwil)",wolf,21,0,0,0,,,,kein Bauholz
+438,mova - Piostufe: HeiChO,pio,32,4,12,1,1,0,0,individuelle Bestellung
+439,mova - Pfadistufe: Rymenzburg Wyna,pfadi,17,2,4,1,1,0,0,individuelle Bestellung
+440,mova - Pfadistufe Diviko 2021,pfadi,16,0,0,0,,,,kein Bauholz
+443,mova - Wolfsstufe,wolf,12,4,4,1,,,,
+444,mova - branche Louveteaux: Fully et Monthey,wolf,20,0,0,0,,,,kein Bauholz
+445,mova - Pfadistufe,pfadi,24,4,4,1,0,0,1,individuelle Bestellung
+446,mova - Pfadistufe / branche Eclais / branca esploratori: BS - Racine 2.1 : Pahud,pfadi,60,12,12,3,,,,
+448,mova - Wolfsstufe: 1.Stufe Neuhausen/ Laufen,wolf,17,4,4,1,,,,
+449,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Adler,pfadi,17,4,4,1,,,,
+450,mova - Pfadistufe: 2. Stufe Neuhausen/ Laufen,pfadi,30,8,8,2,,,,
+451,mova - Pfadistufe / branche Eclais / branca esploratori: 2. Stufe Pfadi Ämmebrogg,pfadi,15,4,4,1,,,,
+452,mova - Wolfsstufe / branche Louveteaux / branca lupetti: GSV,wolf,28,4,4,1,,,,
+453,mova - branca lupetti: Muta Lupetti Caslano e Canobbio,wolf,15,0,0,0,,,,kein Bauholz
+454,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Pfadi Frauenfeld,wolf,22,4,4,1,2,1,0,individuelle Bestellung
+455,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Frauenfeld,pfadi,48,4,4,1,1,1,0,individuelle Bestellung
+456,mova - Piostufe / branche Picos / branca pionieri: Pfadi Frauenfeld,pio,25,4,4,1,2,1,0,individuelle Bestellung
+457,Wolf: Pfadi Maggenberg,wolf,40,4,4,1,,,,
+458,mova - Pfadistufe / branche Eclais / branca esploratori: Lägern,pfadi,21,4,4,4,2,0,0,individuelle Bestellung
+460,mova - Pfadistufe: Pfadi Alvier Buchs,pfadi,31,0,6,0,0,0,0,individuelle Bestellung
+461,mova - Pfadistufe / branche Eclais / branca esploratori: Kobra Larein Pragg-Jenaz,pfadi,14,4,4,1,,,,
+462,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Kobra Larein Pragg-Jenaz,wolf,12,4,4,1,,,,
+464,"mova - Wolfsstufe / branche Louveteaux / branca lupetti: Meute Samanti, Sioni und Elgg",wolf,34,4,4,1,,,,
+465,mova - Wolfsstufe: Wölfli Isenringen Beckenried,wolf,36,4,4,1,,,,
+466,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Pfadi Meggen,wolf,16,4,4,1,,,,
+467,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Lägern,wolf,19,4,4,1,,,,
+468,mova - Pfadistufe: Pfadi Isenringen Beckenried,pfadi,71,12,12,3,,,,
+469,mova - lupetti: Scout Burot Castel San Pietro,wolf,12,4,4,1,,,,
+470,mova - esploratori: Scout Burot Castel San Pietro,pfadi,30,0,0,0,1,0,0,individuelle Bestellung
+472,mova - Wolfsstufe: Wölfe Pfadi Phoenix Niederamt,wolf,20,0,0,0,,,,kein Bauholz
+473,mova - Piostufe / branche Picos / branca pionieri: Pfadi Münchenstein,pio,13,4,4,1,,,,
+474,mova - Pfadistufe: Pfadi Rothenburg,pfadi,29,12,10,12,1,4,0,individuelle Bestellung
+475,mova - Wolfsstufe: Pfadi Rothenburg,wolf,24,0,0,0,,,,kein Bauholz
+476,mova - Piostufe: Pfadi Rothenburg,pio,12,4,4,1,,,,
+477,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Münchenstein,pfadi,33,8,8,2,0,0,1,individuelle Bestellung
+478,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Pfadi Münchenstein,wolf,43,8,8,2,0,0,0,individuelle Bestellung
+482,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadistufe Gerlafingen-Biberist,pfadi,20,4,4,1,,,,
+483,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Wolfstufe Gerlafingen-Biberist,wolf,15,0,0,0,,,,kein Bauholz
+485,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi St. Martin,pfadi,42,8,8,2,,,,
+486,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Krönten Erstfeld,pfadi,39,2,0,8,1,0,0,individuelle Bestellung
+487,BuLa22 Wölfe,wolf,16,4,4,0,1,0,1,individuelle Bestellung
+488,BuLa22 Pfader,pfadi,26,0,0,0,,,,kein Bauholz
+489,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Uri,wolf,58,4,4,1,,,,
+490,Mova - Pfadistufe Worb,pfadi,12,4,4,1,,,,
+491,mova - Pfadistufe / branche Eclais / branca esploratori: Scouting Seedorf & Wilhelm Tell Bürglen,pfadi,31,8,8,2,,,,
+493,mova - éclais : Troupe Flambeaux,pfadi,18,4,4,1,,,,
+494,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadistufe Agua,pfadi,58,12,12,3,,,,
+495,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Wölfli Agua,wolf,49,0,0,1,0,0,0,individuelle Bestellung
+496,mova - Piostufe / branche Picos / branca pionieri: Korps Glattal,pio,43,8,8,2,,,,
+498,mova - Piostufe / branche Picos / branca pionieri: Pfadi Hochwacht Langnau & Pfadi Worb & Pfadi St.Peter Nussbaumen,pio,22,4,4,1,,,,
+499,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Falkenstein Landquart,pfadi,14,4,4,1,,,,
+500,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Wölfli,wolf,19,0,0,0,,,,kein Bauholz
+501,mova - Wolfsstufe: Pfadi Glarus,wolf,16,4,4,1,,,,
+502,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Schirmerturm,pfadi,35,8,8,2,1,0,0,individuelle Bestellung
+504,"mova - Pfadistufe / branche Eclais / branca esploratori: Battasendas Engadin'Ota, Battasendas Viamala, Pfadi Davos",pfadi,17,4,4,1,,,,
+505,mova - Wolfsstufe: Safenwil,wolf,12,4,4,1,,,,
+506,"mova - Pfadistufe: Pfadi Delta (Ettiswil, Alberswil, Kottwil)",pfadi,30,0,0,0,,,,kein Bauholz
+507,mova - Piostufe / branche Picos / branca pionieri: Meitlipfadi Säuliamt,pio,26,8,8,2,,,,
+508,mova: Wolfstufe Rudolf Brun Zürich,wolf,12,4,1,0,0,0,0,individuelle Bestellung
+509,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Engelberg,pfadi,20,4,4,1,,,,
+510,mova - Lepanto - Pfadistufe (Oxya),pfadi,14,4,4,1,,,,
+512,mova - Wolfsstufe Eschenberg,wolf,17,4,4,1,,,,
+513,mova - Pfadistufe Eschenberg,pfadi,54,12,12,3,,,,
+514,mova - Piostufe Eschenberg,pio,23,4,4,1,,,,
+515,"mova - Wolfsstufe:T&R, SBT",wolf,16,4,4,1,,,,
+516,"mova - Pfadistufe: T&R, SBT",pfadi,27,8,8,2,,,,
+517,"mova - branche Louveteaux : Meutes St.-Germain, St.-Louis, St.-Pierre",wolf,33,4,4,1,,,,
+518,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Meute Ella-Maillart,wolf,17,4,4,1,,,,
+519,mova - Pfadistufe: Pfadi Kärpf & Pfadi Rauti,pfadi,20,4,4,1,,,,
+520,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi St. Martin Altdorf,pfadi,15,4,4,1,,,,
+521,mova - Wolfsstufe: Wölfe St.Jakob,wolf,17,4,4,1,,,,
+522,mova - Pfadistufe / branche Eclais / branca esploratori: 2B Foucauld Marly,pfadi,32,20,4,3,1,3,0,individuelle Bestellung
+523,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Sirius,pfadi,36,12,6,4,3,0,1,individuelle Bestellung
+524,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Pfadi Sirius,wolf,45,4,4,1,,,,
+525,mova - Piostufe / branche Picos / branca pionieri: Pfadi Sirius,pio,14,4,4,1,,,,
+526,mova - Wolfsstufe / branche Louveteaux / branca lupetti: 1B Foucauld Marly,wolf,19,4,4,1,,,,
+527,mova - Pfadistufe / branche Eclais / branca esploratori: St. Georg Aarau,pfadi,34,20,6,6,2,0,0,individuelle Bestellung
+528,mova - Pfadistufe / branche Eclais / branca esploratori: Troupe-Section Rhône Robert Hainard,pfadi,41,8,8,2,,,,
+529,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Wohle,pfadi,31,8,8,2,,,,
+530,Campo Esploratori TeGo MOVA 2022,pfadi,12,0,0,0,,,,kein Bauholz
+531,mova - Pfadistufe / branche Eclais / branca esploratori: Utteloo,pfadi,25,7,4,1,0,0,0,individuelle Bestellung
+532,mova - Piostufe / branche Picos / branca pionieri: Piostufe Pfadi Chutze Aaretal,pio,20,4,4,1,,,,
+533,mova - Pfadistufe / branche Eclais / branca esploratori: Vallemaggia,pfadi,33,4,4,1,1,0,0,individuelle Bestellung
+534,mova - Piostufe / branche Picos / branca pionieri: Vallemaggia/Tenero-Gordola/Balerna,pio,16,4,4,1,,,,
+535,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Wölfli Wolfschlucht,wolf,12,0,0,0,,,,kein Bauholz
+536,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Pfadi Wohle,wolf,34,2,0,1,0,0,0,individuelle Bestellung
+537,mova - Pfadistufe: Chatzestyg,pfadi,20,0,4,2,1,0,0,individuelle Bestellung
+538,mova - Pfadistufe / branche Eclais / branca esploratori: Schwand/Chramburg/Farnburg,pfadi,38,8,8,2,,,,
+540,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Wolfsstufe Pfadi Chutze Aaretal,wolf,36,7,6,6,2,0,0,individuelle Bestellung
+541,mova - Pfadistufe: Pfadi St.Jakob,pfadi,24,4,6,1,,,,Anzahl TN + 2 x 6m
+542,mova - Pfadistufe / Güetli&Beringen,pfadi,40,8,8,2,,,,
+543,mova - Wolfsstufe: Landshut,wolf,18,4,4,1,,,,
+544,mova - Pfadistufe: Landshut,pfadi,12,4,4,1,,,,
+545,mova - Piostufe Bezirk UEOA,pio,35,8,8,2,,,,
+546,"mova - Wolfsstufe: Feuerpfeil, Bürglen, Libelle",wolf,22,4,4,1,,,,
+547,"mova - Pfadistufe: Feuerpfeil, Bürglen, Libelle",pfadi,17,4,4,1,0,0,3,individuelle Bestellung
+548,mova - Pfadistufe / branche Eclais / branca esploratori: St. Urs Solothurn,pfadi,19,4,4,1,,,,
+550,mova - Pfadistufe: Bäseris-St.Karl Rickenbach,pfadi,24,10,10,10,5,0,0,individuelle Bestellung
+551,mova - Wolfsstufe Wombat,wolf,23,4,4,1,,,,
+552,mova - Pfadistufe Morea,pfadi,20,4,4,1,,,,
+553,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Pfadi St. Georg Uzwil,wolf,25,4,4,1,,,,
+554,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi St. Georg Uzwil,pfadi,21,4,4,1,,,,
+556,mova - Wolfsstufe / Güetli&Beringen,wolf,12,4,4,1,,,,
+557,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Wölfe Rickenbach-Bäseris,wolf,23,5,5,5,0,0,0,individuelle Bestellung
+558,mova - Piostufe: RyZoAc,pio,24,4,4,1,,,,
+559,mova - branche Eclais: Troupe St-Louis/St-Germain/St-Pierre,pfadi,38,8,8,2,,,,
+560,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Gofers Lenzburg,pfadi,32,12,12,8,2,0,0,individuelle Bestellung
+561,"mova - Piostufe / branche Picos / branca pionieri: Pfadi Gofers Lenzburg, Pfadi Brugg",pio,21,4,4,1,,,,
+562,mova - Piostufe / branche Picos / branca pionieri: Blauenstein,pio,22,4,8,1,2,0,0,individuelle Bestellung
+563,mova - Pfadistufe / branche Eclais / branca esploratori: Blauenstein,pfadi,32,8,8,2,,,,
+564,mova - branche Eclais - Troupe Jean-Bart 564,pfadi,25,4,4,1,,,,
+567,mova - Wolfsstufe: Wolfstufe Pfadi Düdingen,wolf,19,4,4,1,,,,
+568,mova - Wolfsstufe / branche Louveteaux / branca lupetti : Meute Christ-Roi Flanthey/Lens,wolf,24,4,4,1,,,,
+569,mova - Pfadistufe / branche Eclais / branca esploratori : Troupe Christ-Roi Flanthey/Lens,pfadi,26,8,8,2,,,,
+570,mova - Pfadistufe: Pfadistufe Pfadi Düdingen,pfadi,14,6,6,3,3,0,0,individuelle Bestellung
+571,mova - Wolfsstufe: MPR Bienli,wolf,19,0,0,0,,,,kein Bauholz
+572,mova - Pfadistufe: MPR WTR,pfadi,26,2,0,0,0,0,0,individuelle Bestellung
+573,"mova - Piostufe: Pios Pfadi Riehen (MPR, PP, St.R.)",pio,35,8,8,2,,,,
+574,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Rain,pfadi,17,10,32,11,1,0,0,individuelle Bestellung
+575,mova - Pfadistufe Mönchsberg / Bärenfels,pfadi,32,4,2,1,1,0,0,individuelle Bestellung
+576,mova - Pfadistufe: Pfadi Baar,pfadi,125,0,0,6,2,0,0,individuelle Bestellung
+577,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Meute Altaïr et Ronde Orion-Cassiopée,wolf,64,0,0,0,,,,kein Bauholz
+578,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Pfadi Rhätikon Schiers,wolf,14,4,4,1,,,,
+579,mova - 1B: Flbx Lausanne,wolf,22,4,4,1,,,,
+581,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Alpha Centauri,wolf,25,0,5,0,0,0,0,individuelle Bestellung
+582,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Pfadi Brugg,wolf,22,4,4,1,,,,
+583,mova - Wolfsstufe / branche Louveteaux / branca lupetti: General Dufour,wolf,28,0,0,0,,,,kein Bauholz
+584,mova - Wolfsstufe Pfadi Attinghausen,wolf,14,4,4,1,,,,
+585,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Meute Saint-Georges,wolf,30,0,0,0,,,,kein Bauholz
+586,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Rhätikon Schiers,pfadi,13,4,4,1,,,,
+587,mova - 2B: Flbx Lausanne,pfadi,24,4,4,1,,,,
+588,mova - Pfadistufe Bettlach - Grenchen,pfadi,13,4,4,1,,,,
+589,mova - Pfadistufe: Trupp Steinegg (Gallispitz),pfadi,21,4,4,1,,,,
+591,mova - Pfadistufe / branche Eclais / branca esploratori: Alpha Centauri,pfadi,24,4,14,1,2,0,0,individuelle Bestellung
+592,mova - Pfadistufe Attinghausen,pfadi,12,4,4,1,,,,
+594,mova - Wolfsstufe : Meute Distle (Gallispitz) & Wölfli NeWa,wolf,23,4,4,1,,,,
+595,mova - Pfadistufe / branche Eclais / branca esploratori: Elgg,pfadi,26,8,8,2,,,,
+596,mova - Pfadistufe / branche Eclais / branca esploratori: General Dufour,pfadi,45,6,0,3,1,0,0,individuelle Bestellung
+597,mova - Piostufe / branche Picos / branca pionieri: General Dufour,pio,26,12,3,1,1,0,0,individuelle Bestellung
+598,mova - 2. Stufe Pfadi Mülistei,pfadi,34,8,8,2,0,0,2,individuelle Bestellung
+599,mova - 1. Stufe Pfadi Mülistei,wolf,22,4,4,1,,,,
+600,mova - Pfadistufe: Pfadi Mittelrheintal & St. Michael Altstätten,pfadi,56,12,12,3,,,,
+601,mova - Pfadistufe: Pfadi Maggenberg,pfadi,30,8,8,2,0,0,3,individuelle Bestellung
+602,"mova - Piostufe / branche Picos / branca pionieri: Pios Kleinlützel, St. Urs & Bipp-Wiedlisbach",pio,13,4,4,1,,,,
+603,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Kleinlützel,pfadi,14,4,4,1,,,,
+604,mova - Wolfsstufe,wolf,16,0,0,1,4,0,0,individuelle Bestellung
+605,mova - Piostufe / branche Picos / branca pionieri: Battasendas Grischun,pio,45,8,8,2,,,,
+608,"mova - Piostufe / branche Picos / branca pionieri: Gryfensee, Manegg, Seepfadi",pio,34,8,8,2,,,,
+609,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadistufe,pfadi,46,8,8,2,,,,
+610,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi St. Laurentius Dallenwil,pfadi,30,4,8,2,0,0,0,individuelle Bestellung
+613,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Christ-Roi,wolf,12,4,4,1,,,,
+614,mova - Pfadistufe / branche Eclais / branca esploratori: Christ-Roi,pfadi,14,4,4,1,,,,
+616,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadistufe,pfadi,22,4,4,1,,,,
+617,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Wolfstufe,wolf,13,0,0,0,,,,kein Bauholz
+618,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Seebuebe Goldach,pfadi,28,4,4,1,1,0,1,individuelle Bestellung
+619,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Lindegar,pfadi,40,0,20,12,2,0,0,individuelle Bestellung
+625,mova - Piostufe / branche Picos / branca pionieri: Pio Lindegar,pio,17,0,24,6,1,0,0,individuelle Bestellung
+628,mova - Wolfsstufe Orion,wolf,14,4,4,1,,,,
+629,mova - Pfadistufe / branche Eclais / branca esploratori: Orion,pfadi,18,4,4,1,,,,
+630,mova - Wolfsstufe: Pfadi Mittelrheintal,wolf,16,4,4,1,,,,
+631,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Falkenstein Köniz Wolfsstufe 1,wolf,19,4,4,1,,,,
+632,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Falkenstein Köniz Wolfsstufe 2,wolf,32,4,4,1,,,,
+633,mova - Pfadistufe / branche Eclais / branca esploratori: Falkenstein Köniz Aventurin,pfadi,24,4,4,1,,,,
+634,mova - Wolfsstufe / branche Louveteaux / branca lupetti: 1 Wolfsstufe,wolf,12,0,0,0,,,,kein Bauholz
+635,"mova - Pfadistufe: DWB, AR, AB, LKWE",pfadi,41,8,8,2,,,,
+636,"mova - Wolfsstufe: DWB, AR, AB, LKWE",wolf,30,4,4,1,,,,
+637,mova - Pfadistufe / branche Eclais / branca esploratori: 2 Pfadistufe,pfadi,30,8,8,2,,,,
+639,mova - Pfadistufe Waldchutz,pfadi,20,4,4,1,,,,
+641,mova - Pfadistufe / branche Eclais / branca esploratori: Falkenstein Köniz Phönix,pfadi,20,4,4,1,,,,
+642,mova - Pfadistufe / branche Eclais / branca esploratori: Falkenstein Köniz Kognoi,pfadi,38,8,8,2,,,,
+643,mova - Pfadistufe / branche Eclais / branca esploratori: Falkenstein Köniz Karuba,pfadi,24,4,4,1,,,,
+644,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Menzingen,pfadi,19,4,4,1,,,,
+645,mova - Pfadistufe / branche Eclais / branca esploratori: BS - Racine 2.2: Bandi,pfadi,100,16,16,4,,,,
+646,"mova - Piostufe / branche Picos / branca pionieri: Pio Menzingen, Zytturm, Morgarten",pio,33,8,8,2,,,,
+647,mova - Piostufe / branche Picos / branca pionieri: Falkenstein Köniz CoRa21/22,pio,24,4,4,1,,,,
+648,mova - Pfadistufe / branche Eclais / branca esploratori: BS - Racine 2.3: Satarma,pfadi,95,16,16,4,,,,
+649,mova - Pfadistufe / branche Eclais / branca esploratori: 02_Pfadistufe,pfadi,15,4,4,1,,,,
+650,mova - Pfadistufe: Pfadi Thierstein Breitenbach,pfadi,18,9,5,1,0,0,0,individuelle Bestellung
+651,mova - Wolfsstufe / branche Louveteaux / branca lupetti: 01_Wolfsstufe,wolf,13,4,4,1,,,,
+653,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Wölf Menzingen,wolf,15,4,4,1,,,,
+654,mova - branca pionieri: Posto Pionieri Scout Medio Vedeggio,pio,12,4,4,1,,,,
+655,mova - Wolfsstufe: Wangen-Kleinlützel-Speuz,wolf,31,0,0,0,,,,kein Bauholz
+656,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadistufe,pfadi,50,8,8,2,,,,
+657,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Wolfsstufe Pfäffikon ZH,wolf,12,0,0,1,0,0,0,individuelle Bestellung
+658,mova - Pfadistufe / branche Eclais / branca esploratori: Lubra,pfadi,14,4,4,1,0,0,1,individuelle Bestellung
+660,mova - Piostufe / branche Picos / branca pionieri: Piostufe,pio,13,4,4,1,,,,
+661,mova - Wolfsstufe : Akropolis / Konstantinopel / Garibaldi,wolf,15,1,0,0,0,0,0,individuelle Bestellung
+662,mova - Pfadistufe: Allenwinden,pfadi,19,4,4,1,,,,
+663,mova - Pfadistufe / branche Eclais / branca esploratori: Burgdorf-Turmfalken,pfadi,24,8,6,2,1,0,0,individuelle Bestellung
+664,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadistufe,pfadi,12,4,4,1,,,,
+665,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Langenthal Dreilinden,wolf,32,4,4,1,,,,
+666,mova - Wolfsstufe / branche Louveteaux / branca lupetti: 1 Wolfsstufe,wolf,22,4,4,1,,,,
+667,mova - Pfadistufe / branche Eclais / branca esploratori: 2 Pfadistufe,pfadi,26,8,8,2,,,,
+668,mova - Piostufe / branche Picos / branca pionieri: 3 Piostufe,pio,15,4,4,1,,,,
+669,mova - Wolfsstufe / branche Louveteaux / branca lupetti: VENNES Wolfstufe,wolf,12,4,4,1,,,,
+670,mova - Wolfsstufe / branche Picos / branca pionieri: Friesen-Wölfe,wolf,50,6,6,2,4,0,0,individuelle Bestellung
+671,mova - Pfadistufe / branche Eclais / branca esploratori: Friesen Pfadis,pfadi,68,6,6,2,4,0,0,individuelle Bestellung
+673,mova - Pfadistufe / branche Eclais / branca esploratori: Aarewacht,pfadi,27,8,8,2,0,1,0,individuelle Bestellung
+674,mova / Branche Louveteaux / BS - Racine 1.1: Biermann,wolf,50,4,4,1,,,,
+675,mova - Piostufe / branche Picos / branca pionieri: Korps Uto,pio,34,8,8,2,,,,
+676,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Aarewacht und Andromeda,wolf,18,4,4,1,,,,
+677,mova - Branches Louvettes - BS - Racine 1.2: Logoz,wolf,50,4,4,1,,,,
+679,mova - louveteaux : louvetaux-vettes Sacré-Cœur,wolf,19,4,4,1,,,,
+680,mova - Éclaireur : Éclaireurs-euses Sacré-Cœur,pfadi,19,4,4,1,,,,
+681,mova - branche Eclais : Marfaux,pfadi,14,4,4,1,,,,
+682,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Rychestei,pfadi,32,8,8,2,2,0,0,individuelle Bestellung
+683,mova - Wolfsstufe / branche Louveteaux / branca lupetti: St. Urs Solothurn,wolf,18,4,4,1,,,,
+684,"mova - Piostufe / branche Picos / branca pionieri Pfadibewegung Schweiz/ Groupe de la Harpe , Scouts de Rolle-Aubonne",pio,12,4,4,1,,,,
+685,mova - PTA / SMT / SOC: St. Urs Solothurn,pta,9,4,4,1,,,,
+686,"mova - Piostufe / branche Picos / branca pionieri: Groupe scout de la Veveyse, St-Raphaël, Scouts Bullois, Scouts de Domdidier, Les Troubadours, St-Pierre/Ste-Thérèse",pio,64,12,12,3,1,4,0,individuelle Bestellung
+687,mova - Pfadistufe: Pfadi Don Bosco Schattdorf,pfadi,19,4,4,1,,,,
+689,mova - Wolfsstufe: Pfadi Wyfelde,wolf,15,4,4,1,,,,
+691,mova - Pfadistufe / branche Eclais / branca esploratori: VENNES Pfadistufe,pfadi,18,10,4,1,1,0,0,individuelle Bestellung
+692,mova - branche Eclais : Troupe Bagnes,pfadi,13,4,4,1,,,,
+693,mova - Pfadistufe / branche Eclais / branca esploratori: Ho-Tü & Sirius,pfadi,24,4,4,1,,,,
+694,mova - Branche PiCos : Bagnes/Fully/Monthey/Collombey/Savièse/Flanthey,pio,27,8,8,2,,,,
+695,mova - Wolfsstufe: Pfadi Phoenix Chur & Pfadi Amedes Ems,wolf,18,4,4,2,0,0,0,individuelle Bestellung
+696,mova - Wolfsstufe / branche Louveteaux / branca lupetti: 1 Wölfli: Pfadi Schwyz und Rothenthurm,wolf,12,4,4,1,,,,
+697,mova - Pfadistufe: Stärn vo Buebebärg,pfadi,17,4,4,1,,,,
+698,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Wyfelde,pfadi,14,8,6,2,1,0,0,individuelle Bestellung
+699,mova - Pfadistufe: Pfadi Phoenix Chur & Pfadi Amedes Ems,pfadi,20,4,4,2,0,0,0,individuelle Bestellung
+733,mova - Louveteaux : Meute Bagnes-Vollèges,wolf,18,4,4,1,,,,
+734,mova - Pfadistufe: Meitlipfadi Altdorf,pfadi,34,0,0,0,2,0,1,individuelle Bestellung
+735,"mova - Wolfsstufe / branche Louveteaux / branca lupetti: Flambeaux Béroche, Neuchâtel, Suchy 3 rivières",wolf,32,4,4,1,,,,
+736,mova - Pfadistufe / branche Eclais / branca esploratori: 2 Pfadi: Pfadi Schwyz,pfadi,16,8,8,2,1,0,0,individuelle Bestellung
+737,mova - Piostufe / branche Picos / branca pionieri: Posto Pionieri Scout Mnedrisio,pio,12,4,4,1,,,,
+738,"mova - branche Louveteaux : Marfaux, La Colombe & St-Louis",wolf,16,0,0,0,,,,kein Bauholz
+739,"mova - Pfadistufe / branche Eclais / branca esploratori: Flambeaux Béroche, Neuchâtel, Suchy 3 Rivières",pfadi,22,4,4,1,,,,
+740,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Pfad Walter Tell,wolf,15,4,4,1,,,,
+741,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Walter Tell,pfadi,22,6,2,1,3,0,0,individuelle Bestellung
+742,mova - branche éclais: Section Troupe SMSP,pfadi,63,12,12,3,0,6,0,individuelle Bestellung
+743,mova - PiCo - BS - Racine 3.1 Mahjoub,pio,60,12,12,3,,,,
+745,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Pfadi St. Mauritius,wolf,20,2,2,0,1,0,0,individuelle Bestellung
+746,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi St. Mauritius,pfadi,35,8,8,2,,,,
+747,"mova - Pfadistufe / branche Eclais / branca esploratori: Montbenon, CVL",pfadi,20,4,4,1,,,,
+748,"mova - Pfadistufe / branche Eclais / branca esploratori: Montbenon, 4V DKR DRL PVL",pfadi,52,15,15,4,0,0,0,individuelle Bestellung
+750,mova - Branche Eclais : Troupe François-Naville & Section Soeur-Claire,pfadi,14,4,4,1,,,,
+752,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Schwarzenburg und Pfadi Riedburg,pfadi,30,0,14,4,0,0,0,individuelle Bestellung
+753,mova - Pfadistufe : Dübelstein / Kreta,pfadi,22,0,5,5,2,0,0,individuelle Bestellung
+754,mova - branche Eclais : section Voie Lactée,pfadi,35,8,8,2,,,,
+757,mova - Piostufe / branche Picos / branca pionieri: Poste Unzia,pio,12,4,4,1,,,,
+758,mova - branche: éclaireu.se.r.s de Domdidier,pfadi,26,8,9,2,0,0,0,individuelle Bestellung
+760,mova - Wolfsstufe / branche Louveteaux / branca lupetti: MCh,wolf,27,4,4,1,,,,
+761,mova - Pfadistufe: Seepfadi,pfadi,55,12,12,3,,,,
+762,mova - Pfadistufe / branche Eclais / branca esploratori: Troupe St-Nicolas de Flüe,pfadi,12,0,15,0,0,0,0,individuelle Bestellung
+763,mova - Wolfsstufe: Seepfadi,wolf,20,4,4,1,,,,
+764,"mova - Wolfsstufe / branche Louveteaux / branca lupetti: Montbenon, SJ RKA",wolf,20,4,4,1,,,,
+765,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Wildert,wolf,16,4,4,1,,,,
+766,mova - Wolfsstufe: Pfadi Wart Wolfsstufe,wolf,13,0,0,0,,,,kein Bauholz
+767,mova - Pfadistufe: Pfadi Wart,pfadi,41,7,0,2,0,0,0,individuelle Bestellung
+768,mova - Pfadistufe / branche Eclais / branca esploratori: Wildert,pfadi,33,6,6,1,3,0,0,individuelle Bestellung
+772,mova - Pfadistufe: Pfadi St. Josef,pfadi,43,16,0,1,2,0,0,individuelle Bestellung
+773,mova - Pfadistufe: Pfadi Wangen und Speuz,pfadi,26,8,8,2,,,,
+774,mova - Pfadistufe / branche Eclais / branca esploratori: St. Urs,pfadi,35,8,8,2,,,,
+775,mova - Piostufe / branche Picos / branca pionieri: St. Urs,pio,14,4,4,1,,,,
+776,mova - Wolfsstufe / branche Louveteaux / branca lupetti: St. Urs,wolf,26,0,0,0,,,,kein Bauholz
+777,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Pfadi Stadt Solothurn,wolf,13,4,4,1,,,,
+778,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Stadt Solothurn,pfadi,33,8,8,2,,,,
+780,mova - Pfadistufe / branche Eclais / branca esploratori: Wärrenfels,pfadi,26,8,8,2,,,,
+781,mova - Piostufe / branche Picos / branca pionieri: Pfadi Stadt Solothurn,pio,14,4,4,1,,,,
+782,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Wärrenfels/Burgdorf/Frienisberg,wolf,32,4,4,1,,,,
+783,mova - Piostufe / branche Picos / branca pionieri: Poste Anita Conti / Groupe Nouveau Monde,pio,12,4,4,1,,,,
+784,ASJ PiCaFé 2021,pio,22,8,4,1,0,0,0,individuelle Bestellung
+785,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Corps Schwyzerstärn (1),wolf,22,4,4,1,,,,
+786,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Visp,pfadi,17,4,4,1,,,,
+787,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Corps Schwyzerstärn (2),wolf,21,4,4,1,,,,
+788,mova - Piostufe / branche Picos / branca pionieri: Corps Schwyzerstärn,pio,34,9,8,2,1,0,0,individuelle Bestellung
+791,mova - Wolfsstufe: Wölfe URO,wolf,16,4,4,1,,,,
+792,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Quivelda Weinfelden,wolf,25,4,4,1,,,,
+793,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Chinchilla,wolf,26,4,6,1,0,0,0,individuelle Bestellung
+794,mova - Pfadistufe: Pfadi URO,pfadi,21,4,4,1,,,,
+796,mova - Wolfsstufe: St. Anton,wolf,12,4,4,1,,,,
+797,mova - Pfadistufe: St. Anton,pfadi,17,4,4,1,,,,
+798,mova - Piostufe: St. Anton,pio,12,4,4,1,,,,
+799,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Meute Kipling/Collonge-Bellerive,wolf,23,4,4,1,,,,
+801,mova -branche Eclais : St-Louis &Colombe,pfadi,17,4,4,1,,,,
+802,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Wolfsrudel Seldwyla,wolf,26,4,4,1,,,,
+803,mova - Piostufe / branche Picos / branca pionieri: 3B Foucauld Marly,pio,14,4,4,1,,,,
+804,mova - Louveteaux : Chitichet,wolf,28,4,4,1,,,,
+806,mova - Eclais : Chitichet,pfadi,19,4,4,1,,,,
+807,mova - Piostufe: Pfadi Eibu,pio,12,4,4,1,,,,
+808,mova - Pfadistufe: Pfadi Eibu,pfadi,19,14,22,6,1,0,0,individuelle Bestellung
+810,mova - Pfadistufe / branche Eclais / branca esploratori: Troupe Antarès,pfadi,24,6,4,1,2,0,0,individuelle Bestellung
+812,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Pfadi St. Marien Bern und Schwarzenbrug,wolf,30,8,0,0,0,0,0,individuelle Bestellung
+813,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi St. Marien Bern,pfadi,24,8,6,1,2,0,0,individuelle Bestellung
+816,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Rudenz & Sioni,wolf,14,4,4,1,,,,
+817,mova - Wolfsstufe / branche Louveteaux / branca lupetti: 02 - Wolfsstufe,wolf,25,4,4,1,,,,
+818,mova - branche: Lutins et Louveteaux de Domdidier,wolf,15,4,4,1,,,,
+819,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Meute Kotik,wolf,12,4,4,1,,,,
+820,mova - Pfadistufe / branche Eclais / branca esploratori: 03 - Pfadistufe,pfadi,16,4,4,1,,,,
+821,mova - Pfadistufe / branche Eclais / branca esploratori: StaLöBa,pfadi,15,4,4,1,,,,
+825,"mova - Picos : Bouquetin, Chimborazo, Trois Etoiles, Tichodrome",pio,28,8,8,2,,,,
+826,Mova - 1B: Flbx Fr-PdE-Vv,wolf,59,4,4,1,,,,
+827,Mova - 2B: Fr-PdH-Vv,pfadi,80,16,16,4,,,,
+828,mova - Pfadi Uzwil Heimat & Lido: 1 Wolfsstufe,wolf,12,4,4,1,,,,
+829,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Pfadi Chelle-Heureka & Pfadi Muur,wolf,17,4,4,1,,,,
+830,mova - Pfadistufe / branche Eclais / branca esploratori: Langenthal Dreilinden,pfadi,27,8,8,2,,,,
+831,mova - Pfadi Uzwil Heimat & Lido: 2 Pfadistufe,pfadi,12,4,4,1,,,,
+832,mova - Pfadistufe: Pfadi Chelle-Heureka & Pfadi Muur,pfadi,61,12,12,3,,,,
+835,mova - Pfadistufe / branche Eclais / branca esploratori: HA,pfadi,28,8,8,2,,,,
+837,mova - Pfadistufe / branche Eclais / branca esploratori: Trupp Lohengrin,pfadi,19,0,0,0,,,,kein Bauholz
+838,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Brugg,pfadi,30,1,2,4,0,0,0,individuelle Bestellung
+839,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi St.Luzius Walenstadt,pfadi,23,0,0,1,1,0,0,individuelle Bestellung
+840,mova - Pfadistufe / branche Eclais / branca esploratori: Trp NDLR et St-Michel,pfadi,34,8,8,2,1,0,0,individuelle Bestellung
+841,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadistufe,pfadi,11,0,0,0,2,0,0,individuelle Bestellung
+842,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Pfadi MH,wolf,18,4,4,1,,,,
+843,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi MH,pfadi,20,4,4,1,,,,
+844,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Wolfschlucht,pfadi,35,8,8,2,,,,
+845,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Olymp,pfadi,80,3,5,8,1,0,0,individuelle Bestellung
+846,mova - Pfadistufe / branche Eclais / branca esploratori: Noirmont-Gland,pfadi,14,4,4,4,2,0,0,individuelle Bestellung
+847,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Meute Akela,wolf,13,0,0,0,,,,kein Bauholz
+848,mova - Piostufe / branche Picos / branca pionieri: HA,pio,19,4,4,1,,,,
+849,mova -branche Picos i: St-Louis / Baslac / Perchettes,pio,24,4,4,1,,,,
+850,mova - Piostufe: Pio Isenringen Beckenried,pio,17,4,4,1,,,,
+851,mova -branche Eclais : La Croisée - Troupe du Combron,pfadi,24,4,4,1,,,,
+852,mova - branche Eclais : La Croisée - Troupe des Flamants,pfadi,36,8,8,2,,,,
+853,mova - Wolfsstufe / branche Louveteaux / branca lupetti: MSJ,wolf,16,4,4,1,,,,
+854,mova - branche Eclais: Troupe de Covatannaz,pfadi,15,4,4,1,,,,
+855,mova - Wolfsstufe Hünenberg (ZG),wolf,15,0,0,0,,,,kein Bauholz
+856,"MOVA - Flambeaux 2B Chaux-de-Fonds, Courtételle, Orvin & Tramelan",pfadi,32,0,0,1,1,0,0,individuelle Bestellung
+857,mova - Piostufe Rickenbach Bäseris,pio,24,4,4,1,,,,
+858,mova - branche Picos : Brigade romande des Flambeaux,pio,69,12,12,3,,,,
+859,"mova - Louveteaux - Petit-Flambeaux CdF, Courtételle, Orvin et Tramelan",wolf,31,4,4,1,,,,
+860,mova - branche Louveteaux : Flambeaux La Côte et Nyon,wolf,50,4,4,1,,,,
+861,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Wolfsstufe St.Ulrich 8953,wolf,12,4,4,1,,,,
+862,mova - branche Eclais : Flambeaux La Côte et Nyon,pfadi,60,12,12,3,,,,
+863,mova - Wolfsstufe: Pfadi Ballwil und Pfadi Eibu,wolf,24,4,4,1,,,,
+864,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadistufe St.Ulrich 8953,pfadi,27,8,4,1,1,0,0,individuelle Bestellung
+866,mova - branche Louveteaux: Meute Henry Dunant,wolf,14,4,4,1,,,,
+867,mova - branche Eclais : Trois Raisses,pfadi,12,4,4,1,,,,
+869,mova - branche Picos : Trois Raisses,pio,14,4,4,1,,,,
+870,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Scout Lugano 1915,wolf,17,4,4,1,,,,
+872,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Meute SMSP,wolf,20,4,4,1,,,,
+873,mova - Pfadistufe / branche Eclais / branca esploratori: Lugano,pfadi,25,15,0,0,2,0,0,individuelle Bestellung
+874,mova - Piostufe: Pfadi am Pfannenstil/die olympischen,pio,50,8,12,2,3,0,1,individuelle Bestellung
+875,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Seeonee,wolf,24,4,4,1,,,,
+876,mova - Pfadistufe / branche Eclais / branca esploratori: Troupe des Bonosis,pfadi,39,8,8,2,,,,
+877,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Meute des Ecureuils,wolf,43,0,0,0,,,,kein Bauholz
+878,mova - Pfadistufe / branche Eclais / branca esploratori: Gutenfels,pfadi,28,8,8,2,,,,
+879,mova - PTA / SMT / SOC: Dorneck,pta,10,4,4,1,,,,
+880,mova - Piostufe / branche Picos / branca pionieri: Poste des Budzons et Horizon,pio,13,4,4,1,,,,
+881,mova - branche Eclais : Troupe du comte Vert,pfadi,15,8,6,1,0,0,1,individuelle Bestellung
+882,mova - Pfadistufe / branche Eclais / branca esploratori: TSHD,pfadi,40,4,2,2,0,0,0,individuelle Bestellung
+883,mova - branche Louveteaux : meute du Comte Vert,wolf,6,4,4,1,,,,
+884,mova - Piostufe / branche Picos / branca pionieri: Bezirk Sense Seeland,pio,59,12,12,3,,,,
+885,mova - Pfadistufe: Pfadi Linth,pfadi,12,4,4,1,,,,
+888,mova - Wolfsstufe / branche Louveteaux / branca lupetti,wolf,25,4,4,1,,,,
+889,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Covatannaz,wolf,14,0,0,0,,,,kein Bauholz
+890,mova - branche Louveteaux : Meute Flambeaux,wolf,20,0,0,0,,,,kein Bauholz
+891,mova - Piostufe: Pfadi Eschenbach und Pfadi Linth Uznach,pio,22,4,4,1,,,,
+893,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Pfadi Paprika,wolf,19,4,4,1,,,,
+895,mova - Pfadistufe / branche Eclais / branca esploratori: TS St-Bernard-3-Chêne,pfadi,23,8,9,2,0,0,0,individuelle Bestellung
+896,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Pfadi Horw,wolf,13,10,8,0,2,0,0,individuelle Bestellung
+897,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Horw,pfadi,16,20,6,2,4,1,0,individuelle Bestellung
+900,mova Wolfsstufe: Pfadi Höfe,wolf,21,0,0,0,,,,kein Bauholz
+901,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi,pfadi,11,4,4,1,,,,
+902,mova - Wolfsstufe / branche Louveteaux / branca lupetti: St-Raphaël Romont,wolf,34,4,4,1,,,,
+903,mova - Pfadistufe / branche Eclais / branca esploratori: St-Raphaël Romont,pfadi,38,8,8,2,,,,
+905,mova - Pfadistufe / branche Eclais / branca esploratori: Reparto Esploratori,pfadi,17,4,4,1,,,,
+907,mova - PTA / SMT / SOC: SOC Sezione Roccia della Pace,pta,11,0,8,0,0,0,0,individuelle Bestellung
+908,"mova - Piostufe / branche Picos / branca pionieri: Lägern, Wildert",pio,17,4,4,1,,,,
+909,mova - Pfadistufe / branche Eclais / branca esploratori: Les Perchettes,pfadi,20,4,4,1,,,,
+911,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Les Perchettes,wolf,12,4,4,1,,,,
+912,mova - Pfadistufe / branche Eclais / branca esploratori: Baslac,pfadi,19,5,8,1,0,0,0,individuelle Bestellung
+914,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Les Troubadours,wolf,15,0,0,0,,,,kein Bauholz
+915,mova - Pfadistufe / branche Eclais / branca esploratori: Les Troubadours,pfadi,33,8,8,2,,,,
+917,mova - Pfadistufe / branche Eclais / branca esploratori: Morgarten,pfadi,29,8,8,2,,,,
+918,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Morgarten,wolf,26,4,4,1,,,,
+919,mova - Wolfsstufe Winkelried,wolf,27,4,4,1,,,,
+920,mova - Pfadistufe Winkelried,pfadi,51,0,0,3,1,0,0,individuelle Bestellung
+921,mova - branche Eclais: V-s-G,pfadi,25,4,4,1,,,,
+923,mova - branche Louveteaux: V-s-G,wolf,21,4,4,1,,,,
+924,mova - PTA / SMT / SOC: PTA Kunterbunt Unterwalden,pta,14,4,4,1,,,,
+925,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Ital Reding,wolf,18,4,4,1,,,,
+927,mova - Pfadistufe / branche Eclais / branca esploratori: Falkenstein,pfadi,44,8,8,2,,,,
+929,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Falkenstein,wolf,17,4,4,1,,,,
+930,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Meute Delta,wolf,12,4,4,1,,,,
+932,mova - Pfadistufe / branche Eclais / branca esploratori: St-Georges (Monthey),pfadi,17,4,4,1,,,,
+933,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Meute Wato,wolf,30,4,4,1,,,,
+934,mova - Pfadistufe / branche Eclais / branca esploratori: Ballwil,pfadi,27,35,9,18,2,0,0,individuelle Bestellung
+935,mova - Piostufe / branche Picos / branca pionieri: Ballwil & Schirmerturm,pio,15,8,9,0,3,0,0,individuelle Bestellung
+936,mova - Pfadistufe / branche Eclais / branca esploratori: St-Félix (Saxon),pfadi,19,4,4,1,,,,
+938,mova - Pfadistufe / branche Eclais / branca esploratori: 2. Pfadistufe,pfadi,74,12,12,3,,,,
+939,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Rappenstein,pfadi,30,8,8,2,,,,
+940,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Buebepfadi Säuliamt,wolf,41,4,4,1,,,,
+941,mova - Pfadistufe / branche Eclais / branca esploratori: Buebepfadi Säuliamt,pfadi,57,4,4,1,2,0,0,individuelle Bestellung
+942,mova - Pfadistufe Andromeda Murten,pfadi,19,4,4,1,,,,
+943,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Pulverturm,pfadi,68,4,16,30,11,0,1,individuelle Bestellung
+944,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Wölfli Pulverturm,wolf,29,4,4,1,,,,
+945,mova - Pfadistufe / branche Eclais / branca esploratori: Gambarogno & Moesano,pfadi,12,4,4,1,,,,
+947,mova - Pfadistufe / branche Eclais / branca esploratori: Heidegg,pfadi,19,0,0,0,,,,kein Bauholz
+948,mova - Piostufe / branche Picos / branca pionieri: Heidegg,pio,12,4,4,1,,,,
+949,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Durandal,wolf,16,4,4,1,,,,
+950,mova - Pfadistufe / branche Eclais / branca esploratori: Durandal,pfadi,27,8,8,2,,,,
+951,mova - Piostufe / branche Picos / branca pionieri: Durandal,pio,12,4,4,1,,,,
+955,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Wölfe,wolf,16,0,0,0,,,,kein Bauholz
+956,mova - Wolfsstufe / branche Louveteaux / branca lupetti: La Roselière,wolf,20,4,4,1,,,,
+957,mova - Pfadistufe / branche Eclais / branca esploratori: La Roselière,pfadi,22,4,4,1,,,,
+960,mova - Wolfsstufe / branche Louveteaux / branca lupetti: 1. Stufe,wolf,12,4,4,1,,,,
+961,mova - Pfadistufe / branche Eclais / branca esploratori: 2. Stufe,pfadi,12,4,4,1,,,,
+962,mova - Pfadistufe / branche Eclais / branca esploratori: Groupe scout de la Menthue,pfadi,15,4,4,1,,,,
+963,mova - Pfadistufe / branche Eclais / branca esploratori: Wendelsee,pfadi,23,4,4,1,,,,
+964,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Wendelsee,wolf,13,4,4,1,,,,
+965,BuLa 2021 Wolfstufe,wolf,10,4,4,1,,,,
+968,BuLa 2021 Pfadistufe,pfadi,17,4,4,1,,,,
+969,mova - Piostufe / branche Picos / branca pionieri: Pfadi Olten & Pfadi Grenchen & Pfadi Phoenix,pio,17,14,4,1,0,0,0,individuelle Bestellung
+970,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Hallwyl,pfadi,12,14,5,0,10,0,0,individuelle Bestellung
+972,mova - Pfadistufe / branche Eclais / branca esploratori: Peter & Paul,pfadi,57,4,4,0,2,0,4,individuelle Bestellung
+973,mova - Piostufe / branche Picos / branca pionieri: Peter & Paul,pio,25,4,4,4,2,0,0,individuelle Bestellung
+974,mova - Piostufe / branche Picos / branca pionieri: Bi-Pi,pio,12,4,4,1,,,,
+976,mova - branche Eclais : TCh,pfadi,35,8,8,2,,,,
+977,mova - Piostufe / branche Picos / branca pionieri: Breganzona,pio,15,4,4,1,,,,
+978,mova - Wolfsstufe / Heidegg/Rikitiki Tavi/ Wölfli,wolf,12,4,4,1,,,,
+979,Stiftung für junge Auslandschweizer,pfadi,24,4,4,1,2,0,0,individuelle Bestellung
+982,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Pfadi Maurena,wolf,26,4,4,1,,,,
+983,mova - Pfadistufe / branche Eclais / branca esploratori: Pfadi Maurena,pfadi,29,6,4,2,1,0,0,individuelle Bestellung
+984,mova - Piostufe / branche Picos / branca pionieri: Pfadi Maurena,pio,12,4,4,1,,,,
+988,mova - Piostufe / Wald - Bauma / Paprika / Rudolf Brun,pio,40,8,8,2,0,0,1,individuelle Bestellung
+989,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Seppel,wolf,22,8,4,0,0,0,0,individuelle Bestellung
+990,mova - Pfadistufe / branche Eclais / branca esploratori: Seppel,pfadi,95,24,12,8,4,0,0,individuelle Bestellung
+996,mova - Piostufe / branche Picos / branca pionieri: Pfadi Füürpfiil,pio,23,4,4,1,,,,
+1004,mova - Piostufe: Pfadi Möhlin,pio,12,4,4,1,,,,
+1011,mova - Piostufe / branche Picos / branca pionieri: Viganello,pio,17,4,4,1,,,,
+1012,mova - Wolfsstufe / branche Louveteaux / branca lupetti: Pfadi Seebuebe Goldach,wolf,25,4,4,1,,,,
