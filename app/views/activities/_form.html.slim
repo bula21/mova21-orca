@@ -103,9 +103,11 @@
     .card-body
       .form-inputs
         .row
-          .col-6
+          .col-4
             = f.input :rover_shift_prio
-          .col-6
+          .col-4
             = f.input :rover_job_id
+          .col-4
+            = f.input :required_rovers
   .actions.mt-3
     = f.submit t('buttons.save'), class: 'btn btn-primary'

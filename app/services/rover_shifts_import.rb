@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class RoverShiftsImport
-  UKULA_TIME = /\w+,\s*(?<d>\d+)\.(?<m>\d+)\.\s+(?<H_start>\d+):(?<M_start>\d+)\s+\-\s+(?<H_end>\d+):(?<M_end>\d+)/
+  UKULA_TIME = /\w+,\s*(?<d>\d+)\.(?<m>\d+)\.\s+(?<H_start>\d+):(?<M_start>\d+)
+                \s+-\s+(?<H_end>\d+):(?<M_end>\d+)/.freeze
   UKULA_YEAR = 2022
   require 'roo'
 
@@ -59,26 +60,26 @@ class RoverShiftsImport
       break if row[1..18].all?(&:blank?)
 
       build_rover_shift(row, i)
+      assign_rovers(row)
     end
   end
 
-  # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
-  def build_rover_shift(row, index)
+  def build_rover_shift(row, _index)
     time = parse_time(row[1])
-    shift_id = row[15].to_i
-
+    shift_id = get_shift_id(row)
     @items[shift_id] ||= RoverShift.find_or_initialize_by(id: shift_id).tap do |rover_shift|
       rover_shift.assign_attributes(job_id: row[17].to_i, starts_at: time&.begin, ends_at: time&.end)
       rover_shift.rovers = []
     end
-    @items[shift_id].tap do |rover_shift| 
-      rover_shift.rovers <<  row[16].to_i
-    end
-  rescue StandardError => e
-    @errors.push "Row #{index + 2}: Invalid values in row"
-    # ErrorLogger.capture_exception(e, level: 'warning')
   end
-  # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
+
+  def get_shift_id(row)
+    row[15].to_i
+  end
+
+  def assign_rovers(row)
+    @items[get_shift_id(row)].rovers << row[16].to_i
+  end
 
   def parse_time(ugly_ukula_string)
     time_match = ugly_ukula_string.match(UKULA_TIME)

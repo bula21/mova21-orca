@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 2022_07_19_212048) do
     t.bigint "activity_category_id"
     t.integer "rover_shift_prio"
     t.integer "rover_job_id"
+    t.integer "required_rovers"
     t.index ["activity_category_id"], name: "index_activities_on_activity_category_id"
     t.index ["transport_location_id"], name: "index_activities_on_transport_location_id"
   end
