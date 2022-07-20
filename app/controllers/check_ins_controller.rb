@@ -2,7 +2,7 @@
 
 class CheckInsController < ApplicationController
   load_and_authorize_resource class: CheckpointUnit, only: :confirm
-  load_and_authorize_resource :unit, except: [:unit_autocomplete]
+  load_and_authorize_resource :unit, except: %i[unit_autocomplete staff]
 
   def index
     @checkpoint_units = @unit.checkpoint_units
@@ -15,6 +15,11 @@ class CheckInsController < ApplicationController
     end
 
     redirect_to unit_check_ins_path(@unit)
+  end
+
+  def staff
+    current_user.update(role_checkin_checkout: true) if params[:token] == ENV.fetch('STAFF_TOKEN')
+    redirect_to admin_check_ins_path
   end
 
   def confirm_depending_checkpoint_units!

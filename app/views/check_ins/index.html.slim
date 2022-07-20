@@ -9,7 +9,11 @@ p = link_to unit_path(@unit.to_param), class: 'mb-4' do
       h3 = checkpoint_unit.checkpoint.title
       p == checkpoint_unit.checkpoint.description_check_in
       = render 'shared/checkpoints/checkpoint_attributes', checkpoint_unit: checkpoint_unit
-      - if !checkpoint_unit.confirmed_check_in?
+      - if !checkpoint_unit.checked_in_at.present?
+        .alert.bg-warning-light.text-center.col-md-6
+          h3 = t('checkpoints.not_picked_up')
+          i.fas.fa-sync.fa-3x.fa-spin
+      - elsif !checkpoint_unit.confirmed_check_in?
         .alert.bg-warning-light.text-center.col-md-6
           h3 = t('checkpoints.waiting_for_confirmation')
           i.fas.fa-sync.fa-3x.fa-spin

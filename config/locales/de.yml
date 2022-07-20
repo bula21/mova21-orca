@@ -65,6 +65,10 @@ de:
         transport: Personenanzahl inkl. Leitung
         transport_ids: Transport IDs
         utilization: Auslastung
+      checkpoint:
+        description_check_in: Beschreibung Check-In
+        description_check_out: Beschreibung Check-Out
+        title: Name
       checkpoint_unit:
         check_in_by: Check-In durchgeführt von
         check_out_by: Check-In durchgeführt von
@@ -381,6 +385,7 @@ de:
       zurückgesetzt und die Einheit muss nochmals bestätigen.
     next_unit: Nächste Einheit
     not_checked_in: Der Check-Out kann erst nach bestätigtem Check-In erfolgen.
+    not_picked_up: Noch nicht abgeholt
     not_returned: Noch nicht zurückgegeben
     waiting_for_confirmation: Warte auf Bestätigung
   date:
@@ -605,6 +610,7 @@ de:
     activity: Katalog
     activity_category: Kategorie
     activity_execution: Programm
+    checkpoint: Check-In / Check-Out
     fixed_event: Grobprogramm
     language:
       de: DE

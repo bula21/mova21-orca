@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { sessions: 'sessions', omniauth_callbacks: 'omniauth_callbacks' }
 
   get 'health/check'
+  get 'check_ins/staff', to: 'check_ins#staff'
 
   devise_scope :user do
     get 'login', to: 'sessions#new', as: :new_user_session
@@ -56,6 +57,7 @@ Rails.application.routes.draw do
       delete :attachment, to: 'fixed_events#delete_attachment', on: :member
     end
     resources :tags
+    resources :checkpoints, only: %i[index edit update]
     resources :stufen
 
     resources :check_ins, only: %i[index show] do
