@@ -2,11 +2,11 @@
 
 class RoverShiftsImport
   UKULA_TIME = /\w+,\s*(?<d>\d+)\.(?<m>\d+)\.\s+(?<H_start>\d+):(?<M_start>\d+)
-                \s+-\s+(?<H_end>\d+):(?<M_end>\d+)/.freeze
+                \s+-\s+(?<H_end>\d+):(?<M_end>\d+)/i.freeze
   UKULA_YEAR = 2022
   require 'roo'
 
-  attr_accessor :file, :errors
+  attr_accessor :file, :errors, :job_id, :items
 
   def initialize(file:, job_id:)
     @file = file
@@ -29,7 +29,7 @@ class RoverShiftsImport
 
   def on_success
     @items.values.each(&:save!)
-    true
+    RoverShiftMatcher.new(@job_id).call
   end
 
   def on_error

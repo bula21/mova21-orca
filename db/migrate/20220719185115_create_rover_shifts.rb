@@ -10,6 +10,9 @@ class CreateRoverShifts < ActiveRecord::Migration[6.1]
       t.timestamps
     end
     
-    create_join_table :activity_executions, :rover_shifts, table_name: :activity_execution_rover_shifts
+    create_table :activity_execution_rover_shifts do |t|
+      t.references :activity_execution, foreign_key: true
+      t.references :rover_shift, foreign_key: true
+    end
   end
 end

@@ -101,9 +101,11 @@ ActiveRecord::Schema.define(version: 2022_07_19_212048) do
     t.index ["ancestry"], name: "index_activity_categories_on_ancestry"
   end
 
-  create_table "activity_execution_rover_shifts", id: false, force: :cascade do |t|
-    t.bigint "activity_execution_id", null: false
-    t.bigint "rover_shift_id", null: false
+  create_table "activity_execution_rover_shifts", force: :cascade do |t|
+    t.bigint "activity_execution_id"
+    t.bigint "rover_shift_id"
+    t.index ["activity_execution_id"], name: "index_activity_execution_rover_shifts_on_activity_execution_id"
+    t.index ["rover_shift_id"], name: "index_activity_execution_rover_shifts_on_rover_shift_id"
   end
 
   create_table "activity_executions", force: :cascade do |t|
@@ -460,6 +462,8 @@ ActiveRecord::Schema.define(version: 2022_07_19_212048) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "activities", "activity_categories"
   add_foreign_key "activities", "transport_locations"
+  add_foreign_key "activity_execution_rover_shifts", "activity_executions"
+  add_foreign_key "activity_execution_rover_shifts", "rover_shifts"
   add_foreign_key "activity_executions", "activities"
   add_foreign_key "activity_executions", "fields"
   add_foreign_key "checkpoint_units", "checkpoints"

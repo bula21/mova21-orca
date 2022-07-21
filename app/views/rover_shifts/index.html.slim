@@ -1,37 +1,42 @@
 .h1 = t('rover_shifts.index.title')
 
+= simple_form_for('', url: rover_shifts_path, method: :GET) do |f|
+  = f.input :job_id, input_html: { value: params[:job_id] }
+
 = link_to(t('buttons.create'), new_rover_shift_path, class: 'btn btn-primary mb-3') if can?(:create, RoverShift)
 
 .row 
   .col-md-9
-    .table-responsive
-      table.table
-        thead
-          tr
-            th = RoverShift.human_attribute_name(:id)
-            th = RoverShift.human_attribute_name(:at)
-            th = RoverShift.human_attribute_name(:rover_count)
-            th = RoverShift.human_attribute_name(:activity_executions)
-            th
-        tbody
-          - @rover_shifts&.each do |rover_shift|
+      - if @rover_shifts.any?
+      .table-responsive
+        table.table
+          thead
             tr
-              td = rover_shift.id
-              td
-                = rover_shift.starts_at && l(rover_shift.starts_at)
-                br
-                = rover_shift.ends_at && l(rover_shift.ends_at)
-              td = rover_shift.rover_count
-              td 
-                ul
-                  - rover_shift.activity_executions.each do |ae|
-                    li= link_to activity_execution_path(ae) do 
-                      = "Prio #{ae.activity.rover_shift_prio}, #{ae.activity.required_rovers}P.: #{ae} "
+              th = RoverShift.human_attribute_name(:id)
+              th = RoverShift.human_attribute_name(:at)
+              th = RoverShift.human_attribute_name(:rover_count)
+              th = RoverShift.human_attribute_name(:activity_executions)
+              th
+          tbody
+            - @rover_shifts&.each do |rover_shift|
+              tr
+                td = rover_shift.id
+                td
+                  = rover_shift.starts_at && l(rover_shift.starts_at)
+                  br
+                  = rover_shift.ends_at && l(rover_shift.ends_at)
+                td = rover_shift.rover_count
+                td 
+                  ul.list-unstyled.sortable-list[data-group='rover_shifts' data-rover-shift-id=rover_shift.to_param]
+                    - rover_shift.activity_executions.each do |ae|
+                      li[data-sort-callback-url=update_dependent_rover_shifts_path data-activity-execution-id=ae.to_param data-rover-shift-id=rover_shift.to_param]= link_to activity_execution_path(ae) do 
+                        = render partial: 'activity_execution', locals: { activity_execution: ae }
 
   .col-md-3
-    ul.sortable-list
-      - @activity_executions.each do |ae|
-        - next if ae.rover_shifts.any?
-        
-        li= link_to activity_execution_path(ae) do 
-          = "Prio #{ae.activity.rover_shift_prio}, #{ae.activity.required_rovers}P.: #{ae} "
+    - if @activity_executions.present?
+      ul.list-unstyled.sortable-list[data-group='rover_shifts']
+        - @activity_executions.each do |ae|
+          - next if ae.rover_shifts.any?
+          
+          li[data-sort-callback-url=update_dependent_rover_shifts_path data-activity-execution-id=ae.to_param]
+            = render partial: 'activity_execution', locals: { activity_execution: ae }

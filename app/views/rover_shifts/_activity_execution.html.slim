@@ -1,0 +1,5 @@
+- color = activity_execution.spot.color || 'gray'
+= link_to activity_execution_path(activity_execution) do 
+	.badge.rounded-pill.me-2[style="background-color: #{color}"]= activity_execution.activity.rover_shift_prio
+	span.me-2= activity_execution
+	span.me-2= "(#{activity_execution.activity.required_rovers}P.)"
