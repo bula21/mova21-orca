@@ -703,6 +703,9 @@ fr:
     new:
       title: Créer des participants
   pre_text: Pre texte
+  rover_shifts:
+    index:
+      title: Couches Rover
   simple_form:
     confirm_unsaved: 'Attention: toutes les modifications vont être perdue. Etes-vous
       sûr.e.s?'

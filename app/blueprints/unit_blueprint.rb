@@ -17,7 +17,13 @@ class UnitBlueprint < Blueprinter::Base
     association :unit_activity_executions, blueprint: UnitActivityExecutionBlueprint
   end
 
-  field :week_nr, &:week_nr
+  # rubocop:disable Style/SymbolProc
+  field :week_nr do |unit|
+    unit.week_nr
+  end
 
-  field :district_nr, &:district_nr
+  field :district_nr do |unit|
+    unit.district_nr
+  end
+  # rubocop:enable Style/SymbolProc
 end

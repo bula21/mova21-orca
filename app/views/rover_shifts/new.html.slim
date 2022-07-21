@@ -1,0 +1,13 @@
+.row.mt-4
+  .col-md-6
+    .card
+      .card-body
+        - if @import&.errors.present?
+          ul.alert.alert-danger
+            - @import.errors.each do |error|
+              li = error
+
+        = simple_form_for :import, url: rover_shifts_path, method: :post do |f|
+          = f.input :job_id
+          = f.input :file, as: :file
+          = f.submit t('buttons.upload'), class: 'btn btn-secondary'

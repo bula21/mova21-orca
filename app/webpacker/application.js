@@ -10,7 +10,7 @@ import Sortable from 'sortablejs';
 import { Tooltip } from 'bootstrap';
 import { Application } from "@hotwired/stimulus"
 import { definitionsFromContext } from "@hotwired/stimulus-webpack-helpers"
-import {Autocomplete} from "stimulus-autocomplete";
+import { Autocomplete } from "stimulus-autocomplete";
 
 import * as Sentry from "@sentry/browser";
 Sentry.init(window.sentryConfig);
@@ -56,9 +56,10 @@ function setupDragSort(el) {
   if (!el) return;
 
   Sortable.create(el, {
+    group: el.dataset.group ?? '',
     onEnd: (event) => {
       fetch(event.item.dataset.sortCallbackUrl, {
-        body: JSON.stringify({ index: event.newIndex }),
+        body: JSON.stringify({ index: event.newIndex, item: event.item.dataset, from: event.from.dataset, to: event.to.dataset }),
         method: 'PATCH',
         redirect: 'manual',
         headers: {

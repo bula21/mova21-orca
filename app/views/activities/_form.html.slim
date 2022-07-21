@@ -98,5 +98,16 @@
                               method: :delete,
                               class: 'btn btn-sm btn-secondary float-end',
                               data: { confirm: t('simple_form.confirm_unsaved') }
+
+  .card.mt-3
+    .card-body
+      .form-inputs
+        .row
+          .col-4
+            = f.input :rover_shift_prio
+          .col-4
+            = f.input :rover_job_id
+          .col-4
+            = f.input :required_rovers
   .actions.mt-3
     = f.submit t('buttons.save'), class: 'btn btn-primary'
