@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 class RoverShiftsImport
-  UKULA_TIME = /\w+,\s*(?<d>\d+)\.(?<m>\d+)\.\s+(?<H_start>\d+):(?<M_start>\d+)
-                \s+-\s+(?<H_end>\d+):(?<M_end>\d+)/i.freeze
+  # rubocop:disable Layout/LineLength
+  UKULA_TIME = /\w+,\s*(?<d>\d+)\.(?<m>\d+)\.\s+(?<H_start>\d+):(?<M_start>\d+)\s+-\s+(?<H_end>\d+):(?<M_end>\d+)/.freeze
+  # rubocop:enable Layout/LineLength
   UKULA_YEAR = 2022
   require 'roo'
 
@@ -50,14 +51,14 @@ class RoverShiftsImport
   end
 
   def delete_items
-    RoverShift.where(job_id: @job_id).destroy_all
+    RoverShift.where(job_id: job_id).destroy_all
   end
 
   def import_items
     spreadsheet = open_spreadsheet
     (2..spreadsheet.last_row).map do |i|
       row = spreadsheet.row(i)
-      break if row[1..18].all?(&:blank?)
+      break if row[1..16].all?(&:blank?)
 
       build_rover_shift(row, i)
       assign_rovers(row)
@@ -68,7 +69,7 @@ class RoverShiftsImport
     time = parse_time(row[1])
     shift_id = get_shift_id(row)
     @items[shift_id] ||= RoverShift.find_or_initialize_by(id: shift_id).tap do |rover_shift|
-      rover_shift.assign_attributes(job_id: row[17].to_i, starts_at: time&.begin, ends_at: time&.end)
+      rover_shift.assign_attributes(job_id: job_id, starts_at: time&.begin, ends_at: time&.end)
       rover_shift.rovers = []
     end
   end
