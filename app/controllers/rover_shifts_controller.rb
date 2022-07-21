@@ -9,7 +9,7 @@ class RoverShiftsController < ApplicationController
     @rover_shifts = @job_id ? @rover_shifts.where(job_id: @job_id) : RoverShift.none
     return unless @job_id
 
-    @activity_executions = ActivityExecution.ordered_by_rover_shift_prio.joins(:activity)
+    @activity_executions = ActivityExecution.ordered_by_rover_shift_prio
                                             .where(activities: { rover_job_id: @job_id })
   end
 
