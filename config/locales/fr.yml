@@ -247,6 +247,7 @@ fr:
         les documents (sinon les modifications seront perdues).'
     index:
       title: Activités
+      numberOfAssignedUnits: Nombre d'unités assignées
     new:
       title: Créer une nouvelle activité
     show:

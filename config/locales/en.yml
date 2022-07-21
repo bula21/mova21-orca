@@ -228,6 +228,7 @@ en:
         (Änderungen gehen sonst verloren)'
     index:
       title: Aktivitäten
+      numberOfAssignedUnits: Number of assigned units
     new:
       title: Neue Aktivität erfassen
     show:

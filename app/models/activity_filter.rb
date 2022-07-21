@@ -8,6 +8,7 @@ class ActivityFilter < ApplicationFilter
   attribute :stufe_recommended
   attribute :unit
   attribute :min_participants_count
+  attribute :number_of_units
 
   filter :min_participants_count do |activities|
     count = min_participants_count.to_i
@@ -54,5 +55,12 @@ class ActivityFilter < ApplicationFilter
     next if stufe_recommended.blank?
 
     activities.joins(:stufe_recommended).where(activities_stufen_recommended: { stufe_id: stufe_recommended })
+  end
+
+  filter :number_of_units do |activities|
+    next if number_of_units.blank?
+
+    outer_join_activity_execution_and_unit_activity_execution(activity_executions)
+      .having(UnitActivityExecution.arel_table[:id].count.gteq(:number_of_units))
   end
 end

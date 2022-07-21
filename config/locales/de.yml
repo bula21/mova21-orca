@@ -244,6 +244,7 @@ de:
         (Änderungen gehen sonst verloren)'
     index:
       title: Aktivitäten
+      numberOfAssignedUnits: Anzahl zugewiesener Einheiten
     new:
       title: Neue Aktivität erfassen
     show:
