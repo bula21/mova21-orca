@@ -60,6 +60,7 @@ Rails.application.routes.draw do
     resources :checkpoints, only: %i[index edit update]
     resources :stufen
 
+    resources :checkpoint_units_export, only: %i[index]
     resources :check_ins, only: %i[index show] do
       get :unit_autocomplete, on: :collection
       post :redirect_to_check, on: :member
