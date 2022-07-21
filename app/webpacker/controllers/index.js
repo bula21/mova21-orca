@@ -5,5 +5,7 @@
 import { application } from "./application"
 
 import CampFilterController from "./filter_controller.js"
+import NumericalityController from "./numericality_controller.js"
 
 application.register("camp-filter", CampFilterController)
+application.register("numericality", NumericalityController)

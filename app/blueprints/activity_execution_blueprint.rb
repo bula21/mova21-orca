@@ -14,6 +14,9 @@ class ActivityExecutionBlueprint < Blueprinter::Base
   field :languages do |activity_execution|
     available_languages_for_frontend(activity_execution)
   end
+  field :unit_activity_executions_count do |activity_execution|
+    activity_execution.unit_activity_executions.count
+  end
 
   view :with_activity do
     association :activity, blueprint: ActivityBlueprint
