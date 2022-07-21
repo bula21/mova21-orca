@@ -37,6 +37,6 @@ class ApplicationController < ActionController::Base
   def user_for_paper_trail
     return if current_user.blank?
 
-    "##{current_user.id} #{current_user.full_name}"
+    current_user.id.to_s
   end
 end
