@@ -19,6 +19,7 @@ interface ActivityExecutionRequest {
         transport: boolean;
         mixed_languages: boolean;
         transport_ids: string;
+        unit_activity_executions_count: number;
     }
 }
 
@@ -34,7 +35,8 @@ export interface ActivityExecution {
     transport: boolean;
     mixed_languages: boolean;
     transport_ids: string;
-    activity?: Activity
+    activity?: Activity;
+    unit_activity_executions_count: number;
 }
 
 interface FixedEvent {
@@ -69,6 +71,35 @@ interface UnsuccessfulBackendResponse {
 
 function isSuccessfulBackendResponse<T>(backendResponse: SuccessfulBackendResponse<T> | UnsuccessfulBackendResponse): backendResponse is SuccessfulBackendResponse<T> {
     return (backendResponse as SuccessfulBackendResponse<T>).success
+}
+
+function hexColorToRFB(hex: string, transparency: number): string {
+    // convert hex to RGBA to be able to add transparency
+    var c;
+    if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)){
+        c= hex.substring(1).split('');
+        if(c.length== 3){
+            c= [c[0], c[0], c[1], c[1], c[2], c[2]];
+        }
+        c= '0x'+c.join('');
+        return 'rgba('+[(c>>16)&255, (c>>8)&255, c&255].join(',')+', ' + transparency + ')';
+    }
+
+    throw new Error('Bad Hex');
+}
+
+function convertColorBasedOnAssignment(hex: string, unitCount: number): string{
+    // set transparency if no unit assigned
+    if (unitCount > 0) {
+        return hex
+    } else {
+        // default color
+        if(!hex) {
+            hex = "#3788D8"
+        }
+    
+        return hexColorToRFB(hex, 0.3)        
+    }
 }
 
 export type BackendResponse<T> = SuccessfulBackendResponse<T> | UnsuccessfulBackendResponse;
@@ -106,6 +137,7 @@ export interface NonFixedFullCalendarEvent {
         mixedLanguages?: boolean;
         transportIds?: string;
         activity?: Activity;
+        unit_activity_executions_count?: number
     }
     backgroundColor: string;
     textColor: string;
@@ -163,8 +195,9 @@ export class ActivityExecutionService {
                 mixedLanguages: activityExexution.mixed_languages,
                 transportIds: activityExexution.transport_ids,
                 fixedEvent: false,
+                unit_activity_executions_count: activityExexution.unit_activity_executions_count
             },
-            backgroundColor: activityExexution.spot.color,
+            backgroundColor: convertColorBasedOnAssignment(activityExexution.spot.color, activityExexution.unit_activity_executions_count),
             textColor: calculateContrastColor(activityExexution.spot.color)
         };
         if (activityExexution.title) {
@@ -219,7 +252,8 @@ export class ActivityExecutionService {
                 amount_participants: fullCalendarEvent.extendedProps.amountParticipants,
                 transport: fullCalendarEvent.extendedProps.hasTransport,
                 mixed_languages: fullCalendarEvent.extendedProps.mixedLanguages,
-                transport_ids: fullCalendarEvent.extendedProps.transportIds
+                transport_ids: fullCalendarEvent.extendedProps.transportIds,
+                unit_activity_executions_count: fullCalendarEvent.extendedProps.unit_activity_executions_count
             }
         };
         return JSON.stringify(request);
