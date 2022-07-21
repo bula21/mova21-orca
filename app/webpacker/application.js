@@ -13,7 +13,6 @@ import { definitionsFromContext } from "@hotwired/stimulus-webpack-helpers"
 import { Autocomplete } from "stimulus-autocomplete";
 
 import * as Sentry from "@sentry/browser";
-import { debug } from 'webpack';
 Sentry.init(window.sentryConfig);
 require.context('./images', true);
 window.Sentry = Sentry;
