@@ -7,7 +7,7 @@
 = simple_form_for checkpoint_unit, url: form_url do |f|
   = f.input :check_out_ok
   = f.input :notes_check_out
-  = f.input :cost_in_chf
+  = f.input :cost_in_chf, input_html: { data: { controller: 'numericality', action: 'change->numericality#clearInvalidValues blur->numericality#clearInvalidValues' } }
   = f.input :checked_out_on_paper
 
   = f.submit t('buttons.confirm'), class: 'btn w-100 btn-secondary'
