@@ -8,7 +8,7 @@ class ActivityExecutionRoverShift < ApplicationRecord
     return unless activity_execution_id.present?
 
     create!(activity_execution_id: activity_execution_id, rover_shift_id: new_rover_shift_id) if new_rover_shift_id
-    return unless prev_rover_shift_id
+    return unless prev_rover_shift_id.present?
 
     where(activity_execution_id: activity_execution_id, rover_shift_id: prev_rover_shift_id).destroy_all
   end
