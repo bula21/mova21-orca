@@ -11,6 +11,10 @@ class RoverShiftsController < ApplicationController
 
     @activity_executions = ActivityExecution.ordered_by_rover_shift_prio
                                             .where(activities: { rover_job_id: @job_id })
+    respond_to do |format|
+      format.html
+      format.csv { send_exported_data(@rover_shifts) }
+    end
   end
 
   def new; end
@@ -33,5 +37,12 @@ class RoverShiftsController < ApplicationController
     ActivityExecutionRoverShift.replace(prev_rover_shift_id, new_rover_shift_id, activity_execution_id)
 
     head :no_content
+  end
+
+  private
+
+  def send_exported_data(rover_shifts)
+    exporter = RoverShiftsExporter.new(rover_shifts)
+    send_data exporter.export, filename: exporter.filename
   end
 end
