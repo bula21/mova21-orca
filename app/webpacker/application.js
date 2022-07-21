@@ -59,7 +59,6 @@ function setupDragSort(el) {
   Sortable.create(el, {
     group: el.dataset.group ?? '',
     onEnd: (event) => {
-      debugger
       fetch(event.item.dataset.sortCallbackUrl, {
         body: JSON.stringify({ index: event.newIndex, item: event.item.dataset, from: event.from.dataset, to: event.to.dataset }),
         method: 'PATCH',
