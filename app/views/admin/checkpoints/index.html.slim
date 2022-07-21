@@ -1,5 +1,9 @@
 h1.h1 = t('nav.checkpoint')
 
+= link_to admin_checkpoint_units_export_index_path(format: :csv), class: 'btn btn-primary mb-3 shadow-sm' do
+  i.fas.fa-file-export
+  =< t('buttons.export_csv')
+
 .table-responsive
   table.table
     thead
