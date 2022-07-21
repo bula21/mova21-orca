@@ -698,7 +698,7 @@ it:
   pre_text: Pre text
   rover_shifts:
     index:
-      title: Rover Schichten
+      title: Strati del Rover
   simple_form:
     confirm_unsaved: 'Attenzione: Tutte le modifiche andranno perse! Vuoi continuare?'
     hints:
