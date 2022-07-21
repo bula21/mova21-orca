@@ -113,6 +113,7 @@ class Ability # rubocop:disable Metrics/ClassLength
     can :manage, ActivityCategory
     can :manage, Spot
     can :manage, Field
+    can :manage, RoverShift
     can :read, Unit
     can :read, UnitActivityExecution
     can :read, UnitActivity
