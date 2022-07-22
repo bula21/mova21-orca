@@ -696,6 +696,9 @@ de:
     new:
       title: Teilnehmende erstellen
   pre_text: Pre text
+  rover_shifts:
+    index:
+      title: Rover Schichten
   simple_form:
     confirm_unsaved: 'Achtung: Alle nicht gespeicherten Änderungen gehen verloren.
       Sind Sie sicher?'
