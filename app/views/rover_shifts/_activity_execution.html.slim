@@ -1,5 +1,7 @@
 - color = activity_execution.spot.color || 'gray'
 = link_to activity_execution_path(activity_execution) do 
-	.badge.rounded-pill.me-2[style="background-color: #{color}"]= activity_execution.activity.rover_shift_prio
-	span.me-2= activity_execution
-	span.me-2= "(#{activity_execution.activity.required_rovers}P.)"
+		.badge.rounded-pill.me-2[style="background-color: #{color}"]= activity_execution.activity.rover_shift_prio
+		span.me-2= activity_execution
+		small
+			span.me-2= "#{activity_execution.unit_activity_executions.count} #{Unit.model_name.human(count: activity_execution.unit_activity_executions.count)} / #{activity_execution.headcount}P"
+			span.me-2= "(#{activity_execution.activity.required_rovers} Rover)"
