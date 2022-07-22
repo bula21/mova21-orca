@@ -10,6 +10,7 @@ class Ability # rubocop:disable Metrics/ClassLength
 
     admin_user_permissions(user) if user.role_admin?
     checkin_checkout_user_permissions(user) if user.role_checkin_checkout?
+    checkin_checkout_user_admin_permissions(user) if user.role_checkin_checkout_admin?
     tn_administration_user_permissions(user) if user.role_tn_administration?
     programm_user_permissions(user) if user.role_programm?
     read_unit_user_permissions(user) if user.role_read_unit?
@@ -32,6 +33,11 @@ class Ability # rubocop:disable Metrics/ClassLength
   def checkin_checkout_user_permissions(_user)
     can %i[list read redirect_to_check checkpoint_unit_autocomplete unit_autocomplete], Checkpoint
     can %i[create update read], CheckpointUnit
+  end
+
+  def checkin_checkout_user_admin_permissions(_user)
+    can %i[manage], Checkpoint
+    can %i[manage], CheckpointUnit
   end
 
   def midata_user_permissions(user)
