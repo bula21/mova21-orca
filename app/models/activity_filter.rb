@@ -60,7 +60,7 @@ class ActivityFilter < ApplicationFilter
   filter :number_of_units do |activities|
     next if number_of_units.blank?
 
-    join_activity_activity_execution_and_unit_activity_execution(activities)
+    join_activity_execution_unit(activities)
       .having(UnitActivityExecution.arel_table[:id].count.gteq(number_of_units))
   end
 
@@ -74,17 +74,27 @@ class ActivityFilter < ApplicationFilter
     ActivityExecution.arel_table
   end
 
-  def join_activity_activity_execution_and_unit_activity_execution(relation)
-    activity_execution = ActivityExecution.arel_table
-    join_on_activity_execution = arel_table_activity.create_on(activity_execution[:activity_id].eq(arel_table_activity[:id]))
+  def arel_table_unit_activity_execution
+    UnitActivityExecution.arel_table
+  end
 
-    unit_activity_execution = UnitActivityExecution.arel_table
-    join_on_unity_activity_execution = arel_table_activity_execution.create_on(unit_activity_execution[:activity_execution_id].eq(arel_table_activity_execution[:id]))
+  def join_activity_execution
+    activity_execution = arel_table_activity_execution
+    arel_table_activity.create_on(activity_execution[:activity_id]
+                        .eq(arel_table_activity[:id]))
+  end
 
-    relation.joins(arel_table_activity.create_join(activity_execution, join_on_activity_execution,
+  def join_unit_activity_execution
+    unit_activity_execution = arel_table_unit_activity_execution
+    arel_table_activity_execution.create_on(unit_activity_execution[:activity_execution_id]
+                                  .eq(arel_table_activity_execution[:id]))
+  end
+
+  def join_activity_execution_unit(relation)
+    relation.joins(arel_table_activity.create_join(arel_table_activity_execution, join_activity_execution,
                                                    Arel::Nodes::InnerJoin))
-            .joins(arel_table_activity_execution.create_join(unit_activity_execution, join_on_unity_activity_execution,
-                                                             Arel::Nodes::InnerJoin))
+            .joins(arel_table_activity_execution.create_join(arel_table_unit_activity_execution,
+                                                             join_unit_activity_execution, Arel::Nodes::InnerJoin))
             .group(arel_table_activity[:id])
   end
 end

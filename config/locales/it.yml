@@ -247,6 +247,7 @@ it:
       warning: 'Attenzione: Occorre salvare il formulario prima di modificare i documenti,
         altrimenti le modifiche andranno perse.'
     index:
+      numberOfAssignedUnits: Numero di unità assegnate
       title: Attività
     new:
       title: Creare una nuova attività

@@ -246,8 +246,8 @@ fr:
       warning: 'Attention : Sauvegardez d''abord le formulaire et modifiez ensuite
         les documents (sinon les modifications seront perdues).'
     index:
-      title: Activités
       numberOfAssignedUnits: Nombre d'unités assignées
+      title: Activités
     new:
       title: Créer une nouvelle activité
     show:
