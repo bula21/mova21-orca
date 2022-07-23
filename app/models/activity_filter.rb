@@ -60,7 +60,29 @@ class ActivityFilter < ApplicationFilter
   filter :number_of_units do |activities|
     next if number_of_units.blank?
 
-    outer_join_activity_execution_and_unit_activity_execution(activity_executions)
-      .having(UnitActivityExecution.arel_table[:id].count.gteq(:number_of_units))
+    join_activity_activity_execution_and_unit_activity_execution(activities)
+      .having(UnitActivityExecution.arel_table[:id].count.gteq(number_of_units))
+  end
+
+  private
+
+  def arel_table_activity
+    Activity.arel_table
+  end
+
+  def arel_table_activity_execution
+    ActivityExecution.arel_table
+  end
+
+  def join_activity_activity_execution_and_unit_activity_execution(relation)
+    activity_execution = ActivityExecution.arel_table
+    join_on_activity_execution = arel_table_activity.create_on(activity_execution[:activity_id].eq(arel_table_activity[:id]))
+
+    unit_activity_execution = UnitActivityExecution.arel_table
+    join_on_unity_activity_execution = arel_table_activity_execution.create_on(unit_activity_execution[:activity_execution_id].eq(arel_table_activity_execution[:id]))
+
+    relation.joins(arel_table_activity.create_join(activity_execution, join_on_activity_execution, Arel::Nodes::InnerJoin))
+            .joins(arel_table_activity_execution.create_join(unit_activity_execution, join_on_unity_activity_execution, Arel::Nodes::InnerJoin))
+            .group(arel_table_activity[:id])
   end
 end

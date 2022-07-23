@@ -30,13 +30,13 @@
             - if @filter.text&.size&.>(2)
               .badge.rounded-pill.bg-info.ms-2= 1
         li.nav-item.me-2.mb-2
-          = link_to reset_url, class: 'btn btn-outline-secondary', role: :pill, title: t('buttons.reset')
-            i.fa.fa-undo
-        li.nav-item.me-2.mb-2
           a.btn.btn-outline-secondary[data-bs-toggle="pill" href="#filter-number_of_units" role="pill"]
             = t('activity.index.numberOfAssignedUnits')
             - if @filter.number_of_units.presence
               .badge.rounded-pill.bg-info.ms-2= 1
+        li.nav-item.me-2.mb-2
+          = link_to reset_url, class: 'btn btn-outline-secondary', role: :pill, title: t('buttons.reset')
+            i.fa.fa-undo
 
     .col-12.order-sm-3
       .tab-content
