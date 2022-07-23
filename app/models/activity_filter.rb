@@ -81,8 +81,10 @@ class ActivityFilter < ApplicationFilter
     unit_activity_execution = UnitActivityExecution.arel_table
     join_on_unity_activity_execution = arel_table_activity_execution.create_on(unit_activity_execution[:activity_execution_id].eq(arel_table_activity_execution[:id]))
 
-    relation.joins(arel_table_activity.create_join(activity_execution, join_on_activity_execution, Arel::Nodes::InnerJoin))
-            .joins(arel_table_activity_execution.create_join(unit_activity_execution, join_on_unity_activity_execution, Arel::Nodes::InnerJoin))
+    relation.joins(arel_table_activity.create_join(activity_execution, join_on_activity_execution,
+                                                   Arel::Nodes::InnerJoin))
+            .joins(arel_table_activity_execution.create_join(unit_activity_execution, join_on_unity_activity_execution,
+                                                             Arel::Nodes::InnerJoin))
             .group(arel_table_activity[:id])
   end
 end
