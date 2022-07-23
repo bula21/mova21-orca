@@ -13,6 +13,7 @@ services:
       SEND_PROGRAM_CHANGE_LOG_NOTIFICATIONS: "true"
       APP_BASE_URL: ${APP_BASE_URL}
       DATABASE_URL: ${DATABASE_URL}
+      LOG_LEVEL: ${LOG_LEVEL}
       RAILS_ENV: production
       MEMCACHE_SERVERS: memcached
       SECRET_KEY_BASE: ${SECRET_KEY_BASE}
