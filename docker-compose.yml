@@ -24,6 +24,7 @@ services:
       SEND_PROGRAM_CHANGE_LOG_NOTIFICATIONS: "true"
       RUBYOPT: "-W:no-deprecated -W:no-experimental"
       APP_BASE_URL: http://orca.localhost:3000
+      LOG_LEVEL: ${LOG_LEVEL}
       MEMCACHE_SERVERS: memcached
       SECRET_KEY_BASE: "secret"
       OIDC_CLIENT_ID: ${OIDC_CLIENT_ID}
