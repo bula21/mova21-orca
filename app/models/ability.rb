@@ -10,8 +10,9 @@ class Ability # rubocop:disable Metrics/ClassLength
 
     admin_user_permissions(user) if user.role_admin?
     checkin_checkout_user_permissions(user) if user.role_checkin_checkout?
-    checkin_checkout_user_admin_permissions(user) if user.role_checkin_checkout_admin?
+    checkin_checkout_user_manager_permissions(user) if user.role_checkin_checkout_manager?
     tn_administration_user_permissions(user) if user.role_tn_administration?
+    tn_reader_permissions(user) if user.role_tn_reader?
     programm_user_permissions(user) if user.role_programm?
     read_unit_user_permissions(user) if user.role_read_unit?
     allocation_user_permissions(user) if user.role_allocation?
@@ -35,7 +36,7 @@ class Ability # rubocop:disable Metrics/ClassLength
     can %i[create update read], CheckpointUnit
   end
 
-  def checkin_checkout_user_admin_permissions(_user)
+  def checkin_checkout_user_manager_permissions(_user)
     can %i[manage], Checkpoint
     can %i[manage], CheckpointUnit
   end
@@ -107,6 +108,13 @@ class Ability # rubocop:disable Metrics/ClassLength
     can :manage, Checkpoint
     can :manage, CheckpointUnit
     can :read, UnitActivityExecution
+  end
+
+  def tn_reader_permissions(_user)
+    can :read, Unit
+    can :read, ParticipantUnit
+    can :read, Participant
+    can :read, Leader
   end
 
   def programm_user_permissions(_user)
