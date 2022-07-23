@@ -1,9 +1,12 @@
 .h1 = t('rover_shifts.index.title')
 
 = simple_form_for('', url: rover_shifts_path, method: :GET) do |f|
-  = f.input :job_id, input_html: { value: params[:job_id] }
+  = f.input :job_id, input_html: { value: @job_id }
 
-= link_to(t('buttons.create'), new_rover_shift_path, class: 'btn btn-primary mb-3') if can?(:create, RoverShift)
+=<> link_to(t('buttons.create'), new_rover_shift_path, class: 'btn btn-primary mb-3') if can?(:create, RoverShift)
+=<> link_to(rover_shifts_path(job_id: @job_id, format: :csv), class: 'btn btn-primary mb-3 shadow-sm') do
+  i.fas.fa-file-export
+  =< t('buttons.export_csv')
 
 .row 
   .col-md-9

@@ -22,9 +22,9 @@ class RoverShiftMatcher
 
   def find_best_match_for(activity_execution)
     @rover_shifts.shuffle.each do |rover_shift|
-      # required_rovers = activity_execution.activity.required_rovers
-      # next unless required_rovers&.positive?
-      # next unless activity_execution.unit_activity_executions.any?
+      required_rovers = activity_execution.activity.required_rovers
+      next unless required_rovers&.positive?
+      next unless activity_execution.unit_activity_executions.any?
       next unless rover_shift.at.cover?(activity_execution.at)
 
       # next unless rover_shift.rover_idle_count >= required_rovers
