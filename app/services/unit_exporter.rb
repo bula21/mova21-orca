@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class UnitExporter
+  include BaseExporter
+
   attr_reader :units
 
   HEADERS = %w[
@@ -55,7 +57,7 @@ class UnitExporter
   end
 
   def export
-    "\uFEFF" + CSV.generate(headers: true) do |csv| do |csv|
+    BOM_UTF_8_CHARACTER + CSV.generate(headers: true) do |csv|
       csv << (HEADERS + ParticipantUnit::MIDATA_EVENT_CAMP_ROLES.keys)
       @units.each { |unit| csv << unit_attributes(unit) }
     end

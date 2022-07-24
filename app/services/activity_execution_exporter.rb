@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ActivityExecutionExporter
+  include BaseExporter
+
   attr_reader :activity_executions
 
   HEADERS = %w[
@@ -25,7 +27,7 @@ class ActivityExecutionExporter
   end
 
   def export
-    "\uFEFF" + CSV.generate(headers: true) do |csv| do |csv|
+    BOM_UTF_8_CHARACTER + CSV.generate(headers: true) do |csv|
       csv << HEADERS
       @activity_executions.each { |activity_execution| csv << attributes(activity_execution) }
     end
@@ -60,5 +62,6 @@ class ActivityExecutionExporter
       end
     end
   end
+
   # rubocop: enable Metrics/MethodLength, Metrics/AbcSize
 end
