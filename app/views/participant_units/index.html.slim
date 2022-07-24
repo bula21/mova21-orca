@@ -11,6 +11,7 @@
     thead
       tr
         th
+        th = Participant.human_attribute_name(:id)
         th = Participant.human_attribute_name(:full_name)
         th  = Participant.human_attribute_name(:birthdate)
         / th = Participant.human_attribute_name(:address) # maybe later (Stand: 2.08.2020)
@@ -29,6 +30,7 @@
             - if incomplete
               span.badge.badge-danger.p-2
                 i.fas.fa-exclamation-triangle
+          td = participant.id
           td = participant.full_name
           td
             = participant.birthdate.present? ? I18n.l(participant.birthdate) : '-'

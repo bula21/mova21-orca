@@ -10,13 +10,15 @@ class Ability # rubocop:disable Metrics/ClassLength
 
     admin_user_permissions(user) if user.role_admin?
     checkin_checkout_user_permissions(user) if user.role_checkin_checkout?
+    checkin_checkout_manager_user_permissions(user) if user.role_checkin_checkout_manager?
     tn_administration_user_permissions(user) if user.role_tn_administration?
+    tn_reader_user_permissions(user) if user.role_tn_reader?
     programm_user_permissions(user) if user.role_programm?
     read_unit_user_permissions(user) if user.role_read_unit?
     allocation_user_permissions(user) if user.role_allocation?
     editor_user_permissions(user) if user.role_editor?
     midata_user_permissions(user) if user.midata_user?
-    role_unit_communication_permissions(user) if user.role_unit_communication?
+    role_unit_communication_user_permissions(user) if user.role_unit_communication?
     external_user_permissions(user) unless user.midata_user?
   end
   # rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
@@ -32,6 +34,11 @@ class Ability # rubocop:disable Metrics/ClassLength
   def checkin_checkout_user_permissions(_user)
     can %i[list read redirect_to_check checkpoint_unit_autocomplete unit_autocomplete], Checkpoint
     can %i[create update read], CheckpointUnit
+  end
+
+  def checkin_checkout_manager_user_permissions(_user)
+    can %i[manage], Checkpoint
+    can %i[manage], CheckpointUnit
   end
 
   def midata_user_permissions(user)
@@ -103,6 +110,13 @@ class Ability # rubocop:disable Metrics/ClassLength
     can :read, UnitActivityExecution
   end
 
+  def tn_reader_user_permissions(_user)
+    can :read, Unit
+    can :read, ParticipantUnit
+    can :read, Participant
+    can :read, Leader
+  end
+
   def programm_user_permissions(_user)
     can :manage, Activity
     can :manage, ActivityExecution
@@ -138,7 +152,7 @@ class Ability # rubocop:disable Metrics/ClassLength
     can :update, Activity
   end
 
-  def role_unit_communication_permissions(_user)
+  def role_unit_communication_user_permissions(_user)
     can %i[read emails], Unit
   end
 end

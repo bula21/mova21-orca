@@ -16,6 +16,7 @@ fr:
       activity_filter:
         activity_category: Catégorie
         languages: Langues
+        number_of_units: Nombre d'unités assignées
         stufe_recommended: Branches recommandées
         tags: Tags
         text: Texte
