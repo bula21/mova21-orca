@@ -55,7 +55,7 @@ class UnitExporter
   end
 
   def export
-    CSV.generate(headers: true, encoding: 'ISO-8859-1') do |csv|
+    CSV.generate(headers: true) do |csv|
       csv << (HEADERS + ParticipantUnit::MIDATA_EVENT_CAMP_ROLES.keys)
       @units.each { |unit| csv << unit_attributes(unit) }
     end
