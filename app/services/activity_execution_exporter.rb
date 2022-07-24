@@ -25,7 +25,7 @@ class ActivityExecutionExporter
   end
 
   def export
-    CSV.generate(headers: true, encoding: 'ISO-8859-1') do |csv|
+    "\uFEFF" + CSV.generate(headers: true) do |csv| do |csv|
       csv << HEADERS
       @activity_executions.each { |activity_execution| csv << attributes(activity_execution) }
     end

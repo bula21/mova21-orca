@@ -23,7 +23,7 @@ class RoverShiftsExporter
 
   # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
   def export
-    CSV.generate(headers: true, encoding: 'ISO-8859-1') do |csv|
+    "\uFEFF" + CSV.generate(headers: true) do |csv| do |csv|
       csv << HEADERS
       ActivityExecutionRoverShift.where(rover_shift: @rover_shifts).each do |activity_execution_rover_shift|
         csv << activity_execution_rover_shift.instance_eval do
