@@ -20,41 +20,42 @@
         =< t('.show_unit_activity_executions')
 = render 'progressbar', unit: @unit
 - if can?(:read, @unit)
-  .card.shadow-sm.mt-3.position-relative.p-2.pt-3.pb-3.p-md-4
-    h3.mb-4.font-weight-bold = t('units.show.basic_infos')
+  - if can?(:read_documents, @unit)
+    .card.shadow-sm.mt-3.position-relative.p-2.pt-3.pb-3.p-md-4
+      h3.mb-4.font-weight-bold = t('units.show.basic_infos')
 
-    .row
-      .col-md-6
-        dt = t('activerecord.attributes.unit.al')
-        dd = @unit.al&.full_name
-        - if @unit.coach
-          dt = t('activerecord.attributes.unit.coach')
-          dd = @unit.coach&.full_name
-      .col-md-6
-        dt = t('activerecord.attributes.unit.lagerleiter')
-        dd
-          address
-            = @unit.lagerleiter.full_name
-            br
-            = @unit.lagerleiter.address
-            br
-            = @unit.lagerleiter.zip_code
-            =< @unit.lagerleiter.town
-            =< @unit.lagerleiter.country
-          = link_to_if @unit.lagerleiter.phone_number, @unit.lagerleiter.phone_number,
-                  "tel:#{@unit.lagerleiter.phone_number}"
-          - if @unit.lagerleiter.phone_number.present?
-            br
-          = mail_to @unit.lagerleiter.email, @unit.lagerleiter.email
+      .row
+        .col-md-6
+          dt = t('activerecord.attributes.unit.al')
+          dd = @unit.al&.full_name
+          - if @unit.coach
+            dt = t('activerecord.attributes.unit.coach')
+            dd = @unit.coach&.full_name
+        .col-md-6
+          dt = t('activerecord.attributes.unit.lagerleiter')
+          dd
+            address
+              = @unit.lagerleiter.full_name
+              br
+              = @unit.lagerleiter.address
+              br
+              = @unit.lagerleiter.zip_code
+              =< @unit.lagerleiter.town
+              =< @unit.lagerleiter.country
+            = link_to_if @unit.lagerleiter.phone_number, @unit.lagerleiter.phone_number,
+                    "tel:#{@unit.lagerleiter.phone_number}"
+            - if @unit.lagerleiter.phone_number.present?
+              br
+            = mail_to @unit.lagerleiter.email, @unit.lagerleiter.email
 
-        - if @unit.pbs_id.present?
-          dd = link_to midata_link_to_unit(@unit), class: 'mb-3' do
-            i.fas.fa-link
-            =< t('.camp_link_midata')
-        - if can?(:edit, @unit)
-          dd = link_to(edit_unit_path(@unit))
-            i.fa.fa-edit
-            =< t('buttons.edit')
+          - if @unit.pbs_id.present?
+            dd = link_to midata_link_to_unit(@unit), class: 'mb-3' do
+              i.fas.fa-link
+              =< t('.camp_link_midata')
+          - if can?(:edit, @unit)
+            dd = link_to(edit_unit_path(@unit))
+              i.fa.fa-edit
+              =< t('buttons.edit')
   .card.shadow-sm.mt-3.position-relative.p-2.pt-3.pb-3.p-md-4
     h3.mb-4.font-weight-bold = t('units.show.camp_details')
     .row
