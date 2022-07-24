@@ -16,6 +16,7 @@ fr:
       activity_filter:
         activity_category: Catégorie
         languages: Langues
+        number_of_units: Nombre d'unités assignées
         stufe_recommended: Branches recommandées
         tags: Tags
         text: Texte
@@ -246,7 +247,6 @@ fr:
       warning: 'Attention : Sauvegardez d''abord le formulaire et modifiez ensuite
         les documents (sinon les modifications seront perdues).'
     index:
-      numberOfAssignedUnits: Nombre d'unités assignées
       title: Activités
     new:
       title: Créer une nouvelle activité

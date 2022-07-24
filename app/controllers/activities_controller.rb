@@ -77,8 +77,9 @@ class ActivitiesController < ApplicationController
 
   def filter
     activity_filter_params = params[:activity_filter]&.permit(:min_participants_count, :stufe_recommended, :text,
-                                                              :activity_category, :number_of_units, tags: [],
-                                                                                                    languages: [])
+                                                              :activity_category, :number_of_units,
+                                                              :number_of_units_operator, tags: [],
+                                                                                         languages: [])
     session[:activity_filter_params] = activity_filter_params if params.key?(:activity_filter)
     @filter ||= ActivityFilter.new(session[:activity_filter_params] || {})
   end

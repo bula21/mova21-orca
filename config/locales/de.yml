@@ -16,6 +16,7 @@ de:
       activity_filter:
         activity_category: Kategorie
         languages: Sprachen
+        number_of_units: Anzahl zugewiesener Einheiten
         stufe_recommended: Empfohlene Stufe
         tags: Tags
         text: Text
@@ -243,7 +244,6 @@ de:
       warning: 'Achtung: Forumlar zuerst speichern und danach Dokumente bearbeiten
         (Änderungen gehen sonst verloren)'
     index:
-      numberOfAssignedUnits: Anzahl zugewiesener Einheiten
       title: Aktivitäten
     new:
       title: Neue Aktivität erfassen
