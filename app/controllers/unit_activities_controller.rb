@@ -65,7 +65,8 @@ class UnitActivitiesController < ApplicationController
     activity_filter_params = params[:activity_filter]&.permit(:min_participants_count, :stufe_recommended, :text,
                                                               :activity_category, tags: [], languages: [])
     session[:activity_filter_params] = activity_filter_params if params.key?(:activity_filter)
-    @filter ||= ActivityFilter.new(session[:activity_filter_params] || {})
+    @filter ||= ActivityFilter.new(session[:activity_filter_params] ||
+                                     { number_of_units: current_user.present? ? 0 : 1 })
   end
 
   def check_phase
