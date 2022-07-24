@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class UnitActivityExecutionsExporter
+  include BaseExporter
   attr_reader :unit_activity_executions
 
   HEADERS = %w[
@@ -33,7 +34,7 @@ class UnitActivityExecutionsExporter
   end
 
   def export
-    CSV.generate(headers: true) do |csv|
+    BOM_UTF_8_CHARACTER + CSV.generate(headers: true) do |csv|
       csv << HEADERS
       @unit_activity_executions.each { |unit_activity_execution| csv << attributes(unit_activity_execution) }
     end
