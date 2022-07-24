@@ -31,7 +31,7 @@ class CheckpointUnitsExporter
   end
 
   def export
-    CSV.generate(headers: true) do |csv|
+    CSV.generate(headers: true, encoding: 'ISO-8859-1') do |csv|
       csv << HEADERS
       @checkpoint_units.each { |checkpoint_unit| csv << attributes(checkpoint_unit) }
     end
