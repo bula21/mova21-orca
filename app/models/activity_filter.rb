@@ -8,8 +8,8 @@ class ActivityFilter < ApplicationFilter
   attribute :stufe_recommended
   attribute :unit
   attribute :min_participants_count
-  attribute :number_of_units
-  attribute :number_of_units_operator, default: -> { 'eq' }
+  attribute :number_of_units, default: -> { 1 }
+  attribute :number_of_units_operator, default: -> { 'gteq' }
 
   filter :min_participants_count do |activities|
     count = min_participants_count.to_i
@@ -61,14 +61,13 @@ class ActivityFilter < ApplicationFilter
   filter :number_of_units do |activities|
     next if number_of_units.blank?
 
-    unit_activity_execution_count = UnitActivityExecution.arel_table[:id].count
-
-    join_activity_execution_unit(activities).having(execution_count_having_condition(unit_activity_execution_count))
+    join_activity_execution_unit(activities).having(execution_count_having_condition)
   end
 
   private
 
-  def execution_count_having_condition(unit_activity_execution_count)
+  def execution_count_having_condition
+    unit_activity_execution_count = UnitActivityExecution.arel_table[:id].count
     if number_of_units_operator.to_sym.eql?(:eq)
       unit_activity_execution_count.eq(number_of_units.to_i)
     else
@@ -102,9 +101,9 @@ class ActivityFilter < ApplicationFilter
 
   def join_activity_execution_unit(relation)
     relation.joins(arel_table_activity.create_join(arel_table_activity_execution, join_activity_execution,
-                                                   Arel::Nodes::InnerJoin))
+                                                   Arel::Nodes::OuterJoin))
             .joins(arel_table_activity_execution.create_join(arel_table_unit_activity_execution,
-                                                             join_unit_activity_execution, Arel::Nodes::InnerJoin))
+                                                             join_unit_activity_execution, Arel::Nodes::OuterJoin))
             .group(arel_table_activity[:id])
   end
 end
