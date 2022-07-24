@@ -30,6 +30,11 @@
             - if @filter.text&.size&.>(2)
               .badge.rounded-pill.bg-info.ms-2= 1
         li.nav-item.me-2.mb-2
+          a.btn.btn-outline-secondary[data-bs-toggle="pill" href="#filter-number-of-units" role="pill"]
+            = t(ActivityFilter.human_attribute_name(:number_of_units))
+            - if @filter.number_of_units.present?
+              .badge.rounded-pill.bg-info.ms-2= 1
+        li.nav-item.me-2.mb-2
           = link_to reset_url, class: 'btn btn-outline-secondary', role: :pill, title: t('buttons.reset')
             i.fa.fa-undo
 
@@ -68,6 +73,11 @@
 
         #filter-text.py-3.tab-pane[role="tabpanel"]
           = f.input :text, label_method: :full_label
+
+        #filter-number-of-units.py-3.tab-pane[role="tabpanel"]
+          .row
+            .col= f.input :number_of_units, as: :integer
+            .col-2= f.input :number_of_units_operator, as: :select, collection: [['=', :eq], ['≥',:gt]]
 
     .col-sm-3.order-sm-2
       = f.submit t('buttons.filter'), class: 'btn w-100 btn-secondary'

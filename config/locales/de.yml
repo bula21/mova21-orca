@@ -16,6 +16,7 @@ de:
       activity_filter:
         activity_category: Kategorie
         languages: Sprachen
+        number_of_units: Anzahl zugewiesener Einheiten
         stufe_recommended: Empfohlene Stufe
         tags: Tags
         text: Text

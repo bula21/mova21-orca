@@ -24,6 +24,7 @@ services:
       SEND_PROGRAM_CHANGE_LOG_NOTIFICATIONS: "true"
       RUBYOPT: "-W:no-deprecated -W:no-experimental"
       APP_BASE_URL: http://orca.localhost:3000
+      LOG_LEVEL: ${LOG_LEVEL}
       MEMCACHE_SERVERS: memcached
       SECRET_KEY_BASE: "secret"
       OIDC_CLIENT_ID: ${OIDC_CLIENT_ID}
@@ -55,6 +56,7 @@ services:
       STAFF_TOKEN: "1234"
     depends_on:
       - db
+      - dbadmin
       - mail
       - redis
     tty: true
@@ -74,6 +76,14 @@ services:
     environment:
       POSTGRES_DB: orca_e2e
       POSTGRES_PASSWORD: postgres
+
+  dbadmin:
+    image: dpage/pgadmin4
+    ports:
+      - "8080:80"
+    environment: 
+      PGADMIN_DEFAULT_EMAIL: admin@mova21.ch
+      PGADMIN_DEFAULT_PASSWORD: password
 
   mail:
     image: tophfr/mailcatcher
