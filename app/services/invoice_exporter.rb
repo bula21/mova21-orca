@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class InvoiceExporter
+  include BaseExporter
+
   HEADERS = [
     'Kdnr', 'Name1', 'Name2', 'Strasse', 'Plz', 'Ort',
     'RG-Nummer', 'Inkl. MWST', 'exkl. MWST', 'ESR-Ref.Nr.'
@@ -11,7 +13,7 @@ class InvoiceExporter
   end
 
   def export(options = {})
-    CSV.generate(**csv_options.merge(options)) do |csv|
+    BOM_UTF_8_CHARACTER + CSV.generate(**csv_options.merge(options)) do |csv|
       csv << HEADERS
       @invoices.each { |invoice| csv << invoice_attributes(invoice) }
     end

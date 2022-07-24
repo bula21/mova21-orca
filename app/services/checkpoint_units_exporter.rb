@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class CheckpointUnitsExporter
+  include BaseExporter
+
   attr_reader :checkpoint_units
 
   HEADERS = %w[
@@ -31,7 +33,7 @@ class CheckpointUnitsExporter
   end
 
   def export
-    CSV.generate(headers: true) do |csv|
+    BOM_UTF_8_CHARACTER + CSV.generate(headers: true) do |csv|
       csv << HEADERS
       @checkpoint_units.each { |checkpoint_unit| csv << attributes(checkpoint_unit) }
     end
