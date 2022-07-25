@@ -8,8 +8,8 @@ class ActivityFilter < ApplicationFilter
   attribute :stufe_recommended
   attribute :unit
   attribute :min_participants_count
-  attribute :number_of_units, default: -> { 1 }
-  attribute :number_of_units_operator, default: -> { 'gteq' }
+  attribute :number_of_units
+  attribute :number_of_units_operator, default: -> { 'eq' }
 
   filter :min_participants_count do |activities|
     count = min_participants_count.to_i
@@ -20,6 +20,13 @@ class ActivityFilter < ApplicationFilter
   filter :tags do |activities|
     next if tags.blank?
 
+    group_statements = if stufe_recommended.blank?
+                         []
+                       else
+                         ['activity_categories.id', 'stufen_activities.id', 'stufen.id',
+                          'activity_executions.id', 'fields.id', 'spots.id',
+                          'unit_activity_executions.id']
+                       end
     activities.joins(:tags).where(tags: { id: tags }).group(:id, *group_statements).having(
       "count('activities.id') = ?", tags.count
     )
@@ -54,24 +61,14 @@ class ActivityFilter < ApplicationFilter
   filter :number_of_units do |activities|
     next if number_of_units.blank?
 
-    join_activity_execution_unit(activities).having(execution_count_having_condition)
+    unit_activity_execution_count = UnitActivityExecution.arel_table[:id].count
+
+    join_activity_execution_unit(activities).having(execution_count_having_condition(unit_activity_execution_count))
   end
 
   private
 
-  def group_statements
-    if stufe_recommended.blank?
-      []
-    else
-      ['activity_categories.id', 'stufen_activities.id', 'stufen.id',
-       'activity_executions.id', 'fields.id', 'spots.id',
-       'unit_activity_executions.id', 'activity_executions_activities.id',
-       'unit_activity_executions_activity_executions.id']
-    end
-  end
-
-  def execution_count_having_condition
-    unit_activity_execution_count = UnitActivityExecution.arel_table[:id].count
+  def execution_count_having_condition(unit_activity_execution_count)
     if number_of_units_operator.to_sym.eql?(:eq)
       unit_activity_execution_count.eq(number_of_units.to_i)
     else
@@ -105,9 +102,9 @@ class ActivityFilter < ApplicationFilter
 
   def join_activity_execution_unit(relation)
     relation.joins(arel_table_activity.create_join(arel_table_activity_execution, join_activity_execution,
-                                                   Arel::Nodes::OuterJoin))
+                                                   Arel::Nodes::InnerJoin))
             .joins(arel_table_activity_execution.create_join(arel_table_unit_activity_execution,
-                                                             join_unit_activity_execution, Arel::Nodes::OuterJoin))
-            .group([arel_table_activity[:id], *group_statements])
+                                                             join_unit_activity_execution, Arel::Nodes::InnerJoin))
+            .group(arel_table_activity[:id])
   end
 end
