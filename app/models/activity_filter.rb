@@ -104,7 +104,7 @@ class ActivityFilter < ApplicationFilter
     relation.joins(arel_table_activity.create_join(arel_table_activity_execution, join_activity_execution,
                                                    Arel::Nodes::OuterJoin))
             .joins(arel_table_activity_execution.create_join(arel_table_unit_activity_execution,
-                                                             join_unit_activity_execution, Arel::Nodes::InnerJoin))
+                                                             join_unit_activity_execution, Arel::Nodes::OuterJoin))
             .group(arel_table_activity[:id])
   end
 end
