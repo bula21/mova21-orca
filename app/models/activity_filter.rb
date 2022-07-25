@@ -20,13 +20,6 @@ class ActivityFilter < ApplicationFilter
   filter :tags do |activities|
     next if tags.blank?
 
-    group_statements = if stufe_recommended.blank?
-                         []
-                       else
-                         ['activity_categories.id', 'stufen_activities.id', 'stufen.id',
-                          'activity_executions.id', 'fields.id', 'spots.id',
-                          'unit_activity_executions.id']
-                       end
     activities.joins(:tags).where(tags: { id: tags }).group(:id, *group_statements).having(
       "count('activities.id') = ?", tags.count
     )
@@ -66,6 +59,17 @@ class ActivityFilter < ApplicationFilter
 
   private
 
+  def group_statements
+    if stufe_recommended.blank?
+      []
+    else
+      ['activity_categories.id', 'stufen_activities.id', 'stufen.id',
+       'activity_executions.id', 'fields.id', 'spots.id',
+       'unit_activity_executions.id', 'activity_executions_activities.id',
+       'unit_activity_executions_activity_executions.id']
+    end
+  end
+
   def execution_count_having_condition
     unit_activity_execution_count = UnitActivityExecution.arel_table[:id].count
     if number_of_units_operator.to_sym.eql?(:eq)
@@ -104,6 +108,6 @@ class ActivityFilter < ApplicationFilter
                                                    Arel::Nodes::OuterJoin))
             .joins(arel_table_activity_execution.create_join(arel_table_unit_activity_execution,
                                                              join_unit_activity_execution, Arel::Nodes::OuterJoin))
-            .group(arel_table_activity[:id])
+            .group([arel_table_activity[:id], *group_statements])
   end
 end
