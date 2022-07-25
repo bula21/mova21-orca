@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_19_212048) do
+ActiveRecord::Schema.define(version: 2022_07_25_120551) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(version: 2022_07_19_212048) do
     t.bigint "activity_id", null: false
     t.bigint "stufe_id", null: false
     t.index ["activity_id", "stufe_id"], name: "unique_activities_stufen_recommended_index", unique: true
+    t.index ["stufe_id", "activity_id"], name: "index_stufen_recommended_activities_index"
   end
 
   create_table "activities_tags", id: false, force: :cascade do |t|
