@@ -16,7 +16,7 @@ class ParticipantSearchesController < ApplicationController
   def get_participants(search)
     @participants = Participant.where('id = ? OR first_name ILIKE ? OR last_name ILIKE ? OR scout_name ILIKE ?',
                                       search.to_i, "%#{search}%",
-                                      "%#{search}%", "%#{search}%").includes([:units, :participant_units])
+                                      "%#{search}%", "%#{search}%").includes(%i[units participant_units])
   end
 
   def write_log_entry(user, text)
