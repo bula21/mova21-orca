@@ -164,6 +164,12 @@ en:
         u16_tickets: Kinder unter 16 Jahren mit Junior-/Mitfahrkarte oder GA
         u6_tickets: Kinder unter 6 Jahren
         unit_id: Einheit
+      user:
+        id: User ID
+        email: Email
+      participant_search_logs:
+        search_query: Search query
+        created_at: Created at
     errors:
       messages:
         incomplete: ist unvollständig
@@ -570,6 +576,7 @@ en:
     tag: Tags
     transport_location: Transport
     unit: Unit
+    participant_search: Search participants
   number:
     currency:
       format:
@@ -833,3 +840,13 @@ en:
       next: ">"
       previous: "<"
       truncate: "&hellip;"
+  participant_search:
+    title: Search for participants
+    description: Search for participants by name, email or phone number
+    search_query: Search query
+    result: Results
+    no_results: No results found
+  participant_search_log:
+    title: Logs of participant search
+    result: Query results
+    no_results: No results found

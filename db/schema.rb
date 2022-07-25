@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_25_120551) do
+ActiveRecord::Schema.define(version: 2022_07_25_125604) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -273,6 +273,22 @@ ActiveRecord::Schema.define(version: 2022_07_25_120551) do
     t.index ["translatable_id", "translatable_type", "locale", "key"], name: "index_mobility_text_translations_on_keys", unique: true
   end
 
+  create_table "participant_search_log", force: :cascade do |t|
+    t.integer "searcher_id"
+    t.text "search_query"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["searcher_id"], name: "index_participant_search_log_on_searcher_id"
+  end
+
+  create_table "participant_search_logs", force: :cascade do |t|
+    t.integer "searcher_id"
+    t.text "search_query"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["searcher_id"], name: "index_participant_search_logs_on_searcher_id"
+  end
+
   create_table "participant_units", force: :cascade do |t|
     t.integer "unit_id", null: false
     t.integer "participant_id", null: false
@@ -479,6 +495,8 @@ ActiveRecord::Schema.define(version: 2022_07_25_120551) do
   add_foreign_key "fixed_events_stufen", "stufen"
   add_foreign_key "invoice_parts", "invoices"
   add_foreign_key "invoices", "units"
+  add_foreign_key "participant_search_log", "users", column: "searcher_id"
+  add_foreign_key "participant_search_logs", "users", column: "searcher_id"
   add_foreign_key "participant_units", "participants"
   add_foreign_key "participant_units", "units"
   add_foreign_key "unit_activities", "activities"

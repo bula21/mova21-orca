@@ -109,6 +109,9 @@ it:
         pbs_id: ID MSS
         phone_number: Numero di telefono
         scout_name: Totem
+      participant_search_logs:
+        created_at: Data di creazione
+        search_query: Query di ricerca
       participant_unit:
         role: Ruolo
         roles:
@@ -182,6 +185,9 @@ it:
           o AG
         u6_tickets: Bambini sotto i 6 anni
         unit_id: Unità
+      user:
+        email: Email
+        id: User ID
     errors:
       messages:
         incomplete: è incompleto
@@ -621,6 +627,7 @@ it:
     leader: Animatori/trici responsabili
     login: Login
     logout: Logout
+    participant_search: Cerca partecipanti
     spots: Zone del programma & terreni
     stufen: Branche
     tag: Tags
@@ -685,6 +692,16 @@ it:
     precision:
       format:
         delimiter: ''
+  participant_search:
+    description: Cerca partecipanti per nome, cognome o codice fiscale
+    no_results: partecipanti non trovati
+    result: Risultati della ricerca
+    search_query: Cerca partecipanti
+    title: Cerca partecipanti
+  participant_search_log:
+    no_results: Log di ricerca partecipanti non trovati
+    result: Resultati log di ricerca partecipanti
+    title: Log di ricerca partecipanti
   participant_units:
     edit:
       title: Modifica partecipante

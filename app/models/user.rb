@@ -20,7 +20,7 @@
 #
 class User < ApplicationRecord
   ROLES = %i[user admin programm tn_administration editor allocation read_unit unit_communication
-             checkin_checkout checkin_checkout_manager tn_reader].freeze
+             checkin_checkout checkin_checkout_manager tn_reader participant_searcher].freeze
 
   include Bitfields
   devise :omniauthable, omniauth_providers: %i[openid_connect developer]
