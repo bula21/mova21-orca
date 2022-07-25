@@ -27,8 +27,7 @@
         th = Activity.human_attribute_name(:activity_category)
         th = Activity.human_attribute_name(:description)
         th = Activity.human_attribute_name(:tags)
-        - if current_user.present?
-          th = ActivityFilter.human_attribute_name(:number_of_units)
+        th = ActivityFilter.human_attribute_name(:number_of_units)
         th
         th
         th
@@ -42,8 +41,7 @@
           td
             - activity.tags.each do |tag|
               i[class="#{tag.icon} me-2" title=tag.label]
-          - if current_user.present?
-            td = activity.unit_activity_executions.count
+          td = activity.unit_activity_executions.count
           td = link_to activity do
             i.fas.fa-eye title=t('buttons.show')
           td

@@ -81,8 +81,7 @@ class ActivitiesController < ApplicationController
                                                               :number_of_units_operator, tags: [],
                                                                                          languages: [])
     session[:activity_filter_params] = activity_filter_params if params.key?(:activity_filter)
-    @filter ||= ActivityFilter.new(session[:activity_filter_params] ||
-                                     { number_of_units: current_user.present? ? 0 : 1 })
+    @filter ||= ActivityFilter.new(session[:activity_filter_params] || {})
   end
 
   def activity_params
