@@ -75,13 +75,18 @@ class ActivitiesController < ApplicationController
     end
   end
 
+  def default_filter_params
+    { only_booked: true }
+  end
+
   def filter
-    activity_filter_params = params[:activity_filter]&.permit(:min_participants_count, :stufe_recommended, :text,
-                                                              :activity_category, :number_of_units,
-                                                              :number_of_units_operator, tags: [],
-                                                                                         languages: [])
-    session[:activity_filter_params] = activity_filter_params if params.key?(:activity_filter)
-    @filter ||= ActivityFilter.new(session[:activity_filter_params] || {})
+    if params.key?(:activity_filter)
+      activity_filter_params = params[:activity_filter].permit(:min_participants_count, :stufe_recommended, :text,
+                                                               :activity_category, :only_booked,
+                                                               tags: [], languages: [])
+      session[:activity_filter_params] = default_filter_params.merge(activity_filter_params)
+    end
+    @filter ||= ActivityFilter.new(session[:activity_filter_params] || default_filter_params)
   end
 
   def activity_params

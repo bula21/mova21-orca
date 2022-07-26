@@ -228,7 +228,7 @@ en:
         (Änderungen gehen sonst verloren)'
     index:
       title: Aktivitäten
-      number_of_units: Number of assigned units
+      only_booked: Only booked activities
     new:
       title: Neue Aktivität erfassen
     show:

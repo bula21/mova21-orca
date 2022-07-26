@@ -8,28 +8,22 @@ class ActivityFilter < ApplicationFilter
   attribute :stufe_recommended
   attribute :unit
   attribute :min_participants_count
-  attribute :number_of_units
-  attribute :number_of_units_operator, default: -> { 'eq' }
+  attribute :only_booked
 
   filter :min_participants_count do |activities|
-    count = min_participants_count.to_i
-    activities
-      .where(Activity.arel_table[:participants_count_activity].gteq(count))
+    next if min_participants_count.blank?
+
+    activities.where(Activity.arel_table[:participants_count_activity].gteq(min_participants_count.to_i))
   end
 
   filter :tags do |activities|
-    next if tags.blank?
+    next if tags.compact_blank.blank?
 
-    group_statements = if stufe_recommended.blank?
-                         []
-                       else
-                         ['activity_categories.id', 'stufen_activities.id', 'stufen.id',
-                          'activity_executions.id', 'fields.id', 'spots.id',
-                          'unit_activity_executions.id']
-                       end
-    activities.joins(:tags).where(tags: { id: tags }).group(:id, *group_statements).having(
-      "count('activities.id') = ?", tags.count
-    )
+    tags = tags.compact_blank
+    activities_with_all_tags = Activity.joins(:tags).where(activities_tags: { tag_id: tags })
+                                       .group(Activity.arel_table[:id])
+                                       .having(Tag.arel_table[:id].count.eq(tags.count))
+    activities.where(id: activities_with_all_tags.pluck(:id))
   end
 
   filter :text do |activities|
@@ -58,53 +52,12 @@ class ActivityFilter < ApplicationFilter
     activities.joins(:stufe_recommended).where(activities_stufen_recommended: { stufe_id: stufe_recommended })
   end
 
-  filter :number_of_units do |activities|
-    next if number_of_units.blank?
+  filter :only_booked do |activities|
+    next if only_booked.blank? || only_booked.to_s.to_i.zero?
 
-    unit_activity_execution_count = UnitActivityExecution.arel_table[:id].count
-
-    join_activity_execution_unit(activities).having(execution_count_having_condition(unit_activity_execution_count))
-  end
-
-  private
-
-  def execution_count_having_condition(unit_activity_execution_count)
-    if number_of_units_operator.to_sym.eql?(:eq)
-      unit_activity_execution_count.eq(number_of_units.to_i)
-    else
-      unit_activity_execution_count.gteq(number_of_units.to_i)
-    end
-  end
-
-  def arel_table_activity
-    Activity.arel_table
-  end
-
-  def arel_table_activity_execution
-    ActivityExecution.arel_table
-  end
-
-  def arel_table_unit_activity_execution
-    UnitActivityExecution.arel_table
-  end
-
-  def join_activity_execution
-    activity_execution = arel_table_activity_execution
-    arel_table_activity.create_on(activity_execution[:activity_id]
-                                    .eq(arel_table_activity[:id]))
-  end
-
-  def join_unit_activity_execution
-    unit_activity_execution = arel_table_unit_activity_execution
-    arel_table_activity_execution.create_on(unit_activity_execution[:activity_execution_id]
-                                              .eq(arel_table_activity_execution[:id]))
-  end
-
-  def join_activity_execution_unit(relation)
-    relation.joins(arel_table_activity.create_join(arel_table_activity_execution, join_activity_execution,
-                                                   Arel::Nodes::OuterJoin))
-            .joins(arel_table_activity_execution.create_join(arel_table_unit_activity_execution,
-                                                             join_unit_activity_execution, Arel::Nodes::OuterJoin))
-            .group(arel_table_activity[:id])
+    activities_with_units = Activity.joins(activity_executions: :unit_activity_executions)
+                                    .group(Activity.arel_table[:id])
+                                    .having(UnitActivityExecution.arel_table[:id].count.gt(0))
+    activities.where(id: activities_with_units.pluck(:id))
   end
 end

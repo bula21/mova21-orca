@@ -16,7 +16,7 @@ it:
       activity_filter:
         activity_category: Categoria
         languages: lingua
-        number_of_units: Numero di unità assegnate
+        only_booked: Solo attività al mova
         stufe_recommended: Branca raccomandata
         tags: Tags
         text: Testo
