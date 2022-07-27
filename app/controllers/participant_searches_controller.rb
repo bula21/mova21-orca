@@ -23,9 +23,15 @@ class ParticipantSearchesController < ApplicationController
     search_text = params[:search]
 
     write_log_entry(search_text)
-    Participant.where('id = ? OR first_name ILIKE ? OR last_name ILIKE ? OR scout_name ILIKE ?',
-                      search_text.to_i, "%#{search_text}%",
-                      "%#{search_text}%", "%#{search_text}%").includes(%i[units participant_units])
+
+    search_query = search_text.split.map do |term|
+      "(id = #{term.to_i} " \
+        "or first_name ILIKE '%#{term}%' " \
+        "or last_name ILIKE '%#{term}%' " \
+        "or scout_name ILIKE '%#{term}%')"
+    end.join(' OR ')
+
+    Participant.where(search_query).includes(%i[units participant_units])
   end
 
   def write_log_entry(search_text)
