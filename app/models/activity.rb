@@ -85,7 +85,18 @@ class Activity < ApplicationRecord
     bitfield_values(:language_flags)
   end
 
+  def language_keys
+    languages.filter { |_language_key, value| value }.keys
+  end
+
   def to_s
     label
+  end
+
+  def cache_key
+    [
+      self.class,
+      id, updated_at
+    ].join('-')
   end
 end
