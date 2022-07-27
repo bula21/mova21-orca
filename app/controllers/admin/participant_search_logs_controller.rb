@@ -3,8 +3,8 @@
 module Admin
   class ParticipantSearchLogsController < ApplicationController
     def show
-      includes = [:searcher]
-      @logs = ParticipantSearchLog.all.order(created_at: :desc).includes(includes)
+      authorize!(:manage, :all)
+      @logs = ParticipantSearchLog.all.order(created_at: :desc).includes([:searcher]).page params[:page]
     end
   end
 end
