@@ -18,6 +18,7 @@ class Ability # rubocop:disable Metrics/ClassLength
     allocation_user_permissions(user) if user.role_allocation?
     editor_user_permissions(user) if user.role_editor?
     midata_user_permissions(user) if user.midata_user?
+    read_allocation_user_permissions(user) if user.role_read_allocation?
     role_unit_communication_user_permissions(user) if user.role_unit_communication?
     external_user_permissions(user) unless user.midata_user?
     participant_searcher_user_permissions(user) if user.role_participant_searcher?
@@ -160,5 +161,12 @@ class Ability # rubocop:disable Metrics/ClassLength
   def participant_searcher_user_permissions(_user)
     can :read, Unit
     can :search, Participant
+  end
+
+  def read_allocation_user_permissions(_user)
+    can :read, Activity
+    can :read, UnitActivity
+    can :read, ActivityExecution
+    can :read, UnitActivityExecution
   end
 end
