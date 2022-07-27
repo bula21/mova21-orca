@@ -20,7 +20,7 @@ class ParticipantSearchesController < ApplicationController
   end
 
   def write_log_entry(user, text)
-    @participant_search_log = ParticipantSearchLogs.new(searcher: user, search_query: text)
+    @participant_search_log = ParticipantSearchLog.new(searcher: user, search_query: text)
     @participant_search_log.save
   end
 end

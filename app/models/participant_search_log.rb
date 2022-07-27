@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-class ParticipantSearchLogs < ApplicationRecord
+class ParticipantSearchLog < ApplicationRecord
   belongs_to :searcher, class_name: 'User', optional: false
 end

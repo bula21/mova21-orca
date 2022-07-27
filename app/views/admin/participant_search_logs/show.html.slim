@@ -8,8 +8,8 @@ h1.h1 = t('participant_search_log.title')
           th = User.human_attribute_name(:id)
           th = User.human_attribute_name(:email)
 
-          th = ParticipantSearchLogs.human_attribute_name(:search_query)
-          th = ParticipantSearchLogs.human_attribute_name(:created_at)
+          th = ParticipantSearchLog.human_attribute_name(:search_query)
+          th = ParticipantSearchLog.human_attribute_name(:created_at)
       tbody
         - @logs.each do |log|
           tr
