@@ -367,13 +367,16 @@ de:
         Votre Team CaFé21
       subject: Lageranmeldung mova unvollständig
     program_change_notification:
-      body: "Liebe Einheit\n\nAn eurem Programm musste eine Anpassung vorgenommen
-        werden. Leider ist Meldung nicht bei allen rechtzeitig angekommen, deshalb
-        schicken wir sie zur Sicherheit nochmals.  \n\n%{remarks}\n\nEuer aktuelles
-        Programm findet ihr wie immer auf Orca: %{url}. Wir entschuldigen uns für
-        die Umstände und danken euch für euer Verständnis.\n\nViele liebe Pfadi-Grüsse\neure
-        mova-Crew"
-      subject: "**Nachtrag** Anpassung am mova-Programm"
+      body: |-
+        Liebe Einheit
+
+        An eurem Programm musste eine Anpassung vorgenommen werden. %{remarks}
+
+        Euer aktuelles Programm findet ihr wie immer auf Orca: %{url}. Wir entschuldigen uns für die Umstände und danken euch für euer Verständnis.
+
+        Viele liebe Pfadi-Grüsse
+        eure mova-Crew
+      subject: Anpassung am mova-Programm
   checkpoints:
     already_checked_in: Diese Einheit hat bereits einen Check-In an diesem Checkpoint
     back_to_unit: Zurück zur Einheit
