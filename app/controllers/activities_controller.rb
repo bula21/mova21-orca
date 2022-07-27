@@ -3,11 +3,13 @@
 class ActivitiesController < ApplicationController
   skip_before_action :authenticate_user!
   load_and_authorize_resource except: [:create]
+  ALLOWED_ACTIVITY_FILTER_PARAMS = [:min_participants_count, :stufe_recommended, :text,
+                                    :activity_category, :only_booked,
+                                    { tags: [], languages: [] }].freeze
 
   # rubocop:disable Metrics/AbcSize
   def index
     @activities = filter.apply(@activities.includes(activity_includes).distinct).order(sort_direction)
-
     respond_to do |format|
       format.html { @activities = @activities.page params[:page] }
       format.csv { send_exported_data(@activities) }
@@ -81,13 +83,30 @@ class ActivitiesController < ApplicationController
     end
   end
 
+  def default_filter_params
+    { only_booked: true }
+  end
+
   def filter
-    activity_filter_params = params[:activity_filter]&.permit(:min_participants_count, :stufe_recommended, :text,
-                                                              :activity_category, :number_of_units,
-                                                              :number_of_units_operator, tags: [],
-                                                                                         languages: [])
-    session[:activity_filter_params] = activity_filter_params if params.key?(:activity_filter)
-    @filter ||= ActivityFilter.new(session[:activity_filter_params] || {})
+    if params.key?(:activity_filter)
+      activity_filter_params = params[:activity_filter].permit(*ALLOWED_ACTIVITY_FILTER_PARAMS)
+      session[:activity_filter_params] = default_filter_params.merge(activity_filter_params)
+    end
+    sanitize_session_filter_params!
+    @filter ||= ActivityFilter.new(session[:activity_filter_params] || default_filter_params)
+  end
+
+  def sanitize_session_filter_params!
+    session[:activity_filter_params] = default_filter_params.merge(filtered_params)
+  rescue StandardError
+    session[:activity_filter_params] = default_filter_params
+  end
+
+  def filtered_params
+    allowed_param_keys = ALLOWED_ACTIVITY_FILTER_PARAMS.map { |f| f.is_a?(Hash) ? f.keys : f }.flatten
+    session[:activity_filter_params].select do |k, v|
+      allowed_param_keys.map(&:to_s).include?(k) && v.present?
+    end
   end
 
   def activity_includes

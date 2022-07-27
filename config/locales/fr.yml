@@ -16,7 +16,7 @@ fr:
       activity_filter:
         activity_category: Catégorie
         languages: Langues
-        number_of_units: Nombre d'unités assignées
+        only_booked: Uniquement les activités en mova
         stufe_recommended: Branches recommandées
         tags: Tags
         text: Texte
@@ -109,6 +109,9 @@ fr:
         pbs_id: ID MSdS
         phone_number: Numéro de téléphone
         scout_name: Totem
+      participant_search_logs:
+        created_at: Date de création
+        search_query: Requête de recherche
       participant_unit:
         role: Rôle
         roles:
@@ -182,6 +185,9 @@ fr:
           ou AG
         u6_tickets: Enfants de moins de 6 ans
         unit_id: Unité
+      user:
+        email: Email
+        id: User ID
     errors:
       messages:
         incomplete: est incomplet
@@ -628,6 +634,7 @@ fr:
     leader: Responsables
     login: Login
     logout: Logout
+    participant_search: Search Participant
     spots: Zone de programme et terrains
     stufen: Branches
     tag: Tags
@@ -692,6 +699,18 @@ fr:
     precision:
       format:
         delimiter: ''
+  participant_search:
+    description: Cet outil te permet de rechercher des participants* en cas d'urgence.
+      Toutes les consultations sont enregistrées pour des raisons de traçabilité et
+      de protection des données personnelles.
+    no_results: Pas de résultats
+    result: Resultats de la recherche
+    search_query: Terme de recherche
+    title: Chercher un participant
+  participant_search_log:
+    no_results: Pas de résultats
+    result: Resultats de la recherche
+    title: Log de recherche
   participant_units:
     edit:
       title: Modifier les participants

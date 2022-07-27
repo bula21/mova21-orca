@@ -20,12 +20,13 @@
 #
 class User < ApplicationRecord
   ROLES = %i[user admin programm tn_administration editor allocation read_unit unit_communication
-             checkin_checkout checkin_checkout_manager tn_reader].freeze
+             checkin_checkout checkin_checkout_manager tn_reader participant_searcher read_allocation].freeze
 
   include Bitfields
   devise :omniauthable, omniauth_providers: %i[openid_connect developer]
 
   has_one :leader, foreign_key: :email, primary_key: :email, inverse_of: :user, dependent: nil
+  has_many :participant_search_logs, dependent: :destroy
 
   validates :email, presence: true, format: { with: Devise.email_regexp }
   validates :uid, presence: true
