@@ -17,9 +17,9 @@ class ActivityFilter < ApplicationFilter
   end
 
   filter :tags do |activities|
-    next if tags.compact_blank.blank?
+    tags = Array.wrap(tags).compact_blank
+    next if tags.blank?
 
-    tags = tags.compact_blank
     activities_with_all_tags = Activity.joins(:tags).where(activities_tags: { tag_id: tags })
                                        .group(Activity.arel_table[:id])
                                        .having(Tag.arel_table[:id].count.eq(tags.count))
