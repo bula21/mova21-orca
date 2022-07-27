@@ -16,7 +16,7 @@ fr:
       activity_filter:
         activity_category: Catégorie
         languages: Langues
-        number_of_units: Nombre d'unités assignées
+        only_booked: Uniquement les activités en mova
         stufe_recommended: Branches recommandées
         tags: Tags
         text: Texte

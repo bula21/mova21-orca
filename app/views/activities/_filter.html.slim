@@ -31,8 +31,8 @@
               .badge.rounded-pill.bg-info.ms-2= 1
         li.nav-item.me-2.mb-2
           a.btn.btn-outline-secondary[data-bs-toggle="pill" href="#filter-number-of-units" role="pill"]
-            = t(ActivityFilter.human_attribute_name(:number_of_units))
-            - if @filter.number_of_units.present?
+            = t(ActivityFilter.human_attribute_name(:only_booked))
+            - if !@filter.only_booked.to_s.to_i.zero?
               .badge.rounded-pill.bg-info.ms-2= 1
         li.nav-item.me-2.mb-2
           = link_to reset_url, class: 'btn btn-outline-secondary', role: :pill, title: t('buttons.reset')
@@ -76,8 +76,7 @@
 
         #filter-number-of-units.py-3.tab-pane[role="tabpanel"]
           .row
-            .col= f.input :number_of_units, as: :integer
-            .col-2= f.input :number_of_units_operator, as: :select, collection: [['=', :eq], ['≥',:gt]]
+            .col= f.input :only_booked, as: :boolean
 
     .col-sm-3.order-sm-2
       = f.submit t('buttons.filter'), class: 'btn w-100 btn-secondary'
