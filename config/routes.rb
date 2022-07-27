@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     end
     get :emails, to: 'units#emails', as: :emails, on: :collection
   end
+  resource :participant_search, only: %i[show search create]
   resources :leaders, except: [:destroy]
   resources :rover_shifts, only: %i[new create index] do
     patch :update_dependent, on: :collection
@@ -76,6 +77,8 @@ Rails.application.routes.draw do
       post :redirect_to_check, on: :member
       resources :check_out_checkpoint_units, only: %i[show edit update]
     end
+
+    resource :participant_search_log, only: [:show]
   end
 
   root 'units#index'
