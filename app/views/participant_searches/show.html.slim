@@ -14,7 +14,6 @@ br
     table.table
       thead
         tr
-          th
           th = Participant.human_attribute_name(:id)
           th = Participant.human_attribute_name(:full_name)
           th = Unit.model_name.human
@@ -22,8 +21,7 @@ br
         - @participants.each do |participant|
           tr
             td = participant.id
-            td = participant.first_name
-            td = participant.last_name
+            td = participant.full_name
             td
               .row
               - participant.units.each do |unit|
