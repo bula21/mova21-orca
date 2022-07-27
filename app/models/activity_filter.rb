@@ -17,7 +17,7 @@ class ActivityFilter < ApplicationFilter
   end
 
   filter :tags do |activities|
-    tags = Array.wrap(tags.compact_blank)
+    tags = Array.wrap(tags).compact_blank
     next if tags.blank?
 
     activities_with_all_tags = Activity.joins(:tags).where(activities_tags: { tag_id: tags })

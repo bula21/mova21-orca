@@ -372,16 +372,13 @@ fr:
         Eure BuLa21-Crew
       subject: L’inscription au mova n'est pas encore complète
     program_change_notification:
-      body: |-
-        Chères unités,
-
-        Une modification a dû être apportée à votre programme. %{remarks}
-
-        Votre programme mis à jour se trouve comme d’habitude sur Orca: %{url}. Toutes nos excuses pour ce changement et les perturbations qui en découlent et merci pour votre compréhension.
-
-        Nos meilleures salutations scoutes,
-        Votre mova-Crew
-      subject: modification au programme
+      body: "Chères unités,\n\nUne modification a dû être apportée à votre programme.
+        Malheureusement, le message n’est pas arrivé à temps chez tout le monde, c’est
+        pourquoi nous ’envoyons à nouveau pour plus de sécurité.  \n\n%{remarks}\n\nVotre
+        programme mis à jour se trouve comme d’habitude sur Orca: %{url}. Toutes nos
+        excuses pour ce changement et les perturbations qui en découlent et merci
+        pour votre compréhension.\n\nNos meilleures salutations scoutes,\nVotre mova-Crew"
+      subject: "**Supplément** modification au programme"
   checkpoints:
     already_checked_in: Cette unité a déjà un check-in à ce point de contrôle
     back_to_unit: Retour à l'unité
