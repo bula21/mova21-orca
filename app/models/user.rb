@@ -26,6 +26,7 @@ class User < ApplicationRecord
   devise :omniauthable, omniauth_providers: %i[openid_connect developer]
 
   has_one :leader, foreign_key: :email, primary_key: :email, inverse_of: :user, dependent: nil
+  has_many :participant_search_logs, dependent: :destroy
 
   validates :email, presence: true, format: { with: Devise.email_regexp }
   validates :uid, presence: true

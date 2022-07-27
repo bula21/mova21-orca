@@ -4,11 +4,11 @@ h1.h1 = t('participant_search.title')
 
 br
 = form_with(local: true, url: participant_search_path, method: :POST) do |f|
-  = f.text_field :search, label: t('participant_search.search_query'), class: 'form-control'
+  = f.text_field :search, label: t('participant_search.search_query'), class: 'form-control', minlength: 3
   = f.submit t('buttons.search'), class: 'btn btn-secondary mt-2'
 br
 
-- if @participants.present? && @participants.any?
+- if @participants&.any?
   h3 = t('participant_search.result')
   .table-responsive.participants
     table.table
@@ -17,18 +17,24 @@ br
           th
           th = Participant.human_attribute_name(:id)
           th = Participant.human_attribute_name(:full_name)
-
-          th = Unit.human_attribute_name(:name)
-          th = Unit.human_attribute_name(:abteilung)
+          th = Unit.model_name.human
       tbody
         - @participants.each do |participant|
           tr
             td = participant.id
             td = participant.first_name
             td = participant.last_name
+            td
+              .row
+              - participant.units.each do |unit|
+                .col
+                  = link_to unit_path(unit) do
+                    | #
+                    = unit.id
+                    =< unit.shortened_title
+                  br
+                  = Unit.human_attribute_name(:district)
+                  =< unit.district_nr
 
-            td = participant.units[0].title
-            td = link_to participant.units[0] do
-              i.fas.fa-eye title=t('buttons.show')
 - else
   p = t('participant_search.no_results')
