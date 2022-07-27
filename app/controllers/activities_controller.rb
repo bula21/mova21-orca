@@ -97,13 +97,16 @@ class ActivitiesController < ApplicationController
   end
 
   def sanitize_session_filter_params!
-    allowed_param_keys = ALLOWED_ACTIVITY_FILTER_PARAMS.map { |f| f.is_a?(Hash) ? f.keys : f }.flatten
-    filtered_params = session[:activity_filter_params].select do |k, v|
-      allowed_param_keys.map(&:to_s).include?(k) && v.present?
-    end
     session[:activity_filter_params] = default_filter_params.merge(filtered_params)
   rescue StandardError
     session[:activity_filter_params] = default_filter_params
+  end
+
+  def filtered_params
+    allowed_param_keys = ALLOWED_ACTIVITY_FILTER_PARAMS.map { |f| f.is_a?(Hash) ? f.keys : f }.flatten
+    session[:activity_filter_params].select do |k, v|
+      allowed_param_keys.map(&:to_s).include?(k) && v.present?
+    end
   end
 
   def activity_includes
