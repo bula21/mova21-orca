@@ -109,6 +109,9 @@ de:
         pbs_id: PBS ID
         phone_number: Telefonnummer
         scout_name: Pfadiname
+      participant_search_logs:
+        created_at: Erstellt am
+        search_query: Suchabfrage
       participant_unit:
         role: Rolle
         roles:
@@ -180,6 +183,9 @@ de:
         u16_tickets: Kinder unter 16 Jahren ohne Junior-/Mitfahrkarte oder GA
         u6_tickets: Kinder unter 6 Jahren
         unit_id: Einheit
+      user:
+        email: Email
+        id: User ID
     errors:
       messages:
         incomplete: ist unvollständig
@@ -621,6 +627,7 @@ de:
     leader: Leitpersonen
     login: Login
     logout: Logout
+    participant_search: Teilnehmende suchen
     spots: Programmspots & Felder
     stufen: Stufen
     tag: Tags
@@ -685,6 +692,18 @@ de:
     precision:
       format:
         delimiter: ''
+  participant_search:
+    description: Dieses Tool ermöglicht es dir, Teilnehmer*innen im Notfall zu suchen.
+      Alle Abfragen werden aus Gründen der Nachvollziehbarkeit und des Schutzes der
+      persönlichen Daten aufgezeichnet.
+    no_results: Keine Ergebnisse gefunden
+    result: Ergebnisse
+    search_query: Suchbegriff
+    title: Suche nach Teilnehmer*innen
+  participant_search_log:
+    no_results: Keine Abfragen gefunden
+    result: Abfragen
+    title: Log der Suchabfragen
   participant_units:
     edit:
       title: Teilnehmenden bearbeiten

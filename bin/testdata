@@ -1,0 +1,4 @@
+#!/bin/sh
+
+bin/rails db:drop db:create db:schema:load
+bin/rails db:seed testdata=yes

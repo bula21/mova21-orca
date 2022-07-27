@@ -20,6 +20,7 @@ class Ability # rubocop:disable Metrics/ClassLength
     midata_user_permissions(user) if user.midata_user?
     role_unit_communication_user_permissions(user) if user.role_unit_communication?
     external_user_permissions(user) unless user.midata_user?
+    participant_searcher_user_permissions(user) if user.role_participant_searcher?
   end
   # rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
 
@@ -154,5 +155,10 @@ class Ability # rubocop:disable Metrics/ClassLength
 
   def role_unit_communication_user_permissions(_user)
     can %i[read emails], Unit
+  end
+
+  def participant_searcher_user_permissions(_user)
+    can :read, Unit
+    can :search, Participant
   end
 end

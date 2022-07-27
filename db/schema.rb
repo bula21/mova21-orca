@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_25_120551) do
+ActiveRecord::Schema.define(version: 2022_07_25_125604) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -271,6 +271,14 @@ ActiveRecord::Schema.define(version: 2022_07_25_120551) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["translatable_id", "translatable_type", "key"], name: "index_mobility_text_translations_on_translatable_attribute"
     t.index ["translatable_id", "translatable_type", "locale", "key"], name: "index_mobility_text_translations_on_keys", unique: true
+  end
+
+  create_table "participant_search_logs", force: :cascade do |t|
+    t.bigint "user_id"
+    t.text "search_query"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_participant_search_logs_on_user_id"
   end
 
   create_table "participant_units", force: :cascade do |t|

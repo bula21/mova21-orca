@@ -1,0 +1,38 @@
+h1.h1 = t('participant_search.title')
+
+.alert.alert-danger = t('participant_search.description')
+
+br
+= form_with(local: true, url: participant_search_path, method: :POST) do |f|
+  = f.text_field :search, label: t('participant_search.search_query'), class: 'form-control', minlength: 3
+  = f.submit t('buttons.search'), class: 'btn btn-secondary mt-2'
+br
+
+- if @participants&.any?
+  h3 = t('participant_search.result')
+  .table-responsive.participants
+    table.table
+      thead
+        tr
+          th = Participant.human_attribute_name(:id)
+          th = Participant.human_attribute_name(:full_name)
+          th = Unit.model_name.human
+      tbody
+        - @participants.each do |participant|
+          tr
+            td = participant.id
+            td = participant.full_name
+            td
+              .row
+              - participant.units.each do |unit|
+                .col
+                  = link_to unit_path(unit) do
+                    | #
+                    = unit.id
+                    =< unit.shortened_title
+                  br
+                  = Unit.human_attribute_name(:district)
+                  =< unit.district_nr
+
+- else
+  p = t('participant_search.no_results')
