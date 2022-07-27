@@ -29,7 +29,7 @@ class ParticipantSearchesController < ApplicationController
         "or first_name ILIKE '%#{term}%' " \
         "or last_name ILIKE '%#{term}%' " \
         "or scout_name ILIKE '%#{term}%')"
-    end.join(' OR ')
+    end.join(' AND ')
 
     Participant.where(search_query).includes(%i[units participant_units])
   end
