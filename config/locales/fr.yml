@@ -700,7 +700,9 @@ fr:
       format:
         delimiter: ''
   participant_search:
-    description: Chercher un participant par son nom ou par son ID
+    description: Cet outil te permet de rechercher des participants* en cas d'urgence.
+      Toutes les consultations sont enregistrées pour des raisons de traçabilité et
+      de protection des données personnelles.
     no_results: Pas de résultats
     result: Resultats de la recherche
     search_query: Terme de recherche

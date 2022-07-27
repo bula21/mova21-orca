@@ -693,7 +693,9 @@ de:
       format:
         delimiter: ''
   participant_search:
-    description: Dieses Tool ermöglicht es dir, Teilnehmer*innen zu suchen.
+    description: Dieses Tool ermöglicht es dir, Teilnehmer*innen im Notfall zu suchen.
+      Alle Abfragen werden aus Gründen der Nachvollziehbarkeit und des Schutzes der
+      persönlichen Daten aufgezeichnet.
     no_results: Keine Ergebnisse gefunden
     result: Ergebnisse
     search_query: Suchbegriff

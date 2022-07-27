@@ -693,7 +693,9 @@ it:
       format:
         delimiter: ''
   participant_search:
-    description: Cerca partecipanti per nome, cognome o codice fiscale
+    description: Questo strumento consente di cercare i partecipanti in caso di emergenza.
+      Tutte le richieste vengono registrate per motivi di tracciabilità e protezione
+      dei dati personali.
     no_results: partecipanti non trovati
     result: Risultati della ricerca
     search_query: Cerca partecipanti

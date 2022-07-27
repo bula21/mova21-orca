@@ -842,7 +842,7 @@ en:
       truncate: "&hellip;"
   participant_search:
     title: Search for participants
-    description: Search for participants by name, email or phone number
+    description: This tool allows you to search for participants in case of emergency. All queries are recorded for reasons of traceability and protection of personal data.
     search_query: Search query
     result: Results
     no_results: No results found
