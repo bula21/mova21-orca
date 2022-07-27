@@ -19,7 +19,7 @@ class ActivityFilter < ApplicationFilter
   filter :tags do |activities|
     tags = Array.wrap(tags.compact_blank)
     next if tags.blank?
-    
+
     activities_with_all_tags = Activity.joins(:tags).where(activities_tags: { tag_id: tags })
                                        .group(Activity.arel_table[:id])
                                        .having(Tag.arel_table[:id].count.eq(tags.count))
