@@ -50,7 +50,7 @@ class Ability # rubocop:disable Metrics/ClassLength
     can :read, Leader, pbs_id: user.pbs_id
 
     unit_ids = Leader.where(email: user.email).map { |leader| leader.unit_ids.values }.flatten.compact
-    can %i[read commit], Unit, id: unit_ids
+    can %i[read commit contact], Unit, id: unit_ids
     return if unit_ids.empty?
 
     can %i[read create], ParticipantUnit, unit_id: unit_ids
@@ -72,7 +72,7 @@ class Ability # rubocop:disable Metrics/ClassLength
     unit_ids = participant_units.map(&:unit_id).flatten
     return if unit_ids.blank?
 
-    can :read, Unit, id: unit_ids
+    can %i[read contact], Unit, id: unit_ids
     can :read, UnitActivity, unit: { id: unit_ids }
     can :read, ParticipantUnit, unit: { id: unit_ids }
     can :read, UnitActivityExecution, unit: { id: unit_ids }
@@ -128,7 +128,7 @@ class Ability # rubocop:disable Metrics/ClassLength
     can :manage, Spot
     can :manage, Field
     can :manage, RoverShift
-    can :read, Unit
+    can %i[read contact], Unit
     can :read, UnitActivityExecution
     can :read, UnitActivity
     cannot :delete, ActivityCategory, parent_id: nil

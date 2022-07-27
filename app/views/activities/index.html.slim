@@ -54,3 +54,5 @@
                 i.fas.fa-trash title=t('buttons.edit')
 
 = paginate @activities
+
+= link_to t('buttons.export_csv'), activities_path(format: :csv, activity_filter: @filter.attributes), class: 'btn btn-secondary'
