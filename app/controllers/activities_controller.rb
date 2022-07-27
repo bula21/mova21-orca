@@ -13,7 +13,7 @@ class ActivitiesController < ApplicationController
     respond_to do |format|
       format.html { @activities = @activities.page params[:page] }
       format.csv { send_exported_data(@activities) }
-      format.json { render json: ActivityBlueprint.render(@activities, view: :with_activities) }
+      format.json { render json: ActivityBlueprint.render(@activities, view: :with_activity_executions) }
     end
   end
   # rubocop:enable Metrics/AbcSize
