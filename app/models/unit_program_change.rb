@@ -10,13 +10,13 @@ class UnitProgramChange < ApplicationRecord
   after_save :send_notification
 
   def send_notification
-    send_notification! if notify && notified_at.blank? && ENV['SEND_PROGRAM_CHANGE_LOG_NOTIFICATIONS'].present?
+    send_notification! if notify && notified_at.blank?
   end
 
   def send_notification!
     return unless valid?
 
-    CampUnitMailer.with(unit_program_change_id: id).program_change_notification.deliver_later &&
+    CampUnitMailer.with(unit_program_change_id: id).program_change_notification.deliver_now &&
       update!(notified_at: Time.zone.now)
   end
 

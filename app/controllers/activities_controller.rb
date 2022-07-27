@@ -4,16 +4,17 @@ class ActivitiesController < ApplicationController
   skip_before_action :authenticate_user!
   load_and_authorize_resource except: [:create]
 
+  # rubocop:disable Metrics/AbcSize
   def index
-    activity_includes = [:activity_category, :stufen, :stufe_recommended,
-                         { activity_executions: %i[field spot unit_activity_executions] }]
-    @activities = Activity.accessible_by(current_ability).includes(activity_includes)
-    @activities = filter.apply(@activities.distinct).order(sort_direction)
+    @activities = filter.apply(@activities.includes(activity_includes).distinct).order(sort_direction)
+
     respond_to do |format|
       format.html { @activities = @activities.page params[:page] }
-      format.json { render json: ActivityBlueprint.render(@activities, view: :with_activity_executions) }
+      format.csv { send_exported_data(@activities) }
+      format.json { render json: ActivityBlueprint.render(@activities, view: :with_activities) }
     end
   end
+  # rubocop:enable Metrics/AbcSize
 
   def show; end
 
@@ -60,6 +61,11 @@ class ActivitiesController < ApplicationController
 
   private
 
+  def send_exported_data(activities)
+    exporter = ActivityExporter.new(activities)
+    send_data exporter.export, filename: exporter.filename
+  end
+
   def sort_direction
     return :id unless params[:sort]
     return { id: :desc } if params[:sort] == 'id_desc'
@@ -87,6 +93,10 @@ class ActivitiesController < ApplicationController
       session[:activity_filter_params] = default_filter_params.merge(activity_filter_params)
     end
     @filter ||= ActivityFilter.new(session[:activity_filter_params] || default_filter_params)
+  end
+
+  def activity_includes
+    [:activity_category, :stufen, :stufe_recommended, { activity_executions: %i[field spot unit_activity_executions] }]
   end
 
   def activity_params
