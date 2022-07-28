@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2022_07_25_125604) do
     t.string "filename", null: false
     t.string "content_type"
     t.text "metadata"
-    t.bigint "byte_size", null: false
+    t.integer "byte_size", null: false
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.string "service_name", null: false
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2022_07_25_125604) do
   end
 
   create_table "active_storage_variant_records", force: :cascade do |t|
-    t.integer "blob_id", null: false
+    t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
@@ -82,8 +82,8 @@ ActiveRecord::Schema.define(version: 2022_07_25_125604) do
   end
 
   create_table "activities_stufen_recommended", id: false, force: :cascade do |t|
-    t.bigint "activity_id", null: false
-    t.bigint "stufe_id", null: false
+    t.integer "activity_id", null: false
+    t.integer "stufe_id", null: false
     t.index ["activity_id", "stufe_id"], name: "unique_activities_stufen_recommended_index", unique: true
     t.index ["stufe_id", "activity_id"], name: "index_stufen_recommended_activities_index"
   end
@@ -110,12 +110,12 @@ ActiveRecord::Schema.define(version: 2022_07_25_125604) do
   end
 
   create_table "activity_executions", force: :cascade do |t|
-    t.integer "activity_id", null: false
+    t.bigint "activity_id", null: false
     t.datetime "starts_at"
     t.datetime "ends_at"
     t.integer "language_flags"
     t.integer "amount_participants"
-    t.integer "field_id", null: false
+    t.bigint "field_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "transport"
@@ -166,7 +166,7 @@ ActiveRecord::Schema.define(version: 2022_07_25_125604) do
 
   create_table "fields", force: :cascade do |t|
     t.string "name_untranslated"
-    t.integer "spot_id", null: false
+    t.bigint "spot_id", null: false
     t.jsonb "name", default: {}
     t.index ["spot_id"], name: "index_fields_on_spot_id"
   end
@@ -180,8 +180,8 @@ ActiveRecord::Schema.define(version: 2022_07_25_125604) do
   end
 
   create_table "fixed_events_stufen", force: :cascade do |t|
-    t.integer "fixed_event_id", null: false
-    t.integer "stufe_id", null: false
+    t.bigint "fixed_event_id", null: false
+    t.bigint "stufe_id", null: false
     t.index ["fixed_event_id"], name: "index_fixed_events_stufen_on_fixed_event_id"
     t.index ["stufe_id"], name: "index_fixed_events_stufen_on_stufe_id"
   end
@@ -193,7 +193,7 @@ ActiveRecord::Schema.define(version: 2022_07_25_125604) do
   end
 
   create_table "invoice_parts", force: :cascade do |t|
-    t.integer "invoice_id", null: false
+    t.bigint "invoice_id", null: false
     t.string "type"
     t.decimal "amount"
     t.string "label"
@@ -205,7 +205,7 @@ ActiveRecord::Schema.define(version: 2022_07_25_125604) do
   end
 
   create_table "invoices", force: :cascade do |t|
-    t.integer "unit_id", null: false
+    t.bigint "unit_id", null: false
     t.string "type"
     t.date "issued_at", default: -> { "CURRENT_TIMESTAMP" }
     t.date "payable_until"
@@ -253,7 +253,7 @@ ActiveRecord::Schema.define(version: 2022_07_25_125604) do
     t.string "key", null: false
     t.string "value"
     t.string "translatable_type"
-    t.integer "translatable_id"
+    t.bigint "translatable_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["translatable_id", "translatable_type", "key"], name: "index_mobility_string_translations_on_translatable_attribute"
@@ -266,7 +266,7 @@ ActiveRecord::Schema.define(version: 2022_07_25_125604) do
     t.string "key", null: false
     t.text "value"
     t.string "translatable_type"
-    t.integer "translatable_id"
+    t.bigint "translatable_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["translatable_id", "translatable_type", "key"], name: "index_mobility_text_translations_on_translatable_attribute"
@@ -282,8 +282,8 @@ ActiveRecord::Schema.define(version: 2022_07_25_125604) do
   end
 
   create_table "participant_units", force: :cascade do |t|
-    t.integer "unit_id", null: false
-    t.integer "participant_id", null: false
+    t.bigint "unit_id", null: false
+    t.bigint "participant_id", null: false
     t.string "role"
     t.index ["participant_id"], name: "index_participant_units_on_participant_id"
     t.index ["unit_id"], name: "index_participant_units_on_unit_id"
@@ -345,8 +345,8 @@ ActiveRecord::Schema.define(version: 2022_07_25_125604) do
   end
 
   create_table "unit_activities", force: :cascade do |t|
-    t.integer "unit_id", null: false
-    t.integer "activity_id", null: false
+    t.bigint "unit_id", null: false
+    t.bigint "activity_id", null: false
     t.integer "priority"
     t.text "remarks"
     t.datetime "created_at", precision: 6, null: false
@@ -357,8 +357,8 @@ ActiveRecord::Schema.define(version: 2022_07_25_125604) do
   end
 
   create_table "unit_activity_executions", force: :cascade do |t|
-    t.integer "unit_id", null: false
-    t.integer "activity_execution_id", null: false
+    t.bigint "unit_id", null: false
+    t.bigint "activity_execution_id", null: false
     t.integer "headcount"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -381,7 +381,7 @@ ActiveRecord::Schema.define(version: 2022_07_25_125604) do
   end
 
   create_table "unit_visitor_days", force: :cascade do |t|
-    t.integer "unit_id", null: false
+    t.bigint "unit_id", null: false
     t.integer "u6_tickets", default: 0, null: false
     t.integer "u16_tickets", default: 0, null: false
     t.integer "u16_ga_tickets", default: 0, null: false
@@ -414,7 +414,7 @@ ActiveRecord::Schema.define(version: 2022_07_25_125604) do
     t.integer "expected_participants_leitung_m"
     t.datetime "starts_at"
     t.datetime "ends_at"
-    t.integer "lagerleiter_id", null: false
+    t.bigint "lagerleiter_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "limesurvey_token"

@@ -4,6 +4,7 @@ class UnitProgramChange < ApplicationRecord
   belongs_to :unit, inverse_of: :unit_program_changes
   belongs_to :activity_execution, inverse_of: :unit_program_changes
   belongs_to :unit_activity_execution, inverse_of: :unit_program_changes
+  has_one :activity, through: :activity_execution
 
   attribute :notify, :boolean, default: false
   before_validation :set_associations
