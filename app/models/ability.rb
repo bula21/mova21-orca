@@ -113,7 +113,7 @@ class Ability # rubocop:disable Metrics/ClassLength
   end
 
   def tn_reader_user_permissions(_user)
-    can :read, Unit
+    can %i[read contact], Unit
     can :read, ParticipantUnit
     can :read, Participant
     can :read, Leader
