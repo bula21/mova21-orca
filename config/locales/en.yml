@@ -333,7 +333,9 @@ en:
       body: |-
         Liebe Einheit
 
-        An eurem Programm musste eine Anpassung vorgenommen werden. %{remarks}
+        An eurem Programm %{activity} musste eine Anpassung vorgenommen werden.
+
+        %{remarks}
 
         Euer aktuelles Programm findet ihr wie immer auf Orca: %{url}. Wir entschuldigen uns für die Umstände und danken euch für euer Verständnis.
 

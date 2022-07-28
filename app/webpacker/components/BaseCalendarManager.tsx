@@ -94,8 +94,8 @@ export abstract class BaseCalendarManager<TProps extends BaseCalendarManagerProp
     const { classes } = this.props;
     const event = eventInfo.event;
     const extendedProps = event.extendedProps;
-    const summary = [event.title, extendedProps.spot?.name, extendedProps.field?.name, " Participants ", extendedProps.amountParticipants].filter(Boolean).join(' - ');
-    
+    const summary = [event.title, extendedProps.spot?.name, extendedProps.field?.name, " 👥 " + extendedProps.amountParticipants, extendedProps.languages?.join(", ").toUpperCase()].filter(Boolean).join(' - ');
+
     return (
       <>
         <div title={`${eventInfo.timeText} - ${summary}`}
@@ -122,6 +122,8 @@ export abstract class BaseCalendarManager<TProps extends BaseCalendarManagerProp
 
 
   protected renderContextMenu() {
+    if (!this.props.editable) return null;
+
     return <Menu
       keepMounted
       open={this.state.mouseY !== null}

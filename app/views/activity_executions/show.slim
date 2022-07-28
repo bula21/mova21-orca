@@ -3,7 +3,7 @@ h1.h1= ActivityExecution.model_name.human
 = react_component("CalendarManager", { activityId: @activity_execution.activity.id,
   availableLanguages: available_languages_for_frontend(@activity_execution.activity),
   defaultAmountParticipants: @activity_execution.activity.participants_count_transport,
-  spots: SpotBlueprint.render_as_hash(@spots, view: :with_fields), editable: true })
+  spots: SpotBlueprint.render_as_hash(@spots, view: :with_fields), editable: can?(:manage, ActivityExecution) })
 
 br
 = link_to t('buttons.edit'), edit_activity_execution_path(@activity_execution), class: 'btn btn-secondary'

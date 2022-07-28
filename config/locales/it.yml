@@ -369,12 +369,18 @@ it:
         Eure BuLa21-Crew
       subject: L'iscrizione al campo non è ancora completa
     program_change_notification:
-      body: "Cara unità,\n\nPurtroppo è stato necessario modificare il vostro programma.
-        Purtroppo il messaggio non è arrivato a tutti in tempo, quindi lo inviamo
-        di nuovo per sicurezza.  \n\n%{remarks}\n\nCome sempre, potete consultare
-        il vostro programma aggiornato su Orca: %{url}. Ci scusiamo per questo cambiamento
-        e vi ringraziamo per la comprensione.\n\nCari saluti scout,\nLa vostra mova-Crew"
-      subject: "**Addendum** Modifica del programma"
+      body: |-
+        Cara unità,
+
+        Purtroppo è stato necessario modificare il vostro programma %{activity}.
+
+        %{remarks}
+
+        Come sempre, potete consultare il vostro programma aggiornato su Orca: %{url}. Ci scusiamo per questo cambiamento e vi ringraziamo per la comprensione.
+
+        Cari saluti scout,
+        La vostra mova-Crew
+      subject: Modifica del programma
   checkpoints:
     already_checked_in: Questa unità ha già un check-in in questo checkpoint
     back_to_unit: Torna all'unità

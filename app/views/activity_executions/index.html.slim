@@ -10,7 +10,7 @@
   = react_component("CalendarManager", { activityId: @activity.id,
           availableLanguages: available_languages_for_frontend(@activity),
           defaultAmountParticipants: @activity.participants_count_transport,
-          spots: SpotBlueprint.render_as_hash(@spots, view: :with_fields), editable: true })
+          spots: SpotBlueprint.render_as_hash(@spots, view: :with_fields), editable: can?(:manage, ActivityExecution)})
 
 - else
   h1.h1= ActivityExecution.model_name.human(count: 2)
