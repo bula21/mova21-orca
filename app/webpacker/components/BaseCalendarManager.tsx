@@ -122,23 +122,21 @@ export abstract class BaseCalendarManager<TProps extends BaseCalendarManagerProp
 
 
   protected renderContextMenu() {
-    if (this.props.editable) {
-      return <Menu
-        keepMounted
-        open={this.state.mouseY !== null}
-        onClose={() => this.handlContextMenuClose()}
-        anchorReference="anchorPosition"
-        anchorPosition={this.state.mouseY !== null && this.state.mouseX !== null
-          ? { top: this.state.mouseY, left: this.state.mouseX }
-          : undefined}
-      >
-        <MenuItem onClick={() => this.handleEdit(this.state.clickedEventId)}><EditIcon />Edit</MenuItem>
-        <MenuItem onClick={() => this.handleEventCopy(this.state.clickedEventId)}><CopyIcon />Copy</MenuItem>
-        <MenuItem onClick={() => this.handleEventRemove(this.state.clickedEventId)}><DeleteIcon />Delete</MenuItem>
-      </Menu>;
-    } else {
-      return null;
-    }
+    if (!this.props.editable) return null;
+
+    return <Menu
+      keepMounted
+      open={this.state.mouseY !== null}
+      onClose={() => this.handlContextMenuClose()}
+      anchorReference="anchorPosition"
+      anchorPosition={this.state.mouseY !== null && this.state.mouseX !== null
+        ? { top: this.state.mouseY, left: this.state.mouseX }
+        : undefined}
+    >
+      <MenuItem onClick={() => this.handleEdit(this.state.clickedEventId)}><EditIcon />Edit</MenuItem>
+      <MenuItem onClick={() => this.handleEventCopy(this.state.clickedEventId)}><CopyIcon />Copy</MenuItem>
+      <MenuItem onClick={() => this.handleEventRemove(this.state.clickedEventId)}><DeleteIcon />Delete</MenuItem>
+    </Menu>;
   }
 
   // render event information within top information div
