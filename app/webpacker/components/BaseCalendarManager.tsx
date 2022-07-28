@@ -122,6 +122,8 @@ export abstract class BaseCalendarManager<TProps extends BaseCalendarManagerProp
 
 
   protected renderContextMenu() {
+    if (!this.props.editable) return null;
+
     return <Menu
       keepMounted
       open={this.state.mouseY !== null}
