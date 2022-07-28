@@ -373,11 +373,16 @@ fr:
       subject: L’inscription au mova n'est pas encore complète
     program_change_notification:
       body: |-
-        Chères unités,\nUne modification a dû être apportée à votre programme.
-        \n%{remarks}\nVotre programme mis à jour se trouve comme d’habitude sur
-        Orca: %{url}. Toutes nos excuses pour ce changement et les perturbations qui
-        en découlent et merci pour votre compréhension.\nNos meilleures salutations
-        scoutes,\nVotre mova-Crew"
+        Chères unités,
+
+        Une modification a dû être apportée à votre programme %{activity}.
+
+        %{remarks}
+
+        Votre programme mis à jour se trouve comme d’habitude sur Orca: %{url}. Toutes nos excuses pour ce changement et les perturbations qui en découlent et merci pour votre compréhension.
+
+        Nos meilleures salutations scoutes,
+        Votre mova-Crew
       subject: modification au programme
   checkpoints:
     already_checked_in: Cette unité a déjà un check-in à ce point de contrôle

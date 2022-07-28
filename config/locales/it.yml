@@ -372,7 +372,7 @@ it:
       body: |-
         Cara unità,
 
-        Purtroppo è stato necessario modificare il vostro programma.
+        Purtroppo è stato necessario modificare il vostro programma %{activity}.
 
         %{remarks}
 
