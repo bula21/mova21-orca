@@ -94,7 +94,7 @@ export abstract class BaseCalendarManager<TProps extends BaseCalendarManagerProp
     const { classes } = this.props;
     const event = eventInfo.event;
     const extendedProps = event.extendedProps;
-    const summary = [event.title, extendedProps.spot?.name, extendedProps.field?.name, " Participants ", extendedProps.amountParticipants, ' Language ', extendedProps.languages?.join(", ")].filter(Boolean).join(' - ');
+    const summary = [event.title, extendedProps.spot?.name, extendedProps.field?.name, " 👥 " + extendedProps.amountParticipants, extendedProps.languages?.join(", ")].filter(Boolean).join(' - ');
 
     return (
       <>
