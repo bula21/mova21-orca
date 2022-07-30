@@ -1,0 +1,26 @@
+h1.h1 = t('unit_contact_log.title')
+
+- unless @unit_contact_logs.present? && @unit_contact_logs.any?
+  p = t('unit_contact_log.no_results')
+  
+- else
+  h3 = t('unit_contact_log.result')
+  .table-responsive.participant_search_log
+    table.table
+      thead
+        tr
+          th = User.human_attribute_name(:id)
+          th = User.human_attribute_name(:email)
+
+          th = Unit.human_attribute_name(:name)
+          th = UnitContactLog.human_attribute_name(:created_at)
+      tbody
+        - @unit_contact_logs.each do |log|
+          tr
+            td = log.user.id
+            td = log.user.email
+
+            td = log.unit
+            td = l(log.created_at)
+
+  = paginate @unit_contact_logs

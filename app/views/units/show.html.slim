@@ -46,6 +46,9 @@
             br
           = mail_to @unit.lagerleiter.email, @unit.lagerleiter.email
 
+        br
+        = link_to t('units.show.contact_link'), contact_unit_path(@unit), class: 'btn btn-info'
+
       - if @unit.pbs_id.present?
         dd = link_to midata_link_to_unit(@unit), class: 'mb-3' do
           i.fas.fa-link
