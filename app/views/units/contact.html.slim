@@ -1,0 +1,7 @@
+.h1 = t('units.show.contact')
+.card.shadow-sm.mt-3.position-relative.p-2.pt-3.pb-3.p-md-4
+  .row
+    .col-md-6 
+      ol 
+        - [@unit.contact_phonenumber_1, @unit.contact_phonenumber_2].compact_blank.each do |number|
+          li= number

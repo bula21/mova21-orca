@@ -11,16 +11,15 @@ Rails.application.routes.draw do
     get 'logout', to: 'sessions#destroy', as: :destroy_user_session
   end
 
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :units, except: [:destroy] do
     resources :participant_units, except: %i[show]
-    resources :unit_contact, except: %i[show]
     resource :unit_visitor_day, except: %i[]
     resources :unit_activities, except: %i[new edit] do
       patch :priorize, to: 'unit_activities#priorize', on: :member
       get :stage_commit, to: 'unit_activities#stage_commit', on: :collection
       post :commit, to: 'unit_activities#commit', on: :collection
     end
+    get :contact, on: :member
     post :documents, to: 'units#add_document', as: :documents
     post :accept_security_concept, to: 'units#accept_security_concept'
     delete 'document/:id', to: 'units#delete_document', as: :document
@@ -80,7 +79,7 @@ Rails.application.routes.draw do
     end
 
     resource :participant_search_log, only: [:show]
-    resource :unit_contact_log, only: [:show]
+    resources :unit_contact_logs, only: [:index]
   end
 
   root 'units#index'

@@ -112,8 +112,6 @@ de:
       participant_search_logs:
         created_at: Erstellt am
         search_query: Suchabfrage
-      unit_contact_log:
-        created_at: Erstellt am
       participant_unit:
         role: Rolle
         roles:
@@ -134,6 +132,9 @@ de:
         amount_of_rovers: Anzahl zugelassene Einheits-Rover
         arrival_slot: Anlieferung Material
         coach: Coach
+        contact: Notfallkontakt
+        contact_1: Notfallkontakt 1
+        contact_2: Notfallkontakt 2
         definite_max_number_of_persons: Definitve maximale Personenanzahl
         departure_slot: Abholung Material
         district: Quartier
@@ -159,15 +160,14 @@ de:
         transport_mode: Transportart
         visitor_day_tickets: Anzahl Tickets für den Besuchstag
         week: Lagerwoche
-        contact: Notfallkontakt
-        contact_1: Notfallkontakt 1
-        contact_2: Notfallkontakt 2
       unit_activity_execution:
         activity_execution_id: Durchführung
         change_notification: Änderungsbenachrichtigung an Einheit verschicken
         change_remarks: Bemerkung zur Änderung
         headcount: Anzahl Personen
         unit_id: Einheit
+      unit_contact_log:
+        created_at: Erstellt am
       unit_visitor_day:
         at: Datum des Besuchstags
         ga_tickets: Personen mit GA
@@ -711,10 +711,6 @@ de:
     no_results: Keine Abfragen gefunden
     result: Abfragen
     title: Log der Suchabfragen
-  unit_contact_log:
-    title: Log der Kontakt Anfragen
-    result: Anfragen
-    no_results: Keine Anfragen gefunden
   participant_units:
     edit:
       title: Teilnehmenden bearbeiten
@@ -840,6 +836,10 @@ de:
     result: Resultate
     title: Kommunikation Einheiten
     unit_ids: Einheits-IDs kommasepariert
+  unit_contact_log:
+    no_results: Keine Anfragen gefunden
+    result: Anfragen
+    title: Log der Kontakt Anfragen
   unit_visitor_days:
     form:
       salutations:
@@ -915,14 +915,14 @@ de:
         title: Definitive Anzahl angemeldete Personen
         total: Total
       basic_infos: Allgemein
-      contact: Notfallkontakt
-      contact_link: Notfallkontakt anzeigen
       book_visitor_day_tickets: Tickets jetzt kaufen
       camp_details: Lagerdetails
       camp_id: Lager-ID
       camp_link_midata: Lager auf MiData
       check_in: Check-In
       check_out: Check-Out
+      contact: Notfallkontakt
+      contact_link: Notfallkontakt anzeigen
       data_complete: Daten vollständig
       data_incomplete: Daten nicht vollständig
       documents: Dokumente

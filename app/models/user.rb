@@ -27,6 +27,7 @@ class User < ApplicationRecord
 
   has_one :leader, foreign_key: :email, primary_key: :email, inverse_of: :user, dependent: nil
   has_many :participant_search_logs, dependent: :destroy
+  has_many :unit_contact_logs, inverse_of: :user, dependent: :destroy
 
   validates :email, presence: true, format: { with: Devise.email_regexp }
   validates :uid, presence: true

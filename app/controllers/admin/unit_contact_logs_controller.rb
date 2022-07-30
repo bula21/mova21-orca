@@ -2,9 +2,10 @@
 
 module Admin
   class UnitContactLogsController < ApplicationController
-    def show
-      authorize!(:manage, :all)
-      @logs = UnitContactLog.all.order(created_at: :desc).includes([:user]).page params[:page]
+    load_and_authorize_resource :unit_contact_log
+
+    def index
+      @unit_contact_logs = @unit_contact_logs.order(created_at: :desc).includes(:user).page(params[:page])
     end
   end
 end

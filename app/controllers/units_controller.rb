@@ -73,6 +73,10 @@ class UnitsController < ApplicationController
     @emails = @units.map { |unit| unit.lagerleiter.email }
   end
 
+  def contact
+    UnitContactLog.create(user: current_user, unit: @unit)
+  end
+
   private
 
   def unit_params

@@ -46,6 +46,9 @@
             br
           = mail_to @unit.lagerleiter.email, @unit.lagerleiter.email
 
+        br
+        = link_to t('units.show.contact_link'), contact_unit_path(@unit), class: 'btn btn-info'
+
       - if @unit.pbs_id.present?
         dd = link_to midata_link_to_unit(@unit), class: 'mb-3' do
           i.fas.fa-link
@@ -55,13 +58,6 @@
         dd = link_to(edit_unit_path(@unit))
           i.fa.fa-edit
           =< t('buttons.edit')
-
-- if can?(:contact, @unit)
-  .card.shadow-sm.mt-3.position-relative.p-2.pt-3.pb-3.p-md-4
-    h3.mb-4.font-weight-bold = t('units.show.contact')
-    .row
-      .col-md-6
-        = link_to t('units.show.contact_link'), unit_unit_contact_path(@unit), class: 'btn btn-info'
 
 .card.shadow-sm.mt-3.position-relative.p-2.pt-3.pb-3.p-md-4
   h3.mb-4.font-weight-bold = t('units.show.camp_details')
