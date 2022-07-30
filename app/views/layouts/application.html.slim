@@ -51,6 +51,8 @@ html
                     = link_to t('nav.checkpoint'), admin_checkpoints_path, class: 'dropdown-item'
                   - if can?(:manage, :all)
                     = link_to t('participant_search_log.title'), admin_participant_search_log_path, class: 'dropdown-item'
+                  - if can?(:manage, :all)
+                    = link_to t('unit_contact_log.title'), admin_unit_contact_log_path, class: 'dropdown-item'
 
 
             - if can?(:create, CheckpointUnit)

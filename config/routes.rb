@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :units, except: [:destroy] do
     resources :participant_units, except: %i[show]
+    resources :unit_contact, except: %i[show]
     resource :unit_visitor_day, except: %i[]
     resources :unit_activities, except: %i[new edit] do
       patch :priorize, to: 'unit_activities#priorize', on: :member
@@ -79,6 +80,7 @@ Rails.application.routes.draw do
     end
 
     resource :participant_search_log, only: [:show]
+    resource :unit_contact_log, only: [:show]
   end
 
   root 'units#index'

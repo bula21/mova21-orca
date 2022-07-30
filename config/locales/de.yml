@@ -112,6 +112,8 @@ de:
       participant_search_logs:
         created_at: Erstellt am
         search_query: Suchabfrage
+      unit_contact_log:
+        created_at: Erstellt am
       participant_unit:
         role: Rolle
         roles:
@@ -157,6 +159,9 @@ de:
         transport_mode: Transportart
         visitor_day_tickets: Anzahl Tickets für den Besuchstag
         week: Lagerwoche
+        contact: Notfallkontakt
+        contact_1: Notfallkontakt 1
+        contact_2: Notfallkontakt 2
       unit_activity_execution:
         activity_execution_id: Durchführung
         change_notification: Änderungsbenachrichtigung an Einheit verschicken
@@ -706,6 +711,10 @@ de:
     no_results: Keine Abfragen gefunden
     result: Abfragen
     title: Log der Suchabfragen
+  unit_contact_log:
+    title: Log der Kontakt Anfragen
+    result: Anfragen
+    no_results: Keine Anfragen gefunden
   participant_units:
     edit:
       title: Teilnehmenden bearbeiten
@@ -906,6 +915,8 @@ de:
         title: Definitive Anzahl angemeldete Personen
         total: Total
       basic_infos: Allgemein
+      contact: Notfallkontakt
+      contact_link: Notfallkontakt anzeigen
       book_visitor_day_tickets: Tickets jetzt kaufen
       camp_details: Lagerdetails
       camp_id: Lager-ID

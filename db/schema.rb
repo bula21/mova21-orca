@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_25_125604) do
+ActiveRecord::Schema.define(version: 2022_07_29_111402) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -367,6 +367,13 @@ ActiveRecord::Schema.define(version: 2022_07_25_125604) do
     t.index ["unit_id"], name: "index_unit_activity_executions_on_unit_id"
   end
 
+  create_table "unit_contact_logs", force: :cascade do |t|
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_unit_contact_logs_on_user_id"
+  end
+
   create_table "unit_program_changes", force: :cascade do |t|
     t.bigint "unit_id", null: false
     t.bigint "activity_execution_id"
@@ -439,6 +446,8 @@ ActiveRecord::Schema.define(version: 2022_07_25_125604) do
     t.datetime "accept_security_concept_at"
     t.integer "district_number"
     t.string "kitchen_id"
+    t.string "contact_phonenumber_1"
+    t.string "contact_phonenumber_2"
     t.index ["al_id"], name: "index_units_on_al_id"
     t.index ["coach_id"], name: "index_units_on_coach_id"
     t.index ["lagerleiter_id"], name: "index_units_on_lagerleiter_id"

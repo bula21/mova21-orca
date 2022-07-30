@@ -1,0 +1,22 @@
+h1.h1 = t('unit_contact_log.title')
+- if @logs.present? && @logs.any?
+  h3 = t('unit_contact_log.result')
+  .table-responsive.participant_search_log
+    table.table
+      thead
+        tr
+          th = User.human_attribute_name(:id)
+          th = User.human_attribute_name(:email)
+
+          th = Unit.human_attribute_name(:name)
+          th = ContactUnitLog.human_attribute_name(:created_at)
+      tbody
+        - @logs.each do |log|
+          tr
+            td = log.searcher.id
+            td = log.searcher.email
+
+            td = log.unit
+            td = l(log.created_at)
+- else
+  p = t('unit_contact_log.no_results')
