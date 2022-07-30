@@ -132,6 +132,9 @@ it:
         amount_of_rovers: Numero di rover dell'unità ammessi
         arrival_slot: Consegna materiale
         coach: Coach
+        contact: Contatto di emergenza
+        contact_1: Contatto di emergenza 1
+        contact_2: Contatto di emergenza 2
         definite_max_number_of_persons: Numero massimo di persone definitivo
         departure_slot: Ritiro materiale
         district: Quartiere
@@ -163,6 +166,8 @@ it:
         change_remarks: Bemerkung zur Änderung
         headcount: Numero di persone
         unit_id: Unità
+      unit_contact_log:
+        created_at: Creato il
       unit_visitor_day:
         at: Date della vostra giornata delle visite
         ga_tickets: Persone con AG
@@ -831,6 +836,10 @@ it:
     result: Risultato
     title: Comunicazione unità
     unit_ids: ID unità (separati da una virgola)
+  unit_contact_log:
+    no_results: Nessuna richiesta trovata
+    result: Richieste
+    title: Registro delle richieste di contatto
   unit_visitor_days:
     form:
       salutations:
@@ -912,6 +921,8 @@ it:
       camp_link_midata: Campo su MiData
       check_in: Check-In
       check_out: Check-Out
+      contact: Contatto di emergenza
+      contact_link: Mostrare il contatto di emergenza
       data_complete: Dati completi
       data_incomplete: Dati incompleti
       documents: Documenti

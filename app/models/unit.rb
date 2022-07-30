@@ -57,6 +57,7 @@ class Unit < ApplicationRecord
   has_many :unit_activity_executions, inverse_of: :unit, dependent: :destroy
   has_one :unit_visitor_day, inverse_of: :unit, dependent: :destroy
   has_many :unit_program_changes, inverse_of: :unit, dependent: :destroy
+  has_many :unit_contact_logs, inverse_of: :unit, dependent: :destroy
 
   has_many_attached :documents
 
