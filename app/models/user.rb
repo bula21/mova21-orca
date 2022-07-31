@@ -20,7 +20,8 @@
 #
 class User < ApplicationRecord
   ROLES = %i[user admin programm tn_administration editor allocation read_unit unit_communication
-             checkin_checkout checkin_checkout_manager tn_reader participant_searcher read_allocation].freeze
+             checkin_checkout checkin_checkout_manager tn_reader participant_searcher read_allocation
+             read_unit_contact].freeze
 
   include Bitfields
   devise :omniauthable, omniauth_providers: %i[openid_connect developer]
@@ -72,5 +73,9 @@ class User < ApplicationRecord
 
   def midata_user?
     pbs_id.present? && !pbs_id.zero?
+  end
+
+  def to_s
+    "##{id} #{email}"
   end
 end
