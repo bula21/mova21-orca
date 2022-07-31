@@ -161,7 +161,7 @@ class Ability # rubocop:disable Metrics/ClassLength
     can :update, Activity
   end
 
-  role :role_unit_communication do
+  role :unit_communication do
     can %i[read emails], Unit
   end
 
