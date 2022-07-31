@@ -3,57 +3,59 @@
 class Ability # rubocop:disable Metrics/ClassLength
   include CanCan::Ability
 
-  # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
-  def initialize(user)
-    anonymous_permissions(user)
-    return if user.blank?
-
-    admin_user_permissions(user) if user.role_admin?
-    checkin_checkout_user_permissions(user) if user.role_checkin_checkout?
-    checkin_checkout_manager_user_permissions(user) if user.role_checkin_checkout_manager?
-    tn_administration_user_permissions(user) if user.role_tn_administration?
-    tn_reader_user_permissions(user) if user.role_tn_reader?
-    programm_user_permissions(user) if user.role_programm?
-    read_unit_user_permissions(user) if user.role_read_unit?
-    allocation_user_permissions(user) if user.role_allocation?
-    editor_user_permissions(user) if user.role_editor?
-    midata_user_permissions(user) if user.midata_user?
-    read_allocation_user_permissions(user) if user.role_read_allocation?
-    role_unit_communication_user_permissions(user) if user.role_unit_communication?
-    external_user_permissions(user) unless user.midata_user?
-    participant_searcher_user_permissions(user) if user.role_participant_searcher?
+  def self.role(role_name, &block)
+    roles[role_name.to_sym] = block
   end
-  # rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+
+  def self.roles
+    @roles ||= {}
+  end
+
+  def initialize(user)
+    roles = [:anonymous, user&.roles, (user&.midata_user? ? :midata : :external)].flatten.compact
+    roles.each { |role_name| permit(role_name, user) }
+  end
 
   private
 
-  def anonymous_permissions(_user)
+  def permit(role_name, user)
+    Rails.logger.debug { "  ** Giving #{role_name} permissions to #{user}" }
+    instance_exec(user, &self.class.roles.fetch(role_name.to_sym))
+  end
+
+  role :user do |user|
+    can :read, user
+  end
+
+  role :anonymous do
     can :read, Activity
     can :read, FixedEvent
     can :read, Checkpoint
   end
 
-  def checkin_checkout_user_permissions(_user)
+  role :checkin_checkout do
     can %i[list read redirect_to_check checkpoint_unit_autocomplete unit_autocomplete], Checkpoint
     can %i[create update read], CheckpointUnit
   end
 
-  def checkin_checkout_manager_user_permissions(_user)
+  role :checkin_checkout_manager do
     can %i[manage], Checkpoint
     can %i[manage], CheckpointUnit
   end
 
-  def midata_user_permissions(user)
-    leader_permissions(user)
-    assistant_leader_permission(user)
+  role :midata do |user|
+    permit(:leader, user)
+    permit(:assistant_leader, user)
   end
 
-  def leader_permissions(user)
+  role :leader do |user|
+    next if user.blank?
+
     can :read, Leader, pbs_id: user.pbs_id
 
     unit_ids = Leader.where(email: user.email).map { |leader| leader.unit_ids.values }.flatten.compact
     can %i[read commit contact], Unit, id: unit_ids
-    return if unit_ids.empty?
+    next if unit_ids.empty?
 
     can %i[read create], ParticipantUnit, unit_id: unit_ids
     can :read_documents, Unit, id: unit_ids
@@ -68,11 +70,13 @@ class Ability # rubocop:disable Metrics/ClassLength
     can %i[read update], UnitVisitorDay, unit_id: unit_ids
   end
 
-  def assistant_leader_permission(user)
+  role :assistant_leader do |user|
+    next if user.blank?
+
     roles = %i[assistant_leader helper]
     participant_units = ParticipantUnit.joins(:participant).where(participant: { email: user.email }, role: roles)
     unit_ids = participant_units.map(&:unit_id).flatten
-    return if unit_ids.blank?
+    next if unit_ids.blank?
 
     can %i[read contact], Unit, id: unit_ids
     can :read, UnitActivity, unit: { id: unit_ids }
@@ -81,25 +85,28 @@ class Ability # rubocop:disable Metrics/ClassLength
     can :read, UnitVisitorDay, unit: { id: unit_ids }
   end
 
-  def external_user_permissions(user)
+  role :external do |user|
     # TODO: A user should only be able to see the Lagerleiter/ALs that he created. so we have to store a user_id
     # TODO: Introduce flag to avoid creation when logged in via midata
+    next if user.blank?
 
-    can %i[read update], Unit, al: { email: user.email }
-    can %i[read update], Unit, lagerleiter: { email: user.email }
-    can :manage, ParticipantUnit, unit: { lagerleiter: { email: user.email } }
-    can :manage, ParticipantUnit, unit: { al: { email: user.email } }
+    email = user.email
 
-    can :manage, UnitActivity, unit: { lagerleiter: { email: user.email } }
-    can :read, UnitActivity, unit: { al: { email: user.email } }
+    can %i[read update], Unit, al: { email: email }
+    can %i[read update], Unit, lagerleiter: { email: email }
+    can :manage, ParticipantUnit, unit: { lagerleiter: { email: email } }
+    can :manage, ParticipantUnit, unit: { al: { email: email } }
+
+    can :manage, UnitActivity, unit: { lagerleiter: { email: email } }
+    can :read, UnitActivity, unit: { al: { email: email } }
   end
 
-  def admin_user_permissions(_user)
+  role :admin do
     can :manage, :all
     can :export, Unit
   end
 
-  def tn_administration_user_permissions(_user)
+  role :tn_administration do
     can :manage, Unit
     can :manage, ParticipantUnit
     can :manage, Participant
@@ -112,14 +119,14 @@ class Ability # rubocop:disable Metrics/ClassLength
     can :read, UnitActivityExecution
   end
 
-  def tn_reader_user_permissions(_user)
+  role :tn_reader do
     can %i[read contact], Unit
     can :read, ParticipantUnit
     can :read, Participant
     can :read, Leader
   end
 
-  def programm_user_permissions(_user)
+  role :programm do
     can :manage, Activity
     can :manage, ActivityExecution
     can :manage, Tag
@@ -136,37 +143,41 @@ class Ability # rubocop:disable Metrics/ClassLength
     cannot :delete, ActivityCategory, parent_id: nil
   end
 
-  def allocation_user_permissions(user)
-    programm_user_permissions(user)
+  role :allocation do |user|
+    permit(:programm, user)
 
     can :manage, UnitActivity
     can :manage, UnitActivityExecution
   end
 
-  def read_unit_user_permissions(_user)
+  role :read_unit do
     can :read, Unit
     can :read, UnitActivity
     can :read, UnitActivityExecution
     can :read, UnitVisitorDay
   end
 
-  def editor_user_permissions(_user)
+  role :editor do
     can :update, Activity
   end
 
-  def role_unit_communication_user_permissions(_user)
+  role :role_unit_communication do
     can %i[read emails], Unit
   end
 
-  def participant_searcher_user_permissions(_user)
+  role :participant_searcher do
     can :read, Unit
     can :search, Participant
   end
 
-  def read_allocation_user_permissions(_user)
+  role :read_allocation do
     can :read, Activity
     can :read, UnitActivity
     can :read, ActivityExecution
     can :read, UnitActivityExecution
+  end
+
+  role :read_unit_contact do
+    can %i[read contact], Unit
   end
 end
