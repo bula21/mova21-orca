@@ -49,7 +49,7 @@ class Ability # rubocop:disable Metrics/ClassLength
   end
 
   role :leader do |user|
-    next unless user.present?
+    next if user.blank?
 
     can :read, Leader, pbs_id: user.pbs_id
 
@@ -71,7 +71,7 @@ class Ability # rubocop:disable Metrics/ClassLength
   end
 
   role :assistant_leader do |user|
-    next unless user.present?
+    next if user.blank?
 
     roles = %i[assistant_leader helper]
     participant_units = ParticipantUnit.joins(:participant).where(participant: { email: user.email }, role: roles)
@@ -88,7 +88,7 @@ class Ability # rubocop:disable Metrics/ClassLength
   role :external do |user|
     # TODO: A user should only be able to see the Lagerleiter/ALs that he created. so we have to store a user_id
     # TODO: Introduce flag to avoid creation when logged in via midata
-    next unless user.present?
+    next if user.blank?
 
     email = user.email
 
