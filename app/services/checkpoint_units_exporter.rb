@@ -15,6 +15,7 @@ class CheckpointUnitsExporter
     checkpoint
     notes_check_in
     checked_in_on_paper
+    checked_in_at
     check_in_by
     confirmed_checked_in_at
     confirmed_check_in_by
