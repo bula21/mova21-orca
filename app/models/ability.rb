@@ -53,7 +53,7 @@ class Ability # rubocop:disable Metrics/ClassLength
 
     can :read, Leader, pbs_id: user.pbs_id
 
-    unit_ids = Leader.where(email: user.email).map { |leader| leader.unit_ids.values }.flatten.compact
+    unit_ids = user.leaders.map { |leader| leader.unit_ids.values }.flatten.compact
     can %i[read commit contact], Unit, id: unit_ids
     next if unit_ids.empty?
 
@@ -74,8 +74,7 @@ class Ability # rubocop:disable Metrics/ClassLength
     next if user.blank?
 
     roles = %i[assistant_leader helper]
-    participant_units = ParticipantUnit.joins(:participant).where(participant: { email: user.email }, role: roles)
-    unit_ids = participant_units.map(&:unit_id).flatten
+    unit_ids = user.participant_units.where(role: roles).map(&:unit_id).flatten
     next if unit_ids.blank?
 
     can %i[read contact], Unit, id: unit_ids

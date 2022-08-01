@@ -74,7 +74,12 @@ class UnitsController < ApplicationController
   end
 
   def contact
-    UnitContactLog.create(user: current_user, unit: @unit)
+    unit_ids = [
+      current_user.leaders.map { |leader| leader.unit_ids.values },
+      current_user.participant_units.where(role: %i[assistant_leader helper]).map(&:unit_id)
+    ].flatten
+
+    UnitContactLog.create(user: current_user, unit: @unit) unless unit_ids.include?(@unit.id)
   end
 
   private
