@@ -5,3 +5,9 @@
       ol 
         - [@unit.contact_phonenumber_1, @unit.contact_phonenumber_2].compact_blank.each do |number|
           li= number
+
+  h4 = t('unit_communications.send_sms')
+  = form_with(local: true, url: send_sms_units_path, method: :post) do |f|
+    = f.text_area :message, label: 'Message', class: 'form-control', maxlength: 133
+    = f.text_area :phone_numbers, value: @numbers, class: 'form-control', hidden: true
+    = f.submit 'send', class: 'btn btn-secondary mt-2'
