@@ -834,6 +834,9 @@ it:
       di posta elettronica. Esempio: 444.321.222'
     no_results: Nessuna unità trovata
     result: Risultato
+    send_error: Errore di invio
+    send_sms: SMS
+    send_successful: SMS inviato con successo
     title: Comunicazione unità
     unit_ids: ID unità (separati da una virgola)
   unit_contact_log:

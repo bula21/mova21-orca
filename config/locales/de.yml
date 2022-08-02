@@ -834,6 +834,9 @@ de:
       444,321,222'
     no_results: Keine Einheiten gefunden
     result: Resultate
+    send_error: Fehler beim Versenden
+    send_sms: SMS versenden
+    send_successful: SMS erfolgreich versendet
     title: Kommunikation Einheiten
     unit_ids: Einheits-IDs kommasepariert
   unit_contact_log:

@@ -836,6 +836,9 @@ fr:
       de messagerie. Exemple : 444,321,222'
     no_results: Aucune unité trouvée
     result: Résultat
+    send_error: Erreur lors de l'envoi
+    send_sms: SMS
+    send_successful: SMS envoyé avec succès
     title: Communication unité
     unit_ids: ID d'unité (séparé par une virgule)
   unit_contact_log:
