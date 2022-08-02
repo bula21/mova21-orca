@@ -62,6 +62,14 @@ class User < ApplicationRecord
   end
   # rubocop:enable Metrics/AbcSize
 
+  def participant_units
+    ParticipantUnit.joins(:participant).where(participant: { email: email })
+  end
+
+  def leaders
+    Leader.where(email: email)
+  end
+
   def roles=(*value)
     value = Array.wrap(value).flatten.compact.map(&:to_sym)
     ROLES.each { |role| try("role_#{role}=", value.include?(role.to_sym)) }

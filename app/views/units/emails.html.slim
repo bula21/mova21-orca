@@ -6,13 +6,20 @@ br
   = f.submit t('buttons.search'), class: 'btn btn-secondary mt-2'
 br
 
-- if !@units.empty?
+- if !@email_units.empty?
   h3 = t('unit_communications.result')
   ul
-    - @units.each do |unit|
+    - @email_units.each do |unit|
       li = "#{unit.id}: #{unit.title}"
 
   hr
   p = @emails.join(', ')
+
+  h3 = t('unit_communications.send_sms')
+  = form_with(local: true, url: send_sms_units_path, method: :post) do |f|
+    = f.text_area :message, label: 'Message', class: 'form-control', maxlength: 133
+    = f.text_area :phone_numbers, value: @numbers, class: 'form-control', readonly: true
+    = f.submit 'send', class: 'btn btn-secondary mt-2'
+
 - else
   p = t('unit_communications.no_results')

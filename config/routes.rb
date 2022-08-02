@@ -30,6 +30,7 @@ Rails.application.routes.draw do
       put :confirm, on: :member
     end
     get :emails, to: 'units#emails', as: :emails, on: :collection
+    post :send_sms, to: 'units#send_sms', as: :send_sms, on: :collection
   end
   resource :participant_search, only: %i[show search create]
   resources :leaders, except: [:destroy]

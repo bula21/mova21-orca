@@ -69,12 +69,26 @@ class UnitsController < ApplicationController
   end
 
   def emails
-    @units = @units.where(id: params[:unit_ids]&.split(','))
-    @emails = @units.map { |unit| unit.lagerleiter.email }
+    @email_units = @units.where(id: params[:unit_ids]&.split(','))
+    @emails = @email_units.map { |unit| unit.lagerleiter.email }
+    @numbers = @email_units.map { |unit| unit.lagerleiter.phone_number }.compact_blank.uniq.join(',')
   end
 
-  def contact
-    UnitContactLog.create(user: current_user, unit: @unit)
+  def contact # rubocop:disable Metrics/AbcSize
+    unit_ids = [
+      current_user.leaders.map { |leader| leader.unit_ids.values },
+      current_user.participant_units.where(role: %i[assistant_leader helper]).map(&:unit_id)
+    ].flatten
+
+    @numbers = [@unit.contact_phonenumber_1, @unit.contact_phonenumber_2].compact_blank.join(',')
+
+    UnitContactLog.create(user: current_user, unit: @unit) unless unit_ids.include?(@unit.id)
+  end
+
+  def send_sms
+    return unless params[:message] && params[:phone_numbers]
+
+    @response = SmsSender.new(params[:phone_numbers], params[:message]).send
   end
 
   private

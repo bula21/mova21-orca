@@ -714,6 +714,9 @@ en:
     unit_ids: Einheits-IDs kommasepariert
     result: Resultate
     no_results: Keine Einheiten gefunden
+    send_sms: SMS
+    send_successful: SMS sent successfully
+    send_error: Error sending SMS
   unit_activity_booking:
     all_comply: All comply
     book: zum Warenkorb hinzufügen
