@@ -19,7 +19,7 @@
         - else
           - if checkpoint_unit.confirmed_checked_in_at.present?
             i.fas.fa-check-circle
-            =<> checkpoint_unit.confirmed_check_in_by.full_name
+            =<> checkpoint_unit.confirmed_check_in_by&.full_name
             | (
             = l(checkpoint_unit.confirmed_checked_in_at)
             | )
@@ -49,7 +49,7 @@
         - else
           - if checkpoint_unit.confirmed_checked_out_at.present?
             i.fas.fa-check-circle
-            =<> checkpoint_unit.confirmed_check_out_by.full_name
+            =<> checkpoint_unit.confirmed_check_out_by&.full_name
             | (
             = l(checkpoint_unit.confirmed_checked_out_at)
             | )
