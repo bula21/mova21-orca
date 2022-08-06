@@ -63,7 +63,7 @@ class Ability # rubocop:disable Metrics/ClassLength
     can %i[edit update destroy], ParticipantUnit, unit_id: unit_ids, participant: { pbs_id: nil }
     # can %i[read create], Participant, participant_units: { unit_id: unit_ids }
     # can %i[edit update destroy], Participant, participant_units: { unit_id: unit_ids }, pbs_id: nil
-    can %i[confirm read], CheckpointUnit
+    can %i[confirm read], CheckpointUnit, unit_id: unit_ids
 
     can :manage, UnitActivity, unit_id: unit_ids
     can :read, UnitActivityExecution, unit_id: unit_ids
@@ -82,6 +82,7 @@ class Ability # rubocop:disable Metrics/ClassLength
     can :read, ParticipantUnit, unit: { id: unit_ids }
     can :read, UnitActivityExecution, unit: { id: unit_ids }
     can :read, UnitVisitorDay, unit: { id: unit_ids }
+    can %i[confirm read], CheckpointUnit, unit_id: unit_ids
   end
 
   role :external do |user|
