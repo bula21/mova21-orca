@@ -8,7 +8,7 @@
           = CheckpointUnit.human_attribute_name(:checked_in_on_paper)
         - else
           - if checkpoint_unit.confirmed_checked_in_at.present?
-            = checkpoint_unit.confirmed_check_in_by.full_name
+            = checkpoint_unit.confirmed_check_in_by&.full_name
             br
             | (
             = l(checkpoint_unit.confirmed_checked_in_at)
