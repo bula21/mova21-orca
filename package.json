@@ -39,7 +39,7 @@
     "jquery": "^3.4.1",
     "mini-css-extract-plugin": "^2.5.3",
     "moment": "^2.29.2",
-    "moment-timezone": "^0.5.33",
+    "moment-timezone": "^0.5.35",
     "node-fetch": "^3.0.0",
     "postcss": "^8.4.6",
     "postcss-flexbugs-fixes": "^5.0.2",
